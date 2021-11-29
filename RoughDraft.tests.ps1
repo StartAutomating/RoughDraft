@@ -89,3 +89,14 @@ describe ConvertTo-GIF {
     }
 }
 
+describe Measure-Media {
+    it 'Can detect volume' {
+        $tmpOutPath = Join-Path ([io.pATH]::GetTempPath()) "sine$(Get-Random).mp3"
+        New-Media -Sine -OutputPath $tmpOutPath -Duration "00:00:05" |
+            Measure-Media -VolumeLevel | 
+            Out-String  |
+            Should -BeLike *mean_volume*
+
+        Remove-Item $tmpOutPath        
+    }
+}
