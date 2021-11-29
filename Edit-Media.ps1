@@ -90,7 +90,7 @@
         $progId = Get-Random
         $processFFMpegOutput = 
             {                
-                if ($_ -like "*time=*" -and $_ -like "*bitrate=*") {
+                if ($_ -like "*time=*" -and $_ -like "*bitrate=*" -and $mediaInfo.Duration) {
                     $lineChunks = $_.Tostring() -split "[ =]" -ne '' | Where-Object { $_.Trim() } 
                     $lineData = New-Object PSObject 
                     for ($i =0; $i -lt $lineChunks.Count; $i+=2) {                
@@ -100,7 +100,7 @@
 
                     $time = $lineData.Time -as [Timespan]
                     $perc = $time.TotalMilliseconds * 100 / $mediaInfo.Duration.TotalMilliseconds
-                    
+                    if ($perc -ge 100) { $perc = 100 }
                     Write-Progress "Encoding $ri" "$lineData".TrimStart("@{").TrimEnd("}") -PercentComplete $perc -id $progId
                 } else {
                     if ($_ -like "*error*" -or $_ -like "*unable*" -or $inErrorState) {
