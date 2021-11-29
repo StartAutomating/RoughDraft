@@ -92,8 +92,8 @@ describe ConvertTo-GIF {
 describe Edit-Media {
     it 'Can edit media' {
         $tmpOutPath = Join-Path ([io.pATH]::GetTempPath()) "colorspectrum$(Get-Random).png"
-        $edited = New-Media -TestSource colorspectrum -OutputPath $tmpOutPath -Duration "00:00:05" |
-            Edit-media -Sepia
+        $edited = New-Media -TestSource rgbtestsrc -OutputPath $tmpOutPath -Duration "00:00:05" -Verbose |
+            Edit-media -Sepia -Verbose
 
         $edited.Name | should -belike *_Sepia*
         $edited | 
