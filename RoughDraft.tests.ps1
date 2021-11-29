@@ -11,7 +11,7 @@
 describe New-Media {
     it 'Can create A test source' {
         $tmpOutPath = Join-Path ([IO.Path]::GetTempPath()) "testsrc$(Get-Random).mp4"
-        New-Media -TestSource testsrc -OutputPath $tmpOutPath -Duration "00:00:05" | 
+        New-Media -TestSource testsrc -OutputPath $tmpOutPath -Duration "00:00:05" |
             Get-Media |
             Select-Object -ExpandProperty Duration |
             Should -Be "00:00:05"
@@ -32,14 +32,14 @@ describe New-Media {
 describe Convert-Media {
     it 'Can convert media between formats' {
         $tmpOutPath = Join-Path ([IO.Path]::GetTempPath()) "testsrc$(Get-Random).mp4"
-        $converted  = New-Media -TestSource testsrc -OutputPath $tmpOutPath -Duration "00:00:05" | 
+        $converted  = New-Media -TestSource testsrc -OutputPath $tmpOutPath -Duration "00:00:05" |
             Convert-Media -OutputPath mkv
         $converted |
             Select-Object -ExpandProperty Extension |
             Should -Be .mkv
-        $converted | 
-            Get-Media | 
-            Select-Object -ExpandProperty Duration | 
+        $converted |
+            Get-Media |
+            Select-Object -ExpandProperty Duration |
             Should -Be "00:00:05"
 
         Remove-Item $tmpOutPath
@@ -48,8 +48,8 @@ describe Convert-Media {
 
     it 'Can use an extension to -Resize while converting' {
         $tmpOutPath  = Join-Path ([IO.Path]::GetTempPath()) "testsrc$(Get-Random).mp4"
-        $tmpOutPath2 = Join-Path ([IO.Path]::GetTempPath()) "testsrc$(Get-Random).mp4" 
-        $converted   = New-Media -TestSource testsrc -OutputPath $tmpOutPath -Duration "00:00:05" | 
+        $tmpOutPath2 = Join-Path ([IO.Path]::GetTempPath()) "testsrc$(Get-Random).mp4"
+        $converted   = New-Media -TestSource testsrc -OutputPath $tmpOutPath -Duration "00:00:05" |
             Convert-Media -OutputPath $tmpOutPath2 -Resize '1024x720'
         $converted | Get-Media | Select-Object -ExpandProperty Resolution | Should -Be '1024x720'
     }
@@ -61,9 +61,9 @@ describe ConvertTo-Waveform {
         $tmpOutPath2 = Join-Path ([IO.Path]::GetTempPath()) "sine$(Get-Random).mp4"
         $waveform    = New-Media -Sine -OutputPath $tmpOutPath -Duration "00:00:05" |
             ConvertTo-WaveForm -Visualizer LineWaveform -OutputPath $tmpOutPath2
-        $waveform | 
-            Get-Media | 
-            Select-Object -ExpandProperty Duration | 
+        $waveform |
+            Get-Media |
+            Select-Object -ExpandProperty Duration |
             Should -BeLike "00:00:05*"
         Remove-Item $tmpOutPath
         Remove-Item $tmpOutPath2
@@ -78,10 +78,10 @@ describe ConvertTo-GIF {
         $tmpOutPath3 = Join-Path ([IO.Path]::GetTempPath()) "sine$(Get-Random).gif"
         $waveform    = New-Media -Sine -OutputPath $tmpOutPath -Duration "00:00:05" |
             ConvertTo-WaveForm -Visualizer LineWaveform -OutputPath $tmpOutPath2
-        $waveform | 
+        $waveform |
             ConvertTo-Gif -OutputPath $tmpOutPath3 |
-            Get-Media | 
-            Select-Object -ExpandProperty Duration | 
+            Get-Media |
+            Select-Object -ExpandProperty Duration |
             Should -BeLike "00:00:05*"
         Remove-Item $tmpOutPath
         Remove-Item $tmpOutPath2
@@ -93,33 +93,33 @@ describe Edit-Media {
     it 'Can edit media' {
         $tmpOutPath = Join-Path ([IO.Path]::GetTempPath()) "colorspectrum$(Get-Random).mp4"
         $edited = New-Media -TestSource rgbtestsrc -OutputPath $tmpOutPath -Duration "00:00:05" |
-            Edit-media -Sepia 
+            Edit-media -Sepia
 
         $edited.Name | should -belike *_Sepia*
-        $edited | 
-            Get-Media | 
-            Select-Object -ExpandProperty Duration | 
+        $edited |
+            Get-Media |
+            Select-Object -ExpandProperty Duration |
             Should -BeLike '00:00:05*'
         Remove-Item $edited.FullName
-        Remove-Item $tmpOutPath        
+        Remove-Item $tmpOutPath
     }
 }
 
 describe Join-Media {
     it 'Can make a timelapse from a series of images' {
-        $tmpOutPaths = 
+        $tmpOutPaths =
             foreach ($n in 1..30) {
                 Join-Path ([IO.Path]::GetTempPath()) "lapsePart$(Get-Random).jpg"
             }
 
-        $newImages = $tmpOutPaths | New-Media -OutputPath { $_ } -TestSource rgbtestsrc 
+        $newImages = $tmpOutPaths | New-Media -OutputPath { $_ } -TestSource rgbtestsrc
 
-        $lapseOutPath = Join-Path ([IO.Path]::GetTempPath()) "lapse$(Get-Random).mp4"            
-        $lapseFile = $newImages | Join-Media -OutputPath $lapseOutPath -Verbose -TimeLapse
+        $lapseOutPath = Join-Path ([IO.Path]::GetTempPath()) "lapse$(Get-Random).mp4"
+        $lapseFile = $newImages | Join-Media -OutputPath $lapseOutPath -TimeLapse
         $lapseFile | Get-Media | Select-Object -ExpandProperty Duration | Should -BeLike '00:00:01*'
-        
+
         $tmpOutPaths | Remove-Item
-        $lapseFile | Remove-Item        
+        $lapseFile | Remove-Item
     }
 }
 
@@ -127,11 +127,11 @@ describe Measure-Media {
     it 'Can detect volume' {
         $tmpOutPath = Join-Path ([IO.Path]::GetTempPath()) "sine$(Get-Random).mp3"
         New-Media -Sine -OutputPath $tmpOutPath -Duration "00:00:05" |
-            Measure-Media -VolumeLevel | 
+            Measure-Media -VolumeLevel |
             Out-String  |
             Should -BeLike *mean_volume*
 
-        Remove-Item $tmpOutPath        
+        Remove-Item $tmpOutPath
     }
 }
 
@@ -143,7 +143,7 @@ describe Set-Media {
 
         Get-Item $tmpOutPath | Get-Media | Select-Object -ExpandProperty title | should -BeLike sine*
 
-        Remove-Item $tmpOutPath        
+        Remove-Item $tmpOutPath
     }
 
     it 'Can set album artwork' {
