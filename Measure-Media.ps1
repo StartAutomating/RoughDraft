@@ -50,7 +50,7 @@
             $ExecutionContext.SessionState.Path.GetResolvedPSPathFromPSPath($InputPath)
         }
         $myCmd = $MyInvocation.MyCommand
-        $mi = Get-MediaInfo -InputPath $ri
+        $mi = Get-Media -InputPath $ri
 
         if (-not $mi.CodecTypes) { return }
 
