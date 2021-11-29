@@ -89,6 +89,22 @@ describe ConvertTo-GIF {
     }
 }
 
+describe Edit-Media {
+    it 'Can edit media' {
+        $tmpOutPath = Join-Path ([io.pATH]::GetTempPath()) "colorspectrum$(Get-Random).png"
+        $edited = New-Media -TestSource colorspectrum -OutputPath $tmpOutPath -Duration "00:00:05" |
+            Edit-media -Sepia
+
+        $edited.Name | should -belike *_Sepia*
+        $edited | 
+            Get-Media | 
+            Select-Object -ExpandProperty Duration | 
+            Should -BeLike '00:00:05*'
+        Remove-Item $edited.FullName
+        Remove-Item $tmpOutPath        
+    }
+}
+
 describe Measure-Media {
     it 'Can detect volume' {
         $tmpOutPath = Join-Path ([io.pATH]::GetTempPath()) "sine$(Get-Random).mp3"
