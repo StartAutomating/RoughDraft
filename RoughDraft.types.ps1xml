@@ -1,0 +1,120 @@
+﻿<?xml version="1.0" encoding="utf-16"?>
+<!-- Generated with EZOut 1.8.5: Install-Module EZOut or https://github.com/StartAutomating/EZOut -->
+<Types>
+  <Type>
+    <Name>RoughDraft.Extension</Name>
+    <Members>
+      <ScriptMethod>
+        <Name>CouldRun</Name>
+        <Script>
+                        param([Collections.IDictionary]$params)
+
+$mappedParams = [Ordered]@{}
+$mandatories = @(foreach ($myParam in $this.Parameters.GetEnumerator()) {
+    if ($mappedParams.Contains($myParam.Key)) {
+        $mappedParams[$myParam.Key] = $params[$myParam.Key]
+    } else {
+        foreach ($paramAlias in $myParam.Value.Aliases) {
+            if ($params.Contains($paramAlias)) {
+                $mappedParams[$myParam.Key] = $params[$paramAlias]
+                break
+            }
+        }
+    }
+    if ($myParam.value.Attributes.Mandatory) {
+        $myParam.Key
+    }
+})
+
+foreach ($mandatoryParam in $mandatories) {
+    if (-not $params.Contains($mandatoryParam)) {
+        return $false
+    }
+}
+return $mappedParams
+
+                    </Script>
+      </ScriptMethod>
+      <ScriptMethod>
+        <Name>GetDynamicParameters</Name>
+        <Script>
+                        $ExtensionDynamicParameters = [Management.Automation.RuntimeDefinedParameterDictionary]::new()
+$Extension = $this
+:nextInputParameter foreach ($in in ([Management.Automation.CommandMetaData]$Extension).Parameters.Keys) {
+    $ExtensionDynamicParameters.Add($in, [Management.Automation.RuntimeDefinedParameter]::new(
+        $Extension.Parameters[$in].Name,
+        $Extension.Parameters[$in].ParameterType,
+        $Extension.Parameters[$in].Attributes
+    ))
+}
+foreach ($paramName in $ExtensionDynamicParameters.Keys) {
+    foreach ($attr in $ExtensionDynamicParameters[$paramName].Attributes) {
+        if ($attr.'ParameterSetName') { 
+            $attr.ParameterSetName = if ($this -is [Management.Automation.FunctionInfo]) {
+                $this.Name
+            } elseif ($this -is [Management.Automation.ExternalScriptInfo]) {
+                $this.Source
+            }
+        }
+    }
+}
+$ExtensionDynamicParameters
+
+                    </Script>
+      </ScriptMethod>
+      <ScriptProperty>
+        <Name>Description</Name>
+        <GetScriptBlock>
+                        # From ?&lt;PowerShell_HelpField&gt; in Irregular (https://github.com/StartAutomating/Irregular)
+[Regex]::new(@'
+\.(?&lt;Field&gt;Description)              # Field Start
+\s{0,}                               # Optional Whitespace
+(?&lt;Content&gt;(.|\s)+?(?=(\.\w+|\#\&gt;))) # Anything until the next .\field or end of the comment block
+'@, 'IgnoreCase,IgnorePatternWhitespace', [Timespan]::FromSeconds(1)).Match(
+$this.ScriptBlock
+).Groups["Content"].Value
+
+                    </GetScriptBlock>
+      </ScriptProperty>
+      <ScriptProperty>
+        <Name>DisplayName</Name>
+        <GetScriptBlock>
+                        $this.Name -replace '\.RoughDraft\.(extension|ext)\.ps1$'
+
+                    </GetScriptBlock>
+      </ScriptProperty>
+      <ScriptProperty>
+        <Name>Help</Name>
+        <GetScriptBlock>
+                        Get-Help $this.EventSourceId
+
+                    </GetScriptBlock>
+      </ScriptProperty>
+      <ScriptProperty>
+        <Name>InheritanceLevel</Name>
+        <GetScriptBlock>
+                        foreach ($attribute in $this.ScriptBlock.Attributes) {
+    if ($attribute -is [ComponentModel.InheritanceAttribute]) {
+        return $attribute.InheritanceLevel
+    }
+}
+return [ComponentModel.InheritanceLevel]::Inherited
+                    </GetScriptBlock>
+      </ScriptProperty>
+      <ScriptProperty>
+        <Name>Synopsis</Name>
+        <GetScriptBlock>
+                        # From ?&lt;PowerShell_HelpField&gt; in Irregular (https://github.com/StartAutomating/Irregular)
+[Regex]::new(@'
+\.(?&lt;Field&gt;Synopsis)                   # Field Start
+\s{0,}                               # Optional Whitespace
+(?&lt;Content&gt;(.|\s)+?(?=(\.\w+|\#\&gt;))) # Anything until the next .\field or end of the comment block
+'@, 'IgnoreCase,IgnorePatternWhitespace', [Timespan]::FromSeconds(1)).Match(
+$this.ScriptBlock
+).Groups["Content"].Value
+
+                    </GetScriptBlock>
+      </ScriptProperty>
+    </Members>
+  </Type>
+</Types>
