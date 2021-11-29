@@ -13,7 +13,7 @@
 param(
 # The name of the test source
 [Parameter(Mandatory)]
-[ValidateSet('allrgb', 'allyuv','colorspectrum','pal75bars','pal100bars','rgbtestsrc','smtpebars', 'testsrc', 'testsrc2','yuvtestsrc')]
+[ValidateSet('allrgb', 'allyuv','pal75bars','pal100bars','rgbtestsrc','smtpebars', 'testsrc', 'testsrc2','yuvtestsrc')]
 [string]
 $TestSource
 )
