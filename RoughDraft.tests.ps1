@@ -100,3 +100,29 @@ describe Measure-Media {
         Remove-Item $tmpOutPath        
     }
 }
+
+describe Set-Media {
+    it 'Can set media metadata' {
+        $tmpOutPath = Join-Path ([io.pATH]::GetTempPath()) "sine$(Get-Random).mp3"
+        New-Media -Sine -OutputPath $tmpOutPath -Duration "00:00:05" |
+            Set-Media -Property @{title='sine'}
+
+        Get-Item $tmpOutPath | Get-Media | Select-Object -ExpandProperty title | should -BeLike sine*
+
+        Remove-Item $tmpOutPath        
+    }
+
+    it 'Can set album artwork' {
+        $tmpOutPath = Join-Path ([io.pATH]::GetTempPath()) "sine$(Get-Random).mp3"
+        $tmpOutPath2 = Join-Path ([io.pATH]::GetTempPath()) "sine$(Get-Random).jpg"
+        New-Media -TestSource rgbtestsrc -OutputPath $tmpOutPath2
+        New-Media -Sine -OutputPath $tmpOutPath -Duration "00:00:05" |
+            Set-Media -AlbumArt $tmpOutPath2
+
+        $metadata = Get-Media -InputPath $tmpOutPath
+        $metadata.Codecs[-1] | Should -Be mjpeg
+
+        Remove-Item $tmpOutPath
+        Remove-Item $tmpOutPath2
+    }
+}
