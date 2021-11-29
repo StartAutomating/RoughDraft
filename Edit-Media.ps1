@@ -304,17 +304,28 @@
             $ffInFiles
             '-ss'
             "$start"
-            '-to'
-            "$end"
+            if ("$end") {
+                '-to'
+                "$end"
+            }
             $filterParams
             $OutParams
             $ffmpegParams
+        )
+
+        $timeArgs  =  @(
+            '-ss'
+            "$start"
+            if ("$end") {
+                '-to'
+                "$end"
+            }
         )
         
         if ($WhatIfPreference) { return $ffMpegFullArgs } # If -WhatIf was passed, return the FFMpeg Arguments
         
         if (-not $PSCmdlet.ShouldProcess("$($ffMpegFullArgs -join ' ')")) { return } # Otherwise, check ShouldProcess
-        & $ffmpeg @ffInFiles -ss "$start" -to "$end" @filterParams @outParams @ffmpegParams 2>&1 | 
+        & $ffmpeg @ffInFiles @timeArgs @filterParams @outParams @ffmpegParams 2>&1 | 
             ForEach-Object -Process $processFFMpegOutput -End $endFFMpegOutput
 
         if ($uro) { # If we had a single output
