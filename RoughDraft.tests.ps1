@@ -10,7 +10,7 @@
 
 describe New-Media {
     it 'Can create A test source' {
-        $tmpOutPath = Join-Path ([io.pATH]::GetTempPath()) "testsrc$(Get-Random).mp4"
+        $tmpOutPath = Join-Path ([IO.Path]::GetTempPath()) "testsrc$(Get-Random).mp4"
         New-Media -TestSource testsrc -OutputPath $tmpOutPath -Duration "00:00:05" | 
             Get-Media |
             Select-Object -ExpandProperty Duration |
@@ -20,7 +20,7 @@ describe New-Media {
     }
 
     it 'Can create audio' {
-        $tmpOutPath = Join-Path ([io.pATH]::GetTempPath()) "sine$(Get-Random).mp3"
+        $tmpOutPath = Join-Path ([IO.Path]::GetTempPath()) "sine$(Get-Random).mp3"
         New-Media -Sine -OutputPath $tmpOutPath -Duration "00:00:05" |
             Get-Media |
             Select-Object -ExpandProperty Duration |
@@ -31,7 +31,7 @@ describe New-Media {
 
 describe Convert-Media {
     it 'Can convert media between formats' {
-        $tmpOutPath = Join-Path ([io.pATH]::GetTempPath()) "testsrc$(Get-Random).mp4"
+        $tmpOutPath = Join-Path ([IO.Path]::GetTempPath()) "testsrc$(Get-Random).mp4"
         $converted  = New-Media -TestSource testsrc -OutputPath $tmpOutPath -Duration "00:00:05" | 
             Convert-Media -OutputPath mkv
         $converted |
@@ -47,8 +47,8 @@ describe Convert-Media {
     }
 
     it 'Can use an extension to -Resize while converting' {
-        $tmpOutPath  = Join-Path ([io.pATH]::GetTempPath()) "testsrc$(Get-Random).mp4"
-        $tmpOutPath2 = Join-Path ([io.pATH]::GetTempPath()) "testsrc$(Get-Random).mp4" 
+        $tmpOutPath  = Join-Path ([IO.Path]::GetTempPath()) "testsrc$(Get-Random).mp4"
+        $tmpOutPath2 = Join-Path ([IO.Path]::GetTempPath()) "testsrc$(Get-Random).mp4" 
         $converted   = New-Media -TestSource testsrc -OutputPath $tmpOutPath -Duration "00:00:05" | 
             Convert-Media -OutputPath $tmpOutPath2 -Resize '1024x720'
         $converted | Get-Media | Select-Object -ExpandProperty Resolution | Should -Be '1024x720'
@@ -57,8 +57,8 @@ describe Convert-Media {
 
 describe ConvertTo-Waveform {
     it 'Can make waveforms' {
-        $tmpOutPath  = Join-Path ([io.pATH]::GetTempPath()) "sine$(Get-Random).mp3"
-        $tmpOutPath2 = Join-Path ([io.pATH]::GetTempPath()) "sine$(Get-Random).mp4"
+        $tmpOutPath  = Join-Path ([IO.Path]::GetTempPath()) "sine$(Get-Random).mp3"
+        $tmpOutPath2 = Join-Path ([IO.Path]::GetTempPath()) "sine$(Get-Random).mp4"
         $waveform    = New-Media -Sine -OutputPath $tmpOutPath -Duration "00:00:05" |
             ConvertTo-WaveForm -Visualizer LineWaveform -OutputPath $tmpOutPath2
         $waveform | 
@@ -73,9 +73,9 @@ describe ConvertTo-Waveform {
 
 describe ConvertTo-GIF {
     it 'Can make gifs' {
-        $tmpOutPath  = Join-Path ([io.pATH]::GetTempPath()) "sine$(Get-Random).mp3"
-        $tmpOutPath2 = Join-Path ([io.pATH]::GetTempPath()) "sine$(Get-Random).mp4"
-        $tmpOutPath3 = Join-Path ([io.pATH]::GetTempPath()) "sine$(Get-Random).gif"
+        $tmpOutPath  = Join-Path ([IO.Path]::GetTempPath()) "sine$(Get-Random).mp3"
+        $tmpOutPath2 = Join-Path ([IO.Path]::GetTempPath()) "sine$(Get-Random).mp4"
+        $tmpOutPath3 = Join-Path ([IO.Path]::GetTempPath()) "sine$(Get-Random).gif"
         $waveform    = New-Media -Sine -OutputPath $tmpOutPath -Duration "00:00:05" |
             ConvertTo-WaveForm -Visualizer LineWaveform -OutputPath $tmpOutPath2
         $waveform | 
@@ -91,7 +91,7 @@ describe ConvertTo-GIF {
 
 describe Edit-Media {
     it 'Can edit media' {
-        $tmpOutPath = Join-Path ([io.pATH]::GetTempPath()) "colorspectrum$(Get-Random).mp4"
+        $tmpOutPath = Join-Path ([IO.Path]::GetTempPath()) "colorspectrum$(Get-Random).mp4"
         $edited = New-Media -TestSource rgbtestsrc -OutputPath $tmpOutPath -Duration "00:00:05" |
             Edit-media -Sepia 
 
@@ -105,9 +105,27 @@ describe Edit-Media {
     }
 }
 
+describe Join-Media {
+    it 'Can make a timelapse from a series of images' {
+        $tmpOutPaths = 
+            foreach ($n in 1..30) {
+                Join-Path ([IO.Path]::GetTempPath()) "lapsePart$(Get-Random).jpg"
+            }
+
+        $newImages = $tmpOutPaths | New-Media -OutputPath { $_ } -TestSource rgbtestsrc 
+
+        $lapseOutPath = Join-Path ([IO.Path]::GetTempPath()) "lapse$(Get-Random).mp4"            
+        $lapseFile = $newImages | Join-Media -OutputPath $lapseOutPath -Verbose -TimeLapse
+        $lapseFile | Get-Media | Select-Object -ExpandProperty Duration | Should -BeLike '00:00:01*'
+        
+        $tmpOutPaths | Remove-Item
+        $lapseFile | Remove-Item        
+    }
+}
+
 describe Measure-Media {
     it 'Can detect volume' {
-        $tmpOutPath = Join-Path ([io.pATH]::GetTempPath()) "sine$(Get-Random).mp3"
+        $tmpOutPath = Join-Path ([IO.Path]::GetTempPath()) "sine$(Get-Random).mp3"
         New-Media -Sine -OutputPath $tmpOutPath -Duration "00:00:05" |
             Measure-Media -VolumeLevel | 
             Out-String  |
@@ -119,7 +137,7 @@ describe Measure-Media {
 
 describe Set-Media {
     it 'Can set media metadata' {
-        $tmpOutPath = Join-Path ([io.pATH]::GetTempPath()) "sine$(Get-Random).mp3"
+        $tmpOutPath = Join-Path ([IO.Path]::GetTempPath()) "sine$(Get-Random).mp3"
         New-Media -Sine -OutputPath $tmpOutPath -Duration "00:00:05" |
             Set-Media -Property @{title='sine'}
 
@@ -129,8 +147,8 @@ describe Set-Media {
     }
 
     it 'Can set album artwork' {
-        $tmpOutPath = Join-Path ([io.pATH]::GetTempPath()) "sine$(Get-Random).mp3"
-        $tmpOutPath2 = Join-Path ([io.pATH]::GetTempPath()) "sine$(Get-Random).jpg"
+        $tmpOutPath = Join-Path ([IO.Path]::GetTempPath()) "sine$(Get-Random).mp3"
+        $tmpOutPath2 = Join-Path ([IO.Path]::GetTempPath()) "sine$(Get-Random).jpg"
         New-Media -TestSource rgbtestsrc -OutputPath $tmpOutPath2
         New-Media -Sine -OutputPath $tmpOutPath -Duration "00:00:05" |
             Set-Media -AlbumArt $tmpOutPath2
