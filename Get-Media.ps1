@@ -1,4 +1,4 @@
-﻿function Get-Medium
+﻿function Get-Media
 {
     <#
     .Synopsis

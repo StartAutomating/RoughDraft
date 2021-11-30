@@ -1,4 +1,4 @@
-﻿function Set-Medium
+﻿function Set-Media
 {
     <#
     .Synopsis

@@ -1,4 +1,4 @@
-﻿function New-Medium {
+﻿function New-Media {
     <#
     .Synopsis
         Creates media files

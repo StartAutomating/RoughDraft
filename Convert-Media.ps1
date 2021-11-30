@@ -1,4 +1,4 @@
-﻿function Convert-Medium
+﻿function Convert-Media
 {
     <#
     .Synopsis
