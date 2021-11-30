@@ -280,4 +280,4 @@
         Write-Progress 'Getting Media Info' " " -Completed -Id $progressId
 
     }
-
+}
