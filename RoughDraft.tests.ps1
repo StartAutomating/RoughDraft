@@ -105,6 +105,18 @@ describe Edit-Media {
     }
 }
 
+describe Get-Media {
+    it 'Can detect volume' {
+        $tmpOutPath = Join-Path ([IO.Path]::GetTempPath()) "sine$(Get-Random).mp3"
+        New-Media -Sine -OutputPath $tmpOutPath -Duration "00:00:05" |
+            Get-Media -VolumeLevel |
+            Out-String  |
+            Should -BeLike *mean_volume*
+
+        Remove-Item $tmpOutPath
+    }
+}
+
 describe Join-Media {
     it 'Can make a timelapse from a series of images' {
         $tmpOutPaths =
@@ -120,18 +132,6 @@ describe Join-Media {
 
         $tmpOutPaths | Remove-Item
         $lapseFile | Remove-Item
-    }
-}
-
-describe Measure-Media {
-    it 'Can detect volume' {
-        $tmpOutPath = Join-Path ([IO.Path]::GetTempPath()) "sine$(Get-Random).mp3"
-        New-Media -Sine -OutputPath $tmpOutPath -Duration "00:00:05" |
-            Measure-Media -VolumeLevel |
-            Out-String  |
-            Should -BeLike *mean_volume*
-
-        Remove-Item $tmpOutPath
     }
 }
 
