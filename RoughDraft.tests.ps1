@@ -123,6 +123,25 @@ describe Get-Media {
 }
 
 describe Join-Media {
+    it 'Can combine an audio file and a video file' {
+        $videoTmpPath = Join-Path ([IO.Path]::GetTempPath()) "Video$(Get-Random).mp4"
+        $audioTmpPath = Join-Path ([IO.Path]::GetTempPath()) "Audio$(Get-Random).mp3"
+        $avTmpPath    = Join-Path ([IO.Path]::GetTempPath()) "AV$(Get-Random).mp4"
+        @(
+            New-Media -TestSource rgbtestsrc -Duration "00:00:30" -OutputPath $videoTmpPath
+            New-Media -Sine -Duration "00:00:15" -OutputPath $audioTmpPath
+        ) | Join-Media -OutputPath $avTmpPath -Shortest | 
+            Get-Media | 
+            Select-Object -ExpandProperty Duration |
+            Select-Object -ExpandProperty Seconds | 
+            Should -Be 15
+
+        
+        Remove-Item $avTmpPath
+        Remove-Item $audioTmpPath
+        Remove-Item $videoTmpPath
+
+    }
     it 'Can make a timelapse from a series of images' {
         $tmpOutPaths =
             foreach ($n in 1..30) {
