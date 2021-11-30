@@ -21,5 +21,11 @@ $TestSource
 '-f'
 'lavfi'
 '-i'
-"$TestSource".ToLower()
+("$TestSource=".ToLower() + $(
+    @(
+    if ($resolution) {
+        "s=$resolution"
+    }
+    )
+)) -replace '\=$'
 
