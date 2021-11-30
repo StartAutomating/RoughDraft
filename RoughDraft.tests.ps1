@@ -142,6 +142,38 @@ describe Join-Media {
         Remove-Item $videoTmpPath
 
     }
+    it 'Can join files of different codecs' {
+        $videoTmpPaths = @(
+            Join-Path ([IO.Path]::GetTempPath()) "Video$(Get-Random).mp4"
+            Join-Path ([IO.Path]::GetTempPath()) "Video$(Get-Random).mp4"
+            Join-Path ([IO.Path]::GetTempPath()) "JoinedVideo$(Get-Random).mp4"
+        )
+        $audioTmpPaths = @(
+            Join-Path ([IO.Path]::GetTempPath()) "Audio$(Get-Random).mp3"
+            Join-Path ([IO.Path]::GetTempPath()) "Audio$(Get-Random).wav"
+            Join-Path ([IO.Path]::GetTempPath()) "JoinedAudio$(Get-Random).mp3"
+        )
+
+        @(
+            New-Media -TestSource rgbtestsrc -Duration "00:00:30" -OutputPath $videoTmpPaths[0]
+            New-Media -TestSource rgbtestsrc -Duration "00:00:30" -OutputPath $videoTmpPaths[1] 
+        ) | Join-Media -OutputPath $videoTmpPaths[2] -Verbose |
+            Get-Media |
+            Select-Object -ExpandProperty Duration |
+            Select-Object -ExpandProperty Minutes |
+            Should -Be 1
+
+        @(
+            New-Media -sine -Duration "00:00:15" -OutputPath $audioTmpPaths[0]
+            New-Media -sine -Duration "00:00:45" -OutputPath $audioTmpPaths[1] 
+        ) | Join-Media -OutputPath $audioTmpPaths[2]  |
+            Get-Media |
+            Select-Object -ExpandProperty Duration |
+            Select-Object -ExpandProperty Minutes |
+            Should -Be 1
+
+        $videoTmpPaths | Remove-Item
+    }
     it 'Can make a timelapse from a series of images' {
         $tmpOutPaths =
             foreach ($n in 1..30) {
