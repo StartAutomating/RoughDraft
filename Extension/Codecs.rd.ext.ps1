@@ -11,7 +11,7 @@
 # that is not inherited.
 [ComponentModel.Inheritance("NotInherited")]
 param(
-# If set, will list capture devices
+# If set, will list codecs
 [Parameter(Mandatory)]
 [Alias('ListCodecs')]
 [switch]
@@ -55,16 +55,4 @@ $ListCodec
                 ''
             }
         [PSCustomObject]$codecInfo
-<#        New-Object PSObject |
-            Add-Member NoteProperty ShortName $shortName -Force -PassThru | 
-            Add-Member NoteProperty FullName $fullname -Force -PassThru | 
-            Add-Member NoteProperty CanDecode ($fields -like "*D*") -Force -PassThru |
-            Add-Member NoteProperty CanEncode ($fields -like "*E*") -Force -PassThru |
-            Add-Member NoteProperty IsVideoCodec ($fields -like "*V*") -Force -PassThru |
-            Add-Member NoteProperty IsAudioCodec ($fields -like "*A*") -Force -PassThru |
-            Add-Member NoteProperty IsSubtitleCodec ($fields -like "*S*") -Force -PassThru |
-            Add-Member NoteProperty IsIntraFrameOnlyCodec ($fields -like "*I*") -Force -PassThru |
-            Add-Member NoteProperty IsLossyCompression ($fields -like "*L*") -Force -PassThru |
-            Add-Member NoteProperty IsLosslessCompression ($fields -like "*S*") -Force -PassThru
-#>        
     }
