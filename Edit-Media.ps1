@@ -156,7 +156,7 @@
             $matchingCodec = $codecList | Where-Object {$_.Codec -like $codec -or $_.FullName -like $codec } | Select-Object -First 1
 
             if (-not $matchingCodec) {
-                Write-Error "Codec not found.  Try one of the following items $($codecList | Where-Object {$_.CanEncode } | Select Codec, Fullname)"
+                Write-Error "Codec not found.  Try one of the following items $($codecList | Where-Object {$_.CanEncode } | Select Codec, Fullname | Out-String)"
                 return
             }
 
