@@ -128,6 +128,9 @@
         $isAllImages = $imageFiles.Count -eq $inputMedia.Count -and $inputMedia.Count -gt 0
 
         if ($isAllVideo -or $isAllAudio) {
+            if (@($inputMedia.Values | Select-Object -ExpandProperty codecs -Unique).Count -gt 1) {
+                $Transcode = $true
+            }
             $tempFiles = foreach ($in in $inputList) {
                 if ($Transcode) {
                     if ($isAllVideo) {
