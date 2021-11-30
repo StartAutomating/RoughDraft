@@ -8,27 +8,6 @@
     }
 }
 
-describe New-Media {
-    it 'Can create A test source' {
-        $tmpOutPath = Join-Path ([IO.Path]::GetTempPath()) "testsrc$(Get-Random).mp4"
-        New-Media -TestSource testsrc -OutputPath $tmpOutPath -Duration "00:00:05" |
-            Get-Media |
-            Select-Object -ExpandProperty Duration |
-            Should -Be "00:00:05"
-
-        Remove-Item $tmpOutPath
-    }
-
-    it 'Can create audio' {
-        $tmpOutPath = Join-Path ([IO.Path]::GetTempPath()) "sine$(Get-Random).mp3"
-        New-Media -Sine -OutputPath $tmpOutPath -Duration "00:00:05" |
-            Get-Media |
-            Select-Object -ExpandProperty Duration |
-            Should -BeLike "00:00:05*"
-        Remove-Item $tmpOutPath
-    }
-}
-
 describe Convert-Media {
     it 'Can convert media between formats' {
         $tmpOutPath = Join-Path ([IO.Path]::GetTempPath()) "testsrc$(Get-Random).mp4"
@@ -52,6 +31,20 @@ describe Convert-Media {
         $converted   = New-Media -TestSource testsrc -OutputPath $tmpOutPath -Duration "00:00:05" |
             Convert-Media -OutputPath $tmpOutPath2 -Resize '1024x720'
         $converted | Get-Media | Select-Object -ExpandProperty Resolution | Should -Be '1024x720'
+        Remove-Item $tmpOutPath
+        Remove-Item $tmpOutPath2
+    }
+
+    context "Error Handling" {
+        it 'Will complain when no codec is found' {
+            $tmpOutPath  = Join-Path ([IO.Path]::GetTempPath()) "testsrc$(Get-Random).png"
+            New-Media -TestSource testsrc -OutputPath $tmpOutPath -Duration "00:00:05"
+            $err = @()
+            Get-Item $tmpOutPath | Convert-Media -Codec askljska -ErrorAction Continue -OutputPath .\test.mp4  -ErrorVariable err
+            
+            $err[-1] | Should -BeLike '*codec*fullname*'
+            Remove-Item $tmpOutPath
+        }
     }
 }
 
@@ -103,6 +96,18 @@ describe Edit-Media {
         Remove-Item $edited.FullName
         Remove-Item $tmpOutPath
     }
+
+    context "Error Handling" {
+        it 'Will complain when no codec is found' {
+            $tmpOutPath  = Join-Path ([IO.Path]::GetTempPath()) "testsrc$(Get-Random).png"
+            New-Media -TestSource testsrc -OutputPath $tmpOutPath -Duration "00:00:05"
+            $err = @()
+            Get-Item $tmpOutPath | Edit-Media -Codec askljska -ErrorAction Continue -OutputPath .\test.mp4  -ErrorVariable err -FadeIn
+            
+            $err[-1] | Should -BeLike '*codec*fullname*'
+            Remove-Item $tmpOutPath
+        }
+    }
 }
 
 describe Get-Media {
@@ -134,6 +139,28 @@ describe Join-Media {
         $lapseFile | Remove-Item
     }
 }
+
+describe New-Media {
+    it 'Can create A test source' {
+        $tmpOutPath = Join-Path ([IO.Path]::GetTempPath()) "testsrc$(Get-Random).mp4"
+        New-Media -TestSource testsrc -OutputPath $tmpOutPath -Duration "00:00:05" |
+            Get-Media |
+            Select-Object -ExpandProperty Duration |
+            Should -Be "00:00:05"
+
+        Remove-Item $tmpOutPath
+    }
+
+    it 'Can create audio' {
+        $tmpOutPath = Join-Path ([IO.Path]::GetTempPath()) "sine$(Get-Random).mp3"
+        New-Media -Sine -OutputPath $tmpOutPath -Duration "00:00:05" |
+            Get-Media |
+            Select-Object -ExpandProperty Duration |
+            Should -BeLike "00:00:05*"
+        Remove-Item $tmpOutPath
+    }
+}
+
 
 describe Set-Media {
     it 'Can set media metadata' {
