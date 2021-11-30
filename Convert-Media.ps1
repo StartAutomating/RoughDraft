@@ -69,11 +69,7 @@
 
     # Used to specify the audio stream.  If more than one audio stream is found and this parameter is not supplied, Convert-Media will attempt to find an audio stream that matches the current culture language.    
     [int]
-    $AudioStreamIndex = -1,
-
-    # The audio gain, either in decibals (i.e. 12db) or as a ratio (i.e. 1.5)    
-    [string]
-    $AudioGain,
+    $AudioStreamIndex = -1,    
 
     # The audio channel count.  This can be used to force 5.1 channel audio (which is supported by only a few codecs) into stereo audio (which is supported by almost all codecs)    
     [uint32]
@@ -308,12 +304,6 @@
                 $ffmpegParams += "-c" # pass '-c' 'a:copy'
                 $ffmpegParams += "a:copy"
             }
-
-            if ($AudioGain) { # If we're going to turn up the volume
-                $filterParams += '-af' # use the [volume audiofilter](https://ffmpeg.org/ffmpeg-filters.html#volume)
-                $filterParams += "`"volume=$($audioGain -ireplace 'db', 'dB')`""
-            }
-
 
             if ($AudioFilter) { # If any additional audio filters were passed
                 foreach ($af in $AudioFilter) {
