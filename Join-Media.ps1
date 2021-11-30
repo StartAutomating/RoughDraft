@@ -164,9 +164,12 @@
 
             $uro = $ExecutionContext.SessionState.Path.GetUnresolvedProviderPathFromPSPath($outputPath)
 
+            
 
             & $ffmpeg @ffMpegParams $uro -y 2>&1 |
                 ForEach-Object -Begin $ffMpegConvertStart $ffmpegConvertProcess -End $ffmpegConvertEnd
+
+            Get-Item -Path $uro -ErrorAction SilentlyContinue
 
             if ($Transcode) {
                 foreach ($tmp in $tempFiles) {
@@ -238,6 +241,8 @@
             $ffMpegParams += '-y'
             & $ffmpeg @ffmpegParams 2>&1 |
                 ForEach-Object -Begin $ffMpegConvertStart $ffmpegConvertProcess -End $ffmpegConvertEnd
+
+            Get-Item -Path $uro -ErrorAction SilentlyContinue
         }
         elseif ($isAllImages -or $TimeLapse) {
             $uro = $ExecutionContext.SessionState.Path.GetUnresolvedProviderPathFromPSPath($outputPath)
