@@ -1,4 +1,6 @@
-﻿#region RoughDraft FFMPEG wrappers
+﻿[Diagnostics.CodeAnalysis.SuppressMessageAttribute("Test-ForSlowScript", "", Justification="Slightly slow scripts will always be faster than media processing.")]
+param()
+#region RoughDraft FFMPEG wrappers
 . $psScriptRoot\Convert-Media.ps1
 . $psScriptRoot\Edit-Media.ps1
 . $psScriptRoot\Get-Media.ps1
