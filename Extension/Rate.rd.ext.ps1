@@ -12,8 +12,8 @@
 #>
 # It's an extension
 [Runtime.CompilerServices.Extension()]
-# that extends Measure-Media            
-[Management.Automation.Cmdlet("Measure","Media")]
+# that extends Edit-Media            
+[Management.Automation.Cmdlet("Edit","Media")]
 param(
 [Parameter(Mandatory)]
 [double]
