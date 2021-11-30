@@ -97,6 +97,40 @@ $($ParentNode.CustomControl.CustomEntries.CustomEntry.CustomItem.ExpressionBindi
         </TableRowEntries>
       </TableControl>
     </View>
+    <View>
+      <Name>RoughDraft.FFMpeg.Codec</Name>
+      <ViewSelectedBy>
+        <TypeName>RoughDraft.FFMpeg.Codec</TypeName>
+      </ViewSelectedBy>
+      <GroupBy>
+        <PropertyName>CodecType</PropertyName>
+      </GroupBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+          </TableColumnHeader>
+          <TableColumnHeader>
+          </TableColumnHeader>
+          <TableColumnHeader>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Codec</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Fullname</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>IsLossyCompression</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
   </ViewDefinitions>
   <Controls>
     <Control>
