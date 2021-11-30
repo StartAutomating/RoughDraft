@@ -94,10 +94,14 @@
             DynamicParameter {
                 #region Get Dynamic Parameters for the Extension Commands
                 $allDynamicParameters = [Management.Automation.RuntimeDefinedParameterDictionary]::new()
+                $commandExtended = $ExecutionContext.SessionState.InvokeCommand.GetCommand($CommandName,'Function')
                 foreach ($extensionCommand in Get-RoughDraftExtension @getExtensionSplat) {
-                    if ($extensionCommand.Extends -notcontains $myCmd) { continue }
+                    if ($extensionCommand.Extends -notcontains $CommandName) { continue }                    
                     $extensionParams = $extensionCommand.GetDynamicParameters()
                     foreach ($kv in $extensionParams.GetEnumerator()) {
+                        if (([Management.Automation.CommandMetaData]$commandExtended).Parameters.$($kv.Key)) {
+                            continue
+                        }
                         if ($allDynamicParameters.ContainsKey($kv.Key)) {
                             if ($kv.Value.ParameterType -ne $allDynamicParameters[$kv.Key].ParameterType) {
                                 Write-Verbose "Extension '$extensionCommand' Parameter '$($kv.Key)' Type Conflict, making type PSObject"
