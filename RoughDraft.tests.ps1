@@ -157,7 +157,7 @@ describe Join-Media {
         @(
             New-Media -TestSource rgbtestsrc -Duration "00:00:30" -OutputPath $videoTmpPaths[0]
             New-Media -TestSource rgbtestsrc -Duration "00:00:30" -OutputPath $videoTmpPaths[1] 
-        ) | Join-Media -OutputPath $videoTmpPaths[2] -Verbose |
+        ) | Join-Media -OutputPath $videoTmpPaths[2] |
             Get-Media |
             Select-Object -ExpandProperty Duration |
             Select-Object -ExpandProperty Minutes |
