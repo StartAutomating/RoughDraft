@@ -12,8 +12,6 @@
 . $psScriptRoot\Start-MediaRecording.ps1
 . $psScriptRoot\Stop-MediaRecording.ps1
 
-. $psScriptRoot\Get-MediaCaptureDevice.ps1
-
 
 . $psScriptRoot\Invoke-FFMpeg.ps1
 . $psScriptRoot\Invoke-FFPlay.ps1
