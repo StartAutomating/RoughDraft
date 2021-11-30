@@ -244,16 +244,16 @@
             }
             if ($Codec) { # If we've supplied a -Codec                               
                 $matchingCodec = $codecList | 
-                    Where-Object {$_.ShortName -like $codec -or $_.FullName -like $codec } | 
+                    Where-Object {$_.Codec -like $codec -or $_.FullName -like $codec } | 
                     Select-Object -First 1 # find it in the codec list.
 
                 if (-not $matchingCodec) { # If we didn't find it, error out.
-                    Write-Error "Codec not found.  Try one of the following items $($codecList | Where-Object {$_.CanEncode } | Sort-Object ShortName  |Select-Object ShortName, Fullname | Out-String)"
+                    Write-Error "Codec not found.  Try one of the following items $($codecList | Where-Object {$_.CanEncode } | Select-Object Codec, Fullname | Out-String)"
                     return
                 }
 
                 $ffmpegParams += "-c"  # If we did find the codec, add '-c' and the name of  the codec to the ffmpeg parameters.
-                $ffmpegParams += "$($matchingCodec.ShortName)"
+                $ffmpegParams += "$($matchingCodec.Codec)"
             }
 
             
@@ -323,10 +323,10 @@
             }
 
             if ($audioCodec) { # If we provided an audio codec try to find a match
-                $matchingCodec = $codecList | Where-Object {$_.ShortName -like $AudioCodec -or $_.FullName -like $AudioCodec } | Select-Object -First 1 
+                $matchingCodec = $codecList | Where-Object {$_.Codec -like $AudioCodec -or $_.FullName -like $AudioCodec } | Select-Object -First 1 
                 if ($matchingCodec) { # If we did, pass the short name to -acodec
                     $filterParams += "-acodec" 
-                    $filterParams += "$($matchingCodec.ShortName)"
+                    $filterParams += "$($matchingCodec.Codec)"
                 } else {
                     $filterParams += "-acodec"  # otherwise, pass whatever the user put in.
                     $filterParams += "$audioCodec"
@@ -334,10 +334,10 @@
             }
 
             if ($VideoCodec) { # If we provided an video codec try to find a match
-                $matchingCodec = $codecList | Where-Object {$_.ShortName -like $AudioCodec -or $_.FullName -like $AudioCodec } | Select-Object -First 1 
+                $matchingCodec = $codecList | Where-Object {$_.Codec -like $AudioCodec -or $_.FullName -like $AudioCodec } | Select-Object -First 1 
                 if ($matchingCodec) { # If we did, pass the short name to -vcodec
                     $filterParams += "-c:v" 
-                    $filterParams += "$($matchingCodec.ShortName)"
+                    $filterParams += "$($matchingCodec.Codec)"
                 } else {
                     $filterParams += "-c:v" # otherwise, pass whatever the user put in.
                     $filterParams += "$VideoCodec"
