@@ -1,4 +1,4 @@
-﻿function Set-Media
+﻿function Set-Medium
 {
     <#
     .Synopsis
@@ -31,7 +31,7 @@
     [PSObject[]]
     $Property,
 
-    # A collection of properties to clear     
+    # A collection of properties to clear
     [string[]]
     $ClearProperty,
 
@@ -75,27 +75,27 @@
     end {
         $c, $t, $id = 0, $allInputsFiles.Count, [Random]::new().Next()
         foreach ($in in $allInputsFiles) {
-            
+
             #region Resolve the Input Path
-            $ri = 
+            $ri =
                 if ([IO.File]::Exists($In)) {
                     $In
                 } else {
                     $ExecutionContext.SessionState.Path.GetResolvedPSPathFromPSPath($In) |
                         Get-Item -LiteralPath { $_} |
                         Select-Object -ExpandProperty Fullname
-                }        
-            if (-not $ri) { continue } 
+                }
+            if (-not $ri) { continue }
             #endregion Resolve the Input Path
 
             $inputObject = $allInputObjects[$c]
             Write-Progress "Setting Metadata" "$ri" -PercentComplete ($c * 100 / $t) -Id $id
             $c++
-            
+
             $inFile = "$ri"
             $inFileInfo = [IO.FileInfo]$inFile
             $tempFileName = Join-Path $inFileInfo.Directory.FullName ('_temp_' + $inFileInfo.Name)
-            
+
             $copyArgs = @('-c', 'copy')
 
             $metadataArgs = @(
@@ -122,7 +122,7 @@
 
                 if ($AlbumArt) {
                     # If we're setting album art, resolve the path
-                    $raa = 
+                    $raa =
                         if ([IO.File]::Exists($AlbumArt)) {
                             $AlbumArt
                         } else {
@@ -141,16 +141,16 @@
                     "comment=`"$AlbumArtType`"" # and then add a comment about what album art type it is.
                 }
                 if ($inputObject -is [Collections.IDictionary]) {
-                    foreach ($kv in $inputObject.GetEnumerator()) {                        
+                    foreach ($kv in $inputObject.GetEnumerator()) {
                         '-metadata'
                         '' + $kv.Key + "=" + (
-                            $kv.Value -replace '"','\"' -replace                                
-                                '\[','(' -replace 
+                            $kv.Value -replace '"','\"' -replace
+                                '\[','(' -replace
                                 '\]',')' -replace '&', 'and') + " "
                     }
                 } elseif ($inputObject) {
                     foreach ($prop in $inputObject.psobject.properties) {
-                        if ($inputObject -is [Xml.XmlElement] -and 
+                        if ($inputObject -is [Xml.XmlElement] -and
                             $xmlPropertyNames -contains $prop.Name) { continue }
                         '-metadata'
                         '' + $prop.Name + '="' + ($prop.Value -replace '"','\"') + '"'
@@ -164,18 +164,18 @@
                         & { process {
                             if ('silentlycontinue', 'ignore' -notcontains $VerbosePreference) {
                                 Write-Verbose "$_"
-                            } 
+                            }
                         } }
-                        
+
                     if (Test-Path -LiteralPath $tempFileName) {
                         $newFile = Get-Item -LiteralPath $tempFileName
                         if ($newFile.Length) {
                             Move-Item -LiteralPath $tempFileName -Destination $inFile -Force
                         }
-                    } 
+                    }
                 }
             }
-            
+
         }
 
 

@@ -5,12 +5,12 @@
         Uses RoughDraftExtensions
     .Description
         Uses RoughDraft Extensions.
-        
+
         This is used internally by extensible functions in a few ways:
 
         * To get -DynamicParameters associated with a -CommandName
         * To see which extensions -CanRun with a given -CommandName
-        * To -Run a given extension 
+        * To -Run a given extension
     .Example
         # Putting this dynamicParam block in a command adds all dynamic parameters from extensions that extend the command
 
@@ -40,7 +40,7 @@
     [Parameter(Mandatory,ParameterSetName='DynamicParameter',ValueFromPipelineByPropertyName)]
     [Parameter(Mandatory,ParameterSetName='CanRun',ValueFromPipelineByPropertyName)]
     [Parameter(Mandatory,ParameterSetName='Run',ValueFromPipelineByPropertyName)]
-    [Alias('ThatExtends', 'For')]    
+    [Alias('ThatExtends', 'For')]
     [string]
     $CommandName,
 
@@ -50,7 +50,7 @@
     [switch]
     $DynamicParameter,
 
-    # The parameters passed to a given 
+    # The parameters passed to a given
     [Parameter(ParameterSetName='CanRun',ValueFromPipelineByPropertyName)]
     [Parameter(ParameterSetName='Run',ValueFromPipelineByPropertyName)]
     [Collections.IDictionary]
@@ -63,7 +63,7 @@
     $CanRun,
 
     # If set, will run an extension.
-    [Parameter(Mandatory,ParameterSetName='Run')]    
+    [Parameter(Mandatory,ParameterSetName='Run')]
     [switch]
     $Run
     )
@@ -73,7 +73,7 @@
             ExtensionPath = $ExtensionPath
             Force = $Force -as [bool]
             CommandName = $CommandName
-        }        
+        }
 
         switch ($PSCmdlet.ParameterSetName) {
             CanRun {
@@ -96,7 +96,7 @@
                 $allDynamicParameters = [Management.Automation.RuntimeDefinedParameterDictionary]::new()
                 $commandExtended = $ExecutionContext.SessionState.InvokeCommand.GetCommand($CommandName,'Function')
                 foreach ($extensionCommand in Get-RoughDraftExtension @getExtensionSplat) {
-                    if ($extensionCommand.Extends -notcontains $CommandName) { continue }                    
+                    if ($extensionCommand.Extends -notcontains $CommandName) { continue }
                     $extensionParams = $extensionCommand.GetDynamicParameters()
                     foreach ($kv in $extensionParams.GetEnumerator()) {
                         if (([Management.Automation.CommandMetaData]$commandExtended).Parameters.$($kv.Key)) {
@@ -109,7 +109,7 @@
                             }
                             foreach ($attr in $kv.Value.Attributes) {
                                 $allDynamicParameters[$kv.Key].Attributes.Add($attr)
-                            }                        
+                            }
                         } else {
                             $allDynamicParameters[$kv.Key] = $kv.Value
                         }
@@ -121,7 +121,7 @@
             Run {
                 #region Run Extensions
                 foreach ($extensionCommand in Get-RoughDraftExtension @getExtensionSplat) {
-                    $extensionCommandParameters = [Ordered]@{}                    
+                    $extensionCommandParameters = [Ordered]@{}
                     foreach ($kv in $ExtensionParameter.getEnumerator()) {
                         if ($extensionCommand.Parameters[$kv.Key]) {
                             $extensionCommandParameters[$kv.Key] = $kv.Value
@@ -135,12 +135,12 @@
                         Done = $ExecutionContext.InheritanceLevel -eq 'NotInherited'
                     }
                     $extensionOutputWrapper
-                    if ($extensionOutputWrapper.Done) { break }                    
+                    if ($extensionOutputWrapper.Done) { break }
                 }
                 #endregion Run Extensions
             }
         }
-        
+
 
     }
 }

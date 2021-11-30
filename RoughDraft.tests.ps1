@@ -41,7 +41,7 @@ describe Convert-Media {
             New-Media -TestSource testsrc -OutputPath $tmpOutPath -Duration "00:00:05"
             $err = @()
             Get-Item $tmpOutPath | Convert-Media -Codec askljska -ErrorAction SilentlyContinue -OutputPath .\test.mp4  -ErrorVariable err
-            
+
             $err[-1] | Should -BeLike '*codec*fullname*'
             Remove-Item $tmpOutPath
         }
@@ -103,7 +103,7 @@ describe Edit-Media {
             New-Media -TestSource testsrc -OutputPath $tmpOutPath -Duration "00:00:05"
             $err = @()
             Get-Item $tmpOutPath | Edit-Media -Codec askljska -ErrorAction SilentlyContinue -OutputPath .\test.mp4  -ErrorVariable err -FadeIn
-            
+
             $err[-1] | Should -BeLike '*codec*fullname*'
             Remove-Item $tmpOutPath
         }

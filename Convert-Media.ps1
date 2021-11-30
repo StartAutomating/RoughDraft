@@ -1,4 +1,4 @@
-﻿function Convert-Media
+﻿function Convert-Medium
 {
     <#
     .Synopsis
@@ -24,18 +24,18 @@
     $InputPath,
 
     # The output path
-    [Parameter(Mandatory,Position=1,ValueFromPipelineByPropertyName)]    
+    [Parameter(Mandatory,Position=1,ValueFromPipelineByPropertyName)]
     [string]
     $OutputPath,
 
     # The codec used for the conversion.  If the file is a video or image file, then this will be treated as a the video codec.
-    [Parameter(ValueFromPipelineByPropertyName)]    
+    [Parameter(ValueFromPipelineByPropertyName)]
     [string]
     $Codec,
 
-    # The path to FFMpeg.exe.  By default, checks in Program Files\FFMpeg\. Download FFMpeg from http://ffmpeg.org/.      
+    # The path to FFMpeg.exe.  By default, checks in Program Files\FFMpeg\. Download FFMpeg from http://ffmpeg.org/.
     [string]
-    $FFMpegPath,    
+    $FFMpegPath,
 
     # The frame rate of the outputted video
     [string]
@@ -62,34 +62,34 @@
     [CmdletBinding(DefaultParameterSetName='Convert-Media')]
     [string[]]
     $VideoFilter,
-    
-    # If provided, will encode the audio at a given bitrate    
+
+    # If provided, will encode the audio at a given bitrate
     [string]
     $AudioBitrate,
 
-    # Used to specify the audio stream.  If more than one audio stream is found and this parameter is not supplied, Convert-Media will attempt to find an audio stream that matches the current culture language.    
+    # Used to specify the audio stream.  If more than one audio stream is found and this parameter is not supplied, Convert-Media will attempt to find an audio stream that matches the current culture language.
     [int]
-    $AudioStreamIndex = -1,    
+    $AudioStreamIndex = -1,
 
-    # The audio channel count.  This can be used to force 5.1 channel audio (which is supported by only a few codecs) into stereo audio (which is supported by almost all codecs)    
+    # The audio channel count.  This can be used to force 5.1 channel audio (which is supported by only a few codecs) into stereo audio (which is supported by almost all codecs)
     [uint32]
     $AudioChannelCount,
-    
-    # The metadata to put in the converted file    
+
+    # The metadata to put in the converted file
     [Collections.IDictionary]
     $MetaData,
 
-    # The timespan to start splitting the video    
+    # The timespan to start splitting the video
     [Parameter(Position=2, ValueFromPipelineByPropertyName)]
     [Timespan]
     $Start,
-    
+
     # The time span to end splitting the video
     [Parameter(Position=3, ValueFromPipelineByPropertyName)]
     [Timespan]
     $End,
 
-    # If provided, will output a specified number of frames from the video file    
+    # If provided, will output a specified number of frames from the video file
     [Uint32]
     $VideoFrameCount,
 
@@ -125,7 +125,7 @@
     }
 
     process {
-        if ($AsJob) { # If -AsJob was passed,            
+        if ($AsJob) { # If -AsJob was passed,
             return & $StartRoughDraftJob # start a background job.
         }
         $null = $accumulate.Add(@{} + $PSBoundParameters)
@@ -137,7 +137,7 @@
         if (-not $ffMpeg) { return }
         #endregion Find FFMpeg
         $t = $accumulate.Count
-        $c = 0 
+        $c = 0
         $TopProgId  = Get-Random
         :nextFile foreach ($in in $accumulate) {
             foreach ($kv in $in.GetEnumerator()) {
@@ -158,20 +158,20 @@
                     Select-Object -ExpandProperty Fullname
             }
 
-            if ($OutputPath -match '^\.(?<extension>[^\.]+)$' -or 
+            if ($OutputPath -match '^\.(?<extension>[^\.]+)$' -or
                 $OutputPath -match '^(?<extension>[^\.]+)$') {
                 $fi = [IO.FileInfo]$ri
                 $OutputPath = $ri.Substring(0, $ri.Length - $fi.Extension.Length) + $(
                     ('.' + $Matches.extension) -replace '\.+', '.'
                 )
             }
-        
+
             $uro = $ExecutionContext.SessionState.Path.GetUnresolvedProviderPathFromPSPath($OutputPath)
 
-            $mi = Get-Media -InputPath $ri 
+            $mi = Get-Media -InputPath $ri
             $ffmpegParams = @()
             $filterParams = @()
-        
+
 
             $audioStreams = @($mi.Streams | Where-Object Codec_Type -eq 'Audio')
 
@@ -186,11 +186,11 @@
                 }
                 $theduration = $end - $Start
             }
-            
+
             #region Handle Extensions
             Use-RoughDraftExtension -CommandName $myCmd -CanRun -ExtensionParameter $in |
-                . Use-RoughDraftExtension -Run | 
-                . { process { 
+                . Use-RoughDraftExtension -Run |
+                . { process {
                     $inObj = $_
                     if ($inObj.ExtensionOutput) {
                         Write-Verbose "Adding Filter Parameters from Extension '$extensionCommand'"
@@ -204,11 +204,11 @@
             #endregion Handle Extensions
 
 
-            
+
             $myAudioStreamIndex = -1
             for ($i = 0; $i -lt $audioStreams.Count; $I++) {
                 if ($audioStreams[$i].Tags.language -and $audioStreams[$i].Tags.language.Contains($culture.ThreeLetterISOLanguageName.ToLower())) {
-                    
+
                     $myAudioStreamIndex = $i + 1
                 }
             }
@@ -219,8 +219,8 @@
                 $AudioStreamIndex = $myAudioStreamIndex
             }
 
-            if ($myAudioStreamIndex -eq -1 -and 
-                $audioStreams.Count -gt 1 -and 
+            if ($myAudioStreamIndex -eq -1 -and
+                $audioStreams.Count -gt 1 -and
                 $AudioStreamIndex -lt 0) {
                 Write-Warning "More than one audio stream was found, and a default could not be selected based off of the current culture.  Use -AudioStreamIndex"
                 return
@@ -236,11 +236,11 @@
                     $script:CachedCodecList = Get-Media -ListCodec
                 }
 
-                $codecList =  $script:CachedCodecList                
+                $codecList =  $script:CachedCodecList
             }
-            if ($Codec) { # If we've supplied a -Codec                               
-                $matchingCodec = $codecList | 
-                    Where-Object {$_.Codec -like $codec -or $_.FullName -like $codec } | 
+            if ($Codec) { # If we've supplied a -Codec
+                $matchingCodec = $codecList |
+                    Where-Object {$_.Codec -like $codec -or $_.FullName -like $codec } |
                     Select-Object -First 1 # find it in the codec list.
 
                 if (-not $matchingCodec) { # If we didn't find it, error out.
@@ -252,18 +252,18 @@
                 $ffmpegParams += "$($matchingCodec.Codec)"
             }
 
-            
+
 
             $TimeFrame =@()
             if ($Start -and $start.TotalMilliseconds -ge 0) { # If we were provided a start time
                 $TimeFrame += '-ss' # Use -ss.
                 $TimeFrame += "$Start"
             }
-            
+
             if ($End -and $end.TotalMilliseconds -ge 0) { # If we were provided an end
                 if (-not $PSBoundParameters.Start -and -not ($Loop -or $LoopCount)) { # if we didn't get a start and we're not looping
                     $TimeFrame += '-ss'
-                    $TimeFrame += "$([Timespan]::FromMilliseconds(0))" # set start to 0           
+                    $TimeFrame += "$([Timespan]::FromMilliseconds(0))" # set start to 0
                 }
                 $TimeFrame += '-to' # then use '-to' to set the end time.
                 $TimeFrame += "$End"
@@ -273,13 +273,13 @@
 
             if ($PSBoundParameters.VideoFrameCount) { # If we were provided a frame count
                 $timeFrame += "-vframes" # Use -vframes.
-                $timeFrame += "$VideoFrameCount" 
-            }            
+                $timeFrame += "$VideoFrameCount"
+            }
 
             if ($PixelFormat) { # If we were provided a pixel format
                 # use the -pix_fmt to specify it.
                 $filterParams += '-pix_fmt', $PixelFormat
-            }                   
+            }
 
             if ($VideoFilter) { # If any other video filters were passed
                 foreach ($vf in $VideoFilter) {
@@ -290,8 +290,8 @@
 
             if ($MetaData) { # If -MetaData was passed
                 foreach ($kv in $metaData.GetEnumerator()) {
-                    $filterParams += "-metadata" # set it with the -metadata parameter.  
-                    $filterParams+= "`"$($kv.Key)`"=`"$($kv.Value)`""        
+                    $filterParams += "-metadata" # set it with the -metadata parameter.
+                    $filterParams+= "`"$($kv.Key)`"=`"$($kv.Value)`""
                 }
             }
 
@@ -299,7 +299,7 @@
                 $ffmpegParams += "-r" # use '-r' to set it.
                 $ffmpegParams += "$FrameRate"
             }
-        
+
             if ($CopyAudio) { # If we indicated we were going to copy audio
                 $ffmpegParams += "-c" # pass '-c' 'a:copy'
                 $ffmpegParams += "a:copy"
@@ -313,20 +313,20 @@
             }
 
             if ($audioCodec) { # If we provided an audio codec try to find a match
-                $matchingCodec = $codecList | Where-Object {$_.Codec -like $AudioCodec -or $_.FullName -like $AudioCodec } | Select-Object -First 1 
+                $matchingCodec = $codecList | Where-Object {$_.Codec -like $AudioCodec -or $_.FullName -like $AudioCodec } | Select-Object -First 1
                 if ($matchingCodec) { # If we did, pass the short name to -acodec
-                    $filterParams += "-acodec" 
+                    $filterParams += "-acodec"
                     $filterParams += "$($matchingCodec.Codec)"
                 } else {
                     $filterParams += "-acodec"  # otherwise, pass whatever the user put in.
                     $filterParams += "$audioCodec"
-                }            
+                }
             }
 
             if ($VideoCodec) { # If we provided an video codec try to find a match
-                $matchingCodec = $codecList | Where-Object {$_.Codec -like $AudioCodec -or $_.FullName -like $AudioCodec } | Select-Object -First 1 
+                $matchingCodec = $codecList | Where-Object {$_.Codec -like $AudioCodec -or $_.FullName -like $AudioCodec } | Select-Object -First 1
                 if ($matchingCodec) { # If we did, pass the short name to -vcodec
-                    $filterParams += "-c:v" 
+                    $filterParams += "-c:v"
                     $filterParams += "$($matchingCodec.Codec)"
                 } else {
                     $filterParams += "-c:v" # otherwise, pass whatever the user put in.
@@ -350,31 +350,31 @@
 
             $FirstParams = @()
 
-            
+
 
             if ($Loop -or $LoopCount) { # If we're going to loop it.
                 $firstParams += "-stream_loop"
                 $firstParams += if ($LoopCount -ge 0) {
                     $LoopCount
-                } else { 1 } 
+                } else { 1 }
             }
 
 
             if ($uro -like "*.mp4") { # If we're encoding .mp4, use -movflags faststart.
                 $filterParams += '-movflags', 'faststart'
             }
-                       
+
 
             $ProgId = Get-Random
             Write-Verbose "FFMpeg Arguments: -i $ri $($filterParams -join ' ') $($TimeFrame -join ' ') $uro -y $($ffmpegParams -join ' ')"
-            $lines =@()            
-            & $ffmpeg @FirstParams -i $ri @filterParams @TimeFrame $uro -y @ffmpegParams 2>&1 | 
-                . {                    
+            $lines =@()
+            & $ffmpeg @FirstParams -i $ri @filterParams @TimeFrame $uro -y @ffmpegParams 2>&1 |
+                . {
                     process {
                         $line = $_
                         $lines += $line
                         $progress = $line | & ${?<FFMpeg_Progress>} -Extract
-                        $progressTime = 
+                        $progressTime =
                             if ($progress) {
                                 $progress.Time
                             } else {
@@ -384,14 +384,14 @@
                             if ($progress -and $progressTime -and $progressTime.Totalmilliseconds -ge 0) {
                                 $perc = $progressTime.TotalMilliseconds * 100 / $theDuration.TotalMilliseconds
                                 $frame, $speed, $bitrate  = $progress.FrameNumber, $progress.Speed, $progress.Bitrate
-                                if ($perc -gt 100) { $perc = 100 } 
+                                if ($perc -gt 100) { $perc = 100 }
                                 Write-Progress "$ri -> $uro" "$("$progressTime".Substring(0,8))/$("$theDuration".Substring(0,8)) Frame: $frame - Speed $speed - Bitrate $bitrate" -PercentComplete $perc -Id $ProgId
-                            }                        
+                            }
                         }
                         Write-Verbose "$line"
                     }
                     end {
-                        Write-Progress "$ri -> $uro" " " -Completed -Id $progId 
+                        Write-Progress "$ri -> $uro" " " -Completed -Id $progId
                     }
                 }
 
@@ -400,4 +400,4 @@
 
         Write-Progress "Converting Media" " " -Completed -Id $TopProgId
     }
-} 
+

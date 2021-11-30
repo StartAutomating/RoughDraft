@@ -43,12 +43,12 @@
 
         #region Run FFMpeg
         Write-Verbose "Invoke FFMpeg with $($ffmpegArgument -join ' ')"
-        & $ffmpeg @FFMpegArgument *>&1 | 
-            . {                
+        & $ffmpeg @FFMpegArgument *>&1 |
+            . {
                 process {
                     $line = $_
                     "$line"
-                }                
+                }
             }
         #endregion Run FFMpeg
     }

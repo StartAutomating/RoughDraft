@@ -1,4 +1,4 @@
-﻿function New-Media {
+﻿function New-Medium {
     <#
     .Synopsis
         Creates media files
@@ -41,7 +41,7 @@
     process {
         #region Find FFMpeg
         $ffmpeg = & $findFFMpeg -FFMpegPath $ffMpegPath
-        if (-not $ffmpeg) { return }        
+        if (-not $ffmpeg) { return }
         #endregion Find FFMpeg
         if ($AsJob) {
             return & $startRoughDraftJob
@@ -51,12 +51,12 @@
         $ffmpegArgs = @()
         $uro = $ExecutionContext.SessionState.Path.GetUnresolvedProviderPathFromPSPath($OutputPath)
         $ffEndArgs  = @('-pix_fmt', $PixelFormat, '-t', $Duration.TotalSeconds, '-y', "$uro")
-        
+
         #region Handle Extensions
         :nextFile do {
             Use-RoughDraftExtension -CommandName $myCmd -CanRun -ExtensionParameter (@{} + $PSBoundParameters) |
-                . Use-RoughDraftExtension -Run | 
-                . { process { 
+                . Use-RoughDraftExtension -Run |
+                . { process {
                     $inObj = $_
                     if ($inObj.ExtensionOutput) {
                         Write-Verbose "Adding Filter Parameters from Extension '$extensionCommand'"
@@ -75,7 +75,7 @@
         Invoke-FFMpeg -FFMpegPath $ffMpegPath -FFMpegArgument $allFffMpegArgs |
             & { process {
                 Write-Verbose "$_ "
-            } } 
+            } }
 
         Get-Item -Path $uro -ErrorAction SilentlyContinue
     }

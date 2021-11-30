@@ -4,16 +4,16 @@
     .Synopsis
         Gets RoughDraft Extensions
     .Description
-        Gets RoughDraft Extensions.  
-        
+        Gets RoughDraft Extensions.
+
         Extensions can be found in:
         * RoughDraft
-        * Any module that includes 'RoughDraft' in it's tags.        
+        * Any module that includes 'RoughDraft' in it's tags.
         * The directory specified in -ExtensionPath
     .Example
         Get-RoughDraftExtension
     .Link
-        Use-RoughDraftExtension    
+        Use-RoughDraftExtension
     #>
     [OutputType('RoughDraft.Extension')]
     param(
@@ -29,7 +29,7 @@
 
     # If provided, will get extensions that extend a given command
     [Parameter(ValueFromPipelineByPropertyName)]
-    [Alias('ThatExtends', 'For')]    
+    [Alias('ThatExtends', 'For')]
     [string]
     $CommandName
     )
@@ -37,7 +37,7 @@
     begin {
         $extensionNameRegex = '\.(RoughDraft|rd)\.(extension|ext)\.ps1$'
         #region Define Inner Functions
-        function ?.Extends {            
+        function ?.Extends {
             param(
             [Parameter(Position=0)]
             [string]
@@ -47,30 +47,30 @@
             [PSObject]
             $ExtensionCommand
             )
-            process {               
+            process {
                 if ($Command -and $ExtensionCommand.Extends -contains $Command) {
                     return $ExtensionCommand
                 }
                 elseif (-not $command) {
                     return $ExtensionCommand
-                }    
+                }
             }
-            
-        }        
+
+        }
         filter =>[RoughDraft.Extension] {
             $in = $_
-            $extCmd = 
+            $extCmd =
                 if ($in -is [Management.Automation.CommandInfo]) {
                     $in
                 }
                 elseif ($in -is [IO.FileInfo]) {
                     $ExecutionContext.SessionState.InvokeCommand.GetCommand($in.fullname, 'ExternalScript')
-                } 
+                }
                 else {
                     $ExecutionContext.SessionState.InvokeCommand.GetCommand($in, 'Function,ExternalScript')
                 }
 
-            
+
 
             $isExtension = $false
             $extends     = @()
@@ -79,8 +79,8 @@
                     $isExtension = $true
                 }
                 if ($attr -is [Management.Automation.CmdletAttribute]) {
-                    
-                    $extends += 
+
+                    $extends +=
                         $ExecutionContext.SessionState.InvokeCommand.GetCommand($attr.VerbName + '-' + $attr.NounName, 'Function')
                 }
             }
@@ -103,7 +103,7 @@
             $loadedModules = @($myInv.MyCommand.Module) + $loadedModules
         }
         $getCmd    = $ExecutionContext.SessionState.InvokeCommand.GetCommand
-        
+
         if ($Force) {
             $script:RoughDraftExtensions = $null
             $script:RoughDraftExtensionsAtPath = $null
@@ -111,7 +111,7 @@
         if (-not $script:RoughDraftExtensionsAtPath) {
             $script:RoughDraftExtensionsAtPath = @{}
         }
-        if (-not $script:RoughDraftExtensions) 
+        if (-not $script:RoughDraftExtensions)
         {
             $script:RoughDraftExtensions =
                 foreach ($loadedModule in $loadedModules) { # Walk over all modules.
@@ -141,13 +141,13 @@
                         }
                     }
                     elseif ($loadedModule.PrivateData.Tags -contains $myModuleName -or $loadedModule.Name -eq $myModuleName) {
-                        $loadedModule | 
-                            Split-Path | 
-                            Get-ChildItem -Recurse | 
+                        $loadedModule |
+                            Split-Path |
+                            Get-ChildItem -Recurse |
                             Where-Object Name -Match $extensionNameRegex |
                             =>[RoughDraft.Extension]
                     }
-                }    
+                }
         }
         #endregion Find Extensions
     }
@@ -156,10 +156,10 @@
         if ($ExtensionPath) {
             Get-ChildItem -Recurse -Path $ExtensionPath |
                 Where-Object Name -Match $extensionNameRegex |
-                =>[RoughDraft.Extension] | 
+                =>[RoughDraft.Extension] |
                 ?.Extends $CommandName
         } else {
             $script:RoughDraftExtensions | ?.Extends $CommandName
-        }                
+        }
     }
 }

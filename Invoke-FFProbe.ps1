@@ -30,7 +30,7 @@
 
     process {
         #region Find FFProbe
-        $ffprobe = & $findffprobe -ffprobePath $ffprobePath        
+        $ffprobe = & $findffprobe -ffprobePath $ffprobePath
         if (-not $ffprobe) {return}
         #endregion Find FFProbe
         #region Handle -AsJob
@@ -40,12 +40,12 @@
         #endregion Handle -AsJob
         #region Run FFProbe
         Write-Verbose "Invoke ffprobe with $($ffprobeArgument -join ' ')"
-        & $ffprobe @ffprobeArgument *>&1 | 
-            . {                
+        & $ffprobe @ffprobeArgument *>&1 |
+            . {
                 process {
                     $line = $_
                     "$line"
-                }                
+                }
             }
         #endregion Run FFProbe
     }

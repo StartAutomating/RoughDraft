@@ -41,12 +41,12 @@
         #endregion Handle -AsJob
         #region Run FFPlay
         Write-Verbose "Invoke FFPlay with $($FFPlayArgument -join ' ')"
-        & $FFPlay @FFPlayArgument *>&1 | 
-            . {                
+        & $FFPlay @FFPlayArgument *>&1 |
+            . {
                 process {
                     $line = $_
                     "$line"
-                }                
+                }
             }
         #endregion Run FFPlay
     }

@@ -1,4 +1,4 @@
-﻿function Edit-Media
+﻿function Edit-Medium
 {
     <#
     .Synopsis
@@ -6,11 +6,11 @@
     .Description
         Modifies media files to apply advanced filters
     .Notes
-        Edit-Media will return the output file, which can in turn be piped into the next Edit-Media.  
+        Edit-Media will return the output file, which can in turn be piped into the next Edit-Media.
         Each parameter set of Edit-Media will perform one and only one action.
         Using Edit-Media in a fluent pipeline will allow you to easily control the order in which actions are applied.
     .Example
-        Get-Item a.mp4 | 
+        Get-Item a.mp4 |
             Edit-Media -FadeIn |
             Edit-Media -Rotate 90
     .Link
@@ -21,18 +21,18 @@
         Get-RoughDraftExtension
     .Link
         Use-RoughDraftExtension
-    #> 
+    #>
     [CmdletBinding(DefaultParameterSetName='None',SupportsShouldProcess)]
-    [OutputType([IO.FileInfo])]   
+    [OutputType([IO.FileInfo])]
     param(
     # The input path
     [Parameter(Mandatory,Position=0,ValueFromPipelineByPropertyName)]
     [Alias('Fullname')]
     [string[]]
     $InputPath,
-        
+
     # The output path.  If not provided, the output path will be named for the current edit action, i.e. 1_FadeIn.mp4
-    [Parameter(Position=1,ValueFromPipelineByPropertyName)]    
+    [Parameter(Position=1,ValueFromPipelineByPropertyName)]
     [string]
     $OutputPath,
 
@@ -41,11 +41,11 @@
     $OutputMap,
 
     # The coded used for the conversion
-    [Parameter(Position=2,ValueFromPipelineByPropertyName)]    
+    [Parameter(Position=2,ValueFromPipelineByPropertyName)]
     [string]
     $Codec,
 
-    # The path to FFMpeg.exe.  By default, checks in Program Files\FFMpeg\. Download FFMpeg from http://ffmpeg.org/.  
+    # The path to FFMpeg.exe.  By default, checks in Program Files\FFMpeg\. Download FFMpeg from http://ffmpeg.org/.
     [Parameter(ValueFromPipelineByPropertyName)]
     [string]
     $FFMpegPath,
@@ -54,16 +54,16 @@
     [Collections.IDictionary]
     $MetaData,
 
-    # The timespan to start 
+    # The timespan to start
     [Parameter(ValueFromPipelineByPropertyName)]
     [Timespan]
     $Start,
-    
-    # The time span to end 
+
+    # The time span to end
     [Parameter(ValueFromPipelineByPropertyName)]
     [Timespan]
     $End,
-    
+
     # A series of video filters.  The key is the name of the filter, and the value can either be the direct string value of the filter, or a hashtable containing the filter components.
     [Parameter(Mandatory=$true,ParameterSetName='CustomVideoFilter', ValueFromPipelineByPropertyName)]
     [Collections.IDictionary]
@@ -88,15 +88,15 @@
     begin {
         $ErrorList = @()
         $progId = Get-Random
-        $processFFMpegOutput = 
-            {                
+        $processFFMpegOutput =
+            {
                 if ($_ -like "*time=*" -and $_ -like "*bitrate=*" -and $mediaInfo.Duration) {
-                    $lineChunks = $_.Tostring() -split "[ =]" -ne '' | Where-Object { $_.Trim() } 
-                    $lineData = New-Object PSObject 
-                    for ($i =0; $i -lt $lineChunks.Count; $i+=2) {                
+                    $lineChunks = $_.Tostring() -split "[ =]" -ne '' | Where-Object { $_.Trim() }
+                    $lineData = New-Object PSObject
+                    for ($i =0; $i -lt $lineChunks.Count; $i+=2) {
                         $lineData |Add-Member NoteProperty $lineChunks[$i].TrimEnd("=") $lineChunks[$i + 1] -Force
                     }
-            
+
 
                     $time = $lineData.Time -as [Timespan]
                     $perc = $time.TotalMilliseconds * 100 / $mediaInfo.Duration.TotalMilliseconds
@@ -105,13 +105,13 @@
                 } else {
                     if ($_ -like "*error*" -or $_ -like "*unable*" -or $inErrorState) {
                         $inErrorState = $true
-                        $ErrorList += "$_".Trim()                           
+                        $ErrorList += "$_".Trim()
                         Write-Verbose "$_"
                     } else {
                         Write-Verbose "$_"
                     }
-                }        
-            }    
+                }
+            }
 
         $endFFMpegOutput = {
             if ($ErrorList.Count) {
@@ -126,55 +126,55 @@
         if (-not $ffmpeg) { return }
         #endregion Find FFMpeg
         $myParams = [Ordered]@{} + $PSBoundParameters
-        $ri = 
+        $ri =
             if ([IO.File]::Exists($InputPath[0])) {
                 $InputPath[0]
             } else {
                 $ExecutionContext.SessionState.Path.GetResolvedPSPathFromPSPath($InputPath[0])
-            }                    
+            }
 
         if (-not $OutputPath -and -not $OutputMap.Count) {
             $inputItem = Get-Item -LiteralPath $ri
-            $paramSetShortName = 
-                ($PSCmdlet.ParameterSetName -split "\$([IO.Path]::DirectorySeparatorChar)")[-1] -replace 
+            $paramSetShortName =
+                ($PSCmdlet.ParameterSetName -split "\$([IO.Path]::DirectorySeparatorChar)")[-1] -replace
                 '\.RoughDraft\.(ext|extension)\.ps1$'
             $OutputPath = $inputItem.Fullname.Substring(0, $inputItem.FullName.Length - $inputItem.Extension.Length) + "_$paramSetShortName" + $inputItem.Extension
         }
         $uro = $ExecutionContext.SessionState.Path.GetUnresolvedProviderPathFromPSPath($OutputPath)
 
-                
-        $mediaInfo = Get-Media -InputPath $ri 
+
+        $mediaInfo = Get-Media -InputPath $ri
         if (-not $start) { $start = [Timespan]::FromMilliseconds(0) }
         if (-not $end -and $mediaInfo.Duration)   { $end = $MediaInfo.Duration }
         $ffmpegParams = @()
 
         if ($Codec) {
-        
+
             $foundSeparator = $false
-            $codecList = Get-Media -ListCodec    
-                
+            $codecList = Get-Media -ListCodec
+
             $matchingCodec = $codecList | Where-Object {$_.Codec -like $codec -or $_.FullName -like $codec } | Select-Object -First 1
 
             if (-not $matchingCodec) {
-                Write-Error "Codec not found.  Try one of the following items $($codecList | Where-Object {$_.CanEncode } | Select Codec, Fullname | Out-String)"
+                Write-Error "Codec not found.  Try one of the following items $($codecList | Where-Object {$_.CanEncode } | Select-Object Codec, Fullname | Out-String)"
                 return
             }
 
-            $ffmpegParams += "-c" 
+            $ffmpegParams += "-c"
             $ffmpegParams += "$($matchingCodec.Codec)"
         }
 
 
         $filterParams = @()
-        
+
         if ($MetaData) {
             foreach ($kv in $metaData.GetEnumerator()) {
-                $filterParams += "-metadata"        
-                $filterParams+= "`"$($kv.Key)`"=`"$($kv.Value)`""        
+                $filterParams += "-metadata"
+                $filterParams+= "`"$($kv.Key)`"=`"$($kv.Value)`""
             }
         }
 
-        if ($VideoFilter) {            
+        if ($VideoFilter) {
             foreach ($kv in $VideoFilter.GetEnumerator()) {
                 $filterParams += "-vf"
                 $filterString = "$($kv.Key)=".ToLower()
@@ -191,7 +191,7 @@
             }
         }
 
-        if ($AudioFilter) {            
+        if ($AudioFilter) {
             foreach ($kv in $AudioFilter.GetEnumerator()) {
                 $filterParams += "-af"
                 $filterString = "$($kv.Key)=".ToLower()
@@ -212,7 +212,7 @@
         if ($ComplexFilter) {
             foreach ($cf in $ComplexFilter) {
                 $filterParams += "-filter_complex"
-                $filterParams += 
+                $filterParams +=
                 @(foreach ($kv in $cf.GetEnumerator()) {
                     "$($kv.Key)=".ToLower() +
                     $(if ($kv.Value -is [Collections.IDictionary]) {
@@ -222,7 +222,7 @@
                     } elseif ($kv.Value.ToString().Trim()) {
                         "$($kv.Value.ToString().Replace(',','\,').Replace(':','\:'))"
                     })
-                
+
                 }) -join ','
             }
         }
@@ -259,8 +259,8 @@
 
         #region Handle Extensions
         Use-RoughDraftExtension -CommandName $myCmd -CanRun -ExtensionParameter $myParams |
-            . Use-RoughDraftExtension -Run | 
-            . { process { 
+            . Use-RoughDraftExtension -Run |
+            . { process {
                 $inObj = $_
                 if ($inObj.ExtensionOutput) {
                     Write-Verbose "Adding Filter Parameters from Extension '$extensionCommand'"
@@ -297,11 +297,11 @@
                 "$end"
             }
         )
-        
+
         if ($WhatIfPreference) { return $ffMpegFullArgs } # If -WhatIf was passed, return the FFMpeg Arguments
-        
+
         if (-not $PSCmdlet.ShouldProcess("$($ffMpegFullArgs -join ' ')")) { return } # Otherwise, check ShouldProcess
-        & $ffmpeg @ffInFiles @timeArgs @filterParams @outParams @ffmpegParams 2>&1 | 
+        & $ffmpeg @ffInFiles @timeArgs @filterParams @outParams @ffmpegParams 2>&1 |
             ForEach-Object -Process $processFFMpegOutput -End $endFFMpegOutput
 
         if ($uro) { # If we had a single output
@@ -309,7 +309,7 @@
         } elseif ($OutputMap.Count) { # If we had an output map
             foreach ($kv in $OutputMap.GetEnumerator()) {
                 $rp = # Find each file in the map
-                    try { 
+                    try {
                         $ExecutionContext.SessionState.Path.GetResolvedPSPathFromPSPath($kv.Value)
                     } catch {
                         $null

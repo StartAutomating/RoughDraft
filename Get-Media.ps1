@@ -1,4 +1,4 @@
-﻿function Get-Media
+﻿function Get-Medium
 {
     <#
     .Synopsis
@@ -15,7 +15,7 @@
     [OutputType('RoughDraft.Media', [Management.Automation.Job], [PSObject])]
     [CmdletBinding(DefaultParameterSetName='Probe')]
     param(
-    # One or more input paths.  
+    # One or more input paths.
     # If none are provided, all files in the current directory will be passed to Get-Media.
     [Parameter(Position=0,ValueFromPipelineByPropertyName)]
     [Alias('Fullname')]
@@ -30,7 +30,7 @@
     [string]
     $FFMpegPath,
 
-    # A list of streams .  
+    # A list of streams .
     # For example, to show only audio streams, use 'a'
     [Parameter(ParameterSetName='Probe')]
     [string[]]
@@ -65,7 +65,7 @@
 
     # If set, will run this in a background job
     [Switch]
-    $AsJob 
+    $AsJob
     )
 
     dynamicParam {
@@ -79,31 +79,31 @@
     }
 
     process {
-        if ($AsJob) { # If -AsJob was passed,            
+        if ($AsJob) { # If -AsJob was passed,
             return & $StartRoughDraftJob # start a background job.
         }
         if ($InputPath) {
             $allInputsFiles.AddRange($InputPath)
-        }        
+        }
     }
 
     end {
         $ffProbe = & $findFFProbe -ffProbePath $FFProbePath
 
-        if (-not $ffProbe) # If we still don't a FFProbe command, 
-        { 
+        if (-not $ffProbe) # If we still don't a FFProbe command,
+        {
             Write-Error "ffprobe not found.  Must provide -ffprobePath at least once or include it in the path." # error
             return # out.
         }
 
         $ffMpeg = & $findFFMpeg -ffmpegpath $FFMpegPath
 
-        if (-not $ffMpeg) # If we still don't a FFProbe command, 
-        { 
+        if (-not $ffMpeg) # If we still don't a FFProbe command,
+        {
             Write-Error "ffmpeg not found.  Must provide -ffMpegPath at least once or include it in the path." # error
             return # out.
         }
-        
+
         $count,$total, $progressId = 0, $allInputsFiles.Count, [Random]::new().Next()
         if (-not $allInputsFiles) {
             $allInputsFiles.AddRange(@(0))
@@ -111,29 +111,29 @@
         }
         :nextFile foreach ($in in $allInputsFiles) {
             #region Resolve the Input Path
-            $ri = 
+            $ri =
                 if ([IO.File]::Exists($In)) {
                     ([IO.FileInfo]$in).FullName
                 } elseif ($in) {
                     $ExecutionContext.SessionState.Path.GetResolvedPSPathFromPSPath($In)  |
-                        Get-Item -LiteralPath { $_ }| 
+                        Get-Item -LiteralPath { $_ }|
                         Select-Object -ExpandProperty Fullname
-                }        
-            
+                }
+
             #endregion Resolve the Input Path
 
-            $paramSetShortName = 
-                ($PSCmdlet.ParameterSetName -split "\$([IO.Path]::DirectorySeparatorChar)")[-1] -replace 
+            $paramSetShortName =
+                ($PSCmdlet.ParameterSetName -split "\$([IO.Path]::DirectorySeparatorChar)")[-1] -replace
                 '\.(rd|RoughDraft)\.(ext|extension)\.ps1$' -replace 'probe'
-            
+
             $count++
             Write-Progress 'Getting Media Info' "$ri$( if ($paramSetShortName) { "- $paramSetShortName"})" -PercentComplete ($count * 100 / $total) -Id $progressId
-            
 
-            #region Handle Extensions            
+
+            #region Handle Extensions
             $PSBoundParameters['InputPath'] = "$in"
             Use-RoughDraftExtension -CommandName $myCmd -CanRun -ExtensionParameter (@{} + $PSBoundParameters) |
-                . { process { 
+                . { process {
                     $ext = $_
                     $ExtensionParameter = ([Ordered]@{})
                     foreach ($kv in $ext.ExtensionParameter.getEnumerator()) {
@@ -145,7 +145,7 @@
                     continue nextFile
                 } }
             #endregion Handle Extensions
-            if (-not $ri) { continue } 
+            if (-not $ri) { continue }
 
             $outObject = [Ordered]@{}
             $outObject.InputPath = "$ri"
@@ -173,7 +173,7 @@
                 }
                 '-of'
                 'json'
-                
+
             )
             $tries = $ProbeTryCount
             do {
@@ -181,7 +181,7 @@
                 $jsonOutput = $metadataJson[$metadataJson.IndexOf("{")..$metadataJson.IndexOf("}")] -join [Environment]::NewLine
                 if ($jsonOutput) {
                     $metadataJson | Write-Verbose
-                    $jsonObject = 
+                    $jsonObject =
                         try {
                             $jsonOutput | ConvertFrom-Json -ErrorAction Stop
                         } catch {
@@ -189,7 +189,7 @@
                         }
                 }
             } while (-not $jsonOutput -and $tries -ge 0)
-            
+
             if ($jsonObject) {
                 foreach ($prop in $jsonObject.psobject.properties) {
                     if ($prop.Value) {
@@ -200,17 +200,17 @@
                                     $outObject[$tagProp.Name] = $tagProp.Value
                                 } else {
                                     $outObject[$tagProp.Name] = @() + $outObject[$tagProp.Name] + $tagProp.Value
-                                }                                
+                                }
                             }
                         }
                     }
                 }
             }
             $outObject.FileSize = ($ri -as [IO.FileInfo]).Length
-            
+
             $durations = @(
                 :gotDuration do {
-                    $durations = 
+                    $durations =
                         foreach ($streamInfo in $outObject.streams) {
                             if ($streamInfo.duration) {
                                 [Timespan]::FromSeconds($streamInfo.duration)
@@ -236,15 +236,15 @@
                 } while (0)
             )
 
-            $codecTypes = 
+            $codecTypes =
                 if($outObject.streams) {
                     $outObject.streams | Select-Object -ExpandProperty codec_type -Unique
                 } else {$null }
 
-            $codecs = 
+            $codecs =
                 if($outObject.streams) {
                     $outObject.streams | Select-Object -ExpandProperty codec_name -Unique
-                } else {$null } 
+                } else {$null }
 
             if ($codecs) {
                 $outObject.CodecTypes = $codecTypes
@@ -259,9 +259,9 @@
                 }
             )
 
-            $duration = $durations | 
-                Select-Object -ExpandProperty TotalMilliseconds | 
-                Measure-Object -Maximum | 
+            $duration = $durations |
+                Select-Object -ExpandProperty TotalMilliseconds |
+                Measure-Object -Maximum |
                 Select-Object -ExpandProperty Maximum
             if ($duration) {
                 $outObject.Duration = [Timespan]::FromMilliseconds($duration)
@@ -272,12 +272,12 @@
                 $outObject.Height = $resolutions[1]
                 $outObject.Resolution = "$($resolutions[0])x$($resolutions[1])"
             }
-                                              
+
             $outObject.PSTypeName = 'RoughDraft.Media'
             [PSCustomObject]$outObject
         }
-        
+
         Write-Progress 'Getting Media Info' " " -Completed -Id $progressId
-        
+
     }
-} 
+
