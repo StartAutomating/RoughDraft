@@ -84,6 +84,8 @@
         }
         if ($InputPath) {
             $allInputsFiles.AddRange($InputPath)
+        } else {
+            $allInputsFiles.AddRange((Get-ChildItem -File | Select-Object -ExpandProperty Fullname))
         }
     }
 
@@ -127,7 +129,7 @@
                 '\.(rd|RoughDraft)\.(ext|extension)\.ps1$' -replace 'probe'
 
             $count++
-            Write-Progress 'Getting Media Info' "$ri$( if ($paramSetShortName) { "- $paramSetShortName"})" -PercentComplete ($count * 100 / $total) -Id $progressId
+            Write-Progress 'Getting Media Info' "$ri $( if ($paramSetShortName) { "- $paramSetShortName"})" -PercentComplete ($count * 100 / $total) -Id $progressId
 
 
             #region Handle Extensions
