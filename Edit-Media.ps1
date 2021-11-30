@@ -1,4 +1,4 @@
-﻿function Edit-Medium
+﻿function Edit-Media
 {
     <#
     .Synopsis
