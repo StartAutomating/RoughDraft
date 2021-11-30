@@ -22,6 +22,10 @@
     [Timespan]
     $Duration = '00:00:01',
 
+    # The resolution.  This can be independently handled by an extension.
+    [string]
+    $Resolution,
+
     # If provided, will use a specific pixel format for video and image output.  This maps to the -pix_fmt parameter in ffmpeg.
     [Parameter(ValueFromPipelineByPropertyName)]
     [Alias('Pix_Fmt')]
