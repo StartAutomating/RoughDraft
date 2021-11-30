@@ -9,10 +9,6 @@
 . $psScriptRoot\ConvertTo-Gif.ps1
 . $psScriptRoot\ConvertTo-Waveform.ps1
 
-. $psScriptRoot\Start-MediaRecording.ps1
-. $psScriptRoot\Stop-MediaRecording.ps1
-
-
 . $psScriptRoot\Invoke-FFMpeg.ps1
 . $psScriptRoot\Invoke-FFPlay.ps1
 . $psScriptRoot\Invoke-FFProbe.ps1
