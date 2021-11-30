@@ -151,41 +151,17 @@
         if ($Codec) {
         
             $foundSeparator = $false
-            $codecList = & $ffmpeg -codecs 2>&1 | 
-                Where-Object {
-                    $foundSeparator
-                    if ($_ -like "*------*") {
-                        $foundSeparator = $true
-                    }
-                } |
-                ForEach-Object {
-                    $parts = $_ -split " {1,}" -ne ''
-                    $fields = $parts[0]
-                    $shortName = $parts[1]
-                    $fullname = $parts[2..($parts.Count - 1)] -join ' ' 
-                    New-Object PSObject |
-                        Add-Member NoteProperty ShortName $shortName -Force -PassThru | 
-                        Add-Member NoteProperty FullName $fullname -Force -PassThru | 
-                        Add-Member NoteProperty CanDecode ($fields -like "*D*") -Force -PassThru |
-                        Add-Member NoteProperty CanEncode ($fields -like "*E*") -Force -PassThru |
-                        Add-Member NoteProperty IsVideoCodec ($fields -like "*V*") -Force -PassThru |
-                        Add-Member NoteProperty IsAudioCodec ($fields -like "*A*") -Force -PassThru |
-                        Add-Member NoteProperty IsSubtitleCodec ($fields -like "*S*") -Force -PassThru |
-                        Add-Member NoteProperty IsIntraFrameOnlyCodec ($fields -like "*I*") -Force -PassThru |
-                        Add-Member NoteProperty IsLossyCompression ($fields -like "*L*") -Force -PassThru |
-                        Add-Member NoteProperty IsLosslessCompression ($fields -like "*S*") -Force -PassThru 
-        
-                }   
+            $codecList = Get-Media -ListCodec    
                 
-            $matchingCodec = $codecList | Where-Object {$_.ShortName -like $codec -or $_.FullName -like $codec } | Select-Object -First 1 
+            $matchingCodec = $codecList | Where-Object {$_.Codec -like $codec -or $_.FullName -like $codec } | Select-Object -First 1
 
             if (-not $matchingCodec) {
-                Write-Error "Codec not found.  Try one of the following items $($codecList | Where-Object {$_.CanEncode } | Select ShortName, Fullname)"
+                Write-Error "Codec not found.  Try one of the following items $($codecList | Where-Object {$_.CanEncode } | Select Codec, Fullname)"
                 return
             }
 
             $ffmpegParams += "-c" 
-            $ffmpegParams += "$($matchingCodec.ShortName)"
+            $ffmpegParams += "$($matchingCodec.Codec)"
         }
 
 
