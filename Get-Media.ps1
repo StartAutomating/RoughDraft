@@ -11,6 +11,10 @@
         Get-Media -InputPath $home\Video\AVideo.mp4
     .Link
         Set-Media
+    .Link
+        Get-RoughDraftExtension
+    .Link
+        Use-RoughDraftExtension
     #>
     [OutputType('RoughDraft.Media', [Management.Automation.Job], [PSObject])]
     [CmdletBinding(DefaultParameterSetName='Probe')]
