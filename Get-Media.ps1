@@ -152,6 +152,7 @@
             $entryList = $Entry -join ':'
 
             $selectionAndOutputFormat = @(
+                '-hide_banner'
                 if ($stream) {
                     "-select-streams"
                     $stream
@@ -275,8 +276,8 @@
             $outObject.PSTypeName = 'RoughDraft.Media'
             [PSCustomObject]$outObject
         }
-        if ($total -gt 1) {
-            Write-Progress 'Getting Media Info' " " -Completed -Id $progressId
-        } 
+        
+        Write-Progress 'Getting Media Info' " " -Completed -Id $progressId
+        
     }
 } 
