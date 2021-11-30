@@ -40,7 +40,7 @@ describe Convert-Media {
             $tmpOutPath  = Join-Path ([IO.Path]::GetTempPath()) "testsrc$(Get-Random).png"
             New-Media -TestSource testsrc -OutputPath $tmpOutPath -Duration "00:00:05"
             $err = @()
-            Get-Item $tmpOutPath | Convert-Media -Codec askljska -ErrorAction Continue -OutputPath .\test.mp4  -ErrorVariable err
+            Get-Item $tmpOutPath | Convert-Media -Codec askljska -ErrorAction SilentlyContinue -OutputPath .\test.mp4  -ErrorVariable err
             
             $err[-1] | Should -BeLike '*codec*fullname*'
             Remove-Item $tmpOutPath
@@ -102,7 +102,7 @@ describe Edit-Media {
             $tmpOutPath  = Join-Path ([IO.Path]::GetTempPath()) "testsrc$(Get-Random).png"
             New-Media -TestSource testsrc -OutputPath $tmpOutPath -Duration "00:00:05"
             $err = @()
-            Get-Item $tmpOutPath | Edit-Media -Codec askljska -ErrorAction Continue -OutputPath .\test.mp4  -ErrorVariable err -FadeIn
+            Get-Item $tmpOutPath | Edit-Media -Codec askljska -ErrorAction SilentlyContinue -OutputPath .\test.mp4  -ErrorVariable err -FadeIn
             
             $err[-1] | Should -BeLike '*codec*fullname*'
             Remove-Item $tmpOutPath
