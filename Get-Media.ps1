@@ -2,9 +2,9 @@
 {
     <#
     .Synopsis
-        Gets media file encoding information
+        Gets media metadata
     .Description
-        Gets encoding information about a media file, using FFProbe.
+        Gets metadata about a media file, using FFProbe.
     .Example
         Get-Media -InputPath $home\Music\ASong.mp3
     .Example
