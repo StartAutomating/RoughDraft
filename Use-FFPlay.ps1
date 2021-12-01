@@ -1,16 +1,16 @@
-﻿function Invoke-FFPlay
+﻿function Use-FFPlay
 {
     <#
     .Synopsis
-        Invokes FFPlay.
+        Uses FFPlay directly.
     .Description
-        Runs FFPlay
+        Runs FFPlay.
     .Example
-        Invoke-FFPlay -FFPlayArgument "$home\Music\ASong.mp3"
+        Use-FFPlay -FFPlayArgument "$home\Music\ASong.mp3"
     .Link
-        Invoke-FFProbe
+        Use-FFMpeg
     .Link
-        Invoke-FFPlay
+        Use-FFPlay
     #>
     [CmdletBinding(PositionalBinding=$false)]
     [OutputType([string])]
