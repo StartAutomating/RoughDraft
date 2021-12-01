@@ -1,7 +1,7 @@
 ﻿#requires -Module PSDevOps
 #requires -Module RoughDraft
 Import-BuildStep -ModuleName RoughDraft
-New-GitHubAction -Name "MakeRoughDraft" -Description 'A Fun FFMpeg-Based PowerShell Module for Multimedia.' -Action RoughDraftAction -Icon film  -ActionOutput ([Ordered]@{
+New-GitHubAction -Name "MakeRoughDraft" -Description 'A PowerShell Module for Multimedia.' -Action RoughDraftAction -Icon film  -ActionOutput ([Ordered]@{
     RoughDraftScriptRuntime = [Ordered]@{
         description = "The time it took the .RoughDraftScript parameter to run"
         value = '${{steps.RoughDraftAction.outputs.RoughDraftScriptRuntime}}'
