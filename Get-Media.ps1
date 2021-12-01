@@ -102,7 +102,7 @@
             return # out.
         }
 
-        $ffMpeg = & $findFFMpeg -ffmpegpath $FFMpegPath
+        $ffMpeg = Get-FFMpeg -ffmpegpath $FFMpegPath
 
         if (-not $ffMpeg) # If we still don't a FFProbe command,
         {

@@ -58,7 +58,7 @@ $ffArgs = @(
     '-i', "`"$ri`"", "-vf", $filterParam, '-f', 'null', '-'
 )
 
-Invoke-FFMpeg -FFMpegPath $ffMpegPath -FFMpegArgument $ffArgs |
+Use-FFMpeg -FFMpegPath $ffMpegPath -FFMpegArgument $ffArgs |
 & {
 param([Parameter(Mandatory,ValueFromPipeline)][string]$line)
 

@@ -54,7 +54,7 @@
         $allInputsFiles = [Collections.ArrayList]::new()
         $allInputObjects = [Collections.ArrayList]::new()
         #region Find ffmpeg
-        $ffmpeg = & $findffMpeg -ffMpegPath $ffMpegPath
+        $ffmpeg = Get-FFMpeg -ffMpegPath $ffMpegPath
         #endregion Find ffmpeg
 
         $xmlPropertyNames = 'LocalName','NamespaceURI','Prefix',

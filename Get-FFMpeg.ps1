@@ -1,5 +1,18 @@
-﻿param(
-$ffMpegPath
+﻿<#
+.Synopsis
+
+.Description
+
+.Example
+    Get-FFMpeg
+.Link
+    Use-FFMpeg
+#>
+param(
+# The path to FFMpeg
+[Parameter(ValueFromPipelineByPropertyName)]
+[string]
+$FFMpegPath
 )
 
 if ($script:KnownFFMpegPath) {

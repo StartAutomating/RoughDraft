@@ -44,7 +44,7 @@
 
     process {
         #region Find FFMpeg
-        $ffmpeg = & $findFFMpeg -FFMpegPath $ffMpegPath
+        $ffmpeg = Get-FFMpeg -FFMpegPath $ffMpegPath
         if (-not $ffmpeg) { return }
         #endregion Find FFMpeg
         if ($AsJob) {
@@ -76,7 +76,7 @@
 
         $allFffMpegArgs = @('-hide_banner') +  $ffmpegArgs + $FilterParams + $ffEndArgs
 
-        Invoke-FFMpeg -FFMpegPath $ffMpegPath -FFMpegArgument $allFffMpegArgs |
+        Use-FFMpeg -FFMpegPath $ffMpegPath -FFMpegArgument $allFffMpegArgs |
             & { process {
                 Write-Verbose "$_ "
             } }

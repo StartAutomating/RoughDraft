@@ -90,7 +90,7 @@
     }
     process {
         #region Find FFMpeg
-        $ffMpeg = & $findFFMpeg -ffMpegPath $ffmpegPath
+        $ffMpeg = Get-FFMpeg -ffMpegPath $ffmpegPath
         #endregion Find FFMpeg
 
         $inputPaths+=$InputPath

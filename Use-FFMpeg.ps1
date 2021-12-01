@@ -1,16 +1,16 @@
-﻿function Invoke-FFMpeg
+﻿function Use-FFMpeg
 {
     <#
     .Synopsis
-        Invokes ffmpeg.
+        Uses ffmpeg directly.
     .Description
-        Runs ffmpeg
+        Runs ffmpeg directly.
     .Example
-        Invoke-FFMpeg -FFMpegArgument '-i', "`"$home\Video\A.mp4`"", "`"$home\Music\A.mp3`""
+        Use-FFMpeg -FFMpegArgument '-i', "`"$home\Video\A.mp4`"", "`"$home\Music\A.mp3`""
     .Link
-        Invoke-FFProbe
+        Use-FFProbe
     .Link
-        Invoke-FFPlay
+        Use-FFPlay
     #>
     [CmdletBinding(PositionalBinding=$false)]
     [OutputType([string])]
@@ -31,7 +31,7 @@
 
     process {
         #region Find FFMpeg
-        $ffMpeg = & $findFFMpeg -ffmpegPath $FFMpegPath
+        $ffMpeg = Get-FFMpeg -ffmpegPath $FFMpegPath
 
         if (-not $ffmpeg) {return}
         #endregion Find FFMpeg

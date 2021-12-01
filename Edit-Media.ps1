@@ -122,7 +122,7 @@
 
     process {
         #region Find FFMpeg
-        $ffmpeg = & $findFFMpeg -FFMpegPath $ffMpegPath
+        $ffmpeg = Get-FFMpeg -FFMpegPath $ffMpegPath
         if (-not $ffmpeg) { return }
         #endregion Find FFMpeg
         $myParams = [Ordered]@{} + $PSBoundParameters

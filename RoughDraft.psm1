@@ -11,7 +11,9 @@ param()
 . $psScriptRoot\ConvertTo-Gif.ps1
 . $psScriptRoot\ConvertTo-Waveform.ps1
 
-. $psScriptRoot\Invoke-FFMpeg.ps1
+. $psScriptRoot\Get-FFMpeg.ps1
+
+. $psScriptRoot\Use-FFMpeg.ps1
 . $psScriptRoot\Invoke-FFPlay.ps1
 . $psScriptRoot\Invoke-FFProbe.ps1
 #endregion RoughDraft FFMPEG wrappers

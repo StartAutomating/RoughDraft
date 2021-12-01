@@ -21,7 +21,7 @@ $ffArgs = @(
     '-i', "`"$ri`"", "-af", "volumedetect", '-f', 'null', '-'
 )
 
-Invoke-FFMpeg -FFMpegPath $ffMpegPath -FFMpegArgument $ffArgs  | 
+Use-FFMpeg -FFMpegPath $ffMpegPath -FFMpegArgument $ffArgs  | 
     . {
         begin {
             $volumeData = [PSCustomObject][Ordered]@{

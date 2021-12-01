@@ -133,7 +133,7 @@
 
     end {
         #region Find FFMpeg
-        $ffMpeg = & $FindFFMpeg
+        $ffMpeg = Get-FFMpeg -FFMpegPath $FFMpegPath
         if (-not $ffMpeg) { return }
         #endregion Find FFMpeg
         $t = $accumulate.Count
@@ -230,8 +230,7 @@
             }
 
 
-            if ($codec -or $audioCodec -or $VideoCodec) { # If we supplied codecs,
-                $foundSeparator = $false
+            if ($codec -or $audioCodec -or $VideoCodec) { # If we supplied codecs,                
                 if (-not $script:CachedCodecList) { # cache a list of available codec if we have not done this already.
                     $script:CachedCodecList = Get-Media -ListCodec
                 }

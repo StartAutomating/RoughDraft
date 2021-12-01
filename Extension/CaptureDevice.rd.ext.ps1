@@ -1,10 +1,8 @@
 ﻿<#
 .Synopsis
-    Detect black periods in a video.
+    Gets capture devices
 .Description
-    Detects black periods within a video, using the blackdetect filter.
-.Link
-    https://ffmpeg.org/ffmpeg-filters.html#blackdetect
+    Gets capture device information
 #>
 # It's an extension
 [Runtime.CompilerServices.Extension()]
@@ -34,7 +32,7 @@ if (-not $CaptureDeviceType) {
 }
 
 foreach ($cdt in $CaptureDeviceType) {
-    $ffOut= Invoke-FFMpeg -FFMpegArgument '-list_devices',true,'-f',$cdt,'-i',dummy
+    $ffOut= Use-FFMpeg -FFMpegArgument '-list_devices',true,'-f',$cdt,'-i',dummy
 
     $ffOut | Where-Object { $_ -match "\[$cdt\s\@" }
 }
