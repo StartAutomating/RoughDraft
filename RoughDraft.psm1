@@ -16,8 +16,8 @@ param()
 . $psScriptRoot\Get-FFProbe.ps1
 
 . $psScriptRoot\Use-FFMpeg.ps1
-. $psScriptRoot\Invoke-FFPlay.ps1
-. $psScriptRoot\Invoke-FFProbe.ps1
+. $psScriptRoot\Use-FFPlay.ps1
+. $psScriptRoot\Use-FFProbe.ps1
 #endregion RoughDraft FFMPEG wrappers
 . $psScriptRoot\Get-RoughDraftExtension.ps1
 . $psScriptRoot\Use-RoughDraftExtension.ps1

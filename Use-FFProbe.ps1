@@ -1,14 +1,14 @@
-﻿function Invoke-FFProbe
+﻿function Uses-FFProbe
 {
     <#
     .Synopsis
-        Invokes ffprobe.
+        Uses ffprobe directly.
     .Description
         Runs ffprobe.
     .Example
-        Invoke-FFProbe -FFProbeArgument "$home\Music\ASong.mp3"
+        Use-FFProbe -FFProbeArgument "$home\Music\ASong.mp3"
     .Link
-        Invoke-FFMpeg
+        Use-FFMpeg
     #>
     [CmdletBinding(PositionalBinding=$false)]
     [OutputType([string])]
