@@ -11,7 +11,7 @@
     #>
     [OutputType([string])]
     param(
-    # The path to FFMpeg
+    # The path to FFPlay
     [Parameter(ValueFromPipelineByPropertyName)]
     $ffplayPath
     )

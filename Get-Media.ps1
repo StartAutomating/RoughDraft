@@ -94,7 +94,7 @@
     }
 
     end {
-        $ffProbe = & $findFFProbe -ffProbePath $FFProbePath
+        $ffProbe = Get-FFProbe -ffProbePath $FFProbePath
 
         if (-not $ffProbe) # If we still don't a FFProbe command,
         {
