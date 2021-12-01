@@ -167,7 +167,7 @@
 
             $uro = $ExecutionContext.SessionState.Path.GetUnresolvedProviderPathFromPSPath($outputPath)
 
-            
+
 
             & $ffmpeg @ffMpegParams $uro -y 2>&1 |
                 ForEach-Object -Begin $ffMpegConvertStart $ffmpegConvertProcess -End $ffmpegConvertEnd

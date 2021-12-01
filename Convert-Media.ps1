@@ -230,7 +230,7 @@
             }
 
 
-            if ($codec -or $audioCodec -or $VideoCodec) { # If we supplied codecs,                
+            if ($codec -or $audioCodec -or $VideoCodec) { # If we supplied codecs,
                 if (-not $script:CachedCodecList) { # cache a list of available codec if we have not done this already.
                     $script:CachedCodecList = Get-Media -ListCodec
                 }

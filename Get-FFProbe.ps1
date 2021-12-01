@@ -36,11 +36,11 @@
         }
 
         if ($env:ProgramFiles) {
-            $FFProbeInProgramFiles = 
+            $FFProbeInProgramFiles =
                 $ExecutionContext.SessionState.InvokeCommand.GetCommand((
                     Join-Path (Join-Path (Join-Path $env:ProgramFiles ffmpeg) 'bin') 'FFProbe.exe'
                 ), 'Application')
-    
+
             if ($FFProbeInProgramFiles) {
                 $script:KnownFFProbePath = $FFProbeInProgramFiles.Source
                 return $script:KnownFFProbePath
@@ -49,4 +49,4 @@
 
         throw "Cannot find FFProbe"
     }
-}    
+}

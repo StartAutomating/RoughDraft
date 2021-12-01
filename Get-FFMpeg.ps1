@@ -38,11 +38,11 @@
     }
 
     if ($env:ProgramFiles) {
-        $ffMpegInProgramFiles = 
+        $ffMpegInProgramFiles =
             $ExecutionContext.SessionState.InvokeCommand.GetCommand((
                 Join-Path (Join-Path (Join-Path $env:ProgramFiles ffmpeg) 'bin') 'ffmpeg.exe'
             ), 'Application')
-    
+
         if ($ffMpegInProgramFiles) {
             $script:KnownFFMpegPath = $ffMpegInProgramFiles.Source
             return $script:KnownFFMpegPath

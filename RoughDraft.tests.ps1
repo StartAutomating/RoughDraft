@@ -130,13 +130,13 @@ describe Join-Media {
         @(
             New-Media -TestSource rgbtestsrc -Duration "00:00:30" -OutputPath $videoTmpPath
             New-Media -Sine -Duration "00:00:15" -OutputPath $audioTmpPath
-        ) | Join-Media -OutputPath $avTmpPath -Shortest | 
-            Get-Media | 
+        ) | Join-Media -OutputPath $avTmpPath -Shortest |
+            Get-Media |
             Select-Object -ExpandProperty Duration |
-            Select-Object -ExpandProperty Seconds | 
+            Select-Object -ExpandProperty Seconds |
             Should -Be 15
 
-        
+
         Remove-Item $avTmpPath
         Remove-Item $audioTmpPath
         Remove-Item $videoTmpPath
@@ -156,7 +156,7 @@ describe Join-Media {
 
         @(
             New-Media -TestSource rgbtestsrc -Duration "00:00:30" -OutputPath $videoTmpPaths[0]
-            New-Media -TestSource rgbtestsrc -Duration "00:00:30" -OutputPath $videoTmpPaths[1] 
+            New-Media -TestSource rgbtestsrc -Duration "00:00:30" -OutputPath $videoTmpPaths[1]
         ) | Join-Media -OutputPath $videoTmpPaths[2] |
             Get-Media |
             Select-Object -ExpandProperty Duration |
@@ -165,7 +165,7 @@ describe Join-Media {
 
         @(
             New-Media -sine -Duration "00:00:15" -OutputPath $audioTmpPaths[0]
-            New-Media -sine -Duration "00:00:45" -OutputPath $audioTmpPaths[1] 
+            New-Media -sine -Duration "00:00:45" -OutputPath $audioTmpPaths[1]
         ) | Join-Media -OutputPath $audioTmpPaths[2]  |
             Get-Media |
             Select-Object -ExpandProperty Duration |
