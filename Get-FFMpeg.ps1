@@ -30,8 +30,10 @@
 
     process {
         if ($PSCmdlet.ParameterSetName -ne 'GetFFMpegPath') {
+            $ffmpeg = Get-FFMpeg -FFMpegPath $FFMpegPath
             #region Handle Extensions
             $PSBoundParameters['InputPath'] = "$in"
+            do {
             Use-RoughDraftExtension -CommandName $myCmd -CanRun -ExtensionParameter (@{} + $PSBoundParameters) |
                 . { process {
                     $ext = $_
@@ -42,8 +44,9 @@
                         }
                     }
                     . $ext.ExtensionCommand @ExtensionParameter
-                    continue nextFile
+                    break
                 } }
+            } while (0)
             #endregion Handle Extensions
             return
         }
