@@ -6,17 +6,18 @@
 #>
 # It's an extension
 [Runtime.CompilerServices.Extension()]
-# that extends Get-Media            
-[Management.Automation.Cmdlet("Get","Media")]
+# that extends Get-FFMpeg
+[Management.Automation.Cmdlet("Get","FFMpeg")]
 # that is not inherited.
 [ComponentModel.Inheritance("NotInherited")]
 param(
 [Parameter(Mandatory)]
+[Alias('ListFilters')]
 [Switch]
 $ListFilter
 )
 
-& $ffmpeg -hide_banner -filters 2>&1 |    
+Use-FFMpeg -FFMpegArgument '-hide_banner', '-filters' |    
     ForEach-Object {
         $parts = $_ -split " {1,}" -ne ''
         if (-not $parts) { return } 
@@ -41,7 +42,8 @@ $ListFilter
             SupportsCommands       = $SupportsCommands
             SupportsTimeline       = $SupportsTimeline
             SupportsSliceThreading = $SupportsSliceThreading            
-        }        
+        }
+                
         [PSCustomObject]$filterInfo
     } |
     Sort-Object FilterType
