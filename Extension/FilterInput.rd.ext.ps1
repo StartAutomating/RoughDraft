@@ -11,9 +11,15 @@
 # that is not inherited.
 [ComponentModel.Inheritance("NotInherited")]
 param(
+# If set, will get filter inputs for a given filter name
 [Parameter(Mandatory,ValueFromPipelineByPropertyName)]
 [string]
-$FilterName
+$FilterName,
+
+# If set, will get filter inputs for a given filter name
+[Parameter(Mandatory,ValueFromPipelineByPropertyName)]
+[switch]
+$FilterInput
 )
 
 if (-not $script:CachedFFMpegHelp) {
