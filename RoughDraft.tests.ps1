@@ -210,6 +210,17 @@ describe New-Media {
             Should -BeLike "00:00:05*"
         Remove-Item $tmpOutPath
     }
+
+    it 'Can make a fractal' {
+        $tmpOutPath = Join-Path ([IO.Path]::GetTempPath()) "mandelbrot$(Get-Random).mp4"
+        New-Media -Mandelbrot -OutputPath $tmpOutPath -Duration "00:00:05" |
+            Get-Media |
+            Select-Object -ExpandProperty Duration |
+            Select-Object -ExpandProperty Seconds |
+            Should -Be 5
+
+        Remove-Item $tmpOutPath
+    }
 }
 
 

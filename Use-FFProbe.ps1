@@ -1,4 +1,4 @@
-﻿function Uses-FFProbe
+﻿function Use-FFProbe
 {
     <#
     .Synopsis

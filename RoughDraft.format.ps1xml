@@ -131,6 +131,82 @@ $($ParentNode.CustomControl.CustomEntries.CustomEntry.CustomItem.ExpressionBindi
         </TableRowEntries>
       </TableControl>
     </View>
+    <View>
+      <Name>RoughDraft.FFMpeg.Filter</Name>
+      <ViewSelectedBy>
+        <TypeName>RoughDraft.FFMpeg.Filter</TypeName>
+      </ViewSelectedBy>
+      <GroupBy>
+        <ScriptBlock> "| - Source : V - Video Filter : A - Audio Filter : N - Dynamic Number of Inputs" </ScriptBlock>
+        <Label>Filter Types </Label>
+      </GroupBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+          </TableColumnHeader>
+          <TableColumnHeader>
+          </TableColumnHeader>
+          <TableColumnHeader>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <Wrap />
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>FilterName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>FilterType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Description</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>RoughDraft.FFMpeg.FilterInput</Name>
+      <ViewSelectedBy>
+        <TypeName>RoughDraft.FFMpeg.FilterInput</TypeName>
+      </ViewSelectedBy>
+      <GroupBy>
+        <PropertyName>FilterName</PropertyName>
+      </GroupBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Alignment>left</Alignment>
+            <Width>15</Width>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>left</Alignment>
+            <Width>15</Width>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>left</Alignment>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <Wrap />
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>InputName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>InputType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Description</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
   </ViewDefinitions>
   <Controls>
     <Control>

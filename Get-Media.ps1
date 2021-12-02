@@ -65,7 +65,7 @@
     # The number of times to retry reading the file.
     [Parameter(ParameterSetName='Probe')]
     [int]
-    $ProbeTryCount = 3,
+    $ProbeTryCount = 5,
 
     # If set, will run this in a background job
     [Switch]
@@ -86,9 +86,10 @@
         if ($AsJob) { # If -AsJob was passed,
             return & $StartRoughDraftJob # start a background job.
         }
-        if ($InputPath) {
-            $allInputsFiles.AddRange($InputPath)
-        } else {
+        if ($InputPath) { # If we have one or more -InputPaths
+            $allInputsFiles.AddRange($InputPath) # add them to the list.
+        } else { 
+            # If we have no input add the files in the current directory.
             $allInputsFiles.AddRange((Get-ChildItem -File | Select-Object -ExpandProperty Fullname))
         }
     }
@@ -191,6 +192,7 @@
                         try {
                             $jsonOutput | ConvertFrom-Json -ErrorAction Stop
                         } catch {
+                            Start-Sleep -Milliseconds 50
                             $tries--
                         }
                 }

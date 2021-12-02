@@ -6,8 +6,8 @@
 #>
 # It's an extension
 [Runtime.CompilerServices.Extension()]
-# that extends Get-Media            
-[Management.Automation.Cmdlet("Get","Media")]
+# that extends Get-FFMpeg            
+[Management.Automation.Cmdlet("Get","FFMpeg")]
 # that is not inherited.
 [ComponentModel.Inheritance("NotInherited")]
 param(

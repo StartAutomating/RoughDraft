@@ -31,7 +31,7 @@
 
     process {
         #region Find FFPlay
-        $FFPlay = & $findFFPlay -FFPlayPath $FFPlayPath
+        $FFPlay = Get-FFPlay -FFPlayPath $FFPlayPath
         if (-not $FFPlay) {return}
         #endregion Find FFPlay
         #region Handle -AsJob
