@@ -108,6 +108,9 @@
                                 $allDynamicParameters[$kv.Key].ParameterType = [PSObject]
                             }
                             foreach ($attr in $kv.Value.Attributes) {
+                                if ($allDynamicParameters[$kv.Key].Attributes.Contains($attr)) {
+                                    continue
+                                }
                                 $allDynamicParameters[$kv.Key].Attributes.Add($attr)
                             }
                         } else {
