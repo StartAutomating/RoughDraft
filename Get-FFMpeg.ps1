@@ -9,8 +9,13 @@
         Get-FFMpeg
     .Link
         Use-FFMpeg
+    .Link
+        Get-RoughDraftExtension
+    .Link
+        Use-RoughDraftExtension
     #>
     [Outputtype([string])]
+    [CmdletBinding(DefaultParameterSetName='GetFFMpegPath')]
     param(
     # The path to FFMpeg
     [Parameter(ValueFromPipelineByPropertyName)]
@@ -18,36 +23,62 @@
     $FFMpegPath
     )
 
-    if ($script:KnownFFMpegPath) {
-        return $script:KnownFFMpegPath
+    dynamicParam {
+        $myCmd = $MyInvocation.MyCommand
+        Use-RoughDraftExtension -CommandName $myCmd -DynamicParameter
     }
 
-
-    if ($ffMpegPath) {
-        $ffMpegAtPath = $ExecutionContext.SessionState.InvokeCommand.GetCommand($ffMpegPath, 'Application')
-        if ($ffMpegAtPath) {
-            $script:KnownFFMpegPath = $ffMpegAtPath.Source
+    process {
+        if ($PSCmdlet.ParameterSetName -ne 'GetFFMpegPath') {
+            #region Handle Extensions
+            $PSBoundParameters['InputPath'] = "$in"
+            Use-RoughDraftExtension -CommandName $myCmd -CanRun -ExtensionParameter (@{} + $PSBoundParameters) |
+                . { process {
+                    $ext = $_
+                    $ExtensionParameter = ([Ordered]@{})
+                    foreach ($kv in $ext.ExtensionParameter.getEnumerator()) {
+                        if ($ext.ExtensionCommand.Parameters[$kv.Key]) {
+                            $ExtensionParameter[$kv.Key] = $kv.Value
+                        }
+                    }
+                    . $ext.ExtensionCommand @ExtensionParameter
+                    continue nextFile
+                } }
+            #endregion Handle Extensions
+            return
+        }
+        if ($script:KnownFFMpegPath) {
             return $script:KnownFFMpegPath
         }
-    }
 
-    $ffMpegInPath = $ExecutionContext.SessionState.InvokeCommand.GetCommand('ffmpeg', 'Application')
-    if ($ffMpegInPath) {
-        $script:KnownFFMpegPath = $ffMpegInPath.Source
-        return $script:KnownFFMpegPath
-    }
 
-    if ($env:ProgramFiles) {
-        $ffMpegInProgramFiles =
-            $ExecutionContext.SessionState.InvokeCommand.GetCommand((
-                Join-Path (Join-Path (Join-Path $env:ProgramFiles ffmpeg) 'bin') 'ffmpeg.exe'
-            ), 'Application')
+        if ($ffMpegPath) {
+            $ffMpegAtPath = $ExecutionContext.SessionState.InvokeCommand.GetCommand($ffMpegPath, 'Application')
+            if ($ffMpegAtPath) {
+                $script:KnownFFMpegPath = $ffMpegAtPath.Source
+                return $script:KnownFFMpegPath
+            }
+        }
 
-        if ($ffMpegInProgramFiles) {
-            $script:KnownFFMpegPath = $ffMpegInProgramFiles.Source
+        $ffMpegInPath = $ExecutionContext.SessionState.InvokeCommand.GetCommand('ffmpeg', 'Application')
+        if ($ffMpegInPath) {
+            $script:KnownFFMpegPath = $ffMpegInPath.Source
             return $script:KnownFFMpegPath
         }
-    }
 
-    throw "Cannot find ffmpeg"
+        if ($env:ProgramFiles) {
+            $ffMpegInProgramFiles =
+                $ExecutionContext.SessionState.InvokeCommand.GetCommand((
+                    Join-Path (Join-Path (Join-Path $env:ProgramFiles ffmpeg) 'bin') 'ffmpeg.exe'
+                ), 'Application')
+
+            if ($ffMpegInProgramFiles) {
+                $script:KnownFFMpegPath = $ffMpegInProgramFiles.Source
+                return $script:KnownFFMpegPath
+            }
+        }
+    
+
+        throw "Cannot find ffmpeg"
+    }
 }
