@@ -1,0 +1,1 @@
+﻿Write-FormatView -TypeName RoughDraft.FFMpeg.Filter -Property FilterName, FilterType, Description -Wrap -GroupLabel "Filter Types " -GroupByScript { "| - Source : V - Video Filter : A - Audio Filter : N - Dynamic Number of Inputs" }
