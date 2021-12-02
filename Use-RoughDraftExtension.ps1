@@ -26,7 +26,7 @@
     param(
     # The path to a rough draft extension
     [Parameter(ValueFromPipelineByPropertyName)]
-    [ValidatePattern('\.RoughDraft\.(extension|ext)\.ps1$')]
+    [ValidatePattern('\.(rd|RoughDraft)\.(extension|ext)\.ps1$')]
     [Alias('Source','Fullname')]
     [string]
     $ExtensionPath,
