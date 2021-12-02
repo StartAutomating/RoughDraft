@@ -65,7 +65,7 @@
     # The number of times to retry reading the file.
     [Parameter(ParameterSetName='Probe')]
     [int]
-    $ProbeTryCount = 3,
+    $ProbeTryCount = 5,
 
     # If set, will run this in a background job
     [Switch]
@@ -192,6 +192,7 @@
                         try {
                             $jsonOutput | ConvertFrom-Json -ErrorAction Stop
                         } catch {
+                            Start-Sleep -Milliseconds 50
                             $tries--
                         }
                 }
