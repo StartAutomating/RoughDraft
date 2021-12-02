@@ -1,6 +1,6 @@
 @{
     CompanyName='Start-Automating'
-    ModuleVersion='0.2'
+    ModuleVersion='0.2.1'
     ModuleToProcess='RoughDraft.psm1'
     GUID='c192ebbf-57a3-493e-bc82-da7553038794'
     Description='A Fun PowerShell Module for Multimedia'
@@ -16,7 +16,15 @@ PrivateData = @{
             IconURI    = 'https://github.com/StartAutomating/RoughDraft/blob/main/Assets/RoughDraft.png'
         }
         ReleaseNotes = @'
-0.0.2:
+0.2.1:
+---
+* Adding Mandelbrot Extension (for New-Media)
+* Making Get-FFMpeg extensible
+* Making -Codecs/-ListCaptureDevice extensions for Get-FFMpeg
+* Adding ListFilters and FilterInput extensions for Get-FFMpeg
+* Internal refactoring and minor bugfixes.
+
+0.2:
 ---
 Publishing code on GitHub
 Refactoring module with an emphasis on extensibility
