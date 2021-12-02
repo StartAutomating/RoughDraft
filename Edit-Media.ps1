@@ -151,7 +151,7 @@
         if ($Codec) {
 
             $foundSeparator = $false
-            $codecList = Get-Media -ListCodec
+            $codecList = Get-FFMpeg -ListCodec
 
             $matchingCodec = $codecList | Where-Object {$_.Codec -like $codec -or $_.FullName -like $codec } | Select-Object -First 1
 
