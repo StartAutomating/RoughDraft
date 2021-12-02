@@ -88,8 +88,8 @@
         }
         if ($InputPath) { # If we have one or more -InputPaths
             $allInputsFiles.AddRange($InputPath) # add them to the list.
-        } elseif ($PSCmdlet.ParameterSetName -eq 'Probe') { 
-            # If we have no input, and we're not looking for something else entirely, add the files in the current directory.
+        } else { 
+            # If we have no input add the files in the current directory.
             $allInputsFiles.AddRange((Get-ChildItem -File | Select-Object -ExpandProperty Fullname))
         }
     }
