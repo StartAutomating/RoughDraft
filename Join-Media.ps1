@@ -66,24 +66,25 @@
         $inputList = @()
         $inputMedia = [Ordered]@{}        
         $ffmpegConvertProcess = {
+            $line = $_
             if ($_ -like "*time=*" -and $_ -like "*bitrate=*") {
                 Write-Verbose "$_"
                 
-                $lineChunks = $_.Tostring() -split "[ =]" -ne '' | Where-Object { $_.Trim() }
-                $lineData = New-Object PSObject
-                for ($i =0; $i -lt $lineChunks.Count; $i+=2) {
-                    $lineData |Add-Member NoteProperty $lineChunks[$i].TrimEnd("=") $lineChunks[$i + 1] -Force
+                $progress = $line | & ${?<FFMpeg_Progress>} -Extract                        
+                if ($progress -and 
+                    $progress.Time.Totalmilliseconds -and 
+                    $theDuration.TotalMilliseconds
+                ) {
+                    $perc = $progress.Time.TotalMilliseconds * 100 / $theDuration.TotalMilliseconds
+                    $frame, $speed, $bitrate  = $progress.FrameNumber, $progress.Speed, $progress.Bitrate
+                    if ($perc -gt 100) { $perc = 100 }
+                    $progressMessage = 
+                        @("$($progress.Time)".Substring(0,8), "$theDuration".Substring(0,8) -join '/'
+                            "Frame: $frame","Speed $speed","Bitrate $bitrate" -join ' - '
+                        ) -join ' '                        
+                    $timeLeft = $theDuration - $progress.Time                            
+                    Write-Progress "Encoding $uro" $progressMessage -PercentComplete $perc -Id $Id -SecondsRemaining $timeLeft.TotalSeconds
                 }
-
-                $time = $lineData.Time -as [Timespan]
-                if ($theDuration) {
-                    $progSplat.PercentComplete = $time.TotalMilliseconds * 100 / $theDuration.TotalMilliseconds
-                } else {
-                    $progSplat.Remove('PercentComplete')
-                }
-
-                Write-Progress "Encoding" "$lineData".TrimStart("@{").TrimEnd("}") -Id $id
-
             } else {
                 Write-Verbose "$_"
             }
@@ -153,10 +154,12 @@
                 if ($Transcode) {
                     if ($isAllVideo) {
                         $tempFile = [IO.Path]::GetTempPath() + "$(Get-Random).mp4"
+                        $theDuration = $inputMedia[$in].Duration
                         & $ffmpeg -i $in "-qscale:v" 1 $tempFile -y 2>&1 |
                             ForEach-Object $ffmpegConvertProcess -End $ffmpegConvertEnd
                     } else {
                         $tempFile = [IO.Path]::GetTempPath() + "$(Get-Random).mp3"
+                        $theDuration = $inputMedia[$in].Duration
                         & $ffmpeg -i $in $tempFile -y 2>&1 |
                             ForEach-Object $ffmpegConvertProcess -End $ffmpegConvertEnd
                     }
@@ -185,6 +188,11 @@
 
             $uro = $ExecutionContext.SessionState.Path.GetUnresolvedProviderPathFromPSPath($outputPath)
 
+            $totalDuration =0
+            foreach ($inputMediaItem in $inputMedia[$inputList]) {
+                $totalDuration += $inputMediaItem.Duration.TotalMilliseconds
+            }
+            $theDuration = [Timespan]::FromMilliseconds($totalDuration)
 
 
             & $ffmpeg @ffMpegParams $uro -y 2>&1 |
@@ -261,7 +269,7 @@
             $ffMpegParams += $uro
             $ffMpegParams += '-y'
             & $ffmpeg @ffmpegParams 2>&1 |
-                ForEach-Object -Begin $ffMpegConvertStart $ffmpegConvertProcess -End $ffmpegConvertEnd
+                ForEach-Object $ffmpegConvertProcess -End $ffmpegConvertEnd
 
             Get-Item -Path $uro -ErrorAction SilentlyContinue
         }
@@ -286,10 +294,8 @@
 
             $theDuration = [TimeSpan]::FromSeconds($inputList.Count / $frameRate)
 
-           # $tBlend = @('-filter:v', 'tblend')
-
             & $FFMpeg -framerate $FrameRate -i "$temproot$([IO.Path]::DirectorySeparatorChar)image-%d.$extension" -pix_fmt $PixelFormat -y $uro 2>&1  |
-                ForEach-Object -Begin $ffMpegConvertStart $ffmpegConvertProcess -End $ffmpegConvertEnd
+                ForEach-Object $ffmpegConvertProcess -End $ffmpegConvertEnd
 
             Get-Item -Path $uro -ErrorAction SilentlyContinue
 
