@@ -12,6 +12,7 @@
 [Management.Automation.Cmdlet("Edit","Media")]
 param(
 # If set, will emboss an image
+[Parameter(Mandatory)]
 [switch]
 $Emboss
 )
