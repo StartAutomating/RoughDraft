@@ -24,12 +24,12 @@ Matches Progress Lines in FFMpeg output
     Write-RegEx -CharacterClass Whitespace -Min 0 -Comment "Followed by the Time" |
     Write-RegEx -Pattern bitrate= -Comment "bitrate=" |
     Write-RegEx -CharacterClass Whitespace -Min 0 |
-    Write-RegEx -Name Bitrate -Pattern "[\d\.]+" |
+    Write-RegEx -Name Bitrate -Pattern "[\d\.exN/A]+" |
     Write-RegEx -Pattern 'kbits/s' |     
     Write-RegEx -CharacterClass Whitespace -Min 0 -Comment "Followed by the Bitrate" |
     Write-RegEx -Pattern speed= -Comment "speed=" |
     Write-RegEx -CharacterClass Whitespace -Min 0 |
-    Write-RegEx -Name Speed -Pattern "[\d\.]+" |
+    Write-RegEx -Name Speed -Pattern "[\d\.N/A+]+" |
     Write-RegEx -Pattern 'x' |     
     Write-RegEx -CharacterClass Whitespace -Min 0 -Comment "Followed by the Speed" |#>
     Set-Content -Path (Join-Path $myRoot $myName) -Encoding UTF8 -PassThru
