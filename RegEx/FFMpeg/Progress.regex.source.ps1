@@ -3,9 +3,9 @@ $myRoot = $MyInvocation.MyCommand.ScriptBlock.File | Split-Path
 Write-RegEx -Description @'
 Matches Progress Lines in FFMpeg output
 '@  -StartAnchor LineStart -Pattern "frame=" -Comment "frame=" |
-    Write-RegEx -CharacterClass Whitespace -Repeat |
+    Write-RegEx -CharacterClass Whitespace -Min 0 |
     Write-RegEx -Name FrameNumber -CharacterClass Digit -Repeat |
-    Write-RegEx -CharacterClass Whitespace -Repeat -Comment "Followed by the Frame Number" |
+    Write-RegEx -CharacterClass Whitespace -Min 0 -Comment "Followed by the Frame Number" |
     Write-RegEx -Pattern fps= -Comment "fps="|
     Write-RegEx -CharacterClass Whitespace -Min 0 |
     Write-RegEx -Name FramesPerSecond (

@@ -1,6 +1,6 @@
 ﻿# Matches Progress Lines in FFMpeg output
 ^frame=                                # frame=
-\s+(?<FrameNumber>\d+)\s+              # Followed by the Frame Number
+\s{0,}(?<FrameNumber>\d+)\s{0,}        # Followed by the Frame Number
 fps=                                   # fps=
 \s{0,}(?<FramesPerSecond>[\d\.]+)\s+   # Followed by Frames Per Second
 q=                                     # q=
