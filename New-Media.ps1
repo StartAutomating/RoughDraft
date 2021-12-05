@@ -76,16 +76,24 @@
 
         $allFffMpegArgs = @('-hide_banner') +  $ffmpegArgs + $FilterParams + $ffEndArgs
         $progressId = Get-Random
+        $theDuration = $Duration
         Use-FFMpeg -FFMpegPath $ffMpegPath -FFMpegArgument $allFffMpegArgs |
             & { process {
                 $line = $_
-                $lineProgress = $line | & ${?<FFMpeg_Progress>} -Extract
-                if ($lineProgress -and $lineProgress.Time -and $Duration) {
-                    $perc = $lineProgress.Time.TotalMilliseconds * 100/ $duration.TotalMilliseconds
-                    Write-Progress "Creating" "$OutputPath " -PercentComplete $perc -Id $progressId
+                $Progress = $line | & ${?<FFMpeg_Progress>} -Extract
+                if ($Progress -and $Progress.Time -and $TheDuration) {
+                    $perc = $Progress.Time.TotalMilliseconds * 100/ $duration.TotalMilliseconds
+                    if ($perc -gt 100) { $perc = 100}
+                    $frame, $speed, $bitrate  = $progress.FrameNumber, $progress.Speed, $progress.Bitrate
+                    $progressMessage = 
+                        @("$($progress.Time)".Substring(0,8), "$theDuration".Substring(0,8) -join '/'
+                            "Frame: $frame","Speed $speed","Bitrate $bitrate" -join ' - '
+                        ) -join ' '                        
+                    $timeLeft = $theDuration - $progress.Time
+                    Write-Progress "Creating $OutputPath" $progressMessage -PercentComplete $perc -Id $progressId  -SecondsRemaining $timeLeft.TotalSeconds
                 }
                 Write-Verbose "$_ "
-            } }
+            }}
 
         Write-Progress "Creating" "$OutputPath " -Completed -Id $progressId
         Get-Item -Path $uro -ErrorAction SilentlyContinue

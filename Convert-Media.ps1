@@ -372,20 +372,21 @@
                     process {
                         $line = $_
                         $lines += $line
-                        $progress = $line | & ${?<FFMpeg_Progress>} -Extract
-                        $progressTime =
-                            if ($progress) {
-                                $progress.Time
-                            } else {
-                                $null
-                            }
-                        if ($progress) {
-                            if ($progress -and $progressTime -and $progressTime.Totalmilliseconds -ge 0) {
-                                $perc = $progressTime.TotalMilliseconds * 100 / $theDuration.TotalMilliseconds
-                                $frame, $speed, $bitrate  = $progress.FrameNumber, $progress.Speed, $progress.Bitrate
-                                if ($perc -gt 100) { $perc = 100 }
-                                Write-Progress "$ri -> $uro" "$("$progressTime".Substring(0,8))/$("$theDuration".Substring(0,8)) Frame: $frame - Speed $speed - Bitrate $bitrate" -PercentComplete $perc -Id $ProgId
-                            }
+                        $progress = $line | & ${?<FFMpeg_Progress>} -Extract                        
+                        if ($progress -and 
+                            $progress.Time.Totalmilliseconds -and 
+                            $theDuration.TotalMilliseconds
+                        ) {
+                            $perc = $progress.Time.TotalMilliseconds * 100 / $theDuration.TotalMilliseconds
+                            $frame, $speed, $bitrate  = $progress.FrameNumber, $progress.Speed, $progress.Bitrate
+                            if ($perc -gt 100) { $perc = 100 }
+                            $progressMessage = 
+                                @("$($progress.Time)".Substring(0,8), "$theDuration".Substring(0,8) -join '/'
+                                    "Frame: $frame","Speed $speed","Bitrate $bitrate" -join ' - '
+                                ) -join ' '                        
+                            $timeLeft = $theDuration - $progress.Time
+                            $progressMsg = "$("$($progress.Time)".Substring(0,8))/$("$theDuration".Substring(0,8)) Frame: $frame - Speed $speed - Bitrate $bitrate"
+                            Write-Progress "$ri -> $uro" $progressMessage -PercentComplete $perc -Id $ProgId -SecondsRemaining $timeLeft.TotalSeconds
                         }
                         Write-Verbose "$line"
                     }

@@ -90,19 +90,25 @@
         $progId = Get-Random
         $processFFMpegOutput =
             {
-                if ($_ -like "*time=*" -and $_ -like "*bitrate=*" -and $mediaInfo.Duration) {
-                    $lineChunks = $_.Tostring() -split "[ =]" -ne '' | Where-Object { $_.Trim() }
-                    $lineData = New-Object PSObject
-                    for ($i =0; $i -lt $lineChunks.Count; $i+=2) {
-                        $lineData |Add-Member NoteProperty $lineChunks[$i].TrimEnd("=") $lineChunks[$i + 1] -Force
-                    }
-
-
-                    $time = $lineData.Time -as [Timespan]
-                    $perc = $time.TotalMilliseconds * 100 / $mediaInfo.Duration.TotalMilliseconds
-                    if ($perc -ge 100) { $perc = 100 }
-                    Write-Progress "Encoding $ri" "$lineData".TrimStart("@{").TrimEnd("}") -PercentComplete $perc -id $progId
-                } else {
+                $line = $_
+                $progress = $line | & ${?<FFMpeg_Progress>} -Extract                        
+                if ($progress -and 
+                    $progress.Time.Totalmilliseconds -and 
+                    $theDuration.TotalMilliseconds
+                ) {
+                    $perc = $progress.Time.TotalMilliseconds * 100 / $theDuration.TotalMilliseconds
+                    $frame, $speed, $bitrate  = $progress.FrameNumber, $progress.Speed, $progress.Bitrate
+                    if ($perc -gt 100) { $perc = 100 }
+                    $progressMessage = 
+                        @("$($progress.Time)".Substring(0,8), "$theDuration".Substring(0,8) -join '/'
+                            "Frame: $frame","Speed $speed","Bitrate $bitrate" -join ' - '
+                        ) -join ' '                        
+                    $timeLeft = $theDuration - $progress.Time
+                    $progressMsg = "$("$($progress.Time)".Substring(0,8))/$("$theDuration".Substring(0,8)) Frame: $frame - Speed $speed - Bitrate $bitrate"
+                    Write-Progress "$ri -> $uro" $progressMessage -PercentComplete $perc -Id $ProgId -SecondsRemaining $timeLeft.TotalSeconds
+                    Write-Verbose "$_"
+                }
+                else {
                     if ($_ -like "*error*" -or $_ -like "*unable*" -or $inErrorState) {
                         $inErrorState = $true
                         $ErrorList += "$_".Trim()
@@ -146,6 +152,7 @@
         $mediaInfo = Get-Media -InputPath $ri
         if (-not $start) { $start = [Timespan]::FromMilliseconds(0) }
         if (-not $end -and $mediaInfo.Duration)   { $end = $MediaInfo.Duration }
+        $theDuration = $End - $Start
         $ffmpegParams = @()
 
         if ($Codec) {
