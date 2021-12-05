@@ -142,7 +142,7 @@
             $inputItem = Get-Item -LiteralPath $ri
             $paramSetShortName =
                 ($PSCmdlet.ParameterSetName -split "\$([IO.Path]::DirectorySeparatorChar)")[-1] -replace
-                '\.RoughDraft\.(ext|extension)\.ps1$'
+                '\.(rd|RoughDraft)\.(ext|extension)\.ps1$'
             $OutputPath = $inputItem.Fullname.Substring(0, $inputItem.FullName.Length - $inputItem.Extension.Length) + "_$paramSetShortName" + $inputItem.Extension
         }
         $uro = $ExecutionContext.SessionState.Path.GetUnresolvedProviderPathFromPSPath($OutputPath)
