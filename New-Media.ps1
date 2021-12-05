@@ -75,12 +75,19 @@
         #endregion Handle Extensions
 
         $allFffMpegArgs = @('-hide_banner') +  $ffmpegArgs + $FilterParams + $ffEndArgs
-
+        $progressId = Get-Random
         Use-FFMpeg -FFMpegPath $ffMpegPath -FFMpegArgument $allFffMpegArgs |
             & { process {
+                $line = $_
+                $lineProgress = $line | & ${?<FFMpeg_Progress>} -Extract
+                if ($lineProgress -and $lineProgress.Time -and $Duration) {
+                    $perc = $lineProgress.Time.TotalMilliseconds * 100/ $duration.TotalMilliseconds
+                    Write-Progress "Creating" "$OutputPath " -PercentComplete $perc -Id $progressId
+                }
                 Write-Verbose "$_ "
             } }
 
+        Write-Progress "Creating" "$OutputPath " -Completed -Id $progressId
         Get-Item -Path $uro -ErrorAction SilentlyContinue
     }
 }
