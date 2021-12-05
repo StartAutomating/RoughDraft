@@ -45,26 +45,30 @@
 
     # If set, will generate a time lapse.
     # This will assume all inputs are images (skipping individual analysis)
-    [Parameter(Mandatory=$true,ParameterSetName='TimeLapse')]
+    [Parameter(Mandatory,ParameterSetName='TimeLapse')]
     [Alias('StopMotion','IsStopMotion','IsTimeLapse')]
     [Switch]
     $TimeLapse,
 
-    # The pixel format for video and image output.  This maps to the -pix_fmt parameter in ffmpeg. By default, yuv420p.
-    [Parameter(ValueFromPipelineByPropertyName=$true)]
+    # The pixel format for video and image output.  This maps to the -pix_fmt parameter in ffmpeg. By default, yuv420p.    
     [Alias('pix_fmt')]
     [string]
     $PixelFormat = 'yuv420p'
     )
+    
+    dynamicParam {
+        $myCmd = $MyInvocation.MyCommand
+        Use-RoughDraftExtension -CommandName $myCmd -DynamicParameter
+    }
 
     begin {
         $inputPaths = @()
         $inputList = @()
-        $inputMedia = @{}
-        $ffMpegConvertStart = { $progSplat= @{Activity='Encoding'}}
+        $inputMedia = @{}        
         $ffmpegConvertProcess = {
             if ($_ -like "*time=*" -and $_ -like "*bitrate=*") {
                 Write-Verbose "$_"
+                
                 $lineChunks = $_.Tostring() -split "[ =]" -ne '' | Where-Object { $_.Trim() }
                 $lineData = New-Object PSObject
                 for ($i =0; $i -lt $lineChunks.Count; $i+=2) {
@@ -78,27 +82,26 @@
                     $progSplat.Remove('PercentComplete')
                 }
 
-                Write-Progress @progSplat "$lineData".TrimStart("@{").TrimEnd("}") -Id $id
+                Write-Progress "Encoding" "$lineData".TrimStart("@{").TrimEnd("}") -Id $id
 
             } else {
                 Write-Verbose "$_"
             }
         }
         $ffMpegConvertEnd = {
-            Write-Progress @progsplat -Status ' ' -Completed -Id $id
+            Write-Progress "Encoding" -Status ' ' -Completed -Id $id
         }
     }
-    process {
-        #region Find FFMpeg
-        $ffMpeg = Get-FFMpeg -ffMpegPath $ffmpegPath
-        #endregion Find FFMpeg
-
+    process {        
         $inputPaths+=$InputPath
-
-
     }
 
     end  {
+        #region Find FFMpeg
+        $ffMpeg = Get-FFMpeg -ffMpegPath $ffmpegPath
+        if (-not $ffmpeg) { return }
+        #endregion Find FFMpeg
+
         $id = Get-Random
         $t = $inputPaths.Count
         $c = 0
@@ -127,6 +130,21 @@
         $isAllAudio = $audioFiles.Count -eq $inputMedia.Count -and $inputMedia.Count -gt 0
         $isAllImages = $imageFiles.Count -eq $inputMedia.Count -and $inputMedia.Count -gt 0
 
+        do {
+            Use-RoughDraftExtension -CommandName $myCmd -CanRun -ExtensionParameter (@{} + $PSBoundParameters) |
+                . { process {
+                    $ext = $_
+                    $ExtensionParameter = ([Ordered]@{})
+                    foreach ($kv in $ext.ExtensionParameter.getEnumerator()) {
+                        if ($ext.ExtensionCommand.Parameters[$kv.Key]) {
+                            $ExtensionParameter[$kv.Key] = $kv.Value
+                        }
+                    }
+                    . $ext.ExtensionCommand @ExtensionParameter
+                    break
+                } }
+        } while (0)
+
         if ($isAllVideo -or $isAllAudio) {
             if (@($inputMedia.Values | Select-Object -ExpandProperty codecs -Unique).Count -gt 1) {
                 $Transcode = $true
@@ -136,11 +154,11 @@
                     if ($isAllVideo) {
                         $tempFile = [IO.Path]::GetTempPath() + "$(Get-Random).mp4"
                         & $ffmpeg -i $in "-qscale:v" 1 $tempFile -y 2>&1 |
-                            ForEach-Object -Begin $ffMpegConvertStart $ffmpegConvertProcess -End $ffmpegConvertEnd
+                            ForEach-Object $ffmpegConvertProcess -End $ffmpegConvertEnd
                     } else {
                         $tempFile = [IO.Path]::GetTempPath() + "$(Get-Random).mp3"
                         & $ffmpeg -i $in $tempFile -y 2>&1 |
-                            ForEach-Object -Begin $ffMpegConvertStart $ffmpegConvertProcess -End $ffmpegConvertEnd
+                            ForEach-Object $ffmpegConvertProcess -End $ffmpegConvertEnd
                     }
                     $tempFile
                 } else {
@@ -170,7 +188,7 @@
 
 
             & $ffmpeg @ffMpegParams $uro -y 2>&1 |
-                ForEach-Object -Begin $ffMpegConvertStart $ffmpegConvertProcess -End $ffmpegConvertEnd
+                ForEach-Object $ffmpegConvertProcess -End $ffmpegConvertEnd
 
             Get-Item -Path $uro -ErrorAction SilentlyContinue
 
