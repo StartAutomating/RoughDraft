@@ -64,7 +64,7 @@
     begin {
         $inputPaths = @()
         $inputList = @()
-        $inputMedia = @{}        
+        $inputMedia = [Ordered]@{}        
         $ffmpegConvertProcess = {
             if ($_ -like "*time=*" -and $_ -like "*bitrate=*") {
                 Write-Verbose "$_"
