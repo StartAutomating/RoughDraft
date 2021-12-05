@@ -384,8 +384,7 @@
                                 @("$($progress.Time)".Substring(0,8), "$theDuration".Substring(0,8) -join '/'
                                     "Frame: $frame","Speed $speed","Bitrate $bitrate" -join ' - '
                                 ) -join ' '                        
-                            $timeLeft = $theDuration - $progress.Time
-                            $progressMsg = "$("$($progress.Time)".Substring(0,8))/$("$theDuration".Substring(0,8)) Frame: $frame - Speed $speed - Bitrate $bitrate"
+                            $timeLeft = $theDuration - $progress.Time                            
                             Write-Progress "$ri -> $uro" $progressMessage -PercentComplete $perc -Id $ProgId -SecondsRemaining $timeLeft.TotalSeconds
                         }
                         Write-Verbose "$line"
