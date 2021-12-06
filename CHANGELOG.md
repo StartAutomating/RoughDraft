@@ -9,7 +9,7 @@
 |Emboss      |Edit-Media |
 |Monochrome  |Edit-Media |
 |Playlist    |Join-Media |
-|ReverseAudo |Edit-Media |
+|ReverseAudio|Edit-Media |
 |ReverseVideo|Edit-Media |
 |ScrollVideo |Edit-Media |
 |Vignette    |Edit-Media |
