@@ -45,60 +45,64 @@
 
     # If set, will generate a time lapse.
     # This will assume all inputs are images (skipping individual analysis)
-    [Parameter(Mandatory=$true,ParameterSetName='TimeLapse')]
+    [Parameter(Mandatory,ParameterSetName='TimeLapse')]
     [Alias('StopMotion','IsStopMotion','IsTimeLapse')]
     [Switch]
     $TimeLapse,
 
-    # The pixel format for video and image output.  This maps to the -pix_fmt parameter in ffmpeg. By default, yuv420p.
-    [Parameter(ValueFromPipelineByPropertyName=$true)]
+    # The pixel format for video and image output.  This maps to the -pix_fmt parameter in ffmpeg. By default, yuv420p.    
     [Alias('pix_fmt')]
     [string]
     $PixelFormat = 'yuv420p'
     )
+    
+    dynamicParam {
+        $myCmd = $MyInvocation.MyCommand
+        Use-RoughDraftExtension -CommandName $myCmd -DynamicParameter
+    }
 
     begin {
         $inputPaths = @()
         $inputList = @()
-        $inputMedia = @{}
-        $ffMpegConvertStart = { $progSplat= @{Activity='Encoding'}}
+        $inputMedia = [Ordered]@{}        
         $ffmpegConvertProcess = {
+            $line = $_
             if ($_ -like "*time=*" -and $_ -like "*bitrate=*") {
                 Write-Verbose "$_"
-                $lineChunks = $_.Tostring() -split "[ =]" -ne '' | Where-Object { $_.Trim() }
-                $lineData = New-Object PSObject
-                for ($i =0; $i -lt $lineChunks.Count; $i+=2) {
-                    $lineData |Add-Member NoteProperty $lineChunks[$i].TrimEnd("=") $lineChunks[$i + 1] -Force
+                
+                $progress = $line | & ${?<FFMpeg_Progress>} -Extract                        
+                if ($progress -and 
+                    $progress.Time.Totalmilliseconds -and 
+                    $theDuration.TotalMilliseconds
+                ) {
+                    $perc = $progress.Time.TotalMilliseconds * 100 / $theDuration.TotalMilliseconds
+                    $frame, $speed, $bitrate  = $progress.FrameNumber, $progress.Speed, $progress.Bitrate
+                    if ($perc -gt 100) { $perc = 100 }
+                    $progressMessage = 
+                        @("$($progress.Time)".Substring(0,8), "$theDuration".Substring(0,8) -join '/'
+                            "Frame: $frame","Speed $speed","Bitrate $bitrate" -join ' - '
+                        ) -join ' '                        
+                    $timeLeft = $theDuration - $progress.Time                            
+                    Write-Progress "Encoding $uro" $progressMessage -PercentComplete $perc -Id $Id -SecondsRemaining $timeLeft.TotalSeconds
                 }
-
-                $time = $lineData.Time -as [Timespan]
-                if ($theDuration) {
-                    $progSplat.PercentComplete = $time.TotalMilliseconds * 100 / $theDuration.TotalMilliseconds
-                } else {
-                    $progSplat.Remove('PercentComplete')
-                }
-
-                Write-Progress @progSplat "$lineData".TrimStart("@{").TrimEnd("}") -Id $id
-
             } else {
                 Write-Verbose "$_"
             }
         }
         $ffMpegConvertEnd = {
-            Write-Progress @progsplat -Status ' ' -Completed -Id $id
+            Write-Progress "Encoding" -Status ' ' -Completed -Id $id
         }
     }
-    process {
-        #region Find FFMpeg
-        $ffMpeg = Get-FFMpeg -ffMpegPath $ffmpegPath
-        #endregion Find FFMpeg
-
+    process {        
         $inputPaths+=$InputPath
-
-
     }
 
     end  {
+        #region Find FFMpeg
+        $ffMpeg = Get-FFMpeg -ffMpegPath $ffmpegPath
+        if (-not $ffmpeg) { return }
+        #endregion Find FFMpeg
+
         $id = Get-Random
         $t = $inputPaths.Count
         $c = 0
@@ -127,6 +131,21 @@
         $isAllAudio = $audioFiles.Count -eq $inputMedia.Count -and $inputMedia.Count -gt 0
         $isAllImages = $imageFiles.Count -eq $inputMedia.Count -and $inputMedia.Count -gt 0
 
+        do {
+            Use-RoughDraftExtension -CommandName $myCmd -CanRun -ExtensionParameter (@{} + $PSBoundParameters) |
+                . { process {
+                    $ext = $_
+                    $ExtensionParameter = ([Ordered]@{})
+                    foreach ($kv in $ext.ExtensionParameter.getEnumerator()) {
+                        if ($ext.ExtensionCommand.Parameters[$kv.Key]) {
+                            $ExtensionParameter[$kv.Key] = $kv.Value
+                        }
+                    }
+                    . $ext.ExtensionCommand @ExtensionParameter
+                    break
+                } }
+        } while (0)
+
         if ($isAllVideo -or $isAllAudio) {
             if (@($inputMedia.Values | Select-Object -ExpandProperty codecs -Unique).Count -gt 1) {
                 $Transcode = $true
@@ -135,12 +154,14 @@
                 if ($Transcode) {
                     if ($isAllVideo) {
                         $tempFile = [IO.Path]::GetTempPath() + "$(Get-Random).mp4"
+                        $theDuration = $inputMedia[$in].Duration
                         & $ffmpeg -i $in "-qscale:v" 1 $tempFile -y 2>&1 |
-                            ForEach-Object -Begin $ffMpegConvertStart $ffmpegConvertProcess -End $ffmpegConvertEnd
+                            ForEach-Object $ffmpegConvertProcess -End $ffmpegConvertEnd
                     } else {
                         $tempFile = [IO.Path]::GetTempPath() + "$(Get-Random).mp3"
+                        $theDuration = $inputMedia[$in].Duration
                         & $ffmpeg -i $in $tempFile -y 2>&1 |
-                            ForEach-Object -Begin $ffMpegConvertStart $ffmpegConvertProcess -End $ffmpegConvertEnd
+                            ForEach-Object $ffmpegConvertProcess -End $ffmpegConvertEnd
                     }
                     $tempFile
                 } else {
@@ -167,10 +188,15 @@
 
             $uro = $ExecutionContext.SessionState.Path.GetUnresolvedProviderPathFromPSPath($outputPath)
 
+            $totalDuration =0
+            foreach ($inputMediaItem in $inputMedia[$inputList]) {
+                $totalDuration += $inputMediaItem.Duration.TotalMilliseconds
+            }
+            $theDuration = [Timespan]::FromMilliseconds($totalDuration)
 
 
             & $ffmpeg @ffMpegParams $uro -y 2>&1 |
-                ForEach-Object -Begin $ffMpegConvertStart $ffmpegConvertProcess -End $ffmpegConvertEnd
+                ForEach-Object $ffmpegConvertProcess -End $ffmpegConvertEnd
 
             Get-Item -Path $uro -ErrorAction SilentlyContinue
 
@@ -243,7 +269,7 @@
             $ffMpegParams += $uro
             $ffMpegParams += '-y'
             & $ffmpeg @ffmpegParams 2>&1 |
-                ForEach-Object -Begin $ffMpegConvertStart $ffmpegConvertProcess -End $ffmpegConvertEnd
+                ForEach-Object $ffmpegConvertProcess -End $ffmpegConvertEnd
 
             Get-Item -Path $uro -ErrorAction SilentlyContinue
         }
@@ -268,10 +294,8 @@
 
             $theDuration = [TimeSpan]::FromSeconds($inputList.Count / $frameRate)
 
-           # $tBlend = @('-filter:v', 'tblend')
-
             & $FFMpeg -framerate $FrameRate -i "$temproot$([IO.Path]::DirectorySeparatorChar)image-%d.$extension" -pix_fmt $PixelFormat -y $uro 2>&1  |
-                ForEach-Object -Begin $ffMpegConvertStart $ffmpegConvertProcess -End $ffmpegConvertEnd
+                ForEach-Object $ffmpegConvertProcess -End $ffmpegConvertEnd
 
             Get-Item -Path $uro -ErrorAction SilentlyContinue
 
