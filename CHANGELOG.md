@@ -1,4 +1,22 @@
-﻿0.2.1:
+﻿0.2.2:
+---
+* Enhancing support for Progress Bars (Fixing #3)
+* Making Join-Media extensible (Fixing #4)
+* New Extensions:
+|Extension   |Commands   |
+|------------|-----------|
+|DataScope   |Edit-Media |
+|Emboss      |Edit-Media |
+|Monochrome  |Edit-Media |
+|Playlist    |Join-Media |
+|ReverseAudo |Edit-Media |
+|ReverseVideo|Edit-Media |
+|ScrollVideo |Edit-Media |
+|Vignette    |Edit-Media |
+
+---
+
+0.2.1:
 ---
 * Adding Mandelbrot Extension (for New-Media)
 * Making Get-FFMpeg extensible
