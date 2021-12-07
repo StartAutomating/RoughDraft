@@ -1,4 +1,6 @@
-﻿$extensionList = Get-RoughDraftExtension 
+﻿git pull 2>&1 | Out-Host
+
+$extensionList = Get-RoughDraftExtension 
 
 $extensionsMarkdown = @(
     '|' + ("DisplayName","Synopsis","Extends" -join '|') + '|'
