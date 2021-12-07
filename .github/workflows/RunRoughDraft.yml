@@ -1,0 +1,16 @@
+﻿
+name: Run roughdraft scripts
+on: 
+  workflow_dispatch: 
+jobs: 
+  MakeRoughDraft: 
+    runs-on: ubuntu-latest
+    steps: 
+      - name: Check out repository
+        uses: actions/checkout@v2
+      - name: Use RoughDraft Action
+        uses: StartAutomating/RoughDraft@main
+        id: RoughDraft
+        with: 
+          CommitMessage: Running RoughDraft [skip ci]
+
