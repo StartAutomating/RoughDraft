@@ -1,7 +1,7 @@
 ---
 name: Extension Request
 about: Need a RoughDraft Extension?  Tell us more
-title: "[EXTENSION]"
+title: 'Extension Request:'
 labels: enhancement
 assignees: StartAutomating
 

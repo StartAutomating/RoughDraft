@@ -1,7 +1,7 @@
 ---
 name: Bug
 about: What's broken?  Let's get it fixed
-title: "[BUG]"
+title: 'Bug:'
 labels: bug
 assignees: StartAutomating
 

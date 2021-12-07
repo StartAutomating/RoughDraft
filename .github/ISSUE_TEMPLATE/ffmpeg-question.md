@@ -1,7 +1,7 @@
 ---
 name: FFMpeg Question
 about: Need help with FFMpeg?  We can try.
-title: ''
+title: 'FFMpeg Question :'
 labels: question
 assignees: StartAutomating
 
