@@ -100,6 +100,8 @@ runs:
         $UserName
         )
         
+        
+        
         "::group::Parameters" | Out-Host
         [PSCustomObject]$PSBoundParameters | Format-List | Out-Host
         "::endgroup::" | Out-Host
@@ -153,6 +155,8 @@ runs:
         git config --global user.name  $UserName
         
         if (-not $env:GITHUB_WORKSPACE) { throw "No GitHub workspace" }
+        
+        git pull | Out-Host
         
         $roughDraftScriptStart = [DateTime]::Now
         if ($RoughDraftScript) {
