@@ -35,6 +35,8 @@ $UserEmail,
 $UserName
 )
 
+
+
 "::group::Parameters" | Out-Host
 [PSCustomObject]$PSBoundParameters | Format-List | Out-Host
 "::endgroup::" | Out-Host
@@ -62,18 +64,21 @@ if ($PSVersionTable.Platform -eq 'Unix') {
 
 $processScriptOutput = { process { 
     $out = $_
-    $outItem = Get-Item -Path $out -ErrorAction SilentlyContinue 
-    if ($out -is [IO.FileInfo]) {
-        git add $out.FullName
-    } elseif ($outItem) {
-        git add $outItem.FullName
+    $outItem = Get-Item -Path $out -ErrorAction SilentlyContinue
+    $fullName, $shouldCommit = 
+        if ($out -is [IO.FileInfo]) {
+            $out.FullName, (git status $out.Fullname -s)
+        } elseif ($outItem) {
+            $outItem.FullName, (git status $outItem.Fullname -s)
+        }
+    if ($shouldCommit) {
+        git add $fullName
+        if ($out.Message) {
+            git commit -m "$($out.Message)"
+        } elseif ($out.CommitMessage) {
+            git commit -m "$($out.CommitMessage)"
+        }
     }
-    if ($out.Message) {
-        git commit -m "$($out.Message)"
-    } elseif ($out.CommitMessage) {
-        git commit -m "$($out.CommitMessage)"
-    }
-
     $out
 } }
 
@@ -85,6 +90,8 @@ git config --global user.email $UserEmail
 git config --global user.name  $UserName
 
 if (-not $env:GITHUB_WORKSPACE) { throw "No GitHub workspace" }
+
+git pull | Out-Host
 
 $roughDraftScriptStart = [DateTime]::Now
 if ($RoughDraftScript) {
