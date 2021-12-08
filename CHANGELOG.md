@@ -1,4 +1,11 @@
-﻿0.2.2:
+﻿## 0.2.3:
+---
+* New command: Show-Media (#8)
+* Bugfix: Playlist extension no longer adds -Encoding (#13)
+* New Extension:  Sierpinksi fractal (#14)
+---
+
+## 0.2.2:
 ---
 * Enhancing support for Progress Bars (Fixing #3)
 * Making Join-Media extensible (Fixing #4)
@@ -16,7 +23,7 @@
 
 ---
 
-0.2.1:
+## 0.2.1:
 ---
 * Adding Mandelbrot Extension (for New-Media)
 * Making Get-FFMpeg extensible
