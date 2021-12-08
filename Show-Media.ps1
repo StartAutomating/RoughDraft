@@ -43,47 +43,57 @@
     $Volume,
 
     # If set, will run fullscreen
+    [Parameter(ValueFromPipelineByPropertyName)]
     [switch]
     $Fullscreen,
 
     # If set, will keep the player open after the media finishes.
+    [Parameter(ValueFromPipelineByPropertyName)]
     [switch]
     $KeepOpen,
 
     # If set, will not automatically rotate video.
+    [Parameter(ValueFromPipelineByPropertyName)]
     [Alias('NoAutoRotate')]
     [switch]
     $DoNotAutoRotate,
 
     # Set the x position for the left of the window
+    [Parameter(ValueFromPipelineByPropertyName)]
     [int]
     $Left,
 
     # Set the y position for the top of the window
+    [Parameter(ValueFromPipelineByPropertyName)]
     [int]
     $Top,
 
     # If set, will force the displayed width.
+    [Parameter(ValueFromPipelineByPropertyName)]
     [int]
     $Width,
 
     # If set, will force the displayed height.
+    [Parameter(ValueFromPipelineByPropertyName)]
     [int]
     $Height,
 
     # If set, will not display anything.
+    [Parameter(ValueFromPipelineByPropertyName)]
     [switch]
     $NoDisplay,
 
     # If set, will run in a borderless window.
+    [Parameter(ValueFromPipelineByPropertyName)]
     [switch]
     $NoBorder,
 
     # If set, will run in a window that is always on top.
+    [Parameter(ValueFromPipelineByPropertyName)]
     [switch]
     $AlwaysOnTop,
 
-    # The path to FFPlay.  If not provided, this will be automatically detected.
+    # The path to FFPlay.  If not provided, this will be automatically detected.    
     [string]
     $FFPlayPath
     )
