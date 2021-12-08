@@ -13,7 +13,7 @@
     param(
     # The path to FFPlay
     [Parameter(ValueFromPipelineByPropertyName)]
-    $ffplayPath
+    $FFPlayPath
     )
 
     process {
