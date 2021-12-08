@@ -6,7 +6,7 @@
 #>
 # It's an extension
 [Runtime.CompilerServices.Extension()]
-# that extends Join-Media            
+# that extends Edit-Media            
 [Management.Automation.Cmdlet("Edit","Media")]
 # and extends Convert-Media   
 [Management.Automation.Cmdlet("Convert","Media")] 
