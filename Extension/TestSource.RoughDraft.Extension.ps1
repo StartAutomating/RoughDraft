@@ -10,6 +10,8 @@
 [Runtime.CompilerServices.Extension()]
 # that extends New-Media            
 [Management.Automation.Cmdlet("New","Media")]
+# that extends Show-Media            
+[Management.Automation.Cmdlet("Show","Media")]
 param(
 # The name of the test source
 [Parameter(Mandatory)]
