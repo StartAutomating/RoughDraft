@@ -61,7 +61,7 @@ if ($PSVersionTable.Platform -eq 'Unix') {
         "::endgroup::" | Out-Host
     }
 }
-
+$anyFilesChanged = $false
 $processScriptOutput = { process { 
     $out = $_
     $outItem = Get-Item -Path $out -ErrorAction SilentlyContinue
@@ -78,6 +78,7 @@ $processScriptOutput = { process {
         } elseif ($out.CommitMessage) {
             git commit -m "$($out.CommitMessage)"
         }
+        $anyFilesChanged = $true
     }
     $out
 } }
@@ -121,16 +122,24 @@ $roughDraftPS1Took = [Datetime]::Now - $roughDraftPS1Start
 "::set-output name=RoughDraftPS1Count::$($roughDraftPS1List.Length)"   | Out-Host
 "::set-output name=RoughDraftPS1Files::$($roughDraftPS1List -join ';')"   | Out-Host
 "::set-output name=RoughDraftPS1Runtime::$($roughDraftPS1Took.TotalMilliseconds)"   | Out-Host
-if ($CommitMessage) {
-    dir $env:GITHUB_WORKSPACE -Recurse |
-        ForEach-Object {
-            $gitStatusOutput = git status $_.Fullname -s
-            if ($gitStatusOutput) {
-                git add $_.Fullname
+if ($CommitMessage -or $anyFilesChanged) {
+    if ($CommitMessage) {
+        dir $env:GITHUB_WORKSPACE -Recurse |
+            ForEach-Object {
+                $gitStatusOutput = git status $_.Fullname -s
+                if ($gitStatusOutput) {
+                    git add $_.Fullname
+                }
             }
-        }
 
-    git commit -m $ExecutionContext.SessionState.InvokeCommand.ExpandString($CommitMessage)
-    $gitPushed =  git push 2>&1
+        git commit -m $ExecutionContext.SessionState.InvokeCommand.ExpandString($CommitMessage)
+    }
+
+    if ($env:GITHUB_REF_NAME) {
+        $gitPushed =  git push origin head:$env:GITHUB_REF_NAME 2>&1
+    } else {
+        $gitPushed =  git push 2>&1
+    }
+    
     "Git Push Output: $($gitPushed  | Out-String)"
 }
