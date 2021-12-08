@@ -1,4 +1,4 @@
-﻿Write-FormatView -TypeName RoughDraft.Extension -Property DisplayName, Synopsis, Description, Extends, Parameters -VirtualProperty @{        
+﻿Write-FormatView -TypeName RoughDraft.Extension -Property DisplayName, Synopsis, Extends, Parameters -VirtualProperty @{        
     Parameters = {        
         @(foreach ($kv in ([Management.Automation.CommandMetaData]$_).Parameters.GetEnumerator()) {
             @(

@@ -1,6 +1,6 @@
 @{
     CompanyName='Start-Automating'
-    ModuleVersion='0.2.2'
+    ModuleVersion='0.2.3'
     ModuleToProcess='RoughDraft.psm1'
     GUID='c192ebbf-57a3-493e-bc82-da7553038794'
     Description='A Fun PowerShell Module for Multimedia'
@@ -16,6 +16,11 @@ PrivateData = @{
             IconURI    = 'https://github.com/StartAutomating/RoughDraft/blob/main/Assets/RoughDraft.png'
         }
         ReleaseNotes = @'
+## 0.2.3:
+---
+* New command: Show-Media (#8)
+* Bugfix: Playlist extension no longer adds -Encoding (#13)
+* New Extension:  Sierpinksi fractal (#14)
 
 ## 0.2.2:
 ---

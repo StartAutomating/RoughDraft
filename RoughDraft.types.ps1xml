@@ -79,7 +79,7 @@ $this.ScriptBlock
       <ScriptProperty>
         <Name>DisplayName</Name>
         <GetScriptBlock>
-                        $this.Name -replace '\.RoughDraft\.(extension|ext)\.ps1$'
+                        $this.Name -replace '\.(rd|RoughDraft)\.(extension|ext)\.ps1$'
 
                     </GetScriptBlock>
       </ScriptProperty>

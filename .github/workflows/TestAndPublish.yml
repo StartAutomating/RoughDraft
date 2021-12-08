@@ -410,6 +410,8 @@ jobs:
         run: |
           $Parameters = @{}
           $Parameters.ModulePath = ${env:ModulePath}
+          $Parameters.Exclude = ${env:Exclude}
+          $Parameters.Exclude = $parameters.Exclude -split ';' -replace '^[''"]' -replace  '[''"]$'
           foreach ($k in @($parameters.Keys)) {
               if ([String]::IsNullOrEmpty($parameters[$k])) {
                   $parameters.Remove($k)
@@ -418,7 +420,10 @@ jobs:
           Write-Host "::debug:: PublishPowerShellGallery $(@(foreach ($p in $Parameters.GetEnumerator()) {'-' + $p.Key + ' ' + $p.Value}) -join ' ')"
           & {param(
           [string]
-          $ModulePath
+          $ModulePath,
+          
+          [string[]]
+          $Exclude = @('.gif', '.mp4', '.jpg', '.png')
           )
           $gitHubEvent = if ($env:GITHUB_EVENT_PATH) {
               [IO.File]::ReadAllText($env:GITHUB_EVENT_PATH) | ConvertFrom-Json
@@ -476,7 +481,10 @@ jobs:
               Write-Host "Module Files:"
               Get-ChildItem $moduleTempPath -Recurse
               Write-Host "Publishing $moduleName [$($imported.Version)] to Gallery"
+              $publishModuleCommand = Get-Command Publish-Module    
               Publish-Module -Path $moduleTempPath -NuGetApiKey $gk
+              
+              
               if ($?) {
                   Write-Host "Published to Gallery"
               } else {
@@ -485,4 +493,14 @@ jobs:
               }
           }
           } @Parameters
+  MakeRoughDraft: 
+    runs-on: ubuntu-latest
+    steps: 
+      - name: Check out repository
+        uses: actions/checkout@v2
+      - name: Use RoughDraft Action
+        uses: StartAutomating/RoughDraft@main
+        id: RoughDraft
+        with: 
+          CommitMessage: Running RoughDraft [skip ci]
 

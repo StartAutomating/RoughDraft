@@ -39,10 +39,10 @@ if ($audioUniqueDirectories.Count -eq 1 -and $audioUniqueDirectories -eq $output
     $audioInputPaths | 
         Get-Item -LiteralPath { $_ } | 
         Select-Object -ExpandProperty Name | 
-        Set-Content -Encoding UTF8 -Path $OutputPath
+        Set-Content -Path $OutputPath
 } else {
     $audioInputPaths | 
         Get-Item -LiteralPath { $_ } | 
         Select-Object -ExpandProperty Fullname |
-        Set-Content -Encoding UTF8 -Path $OutputPath
+        Set-Content -Path $OutputPath
 }

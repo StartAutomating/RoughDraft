@@ -10,6 +10,8 @@
 [Runtime.CompilerServices.Extension()]
 # that extends New-Media            
 [Management.Automation.Cmdlet("New","Media")]
+# and Show-Media            
+[Management.Automation.Cmdlet("Show","Media")]
 param(
 # If set, will generate life
 [Parameter(Mandatory)]

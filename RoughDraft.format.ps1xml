@@ -15,8 +15,6 @@
           <TableColumnHeader>
           </TableColumnHeader>
           <TableColumnHeader>
-          </TableColumnHeader>
-          <TableColumnHeader>
             <Label>Extends</Label>
           </TableColumnHeader>
           <TableColumnHeader>
@@ -69,9 +67,6 @@ $($ParentNode.CustomControl.CustomEntries.CustomEntry.CustomItem.ExpressionBindi
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>Synopsis</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Description</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <ScriptBlock>

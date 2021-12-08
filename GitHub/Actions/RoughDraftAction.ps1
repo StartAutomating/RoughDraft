@@ -35,6 +35,8 @@ $UserEmail,
 $UserName
 )
 
+
+
 "::group::Parameters" | Out-Host
 [PSCustomObject]$PSBoundParameters | Format-List | Out-Host
 "::endgroup::" | Out-Host
@@ -59,21 +61,25 @@ if ($PSVersionTable.Platform -eq 'Unix') {
         "::endgroup::" | Out-Host
     }
 }
-
+$anyFilesChanged = $false
 $processScriptOutput = { process { 
     $out = $_
-    $outItem = Get-Item -Path $out -ErrorAction SilentlyContinue 
-    if ($out -is [IO.FileInfo]) {
-        git add $out.FullName
-    } elseif ($outItem) {
-        git add $outItem.FullName
+    $outItem = Get-Item -Path $out -ErrorAction SilentlyContinue
+    $fullName, $shouldCommit = 
+        if ($out -is [IO.FileInfo]) {
+            $out.FullName, (git status $out.Fullname -s)
+        } elseif ($outItem) {
+            $outItem.FullName, (git status $outItem.Fullname -s)
+        }
+    if ($shouldCommit) {
+        git add $fullName
+        if ($out.Message) {
+            git commit -m "$($out.Message)"
+        } elseif ($out.CommitMessage) {
+            git commit -m "$($out.CommitMessage)"
+        }
+        $anyFilesChanged = $true
     }
-    if ($out.Message) {
-        git commit -m "$($out.Message)"
-    } elseif ($out.CommitMessage) {
-        git commit -m "$($out.CommitMessage)"
-    }
-
     $out
 } }
 
@@ -85,6 +91,8 @@ git config --global user.email $UserEmail
 git config --global user.name  $UserName
 
 if (-not $env:GITHUB_WORKSPACE) { throw "No GitHub workspace" }
+
+git pull | Out-Host
 
 $roughDraftScriptStart = [DateTime]::Now
 if ($RoughDraftScript) {
@@ -114,16 +122,24 @@ $roughDraftPS1Took = [Datetime]::Now - $roughDraftPS1Start
 "::set-output name=RoughDraftPS1Count::$($roughDraftPS1List.Length)"   | Out-Host
 "::set-output name=RoughDraftPS1Files::$($roughDraftPS1List -join ';')"   | Out-Host
 "::set-output name=RoughDraftPS1Runtime::$($roughDraftPS1Took.TotalMilliseconds)"   | Out-Host
-if ($CommitMessage) {
-    dir $env:GITHUB_WORKSPACE -Recurse |
-        ForEach-Object {
-            $gitStatusOutput = git status $_.Fullname -s
-            if ($gitStatusOutput) {
-                git add $_.Fullname
+if ($CommitMessage -or $anyFilesChanged) {
+    if ($CommitMessage) {
+        dir $env:GITHUB_WORKSPACE -Recurse |
+            ForEach-Object {
+                $gitStatusOutput = git status $_.Fullname -s
+                if ($gitStatusOutput) {
+                    git add $_.Fullname
+                }
             }
-        }
 
-    git commit -m $ExecutionContext.SessionState.InvokeCommand.ExpandString($CommitMessage)
-    $gitPushed =  git push 2>&1
+        git commit -m $ExecutionContext.SessionState.InvokeCommand.ExpandString($CommitMessage)
+    }
+
+    if ($env:GITHUB_REF_NAME) {
+        $gitPushed =  git push origin head:$env:GITHUB_REF_NAME 2>&1
+    } else {
+        $gitPushed =  git push 2>&1
+    }
+    
     "Git Push Output: $($gitPushed  | Out-String)"
 }
