@@ -1,4 +1,9 @@
-﻿## 0.2.3:
+﻿## 0.2.4
+---
+* New Command: Split-Media
+* New Extension: NoAudio (for Split-Media)
+
+## 0.2.3:
 ---
 * New command: Show-Media (#8)
 * Bugfix: Playlist extension no longer adds -Encoding (#13)

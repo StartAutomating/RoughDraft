@@ -249,3 +249,17 @@ describe Set-Media {
         Remove-Item $tmpOutPath2
     }
 }
+
+describe Split-Media {
+    it 'Can Split on a timespan' {
+        $tmpOutPath = Join-Path ([IO.Path]::GetTempPath()) "sine$(Get-Random).mp3"
+        New-Media -Sine -OutputPath $tmpOutPath -Duration "00:00:05" |
+            Split-Media -Start "00:00:02.1230300" -Verbose |
+            Get-Media | 
+            Select-Object -ExpandProperty Duration | 
+            Select-Object -ExpandProperty Seconds |
+            Should -be 2
+
+        Remove-Item $tmpOutPath
+    }
+}

@@ -7,13 +7,15 @@ It provides pipeline-aware command to create, convert, query, edit, and join mul
 The core of RoughDraft are the -Media commands:
 
 |Name         |Description                    |
-|-------------|-------------------------------|
+|:------------|-------------------------------|
 |Convert-Media|Converts media between formats |
 |Edit-Media   |Edits media files              |
 |Get-Media    |Gets media metadata            |
 |Join-Media   |Joins media files              |
 |New-Media    |Creates media files            |
 |Set-Media    |Sets media metadata            |
+|Show-Media   |Shows media files              |
+|Split-Media  |Splits media files             |
 
 These commands are built atop of [FFMpeg](https://ffmpeg.org)
 
@@ -180,6 +182,10 @@ $MyEditExtension
 The following commands can currently be extended:
 
 * Convert-Media
+* Edit-Media
 * Get-FFMpeg
 * Get-Media
-* Edit-Media
+* Join-Media
+* New-Media
+* Show-Media
+* Split-Media

@@ -14,6 +14,7 @@ The core of RoughDraft are the -Media commands:
 |Join-Media   |Joins media files              |
 |New-Media    |Creates media files            |
 |Set-Media    |Sets media metadata            |
+|Show-Media   |Shows media files              |
 
 These commands are built atop of [FFMpeg](https://ffmpeg.org)
 
@@ -180,6 +181,9 @@ $MyEditExtension
 The following commands can currently be extended:
 
 * Convert-Media
+* Edit-Media
 * Get-FFMpeg
 * Get-Media
-* Edit-Media
+* Join-Media
+* New-Media
+* Show-Media

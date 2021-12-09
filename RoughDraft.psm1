@@ -8,6 +8,7 @@ param()
 . $psScriptRoot\New-Media.ps1
 . $psScriptRoot\Set-Media.ps1
 . $psScriptRoot\Show-Media.ps1
+. $psScriptRoot\Split-Media.ps1
 
 . $psScriptRoot\ConvertTo-Gif.ps1
 . $psScriptRoot\ConvertTo-Waveform.ps1
@@ -48,6 +49,4 @@ if ($partsDirectory) { # If we have parts directory
     }
 }
 #endregion Import Parts
-
-
 Export-ModuleMember -Function *-* -Alias *
