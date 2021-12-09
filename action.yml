@@ -201,7 +201,7 @@ runs:
                 git commit -m $ExecutionContext.SessionState.InvokeCommand.ExpandString($CommitMessage)
             }
         
-            if ($env:GITHUB_REF -and $env:GITHUB_REF_TYPE -eq 'branch') {
+            if ($env:GITHUB_REF -and $env:GITHUB_REF_TYPE -eq 'branch' -and $env:GITHUB_BASE_REF -ne $env:GITHUB_REF) {
                 "::notice::Pushing to branch '$env:GITHUB_REF'" | Out-Host
                 $gitPushed =  git push origin head:$env:GITHUB_REF 2>&1
             } elseif ($env:GITHUB_BASE_REF) {
