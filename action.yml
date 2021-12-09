@@ -148,7 +148,7 @@ runs:
             $out
         } }
         
-        "::debug::RoughDraft Loaded from Path - $($RoughDraftModulePath)" | Out-Host
+        "::notice title=ModuleLoaded::RoughDraft Loaded from Path - $($RoughDraftModulePath)" | Out-Host
         
         if (-not $UserName) { $UserName = $env:GITHUB_ACTOR }
         if (-not $UserEmail) { $UserEmail = "$UserName@github.com" }
@@ -177,6 +177,7 @@ runs:
                 ForEach-Object {
                     $roughDraftPS1List += $_.FullName.Replace($env:GITHUB_WORKSPACE, '').TrimStart('/')
                     $roughDraftPS1Count++
+                    "::notice title=Running::$($_.Fullname)" | Out-Host
                     . $_.FullName |            
                         . $processScriptOutput  | 
                         Out-Host
@@ -201,10 +202,10 @@ runs:
             }
         
             if ($env:GITHUB_REF -and $env:GITHUB_REF_TYPE -eq 'branch') {
-                "::debug::Pushing to branch '$env:GITHUB_REF'" | Out-Host
+                "::notice::Pushing to branch '$env:GITHUB_REF'" | Out-Host
                 $gitPushed =  git push origin head:$env:GITHUB_REF 2>&1
             } elseif ($env:GITHUB_BASE_REF) {
-                "::debug::Pushing to '$env:GITHUB_BASE_REF'" | Out-Host
+                "::notice::Pushing to '$env:GITHUB_BASE_REF'" | Out-Host
                 $gitPushed =  git push origin $env:GITHUB_BASE_REF 2>&1
             }
             
