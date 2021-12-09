@@ -108,11 +108,11 @@
         $in = [Ordered]@{} + $PSBoundParameters
         if ($PSCmdlet.ParameterSetName -eq 'Segment') {
             if (-not $in.End) {
-                $end = $in.End = $in.Duration
+                $end = $in.End = $mediaInfo.Duration
             }
             if (-not $in.OutputPath) {
-                $startTimeStr = $start.ToString().Substring(0,12) -replace '[:;]', '-'
-                $endTimeStr   = $end.ToString().Substring(0,12) -replace '[:;]', '-'
+                $startTimeStr = $start.ToString() -replace '([\d\.]+)0{2,}$','$1' -replace '[:;]', '-'
+                $endTimeStr   = $end.ToString() -replace '([\d\.]+)0{2,}$','$1' -replace '[:;]', '-'
                 $outputPath = $in.OutputPath =
                     $fileInfo.FullName.Substring(0, $fileInfo.FullName.Length - $fileInfo.Extension.Length) +
                     '@' + $startTimeStr + '--' + $endTimeStr + $fileInfo.Extension
