@@ -200,10 +200,12 @@ runs:
                 git commit -m $ExecutionContext.SessionState.InvokeCommand.ExpandString($CommitMessage)
             }
         
-            if ($env:GITHUB_REF_NAME) {
-                $gitPushed =  git push origin head:$env:GITHUB_REF_NAME 2>&1
-            } else {
-                $gitPushed =  git push 2>&1
+            if ($env:GITHUB_REF -and $env:GITHUB_REF_TYPE -eq 'branch') {
+                "::debug::Pushing to branch '$env:GITHUB_REF'" | Out-Host
+                $gitPushed =  git push origin head:$env:GITHUB_REF 2>&1
+            } elseif ($env:GITHUB_BASE_REF) {
+                "::debug::Pushing to '$env:GITHUB_BASE_REF'" | Out-Host
+                $gitPushed =  git push origin $env:GITHUB_BASE_REF 2>&1
             }
             
             "Git Push Output: $($gitPushed  | Out-String)"
