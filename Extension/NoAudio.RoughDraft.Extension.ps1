@@ -12,6 +12,7 @@
 [ComponentModel.Inheritance("Inherited")]
 param(
 # If set, will remove audio from input media.
+[Parameter(Mandatory)]
 [Alias('RemoveAudio')]
 [switch]
 $NoAudio
