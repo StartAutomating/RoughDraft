@@ -15,6 +15,7 @@
 |ListFilters|Lists filters|Get-FFMpeg|
 |Mandelbrot|Generates fractals|New-Media,Show-Media|
 |Monochrome|Make video monochrome |Edit-Media|
+|NoAudio|Removes Audio|Split-Media|
 |Playlist|Creates a playlist|Join-Media|
 |Rate|Adjusts the rate of media.|Edit-Media|
 |Resize|Resizes a video|Edit-Media,Convert-Media|
