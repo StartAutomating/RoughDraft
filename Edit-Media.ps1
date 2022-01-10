@@ -19,8 +19,6 @@
         Get-Media
     .Link
         Get-RoughDraftExtension
-    .Link
-        Use-RoughDraftExtension
     #>
     [CmdletBinding(DefaultParameterSetName='None',SupportsShouldProcess)]
     [OutputType([IO.FileInfo])]
@@ -50,6 +48,12 @@
     [string]
     $FFMpegPath,
 
+    # If provided, will use a specific pixel format for video and image output.  This maps to the -pix_fmt parameter in ffmpeg.
+    [Parameter(ValueFromPipelineByPropertyName)]
+    [Alias('Pix_Fmt')]
+    [string]
+    $PixelFormat = 'yuv420p',
+
     # The metadata to put in the converted file
     [Collections.IDictionary]
     $MetaData,
@@ -64,14 +68,15 @@
     [Timespan]
     $End,
 
-    # A series of video filters.  The key is the name of the filter, and the value can either be the direct string value of the filter, or a hashtable containing the filter components.
-    [Parameter(Mandatory=$true,ParameterSetName='CustomVideoFilter', ValueFromPipelineByPropertyName)]
+    # A series of video filters.  
+    # The key is the name of the filter, and the value can either be the direct string value of the filter, or a hashtable containing the filter components.
+    [Parameter(ValueFromPipelineByPropertyName)]
     [Collections.IDictionary]
     $VideoFilter,
 
-    # A series of audio filters.  The key is the name of the filter, and the value can either be the direct string value of the filter, or a hashtable containing the filter components.
-    [Parameter(Mandatory=$true,ParameterSetName='CustomAudioFilter', ValueFromPipelineByPropertyName)]
-    [Parameter(ParameterSetName='CustomVideoFilter', ValueFromPipelineByPropertyName)]
+    # A series of audio filters.  
+    # The key is the name of the filter, and the value can either be the direct string value of the filter, or a hashtable containing the filter components.
+    [Parameter(ValueFromPipelineByPropertyName)]
     [Collections.IDictionary]
     $AudioFilter,
 
@@ -82,7 +87,7 @@
 
     dynamicParam {
         $myCmd = $MyInvocation.MyCommand
-        Use-RoughDraftExtension -CommandName $myCmd -DynamicParameter
+        Get-RoughDraftExtension -CommandName $myCmd -DynamicParameter -NoMandatoryDynamicParameter -DynamicParameterSetName "__AllParameterSets" 
     }
 
     begin {
@@ -140,9 +145,9 @@
 
         if (-not $OutputPath -and -not $OutputMap.Count) {
             $inputItem = Get-Item -LiteralPath $ri
+            $CanRunExtensions  = Get-RoughDraftExtension -CommandName $myCmd -CanRun -ExtensionParameter $myParams
             $paramSetShortName =
-                ($PSCmdlet.ParameterSetName -split "\$([IO.Path]::DirectorySeparatorChar)")[-1] -replace
-                '\.(rd|RoughDraft)\.(ext|extension)\.ps1$'
+                @(foreach ($canRunExt in $CanRunExtensions) { $canRunExt.ExtensionCommand.DisplayName }) -join '_'
             $OutputPath = $inputItem.Fullname.Substring(0, $inputItem.FullName.Length - $inputItem.Extension.Length) + "_$paramSetShortName" + $inputItem.Extension
         }
         $uro = $ExecutionContext.SessionState.Path.GetUnresolvedProviderPathFromPSPath($OutputPath)
@@ -170,6 +175,9 @@
             $ffmpegParams += "$($matchingCodec.Codec)"
         }
 
+        if ($mediaInfo.streams -and @($mediainfo.streams)[0].codec_type -eq 'video') {
+            $ffmpegParams += '-pix_fmt', $PixelFormat
+        }
 
         $filterParams = @()
 
@@ -264,14 +272,14 @@
         )
 
         #region Handle Extensions
-        Use-RoughDraftExtension -CommandName $myCmd -CanRun -ExtensionParameter $myParams |
-            . Use-RoughDraftExtension -Run |
+        Get-RoughDraftExtension -CommandName $myCmd -CanRun -ExtensionParameter $myParams |
+            . Get-RoughDraftExtension -Run |
             . { process {
                 $inObj = $_
                 if ($inObj.ExtensionOutput) {
-                    Write-Verbose "Adding Filter Parameters from Extension '$extensionCommand'"
-                    Write-Verbose "$extensionOutput"
-                    $FilterParams += $extensionOutput
+                    Write-Verbose "Adding Filter Parameters from Extension '$($inObj.extensionCommand)'"
+                    Write-Verbose "$($inObj.extensionOutput)"
+                    $FilterParams += $inObj.extensionOutput
                 }
                 if ($inObj.Done) {
                     continue nextFile
@@ -279,6 +287,49 @@
             } }
         #endregion Handle Extensions
 
+
+        $allVideoFilters = @()
+        $allAudioFilters = @()        
+        
+        for ($filterParamNumber =0 ; $filterParamNumber -lt $filterParams.Count;$filterParamNumber++) {
+            $thisFilterParam = $filterParams[$filterParamNumber]
+            if ($thisFilterParam -eq '-af') {
+                $allAudioFilters += $filterParams[$filterParamNumber + 1]
+                $filterParamNumber++
+            }
+            if ($thisFilterParam -eq '-vf') {
+                $allVideoFilters += $filterParams[$filterParamNumber + 1]
+                $filterParamNumber++
+            }
+        }
+
+        if ($allVideoFilters.Count -gt 1 -or $allAudioFilters.Count -gt 1) {
+            $newFilterParams = @(
+                for ($filterParamNumber =0 ; $filterParamNumber -lt $filterParams.Count;$filterParamNumber++) {
+                    $thisFilterParam = $filterParams[$filterParamNumber]
+                    if ($thisFilterParam -eq '-af' -and $allAudioFilters) {
+                        if ($allAudioFilters) {
+                            '-af'
+                            $allAudioFilters -join ','
+                            $allAudioFilters = @()
+                        }
+                        $filterParamNumber++        
+                    }
+                    elseif ($thisFilterParam -eq '-vf') {
+                        if ($allVideoFilters) {
+                            '-vf'
+                            $allVideoFilters -join ','
+                            $allVideoFilters = @()
+                        }
+                        $filterParamNumber++
+                    } else {
+                        $thisFilterParam
+                    }
+                }
+            )
+
+            $filterParams = $newFilterParams
+        }
 
         # Write the arguments out to verbose
         Write-Verbose "FFMpeg Arguments -i $ri -ss `"$start`" -to `"$end`" $($filterParams -join ' ') $uro -y $($ffmpegParams -join ' ')"
@@ -291,8 +342,9 @@
                 "$end"
             }
             $filterParams
-            $OutParams
             $ffmpegParams
+            $OutParams
+            
         )
 
         $timeArgs  =  @(
@@ -307,7 +359,7 @@
         if ($WhatIfPreference) { return $ffMpegFullArgs } # If -WhatIf was passed, return the FFMpeg Arguments
 
         if (-not $PSCmdlet.ShouldProcess("$($ffMpegFullArgs -join ' ')")) { return } # Otherwise, check ShouldProcess
-        & $ffmpeg @ffInFiles @timeArgs @filterParams @outParams @ffmpegParams 2>&1 |
+        & $ffmpeg @ffInFiles @timeArgs @filterParams @ffmpegParams @outParams 2>&1 |
             ForEach-Object -Process $processFFMpegOutput -End $endFFMpegOutput
 
         if ($uro) { # If we had a single output
