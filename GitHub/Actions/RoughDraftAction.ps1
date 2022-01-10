@@ -83,7 +83,7 @@ $processScriptOutput = { process {
     $out
 } }
 
-"::debug::RoughDraft Loaded from Path - $($RoughDraftModulePath)" | Out-Host
+"::notice title=ModuleLoaded::RoughDraft Loaded from Path - $($RoughDraftModulePath)" | Out-Host
 
 if (-not $UserName) { $UserName = $env:GITHUB_ACTOR }
 if (-not $UserEmail) { $UserEmail = "$UserName@github.com" }
@@ -112,6 +112,7 @@ if (-not $SkipRoughDraftPS1) {
         ForEach-Object {
             $roughDraftPS1List += $_.FullName.Replace($env:GITHUB_WORKSPACE, '').TrimStart('/')
             $roughDraftPS1Count++
+            "::notice title=Running::$($_.Fullname)" | Out-Host
             . $_.FullName |            
                 . $processScriptOutput  | 
                 Out-Host
@@ -135,11 +136,10 @@ if ($CommitMessage -or $anyFilesChanged) {
         git commit -m $ExecutionContext.SessionState.InvokeCommand.ExpandString($CommitMessage)
     }
 
-    if ($env:GITHUB_REF_NAME) {
-        $gitPushed =  git push origin head:$env:GITHUB_REF_NAME 2>&1
-    } else {
-        $gitPushed =  git push 2>&1
-    }
+    
+    "::notice::Pushing Changes" | Out-Host
+    $gitPushed =  git push 2>&1
+    
     
     "Git Push Output: $($gitPushed  | Out-String)"
 }
