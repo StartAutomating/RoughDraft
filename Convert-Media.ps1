@@ -11,8 +11,6 @@
         Get-Media
     .Link
         Get-RoughDraftExtension
-    .Link
-        Use-RoughDraftExtension
     #>
     [OutputType([IO.FileInfo], [Management.Automation.Job])]
     [CmdletBinding(DefaultParameterSetName='Convert-Media')]
@@ -114,7 +112,7 @@
 
     dynamicParam {
         $myCmd = $MyInvocation.MyCommand
-        Use-RoughDraftExtension -CommandName $myCmd -DynamicParameter
+        Get-RoughDraftExtension -CommandName $myCmd -DynamicParameter
     }
 
     begin {
@@ -188,14 +186,14 @@
             }
 
             #region Handle Extensions
-            Use-RoughDraftExtension -CommandName $myCmd -CanRun -ExtensionParameter $in |
-                . Use-RoughDraftExtension -Run |
+            Get-RoughDraftExtension -CommandName $myCmd -CanRun -ExtensionParameter $in |
+                . Get-RoughDraftExtension -Run |
                 . { process {
                     $inObj = $_
                     if ($inObj.ExtensionOutput) {
                         Write-Verbose "Adding Filter Parameters from Extension '$extensionCommand'"
-                        Write-Verbose "$extensionOutput"
-                        $FilterParams += $extensionOutput
+                        Write-Verbose "$($inObj.extensionOutput)"
+                        $FilterParams += $inObj.extensionOutput
                     }
                     if ($inObj.Done) {
                         continue nextFile

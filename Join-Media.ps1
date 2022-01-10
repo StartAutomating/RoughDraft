@@ -9,6 +9,8 @@
         Get-Media
     .Link
         Convert-Media
+    .Link
+        Get-RoughDraftExtension
     .Notes
         Join-Media has a variety of uses:
 
@@ -58,7 +60,7 @@
     
     dynamicParam {
         $myCmd = $MyInvocation.MyCommand
-        Use-RoughDraftExtension -CommandName $myCmd -DynamicParameter
+        Get-RoughDraftExtension -CommandName $myCmd -DynamicParameter
     }
 
     begin {
@@ -131,22 +133,58 @@
         $isAllAudio = $audioFiles.Count -eq $inputMedia.Count -and $inputMedia.Count -gt 0
         $isAllImages = $imageFiles.Count -eq $inputMedia.Count -and $inputMedia.Count -gt 0
 
-        do {
-            Use-RoughDraftExtension -CommandName $myCmd -CanRun -ExtensionParameter (@{} + $PSBoundParameters) |
+        $ranExtension = $false
+        $doneJoining  = $false
+        $extensionParams = @()
+        $uro = $ExecutionContext.SessionState.Path.GetUnresolvedProviderPathFromPSPath($outputPath)
+
+        :nextFile do {
+            Get-RoughDraftExtension -CommandName $myCmd -CanRun -ExtensionParameter (@{} + $PSBoundParameters) |
+                . Get-RoughDraftExtension -Run |
                 . { process {
-                    $ext = $_
-                    $ExtensionParameter = ([Ordered]@{})
-                    foreach ($kv in $ext.ExtensionParameter.getEnumerator()) {
-                        if ($ext.ExtensionCommand.Parameters[$kv.Key]) {
-                            $ExtensionParameter[$kv.Key] = $kv.Value
-                        }
+                    $ranExtension = $true
+                    $inObj = $_
+                    if ($inObj.ExtensionOutput) {
+                        Write-Verbose "Adding Filter Parameters from Extension '$extensionCommand'"
+                        Write-Verbose "$($inObj.extensionOutput)"
+                        $extensionParams += $inObj.ExtensionOutput
                     }
-                    . $ext.ExtensionCommand @ExtensionParameter
-                    break
+                    if ($inObj.Done) {
+                        $inObj.ExtensionOutput
+                        $doneJoining = $true
+                        continue nextFile
+                    }
                 } }
         } while (0)
 
-        if ($isAllVideo -or $isAllAudio) {
+        if ($doneJoining) { return }
+
+        if ($extensionParams) {
+            
+            $inputKeys = @(
+                foreach ($in in $inputMedia.Keys) {
+                    '-i'
+                    $in
+                }
+            )
+            if ($extensionParams -ne '-map') {                
+                $extensionParams += '-y', $uro
+            }
+            & $ffmpeg @inputKeys @extensionParams 2>&1 |
+                ForEach-Object $ffmpegConvertProcess -End $ffmpegConvertEnd
+
+            if (Test-Path $uro) {
+                Get-Item $uro
+            } else {
+                for ($epi =0 ; $epi -lt $extensionParams.Count; $epi++) {
+                    if ($epi -gt 2 -and 
+                        $extensionParams[$epi] -eq '-map' -and 
+                        (Test-Path $extensionParams[$epi])) {
+                        Get-Item $extensionParams[$epi]
+                    }
+                }
+            }
+        } elseif ($isAllVideo -or $isAllAudio) {
             if (@($inputMedia.Values | Select-Object -ExpandProperty codecs -Unique).Count -gt 1) {
                 $Transcode = $true
             }

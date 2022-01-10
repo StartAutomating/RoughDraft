@@ -13,8 +13,6 @@
         Set-Media
     .Link
         Get-RoughDraftExtension
-    .Link
-        Use-RoughDraftExtension
     #>
     [OutputType('RoughDraft.Media', [Management.Automation.Job], [PSObject])]
     [CmdletBinding(DefaultParameterSetName='Probe')]
@@ -74,7 +72,7 @@
 
     dynamicParam {
         $myCmd = $MyInvocation.MyCommand
-        Use-RoughDraftExtension -CommandName $myCmd -DynamicParameter
+        Get-RoughDraftExtension -CommandName $myCmd -DynamicParameter
     }
 
     begin {
@@ -139,18 +137,25 @@
 
             #region Handle Extensions
             $PSBoundParameters['InputPath'] = "$in"
-            Use-RoughDraftExtension -CommandName $myCmd -CanRun -ExtensionParameter (@{} + $PSBoundParameters) |
-                . { process {
-                    $ext = $_
-                    $ExtensionParameter = ([Ordered]@{})
-                    foreach ($kv in $ext.ExtensionParameter.getEnumerator()) {
-                        if ($ext.ExtensionCommand.Parameters[$kv.Key]) {
-                            $ExtensionParameter[$kv.Key] = $kv.Value
+            Get-RoughDraftExtension -CommandName $myCmd -CanRun -ExtensionParameter (@{} + $PSBoundParameters) |
+                Get-RoughDraftExtension -Run -Stream |
+                . {
+                    begin { $hasOutput = $false
+                        
+                    }
+                    process {
+                        $extOut = $_
+                        if ($extOut) {
+                            $extOut
+                            $hasOutput = $true
                         }
                     }
-                    . $ext.ExtensionCommand @ExtensionParameter
-                    continue nextFile
-                } }
+                    end {
+                        if ($hasOutput) {
+                            continue nextFile
+                        }
+                    }
+                }
             #endregion Handle Extensions
             if (-not $ri) { continue }
 
