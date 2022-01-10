@@ -1,4 +1,14 @@
-﻿## 0.2.4
+﻿## 0.2.5
+---
+* New Extensions
+  * ShuffleFrames (#23)
+  * Echo (#21)
+* Switched Extension Engine to [Piecemeal](https://github.com/StartAutomating/Piecemeal)
+* Convert-Media now supports -AudioQuality/-VideoQuality (fixing #24)
+* Edit-Media now allows for filters to be combined (#26)
+* Updating Action (simplifying push)
+
+## 0.2.4
 ---
 * New Command: Split-Media
 * New Extension: NoAudio (for Split-Media)

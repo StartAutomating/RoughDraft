@@ -1,13 +1,12 @@
 @{
     CompanyName='Start-Automating'
-    ModuleVersion='0.2.4'
+    ModuleVersion='0.2.5'
     ModuleToProcess='RoughDraft.psm1'
     GUID='c192ebbf-57a3-493e-bc82-da7553038794'
     Description='A Fun PowerShell Module for Multimedia'
     Copyright='2011-2021 Start-Automating'
     Author='James Brundage'
-    FormatsToProcess  ='RoughDraft.format.ps1xml'
-    TypesToProcess   = 'RoughDraft.types.ps1xml'
+    FormatsToProcess  ='RoughDraft.format.ps1xml'   
 PrivateData = @{
         PSData = @{
             Tags = 'FFMpeg', 'Media', 'Multimedia','Audio', 'Video', 'mp3','mp4'
@@ -16,6 +15,16 @@ PrivateData = @{
             IconURI    = 'https://github.com/StartAutomating/RoughDraft/blob/main/Assets/RoughDraft.png'
         }
         ReleaseNotes = @'
+## 0.2.5
+---
+* New Extensions
+  * ShuffleFrames (#23)
+  * Echo (#21)
+* Switched Extension Engine to [Piecemeal](https://github.com/StartAutomating/Piecemeal)
+* Convert-Media now supports -AudioQuality/-VideoQuality (fixing #24)
+* Edit-Media now allows for filters to be combined (#26)
+* Updating Action (simplifying push)
+
 ## 0.2.4
 ---
 * New Command: Split-Media
