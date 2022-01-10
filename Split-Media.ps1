@@ -14,8 +14,6 @@
         Join-Media
     .Link
         Get-RoughDraftExtension
-    .Link
-        Use-RoughDraftExtension
     #>
     [CmdletBinding(PositionalBinding=$false)]
     [OutputType([IO.FileInfo], [Management.Automation.Job])]
@@ -51,7 +49,7 @@
 
     dynamicParam {
         $myCmd = $MyInvocation.MyCommand
-        Use-RoughDraftExtension -CommandName $myCmd -DynamicParameter
+        Get-RoughDraftExtension -CommandName $myCmd -DynamicParameter
     }
 
     begin {
@@ -125,14 +123,14 @@
 
         :nextFile foreach ($inputFile in @($InputPath)) {
             #region Handle Extensions
-            Use-RoughDraftExtension -CommandName $myCmd -CanRun -ExtensionParameter $in |
-                . Use-RoughDraftExtension -Run |
+            Get-RoughDraftExtension -CommandName $myCmd -CanRun -ExtensionParameter $in |
+                . Get-RoughDraftExtension -Run |
                 . { process {
                     $inObj = $_
                     if ($inObj.ExtensionOutput) {
                         Write-Verbose "Adding Parameters from Extension '$extensionCommand'"
                         Write-Verbose "$extensionOutput"
-                        $ffArgs += $extensionOutput
+                        $ffArgs += $inObj.extensionOutput
                     }
                     if ($inObj.Done) {
                         continue nextFile

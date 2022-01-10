@@ -119,7 +119,6 @@ Set-Media .\Song.mp3 -AlbumArt .\Cover.jpg
 |Use-FFMpeg             |Uses FFMpeg directly               |
 |Use-FFPlay             |Uses FFPlay directly               |
 |Use-FFProbe            |Uses FFProbe directly              |
-|Use-RoughDraftExtension|Uses RoughDraftExtensions          |
 
 
 ### Additional examples:
@@ -176,6 +175,8 @@ $MyEditExtension
 ~~~
 
 
+Get-RoughDraftExtension was built using [Piecemeal](https://github.com/StartAutomating/Piecemeal)
+
 ### Commands that can be extended:
 
 The following commands can currently be extended:
@@ -187,3 +188,7 @@ The following commands can currently be extended:
 * Join-Media
 * New-Media
 * Show-Media
+* Split-Media
+
+
+

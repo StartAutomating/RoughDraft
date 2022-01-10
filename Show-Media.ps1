@@ -7,8 +7,6 @@
         Shows media, using FFPlay
     .Link
         Get-RoughDraftExtension
-    .Link
-        Use-RoughDraftExtension
     .Example
         Show-Media -InputPath $home\Music\ASong.mp3
     .Example
@@ -17,7 +15,7 @@
     [OutputType([Nullable], [Management.Automation.Job])]
     param(
     # The input path.
-    [Parameter(Mandatory,ValueFromPipelineByPropertyName,ParameterSetName='MediaPlayer')]
+    [Parameter(Mandatory,Position=0,ValueFromPipelineByPropertyName,ParameterSetName='MediaPlayer')]
     [Alias('Fullname')]
     [string]
     $InputPath,
@@ -100,7 +98,7 @@
 
     dynamicParam {
         $myCmd = $MyInvocation.MyCommand
-        Use-RoughDraftExtension -CommandName $myCmd -DynamicParameter
+        Get-RoughDraftExtension -CommandName $myCmd -DynamicParameter
     }
 
     process {
@@ -185,14 +183,14 @@
 
         #region Handle Extensions
         $in = [Ordered]@{} + $PSBoundParameters
-        Use-RoughDraftExtension -CommandName $myCmd -CanRun -ExtensionParameter $in |
-            . Use-RoughDraftExtension -Run |
+        Get-RoughDraftExtension -CommandName $myCmd -CanRun -ExtensionParameter $in |
+            . Get-RoughDraftExtension -Run |
             . { process {
                 $inObj = $_
                 if ($inObj.ExtensionOutput) {
                     Write-Verbose "Adding Filter Parameters from Extension '$extensionCommand'"
                     Write-Verbose "$extensionOutput"
-                    $ffArgs += $extensionOutput
+                    $ffArgs += $inObj.extensionOutput
                 }
                 if ($inObj.Done) {
                     continue nextFile

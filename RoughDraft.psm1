@@ -22,7 +22,6 @@ param()
 . $psScriptRoot\Use-FFProbe.ps1
 #endregion RoughDraft FFMPEG wrappers
 . $psScriptRoot\Get-RoughDraftExtension.ps1
-. $psScriptRoot\Use-RoughDraftExtension.ps1
 
 . $psScriptRoot\RoughDraft.Irregular.ps1
 

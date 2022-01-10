@@ -8,8 +8,6 @@
         New-Media -OutputPath ".\RGBTestSource.mp4" -TestSource "RGBTestSrc"
     .Link
         Get-RoughDraftExtension
-    .Link
-        Use-RoughDraftExtension
     #>
     [OutputType([IO.FileInfo], [Management.Automation.Job])]
     param(
@@ -39,7 +37,7 @@
 
     dynamicParam {
         $myCmd = $MyInvocation.MyCommand
-        Use-RoughDraftExtension -CommandName $myCmd -DynamicParameter
+        Get-RoughDraftExtension -CommandName $myCmd -DynamicParameter
     }
 
     process {
@@ -58,14 +56,15 @@
 
         #region Handle Extensions
         :nextFile do {
-            Use-RoughDraftExtension -CommandName $myCmd -CanRun -ExtensionParameter (@{} + $PSBoundParameters) |
-                . Use-RoughDraftExtension -Run |
+            $myParams = ([Ordered]@{} + $PSBoundParameters)
+            Get-RoughDraftExtension -CommandName $myCmd -CanRun -ExtensionParameter $myParams |
+                . Get-RoughDraftExtension -Run |
                 . { process {
                     $inObj = $_
                     if ($inObj.ExtensionOutput) {
                         Write-Verbose "Adding Filter Parameters from Extension '$extensionCommand'"
                         Write-Verbose "$extensionOutput"
-                        $FilterParams += $extensionOutput
+                        $FilterParams += $inObj.ExtensionOutput
                     }
                     if ($inObj.Done) {
                         continue nextFile

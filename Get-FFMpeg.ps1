@@ -11,8 +11,6 @@
         Use-FFMpeg
     .Link
         Get-RoughDraftExtension
-    .Link
-        Use-RoughDraftExtension
     #>
     [Outputtype([string])]
     [CmdletBinding(DefaultParameterSetName='GetFFMpegPath')]
@@ -24,8 +22,7 @@
     )
 
     dynamicParam {
-        $myCmd = $MyInvocation.MyCommand
-        Use-RoughDraftExtension -CommandName $myCmd -DynamicParameter
+        Get-RoughDraftExtension -CommandName $MyInvocation.MyCommand -DynamicParameter
     }
 
     process {
@@ -33,21 +30,8 @@
             $ffmpeg = Get-FFMpeg -FFMpegPath $FFMpegPath
             #region Handle Extensions
             $PSBoundParameters['InputPath'] = "$in"
-            do {
-            Use-RoughDraftExtension -CommandName $myCmd -CanRun -ExtensionParameter (@{} + $PSBoundParameters) |
-                . { process {
-                    $ext = $_
-                    $ExtensionParameter = ([Ordered]@{})
-                    foreach ($kv in $ext.ExtensionParameter.getEnumerator()) {
-                        if ($ext.ExtensionCommand.Parameters[$kv.Key]) {
-                            $ExtensionParameter[$kv.Key] = $kv.Value
-                        }
-                    }
-                    . $ext.ExtensionCommand @ExtensionParameter
-                    break
-                } }
-            } while (0)
-            #endregion Handle Extensions
+            
+            Get-RoughDraftExtension -CommandName $MyInvocation.MyCommand -Run -ExtensionParameter (@{} + $PSBoundParameters) -Stream
             return
         }
         if ($script:KnownFFMpegPath) {
