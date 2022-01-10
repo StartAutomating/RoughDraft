@@ -12,7 +12,7 @@ describe Convert-Media {
     it 'Can convert media between formats' {
         $tmpOutPath = Join-Path ([IO.Path]::GetTempPath()) "testsrc$(Get-Random).mp4"
         $converted  = New-Media -TestSource testsrc -OutputPath $tmpOutPath -Duration "00:00:05" |
-            Convert-Media -OutputPath mkv
+            Convert-Media -OutputPath mkv 
         $converted |
             Select-Object -ExpandProperty Extension |
             Should -Be .mkv
@@ -254,7 +254,7 @@ describe Split-Media {
     it 'Can Split on a timespan' {
         $tmpOutPath = Join-Path ([IO.Path]::GetTempPath()) "sine$(Get-Random).mp3"
         New-Media -Sine -OutputPath $tmpOutPath -Duration "00:00:05" |
-            Split-Media -Start "00:00:02.1230300" -Verbose |
+            Split-Media -Start "00:00:02.1230300" |
             Get-Media | 
             Select-Object -ExpandProperty Duration | 
             Select-Object -ExpandProperty Seconds |
