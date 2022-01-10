@@ -1,1 +1,0 @@
-﻿Get-Help $this.EventSourceId
