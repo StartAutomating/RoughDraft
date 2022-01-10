@@ -29,7 +29,7 @@
     # The codec used for the conversion.  If the file is a video or image file, then this will be treated as a the video codec.
     [Parameter(ValueFromPipelineByPropertyName)]
     [string]
-    $Codec,
+    $Codec,    
 
     # The path to FFMpeg.exe.  By default, checks in Program Files\FFMpeg\. Download FFMpeg from http://ffmpeg.org/.
     [string]
@@ -47,10 +47,6 @@
     [string]
     $AudioCodec,
 
-    # If provided, will re-encode the file with a given video codec.  This affects the input files, where -Codec affects the final output.
-    [string]
-    $VideoCodec,
-
     # If provided, will apply audio filters to the file
     [CmdletBinding(DefaultParameterSetName='Convert-Media')]
     [string[]]
@@ -61,7 +57,13 @@
     [string[]]
     $VideoFilter,
 
+    # If provided, will attempt to encode the audio at a variable quality level. Values differ per encoder.
+    [Parameter(ValueFromPipelineByPropertyName)]
+    [int]
+    $AudioQuality,
+       
     # If provided, will encode the audio at a given bitrate
+    [Parameter(ValueFromPipelineByPropertyName)]
     [string]
     $AudioBitrate,
 
@@ -87,7 +89,19 @@
     [Timespan]
     $End,
 
+    # If provided, will attempt to encode the video at a variable quality level, between 1 (highest) and 31 (lowest).
+    [Parameter(ValueFromPipelineByPropertyName)]
+    [ValidateRange(1,31)]
+    [int]
+    $VideoQuality,
+
+    # If provided, will re-encode the file with a given video codec.  This affects the input files, where -Codec affects the final output.
+    [Parameter(ValueFromPipelineByPropertyName)]
+    [string]
+    $VideoCodec,
+
     # If provided, will output a specified number of frames from the video file
+    [Parameter(ValueFromPipelineByPropertyName)]
     [Uint32]
     $VideoFrameCount,
 
@@ -247,8 +261,7 @@
 
                 $ffmpegParams += "-c"  # If we did find the codec, add '-c' and the name of  the codec to the ffmpeg parameters.
                 $ffmpegParams += "$($matchingCodec.Codec)"
-            }
-
+            }            
 
 
             $TimeFrame =@()
@@ -340,6 +353,16 @@
             if ($AudioChannelCount) { # If we have provided an audio channel count
                 $filterParams += "-ac" # use -ac to pass it along.
                 $filterParams += "$AudioChannelCount"
+            }
+
+            if ($AudioQuality) {
+                $filterParams += "-qscale:a"
+                $filterParams += $AudioQuality
+            }
+
+            if ($VideoQuality) {
+                $filterParams += "-qscale:v"
+                $filterParams += $VideoQuality
             }
 
             $filterParams += "-threads" # Add threads 0
