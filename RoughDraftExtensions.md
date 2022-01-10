@@ -8,6 +8,7 @@
 |ColorSource|Generates a color |New-Media,Show-Media|
 |CropDetect|Auto-detect the crop size.|Get-Media|
 |DataScope|Datascope effect|Edit-Media|
+|Echo|Adds echoes to audio|Edit-Media|
 |Emboss|Embosses video or images|Edit-Media|
 |FadeIn|Fades in video|Edit-Media|
 |FilterInput|Gets filter details|Get-FFMpeg|
@@ -24,6 +25,7 @@
 |Rotate|Rotates a video|Edit-Media,Convert-Media|
 |ScrollVideo|Scrolls video|Edit-Media|
 |Sepia|Applies a Sepia Filter|Edit-Media|
+|ShuffleFrames|Shuffles frames in video|Edit-Media|
 |Sierpinski|Generates a Sierpinski fractal |New-Media,Show-Media|
 |SilenceDetect|Detects silence in an audio stream|Get-Media|
 |SilenceRemove|Detects silence in an audio stream|Edit-Media|
