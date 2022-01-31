@@ -189,8 +189,21 @@
             )
             $tries = $ProbeTryCount
             do {
-                $metadataJson = & $ffprobe "$ri" @selectionAndOutputFormat 2>&1
-                $jsonOutput = $metadataJson[$metadataJson.IndexOf("{")..$metadataJson.IndexOf("}")] -join [Environment]::NewLine
+                $metadataJson  = @(& $ffprobe "$ri" @selectionAndOutputFormat 2>&1)
+                $jsonLineStart = $metadataJson.IndexOf("{")
+                $jsonLineEnd   = $metadataJson.IndexOf("}")
+
+                $jsonOutput = @(
+                    $inInfoSection = $false
+                    for ($jLine = $jsonLineStart; $jLine -le $jsonLineEnd; $jLine++) {
+                        if ($metadataJson[$jLine] -match '^\[') {                            
+                            continue
+                        }
+                        if ($metadataJson[$jLine] -match '^\s{0,}[\{\}\[\]"]') {
+                            $metadataJson[$jLine]
+                        }                        
+                    }
+                ) -join [Environment]::NewLine
                 if ($jsonOutput) {
                     $metadataJson | Write-Verbose
                     $jsonObject =
@@ -201,7 +214,7 @@
                             $tries--
                         }
                 }
-            } while (-not $jsonOutput -and $tries -ge 0)
+            } while ((-not $jsonObject) -and ($tries -ge 0))
 
             if ($jsonObject) {
                 foreach ($prop in $jsonObject.psobject.properties) {
@@ -266,11 +279,15 @@
 
             $resolutions = @(
                 foreach ($streamInfo in $outObject.Streams) {
+                    $streamInfo.pstypenames.clear()
+                    $streamInfo.pstypenames.add('RoughDraft.Media.Stream')
                     if ($streamInfo.Width -and $streamInfo.Height) {
                         $streamInfo.Width, $streamInfo.Height
                     }
                 }
             )
+
+            
 
             $duration = $durations |
                 Select-Object -ExpandProperty TotalMilliseconds |
