@@ -1,4 +1,12 @@
-﻿## 0.2.5
+﻿## 0.2.6
+---
+* New Extensions:
+  * Pixelate (#28)
+  * AlbumArt (#31)
+* Set-Media is now extensible (#31)
+* Get-Media is more stable (#29)
+
+## 0.2.5
 ---
 * New Extensions
   * ShuffleFrames (#23)
