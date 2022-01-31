@@ -1,5 +1,6 @@
 |DisplayName|Synopsis|Extends|
 |:-|-|-:|
+|AlbumArt|Sets album artwork|Set-Media|
 |AudioGain|Increases audio volume|Edit-Media|
 |BlackDetect|Detect black periods in a video.|Get-Media|
 |BlackFrame|Detects black frames.|Get-Media|
@@ -17,6 +18,7 @@
 |Mandelbrot|Generates fractals|New-Media,Show-Media|
 |Monochrome|Make video monochrome |Edit-Media|
 |NoAudio|Removes Audio|Split-Media|
+|Pixelate|Pixelate effect|Edit-Media|
 |Playlist|Creates a playlist|Join-Media|
 |Rate|Adjusts the rate of media.|Edit-Media|
 |Resize|Resizes a video|Edit-Media,Convert-Media|
