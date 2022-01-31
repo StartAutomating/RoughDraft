@@ -1,6 +1,6 @@
 @{
     CompanyName='Start-Automating'
-    ModuleVersion='0.2.5'
+    ModuleVersion='0.2.6'
     ModuleToProcess='RoughDraft.psm1'
     GUID='c192ebbf-57a3-493e-bc82-da7553038794'
     Description='A Fun PowerShell Module for Multimedia'
@@ -15,6 +15,14 @@ PrivateData = @{
             IconURI    = 'https://github.com/StartAutomating/RoughDraft/blob/main/Assets/RoughDraft.png'
         }
         ReleaseNotes = @'
+## 0.2.6
+---
+* New Extensions:
+  * Pixelate (#28)
+  * AlbumArt (#31)
+* Set-Media is now extensible (#31)
+* Get-Media is more stable (#29)
+
 ## 0.2.5
 ---
 * New Extensions
