@@ -13,9 +13,11 @@ The core of RoughDraft are the -Media commands:
 |Get-Media    |Gets media metadata            |
 |Join-Media   |Joins media files              |
 |New-Media    |Creates media files            |
+|Recieve-Media|Receives media from devices    |
 |Set-Media    |Sets media metadata            |
 |Show-Media   |Shows media files              |
 |Split-Media  |Splits media files             |
+|Send-Media   |Broadcasts media               |
 
 These commands are built atop of [FFMpeg](https://ffmpeg.org)
 
@@ -120,7 +122,6 @@ Set-Media .\Song.mp3 -AlbumArt .\Cover.jpg
 |Use-FFMpeg             |Uses FFMpeg directly               |
 |Use-FFPlay             |Uses FFPlay directly               |
 |Use-FFProbe            |Uses FFProbe directly              |
-|Use-RoughDraftExtension|Uses RoughDraftExtensions          |
 
 
 ### Additional examples:
@@ -187,5 +188,8 @@ The following commands can currently be extended:
 * Get-Media
 * Join-Media
 * New-Media
+* Recieve-Media
+* Set-Media
+* Send-Media
 * Show-Media
 * Split-Media

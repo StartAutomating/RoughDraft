@@ -1,4 +1,4 @@
-#region Piecemeal [ 0.1.2 ] : Easy Extensible Plugins for PowerShell
+#region Piecemeal [ 0.1.4 ] : Easy Extensible Plugins for PowerShell
 # (Install-Module Piecemeal; Install-Piecemeal -ExtensionModule 'RoughDraft' -ExtensionModuleAlias 'rd' -ExtensionTypeName 'RoughDraft.Extension' -OutputPath '.\Get-RoughDraftExtension.ps1' )
 function Get-RoughDraftExtension
 {
@@ -77,7 +77,6 @@ function Get-RoughDraftExtension
     [switch]
     $NoMandatoryDynamicParameter,
 
-
     # The parameters to the extension.  Only used when determining if the extension -CouldRun.
     [Parameter(ValueFromPipelineByPropertyName)]
     [Collections.IDictionary]
@@ -86,7 +85,7 @@ function Get-RoughDraftExtension
     )
 
     begin {
-        $ExtensionNameRegEx = '(extension|ext|ex|x)\.ps1$'
+        $ExtensionNameRegEx = '(?<!-)(extension|ext|ex|x)\.ps1$'
         $ExtensionModule = 'RoughDraft'
         $ExtensionModuleAlias = 'rd'
         $ExtensionTypeName = 'RoughDraft.Extension'
@@ -129,12 +128,12 @@ function Get-RoughDraftExtension
                     $ExecutionContext.SessionState.InvokeCommand.GetCommand($in, 'Function,ExternalScript')
                 }
 
-            $isExtension = $false
+            $hasExtensionAttribute = $false
             $extends     = @()
             $inheritanceLevel = [ComponentModel.InheritanceLevel]::Inherited
             foreach ($attr in $extCmd.ScriptBlock.Attributes) {
                 if ($attr -is [Runtime.CompilerServices.ExtensionAttribute]) {
-                    $isExtension = $true
+                    $hasExtensionAttribute = $true
                 }
                 if ($attr -is [Management.Automation.CmdletAttribute]) {
                     $extensionCommandName = (
@@ -148,14 +147,17 @@ function Get-RoughDraftExtension
                 }
             }
 
-            if (-not $isExtension) { return }
-            if (-not $extends) { return }
+            if (-not $hasExtensionAttribute -and $RequireExtensionAttribute) { return }
+            if (-not $extends -and $RequireExtensionAttribute) { return }
 
             $extCmd.PSObject.Properties.Add([PSNoteProperty]::new('Extends', $extends.Name))
             $extCmd.PSObject.Properties.Add([PSNoteProperty]::new('ExtensionCommands', $extends))
             $extCmd.PSObject.Properties.Add([PSNoteProperty]::new('InheritanceLevel', $inheritanceLevel))
             $extCmd.PSObject.Properties.Add([PSScriptProperty]::new(
                 'DisplayName', [ScriptBlock]::Create("`$this.Name -replace '$extensionFullRegex'")
+            ))
+            $extCmd.PSObject.Properties.Add([PSScriptProperty]::new(
+                'Attributes', {$this.ScriptBlock.Attributes}
             ))
             $extCmd.PSObject.Properties.Add([PSScriptProperty]::new(
                 'Description',
@@ -193,17 +195,27 @@ function Get-RoughDraftExtension
                 $PositionOffset,
 
                 [switch]
-                $NoMandatory
+                $NoMandatory,
+
+                [string[]]
+                $commandList
                 )
 
                 $ExtensionDynamicParameters = [Management.Automation.RuntimeDefinedParameterDictionary]::new()
                 $Extension = $this
-                foreach ($in in @(([Management.Automation.CommandMetaData]$Extension).Parameters.Keys)) {
+                
+                :nextDynamicParameter foreach ($in in @(([Management.Automation.CommandMetaData]$Extension).Parameters.Keys)) {
                     $attrList = [Collections.Generic.List[Attribute]]::new()
+                    $validCommandNames = @()
                     foreach ($attr in $extension.Parameters[$in].attributes) {
                         if ($attr -isnot [Management.Automation.ParameterAttribute]) {
                             # we can passthru any non-parameter attributes
                             $attrList.Add($attr)
+                            if ($attr -is [Management.Automation.CmdletAttribute] -and $commandList) {
+                                $validCommandNames += (
+                                    ($attr.VerbName -replace '\s') + '-' + ($attr.NounName -replace '\s')
+                                ) -replace '^\-' -replace '\-$'
+                            }
                         } else {
                             # but parameter attributes need to copied.
                             $attrCopy = [Management.Automation.ParameterAttribute]::new()
@@ -215,16 +227,28 @@ function Get-RoughDraftExtension
                                 }
                             }
 
-
-                            $attrCopy.ParameterSetName =
+                            $attrCopy.ParameterSetName =                                
                                 if ($ParameterSetName) {
                                     $ParameterSetName
-                                } elseif ($this -is [Management.Automation.FunctionInfo]) {
-                                    $this.Name
-                                } elseif ($this -is [Management.Automation.ExternalScriptInfo]) {
-                                    $this.Source
                                 }
-
+                                else {
+                                    $defaultParamSetName = 
+                                        foreach ($extAttr in $Extension.ScriptBlock.Attributes) {
+                                            if ($extAttr.DefaultParameterSetName) {
+                                                $extAttr.DefaultParameterSetName
+                                                break
+                                            }
+                                        }
+                                    if ($defaultParamSetName) {
+                                        $defaultParamSetName
+                                    }
+                                    elseif ($this -is [Management.Automation.FunctionInfo]) {
+                                        $this.Name
+                                    } elseif ($this -is [Management.Automation.ExternalScriptInfo]) {
+                                        $this.Source
+                                    }
+                                }
+                                                                
                             if ($NoMandatory -and $attrCopy.Mandatory) {
                                 $attrCopy.Mandatory = $false
                             }
@@ -236,6 +260,15 @@ function Get-RoughDraftExtension
                         }
                     }
 
+
+                    if ($commandList -and $validCommandNames) {
+                        :CheckCommandValidity do { 
+                            foreach ($vc in $validCommandNames) {
+                                if ($commandList -contains $vc) { break CheckCommandValidity }
+                            }
+                            continue nextDynamicParameter
+                        } while ($false)
+                    }
                     $ExtensionDynamicParameters.Add($in, [Management.Automation.RuntimeDefinedParameter]::new(
                         $Extension.Parameters[$in].Name,
                         $Extension.Parameters[$in].ParameterType,
@@ -294,7 +327,7 @@ function Get-RoughDraftExtension
             process {
                 $extCmd = $_
                 if ($DynamicParameter -or $DynamicParameterSetName -or $DynamicParameterPositionOffset -or $NoMandatoryDynamicParameter) {
-                    $extensionParams = $extCmd.GetDynamicParameters($DynamicParameterSetName, $DynamicParameterPositionOffset, $NoMandatoryDynamicParameter)
+                    $extensionParams = $extCmd.GetDynamicParameters($DynamicParameterSetName, $DynamicParameterPositionOffset, $NoMandatoryDynamicParameter, $CommandName)
                     foreach ($kv in $extensionParams.GetEnumerator()) {
                         if ($commandExtended -and ([Management.Automation.CommandMetaData]$commandExtended).Parameters.$($kv.Key)) {
                             continue
@@ -373,11 +406,11 @@ function Get-RoughDraftExtension
         $getCmd    = $ExecutionContext.SessionState.InvokeCommand.GetCommand
 
         if ($Force) {
-            $script:Extensions = $null
+            $script:RoughDraftExtensions = $null
         }
-        if (-not $script:Extensions)
+        if (-not $script:RoughDraftExtensions)
         {
-            $script:Extensions =
+            $script:RoughDraftExtensions =
                 @(
                 #region Find RoughDraft Extensions in Loaded Modules
                 foreach ($loadedModule in $loadedModules) { # Walk over all modules.
@@ -429,11 +462,11 @@ function Get-RoughDraftExtension
                 . WhereExtends $CommandName |
                 OutputExtension
         } else {
-            $script:Extensions |
+            $script:RoughDraftExtensions |
                 . WhereExtends $CommandName |
                 OutputExtension
         }
     }
 }
-#endregion Piecemeal [ 0.1.2 ] : Easy Extensible Plugins for PowerShell
+#endregion Piecemeal [ 0.1.4 ] : Easy Extensible Plugins for PowerShell
 
