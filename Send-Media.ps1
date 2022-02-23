@@ -148,7 +148,6 @@
                         Write-Progress "Sending Media" "$($progress.Time)" -Id $ProgId
                     }
                 }
-
             Write-Progress "Sending Media" "$($progress.Time)" -Id $ProgId -Completed
         } while ($false)
     }    
