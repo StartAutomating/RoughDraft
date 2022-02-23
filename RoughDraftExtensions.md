@@ -9,6 +9,7 @@
 |ColorSource|Generates a color |New-Media,Show-Media|
 |CropDetect|Auto-detect the crop size.|Get-Media|
 |DataScope|Datascope effect|Edit-Media|
+|DirectShow|DirectShow Extension|Receive-Media,Show-Media|
 |Echo|Adds echoes to audio|Edit-Media|
 |Emboss|Embosses video or images|Edit-Media|
 |FadeIn|Fades in video|Edit-Media|
@@ -33,6 +34,7 @@
 |SilenceRemove|Detects silence in an audio stream|Edit-Media|
 |Sine|Generates a sine wave|New-Media|
 |TestSource|Generates test sources|New-Media,Show-Media|
+|VideoForLinux|VideoForLinux Extension|Receive-Media,Show-Media|
 |Vignette|Applies a vignette filter|Edit-Media|
 |VolumeLevel|Gets VolumeLevels|Get-Media|
 |Watermark|Watermarks a video|Edit-Media|
