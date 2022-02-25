@@ -91,6 +91,16 @@
     [switch]
     $AlwaysOnTop,
 
+    # If set, this will loop the input source.
+    [Parameter(ValueFromPipelineByPropertyName)]
+    [Switch]
+    $Loop,
+
+    # If set, this will loop the input source any number of times.
+    [Parameter(ValueFromPipelineByPropertyName)]
+    [int]
+    $LoopCount,
+
     # The path to FFPlay.  If not provided, this will be automatically detected.    
     [string]
     $FFPlayPath
@@ -125,6 +135,7 @@
             if ($ShowMode -eq 'RDFT') {
                 '-showmode',2
             }
+            
             if ($Resolution) {
                 $width, $height = $Resolution -split 'x'
             }
@@ -172,8 +183,10 @@
 
             $mi = $mediaInfo = Get-Media -InputPath $ri
             $theDuration = $mi.Duration
-
             $ffArgs += '-i', $ri
+            if ($mi.streams.nb_frames -le 1) {     # If there were one or fewer frames detected
+                $ffArgs += '-loop', -1   # automatically loop.
+            }
             if ($mi.CodecTypes -and @($mi.CodecTypes)[0] -eq 'Audio' -and (-not ($ffArgs -eq '-showmode'))) {
                 $ffArgs += '-showmode', '1'
             }
@@ -199,7 +212,16 @@
         #endregion Handle Extensions
         } while (0) 
 
+        if ($Loop) {
+            $ffArgs += '-loop', -1
+        }
+        if ($LoopCount) {
+            $ffArgs += '-loop', $LoopCount
+        }
+
         $progressId = Get-Random
+
+        
 
         $lastTime = $null
         Use-FFPlay -FFPlayArgument $ffArgs |

@@ -26,7 +26,7 @@ if (-not $CaptureDeviceType) {
     $CaptureDeviceType = 
     if ($PSVersionTable.Platform -eq 'Unix') {
         'alsa', 'x11grab', 'v4l2', 'sndio', 'oss','openal', 'libdc1934', 'libcdio', 'kmsgrab','jack','iec61883', 'fbdev','decklink','bktr','avfoundation','android_camera'
-    } elseif ($PSVersionTable.Platform -eq 'Windows' -or -not $PSVersionTable.Platform) {
+    } elseif ($PSVersionTable.Platform -like 'Win*' -or -not $PSVersionTable.Platform) {
         'dshow', 'gdigrab'
     }
 }
