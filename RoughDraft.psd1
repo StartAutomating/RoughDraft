@@ -16,7 +16,6 @@ PrivateData = @{
         }
         ReleaseNotes = @'
 ## 0.2.8:
-
 * New Extensions:
   * Adding ListProtocols Extension (#38)
   * Initial FrameBuffer Extension (#40)
@@ -28,6 +27,7 @@ PrivateData = @{
 * Command Changes:
   * Receive-Media now supports -PixelFormat/-FrameRate/-FrameCount (#41)
   * Show-Media now supports -Loop/-LoopCount, and autoloops a single image (#43)
+---
 
 ## 0.2.7:
 * New Extensions:
