@@ -45,6 +45,11 @@
     [string]
     $FrameCount,
 
+    # The duration to record.  If not provided, will record indefinitely.
+    [Parameter(ValueFromPipelineByPropertyName)]
+    [Timespan]
+    $Duration,
+
     # A list of additional arguments to FFMpeg.
     [Alias('Arguments','Argument')]
     [string[]]
@@ -73,6 +78,8 @@
         if ($AsJob) { # If -AsJob was passed,
             return & $StartRoughDraftJob # start a background job.
         }
+
+        $in = @{} + $PSBoundParameters
 
         :receivingMedia do {
 
@@ -115,7 +122,11 @@
             if ($FrameCount) {
                 $allArguments += "-frames" # use '-r' to set it.
                 $allArguments += "$FrameCount"
+            } elseif ($Duration.TotalMilliseconds -ge 0) {
+                $allArguments += '-t' # then use '-to' to set the end time.
+                $allArguments += "$Duration"
             }
+            
 
             $allArguments += $ArgumentList
             if ($OutputPath) {
