@@ -1,4 +1,18 @@
-﻿## 0.2.7:
+﻿## 0.2.8
+* New Extensions:
+  * Adding ListProtocols Extension (#38)
+  * Initial FrameBuffer Extension (#40)
+
+* Fixes:
+  * Fixing video4Linux Extension (#34)
+  * CaptureDevice extension fix for Core (#44)
+
+* Command Changes:
+  * Receive-Media now supports -PixelFormat/-FrameRate/-FrameCount (#41)
+  * Show-Media now supports -Loop/-LoopCount, and autoloops a single image (#43)
+---
+
+## 0.2.7:
 * New Extensions:
   * DirectShow (#33)
   * VideoForLinux (#34)

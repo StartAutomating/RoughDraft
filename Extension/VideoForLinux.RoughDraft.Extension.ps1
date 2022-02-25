@@ -17,6 +17,6 @@ $VideoDevice
 )
 
 
-'-f','video4linux'
+'-f','video4linux2'
 '-i', "$VideoDevice"
 

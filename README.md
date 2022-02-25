@@ -1,5 +1,5 @@
 ﻿
-RoughDraft [0.2.7]
+RoughDraft [0.2.8]
 ==================
 
 A Fun PowerShell Module for Multimedia
