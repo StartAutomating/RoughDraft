@@ -15,6 +15,7 @@ PrivateData = @{
             IconURI    = 'https://github.com/StartAutomating/RoughDraft/blob/main/Assets/RoughDraft.png'
         }
         ReleaseNotes = @'
+
 ## 0.2.8:
 * New Extensions:
   * Adding ListProtocols Extension (#38)
