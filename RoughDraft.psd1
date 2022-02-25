@@ -1,6 +1,6 @@
 @{
     CompanyName='Start-Automating'
-    ModuleVersion='0.2.7'
+    ModuleVersion='0.2.8'
     ModuleToProcess='RoughDraft.psm1'
     GUID='c192ebbf-57a3-493e-bc82-da7553038794'
     Description='A Fun PowerShell Module for Multimedia'
@@ -15,6 +15,20 @@ PrivateData = @{
             IconURI    = 'https://github.com/StartAutomating/RoughDraft/blob/main/Assets/RoughDraft.png'
         }
         ReleaseNotes = @'
+## 0.2.8:
+
+* New Extensions:
+  * Adding ListProtocols Extension (#38)
+  * Initial FrameBuffer Extension (#40)
+
+* Fixes:
+  * Fixing video4Linux Extension (#34)
+  * CaptureDevice extension fix for Core (#44)
+
+* Command Changes:
+  * Receive-Media now supports -PixelFormat/-FrameRate/-FrameCount (#41)
+  * Show-Media now supports -Loop/-LoopCount, and autoloops a single image (#43)
+
 ## 0.2.7:
 * New Extensions:
   * DirectShow (#33)
