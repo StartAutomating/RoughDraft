@@ -23,6 +23,22 @@
     [string]
     $InputDevice,
 
+    # If provided, will use a specific pixel format for video and image output.  This maps to the -pix_fmt parameter in ffmpeg.
+    [Parameter(ValueFromPipelineByPropertyName)]
+    [Alias('Pix_Fmt')]
+    [string]
+    $PixelFormat,
+
+    # The frame rate of the outputted video
+    [Parameter(ValueFromPipelineByPropertyName)]
+    [string]
+    $FrameRate,
+
+    # The number of frames to output.        
+    [Parameter(ValueFromPipelineByPropertyName)]
+    [string]
+    $FrameCount,
+
     # A list of additional arguments to FFMpeg.
     [Alias('Arguments','Argument')]
     [string[]]
@@ -79,6 +95,20 @@
 
             if ($extensionArguments) {
                 $allArguments += $extensionArguments
+            }
+
+            if ($PixelFormat) {
+                $allArguments += '-pix_fmt', $PixelFormat
+            }
+
+            if ($FrameRate) { # If -FrameRate was passed
+                $allArguments += "-r" # use '-r' to set it.
+                $allArguments += "$FrameRate"
+            }
+            
+            if ($FrameCount) {
+                $allArguments += "-frames" # use '-r' to set it.
+                $allArguments += "$FrameCount"
             }
 
             $allArguments += $ArgumentList
