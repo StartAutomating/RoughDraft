@@ -150,7 +150,7 @@
                         Write-Progress "Sending Media" "$($progress.Time)" -Id $ProgId
                     }
                 }
-            Write-Progress "Sending Media" "$($progress.Time)" -Id $ProgId -Completed
+            Write-Progress "Sending Media" " " -Id $ProgId -Completed
         } while ($false)
     }    
 }

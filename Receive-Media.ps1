@@ -145,11 +145,11 @@
                     if ($progress -and 
                         $progress.Time.Totalmilliseconds
                     ) {
-                        Write-Progress "Receving Media" "$($progress.Time)" -Id $ProgId
+                        Write-Progress "Receiving Media" "$($progress.Time)" -Id $ProgId
                     }
                 }
 
-            Write-Progress "Receving Media" "$($progress.Time)" -Id $ProgId -Completed
+            Write-Progress "Receiving Media" " " -Id $ProgId -Completed
         } while ($false)
     }    
 }
