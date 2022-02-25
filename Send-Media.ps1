@@ -70,6 +70,8 @@
             return & $StartRoughDraftJob # start a background job.
         }
 
+        $in = [Ordered]@{} + $PSBoundParameters
+
         :receivingMedia do {
 
             #region Handle Extensions        
