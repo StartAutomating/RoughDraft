@@ -1,4 +1,4 @@
-﻿
+
 name: MakeRoughDraft
 description: A PowerShell Module for Multimedia.
 inputs: 
@@ -44,11 +44,11 @@ runs:
       id: RoughDraftAction
       shell: pwsh
       env: 
-        UserName: ${{inputs.UserName}}
         CommitMessage: ${{inputs.CommitMessage}}
+        UserName: ${{inputs.UserName}}
         RoughDraftScript: ${{inputs.RoughDraftScript}}
-        SkipRoughDraftPS1: ${{inputs.SkipRoughDraftPS1}}
         UserEmail: ${{inputs.UserEmail}}
+        SkipRoughDraftPS1: ${{inputs.SkipRoughDraftPS1}}
       run: |
         $Parameters = @{}
         $Parameters.RoughDraftScript = ${env:RoughDraftScript}
@@ -206,11 +206,12 @@ runs:
         
             $checkDetached = git symbolic-ref -q HEAD
             if (-not $LASTEXITCODE) {
-                "::notice::Pushing Changes" | Out-Host
-                $gitPushed =  git push 2>&1        
+                "::notice::Pushing Changes" | Out-Host        
                 "Git Push Output: $($gitPushed  | Out-String)"
             } else {
                 "::notice::Not pushing changes (on detached head)" | Out-Host
+                $LASTEXITCODE = 0
+                exit 0
             }
         }
         } @Parameters
