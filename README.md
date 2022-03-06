@@ -1,11 +1,9 @@
 ﻿
-RoughDraft [0.2.8]
-==================
+# RoughDraft
 
 A Fun PowerShell Module for Multimedia
 ------------------
 
-Microsoft.PowerShell.Commands.Internal.Format.FormatEntryData
 ### Commands
 --------------------------------
 |     Verb|Noun                |
