@@ -164,7 +164,7 @@
             $inputKeys = @(
                 foreach ($in in $inputMedia.Keys) {
                     '-i'
-                    $in
+                    "`"$in`""
                 }
             )
             if ($extensionParams -ne '-map') {                
