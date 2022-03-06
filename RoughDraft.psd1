@@ -1,6 +1,6 @@
 @{
     CompanyName='Start-Automating'
-    ModuleVersion='0.2.8'
+    ModuleVersion='0.2.9'
     ModuleToProcess='RoughDraft.psm1'
     GUID='c192ebbf-57a3-493e-bc82-da7553038794'
     Description='A Fun PowerShell Module for Multimedia'
@@ -15,6 +15,32 @@ PrivateData = @{
             IconURI    = 'https://github.com/StartAutomating/RoughDraft/blob/main/Assets/RoughDraft.png'
         }
         ReleaseNotes = @'
+## 0.2.9:
+* Adding AmplifyPixel Extension (#61)
+* Adding MedianPixel Extension (#59)
+* Updating GitHub Jobs/Steps Defintions
+* Adding Hue Extension (#58)
+* Get-RoughDraftExtension:  Upgrading Piecemeal [0.1.9]
+* CropDetect Extension:  Returning timeframe of crop intervals, making more pipeline friendly.
+* Adding Tile Extension (#54)
+* Adding Skew Extension (#57)
+* Adding Crop Extension (#46)
+* Rotate Extension:  Adding -OutputWidth and -OutputHeight.  Enabling Show-Media (#56)
+* Show-Media:  Allowing for filtering (#56)
+* Join-Media:  Quoting input Files
+* Get-Media:  No longer collecting files if an extension could be run
+* Adding BlendVideo Extension (#51)
+* Adding YouTubeDL Extension (#42)
+* Adding RandomizeFrame extension (#52)
+* Adding EdgeDetect Extension (#53)
+* Rotate extension:  Allowing arbitrary rotation (#47)
+* Adding BlendFrame Extension (#48)
+* Adding Mirror Extension (#35)
+* AudioGain Extension: Fixing #55
+* Updating Action Source
+* Updating DirectShow extension:  Extending Send-Media
+* Updating VideoForLinux extension:  Extending Send-Media
+---
 
 ## 0.2.8:
 * New Extensions:
