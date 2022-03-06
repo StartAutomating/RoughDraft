@@ -1,11 +1,9 @@
 ﻿
-RoughDraft [0.2.8]
-==================
+# RoughDraft
 
 A Fun PowerShell Module for Multimedia
 ------------------
 
-Microsoft.PowerShell.Commands.Internal.Format.FormatEntryData
 ### Commands
 --------------------------------
 |     Verb|Noun                |
@@ -52,6 +50,8 @@ The core of RoughDraft are the -Media commands:
 |Send-Media   |Broadcasts media               |
 
 These commands are built atop of [FFMpeg](https://ffmpeg.org)
+
+All Media Commands are Extensible.  See the [list of extensions](RoughDraftExtensions.md)
 
 ### Examples
 

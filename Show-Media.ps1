@@ -108,7 +108,7 @@
 
     dynamicParam {
         $myCmd = $MyInvocation.MyCommand
-        Get-RoughDraftExtension -CommandName $myCmd -DynamicParameter
+        Get-RoughDraftExtension -CommandName $myCmd -DynamicParameter -DynamicParameterSetName 'ExtendedParameters' -NoMandatoryDynamicParameter
     }
 
     process {
@@ -221,7 +221,49 @@
 
         $progressId = Get-Random
 
+        $filterParams = $ffArgs
+        $allVideoFilters = @()
+        $allAudioFilters = @()        
         
+        for ($filterParamNumber =0 ; $filterParamNumber -lt $filterParams.Count;$filterParamNumber++) {
+            $thisFilterParam = $filterParams[$filterParamNumber]
+            if ($thisFilterParam -eq '-af') {
+                $allAudioFilters += $filterParams[$filterParamNumber + 1]
+                $filterParamNumber++
+            }
+            if ($thisFilterParam -eq '-vf') {
+                $allVideoFilters += $filterParams[$filterParamNumber + 1]
+                $filterParamNumber++
+            }
+        }
+
+        if ($allVideoFilters.Count -gt 1 -or $allAudioFilters.Count -gt 1) {
+            $newFilterParams = @(
+                for ($filterParamNumber =0 ; $filterParamNumber -lt $filterParams.Count;$filterParamNumber++) {
+                    $thisFilterParam = $filterParams[$filterParamNumber]
+                    if ($thisFilterParam -eq '-af' -and $allAudioFilters) {
+                        if ($allAudioFilters) {
+                            '-af'
+                            $allAudioFilters -join ','
+                            $allAudioFilters = @()
+                        }
+                        $filterParamNumber++        
+                    }
+                    elseif ($thisFilterParam -eq '-vf') {
+                        if ($allVideoFilters) {
+                            '-vf'
+                            $allVideoFilters -join ','
+                            $allVideoFilters = @()
+                        }
+                        $filterParamNumber++
+                    } else {
+                        $thisFilterParam
+                    }
+                }
+            )
+
+            $ffArgs = $filterParams = $newFilterParams
+        }
 
         $lastTime = $null
         Use-FFPlay -FFPlayArgument $ffArgs |
@@ -240,6 +282,7 @@
                         Write-Progress "Playing @ $($lineParts[0])s" " $InputPath" -Id $progressId -PercentComplete ([Math]::Min($perc, 100))
                     }
                 }
+                Write-Verbose $line
             }
 
         Write-Progress "Playing" " $InputPath" -Completed -Id $progressId

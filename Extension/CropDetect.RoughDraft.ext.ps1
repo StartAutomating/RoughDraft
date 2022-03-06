@@ -81,12 +81,12 @@ process {
         $percentBlack = $lineParts[3] -as [int]
         $Start = [TimeSpan]::FromSeconds(($ht.t -as [double]))
         $End = [TimeSpan]::FromSeconds(($ht.t -as [double]))
-        $ht.Remove('t')
+        $ht.CropExpression = $ht.Crop -replace '^crop='
         [PSCustomObject]$ht
         if ($theDuration -and $progId) {
             $perc = $Start.TotalMilliseconds * 100 / $theDuration.TotalMilliseconds
             Write-Progress "$ri - $filterName" " " -PercentComplete $perc -Id $ProgId
-        }                    
+        }
                     
         $lastBlackDetectEnd = $BlackEnd        
         Write-Verbose "$_"
