@@ -10,10 +10,10 @@
 #>
 # It's an extension
 [Runtime.CompilerServices.Extension()]
-# that extends Join-Media            
+# that extends Join-Media, Convert-Media, and Show-Media           
 [Management.Automation.Cmdlet("Edit","Media")]
-# and extends Convert-Media   
 [Management.Automation.Cmdlet("Convert","Media")] 
+[Management.Automation.Cmdlet("Show","Media")] 
 # that is inherited
 [ComponentModel.Inheritance("Inherited")]
 param(
@@ -23,7 +23,15 @@ param(
 $Rotate,
 
 [string]
-$RotateFillColor
+$RotateFillColor,
+
+# The Output Width
+[string]
+$OutputWidth,
+
+# The Output Height
+[string]
+$OutputHeight
 )
 
 $intRotate = $Rotate -as [int]
@@ -38,6 +46,12 @@ if ($Rotate) { # If we're going to rotate the video
     else {
         $filterArgs = @(
             "a=$rotate"
+            if ($OutputWidth) {
+                "ow=$outputWidth"
+            }
+            if ($OutputHeight) {
+                "oh=$outputHeight"
+            }
             if ($RotateFillColor){
                 "fillcolor=$rotateFillColor"
             }
