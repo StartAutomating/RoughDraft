@@ -51,6 +51,8 @@ The core of RoughDraft are the -Media commands:
 
 These commands are built atop of [FFMpeg](https://ffmpeg.org)
 
+All Media Commands are Extensible.  See the [list of extensions](RoughDraftExtensions.md)
+
 ### Examples
 
 #### Convert-Media
