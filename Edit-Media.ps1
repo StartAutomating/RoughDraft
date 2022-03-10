@@ -96,7 +96,8 @@
         $processFFMpegOutput =
             {
                 $line = $_
-                $progress = $line | & ${?<FFMpeg_Progress>} -Extract                        
+                $progress = $line | & ${?<FFMpeg_Progress>} -Extract
+                $allOutput += $line
                 if ($progress -and 
                     $progress.Time.Totalmilliseconds -and 
                     $theDuration.TotalMilliseconds
@@ -241,15 +242,20 @@
             }
         }
 
-        $ffInFiles = @(
+        $ffInFileInfos = @(
             foreach ($in in $InputPath) {
                 if ([IO.File]::Exists($In)) {
-                    '-i'
-                    ([IO.FileInfo]$in).FullName
+                    [IO.FileInfo]$in
                 } else {
-                    '-i'
-                    "$($ExecutionContext.SessionState.Path.GetResolvedPSPathFromPSPath($in) | Get-Item |Select-Object -ExpandProperty Fullname)"
+                    $ExecutionContext.SessionState.Path.GetResolvedPSPathFromPSPath($in) | Get-Item
                 }
+            }
+        )
+
+        $ffInFiles = @(
+            foreach ($in in $ffInFileInfos) {                    
+                '-i'
+                $in.FullName                
             }
         )
 
@@ -356,14 +362,57 @@
             }
         )
 
-        if ($WhatIfPreference) { return $ffMpegFullArgs } # If -WhatIf was passed, return the FFMpeg Arguments
-
-        if (-not $PSCmdlet.ShouldProcess("$($ffMpegFullArgs -join ' ')")) { return } # Otherwise, check ShouldProcess
+        if ($WhatIfPreference) { return $ffMpegFullArgs } # If -WhatIf was passed, return the FFMpeg Arguments.
+        if ($uro -and (Test-Path $uro)) {
+            # If we have only one output, and it already exists.
+            $ExistingOutput = Get-Item -LiteralPath $uro
+            if ($ExistingOutput.Length -gt 0) {
+                $clixmlPath     = 
+                        Join-Path $ExistingOutput.Directory.FullName (
+                            '.' + 
+                            $ExistingOutput.Name.Substring(0,$ExistingOutput.Name.Length - $ExistingOutput.Extension.Length) + 
+                            ".$myCmd.RoughDraft.xml"
+                        )
+                if (Test-Path $clixmlPath) {
+                    $existingData = Import-Clixml -LiteralPath $clixmlPath
+                    if (-not $Force -and 
+                        $existingData.FFArgs -eq ($ffMpegFullArgs -join ' ') -and
+                        $existingData.InputLastWriteTime -EQ $ffInFileInfos[0].LastWriteTime
+                    ) {
+                        Get-Item -ErrorAction SilentlyContinue -LiteralPath $uro
+                        return
+                    }
+                }
+            }
+        }        
+        if (-not $PSCmdlet.ShouldProcess("$($ffMpegFullArgs -join ' ')")) { return } # Check ShouldProcess, and return if we shouldn't.
+        $allOutput = @()
         & $ffmpeg @ffInFiles @timeArgs @filterParams @ffmpegParams @outParams 2>&1 |
             ForEach-Object -Process $processFFMpegOutput -End $endFFMpegOutput
-
+        
+        
         if ($uro) { # If we had a single output
-            Get-Item -ErrorAction SilentlyContinue -LiteralPath $uro # get it.
+            $existingOutput = Get-Item -ErrorAction SilentlyContinue -LiteralPath $uro # get it.
+            $existingOutput
+            $clixmlPath     = 
+                if ($ExistingOutput) {
+                    Join-Path $ExistingOutput.Directory.FullName (
+                            '.' + 
+                            $ExistingOutput.Name.Substring(0,$ExistingOutput.Name.Length - $ExistingOutput.Extension.Length) + 
+                            ".$myCmd.RoughDraft.xml"
+                    )
+                }
+
+            if ($clixmlPath) {
+                [PSCustomObject][Ordered]@{
+                    PSTypeName = 'RoughDraft.Log'
+                    FFArgs = $ffMpegFullArgs -join ' '
+                    FFOutput = $allOutput -join ' '
+                    InputLastWriteTime = $ffInFileInfos[0].LastWriteTime
+                    OutputPath = "$uro"
+                } | 
+                    Export-Clixml -Path $clixmlPath
+            }            
         } elseif ($OutputMap.Count) { # If we had an output map
             foreach ($kv in $OutputMap.GetEnumerator()) {
                 $rp = # Find each file in the map
