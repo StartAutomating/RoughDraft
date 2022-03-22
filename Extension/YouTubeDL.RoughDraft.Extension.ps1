@@ -1,5 +1,6 @@
 [Management.Automation.Cmdlet("Get","Media")]
-[ComponentModel.InheritanceLevel("NotInherited")]
+# that is inherited (this is the default).
+[ComponentModel.Inheritance("NotInherited")]
 param(
 [Parameter(Mandatory)]
 [Alias('YouTubeURI')]
