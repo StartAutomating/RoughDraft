@@ -96,6 +96,7 @@
     }
 
     end {
+        if ($AsJob) { return }
         $ffProbe = Get-FFProbe -ffProbePath $FFProbePath
 
         if (-not $ffProbe) # If we still don't a FFProbe command,
