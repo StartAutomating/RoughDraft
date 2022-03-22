@@ -1,5 +1,13 @@
+<#
+.SYNOPSIS
+    Youtube Downloader
+.DESCRIPTION
+    Extends Get-Media to enable the downloading of videos from YouTube and other sources, using YouTubeDL
+.LINK
+    http://ytdl-org.github.io/youtube-dl/
+#>
 [Management.Automation.Cmdlet("Get","Media")]
-# that is inherited (this is the default).
+# that is not inherited (this is the default).
 [ComponentModel.Inheritance("NotInherited")]
 param(
 [Parameter(Mandatory)]
