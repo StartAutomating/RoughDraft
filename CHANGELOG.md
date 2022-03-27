@@ -1,4 +1,16 @@
-﻿## 0.2.9:
+﻿## 0.3:
+* Adding LagFun Extension (#69)
+* Get-Media:  Returning at the beginning of end if -AsJob was passed
+* Adding ColorContrast Extension (#68)
+* Adding ColorHold Extension (#67)
+* MedianPixel extension:  Support for -MedianPixelTimeBlend
+* Adding Vibrato Extension (#65)
+* Adding Tremolo Extension (#64)
+* Adding Blur Extension (#63).  Adding Histogram Extension (#62)
+* Edit-Media:  Adding Logging to Avoid Reprocessing (#49)
+---
+
+## 0.2.9:
 * Adding AmplifyPixel Extension (#61)
 * Adding MedianPixel Extension (#59)
 * Updating GitHub Jobs/Steps Defintions

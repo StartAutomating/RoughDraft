@@ -5,7 +5,8 @@
     Pick median pixel from certain rectangle defined by radius.
 .Link
     https://ffmpeg.org/ffmpeg-filters.html#median
-
+.LINK
+    https://ffmpeg.org/ffmpeg-filters.html#tmedian
 #>
 # It's an extension
 [Runtime.CompilerServices.Extension()]
@@ -18,6 +19,11 @@ param(
 [Parameter(Mandatory)]
 [switch]
 $MedianPixel,
+
+# If set, will pick median pixels from successive frames.  This will ignore -MediaPixelRadiusV.
+[Parameter(Mandatory)]
+[switch]
+$MedianPixelTimeBlend,
 
 # Set horizontal radius size. Default value is 1. Allowed range is integer from 1 to 127.
 [ValidateRange(1,127)]
@@ -51,13 +57,17 @@ $filterArgs = @(
     if ($MedianPixelPlanes) {
         "planes=$MedianPixelPlanes"
     }
-    if ($MedianPixelRadiusV) {
-        "radiusV=$MedianPixelRadiusV"
+    if (-not $MedianPixelTimeBlend) {
+        if ($MedianPixelRadiusV) {
+            "radiusV=$MedianPixelRadiusV"
+        }
     }
     if ($MedianPixelPercentile) {
         "percentile=$MedianPixelPercentile"
     }
 ) -join ':'
 '-vf'
-"`"median=$filterArgs`""
+
+$FilterName = if ($MedianPixelTimeBlend) {"tmedian"} else {"median"}
+"`"$FilterName=$filterArgs`""
 
