@@ -92,7 +92,11 @@
 
     # A series of complex filters.  The key is the name of the filter, and the value can either be the direct string value of the filter, or a hashtable containing the filter components.
     [Collections.IDictionary[]]
-    $ComplexFilter
+    $ComplexFilter,
+
+    # If set, will ignore any previously generated content.
+    [switch]
+    $Force
     )
 
     dynamicParam {
@@ -404,7 +408,7 @@
                         )
                 if (Test-Path $clixmlPath) {
                     $existingData = Import-Clixml -LiteralPath $clixmlPath
-                    if (-not $Force -and 
+                    if (-not $MyParams.Force -and 
                         $existingData.FFArgs -eq ($ffMpegFullArgs -join ' ') -and
                         $existingData.InputLastWriteTime -EQ $ffInFileInfos[0].LastWriteTime
                     ) {
