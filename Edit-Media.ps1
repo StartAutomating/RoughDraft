@@ -58,15 +58,25 @@
     [Collections.IDictionary]
     $MetaData,
 
-    # The timespan to start
-    [Parameter(ValueFromPipelineByPropertyName)]
+    # The start time within the media. 
+    # This maps to the ffmpeg parameter -ss.
+    [Parameter(Position=2, ValueFromPipelineByPropertyName)]
+    [Alias('StartTime')]
     [Timespan]
     $Start,
 
-    # The time span to end
-    [Parameter(ValueFromPipelineByPropertyName)]
+    # The end time within the media. 
+    # This maps to the ffmpeg parameter -to.
+    [Parameter(Position=3, ValueFromPipelineByPropertyName)]
+    [Alias('EndTime')]
     [Timespan]
     $End,
+
+    # The duration of the media.
+    # This maps to the ffmpeg parameter -t.
+    [Parameter(Position=4, ValueFromPipelineByPropertyName)]
+    [Timespan]
+    $Duration,
 
     # A series of video filters.  
     # The key is the name of the filter, and the value can either be the direct string value of the filter, or a hashtable containing the filter components.
@@ -155,9 +165,19 @@
 
 
         $mediaInfo = Get-Media -InputPath $ri
-        if (-not $start) { $start = [Timespan]::FromMilliseconds(0) }
-        if (-not $end -and $mediaInfo.Duration)   { $end = $MediaInfo.Duration }
-        $theDuration = $End - $Start
+        if ($Start -or $end){
+            if (-not $Start) {
+                $start = [TimeSpan]::FromMilliseconds(0)
+            }
+            if (-not $end) {
+                $end = $theduration
+            }
+            $theduration = $end - $Start
+        }
+        elseif ($Duration.TotalMilliseconds) {
+            $theDuration = $Duration
+        }    
+
         $ffmpegParams = @()
 
         if ($Codec) {
@@ -337,30 +357,39 @@
             $filterParams = $newFilterParams
         }
 
+        #region Determine Timeframe
+        $TimeFrame =@()
+        if ($Start -and $start.TotalMilliseconds -ge 0) { # If we were provided a start time
+            $TimeFrame += '-ss' # Use -ss.
+            $TimeFrame += "$Start"
+        }
+
+        if ($End -and $end.TotalMilliseconds -ge 0) { # If we were provided an end
+            if (-not $PSBoundParameters.Start -and -not ($Loop -or $LoopCount)) { # if we didn't get a start and we're not looping
+                $TimeFrame += '-ss'
+                $TimeFrame += "$([Timespan]::FromMilliseconds(0))" # set start to 0
+            }
+            $TimeFrame += '-to' # then use '-to' to set the end time.
+            $TimeFrame += "$End"
+        }
+
+        if ($Duration) {
+            $TimeFrame += '-t'
+            $TimeFrame += "$($Duration.TotalSeconds)"
+        }
+        #endregion Determine Timeframe
+
         # Write the arguments out to verbose
-        Write-Verbose "FFMpeg Arguments -i $ri -ss `"$start`" -to `"$end`" $($filterParams -join ' ') $uro -y $($ffmpegParams -join ' ')"
+        
         $ffMpegFullArgs = @(
             $ffInFiles
-            '-ss'
-            "$start"
-            if ("$end") {
-                '-to'
-                "$end"
-            }
+            $TimeFrame
             $filterParams
             $ffmpegParams
-            $OutParams
-            
+            $OutParams            
         )
 
-        $timeArgs  =  @(
-            '-ss'
-            "$start"
-            if ("$end") {
-                '-to'
-                "$end"
-            }
-        )
+        Write-Verbose "FFMpeg Arguments: $ffMpegFullArgs"
 
         if ($WhatIfPreference) { return $ffMpegFullArgs } # If -WhatIf was passed, return the FFMpeg Arguments.
         if ($uro -and (Test-Path $uro)) {
@@ -387,7 +416,7 @@
         }        
         if (-not $PSCmdlet.ShouldProcess("$($ffMpegFullArgs -join ' ')")) { return } # Check ShouldProcess, and return if we shouldn't.
         $allOutput = @()
-        & $ffmpeg @ffInFiles @timeArgs @filterParams @ffmpegParams @outParams 2>&1 |
+        & $ffmpeg @ffInFiles @TimeFrame @filterParams @ffmpegParams @outParams 2>&1 |
             ForEach-Object -Process $processFFMpegOutput -End $endFFMpegOutput
         
         
