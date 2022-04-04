@@ -94,6 +94,11 @@
     [Collections.IDictionary[]]
     $ComplexFilter,
 
+    # Any additional arguments to FFMpeg
+    [Parameter(ValueFromRemainingArguments)]
+    [string[]]
+    $FFMpegArgument,
+
     # If set, will ignore any previously generated content.
     [switch]
     $Force
@@ -390,6 +395,7 @@
             $TimeFrame
             $filterParams
             $ffmpegParams
+            $FFMpegArgument
             $OutParams            
         )
 
@@ -420,7 +426,7 @@
         }        
         if (-not $PSCmdlet.ShouldProcess("$($ffMpegFullArgs -join ' ')")) { return } # Check ShouldProcess, and return if we shouldn't.
         $allOutput = @()
-        & $ffmpeg @ffInFiles @TimeFrame @filterParams @ffmpegParams @outParams 2>&1 |
+        & $ffmpeg @ffInFiles @TimeFrame @filterParams @ffmpegParams @FFMpegArgument @outParams 2>&1 |
             ForEach-Object -Process $processFFMpegOutput -End $endFFMpegOutput
         
         

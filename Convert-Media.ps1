@@ -125,6 +125,11 @@
     [Switch]
     $AsJob,
 
+    # Any additional arguments to FFMpeg
+    [Parameter(ValueFromRemainingArguments)]
+    [string[]]
+    $FFMpegArgument,
+
     # If set, this will loop the input source.
     [Switch]
     $Loop,
@@ -401,9 +406,10 @@
 
 
             $ProgId = Get-Random
-            Write-Verbose "FFMpeg Arguments: $FirstParams -i $ri $($filterParams -join ' ') $($TimeFrame -join ' ') $uro -y $($ffmpegParams -join ' ')"
+            Write-Verbose "FFMpeg Arguments: $FirstParams -i $ri $ffMpegArgument $($filterParams -join ' ') $($TimeFrame -join ' ') $uro -y $($ffmpegParams -join ' ')"
             $lines =@()
-            & $ffmpeg @FirstParams -i $ri @filterParams @TimeFrame $uro -y @ffmpegParams 2>&1 |
+
+            & $ffmpeg @FirstParams -i $ri @TimeFrame @filterParams @FFMpegArgument $uro -y @ffmpegParams 2>&1 |
                 . {
                     process {
                         $line = $_
