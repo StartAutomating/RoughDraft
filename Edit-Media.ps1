@@ -39,7 +39,7 @@
     $OutputMap,
 
     # The coded used for the conversion
-    [Parameter(Position=2,ValueFromPipelineByPropertyName)]
+    [Parameter(ValueFromPipelineByPropertyName)]
     [string]
     $Codec,
 
