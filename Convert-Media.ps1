@@ -79,15 +79,25 @@
     [Collections.IDictionary]
     $MetaData,
 
-    # The timespan to start splitting the video
+    # The start time within the media. 
+    # This maps to the ffmpeg parameter -ss.
     [Parameter(Position=2, ValueFromPipelineByPropertyName)]
+    [Alias('StartTime')]
     [Timespan]
     $Start,
 
-    # The time span to end splitting the video
+    # The end time within the media. 
+    # This maps to the ffmpeg parameter -to.
     [Parameter(Position=3, ValueFromPipelineByPropertyName)]
+    [Alias('EndTime')]
     [Timespan]
     $End,
+
+    # The duration of the media.
+    # This maps to the ffmpeg parameter -t.
+    [Parameter(Position=4, ValueFromPipelineByPropertyName)]
+    [Timespan]
+    $Duration,
 
     # If provided, will attempt to encode the video at a variable quality level, between 1 (highest) and 31 (lowest).
     [Parameter(ValueFromPipelineByPropertyName)]
@@ -114,6 +124,11 @@
     # If set, will run inside of a background job
     [Switch]
     $AsJob,
+
+    # Any additional arguments to FFMpeg
+    [Parameter(ValueFromRemainingArguments)]
+    [string[]]
+    $FFMpegArgument,
 
     # If set, this will loop the input source.
     [Switch]
@@ -184,7 +199,6 @@
             $ffmpegParams = @()
             $filterParams = @()
 
-
             $audioStreams = @($mi.Streams | Where-Object Codec_Type -eq 'Audio')
 
             $theDuration = $mi.Duration
@@ -197,6 +211,9 @@
                     $end = $theduration
                 }
                 $theduration = $end - $Start
+            }
+            elseif ($Duration.TotalMilliseconds) {
+                $theDuration = $Duration
             }
 
             #region Handle Extensions
@@ -279,7 +296,10 @@
                 $TimeFrame += "$End"
             }
 
-
+            if ($Duration) {
+                $TimeFrame += '-t'
+                $TimeFrame += "$($Duration.TotalSeconds)"
+            }
 
             if ($PSBoundParameters.VideoFrameCount) { # If we were provided a frame count
                 $timeFrame += "-vframes" # Use -vframes.
@@ -374,9 +394,9 @@
 
             if ($Loop -or $LoopCount) { # If we're going to loop it.
                 $firstParams += "-stream_loop"
-                $firstParams += if ($LoopCount -ge 0) {
+                $firstParams += if ($LoopCount -gt 0) {
                     $LoopCount
-                } else { 1 }
+                } else { -1 }
             }
 
 
@@ -386,9 +406,10 @@
 
 
             $ProgId = Get-Random
-            Write-Verbose "FFMpeg Arguments: -i $ri $($filterParams -join ' ') $($TimeFrame -join ' ') $uro -y $($ffmpegParams -join ' ')"
+            Write-Verbose "FFMpeg Arguments: $FirstParams -i $ri $ffMpegArgument $($filterParams -join ' ') $($TimeFrame -join ' ') $uro -y $($ffmpegParams -join ' ')"
             $lines =@()
-            & $ffmpeg @FirstParams -i $ri @filterParams @TimeFrame $uro -y @ffmpegParams 2>&1 |
+
+            & $ffmpeg @FirstParams -i $ri @TimeFrame @filterParams @FFMpegArgument $uro -y @ffmpegParams 2>&1 |
                 . {
                     process {
                         $line = $_

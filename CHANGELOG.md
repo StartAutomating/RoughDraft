@@ -1,4 +1,15 @@
-﻿## 0.3:
+﻿## 0.3.1:
+* Adding Subtitler Extension (#73)
+* Show-Media:  Safeguarding progress output (Fixing #76)
+* Edit-Media:  -Codec is no longer positionally bound.
+* Simplifying Resize Extension
+* Convert/Edit-Media:  Support for -FFMpegArgument (#75)
+* Edit-Media:  Adding -Force (fixing #77)
+* Convert/Edit-Media:  Support for -Duration (#74)
+* Adding DrawSubtitle Extension (#72)
+---
+
+## 0.3:
 * Adding LagFun Extension (#69)
 * Get-Media:  Returning at the beginning of end if -AsJob was passed
 * Adding ColorContrast Extension (#68)

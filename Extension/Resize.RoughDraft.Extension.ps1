@@ -3,13 +3,14 @@
     Resizes a video
 .Description
     Applies the resize filter to a video.
+.EXAMPLE
+    Convert-Media
 #>
 # It's an extension
 [Runtime.CompilerServices.Extension()]
 # that extends Edit-Media            
+[Management.Automation.Cmdlet("Convert","Media")]
 [Management.Automation.Cmdlet("Edit","Media")]
-# and extends Convert-Media   
-[Management.Automation.Cmdlet("Convert","Media")] 
 # that is inherited (this is the default)
 [ComponentModel.Inheritance("Inherited")]
 param(
@@ -20,7 +21,5 @@ param(
 $Resize
 )
 
-if ($Resize) { # If we're going to resize the video
-    "-vf" # Use the [scale videofilter](https://ffmpeg.org/ffmpeg-filters.html#scale-1)
-    "`"scale=$($Resize.Replace("x", ":"))`""        
-}
+"-vf" # Use the [scale videofilter](https://ffmpeg.org/ffmpeg-filters.html#scale-1)
+"`"scale=$($Resize.Replace("x", ":"))`""
