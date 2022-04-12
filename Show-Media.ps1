@@ -272,7 +272,7 @@
                 if ($line -like '*:*=*') {
                     $lineParts = @($line -split '\s' -ne '')
                     if ($lineParts[0] -as [double]) {
-                        $perc = if ($theDuration -and ($lastParts[0] -as [double])) {
+                        $perc = if ($theDuration -and ($lineParts[0] -as [double])) {
                             $lastTime = [Timespan]::FromSeconds($lineParts[0] -as [double])
                             $lastTime.TotalSeconds * 100/ $theDuration.TotalSeconds
                         }
