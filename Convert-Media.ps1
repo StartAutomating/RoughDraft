@@ -228,6 +228,10 @@
                 $theDuration = $Duration
             }
 
+            if ($Duration -and (-not $mi.Duration -or $duration -gt $mi.Duration)) { # If the duration is larger than the media duration
+                $Loop = $true # imply -Loop (#81)
+            }
+
             #region Handle Extensions
             Get-RoughDraftExtension -CommandName $myCmd -CanRun -ExtensionParameter $in |
                 . Get-RoughDraftExtension -Run |
@@ -383,7 +387,7 @@
                     $filterParams += "$VideoCodec"
                 }
             }
-            
+
             if ($AudioBitrate) { # If we provided an audio bitrate
                 $filterParams += "-b:a"  # don't forget to add that.
                 $filterParams += "$audioBitrate"
