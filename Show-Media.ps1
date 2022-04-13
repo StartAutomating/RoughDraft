@@ -272,9 +272,12 @@
                 if ($line -like '*:*=*') {
                     $lineParts = @($line -split '\s' -ne '')
                     if ($lineParts[0] -as [double]) {
-                        $perc = if ($theDuration -and ($lastParts[0] -as [double])) {
-                            $lastTime = [Timespan]::FromSeconds($lineParts[0] -as [double])
-                            $lastTime.TotalSeconds * 100/ $theDuration.TotalSeconds
+                        $perc = if ($theDuration -and ($lineParts[0] -as [double])) {
+                            $linePartsDouble = $lineParts[0] -as [double]
+                            if ("$linePartsDouble" -and "$linePartsDouble" -ne 'nan') {
+                                $lastTime = [Timespan]::FromSeconds($lineParts[0] -as [double])
+                                $lastTime.TotalSeconds * 100/ $theDuration.TotalSeconds
+                            } else { 0 }
                         }
                         else {
                             (($lineParts[0] -as [int]) % 60)*100/60

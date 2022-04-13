@@ -7,6 +7,8 @@
         Converts media from one format to another, using ffmpeg
     .Example
         Convert-Media "a.mov" "a.mp4"
+    .Example
+        Convert-Media "a.jpg" ".mp4" -Duration "00:15:00" -Tune stillimage -Preset ultrafast
     .Link
         Get-Media
     .Link
@@ -98,6 +100,18 @@
     [Parameter(Position=4, ValueFromPipelineByPropertyName)]
     [Timespan]
     $Duration,
+
+    # If provided, will use an ffmpeg preset to encode.
+    # This maps to the --preset parameter in ffmpeg.
+    [Parameter(ValueFromPipelineByPropertyName)]
+    [string]
+    $Preset,
+
+    # If provided, will use a set of encoder settings to "tune" the video encoder.
+    # Not supported by all codecs.  This maps to the --tune parameter in ffmpeg.
+    [Parameter(ValueFromPipelineByPropertyName)]
+    [string]
+    $Tune,
 
     # If provided, will attempt to encode the video at a variable quality level, between 1 (highest) and 31 (lowest).
     [Parameter(ValueFromPipelineByPropertyName)]
@@ -216,6 +230,10 @@
                 $theDuration = $Duration
             }
 
+            if ($Duration -and (-not $mi.Duration -or $duration -gt $mi.Duration)) { # If the duration is larger than the media duration
+                $Loop = $true # imply -Loop (#81)
+            }
+
             #region Handle Extensions
             Get-RoughDraftExtension -CommandName $myCmd -CanRun -ExtensionParameter $in |
                 . Get-RoughDraftExtension -Run |
@@ -306,9 +324,17 @@
                 $timeFrame += "$VideoFrameCount"
             }
 
-            if ($PixelFormat) { # If we were provided a pixel format
-                # use the -pix_fmt to specify it.
+            if ($PixelFormat) { # If we were provided a -PixelFormat
+                # use the -pix_fmt parameter.
                 $filterParams += '-pix_fmt', $PixelFormat
+            }
+
+            if ($tune) { # If -Tune was provided
+                $filterParams += '-tune', $tune # add the -tune parameter.
+            }
+
+            if ($Preset) { # If -Preset was provied
+                $filterParams += '-preset', $Preset # add the -preset parameter.
             }
 
             if ($VideoFilter) { # If any other video filters were passed
@@ -362,8 +388,8 @@
                     $filterParams += "-c:v" # otherwise, pass whatever the user put in.
                     $filterParams += "$VideoCodec"
                 }
-
             }
+
             if ($AudioBitrate) { # If we provided an audio bitrate
                 $filterParams += "-b:a"  # don't forget to add that.
                 $filterParams += "$audioBitrate"
@@ -406,7 +432,7 @@
 
 
             $ProgId = Get-Random
-            Write-Verbose "FFMpeg Arguments: $FirstParams -i $ri $ffMpegArgument $($filterParams -join ' ') $($TimeFrame -join ' ') $uro -y $($ffmpegParams -join ' ')"
+            Write-Verbose "FFMpeg Arguments: $FirstParams -i $ri $TimeFrame $filterParams $ffMpegArgument $uro -y $ffmpegParams"
             $lines =@()
 
             & $ffmpeg @FirstParams -i $ri @TimeFrame @filterParams @FFMpegArgument $uro -y @ffmpegParams 2>&1 |

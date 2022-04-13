@@ -54,6 +54,18 @@
     [string]
     $PixelFormat = 'yuv420p',
 
+    # If provided, will use an ffmpeg preset to encode.
+    # This maps to the --preset parameter in ffmpeg.
+    [Parameter(ValueFromPipelineByPropertyName)]
+    [string]
+    $Preset,
+
+    # If provided, will use a set of encoder settings to "tune" the video encoder.
+    # Not supported by all codecs.  This maps to the --tune parameter in ffmpeg.
+    [Parameter(ValueFromPipelineByPropertyName)]
+    [string]
+    $Tune,
+
     # The metadata to put in the converted file
     [Collections.IDictionary]
     $MetaData,
@@ -209,6 +221,14 @@
             $ffmpegParams += '-pix_fmt', $PixelFormat
         }
 
+        if ($tune) { # If -Tune was provided
+            $filterParams += '-tune', $tune # add the -tune parameter.
+        }
+
+        if ($Preset) { # If -Preset was provied
+            $filterParams += '-preset', $Preset # add the -preset parameter.
+        }
+
         $filterParams = @()
 
         if ($MetaData) {
@@ -287,6 +307,8 @@
                 $in.FullName                
             }
         )
+
+        
 
         $outParams = @(
             if ($OutputPath -and $uro) {

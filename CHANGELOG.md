@@ -1,4 +1,16 @@
-﻿## 0.3.1:
+﻿## 0.3.2:
+* Updating RoughDraft Tests (adding test for image->video, re #83)
+* Convert-Media:  Adding .EXAMPLE for Image Conversion (#83)
+* Adding ColorScope Extension (#79)
+* Show-Media:  Fixing output errors (#76)
+* Updating Subtitler Extension (removing -OutputPath)
+* Convert-Media:  Implying -Loop when -Duration is greater than input duration (#81)
+* Edit-Media:  Support for -Tune and -Preset (#82)
+* Convert-Media:  Support for -Tune and -Preset (#82)
+* Get-RoughDraftExtension:  Updating Piecemeal Version [0.2.1]
+---
+
+## 0.3.1:
 * Adding Subtitler Extension (#73)
 * Show-Media:  Safeguarding progress output (Fixing #76)
 * Edit-Media:  -Codec is no longer positionally bound.

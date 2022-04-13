@@ -30,11 +30,7 @@ $SubtitleEndTime,
 # The subtitle locale.  Only valid when the -OutputPath is a VTT
 # If not provided, this will be automatically detected.
 [string]
-$SubtitleLocale,
-
-[Parameter(Mandatory)]
-[string]
-$OutputPath
+$SubtitleLocale
 )
 
 begin {
@@ -44,12 +40,13 @@ begin {
 
 process {
     $validSubtitleExtensions = "srt", "vtt"
-    if ($OutputPath -notmatch "\.(?<ext>$($validSubtitleExtensions -join '|'))$") {
+    if ($outputPath -and $OutputPath -notmatch "\.(?<ext>$($validSubtitleExtensions -join '|'))$") {
         Write-Error "-OutputPath '$OutputPath' must be one of the following extensions: $validSubtitleExtensions "
         return
     }
 
     $subtitleExtensionType = $Matches.ext
+    if (-not $subtitleExtensionType) { $subtitleExtensionType -eq 'srt'}
 
 
     if ($subtitleExtensionType -eq 'vtt') {
@@ -101,5 +98,9 @@ process {
 }
 
 end {
-    $subtitleFileContent | Set-Content -Path $OutputPath
+    if ($outputPath) {
+        "$subtitleFileContent" | Set-Content -Path $OutputPath
+    } else {
+        "$subtitleFileContent"
+    }
 }
