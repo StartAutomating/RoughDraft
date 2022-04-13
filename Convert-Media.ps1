@@ -7,6 +7,8 @@
         Converts media from one format to another, using ffmpeg
     .Example
         Convert-Media "a.mov" "a.mp4"
+    .Example
+        Convert-Media "a.jpg" ".mp4" -Duration "00:15:00" -Tune stillimage -Preset ultrafast
     .Link
         Get-Media
     .Link
