@@ -25,6 +25,21 @@ describe Convert-Media {
         Remove-Item $converted.Fullname
     }
 
+    it 'Can turn a still image into a video' {
+        $tmpOutPath = Join-Path ([IO.Path]::GetTempPath()) "testsrc$(Get-Random).png"
+        $converted  = New-Media -TestSource testsrc -OutputPath $tmpOutPath -Duration "00:00:01" |
+            Convert-Media -OutputPath mp4 -Duration "00:15:00"
+        $converted |
+            Select-Object -ExpandProperty Extension |
+            Should -Be .mp4
+        $converted |
+            Get-Media |
+            Select-Object -ExpandProperty Duration |
+            Should -Be "00:15:00"
+        Remove-Item $tmpOutPath
+        Remove-Item $converted.Fullname
+    }
+
     it 'Can use an extension to -Resize while converting' {
         $tmpOutPath  = Join-Path ([IO.Path]::GetTempPath()) "testsrc$(Get-Random).mp4"
         $tmpOutPath2 = Join-Path ([IO.Path]::GetTempPath()) "testsrc$(Get-Random).mp4"
