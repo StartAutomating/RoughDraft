@@ -10,8 +10,7 @@
 .Link
     https://ffmpeg.org/ffmpeg-filters.html#ass
 #>
-# It's an extension for Edit-Media            
-[Management.Automation.Cmdlet("Convert","Media")]
+[Management.Automation.Cmdlet("Convert","Media")]  # It's an extension for Convert/Edit-Media
 [Management.Automation.Cmdlet("Edit","Media")]
 param(
 # Set the filename of the subtitle file to read. It must be specified.

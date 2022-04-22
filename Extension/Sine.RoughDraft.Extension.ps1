@@ -6,15 +6,16 @@
 .Link
     https://ffmpeg.org/ffmpeg-filters.html#sine
 #>
-# It's an extension
-[Runtime.CompilerServices.Extension()]
-# that extends New-Media            
-[Management.Automation.Cmdlet("New","Media")]
+
+[Runtime.CompilerServices.Extension()]         # It's an extension
+[Management.Automation.Cmdlet("New","Media")]  # that extends New-Media
 param(
+# If set, will generate a sine tone
 [Parameter(Mandatory)]
 [switch]
 $Sine,
 
+# The frequency of the sine tone.
 [string]
 $SineFrequency
 )

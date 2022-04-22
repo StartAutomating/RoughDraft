@@ -15,13 +15,13 @@ param(
 $Skew,
 
 # Skew factor in X-direction. Default value is 0. Allowed range is from -2 to 2.
-[ValidateRange(2,-2)]
+[ValidateRange(-2,2)]
 [Alias('ShearX')]
 [float]
 $SkewX,
 
 # Skew factor in Y-direction. Default value is 0. Allowed range is from -2 to 2.
-[ValidateRange(2,-2)]
+[ValidateRange(-2,2)]
 [Alias('ShearY')]
 [float]
 $SkewY,

@@ -6,11 +6,10 @@
 .Link
     https://ffmpeg.org/ffmpeg-filters.html#volumedetect
 #>
-# It's an extension
-[Runtime.CompilerServices.Extension()]
-# that extends Get-Media            
-[Management.Automation.Cmdlet("Get","Media")]
+[Runtime.CompilerServices.Extension()]         # It's an extension
+[Management.Automation.Cmdlet("Get","Media")]  # that extends Get-Media.
 param(
+# If set, will measure volume levels.
 [Parameter(Mandatory)]
 [switch]
 $VolumeLevel

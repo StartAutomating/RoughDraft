@@ -6,12 +6,10 @@
 .Link
     https://ffmpeg.org/ffmpeg-filters.html#mandelbrot
 #>
-# It's an extension
-[Runtime.CompilerServices.Extension()]
-# that extends New-Media            
-[Management.Automation.Cmdlet("New","Media")]
-# that extends Show-Media            
-[Management.Automation.Cmdlet("Show","Media")]
+
+[Runtime.CompilerServices.Extension()]           # It's an extension
+[Management.Automation.Cmdlet("New","Media")]    # that extends New-Media            
+[Management.Automation.Cmdlet("Show","Media")]   # that extends Show-Media
 param(
 # The type of fractal source
 [Parameter(Mandatory)]

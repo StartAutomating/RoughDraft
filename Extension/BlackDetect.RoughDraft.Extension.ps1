@@ -6,12 +6,10 @@
 .Link
     https://ffmpeg.org/ffmpeg-filters.html#blackdetect
 #>
-# It's an extension
-[Runtime.CompilerServices.Extension()]
-# that extends Get-Media            
-[Management.Automation.Cmdlet("Get","Media")]
-# that is not inherited.
-[ComponentModel.Inheritance("NotInherited")]
+
+[Runtime.CompilerServices.Extension()]         # It's an extension
+[Management.Automation.Cmdlet("Get","Media")]  # that extends Get-Media
+[ComponentModel.Inheritance("NotInherited")]   # that is not inherited.
 param(
 # If set, will find black within a video.
 [Parameter(Mandatory)]

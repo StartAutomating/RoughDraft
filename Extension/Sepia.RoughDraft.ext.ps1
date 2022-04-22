@@ -4,12 +4,10 @@
 .Description
     Uses the ffmpeg colorchannelmixer to apply a Sepia filter.
 #>
-# It's an extension
-[Runtime.CompilerServices.Extension()]
-# that extends Join-Media            
-[Management.Automation.Cmdlet("Edit","Media")]
-# that is inherited
-[ComponentModel.Inheritance("Inherited")]
+
+[Runtime.CompilerServices.Extension()]         # It's an extension
+[Management.Automation.Cmdlet("Edit","Media")] # that extends Join-Media
+[ComponentModel.Inheritance("Inherited")]      # that is inherited
 param(
 # If set, will apply a sepia filter.
 [Parameter(Mandatory)]

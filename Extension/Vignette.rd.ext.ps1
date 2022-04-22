@@ -6,10 +6,8 @@
 .Link
     https://ffmpeg.org/ffmpeg-filters.html#vignette
 #>
-# It's an extension
-[Runtime.CompilerServices.Extension()]
-# that extends Edit-Media            
-[Management.Automation.Cmdlet("Edit","Media")]
+[Runtime.CompilerServices.Extension()]  # It's an extension
+[Management.Automation.Cmdlet("^(Edit|Show)","Media")] # that extends Edit/Show-Media
 param(
 [Parameter(Mandatory)]
 [switch]

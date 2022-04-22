@@ -8,6 +8,7 @@
 [Management.Automation.Cmdlet("Send", "Media")]
 [Management.Automation.Cmdlet("Show", "Media")]
 param(
+# The frame buffer index
 [Parameter(Mandatory)]
 [int]
 $FrameBuffer

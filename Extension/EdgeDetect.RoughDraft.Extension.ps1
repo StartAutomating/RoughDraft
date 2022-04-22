@@ -6,8 +6,9 @@
 .LINK
     https://ffmpeg.org/ffmpeg-filters.html#edgedetect
 #>
-[Management.Automation.Cmdlet("Edit","Media")]
+[Management.Automation.Cmdlet("^(Edit|Show)","Media")]
 param(
+# If set, will detect edges
 [Parameter(Mandatory)]
 [Alias('DetectEdge', 'DetectEdges')]
 [switch]

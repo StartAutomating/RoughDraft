@@ -4,10 +4,9 @@
 .Description
     Sets album artwork by adding a secondary stream to an audio file and setting the appropriate metadata.
 #>
-# It's an extension
-[Runtime.CompilerServices.Extension()]
-# that extends Set-Media            
-[Management.Automation.Cmdlet("Set","Media")]
+
+[Runtime.CompilerServices.Extension()] # It's an extension
+[Management.Automation.Cmdlet("Set","Media")] # that extends Set-Media
 param(
 # The path to album art.
 [Parameter(Mandatory)]
