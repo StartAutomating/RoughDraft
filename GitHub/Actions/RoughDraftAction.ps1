@@ -141,7 +141,8 @@ if ($CommitMessage -or $anyFilesChanged) {
 
     $checkDetached = git symbolic-ref -q HEAD
     if (-not $LASTEXITCODE) {
-        "::notice::Pushing Changes" | Out-Host        
+        "::notice::Pushing Changes" | Out-Host
+        git push
         "Git Push Output: $($gitPushed  | Out-String)"
     } else {
         "::notice::Not pushing changes (on detached head)" | Out-Host
