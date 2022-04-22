@@ -6,7 +6,7 @@
 .LINK
     https://ffmpeg.org/ffmpeg-filters.html#hue
 #>
-[Management.Automation.Cmdlet("Edit", "Media")]
+[Management.Automation.Cmdlet("^Edit|Show", "Media")]
 param(
 # If set, will change hue levels.
 [Parameter(Mandatory)]

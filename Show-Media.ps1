@@ -266,6 +266,7 @@
         }
 
         $lastTime = $null
+        Write-Verbose "Launching FFPlay with $ffArgs"
         Use-FFPlay -FFPlayArgument $ffArgs |
             ForEach-Object {
                 $line= $_

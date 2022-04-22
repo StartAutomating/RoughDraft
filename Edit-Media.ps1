@@ -197,7 +197,9 @@
         }
         elseif ($Duration.TotalMilliseconds) {
             $theDuration = $Duration
-        }    
+        } else {
+            $theDuration = $mediaInfo.Duration
+        }   
 
         $ffmpegParams = @()
 
