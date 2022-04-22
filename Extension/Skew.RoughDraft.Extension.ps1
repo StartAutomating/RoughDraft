@@ -15,16 +15,16 @@ param(
 $Skew,
 
 # Skew factor in X-direction. Default value is 0. Allowed range is from -2 to 2.
-[ValidateRange(-2,2)]
+[ValidateRange(2,-2)]
 [Alias('ShearX')]
 [float]
-$SkewX  = 0,
+$SkewX,
 
 # Skew factor in Y-direction. Default value is 0. Allowed range is from -2 to 2.
-[ValidateRange(-2,2)]
+[ValidateRange(2,-2)]
 [Alias('ShearY')]
 [float]
-$SkewY = 0,
+$SkewY,
 
 # Set the color used to fill the output area not covered by the transformed video.
 [Alias('ShearFillColor')]

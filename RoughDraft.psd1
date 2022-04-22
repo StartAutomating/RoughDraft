@@ -7,7 +7,7 @@
     Copyright='2011-2021 Start-Automating'
     Author='James Brundage'
     FormatsToProcess  ='RoughDraft.format.ps1xml'   
-    PrivateData = @{
+PrivateData = @{
         PSData = @{
             Tags = 'FFMpeg', 'Media', 'Multimedia','Audio', 'Video', 'mp3','mp4'
             ProjectURI = 'https://github.com/StartAutomating/RoughDraft'
