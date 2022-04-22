@@ -22,6 +22,10 @@ $RoughDraftScript,
 [switch]
 $SkipRoughDraftPS1,
 
+# A list of installation arguments.
+[string[]]
+$FFMpegInstallArgument,
+
 # If provided, will commit any remaining changes made to the workspace with this commit message.
 [string]
 $CommitMessage,
@@ -57,7 +61,7 @@ if ($PSVersionTable.Platform -eq 'Unix') {
     if (-not $ffMpegInPath -and $env:GITHUB_WORKFLOW) {
         "::group::Installing FFMpeg" | Out-Host
         sudo apt update | Out-Host
-        sudo apt install ffmpeg | Out-Host
+        sudo apt install ffmpeg @FFMpegInstallArgument | Out-Host
         "::endgroup::" | Out-Host
     }
 }
