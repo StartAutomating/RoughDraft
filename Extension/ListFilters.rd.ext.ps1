@@ -3,6 +3,8 @@
     Lists filters
 .Description
     Lists filters available in FFMpeg.
+.EXAMPLE
+    Get-FFMpeg -ListFilter
 #>
 
 [Runtime.CompilerServices.Extension()]           # It's an extension

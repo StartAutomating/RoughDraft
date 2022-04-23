@@ -6,10 +6,8 @@
 .Link
     https://ffmpeg.org/ffmpeg-filters.html#monochrome
 #>
-# It's an extension
-[Runtime.CompilerServices.Extension()]
-# that extends Edit-Media            
-[Management.Automation.Cmdlet("Edit","Media")]
+[Runtime.CompilerServices.Extension()]            # It's an extension
+[Management.Automation.Cmdlet("Edit","Media")]    # that extends Edit-Media
 param(
 [Parameter(Mandatory)]
 [switch]

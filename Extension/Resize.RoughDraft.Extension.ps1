@@ -5,13 +5,11 @@
     Applies the resize filter to a video.
 .EXAMPLE
     Convert-Media
+.LINK
+    https://ffmpeg.org/ffmpeg-filters.html#scale-1    
 #>
-# It's an extension
-[Runtime.CompilerServices.Extension()]
-# that extends Edit-Media            
-[Management.Automation.Cmdlet("Convert","Media")]
-[Management.Automation.Cmdlet("Edit","Media")]
-# that is inherited (this is the default)
+[Runtime.CompilerServices.Extension()]              # It's an extension
+[Management.Automation.Cmdlet("^(Convert|Edit|Show)","Media")]   # that extends Convert/Edit/Show-Media
 [ComponentModel.Inheritance("Inherited")]
 param(
 # The width and height used to resize the video.

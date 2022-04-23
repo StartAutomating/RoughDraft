@@ -5,6 +5,8 @@
     Adjusts the Hue of a video source
 .LINK
     https://ffmpeg.org/ffmpeg-filters.html#hue
+.EXAMPLE
+    Edit-Media -InputPath "TestSource.mp4" -SetHue -HueDegree 60 # Adjust hue by 60 degrees
 #>
 [Management.Automation.Cmdlet("^Edit|Show", "Media")]
 param(

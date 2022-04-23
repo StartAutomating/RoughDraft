@@ -3,6 +3,8 @@
     Lists protocols
 .Description
     Lists the protocols available to ffmpeg.
+.EXAMPLE
+    Get-FFMpeg -ListProtocol
 #>
 
 [Runtime.CompilerServices.Extension()]        # It's an extension
