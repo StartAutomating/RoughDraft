@@ -1,4 +1,19 @@
-﻿## 0.3.2:
+﻿## 0.3.3:
+* New Extensions:
+  * Adding Exposure Extension (#87)      
+  * Adding FlipVertical Extension (#91)
+  * Adding FlipHorizontal Extension (#90)
+  * Adding LimitPixel Extension (#93)
+  * Adding TimeMix Extension (#95)
+* Adding RoughDraft.HelpOut.ps1
+* Updating RoughDraft Action:
+  * Fixing #88. 
+  * Adding -FFMpegInstallArgument (#89)
+* Adding additional extension examples, fixing help
+* Making various extensions apply to Show-Media
+---
+
+## 0.3.2:
 * Updating RoughDraft Tests (adding test for image->video, re #83)
 * Convert-Media:  Adding .EXAMPLE for Image Conversion (#83)
 * Adding ColorScope Extension (#79)
