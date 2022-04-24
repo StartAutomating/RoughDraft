@@ -11,6 +11,31 @@
         Show-Media -InputPath $home\Music\ASong.mp3
     .Example
         Show-Media -InputPath $home\Videos\AMovie.mp4 -Fullscreen
+    .EXAMPLE
+        $cameraName = "NexiGo N60 FHD Webcam" # Replace with your own camera, use Get-FFMpeg -ListCaptureDevice
+        $ShowSplat = [Ordered]@{
+            DirectShow = $true
+            VideoDevice = $CameraName
+            Mirror = $true
+            TimeMix = 5
+            EdgeDetect = $true
+            DrawText = $true
+            DrawTextFontSize = 24            
+            DrawTextFontColor = 'white'
+            DrawTextShadowColor = 'black'
+            DrawTextBorderWidth = 2
+            DrawTextBorderColor = 'black'
+            DrawTextCenter = $true
+        }
+        $showText = @(foreach ($kv in $showSplat.GetEnumerator()) {
+            if ($kv.Value -is [bool]) {
+                "-$($kv.Key)"
+            } else {
+                "-$($kv.Key) '$($kv.Value)'"
+            }
+        }) -join [Environment]::Newline
+        $showSplat.DrawTextText = $showText
+        Show-Media @showSplat -Fullscreen -Verbose
     #>
     [OutputType([Nullable], [Management.Automation.Job])]
     param(
