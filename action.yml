@@ -11,6 +11,9 @@ inputs:
   SkipRoughDraftPS1: 
     required: false
     description: 'If set, will not process any files named *.RoughDraft.ps1'
+  FFMpegInstallArgument: 
+    required: false
+    description: A list of installation arguments.
   CommitMessage: 
     required: false
     description: If provided, will commit any remaining changes made to the workspace with this commit message.
@@ -44,16 +47,19 @@ runs:
       id: RoughDraftAction
       shell: pwsh
       env: 
-        CommitMessage: ${{inputs.CommitMessage}}
         UserName: ${{inputs.UserName}}
-        RoughDraftScript: ${{inputs.RoughDraftScript}}
-        UserEmail: ${{inputs.UserEmail}}
+        FFMpegInstallArgument: ${{inputs.FFMpegInstallArgument}}
         SkipRoughDraftPS1: ${{inputs.SkipRoughDraftPS1}}
+        UserEmail: ${{inputs.UserEmail}}
+        CommitMessage: ${{inputs.CommitMessage}}
+        RoughDraftScript: ${{inputs.RoughDraftScript}}
       run: |
         $Parameters = @{}
         $Parameters.RoughDraftScript = ${env:RoughDraftScript}
         $Parameters.SkipRoughDraftPS1 = ${env:SkipRoughDraftPS1}
         $Parameters.SkipRoughDraftPS1 = $parameters.SkipRoughDraftPS1 -match 'true';
+        $Parameters.FFMpegInstallArgument = ${env:FFMpegInstallArgument}
+        $Parameters.FFMpegInstallArgument = $parameters.FFMpegInstallArgument -split ';' -replace '^[''"]' -replace  '[''"]$'
         $Parameters.CommitMessage = ${env:CommitMessage}
         $Parameters.UserEmail = ${env:UserEmail}
         $Parameters.UserName = ${env:UserName}
@@ -86,6 +92,10 @@ runs:
         # If set, will not process any files named *.RoughDraft.ps1
         [switch]
         $SkipRoughDraftPS1,
+        
+        # A list of installation arguments.
+        [string[]]
+        $FFMpegInstallArgument,
         
         # If provided, will commit any remaining changes made to the workspace with this commit message.
         [string]
@@ -122,7 +132,7 @@ runs:
             if (-not $ffMpegInPath -and $env:GITHUB_WORKFLOW) {
                 "::group::Installing FFMpeg" | Out-Host
                 sudo apt update | Out-Host
-                sudo apt install ffmpeg | Out-Host
+                sudo apt install ffmpeg @FFMpegInstallArgument | Out-Host
                 "::endgroup::" | Out-Host
             }
         }
@@ -206,7 +216,8 @@ runs:
         
             $checkDetached = git symbolic-ref -q HEAD
             if (-not $LASTEXITCODE) {
-                "::notice::Pushing Changes" | Out-Host        
+                "::notice::Pushing Changes" | Out-Host
+                git push
                 "Git Push Output: $($gitPushed  | Out-String)"
             } else {
                 "::notice::Not pushing changes (on detached head)" | Out-Host

@@ -27,14 +27,12 @@ $HistogramScaleHeight,
 <#
 Set display mode. It accepts the following values:
 
-'stack'
-Per color component graphs are placed below each other.
+|Value  |Description                                            |
+|-------|-------------------------------------------------------|
+|stack  |Per color component graphs are placed below each other.|
+|parade |Per color component graphs are placed side by side.    |
+|overlay| Presents information identical to that in the parade, except that the graphs representing color components are superimposed directly over one another. |
 
-'parade'
-Per color component graphs are placed side by side.
-
-'overlay'
-Presents information identical to that in the parade, except that the graphs representing color components are superimposed directly over one another.
 #>
 [ValidateSet('Stack','Parade','Overlay')]
 [string]
@@ -61,6 +59,7 @@ $HistogramForegroundOpacity,
 [float]
 $HistogramBackgroundOpacity,
 
+# The colormode of the histogram.
 [ValidateSet('whiteonblack','blackonwhite','whiteongray','blackongray','coloronblack','coloronwhite','colorongray','blackoncolor','whiteoncolor','grayoncolor')]
 [string]
 $HistogramColorMode

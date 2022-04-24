@@ -5,13 +5,13 @@
     Generates test sources using lavfi
 .Link
     https://ffmpeg.org/ffmpeg-filters.html#allrgb_002c-allyuv_002c-color_002c-colorspectrum_002c-haldclutsrc_002c-nullsrc_002c-pal75bars_002c-pal100bars_002c-rgbtestsrc_002c-smptebars_002c-smptehdbars_002c-testsrc_002c-testsrc2_002c-yuvtestsrc
+.EXAMPLE
+    New-Media -TestSource testsrc2 -Duration "00:00:05" -OutputPath "TestSource.gif"
 #>
-# It's an extension
-[Runtime.CompilerServices.Extension()]
-# that extends New-Media            
-[Management.Automation.Cmdlet("New","Media")]
-# that extends Show-Media            
-[Management.Automation.Cmdlet("Show","Media")]
+
+[Runtime.CompilerServices.Extension()]         # It's an extension
+[Management.Automation.Cmdlet("New","Media")]  # that extends New-Media            
+[Management.Automation.Cmdlet("Show","Media")] # that extends Show-Media
 param(
 # The name of the test source
 [Parameter(Mandatory)]

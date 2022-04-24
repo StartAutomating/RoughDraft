@@ -6,12 +6,14 @@
 .LINK
     https://ffmpeg.org/ffmpeg-filters.html#blend
 #>
-[Management.Automation.Cmdlet("Edit","Media")]
+[Management.Automation.Cmdlet("^Edit|Show","Media")]
 param(
+# If set, will blend frames
 [Parameter(Mandatory)]
 [switch]
 $BlendFrame,
 
+# The blend mode.
 [ValidateSet(
 'addition',
 'and',
@@ -57,6 +59,7 @@ $BlendFrame,
 [string]
 $BlendMode,
 
+# The blend mode for a given color
 [ValidateSet(
 '',
 'addition',
@@ -103,15 +106,19 @@ $BlendMode,
 [string[]]
 $BlendColorMode,
 
+# The blend expression
 [string]
 $BlendExpression,
 
+# One or more blend color expressions
 [string[]]
 $BlendColorExpression,
 
+# The blend opacity
 [string]
 $BlendOpacity,
 
+# One or more blend color opacities.
 [string[]]
 $BlendColorOpacity
 )

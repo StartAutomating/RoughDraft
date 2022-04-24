@@ -14,12 +14,10 @@
 .Link
     https://ffmpeg.org/ffmpeg-filters.html#aecho
 #>
-# It's an extension
-[Runtime.CompilerServices.Extension()]
-# that extends Edit-Media            
-[Management.Automation.Cmdlet("Edit","Media")]
-# that is not inherited
-[ComponentModel.Inheritance("Inherited")]
+
+[Runtime.CompilerServices.Extension()]          # It's an extension
+[Management.Automation.Cmdlet("^Edit|Show","Media")]  # that extends Edit/Show-Media
+[ComponentModel.Inheritance("Inherited")]       # that is not inherited
 param(
 # If set, will remove a logo
 [Parameter(Mandatory)]

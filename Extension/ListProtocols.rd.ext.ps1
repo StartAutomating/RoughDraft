@@ -3,13 +3,13 @@
     Lists protocols
 .Description
     Lists the protocols available to ffmpeg.
+.EXAMPLE
+    Get-FFMpeg -ListProtocol
 #>
-# It's an extension
-[Runtime.CompilerServices.Extension()]
-# that extends Get-FFMpeg            
-[Management.Automation.Cmdlet("Get","FFMpeg")]
-# that is not inherited.
-[ComponentModel.Inheritance("NotInherited")]
+
+[Runtime.CompilerServices.Extension()]        # It's an extension
+[Management.Automation.Cmdlet("Get","FFMpeg")]# that extends Get-FFMpeg             
+[ComponentModel.Inheritance("NotInherited")]  # that is not inherited.
 param(
 # If set, will list protocolas
 [Parameter(Mandatory)]

@@ -4,12 +4,9 @@
 .Description
     Gets details about a particular filter.
 #>
-# It's an extension
-[Runtime.CompilerServices.Extension()]
-# that extends Get-FFMpeg            
-[Management.Automation.Cmdlet("Get","FFMpeg")]
-# that is not inherited.
-[ComponentModel.Inheritance("NotInherited")]
+[Runtime.CompilerServices.Extension()]           # It's an extension
+[Management.Automation.Cmdlet("Get","FFMpeg")]   # that extends Get-FFMpeg
+[ComponentModel.Inheritance("NotInherited")]     # that is not inherited.
 param(
 # If set, will get filter inputs for a given filter name
 [Parameter(Mandatory,ValueFromPipelineByPropertyName)]

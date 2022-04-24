@@ -4,12 +4,9 @@
 .Description
     Creates a playlist out of several audio files.
 #>
-# It's an extension
-[Runtime.CompilerServices.Extension()]
-# that extends Join-Media            
-[Management.Automation.Cmdlet("Join","Media")]
-# that is not inherited
-[ComponentModel.Inheritance("NotInherited")]
+[Runtime.CompilerServices.Extension()]         # It's an extension
+[Management.Automation.Cmdlet("Join","Media")] # that extends Join-Media
+[ComponentModel.Inheritance("NotInherited")]   # that is not inherited
 param(
 # If set, will create a playlist
 [Parameter(Mandatory)]

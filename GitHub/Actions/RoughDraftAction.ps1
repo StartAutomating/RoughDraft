@@ -22,6 +22,10 @@ $RoughDraftScript,
 [switch]
 $SkipRoughDraftPS1,
 
+# A list of installation arguments.
+[string[]]
+$FFMpegInstallArgument,
+
 # If provided, will commit any remaining changes made to the workspace with this commit message.
 [string]
 $CommitMessage,
@@ -57,7 +61,7 @@ if ($PSVersionTable.Platform -eq 'Unix') {
     if (-not $ffMpegInPath -and $env:GITHUB_WORKFLOW) {
         "::group::Installing FFMpeg" | Out-Host
         sudo apt update | Out-Host
-        sudo apt install ffmpeg | Out-Host
+        sudo apt install ffmpeg @FFMpegInstallArgument | Out-Host
         "::endgroup::" | Out-Host
     }
 }
@@ -141,7 +145,8 @@ if ($CommitMessage -or $anyFilesChanged) {
 
     $checkDetached = git symbolic-ref -q HEAD
     if (-not $LASTEXITCODE) {
-        "::notice::Pushing Changes" | Out-Host        
+        "::notice::Pushing Changes" | Out-Host
+        git push
         "Git Push Output: $($gitPushed  | Out-String)"
     } else {
         "::notice::Not pushing changes (on detached head)" | Out-Host
