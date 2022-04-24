@@ -6,7 +6,7 @@
 .Link
     https://ffmpeg.org/ffmpeg-filters.html#shear
 #>
-[Management.Automation.Cmdlet("Edit","Media")]
+[Management.Automation.Cmdlet("^(Edit|Show)","Media")]
 param(
 # If set, will skew video
 [Parameter(Mandatory)]
