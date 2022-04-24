@@ -13,8 +13,8 @@
 |ColorContrast|ColorContrast Extension|Show-Media,Edit-Media|
 |ColorHold|ColorHold Extension|Show-Media,Edit-Media|
 |ColorScope|Colorscope extension|Show-Media,Edit-Media|
-|ColorSource|Generates a color |New-Media,Show-Media|
-|Crop|Crop Extension|Send-Media,Receive-Media,Show-Media,Edit-Media|
+|ColorSource|Generates a color |Show-Media,New-Media|
+|Crop|Crop Extension|Edit-Media,Show-Media,Receive-Media,Send-Media|
 |CropDetect|Auto-detect the crop size.|Get-Media|
 |DataScope|Datascope effect|Edit-Media|
 |DirectShow|DirectShow Extension|Send-Media,Show-Media,Receive-Media|
@@ -31,11 +31,11 @@
 |Histogram|Histogram Extension|Show-Media,Edit-Media|
 |Hue|Hue Extension|Show-Media,Edit-Media|
 |LagFun|Slowly update darker pixels.|Show-Media,Edit-Media|
-|Life|Generates life|New-Media,Show-Media|
+|Life|Generates life|Show-Media,New-Media|
 |LimitPixel|Limits Pixel values|Show-Media,Edit-Media|
 |ListFilters|Lists filters|Get-FFMpeg|
 |ListProtocols|Lists protocols|Get-FFMpeg|
-|Mandelbrot|Generates fractals|New-Media,Show-Media|
+|Mandelbrot|Generates fractals|Show-Media,New-Media|
 |MedianPixel|Picks median pixels|Show-Media,Edit-Media|
 |Mirror|Mirror Extension|Show-Media,Edit-Media|
 |Monochrome|Make video monochrome |Edit-Media|
@@ -44,20 +44,20 @@
 |Playlist|Creates a playlist|Join-Media|
 |RandomizeFrame|RandomizeFrame extensions|Show-Media,Edit-Media|
 |Rate|Adjusts the rate of media.|Edit-Media|
-|Resize|Resizes a video|Show-Media,Convert-Media,Edit-Media|
+|Resize|Resizes a video|Edit-Media,Show-Media,Convert-Media|
 |ReverseAudio|Reverses audio|Edit-Media|
 |ReverseVideo|Reverses video|Edit-Media|
-|Rotate|Rotates a video|Show-Media,Convert-Media,Edit-Media|
+|Rotate|Rotates a video|Edit-Media,Show-Media,Convert-Media|
 |ScrollVideo|Scrolls video|Show-Media,Edit-Media|
 |Sepia|Applies a Sepia Filter|Edit-Media|
 |ShuffleFrames|Shuffles frames in video|Edit-Media|
-|Sierpinski|Generates a Sierpinski fractal |New-Media,Show-Media|
+|Sierpinski|Generates a Sierpinski fractal |Show-Media,New-Media|
 |SilenceDetect|Detects silence in an audio stream|Get-Media|
 |SilenceRemove|Detects silence in an audio stream|Edit-Media|
 |Sine|Generates a sine wave|New-Media|
 |Skew|Skew Extension|Show-Media,Edit-Media|
 |Subtitler|Creates subtitles.|New-Media|
-|TestSource|Generates test sources|New-Media,Show-Media|
+|TestSource|Generates test sources|Show-Media,New-Media|
 |Tile|Tile Extension|Edit-Media|
 |TimeMix|Mix successive video frames.|Show-Media,Edit-Media|
 |Tremolo|Tremolo effect|Edit-Media|
