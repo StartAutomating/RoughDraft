@@ -6,7 +6,7 @@
 .LINK
     https://ffmpeg.org/ffmpeg-filters.html#random
 #>
-[Management.Automation.Cmdlet("Edit","Media")]
+[Management.Automation.Cmdlet("^Edit|Show","Media")]
 param(
 # If set, will randomize frames
 [Parameter(Mandatory)]

@@ -7,13 +7,11 @@
     https://ffmpeg.org/ffmpeg-filters.html#amplify
 
 #>
-# It's an extension
-[Runtime.CompilerServices.Extension()]
-# that extends Edit-Media and Show-Media            
-[Management.Automation.Cmdlet("Edit","Media")]
+
+[Runtime.CompilerServices.Extension()] # It's an extension
+[Management.Automation.Cmdlet("Edit","Media")] # that extends Edit-Media and Show-Media            
 [Management.Automation.Cmdlet("Show","Media")]
-# that is inherited (this is the default).
-[ComponentModel.Inheritance("Inherited")]
+[ComponentModel.Inheritance("Inherited")] # that is inherited (this is the default).
 param(
 # If set, will amplify the differences between current pixel and pixels of adjacent frames in same pixel location.
 [Parameter(Mandatory)]

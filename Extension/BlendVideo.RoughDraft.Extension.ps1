@@ -8,10 +8,12 @@
 #>
 [Management.Automation.Cmdlet("Join","Media")]
 param(
+# If set, will blend multiple videos
 [Parameter(Mandatory)]
 [switch]
 $BlendVideo,
 
+# The blend mode.
 [ValidateSet(
 'addition',
 'and',
@@ -57,6 +59,7 @@ $BlendVideo,
 [string]
 $BlendMode,
 
+# One or more blend modes for a given color.
 [ValidateSet(
 '',
 'addition',
@@ -103,15 +106,19 @@ $BlendMode,
 [string[]]
 $BlendColorMode,
 
+# The blend expression
 [string]
 $BlendExpression,
 
+# The blend expressions for a given color
 [string[]]
 $BlendColorExpression,
 
+# The blend opacity.
 [string]
 $BlendOpacity,
 
+# The blend opacity for a given color.
 [string[]]
 $BlendColorOpacity
 )

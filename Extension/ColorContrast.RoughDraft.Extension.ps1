@@ -9,34 +9,42 @@
 [Management.Automation.Cmdlet("Edit","Media")]
 [Management.Automation.Cmdlet("Show","Media")]
 param(
+# If set, will adjust color contrast
 [Parameter(Mandatory)]
 [switch]
 $ColorContrast,
 
+# The constrast between Red and Cyan.  Valid between -1 and 1.
 [ValidateRange(-1,1)]
 [float]
 $RedCyanColorContrast,
 
+# The constrast between Green and Magenta.  Valid between -1 and 1.
 [ValidateRange(-1,1)]
 [float]
 $GreenMagentaColorContrast,
 
+# The constrast between Blue and Yellow.  Valid between -1 and 1.
 [ValidateRange(-1,1)]
 [float]
 $BlueYellowColorContrast,
 
+# The weight of the constrast between Red and Cyan.  Valid between 0 and 1.
 [ValidateRange(0,1)]
 [float]
 $RedCyanConstrastWeight,
 
+# The weight of the constrast between Green and Magenta.  Valid between 0 and 1.
 [ValidateRange(0,1)]
 [float]
 $GreenMagentaConstrastWeight,
 
+# The weight of the constrast between Blue and Yellow.  Valid between 0 and 1.
 [ValidateRange(0,1)]
 [float]
 $BlueYellowConstrastWeight,
 
+# The amount of lightness that should be preserved.  Valid between 0 and 1.
 [ValidateRange(0,1)]
 [float]
 $ColorContrastPreserveLightness

@@ -7,12 +7,10 @@
     https://ffmpeg.org/ffmpeg-filters.html#volume
 
 #>
-# It's an extension
-[Runtime.CompilerServices.Extension()]
-# that extends Edit-Media            
-[Management.Automation.Cmdlet("Edit","Media")]
-# that is inherited (this is the default).
-[ComponentModel.Inheritance("Inherited")]
+
+[Runtime.CompilerServices.Extension()]  # It's an extension
+[Management.Automation.Cmdlet("^Edit|Show","Media")]   # that extends Edit/Show-Media
+[ComponentModel.Inheritance("Inherited")]  # that is inherited (this is the default).
 param(
 # The audio gain, either in decibals (i.e. 12db) or as a ratio (i.e. 1.5)    
 [Parameter(Mandatory)]

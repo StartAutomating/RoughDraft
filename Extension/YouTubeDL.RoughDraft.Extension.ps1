@@ -7,8 +7,7 @@
     http://ytdl-org.github.io/youtube-dl/
 #>
 [Management.Automation.Cmdlet("Get","Media")]
-# that is not inherited (this is the default).
-[ComponentModel.Inheritance("NotInherited")]
+[ComponentModel.Inheritance("NotInherited")] # that is not inherited (this is the default).
 param(
 [Parameter(Mandatory)]
 [Alias('YouTubeURI')]

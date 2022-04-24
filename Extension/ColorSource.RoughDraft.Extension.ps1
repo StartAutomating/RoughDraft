@@ -6,12 +6,11 @@
 .Link
     https://ffmpeg.org/ffmpeg-filters.html#sine
 #>
-# It's an extension
-[Runtime.CompilerServices.Extension()]
-# that extends New-Media            
-[Management.Automation.Cmdlet("New","Media")]
-# that extends Show-Media            
-[Management.Automation.Cmdlet("Show","Media")]
+
+[Runtime.CompilerServices.Extension()] # It's an extension
+
+[Management.Automation.Cmdlet("New","Media")] # that extends New-Media
+[Management.Automation.Cmdlet("Show","Media")] # that extends Show-Media
 param(
 [Parameter(Mandatory)]
 [string]

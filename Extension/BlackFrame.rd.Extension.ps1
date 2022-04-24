@@ -6,10 +6,9 @@
 .Link
     https://ffmpeg.org/ffmpeg-filters.html#blackframe
 #>
-# It's an extension
-[Runtime.CompilerServices.Extension()]
-# that extends Get-Media            
-[Management.Automation.Cmdlet("Get","Media")]
+
+[Runtime.CompilerServices.Extension()]         # It's an extension
+[Management.Automation.Cmdlet("Get","Media")]  # that extends Get-Media
 param(
 # If set, will find black frames within a video.
 [Parameter(Mandatory)]

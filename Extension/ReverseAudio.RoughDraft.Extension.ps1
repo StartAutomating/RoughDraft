@@ -8,10 +8,8 @@
 .Link
     https://ffmpeg.org/ffmpeg-filters.html#areverse
 #>
-# It's an extension
-[Runtime.CompilerServices.Extension()]
-# that extends Edit-Media            
-[Management.Automation.Cmdlet("Edit","Media")]
+[Runtime.CompilerServices.Extension()]             # It's an extension
+[Management.Automation.Cmdlet("Edit","Media")]     # that extends Edit-Media
 param(
 # If set, will reverse audio
 [Parameter(Mandatory)]

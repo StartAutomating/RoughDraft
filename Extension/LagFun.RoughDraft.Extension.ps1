@@ -6,7 +6,7 @@
 .LINK
     https://ffmpeg.org/ffmpeg-filters.html#lagfun
 #>
-[Management.Automation.Cmdlet("Edit","Media")]
+[Management.Automation.Cmdlet("^Edit|Show","Media")]
 param(
 # If set, will use the lagfun filter
 [Parameter(Mandatory)]
