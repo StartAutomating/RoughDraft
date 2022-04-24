@@ -1,10 +1,11 @@
 ﻿## 0.3.3:
 * New Extensions:
-  * Adding Exposure Extension (#87)      
-  * Adding FlipVertical Extension (#91)
-  * Adding FlipHorizontal Extension (#90)
-  * Adding LimitPixel Extension (#93)
-  * Adding TimeMix Extension (#95)
+  * DrawText Extension (#96) 
+  * Exposure Extension (#87)      
+  * FlipVertical Extension (#91)
+  * FlipHorizontal Extension (#90)
+  * LimitPixel Extension (#93)
+  * TimeMix Extension (#95)
 * Adding RoughDraft.HelpOut.ps1
 * Updating RoughDraft Action:
   * Fixing #88. 
