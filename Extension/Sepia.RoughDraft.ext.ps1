@@ -3,6 +3,8 @@
     Applies a Sepia Filter
 .Description
     Uses the ffmpeg colorchannelmixer to apply a Sepia filter.
+.EXAMPLE
+    Edit-Media -InputPath "TestSource.mp4" -Sepia
 #>
 
 [Runtime.CompilerServices.Extension()]         # It's an extension

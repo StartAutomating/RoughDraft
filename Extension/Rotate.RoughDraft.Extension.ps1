@@ -8,10 +8,8 @@
 .LINK
     https://ffmpeg.org/ffmpeg-filters.html#transpose-1    
 #>
-# It's an extension
-[Runtime.CompilerServices.Extension()]
-# that extends Join-Media, Convert-Media, and Show-Media           
-[Management.Automation.Cmdlet("Edit","Media")]
+[Runtime.CompilerServices.Extension()]                       # It's an extension
+[Management.Automation.Cmdlet("Edit","Media")]               # that extends Edit-Media, Convert-Media, and Show-Media
 [Management.Automation.Cmdlet("Convert","Media")] 
 [Management.Automation.Cmdlet("Show","Media")] 
 # that is inherited

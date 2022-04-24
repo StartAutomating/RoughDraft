@@ -5,6 +5,8 @@
     Generates fractals using the mandelbrot filter.
 .Link
     https://ffmpeg.org/ffmpeg-filters.html#mandelbrot
+.EXAMPLE
+    New-Media -OutputPath "Mandelbrot.gif" -Duration "00:00:05" -Mandelbrot
 #>
 
 [Runtime.CompilerServices.Extension()]           # It's an extension

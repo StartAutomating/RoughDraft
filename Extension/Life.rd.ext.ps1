@@ -5,6 +5,8 @@
     Uses the ffmpeg filter for life
 .Link
     https://ffmpeg.org/ffmpeg-filters.html#life
+.EXAMPLE
+    New-Media -OutputPath "Life.gif" -Duration "00:00:05" -Life
 #>
 [Runtime.CompilerServices.Extension()]        # It's an extension
 [Management.Automation.Cmdlet("New","Media")] # that extends New-Media             
