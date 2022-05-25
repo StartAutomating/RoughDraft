@@ -268,12 +268,12 @@
 
             $codecTypes =
                 if($outObject.streams) {
-                    $outObject.streams | Select-Object -ExpandProperty codec_type -Unique
+                    $outObject.streams | Where-Object codec_type | Select-Object -ExpandProperty codec_type -Unique
                 } else {$null }
 
             $codecs =
                 if($outObject.streams) {
-                    $outObject.streams | Select-Object -ExpandProperty codec_name -Unique
+                    $outObject.streams | Where-Object codec_name | Select-Object -ExpandProperty codec_name -Unique
                 } else {$null }
 
             if ($codecs) {
