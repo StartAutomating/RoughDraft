@@ -14,7 +14,7 @@
 .LINK
     https://ffmpeg.org/ffmpeg-filters.html#atempo    
 #>
-[Management.Automation.Cmdlet("(>Edit|Show)","Media")]   # It extends Edit or Show-Media
+[Management.Automation.Cmdlet("(?>Edit|Show)","Media")]   # It extends Edit or Show-Media
 param(
 # The new rate of the media.
 [Parameter(Mandatory)]
@@ -29,7 +29,7 @@ $hasAudio = $streams | Where-Object { $_.Codec_Type -eq 'Audio'}
 if ($hasVideo -and $hasAudio) {
     $videoRate = 1 / $rate
     "-filter_complex"
-    if ($rate -ge .05 -and $rate -le 2) {
+    if ($rate -ge .05 -and $rate -le 100) {
         "`"[0:v]setpts=$videoRate*PTS[v];[0:a]atempo=$Rate[a]`""
     } else {
         Write-Warning 'Stream Contains Audio and is being adjusted by a factor greater than 2. Audio frames will be dropped rather instead of adjusting the tempo.'
@@ -49,10 +49,10 @@ elseif ($hasVideo)
 elseif ($hasAudio) 
 {
     '-af'
-    if ($rate -ge .05 -and $rate -le 2) {
+    if ($rate -ge .05 -and $rate -le 100) {
         "atempo=$Rate"
     } else {
         Write-Warning 'Stream Contains Audio and is being adjusted by a factor greater than 2. Audio frames will be dropped rather instead of adjusting the tempo.'
-        "asetpts=$videoRate*PTS"
+        "asetpts=$Rate*PTS"
     }                
 }
