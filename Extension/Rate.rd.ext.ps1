@@ -14,15 +14,15 @@
 .LINK
     https://ffmpeg.org/ffmpeg-filters.html#atempo    
 #>
-[Runtime.CompilerServices.Extension()]           # It's an extension
-[Management.Automation.Cmdlet("Edit","Media")]   # that extends Edit-Media
+[Management.Automation.Cmdlet("(>Edit|Show)","Media")]   # It extends Edit or Show-Media
 param(
+# The new rate of the media.
 [Parameter(Mandatory)]
 [double]
 $Rate
 )
 
-$streams  = $MediaInfo.stream
+$streams  = $MediaInfo.streams
 $hasVideo = $streams | Where-Object { $_.Codec_Type -eq 'Video'}
 $hasAudio = $streams | Where-Object { $_.Codec_Type -eq 'Audio'}
 
