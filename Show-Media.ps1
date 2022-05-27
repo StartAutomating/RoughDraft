@@ -40,7 +40,7 @@
     [OutputType([Nullable], [Management.Automation.Job])]
     param(
     # The input path.
-    [Parameter(Mandatory,Position=0,ValueFromPipelineByPropertyName,ParameterSetName='MediaPlayer')]
+    [Parameter(Mandatory,Position=0,ValueFromPipelineByPropertyName)]
     [Alias('Fullname')]
     [string]
     $InputPath,
@@ -54,7 +54,7 @@
     $Resolution,
 
     # The display mode.  When input is audio, defaults to 'Waves'
-    [Parameter(ValueFromPipelineByPropertyName,ParameterSetName='MediaPlayer')]
+    [Parameter(ValueFromPipelineByPropertyName)]
     [ValidateSet('Default','Waves','RDFT')]
     [string]
     $ShowMode,
@@ -189,7 +189,7 @@
             
         )
         $theDuration = $null
-        if ($PSCmdlet.ParameterSetName -eq 'MediaPlayer') {
+        if ($InputPath) {
             $myParams = ([Ordered]@{} + $PSBoundParameters)
             $ri = if ([IO.File]::Exists($InputPath)) {
                 $InputPath
