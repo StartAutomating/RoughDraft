@@ -1,6 +1,6 @@
 @{
     CompanyName='Start-Automating'
-    ModuleVersion='0.3.3'
+    ModuleVersion='0.3.4'
     ModuleToProcess='RoughDraft.psm1'
     GUID='c192ebbf-57a3-493e-bc82-da7553038794'
     Description='A Fun PowerShell Module for Multimedia'
@@ -13,8 +13,19 @@ PrivateData = @{
             ProjectURI = 'https://github.com/StartAutomating/RoughDraft'
             LicenseURI = 'https://github.com/StartAutomating/RoughDraft/blob/main/LICENSE'
             IconURI    = 'https://github.com/StartAutomating/RoughDraft/blob/main/Assets/RoughDraft.png'
-        }
-        ReleaseNotes = @'
+            ReleaseNotes = @'
+## 0.3.4:
+* Adding Flanger Extension (#100)
+* Show-Media:
+  * Fixing looping behavior (#102)
+  * Enabling filters on inputfiles (#101)
+* Get-RoughDraftExtension:  Updating Piecemeal Version
+* Join-Media:  Fixing multidirectory issue (#99)
+* Edit-Media:  Attempting to fix Progress Issues (#85)
+* Fixing Rate Extension (#98)
+* Get-Media:  Fixing #97 (allowing data streams that have no codec)
+---
+        
 ## 0.3.3:
 * New Extensions:
   * Adding Exposure Extension (#87)      
@@ -169,5 +180,7 @@ Publishing code on GitHub
 Refactoring module with an emphasis on extensibility
 Added initial GitHub action
 '@
+        }
+        
     }
 }

@@ -1,4 +1,16 @@
-﻿## 0.3.3:
+﻿## 0.3.4:
+* Adding Flanger Extension (#100)
+* Show-Media:
+  * Fixing looping behavior (#102)
+  * Enabling filters on inputfiles (#101)
+* Get-RoughDraftExtension:  Updating Piecemeal Version
+* Join-Media:  Fixing multidirectory issue (#99)
+* Edit-Media:  Attempting to fix Progress Issues (#85)
+* Fixing Rate Extension (#98)
+* Get-Media:  Fixing #97 (allowing data streams that have no codec)
+---
+
+## 0.3.3:
 * New Extensions:
   * DrawText Extension (#96) 
   * Exposure Extension (#87)      
