@@ -14,10 +14,10 @@
 |ColorHold|ColorHold Extension|Edit-Media,Show-Media|
 |ColorScope|Colorscope extension|Edit-Media,Show-Media|
 |ColorSource|Generates a color |New-Media,Show-Media|
-|Crop|Crop Extension|Edit-Media,Send-Media,Show-Media,Receive-Media|
+|Crop|Crop Extension|Edit-Media,Receive-Media,Show-Media,Send-Media|
 |CropDetect|Auto-detect the crop size.|Get-Media|
 |DataScope|Datascope effect|Edit-Media|
-|DirectShow|DirectShow Extension|Send-Media,Show-Media,Receive-Media|
+|DirectShow|DirectShow Extension|Receive-Media,Show-Media,Send-Media|
 |DrawSubtitle|Draw subtitles on top of input video|Convert-Media,Edit-Media|
 |Echo|Adds echoes to audio|Edit-Media,Show-Media|
 |EdgeDetect|EdgeDetect Extension|Edit-Media,Show-Media|
@@ -27,7 +27,7 @@
 |FilterInput|Gets filter details|Get-FFMpeg|
 |FlipHorizontal|Flips video horizontally|Edit-Media,Show-Media|
 |FlipVertical|Flips video vertically|Edit-Media,Show-Media|
-|FrameBuffer|FrameBuffer Extension|Send-Media,Show-Media,Receive-Media|
+|FrameBuffer|FrameBuffer Extension|Receive-Media,Show-Media,Send-Media|
 |Histogram|Histogram Extension|Edit-Media,Show-Media|
 |Hue|Hue Extension|Edit-Media,Show-Media|
 |LagFun|Slowly update darker pixels.|Edit-Media,Show-Media|
@@ -62,7 +62,7 @@
 |TimeMix|Mix successive video frames.|Edit-Media,Show-Media|
 |Tremolo|Tremolo effect|Edit-Media|
 |Vibrato|Vibrato effect|Edit-Media|
-|VideoForLinux|VideoForLinux Extension|Send-Media,Show-Media,Receive-Media|
+|VideoForLinux|VideoForLinux Extension|Receive-Media,Show-Media,Send-Media|
 |Vignette|Applies a vignette filter|Edit-Media,Show-Media|
 |VolumeLevel|Gets VolumeLevels|Get-Media|
 |Watermark|Watermarks a video|Edit-Media|
