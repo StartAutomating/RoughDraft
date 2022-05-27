@@ -127,7 +127,7 @@
         $processFFMpegOutput =
             {
                 $line = $_
-                $progress = $line | & ${?<FFMpeg_Progress>} -Extract
+                $progress = $line | & ${?<FFMpeg_Progress>} -Extract                
                 $allOutput += $line
                 if ($progress -and 
                     $progress.Time.Totalmilliseconds -and 
@@ -143,6 +143,18 @@
                     $timeLeft = $theDuration - $progress.Time
                     Write-Progress "$uro " $progressMessage -PercentComplete $perc -Id $ProgId -SecondsRemaining $timeLeft.TotalSeconds
                     Write-Verbose "$_"
+                }
+                elseif ($line -match 'time=(?<Time>[\d\:\.]+)' -and ($matches.Time -as [Timespan]) -and $theDuration.TotalMilliseconds) {
+                    $lineTime = $matches.Time -as [Timespan]
+                    $perc = $lineTime.TotalMilliseconds * 100 / $theDuration.TotalMilliseconds
+                    
+                    if ($perc -gt 100) { $perc = 100 }
+                    $progressMessage = 
+                        @("$($lineTime)".Substring(0,8), "$theDuration".Substring(0,8) -join '/'
+                            $lineTime
+                        ) -join ' '                        
+                    $timeLeft = $theDuration - $lineTime
+                    Write-Progress "$uro " $progressMessage -PercentComplete $perc -Id $ProgId -SecondsRemaining $timeLeft.TotalSeconds
                 }
                 else {
                     if ($_ -like "*error*" -or $_ -like "*unable*" -or $inErrorState) {
@@ -197,6 +209,8 @@
         }
         elseif ($Duration.TotalMilliseconds) {
             $theDuration = $Duration
+        } elseif ($mediaInfo.Duration) {
+            $theduration = $mediaInfo.Duration
         }    
 
         $ffmpegParams = @()
