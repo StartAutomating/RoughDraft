@@ -11,21 +11,33 @@ Matches Progress Lines in FFMpeg output
     Write-RegEx -Name FramesPerSecond (
         Write-RegEx -CharacterClass Digit -LiteralCharacter '.' -Repeat
     ) |
-    Write-RegEx -CharacterClass Whitespace -Repeat -Comment "Followed by Frames Per Second"  |
+    Write-RegEx -CharacterClass Whitespace -Min 0 -Comment "Followed by Frames Per Second"  |
     Write-RegEx -Pattern q= -Comment "q=" |    
     Write-RegEx -Name QuanitizerScale -CharacterClass Digit -LiteralCharacter .  -Repeat |
-    Write-RegEx -CharacterClass Whitespace -Repeat -Comment "Followed by the Quanitizer Scale"   |    
+    Write-RegEx -CharacterClass Whitespace -Min 0 -Comment "Followed by the Quanitizer Scale"   |    
     Write-RegEx -Pattern L?size= -Comment "size=" |
-    Write-RegEx -CharacterClass Whitespace -Repeat |
+    Write-RegEx -CharacterClass Whitespace -Min 0 |
     Write-RegEx -Name Size -Pattern "\d{1,}\wB" |
-    Write-RegEx -CharacterClass Whitespace -Repeat -Comment "Followed by the Size"  |
+    Write-RegEx -CharacterClass Whitespace -Min 0 -Comment "Followed by the Size"  |
     Write-RegEx -Pattern time= -Comment "time=" |   
     Write-RegEx -Name Time -Pattern "[\d\:\.]+" |
     Write-RegEx -CharacterClass Whitespace -Min 0 -Comment "Followed by the Time" |
     Write-RegEx -Pattern bitrate= -Comment "bitrate=" |
     Write-RegEx -CharacterClass Whitespace -Min 0 |
     Write-RegEx -Name Bitrate -Pattern "[\d\.exN/A]+" |
-    Write-RegEx -Pattern 'kbits/s' |     
+    Write-RegEx -Pattern 'kbits/s' |
+    Write-RegEx -Atomic -Min 0 -Pattern (
+        Write-RegEx -CharacterClass Whitespace -Min 0 -Comment "Followed by optional duplicated frame count" |
+            Write-RegEx -Pattern dup= -Comment "dup=" |
+            Write-RegEx -CharacterClass Whitespace -Min 0 |
+            Write-RegEx -Name Duplicated -Pattern "\d+"
+    ) |
+    Write-RegEx -Atomic -Min 0 -Pattern (
+        Write-RegEx -CharacterClass Whitespace -Min 0 -Comment "Followed by optional dropped frame count" |
+            Write-RegEx -Pattern drop= -Comment "drop=" |
+            Write-RegEx -CharacterClass Whitespace -Min 0 |
+            Write-RegEx -Name Dropped -Pattern "\d+"
+    ) |
     Write-RegEx -CharacterClass Whitespace -Min 0 -Comment "Followed by the Bitrate" |
     Write-RegEx -Pattern speed= -Comment "speed=" |
     Write-RegEx -CharacterClass Whitespace -Min 0 |
