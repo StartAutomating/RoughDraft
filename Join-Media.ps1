@@ -211,7 +211,7 @@
                 if (-not $Transcode) {
                     $tempFilesroot = $tempfiles |
                         Split-Path |
-                        Select-Object -Unique
+                        Select-Object -Unique -First 1
 
                     [IO.Directory]::SetCurrentDirectory($tempFilesRoot)
                     $tmpFile = Join-Path $tempfilesRoot "fileList.txt"

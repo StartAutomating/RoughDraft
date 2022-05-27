@@ -40,7 +40,7 @@
     [OutputType([Nullable], [Management.Automation.Job])]
     param(
     # The input path.
-    [Parameter(Mandatory,Position=0,ValueFromPipelineByPropertyName,ParameterSetName='MediaPlayer')]
+    [Parameter(Mandatory,Position=0,ValueFromPipelineByPropertyName)]
     [Alias('Fullname')]
     [string]
     $InputPath,
@@ -54,7 +54,7 @@
     $Resolution,
 
     # The display mode.  When input is audio, defaults to 'Waves'
-    [Parameter(ValueFromPipelineByPropertyName,ParameterSetName='MediaPlayer')]
+    [Parameter(ValueFromPipelineByPropertyName)]
     [ValidateSet('Default','Waves','RDFT')]
     [string]
     $ShowMode,
@@ -189,7 +189,7 @@
             
         )
         $theDuration = $null
-        if ($PSCmdlet.ParameterSetName -eq 'MediaPlayer') {
+        if ($InputPath) {
             $myParams = ([Ordered]@{} + $PSBoundParameters)
             $ri = if ([IO.File]::Exists($InputPath)) {
                 $InputPath
@@ -209,7 +209,8 @@
             $mi = $mediaInfo = Get-Media -InputPath $ri
             $theDuration = $mi.Duration
             $ffArgs += '-i', $ri
-            if ($mi.streams.nb_frames -le 1) {     # If there were one or fewer frames detected
+            # If there were one or fewer frames detected (or the media has a miniscule duration )
+            if ((-not $theDuration -or $theDuration -eq '0.040000') -and ($mi.streams.nb_frames -le 1)) {     
                 $ffArgs += '-loop', -1   # automatically loop.
             }
             if ($mi.CodecTypes -and @($mi.CodecTypes)[0] -eq 'Audio' -and (-not ($ffArgs -eq '-showmode'))) {
