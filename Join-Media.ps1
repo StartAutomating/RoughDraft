@@ -170,7 +170,10 @@
             if ($extensionParams -ne '-map') {                
                 $extensionParams += '-y', $uro
             }
-            & $ffmpeg @inputKeys @extensionParams 2>&1 |
+            Use-FFMpeg -FFMpegArgument @(
+                $inputKeys
+                $extensionParams
+            ) -FFMpegPath $ffmpegPath |
                 ForEach-Object $ffmpegConvertProcess -End $ffmpegConvertEnd
 
             if (Test-Path $uro) {
@@ -233,7 +236,11 @@
             $theDuration = [Timespan]::FromMilliseconds($totalDuration)
 
 
-            & $ffmpeg @ffMpegParams $uro -y 2>&1 |
+            Use-FFMpeg -FFMpegArgument @(
+                $ffmpegParams
+                $uro
+                '-y'
+            ) -FFMpegPath $ffmpegPath |
                 ForEach-Object $ffmpegConvertProcess -End $ffmpegConvertEnd
 
             Get-Item -Path $uro -ErrorAction SilentlyContinue
@@ -306,7 +313,7 @@
             $uro = $ExecutionContext.SessionState.Path.GetUnresolvedProviderPathFromPSPath($outputPath)
             $ffMpegParams += $uro
             $ffMpegParams += '-y'
-            & $ffmpeg @ffmpegParams 2>&1 |
+            Use-FFMpeg -FFMpegArgument $ffmpegParams -FFMpegPath $ffmpegPath |
                 ForEach-Object $ffmpegConvertProcess -End $ffmpegConvertEnd
 
             Get-Item -Path $uro -ErrorAction SilentlyContinue
@@ -332,7 +339,16 @@
 
             $theDuration = [TimeSpan]::FromSeconds($inputList.Count / $frameRate)
 
-            & $FFMpeg -framerate $FrameRate -i "$temproot$([IO.Path]::DirectorySeparatorChar)image-%d.$extension" -pix_fmt $PixelFormat -y $uro 2>&1  |
+            Use-FFMpeg -FFMpegArgument @(
+                '-framerate'
+                $FrameRate
+                '-i'
+                "$temproot$([IO.Path]::DirectorySeparatorChar)image-%d.$extension"
+                '-pix_fmt'
+                $PixelFormat
+                '-y'
+                $uro
+            ) -FFMpegPath $ffmpegPath |
                 ForEach-Object $ffmpegConvertProcess -End $ffmpegConvertEnd
 
             Get-Item -Path $uro -ErrorAction SilentlyContinue
