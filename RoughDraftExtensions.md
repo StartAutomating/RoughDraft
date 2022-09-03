@@ -2,10 +2,10 @@
 |:-|-|-:|
 |AlbumArt|Sets album artwork|Set-Media|
 |AmplifyPixel|AmplifyPixel extension|Edit-Media,Show-Media|
-|AudioGain|Increases audio volume|Show-Media,edit,Edit-Media,editor|
+|AudioGain|Increases audio volume|editor,Show-Media,Edit-Media,edit|
 |BlackDetect|Detect black periods in a video.|Get-Media|
 |BlackFrame|Detects black frames.|Get-Media|
-|BlendFrame|BlendFrame Extension|Show-Media,edit,Edit-Media,editor|
+|BlendFrame|BlendFrame Extension|editor,Show-Media,Edit-Media,edit|
 |BlendVideo|BlendVideo Extension|Join-Media|
 |Blur|Blurs Video|Edit-Media,Show-Media|
 |CaptureDevice|Gets capture devices|Get-FFMpeg|
@@ -14,36 +14,36 @@
 |ColorHold|ColorHold Extension|Edit-Media,Show-Media|
 |ColorScope|Colorscope extension|Edit-Media,Show-Media|
 |ColorSource|Generates a color |Show-Media,New-Media|
-|Crop|Crop Extension|Show-Media,Send-Media,Edit-Media,Receive-Media|
+|Crop|Crop Extension|Receive-Media,Send-Media,Edit-Media,Show-Media|
 |CropDetect|Auto-detect the crop size.|Get-Media|
 |DataScope|Datascope effect|Edit-Media|
-|DirectShow|DirectShow Extension|Show-Media,Send-Media,Receive-Media|
-|DrawSubtitle|Draw subtitles on top of input video|Edit-Media,Convert-Media|
-|Echo|Adds echoes to audio|Show-Media,edit,Edit-Media,editor|
+|DirectShow|DirectShow Extension|Receive-Media,Send-Media,Show-Media|
+|DrawSubtitle|Draw subtitles on top of input video|Convert-Media,Edit-Media|
+|Echo|Adds echoes to audio|editor,Show-Media,Edit-Media,edit|
 |EdgeDetect|EdgeDetect Extension|Edit-Media,Show-Media|
 |Emboss|Embosses video or images|Edit-Media|
-|Exposure|Exposure Extension|Show-Media,edit,Edit-Media,editor|
+|Exposure|Exposure Extension|editor,Show-Media,Edit-Media,edit|
 |FadeIn|Fades in video|Edit-Media|
 |FilterInput|Gets filter details|Get-FFMpeg|
 |Flanger|Audio Flanger.|Edit-Media,Show-Media|
 |FlipHorizontal|Flips video horizontally|Edit-Media,Show-Media|
 |FlipVertical|Flips video vertically|Edit-Media,Show-Media|
-|FrameBuffer|FrameBuffer Extension|Show-Media,Send-Media,Receive-Media|
+|FrameBuffer|FrameBuffer Extension|Receive-Media,Send-Media,Show-Media|
 |Histogram|Histogram Extension|Edit-Media,Show-Media|
-|Hue|Hue Extension|Show-Media,edit,Edit-Media,editor|
-|LagFun|Slowly update darker pixels.|Show-Media,edit,Edit-Media,editor|
+|Hue|Hue Extension|editor,Show-Media,Edit-Media,edit|
+|LagFun|Slowly update darker pixels.|editor,Show-Media,Edit-Media,edit|
 |Life|Generates life|Show-Media,New-Media|
 |LimitPixel|Limits Pixel values|Edit-Media,Show-Media|
 |ListFilters|Lists filters|Get-FFMpeg|
 |ListProtocols|Lists protocols|Get-FFMpeg|
 |Mandelbrot|Generates fractals|Show-Media,New-Media|
-|MedianPixel|Picks median pixels|Show-Media,edit,Edit-Media,editor|
+|MedianPixel|Picks median pixels|editor,Show-Media,Edit-Media,edit|
 |Mirror|Mirror Extension|Edit-Media,Show-Media|
 |Monochrome|Make video monochrome |Edit-Media|
 |NoAudio|Removes Audio|Split-Media|
 |Pixelate|Pixelate effect|Edit-Media|
 |Playlist|Creates a playlist|Join-Media|
-|RandomizeFrame|RandomizeFrame extensions|Show-Media,edit,Edit-Media,editor|
+|RandomizeFrame|RandomizeFrame extensions|editor,Show-Media,Edit-Media,edit|
 |Rate|Adjusts the rate of media.|Edit-Media,Show-Media|
 |Resize|Resizes a video|Show-Media,Edit-Media,Convert-Media|
 |ReverseAudio|Reverses audio|Edit-Media|
@@ -63,7 +63,7 @@
 |TimeMix|Mix successive video frames.|Edit-Media,Show-Media|
 |Tremolo|Tremolo effect|Edit-Media|
 |Vibrato|Vibrato effect|Edit-Media|
-|VideoForLinux|VideoForLinux Extension|Show-Media,Send-Media,Receive-Media|
+|VideoForLinux|VideoForLinux Extension|Receive-Media,Send-Media,Show-Media|
 |Vignette|Applies a vignette filter|Edit-Media,Show-Media|
 |VolumeLevel|Gets VolumeLevels|Get-Media|
 |Watermark|Watermarks a video|Edit-Media|
