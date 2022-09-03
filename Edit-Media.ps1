@@ -462,9 +462,21 @@
         }        
         if (-not $PSCmdlet.ShouldProcess("$($ffMpegFullArgs -join ' ')")) { return } # Check ShouldProcess, and return if we shouldn't.
         $allOutput = @()
-        & $ffmpeg @ffInFiles @TimeFrame @filterParams @ffmpegParams @FFMpegArgument @outParams 2>&1 |
+
+        $allFFMpegArgs = @(
+            $ffInFiles
+            $TimeFrame
+            $filterParams
+            $ffmpegParams
+            $FFMpegArgument
+            $outParams
+        )
+
+        Use-FFMpeg -FFMpegArgument $allFFMpegArgs -FFMpegPath $FFMpegPath |
             ForEach-Object -Process $processFFMpegOutput -End $endFFMpegOutput
-        
+        <#& $ffmpeg @ffInFiles @TimeFrame @filterParams @ffmpegParams @FFMpegArgument @outParams 2>&1 |
+            ForEach-Object -Process $processFFMpegOutput -End $endFFMpegOutput
+        #>
         
         if ($uro) { # If we had a single output
             $existingOutput = Get-Item -ErrorAction SilentlyContinue -LiteralPath $uro # get it.
