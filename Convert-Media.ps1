@@ -169,7 +169,7 @@
         if ($AsJob) { # If -AsJob was passed,
             return & $StartRoughDraftJob # start a background job.
         }
-        $null = $accumulate.Add(@{} + $PSBoundParameters)
+        $null = $accumulate.Add(@{} + $PSBoundParameters)        
     }
 
     end {
@@ -435,7 +435,19 @@
             Write-Verbose "FFMpeg Arguments: $FirstParams -i $ri $TimeFrame $filterParams $ffMpegArgument $uro -y $ffmpegParams"
             $lines =@()
 
-            & $ffmpeg @FirstParams -i $ri @TimeFrame @filterParams @FFMpegArgument $uro -y @ffmpegParams 2>&1 |
+            $allFFMpegArgs = @(
+                $FirstParams
+                '-i'
+                $ri
+                $TimeFrame
+                $filterParams
+                $FFMpegArgument
+                $uro
+                '-y'
+                $ffmpegParams
+            )
+
+            Use-FFMpeg -FFMpegPath $FFMpegPath -FFMpegArgument $allFFMpegArgs |
                 . {
                     process {
                         $line = $_
