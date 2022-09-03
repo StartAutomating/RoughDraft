@@ -16,14 +16,12 @@ param(
 $ListCodec
 )
 
-& $ffmpeg -codecs 2>&1 | 
-    Where-Object {
-        $foundSeparator
-        if ($_ -like "*------*") {
-            $foundSeparator = $true
-        }
-    } |
-    ForEach-Object {
+$codecLines = & $ffmpeg -codecs 2>&1
+$foundSeparator = $false
+foreach ($_ in $codecLines) {
+    if (-not $foundSeparator -and ($_ -like "*------*")) {
+        $foundSeparator = $true
+    } elseif ($foundSeparator) {
         $parts = $_ -split " {1,}" -ne ''
         $fields = $parts[0]
         $shortName = $parts[1]
@@ -33,14 +31,14 @@ $ListCodec
             Codec                 = $shortName
             CodecType             = ''
             FullName              = $fullname            
-            CanDecode             = ($fields -like "*D*")
-            CanEncode             = ($fields -like "*E*")
-            IsVideoCodec          = ($fields -like "*V*")
-            IsAudioCodec          = ($fields -like "*A*")
-            IsSubtitleCodec       = ($fields -like "*S*")
-            IsLossyCompression    = ($fields -like "*L*")
-            IsLosslessCompression = ($fields -like "*S*")
-            IsIntraFrameOnlyCodec = ($fields -like "*I*")
+            CanDecode             = $fields -match "D"
+            CanEncode             = $fields -match "E"
+            IsVideoCodec          = $fields -match "V"
+            IsAudioCodec          = $fields -match "A"
+            IsSubtitleCodec       = $fields -match "S"
+            IsLossyCompression    = $fields -match "L"
+            IsLosslessCompression = $fields -match "S"
+            IsIntraFrameOnlyCodec = $fields -match "I"
         }
         $codecInfo.CodecType = 
             if ($codecInfo.IsVideoCodec) {
@@ -54,3 +52,4 @@ $ListCodec
             }
         [PSCustomObject]$codecInfo
     }
+}
