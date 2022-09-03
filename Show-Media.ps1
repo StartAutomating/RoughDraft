@@ -40,7 +40,7 @@
     [OutputType([Nullable], [Management.Automation.Job])]
     param(
     # The input path.
-    [Parameter(Mandatory,Position=0,ValueFromPipelineByPropertyName)]
+    [Parameter(Position=0,ValueFromPipelineByPropertyName)]
     [Alias('Fullname')]
     [string]
     $InputPath,
