@@ -150,9 +150,8 @@
                 $ffArgs += "$uro", '-y'
             }
 
-
-            & $ffmpeg @ffArgs 2>&1 |
-                    ForEach-Object $ffmpegProcess -End $ffmpegEnd
+            Use-FFMpeg -FFMpegArgument $ffArgs -FFMpegPath $FFMpegPath |
+                ForEach-Object $ffmpegProcess -End $ffmpegEnd
 
             if ($in.OutputPath.Count -eq 1) {
                 Get-item -literalPath $in.OutputPath
