@@ -40,7 +40,7 @@
     [OutputType([Nullable], [Management.Automation.Job])]
     param(
     # The input path.
-    [Parameter(Mandatory,Position=0,ValueFromPipelineByPropertyName)]
+    [Parameter(Position=0,ValueFromPipelineByPropertyName)]
     [Alias('Fullname')]
     [string]
     $InputPath,
@@ -267,7 +267,7 @@
             $newFilterParams = @(
                 for ($filterParamNumber =0 ; $filterParamNumber -lt $filterParams.Count;$filterParamNumber++) {
                     $thisFilterParam = $filterParams[$filterParamNumber]
-                    if ($thisFilterParam -eq '-af' -and $allAudioFilters) {
+                    if ($thisFilterParam -eq '-af') {
                         if ($allAudioFilters) {
                             '-af'
                             $allAudioFilters -join ','

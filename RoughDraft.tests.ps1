@@ -10,16 +10,17 @@
 
 describe Convert-Media {
     it 'Can convert media between formats' {
-        $tmpOutPath = Join-Path ([IO.Path]::GetTempPath()) "testsrc$(Get-Random).mp4"
-        $converted  = New-Media -TestSource testsrc -OutputPath $tmpOutPath -Duration "00:00:05" |
-            Convert-Media -OutputPath mkv 
+        $tmpOutPath = Join-Path ([IO.Path]::GetTempPath()) "testsrc$(Get-Random).mkv"
+        $mp4Path    = Join-Path ([IO.Path]::GetTempPath()) "testsrc$(Get-Random).mp4"
+        $converted  = New-Media -TestSource testsrc -OutputPath $tmpOutPath -Duration "00:00:01" |
+            Convert-Media -OutputPath $mp4Path
         $converted |
             Select-Object -ExpandProperty Extension |
-            Should -Be .mkv
+            Should -Be .mp4
         $converted |
             Get-Media |
             Select-Object -ExpandProperty Duration |
-            Should -Be "00:00:05"
+            Should -Be "00:00:01"
 
         Remove-Item $tmpOutPath
         Remove-Item $converted.Fullname

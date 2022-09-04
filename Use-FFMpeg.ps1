@@ -42,11 +42,55 @@
         #endregion Handle -AsJob
 
         #region Run FFMpeg
-        Write-Verbose "Invoke FFMpeg with $($ffmpegArgument -join ' ')"
+        Write-Verbose "Invoke FFMpeg with $($ffmpegArgument -join ' ')"        
+        $outputLines = [Collections.ArrayList]::new()
         & $ffmpeg @FFMpegArgument *>&1 |
             . {
-                process {
+                begin {
+                    $replaceBrackets = '^\[[^\]]+\]\s{0,}'
+                }
+                process {                    
                     $line = $_
+                    $null = $outputLines.Add($line)
+                    $lineIsError = $line -match '^\[[^\]]+\]\sError'
+                    $errorMessage = @()
+                    if ($lineIsError) { # If the line is an error
+                        $errorLines = @(
+                            $outputLines[$outputLines.Count - 2] # the previous line should have some context.
+                            $line
+                        )
+                        # Then create an error message with both lines.
+                        $errorMessage = @(foreach ($errorLine in $errorLines) {
+                            $errorLine -replace $replaceBrackets
+                        }) -join [Environment]::NewLine                        
+                    }
+                    # Alternatively, some errors start with 'error', but ones that start with 'error while'
+                    # can generally be ignored.
+                    elseif ($line -match '^Error' -and $line -notmatch '^Error while') 
+                    {
+                        $errorMessage = @(for ($outLineNumber = $outputLines.Count - 2; $outLineNumber; $outLineNumber--) {
+                            if ($outputLines[$outLineNumber] -notmatch '^\[') { break }
+                            $outputLines[$outLineNumber] -replace $replaceBrackets
+                        }) -join [Environment]::NewLine
+                    }
+                    # Some other errors start with brackets and "unable"
+                    elseif ($line -match '^\[[^\]]+\]\sUnable') {
+                        # In this case, the error message is on this line.
+                        $errorMessage = $line -replace $replaceBrackets
+                    }
+
+                    # If we had an error message
+                    if ($errorMessage) {
+                        # create an error record and
+                        $errorRecord = [Management.Automation.ErrorRecord]::new(
+                            [Exception]::new($errorMessage),
+                            "FFMpeg.Error",
+                            "NotSpecified",
+                            $FFMpegArgument
+                        )
+                        # then write the error.
+                        $psCmdlet.WriteError($errorRecord)
+                    }
                     "$line"
                 }
             }
