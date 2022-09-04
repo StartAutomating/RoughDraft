@@ -1,4 +1,4 @@
-#region Piecemeal [ 0.3.3 ] : Easy Extensible Plugins for PowerShell
+#region Piecemeal [ 0.3.4 ] : Easy Extensible Plugins for PowerShell
 # Install-Module Piecemeal -Scope CurrentUser 
 # Import-Module Piecemeal -Force 
 # Install-Piecemeal -ExtensionModule 'RoughDraft' -ExtensionModuleAlias 'rd' -ExtensionTypeName 'RoughDraft.Extension' -OutputPath '.\Get-RoughDraftExtension.ps1'
@@ -232,7 +232,7 @@ function Get-RoughDraftExtension
                 }
 
             $extCmd.PSObject.Methods.Add([psscriptmethod]::new('GetExtendedCommands', {
-
+                param([Management.Automation.CommandInfo[]]$CommandList)
                 $extendedCommandNames = @(
                     foreach ($attr in $this.ScriptBlock.Attributes) {
                         if ($attr -isnot [Management.Automation.CmdletAttribute]) { continue }
@@ -246,7 +246,9 @@ function Get-RoughDraftExtension
                     $this | Add-Member NoteProperty ExtensionCommands @() -Force
                     return    
                 }
-                $allLoadedCmds = $ExecutionContext.SessionState.InvokeCommand.GetCommands('*','All', $true)
+                if (-not $CommandList) {
+                    $commandList = $ExecutionContext.SessionState.InvokeCommand.GetCommands('*','All', $true)
+                }                
                 $extends = @{}
                 foreach ($loadedCmd in $allLoadedCmds) {
                     foreach ($extensionCommandName in $extendedCommandNames) {
@@ -265,7 +267,12 @@ function Get-RoughDraftExtension
                 $this | Add-Member NoteProperty ExtensionCommands $extends.Values -Force
             }))
 
-            $null = $extCmd.GetExtendedCommands()
+            if (-not $script:AllCommands) {
+                $script:AllCommands = $ExecutionContext.SessionState.InvokeCommand.GetCommands('*','All', $true)
+            }
+            
+
+            $null = $extCmd.GetExtendedCommands($script:AllCommands)
 
             $inheritanceLevel = [ComponentModel.InheritanceLevel]::Inherited
 
@@ -826,9 +833,8 @@ function Get-RoughDraftExtension
                     return $allDynamicParameters
                 }
             }
-        }
-        #endregion Define Inner Functions
-
+        }        
+        #endregion Define Inner Functions        
 
         $extensionFullRegex =
             [Regex]::New($(
@@ -849,7 +855,8 @@ function Get-RoughDraftExtension
         $getCmd    = $ExecutionContext.SessionState.InvokeCommand.GetCommand
 
         if ($Force) {
-            $script:RoughDraftExtensions = $null
+            $script:RoughDraftExtensions  = $null
+            $script:AllCommands = @()
         }
         if (-not $script:RoughDraftExtensions)
         {
@@ -919,5 +926,5 @@ function Get-RoughDraftExtension
         }
     }
 }
-#endregion Piecemeal [ 0.3.3 ] : Easy Extensible Plugins for PowerShell
+#endregion Piecemeal [ 0.3.4 ] : Easy Extensible Plugins for PowerShell
 
