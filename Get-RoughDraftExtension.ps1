@@ -247,8 +247,8 @@ function Get-RoughDraftExtension
                     return    
                 }
                 if (-not $CommandList) {
-                    $commandList = $ExecutionContext.SessionState.InvokeCommand.GetCommands('*','All', $true)
-                }                
+                    $commandList = $ExecutionContext.SessionState.InvokeCommand.GetCommands('*','Function,Alias,Cmdlet', $true)
+                }
                 $extends = @{}
                 :nextCommand foreach ($loadedCmd in $commandList) {
                     foreach ($extensionCommandName in $extendedCommandNames) {
@@ -269,7 +269,7 @@ function Get-RoughDraftExtension
             }))
 
             if (-not $script:AllCommands) {
-                $script:AllCommands = $ExecutionContext.SessionState.InvokeCommand.GetCommands('*','All', $true)
+                $script:AllCommands = $ExecutionContext.SessionState.InvokeCommand.GetCommands('*','Function,Alias,Cmdlet', $true)
             }
             
 
