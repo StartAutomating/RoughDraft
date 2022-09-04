@@ -250,11 +250,12 @@ function Get-RoughDraftExtension
                     $commandList = $ExecutionContext.SessionState.InvokeCommand.GetCommands('*','All', $true)
                 }                
                 $extends = @{}
-                foreach ($loadedCmd in $allLoadedCmds) {
+                :nextCommand foreach ($loadedCmd in $commandList) {
                     foreach ($extensionCommandName in $extendedCommandNames) {
                         if ($extensionCommandName -and $loadedCmd.Name -match $extensionCommandName) {
                             $loadedCmd
                             $extends[$loadedCmd.Name] = $loadedCmd
+                            continue nextCommand
                         }
                     }
                 }
