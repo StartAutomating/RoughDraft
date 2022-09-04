@@ -1,4 +1,4 @@
-#region Piecemeal [ 0.2.7 ] : Easy Extensible Plugins for PowerShell
+#region Piecemeal [ 0.3.3 ] : Easy Extensible Plugins for PowerShell
 # Install-Module Piecemeal -Scope CurrentUser 
 # Import-Module Piecemeal -Force 
 # Install-Piecemeal -ExtensionModule 'RoughDraft' -ExtensionModuleAlias 'rd' -ExtensionTypeName 'RoughDraft.Extension' -OutputPath '.\Get-RoughDraftExtension.ps1'
@@ -10,7 +10,7 @@ function Get-RoughDraftExtension
     .Description
         Gets Extensions.
 
-        RoughDraft Extensions can be found in:
+        RoughDraftExtensions can be found in:
 
         * Any module that includes -RoughDraftExtensionModuleName in it's tags.
         * The directory specified in -RoughDraftExtensionPath
@@ -31,29 +31,47 @@ function Get-RoughDraftExtension
     [switch]
     $Force,
 
-    # If provided, will get RoughDraft Extensions that extend a given command
+    # If provided, will get RoughDraftExtensions that extend a given command
     [Parameter(ValueFromPipelineByPropertyName)]
     [Alias('ThatExtends', 'For')]
     [string[]]
     $CommandName,
 
-    # The name of an extension
+    <#
+    
+    The name of an extension.
+    By default, this will match any extension command whose name, displayname, or aliases exactly match the name.
+
+    If the extension has an Alias with a regular expression literal (```'/Expression/'```) then the -RoughDraftExtensionName will be valid if that regular expression matches.
+    #>
     [Parameter(ValueFromPipelineByPropertyName)]
     [ValidateNotNullOrEmpty()]
     [string[]]
     $ExtensionName,
+    
+    <#
 
-    # If provided, will treat -RoughDraftExtensionName as a wildcard.
+    If provided, will treat -RoughDraftExtensionName as a wildcard.
+    This will return any extension whose name, displayname, or aliases are like the -RoughDraftExtensionName.
+
+    If the extension has an Alias with a regular expression literal (```'/Expression/'```) then the -RoughDraftExtensionName will be valid if that regular expression matches.
+    #>
     [Parameter(ValueFromPipelineByPropertyName)]
     [switch]
     $Like,
 
-    # If provided, will treat -RoughDraftExtensionName as a regular expression.
+    <#
+    
+    If provided, will treat -RoughDraftExtensionName as a regular expression.
+    This will return any extension whose name, displayname, or aliases match the -RoughDraftExtensionName.
+    
+    If the extension has an Alias with a regular expression literal (```'/Expression/'```) then the -RoughDraftExtensionName will be valid if that regular expression matches.
+    #>
     [Parameter(ValueFromPipelineByPropertyName)]
     [switch]
     $Match,
 
-    # If set, will return the dynamic parameters object of all the RoughDraft Extensions for a given command.
+    # If set, will return the dynamic parameters object of all the RoughDraftExtensions for a given command.
     [Parameter(ValueFromPipelineByPropertyName)]
     [switch]
     $DynamicParameter,
@@ -81,25 +99,30 @@ function Get-RoughDraftExtension
     [switch]
     $Stream,
 
-    # If set, will return the dynamic parameters of all RoughDraft Extensions for a given command, using the provided DynamicParameterSetName.
+    # If set, will return the dynamic parameters of all RoughDraftExtensions for a given command, using the provided DynamicParameterSetName.
     # Implies -DynamicParameter.
     [Parameter(ValueFromPipelineByPropertyName)]
     [string]
     $DynamicParameterSetName,
 
 
-    # If provided, will return the dynamic parameters of all RoughDraft Extensions for a given command, with all positional parameters offset.
+    # If provided, will return the dynamic parameters of all RoughDraftExtensions for a given command, with all positional parameters offset.
     # Implies -DynamicParameter.
     [Parameter(ValueFromPipelineByPropertyName)]
     [int]
     $DynamicParameterPositionOffset = 0,
 
-    # If set, will return the dynamic parameters of all RoughDraft Extensions for a given command, with all mandatory parameters marked as optional.
+    # If set, will return the dynamic parameters of all RoughDraftExtensions for a given command, with all mandatory parameters marked as optional.
     # Implies -DynamicParameter.  Does not actually prevent the parameter from being Mandatory on the Extension.
     [Parameter(ValueFromPipelineByPropertyName)]
     [Alias('NoMandatoryDynamicParameters')]
     [switch]
     $NoMandatoryDynamicParameter,
+
+    # If set, will require a [Runtime.CompilerServices.Extension()] attribute to be considered an extension.
+    [Parameter(ValueFromPipelineByPropertyName)]
+    [switch]
+    $RequireExtensionAttribute,
 
     # If set, will validate this input against [ValidateScript], [ValidatePattern], [ValidateSet], and [ValidateRange] attributes found on an extension.
     [Parameter(ValueFromPipelineByPropertyName)]
@@ -120,7 +143,7 @@ function Get-RoughDraftExtension
     [Parameter(ValueFromPipelineByPropertyName)]
     [Collections.IDictionary]
     [Alias('Parameters','ExtensionParameter','ExtensionParameters')]
-    $Parameter = @{},
+    $Parameter = [Ordered]@{},
 
     # If set, will output a steppable pipeline for the extension.
     # Steppable pipelines allow you to control how begin, process, and end are executed in an extension.
@@ -130,24 +153,11 @@ function Get-RoughDraftExtension
 
     # If set, will output the help for the extensions
     [switch]
-    $Help,
-
-    # If set, will get help about one or more parameters of an extension
-    [string[]]
-    $ParameterHelp,
-
-    # If set, will get help examples
-    [Alias('Examples')]
-    [switch]
-    $Example,
-
-    # If set, will output the full help for the extensions
-    [switch]
-    $FullHelp
+    $Help
     )
 
     begin {
-        $ExtensionPattern = '(?<!-)(extension|ext|ex|x)\.ps1$'
+        $ExtensionPattern = '(?>extension|ext|ex|x)\.ps1$'
         $ExtensionModule = 'RoughDraft'
         $ExtensionModuleAlias = 'rd'
         $ExtensionTypeName = 'RoughDraft.Extension'
@@ -162,9 +172,14 @@ function Get-RoughDraftExtension
             [PSObject]
             $ExtensionCommand
             )
+
             process {
                 if ($ExtensionName) {
                     $ExtensionCommandAliases = @($ExtensionCommand.Attributes.AliasNames)
+                    $ExtensionCommandAliasRegexes = @($ExtensionCommandAliases -match '^/' -match '/$')
+                    if ($ExtensionCommandAliasRegexes) {
+                        $ExtensionCommandAliases = @($ExtensionCommandAliases -notmatch '^/' -match '/$')
+                    }
                     :CheckExtensionName do {
                         foreach ($exn in $ExtensionName) {
                             if ($like) {
@@ -180,7 +195,17 @@ function Get-RoughDraftExtension
                             elseif (($ExtensionCommand -eq $exn) -or
                                 ($ExtensionCommand.DisplayName -eq $exn) -or
                                 ($ExtensionCommandAliases -eq $exn)) { break CheckExtensionName }
+                            elseif ($ExtensionCommandAliasRegexes) {
+                                foreach ($extensionAliasRegex in $ExtensionCommandAliasRegexes) {                            
+                                    $extensionAliasRegex = [Regex]::New($extensionAliasRegex -replace '^/' -replace '/$', 'IgnoreCase,IgnorePatternWhitespace')
+                                    if ($extensionAliasRegex -and $extensionAliasRegex.IsMatch($exn)) {
+                                        break CheckExtensionName
+                                    }
+                                }
+                            }
                         }
+                        
+
                         return
                     } while ($false)
                 }
@@ -200,23 +225,31 @@ function Get-RoughDraftExtension
                     $in
                 }
                 elseif ($in -is [IO.FileInfo]) {
-                    $ExecutionContext.SessionState.InvokeCommand.GetCommand($in.fullname, 'ExternalScript')
+                    $ExecutionContext.SessionState.InvokeCommand.GetCommand($in.fullname, 'ExternalScript,Application')
                 }
                 else {
-                    $ExecutionContext.SessionState.InvokeCommand.GetCommand($in, 'Function,ExternalScript')
+                    $ExecutionContext.SessionState.InvokeCommand.GetCommand($in, 'Function,ExternalScript,Application')
                 }
 
-            $hasExtensionAttribute = $false
-
             $extCmd.PSObject.Methods.Add([psscriptmethod]::new('GetExtendedCommands', {
+
+                $extendedCommandNames = @(
+                    foreach ($attr in $this.ScriptBlock.Attributes) {
+                        if ($attr -isnot [Management.Automation.CmdletAttribute]) { continue }
+                        (
+                            ($attr.VerbName -replace '\s') + '-' + ($attr.NounName -replace '\s')
+                        ) -replace '^\-' -replace '\-$'                        
+                    }
+                )
+                if (-not $extendedCommandNames) {
+                    $this | Add-Member NoteProperty Extends @() -Force
+                    $this | Add-Member NoteProperty ExtensionCommands @() -Force
+                    return    
+                }
                 $allLoadedCmds = $ExecutionContext.SessionState.InvokeCommand.GetCommands('*','All', $true)
                 $extends = @{}
                 foreach ($loadedCmd in $allLoadedCmds) {
-                    foreach ($attr in $this.ScriptBlock.Attributes) {
-                        if ($attr -isnot [Management.Automation.CmdletAttribute]) { continue }
-                        $extensionCommandName = (
-                            ($attr.VerbName -replace '\s') + '-' + ($attr.NounName -replace '\s')
-                        ) -replace '^\-' -replace '\-$'
+                    foreach ($extensionCommandName in $extendedCommandNames) {
                         if ($extensionCommandName -and $loadedCmd.Name -match $extensionCommandName) {
                             $loadedCmd
                             $extends[$loadedCmd.Name] = $loadedCmd
@@ -235,7 +268,38 @@ function Get-RoughDraftExtension
             $null = $extCmd.GetExtendedCommands()
 
             $inheritanceLevel = [ComponentModel.InheritanceLevel]::Inherited
-            if (-not $hasExtensionAttribute -and $RequireExtensionAttribute) { return }
+
+            $extCmd.PSObject.Properties.Add([psscriptproperty]::New('BlockComments', {
+                [Regex]::New("                   
+                \<\# # The opening tag
+                (?<Block> 
+                    (?:.|\s)+?(?=\z|\#>) # anything until the closing tag
+                )
+                \#\> # the closing tag
+                ", 'IgnoreCase,IgnorePatternWhitespace', '00:00:01').Matches($this.ScriptBlock)
+            }))
+
+            $extCmd.PSObject.Methods.Add([psscriptmethod]::New('GetHelpField', {
+                param([Parameter(Mandatory)]$Field)
+                $fieldNames = 'synopsis','description','link','example','inputs', 'outputs', 'parameter', 'notes'
+                foreach ($block in $this.BlockComments) {                
+                    foreach ($match in [Regex]::new("
+                        \.(?<Field>$Field)                   # Field Start
+                        [\s-[\r\n]]{0,}                      # Optional Whitespace
+                        [\r\n]+                              # newline
+                        (?<Content>(?:.|\s)+?(?=
+                        (
+                            [\r\n]{0,}\s{0,}\.(?>$($fieldNames -join '|'))|
+                            \#\>|
+                            \z
+                        ))) # Anything until the next .field or end of the comment block
+                        ", 'IgnoreCase,IgnorePatternWhitespace', [Timespan]::FromSeconds(1)).Matches(
+                            $block.Value
+                        )) {                        
+                        $match.Groups["Content"].Value -replace '[\s\r\n]+$'
+                    }                    
+                }
+            }))
 
             $extCmd.PSObject.Properties.Add([PSNoteProperty]::new('InheritanceLevel', $inheritanceLevel))
             $extCmd.PSObject.Properties.Add([PSScriptProperty]::new(
@@ -244,6 +308,23 @@ function Get-RoughDraftExtension
             $extCmd.PSObject.Properties.Add([PSScriptProperty]::new(
                 'Attributes', {$this.ScriptBlock.Attributes}
             ))
+
+
+            $extCmd.PSObject.Properties.Add([PSScriptProperty]::new(
+                'Category', {
+                    foreach ($attr in $this.ScriptBlock.Attributes) {
+                        if ($attr -is [Reflection.AssemblyMetaDataAttribute] -and
+                            $attr.Key -eq 'Category') {
+                            $attr.Value
+                        }
+                        elseif ($attr -is [ComponentModel.CategoryAttribute]) {
+                            $attr.Category
+                        }
+                    }
+                    
+                }
+            ))
+
             $extCmd.PSObject.Properties.Add([PSScriptProperty]::new(
                 'Rank', {
                     foreach ($attr in $this.ScriptBlock.Attributes) {
@@ -255,32 +336,35 @@ function Get-RoughDraftExtension
                     return 0
                 }
             ))
-            $extCmd.PSObject.Properties.Add([PSScriptProperty]::new(
-                'Description',
-                {
-                    # From ?<PowerShell_HelpField> in Irregular (https://github.com/StartAutomating/Irregular)
-                    [Regex]::new('
-                        \.(?<Field>Description)              # Field Start
-                        \s{0,}                               # Optional Whitespace
-                        (?<Content>(.|\s)+?(?=(\.\w+|\#\>))) # Anything until the next .\field or end of the comment block
-                        ', 'IgnoreCase,IgnorePatternWhitespace', [Timespan]::FromSeconds(1)).Match(
-                            $this.ScriptBlock
-                    ).Groups["Content"].Value
+            
+            $extCmd.PSObject.Properties.Add([psscriptproperty]::new(
+                'Metadata', {
+                    $Metadata = [Ordered]@{}
+                    foreach ($attr in $this.ScriptBlock.Attributes) {
+                        if ($attr -is [Reflection.AssemblyMetaDataAttribute]) {
+                            if ($Metadata[$attr.Key]) {
+                                $Metadata[$attr.Key] = @($Metadata[$attr.Key]) + $attr.Value
+                            } else {
+                                $Metadata[$attr.Key] = $attr.Value
+                            }                            
+                        }
+                    }
+                    return $Metadata
                 }
             ))
 
+            $extCmd.PSObject.Properties.Add([PSScriptProperty]::new(
+                'Description', { @($this.GetHelpField("Description"))[0] -replace '^\s+' }
+            ))
 
             $extCmd.PSObject.Properties.Add([PSScriptProperty]::new(
-                'Synopsis', {
-                # From ?<PowerShell_HelpField> in Irregular (https://github.com/StartAutomating/Irregular)
-                [Regex]::new('
-                    \.(?<Field>Synopsis)                 # Field Start
-                    \s{0,}                               # Optional Whitespace
-                    (?<Content>(.|\s)+?(?=(\.\w+|\#\>))) # Anything until the next .\field or end of the comment block
-                    ', 'IgnoreCase,IgnorePatternWhitespace', [Timespan]::FromSeconds(1)).Match(
-                        $this.ScriptBlock
-                ).Groups["Content"].Value
-            }))
+                'Synopsis', { @($this.GetHelpField("Synopsis"))[0] -replace '^\s+' }))
+
+            $extCmd.PSObject.Properties.Add([PSScriptProperty]::new(
+                'Examples', { $this.GetHelpField("Example") }))
+
+            $extCmd.PSObject.Properties.Add([PSScriptProperty]::new(
+                'Links', { $this.GetHelpField("Link") }))
 
             $extCmd.PSObject.Methods.Add([psscriptmethod]::new('Validate', {
                 param(
@@ -470,6 +554,40 @@ function Get-RoughDraftExtension
 
             }))
 
+
+            $extCmd.PSObject.Methods.Add([PSScriptMethod]::new('IsParameterValid', {
+                param([Parameter(Mandatory)]$ParameterName, [PSObject]$Value)
+
+                if ($this.Parameters.Count -ge 0 -and 
+                    $this.Parameters[$parameterName].Attributes
+                ) {
+                    foreach ($attr in $this.Parameters[$parameterName].Attributes) {
+                        $_ = $value
+                        if ($attr -is [Management.Automation.ValidateScriptAttribute]) {
+                            $result = try { . $attr.ScriptBlock } catch { $null }
+                            if ($result -ne $true) {
+                                return $false
+                            }
+                        }
+                        elseif ($attr -is [Management.Automation.ValidatePatternAttribute] -and 
+                                (-not [Regex]::new($attr.RegexPattern, $attr.Options, '00:00:05').IsMatch($value))
+                            ) {
+                                return $false
+                            }
+                        elseif ($attr -is [Management.Automation.ValidateSetAttribute] -and 
+                                $attr.ValidValues -notcontains $value) {
+                                    return $false
+                                }
+                        elseif ($attr -is [Management.Automation.ValidateRangeAttribute] -and (
+                            ($value -gt $attr.MaxRange) -or ($value -lt $attr.MinRange)
+                        )) {
+                            return $false
+                        }
+                    }
+                }
+                return $true
+            }))
+
             $extCmd.PSObject.Methods.Add([PSScriptMethod]::new('CouldPipe', {
                 param([PSObject]$InputObject)
 
@@ -497,11 +615,17 @@ function Get-RoughDraftExtension
                             }
                         }
                     }
+                    # Check for parameter validity.
+                    foreach ($mappedParamName in @($mappedParams.Keys)) {
+                        if (-not $this.IsParameterValid($mappedParamName, $mappedParams[$mappedParamName])) {
+                            $mappedParams.Remove($mappedParamName)
+                        }
+                    }
                     if ($mappedParams.Count -gt 0) {
                         return $mappedParams
                     }
                 }
-            }))
+            }))            
 
             $extCmd.PSObject.Methods.Add([PSScriptMethod]::new('CouldRun', {
                 param([Collections.IDictionary]$params, [string]$ParameterSetName)
@@ -525,8 +649,16 @@ function Get-RoughDraftExtension
                                 $myParam.Name # keep track of it.
                             }
                         })
+
+                    # Check for parameter validity.
+                    foreach ($mappedParamName in @($mappedParams.Keys)) {
+                        if (-not $this.IsParameterValid($mappedParamName, $mappedParams[$mappedParamName])) {
+                            $mappedParams.Remove($mappedParamName)
+                        }
+                    }
+                    
                     foreach ($mandatoryParam in $mandatories) { # Walk thru each mandatory parameter.
-                        if (-not $params.Contains($mandatoryParam)) { # If it wasn't in the parameters.
+                        if (-not $mappedParams.Contains($mandatoryParam)) { # If it wasn't in the parameters.
                             continue nextParameterSet
                         }
                     }
@@ -550,29 +682,48 @@ function Get-RoughDraftExtension
             }
             process {
                 $extCmd = $_
-                if ($ValidateInput) {
+
+                # When we're outputting an extension, we start off assuming that it is valid.
+                $IsValid = $true
+                if ($ValidateInput) { # If we have a particular input we want to validate
                     try {
+                        # Check if it is valid
                         if (-not $extCmd.Validate($ValidateInput, $AllValid)) {
-                            return
+                            $IsValid = $false # and then set IsValid if it is not.
                         }
                     } catch {
-                        Write-Error $_
-                        return
+                        Write-Error $_    # If we encountered an exception, write it out
+                        $IsValid = $false # and set is $IsValid to false.
                     }
                 }
 
-
-                if ($DynamicParameter -or $DynamicParameterSetName -or $DynamicParameterPositionOffset -or $NoMandatoryDynamicParameter) {
-                    $extensionParams = $extCmd.GetDynamicParameters($DynamicParameterSetName, $DynamicParameterPositionOffset, $NoMandatoryDynamicParameter, $CommandName)
+                
+                # If we're requesting dynamic parameters (and the extension is valid)
+                if ($IsValid -and 
+                    ($DynamicParameter -or $DynamicParameterSetName -or $DynamicParameterPositionOffset -or $NoMandatoryDynamicParameter)) {
+                    # Get what the dynamic parameters of the extension would be.
+                    $extensionParams = $extCmd.GetDynamicParameters($DynamicParameterSetName, 
+                        $DynamicParameterPositionOffset, 
+                        $NoMandatoryDynamicParameter, $CommandName)
+                    
+                    # Then, walk over each extension parameter.
                     foreach ($kv in $extensionParams.GetEnumerator()) {
+                        # If the $CommandExtended had a built-in parameter, we cannot override it, so skip it.
                         if ($commandExtended -and ([Management.Automation.CommandMetaData]$commandExtended).Parameters.$($kv.Key)) {
                             continue
                         }
+
+                        # If already have this dynamic parameter
                         if ($allDynamicParameters.ContainsKey($kv.Key)) {
+
+                            # check it's type.
                             if ($kv.Value.ParameterType -ne $allDynamicParameters[$kv.Key].ParameterType) {
+                                # If the types are different, make it a PSObject (so it could be either).
                                 Write-Verbose "Extension '$extCmd' Parameter '$($kv.Key)' Type Conflict, making type PSObject"
                                 $allDynamicParameters[$kv.Key].ParameterType = [PSObject]
                             }
+
+
                             foreach ($attr in $kv.Value.Attributes) {
                                 if ($allDynamicParameters[$kv.Key].Attributes.Contains($attr)) {
                                     continue
@@ -584,30 +735,38 @@ function Get-RoughDraftExtension
                         }
                     }
                 }
-                elseif ($CouldPipe) {
+                elseif ($IsValid -and ($CouldPipe -or $CouldRun)) {
                     if (-not $extCmd) { return }
-                    $couldPipeExt = $extCmd.CouldPipe($CouldPipe)
-                    if (-not $couldPipeExt) { return }
-                    [PSCustomObject][Ordered]@{
-                        ExtensionCommand = $extCmd
-                        CommandName = $CommandName
-                        ExtensionInputObject = $CouldPipe
-                        ExtensionParameter = $couldPipeExt
-                    }
-                }
-                elseif ($CouldRun) {
-                    if (-not $extCmd) { return }
-                    $couldRunExt = $extCmd.CouldRun($Parameter, $ParameterSetName)
-                    if (-not $couldRunExt) { return }
-                    [PSCustomObject][Ordered]@{
-                        ExtensionCommand = $extCmd
-                        CommandName = $CommandName
-                        ExtensionParameter = $couldRunExt
-                    }
 
-                    return
+                    $extensionParams = [Ordered]@{}
+                    $pipelineParams = @()
+                    if ($CouldPipe) {
+                        $couldPipeExt = $extCmd.CouldPipe($CouldPipe)
+                        if (-not $couldPipeExt) { return }
+                        $pipelineParams += $couldPipeExt.Keys
+                        if (-not $CouldRun) {                            
+                            $extensionParams += $couldPipeExt
+                        } else {
+                            foreach ($kv in $couldPipeExt.GetEnumerator()) {
+                                $Parameter[$kv.Key] = $kv.Value
+                            }
+                        }
+                    }
+                    if ($CouldRun) {
+                        $couldRunExt = $extCmd.CouldRun($Parameter, $ParameterSetName)
+                        if (-not $couldRunExt) { return }
+                        $extensionParams += $couldRunExt
+                    }
+                
+                    [PSCustomObject][Ordered]@{
+                        ExtensionCommand = $extCmd
+                        CommandName = $CommandName
+                        ExtensionInputObject = if ($CouldPipe) { $CouldPipe } else { $null }                        
+                        ExtensionParameter   = $extensionParams
+                        PipelineParameters   = $pipelineParams
+                    }
                 }
-                elseif ($SteppablePipeline) {
+                elseif ($IsValid -and $SteppablePipeline) {
                     if (-not $extCmd) { return }
                     if ($Parameter) {
                         $couldRunExt = $extCmd.CouldRun($Parameter, $ParameterSetName)
@@ -632,7 +791,7 @@ function Get-RoughDraftExtension
                             Add-Member NoteProperty ExtensionScriptBlock $sb -Force -PassThru
                     }
                 }
-                elseif ($Run) {
+                elseif ($IsValid -and $Run) {
                     if (-not $extCmd) { return }
                     $couldRunExt = $extCmd.CouldRun($Parameter, $ParameterSetName)
                     if (-not $couldRunExt) { return }
@@ -649,25 +808,16 @@ function Get-RoughDraftExtension
                     }
                     return
                 }
-                elseif ($Help -or $FullHelp -or $Example -or $ParameterHelp) {
-                    $getHelpSplat = @{}
-                    if ($FullHelp) {
-                        $getHelpSplat["Full"] = $true
-                    }
-                    if ($Example) {
-                        $getHelpSplat["Example"] = $true
-                    }
-                    if ($ParameterHelp) {
-                        $getHelpSplat["ParameterHelp"] = $ParameterHelp
-                    }
-
+                elseif ($IsValid -and $Help) {
+                    $getHelpSplat = @{Full=$true}
+                    
                     if ($extCmd -is [Management.Automation.ExternalScriptInfo]) {
                         Get-Help $extCmd.Source @getHelpSplat
                     } elseif ($extCmd -is [Management.Automation.FunctionInfo]) {
                         Get-Help $extCmd @getHelpSplat
                     }
                 }
-                else {
+                elseif ($IsValid) {
                     return $extCmd
                 }
             }
@@ -681,16 +831,18 @@ function Get-RoughDraftExtension
 
 
         $extensionFullRegex =
-            if ($ExtensionModule) {
-                "\.(?>$(@(@($ExtensionModule) + $ExtensionModuleAlias) -join '|'))\." + $ExtensionPattern
-            } else {
-                $ExtensionPattern
-            }
+            [Regex]::New($(
+                if ($ExtensionModule) {
+                    "\.(?>$(@(@($ExtensionModule) + $ExtensionModuleAlias) -join '|'))\." + "(?>$($ExtensionPattern -join '|'))"
+                } else {
+                    "(?>$($ExtensionPattern -join '|'))"
+                }
+            ), 'IgnoreCase,IgnorePatternWhitespace', '00:00:01')
 
         #region Find Extensions
         $loadedModules = @(Get-Module)
         $myInv = $MyInvocation
-        $myModuleName = if ($ExtensionModule) { $ExtensionModule } else {$MyInvocation.MyCommand.Module.Name }
+        $myModuleName = if ($ExtensionModule) { $ExtensionModule } else { $MyInvocation.MyCommand.Module.Name }
         if ($myInv.MyCommand.Module -and $loadedModules -notcontains $myInv.MyCommand.Module) {
             $loadedModules = @($myInv.MyCommand.Module) + $loadedModules
         }
@@ -703,7 +855,7 @@ function Get-RoughDraftExtension
         {
             $script:RoughDraftExtensions =
                 @(
-                #region Find RoughDraft Extensions in Loaded Modules
+                #region Find RoughDraftExtensions in Loaded Modules
                 foreach ($loadedModule in $loadedModules) { # Walk over all modules.
                     if ( # If the module has PrivateData keyed to this module
                         $loadedModule.PrivateData.$myModuleName
@@ -734,11 +886,11 @@ function Get-RoughDraftExtension
                         $loadedModule |
                             Split-Path |
                             Get-ChildItem -Recurse |
-                            Where-Object Name -Match $extensionFullRegex |
+                            Where-Object { $_.Name -Match $extensionFullRegex } |
                             ConvertToExtension
                     }
                 }
-                #endregion Find RoughDraft Extensions in Loaded Modules
+                #endregion Find RoughDraftExtensions in Loaded Modules
                 )
         }
         #endregion Find Extensions
@@ -748,11 +900,17 @@ function Get-RoughDraftExtension
 
         if ($ExtensionPath) {
             Get-ChildItem -Recurse -Path $ExtensionPath |
-                Where-Object Name -Match $extensionFullRegex |
+                Where-Object { $_.Name -Match $extensionFullRegex } |
                 ConvertToExtension |
                 . WhereExtends $CommandName |
+                #region Install-Piecemeal -WhereObject
+                # This section can be updated by using Install-Piecemeal -WhereObject
+                #endregion Install-Piecemeal -WhereObject
                 Sort-Object Rank, Name |
                 OutputExtension
+                #region Install-Piecemeal -ForeachObject
+                # This section can be updated by using Install-Piecemeal -ForeachObject
+                #endregion Install-Piecemeal -ForeachObject
         } else {
             $script:RoughDraftExtensions |
                 . WhereExtends $CommandName |
@@ -761,5 +919,5 @@ function Get-RoughDraftExtension
         }
     }
 }
-#endregion Piecemeal [ 0.2.7 ] : Easy Extensible Plugins for PowerShell
+#endregion Piecemeal [ 0.3.3 ] : Easy Extensible Plugins for PowerShell
 
