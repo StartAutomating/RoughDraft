@@ -267,7 +267,7 @@
             $newFilterParams = @(
                 for ($filterParamNumber =0 ; $filterParamNumber -lt $filterParams.Count;$filterParamNumber++) {
                     $thisFilterParam = $filterParams[$filterParamNumber]
-                    if ($thisFilterParam -eq '-af' -and $allAudioFilters) {
+                    if ($thisFilterParam -eq '-af') {
                         if ($allAudioFilters) {
                             '-af'
                             $allAudioFilters -join ','
