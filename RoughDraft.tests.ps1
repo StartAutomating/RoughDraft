@@ -165,7 +165,7 @@ describe Join-Media {
             Join-Path ([IO.Path]::GetTempPath()) "JoinedVideo$(Get-Random).mp4"
         )
         $audioTmpPaths = @(
-            Join-Path ([IO.Path]::GetTempPath()) "Audio$(Get-Random).mp3"
+            Join-Path ([IO.Path]::GetTempPath()) "Audio$(Get-Random).wav"
             Join-Path ([IO.Path]::GetTempPath()) "Audio$(Get-Random).wav"
             Join-Path ([IO.Path]::GetTempPath()) "JoinedAudio$(Get-Random).mp3"
         )
