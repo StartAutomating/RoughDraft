@@ -1,4 +1,16 @@
-﻿## 0.3.4:
+﻿## 0.3.5:
+* New Extensions:
+  * AudioExpression (Fixes #22)
+  * FillBorder (Fixes #105)
+  * Pulsator (Fixes #104)
+* -Media commands now use Use-FFMpeg (Fixes #106)
+* Use-FFMpeg:  Improved error handling (Fixes #108)
+* Show-Media:
+  * InputPath is now optional (Fixes #107)
+  * Allowing multiple audio filters (Fixes #109)
+---
+
+## 0.3.4:
 * Adding Flanger Extension (#100)
 * Show-Media:
   * Fixing looping behavior (#102)
