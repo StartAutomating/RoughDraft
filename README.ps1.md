@@ -160,7 +160,7 @@ RoughDraft uses Extensions to make complex media scenarios easier work with.
         Table = Get-RoughDraftExtension |
             Sort-Object DisplayName |            
             .DisplayName {
-                "[$($_.DisplayName)](docs/$($_.DisplayName + '-Extension.md')"
+                "[$($_.DisplayName)](docs/$($_.DisplayName + '-Extension.md'))"
             } .Synopsis .Extends {
                 $_.Extends -join ','
             }
