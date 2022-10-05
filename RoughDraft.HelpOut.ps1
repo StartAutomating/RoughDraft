@@ -1,13 +1,8 @@
 #require -Module HelpOut
 Push-Location $PSScriptRoot
-$parentPath = $PSScriptRoot | Split-Path
-$wikiPath = $parentPath | Get-ChildItem | Where-Object { $_.Name -eq "RoughDraft.wiki" -or $_.Name -eq 'wiki'}
 
-Save-MarkdownHelp -Module RoughDraft -OutputPath $wikiPath -Wiki -ScriptPath Extension -ReplaceScriptName '\.(rd|RoughDraft)\.(ext|Extension)\.ps1$' -ReplaceScriptNameWith "-Extension"
+Import-Module .\RoughDraft.psd1
 
-Push-Location $wikiPath
-git add .
-git commit -m "Updating wiki" | Out-Host
-git push | Out-Host
-Pop-Location
+Save-MarkdownHelp -Module RoughDraft -ScriptPath Extension -ReplaceScriptName '\.(rd|RoughDraft)\.(ext|Extension)\.ps1$' -ReplaceScriptNameWith "-Extension" -PassThru
+
 Pop-Location

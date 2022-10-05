@@ -20,5 +20,5 @@ $AudioGain
 
 if ($AudioGain) { # If we're going to turn up the volume
     '-af' # use the [volume audiofilter](https://ffmpeg.org/ffmpeg-filters.html#volume)
-    "`"volume=$($audioGain -ireplace 'db', 'dB')`""
+    "volume=$($audioGain -ireplace 'db', 'dB')"
 }
