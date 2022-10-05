@@ -159,7 +159,7 @@ RoughDraft uses Extensions to make complex media scenarios easier work with.
 |--------------------------------------------------------|------------------------------------|----------------------------------------------|
 |[AlbumArt](docs/AlbumArt-Extension.md)                  |Sets album artwork                  |Set-Media                                     |
 |[AmplifyPixel](docs/AmplifyPixel-Extension.md)          |AmplifyPixel extension              |Edit-Media,Show-Media                         |
-|[AudioExpression](docs/AudioExpression-Extension.md)    |Evaluates Audio Expressions         |New-Media,Edit-Media,Show-Media               |
+|[AudioExpression](docs/AudioExpression-Extension.md)    |Evaluates Audio Expressions         |Edit-Media,Show-Media,New-Media               |
 |[AudioGain](docs/AudioGain-Extension.md)                |Increases audio volume              |Edit-Media,Show-Media                         |
 |[BilateralSmooth](docs/BilateralSmooth-Extension.md)    |Bilateral Smooth                    |Edit-Media,Show-Media                         |
 |[BlackDetect](docs/BlackDetect-Extension.md)            |Detect black periods in a video.    |Get-Media                                     |
@@ -174,7 +174,7 @@ RoughDraft uses Extensions to make complex media scenarios easier work with.
 |[Colorize](docs/Colorize-Extension.md)                  |Colorize a video stream             |Edit-Media,Show-Media                         |
 |[ColorScope](docs/ColorScope-Extension.md)              |Colorscope extension                |Edit-Media,Show-Media                         |
 |[ColorSource](docs/ColorSource-Extension.md)            |Generates a color                   |New-Media,Show-Media                          |
-|[Crop](docs/Crop-Extension.md)                          |Crop Extension                      |Edit-Media,Receive-Media,Show-Media,Send-Media|
+|[Crop](docs/Crop-Extension.md)                          |Crop Extension                      |Receive-Media,Show-Media,Edit-Media,Send-Media|
 |[CropDetect](docs/CropDetect-Extension.md)              |Auto-detect the crop size.          |Get-Media                                     |
 |[DataScope](docs/DataScope-Extension.md)                |Datascope effect                    |Edit-Media                                    |
 |[DirectShow](docs/DirectShow-Extension.md)              |DirectShow Extension                |Receive-Media,Show-Media,Send-Media           |
@@ -209,10 +209,10 @@ RoughDraft uses Extensions to make complex media scenarios easier work with.
 |[Pulsator](docs/Pulsator-Extension.md)                  |Pulsator Effect                     |Edit-Media,Show-Media                         |
 |[RandomizeFrame](docs/RandomizeFrame-Extension.md)      |RandomizeFrame extensions           |Edit-Media,Show-Media                         |
 |[Rate](docs/Rate-Extension.md)                          |Adjusts the rate of media.          |Edit-Media,Show-Media                         |
-|[Resize](docs/Resize-Extension.md)                      |Resizes a video                     |Edit-Media,Convert-Media,Show-Media           |
+|[Resize](docs/Resize-Extension.md)                      |Resizes a video                     |Show-Media,Edit-Media,Convert-Media           |
 |[ReverseAudio](docs/ReverseAudio-Extension.md)          |Reverses audio                      |Edit-Media                                    |
 |[ReverseVideo](docs/ReverseVideo-Extension.md)          |Reverses video                      |Edit-Media                                    |
-|[Rotate](docs/Rotate-Extension.md)                      |Rotates a video                     |Edit-Media,Convert-Media,Show-Media           |
+|[Rotate](docs/Rotate-Extension.md)                      |Rotates a video                     |Show-Media,Edit-Media,Convert-Media           |
 |[ScrollVideo](docs/ScrollVideo-Extension.md)            |Scrolls video                       |Edit-Media,Show-Media                         |
 |[Sepia](docs/Sepia-Extension.md)                        |Applies a Sepia Filter              |Edit-Media                                    |
 |[ShuffleFrames](docs/ShuffleFrames-Extension.md)        |Shuffles frames in video            |Edit-Media                                    |
