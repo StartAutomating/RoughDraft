@@ -2,8 +2,6 @@ name: New Extension
 description: Request a New Extension
 title: "[Extension]: "
 labels: ["enhancement"]
-assignees:
-  - startautomating
 body:
   - type: markdown
     attributes:
