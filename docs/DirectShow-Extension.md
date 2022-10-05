@@ -70,4 +70,3 @@ Extension/DirectShow.RoughDraft.Extension.ps1 -DirectShow [[-VideoDevice] <Strin
 
 
 
-
