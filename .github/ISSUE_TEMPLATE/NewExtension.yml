@@ -1,0 +1,64 @@
+name: New Extension
+description: Request a New Extension
+title: "[Extension]: "
+labels: ["enhancement"]
+assignees:
+  - startautomating
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Please provide some more info about the extension
+  - type: input
+    id: Name
+    attributes:
+      label: Name
+      description: The Name of the Extension.
+    validations:
+      required: true
+  - type: checkboxes
+    id: Extends
+    attributes:
+      label: Extends
+      description: The Commands Extended
+      options:
+        - label: Convert-Media
+        - label: Edit-Media
+        - label: Get-FFMpeg
+        - label: Get-Media
+        - label: Join-Media
+        - label: New-Media
+        - label: Receive-Media
+        - label: Send-Media
+        - label: Set-Media
+        - label: Show-Media
+        - label: Split-Media
+  - type: input
+    id: Synopsis
+    attributes:
+      label: Synopsis
+      description: A Synopsis for the Extension.
+    validations:
+      required: true
+  - type: textarea
+    id: Description
+    attributes:
+      label: Description
+      description: A description of the Extension.      
+    validations:
+      required: false  
+  - type: textarea
+    id: Example
+    attributes:
+      label: Example
+      description: An example of using the extension
+      render: PowerShell
+    validations:
+      required: false
+  - type: textarea
+    id: Links
+    attributes:
+      label: Links
+      description: Any related links.
+    validations:
+      required: false
