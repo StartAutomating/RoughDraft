@@ -23,17 +23,17 @@ body:
       description: The Commands Extended
       multiple: true
       options:
-        - label: Convert-Media
-        - label: Edit-Media
-        - label: Get-FFMpeg
-        - label: Get-Media
-        - label: Join-Media
-        - label: New-Media
-        - label: Receive-Media
-        - label: Send-Media
-        - label: Set-Media
-        - label: Show-Media
-        - label: Split-Media      
+        - Convert-Media
+        - Edit-Media
+        - Get-FFMpeg
+        - Get-Media
+        - Join-Media
+        - New-Media
+        - Receive-Media
+        - Send-Media
+        - Set-Media
+        - Show-Media
+        - Split-Media      
   - type: input
     id: Synopsis
     attributes:
