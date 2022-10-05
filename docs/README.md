@@ -159,7 +159,7 @@ RoughDraft uses Extensions to make complex media scenarios easier work with.
 |--------------------------------------------------------|------------------------------------|----------------------------------------------|
 |[AlbumArt](AlbumArt-Extension.md)                  |Sets album artwork                  |Set-Media                                     |
 |[AmplifyPixel](AmplifyPixel-Extension.md)          |AmplifyPixel extension              |Edit-Media,Show-Media                         |
-|[AudioExpression](AudioExpression-Extension.md)    |Evaluates Audio Expressions         |New-Media,Edit-Media,Show-Media               |
+|[AudioExpression](AudioExpression-Extension.md)    |Evaluates Audio Expressions         |Edit-Media,Show-Media,New-Media               |
 |[AudioGain](AudioGain-Extension.md)                |Increases audio volume              |Edit-Media,Show-Media                         |
 |[BilateralSmooth](BilateralSmooth-Extension.md)    |Bilateral Smooth                    |Edit-Media,Show-Media                         |
 |[BlackDetect](BlackDetect-Extension.md)            |Detect black periods in a video.    |Get-Media                                     |
@@ -174,7 +174,7 @@ RoughDraft uses Extensions to make complex media scenarios easier work with.
 |[Colorize](Colorize-Extension.md)                  |Colorize a video stream             |Edit-Media,Show-Media                         |
 |[ColorScope](ColorScope-Extension.md)              |Colorscope extension                |Edit-Media,Show-Media                         |
 |[ColorSource](ColorSource-Extension.md)            |Generates a color                   |New-Media,Show-Media                          |
-|[Crop](Crop-Extension.md)                          |Crop Extension                      |Edit-Media,Receive-Media,Show-Media,Send-Media|
+|[Crop](Crop-Extension.md)                          |Crop Extension                      |Receive-Media,Show-Media,Edit-Media,Send-Media|
 |[CropDetect](CropDetect-Extension.md)              |Auto-detect the crop size.          |Get-Media                                     |
 |[DataScope](DataScope-Extension.md)                |Datascope effect                    |Edit-Media                                    |
 |[DirectShow](DirectShow-Extension.md)              |DirectShow Extension                |Receive-Media,Show-Media,Send-Media           |
@@ -209,10 +209,10 @@ RoughDraft uses Extensions to make complex media scenarios easier work with.
 |[Pulsator](Pulsator-Extension.md)                  |Pulsator Effect                     |Edit-Media,Show-Media                         |
 |[RandomizeFrame](RandomizeFrame-Extension.md)      |RandomizeFrame extensions           |Edit-Media,Show-Media                         |
 |[Rate](Rate-Extension.md)                          |Adjusts the rate of media.          |Edit-Media,Show-Media                         |
-|[Resize](Resize-Extension.md)                      |Resizes a video                     |Edit-Media,Convert-Media,Show-Media           |
+|[Resize](Resize-Extension.md)                      |Resizes a video                     |Show-Media,Edit-Media,Convert-Media           |
 |[ReverseAudio](ReverseAudio-Extension.md)          |Reverses audio                      |Edit-Media                                    |
 |[ReverseVideo](ReverseVideo-Extension.md)          |Reverses video                      |Edit-Media                                    |
-|[Rotate](Rotate-Extension.md)                      |Rotates a video                     |Edit-Media,Convert-Media,Show-Media           |
+|[Rotate](Rotate-Extension.md)                      |Rotates a video                     |Show-Media,Edit-Media,Convert-Media           |
 |[ScrollVideo](ScrollVideo-Extension.md)            |Scrolls video                       |Edit-Media,Show-Media                         |
 |[Sepia](Sepia-Extension.md)                        |Applies a Sepia Filter              |Edit-Media                                    |
 |[ShuffleFrames](ShuffleFrames-Extension.md)        |Shuffles frames in video            |Edit-Media                                    |
@@ -291,8 +291,6 @@ The following commands can currently be extended:
 * Send-Media
 * Show-Media
 * Split-Media
-
-
 
 
 
