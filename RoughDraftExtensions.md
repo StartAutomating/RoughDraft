@@ -2,7 +2,7 @@
 |:-|-|-:|
 |AlbumArt|Sets album artwork|Set-Media|
 |AmplifyPixel|AmplifyPixel extension|Show-Media,Edit-Media|
-|AudioExpression|Evaluates Audio Expressions|Edit-Media,New-Media,Show-Media|
+|AudioExpression|Evaluates Audio Expressions|Edit-Media,Show-Media,New-Media|
 |AudioGain|Increases audio volume|Show-Media,Edit-Media|
 |BlackDetect|Detect black periods in a video.|Get-Media|
 |BlackFrame|Detects black frames.|Get-Media|
@@ -15,11 +15,11 @@
 |ColorHold|ColorHold Extension|Show-Media,Edit-Media|
 |ColorScope|Colorscope extension|Show-Media,Edit-Media|
 |ColorSource|Generates a color|Show-Media,New-Media|
-|Crop|Crop Extension|Edit-Media,Receive-Media,Show-Media,Send-Media|
+|Crop|Crop Extension|Show-Media,Edit-Media,Send-Media,Receive-Media|
 |CropDetect|Auto-detect the crop size.|Get-Media|
 |DataScope|Datascope effect|Edit-Media|
-|DirectShow|DirectShow Extension|Show-Media,Receive-Media,Send-Media|
-|DrawSubtitle|Draw subtitles on top of input video|Convert-Media,Edit-Media|
+|DirectShow|DirectShow Extension|Show-Media,Send-Media,Receive-Media|
+|DrawSubtitle|Draw subtitles on top of input video|Edit-Media,Convert-Media|
 |Echo|Adds echoes to audio|Show-Media,Edit-Media|
 |EdgeDetect|EdgeDetect Extension|Show-Media,Edit-Media|
 |Emboss|Embosses video or images|Edit-Media|
@@ -30,7 +30,7 @@
 |Flanger|Audio Flanger.|Show-Media,Edit-Media|
 |FlipHorizontal|Flips video horizontally|Show-Media,Edit-Media|
 |FlipVertical|Flips video vertically|Show-Media,Edit-Media|
-|FrameBuffer|FrameBuffer Extension|Show-Media,Receive-Media,Send-Media|
+|FrameBuffer|FrameBuffer Extension|Show-Media,Send-Media,Receive-Media|
 |Histogram|Histogram Extension|Show-Media,Edit-Media|
 |Hue|Hue Extension|Show-Media,Edit-Media|
 |LagFun|Slowly update darker pixels.|Show-Media,Edit-Media|
@@ -66,7 +66,7 @@
 |TimeMix|Mix successive video frames.|Show-Media,Edit-Media|
 |Tremolo|Tremolo effect|Edit-Media|
 |Vibrato|Vibrato effect|Edit-Media|
-|VideoForLinux|VideoForLinux Extension|Show-Media,Receive-Media,Send-Media|
+|VideoForLinux|VideoForLinux Extension|Show-Media,Send-Media,Receive-Media|
 |Vignette|Applies a vignette filter|Show-Media,Edit-Media|
 |VolumeLevel|Gets VolumeLevels|Get-Media|
 |Watermark|Watermarks a video|Edit-Media|
