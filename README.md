@@ -1,33 +1,11 @@
-﻿
-# RoughDraft
+﻿<div align='center'>
+<img src='Assets/RoughDraft.svg' />
+</div>
 
 A Fun PowerShell Module for Multimedia
 ------------------
 
 ### Commands
---------------------------------
-|     Verb|Noun                |
-|--------:|:-------------------|
-|  Convert|-Media              |
-|ConvertTo|-Gif                |
-|         |-WaveForm           |
-|     Edit|-Media              |
-|      Get|-FFMpeg             |
-|         |-FFPlay             |
-|         |-FFProbe            |
-|         |-Media              |
-|         |-RoughDraftExtension|
-|     Join|-Media              |
-|      New|-Media              |
-|  Receive|-Media              |
-|     Send|-Media              |
-|      Set|-Media              |
-|     Show|-Media              |
-|    Split|-Media              |
-|      Use|-FFMpeg             |
-|         |-FFPlay             |
-|         |-FFProbe            |
---------------------------------
 RoughDraft is a fun PowerShell Module for Multimedia.
 
 It provides pipeline-aware command to create, convert, query, edit, and join multimedia files.
