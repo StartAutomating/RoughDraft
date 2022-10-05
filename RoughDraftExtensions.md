@@ -16,11 +16,11 @@
 |ColorHold|ColorHold Extension|Show-Media,Edit-Media|
 |Colorize|Colorize a video stream|Show-Media,Edit-Media|
 |ColorScope|Colorscope extension|Show-Media,Edit-Media|
-|ColorSource|Generates a color|New-Media,Show-Media|
-|Crop|Crop Extension|Show-Media,Receive-Media,Edit-Media,Send-Media|
+|ColorSource|Generates a color|Show-Media,New-Media|
+|Crop|Crop Extension|Send-Media,Receive-Media,Show-Media,Edit-Media|
 |CropDetect|Auto-detect the crop size.|Get-Media|
 |DataScope|Datascope effect|Edit-Media|
-|DirectShow|DirectShow Extension|Show-Media,Receive-Media,Send-Media|
+|DirectShow|DirectShow Extension|Send-Media,Receive-Media,Show-Media|
 |DrawSubtitle|Draw subtitles on top of input video|Convert-Media,Edit-Media|
 |Echo|Adds echoes to audio|Show-Media,Edit-Media|
 |EdgeDetect|EdgeDetect Extension|Show-Media,Edit-Media|
@@ -32,16 +32,16 @@
 |Flanger|Audio Flanger.|Show-Media,Edit-Media|
 |FlipHorizontal|Flips video horizontally|Show-Media,Edit-Media|
 |FlipVertical|Flips video vertically|Show-Media,Edit-Media|
-|FrameBuffer|FrameBuffer Extension|Show-Media,Receive-Media,Send-Media|
+|FrameBuffer|FrameBuffer Extension|Send-Media,Receive-Media,Show-Media|
 |FrameStep|FrameStep Effect|Show-Media,Edit-Media|
 |Histogram|Histogram Extension|Show-Media,Edit-Media|
 |Hue|Hue Extension|Show-Media,Edit-Media|
 |LagFun|Slowly update darker pixels.|Show-Media,Edit-Media|
-|Life|Generates life|New-Media,Show-Media|
+|Life|Generates life|Show-Media,New-Media|
 |LimitPixel|Limits Pixel values|Show-Media,Edit-Media|
 |ListFilters|Lists filters|Get-FFMpeg|
 |ListProtocols|Lists protocols|Get-FFMpeg|
-|Mandelbrot|Generates fractals|New-Media,Show-Media|
+|Mandelbrot|Generates fractals|Show-Media,New-Media|
 |MedianPixel|Picks median pixels|Show-Media,Edit-Media|
 |Mirror|Mirror Extension|Show-Media,Edit-Media|
 |Monochrome|Make video monochrome|Edit-Media|
@@ -72,7 +72,7 @@
 |Tremolo|Tremolo effect|Show-Media,Edit-Media|
 |Vibrato|Vibrato effect|Show-Media,Edit-Media|
 |VideoExpression|Evaluates Video Expressions|Show-Media,Edit-Media|
-|VideoForLinux|VideoForLinux Extension|Show-Media,Receive-Media,Send-Media|
+|VideoForLinux|VideoForLinux Extension|Send-Media,Receive-Media,Show-Media|
 |Vignette|Applies a vignette filter|Show-Media,Edit-Media|
 |VolumeLevel|Gets VolumeLevels|Get-Media|
 |Watermark|Watermarks a video|Edit-Media|

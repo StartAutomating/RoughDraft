@@ -37,11 +37,11 @@
 |Histogram|Histogram Extension|Show-Media,Edit-Media|
 |Hue|Hue Extension|Show-Media,Edit-Media|
 |LagFun|Slowly update darker pixels.|Show-Media,Edit-Media|
-|Life|Generates life|New-Media,Show-Media|
+|Life|Generates life|Show-Media,New-Media|
 |LimitPixel|Limits Pixel values|Show-Media,Edit-Media|
 |ListFilters|Lists filters|Get-FFMpeg|
 |ListProtocols|Lists protocols|Get-FFMpeg|
-|Mandelbrot|Generates fractals|New-Media,Show-Media|
+|Mandelbrot|Generates fractals|Show-Media,New-Media|
 |MedianPixel|Picks median pixels|Show-Media,Edit-Media|
 |Mirror|Mirror Extension|Show-Media,Edit-Media|
 |Monochrome|Make video monochrome|Edit-Media|
@@ -72,7 +72,7 @@
 |Tremolo|Tremolo effect|Show-Media,Edit-Media|
 |Vibrato|Vibrato effect|Show-Media,Edit-Media|
 |VideoExpression|Evaluates Video Expressions|Show-Media,Edit-Media|
-|VideoForLinux|VideoForLinux Extension|Show-Media,Receive-Media,Send-Media|
+|VideoForLinux|VideoForLinux Extension|Send-Media,Receive-Media,Show-Media|
 |Vignette|Applies a vignette filter|Show-Media,Edit-Media|
 |VolumeLevel|Gets VolumeLevels|Get-Media|
 |Watermark|Watermarks a video|Edit-Media|
