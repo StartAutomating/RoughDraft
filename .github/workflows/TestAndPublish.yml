@@ -1,4 +1,4 @@
-﻿
+
 name: Analyze, Test, Tag, and Publish
 on: 
   push: 
@@ -423,16 +423,27 @@ jobs:
           $ModulePath,
           
           [string[]]
-          $Exclude = @('.gif', '.mp4', '.jpg', '.png')
+          $Exclude = @('*.png', '*.mp4', '*.jpg','*.jpeg', '*.gif', 'docs[/\]*')
           )
+          
           $gitHubEvent = if ($env:GITHUB_EVENT_PATH) {
               [IO.File]::ReadAllText($env:GITHUB_EVENT_PATH) | ConvertFrom-Json
           } else { $null }
+          
+          if (-not $Exclude) {
+              $Exclude = @('*.png', '*.mp4', '*.jpg','*.jpeg', '*.gif','docs[/\]*')
+          }
           
           
           @"
           ::group::GitHubEvent
           $($gitHubEvent | ConvertTo-Json -Depth 100)
+          ::endgroup::
+          "@ | Out-Host
+          
+          @"
+          ::group::PSBoundParameters
+          $($PSBoundParameters | ConvertTo-Json -Depth 100)
           ::endgroup::
           "@ | Out-Host
           
@@ -453,9 +464,9 @@ jobs:
           
           if (-not $imported) { return } 
           
-          $foundModule = try { Find-Module -Name $imported.Name -ErrorAction SilentlyContinue } catch {}
+          $foundModule = try { Find-Module -Name $imported.Name -ErrorAction SilentlyContinue} catch {}
           
-          if ($foundModule -and $foundModule.Version -ge $imported.Version) {
+          if ($foundModule -and (([Version]$foundModule.Version) -ge ([Version]$imported.Version))) {
               "::warning::Gallery Version of $moduleName is more recent ($($foundModule.Version) >= $($imported.Version))" | Out-Host        
           } else {
               
@@ -478,13 +489,25 @@ jobs:
               if (Test-Path $moduleGitPath) {
                   Remove-Item -Recurse -Force $moduleGitPath
               }
+          
+              if ($Exclude) {
+                  "::notice::Attempting to Exlcude $exclude" | Out-Host
+                  Get-ChildItem $moduleTempPath -Recurse |
+                      Where-Object {                
+                          foreach ($ex in $exclude) {
+                              if ($_.FullName -like $ex) {
+                                  "::notice::Excluding $($_.FullName)" | Out-Host
+                                  return $true
+                              }
+                          }
+                      } | 
+                      Remove-Item
+              }
+          
               Write-Host "Module Files:"
               Get-ChildItem $moduleTempPath -Recurse
-              Write-Host "Publishing $moduleName [$($imported.Version)] to Gallery"
-              $publishModuleCommand = Get-Command Publish-Module    
+              Write-Host "Publishing $moduleName [$($imported.Version)] to Gallery"    
               Publish-Module -Path $moduleTempPath -NuGetApiKey $gk
-              
-              
               if ($?) {
                   Write-Host "Published to Gallery"
               } else {
@@ -493,14 +516,24 @@ jobs:
               }
           }
           } @Parameters
-  MakeRoughDraft: 
+  BuildRoughDraft: 
     runs-on: ubuntu-latest
+    if: ${{ success() }}
     steps: 
       - name: Check out repository
         uses: actions/checkout@v2
+      - name: Use PSSVG Action
+        uses: StartAutomating/PSSVG@main
+        id: PSSVG
       - name: Use RoughDraft Action
         uses: StartAutomating/RoughDraft@main
         id: RoughDraft
         with: 
           CommitMessage: Running RoughDraft [skip ci]
+      - name: BuildPipeScript
+        uses: StartAutomating/PipeScript@main
+      - name: UseEZOut
+        uses: StartAutomating/EZOut@master
+      - name: UseHelpOut
+        uses: StartAutomating/HelpOut@master
 
