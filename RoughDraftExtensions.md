@@ -2,7 +2,7 @@
 |:-|-|-:|
 |AlbumArt|Sets album artwork|Set-Media|
 |AmplifyPixel|AmplifyPixel extension|Show-Media,Edit-Media|
-|AudioExpression|Evaluates Audio Expressions|New-Media,Edit-Media,Show-Media|
+|AudioExpression|Evaluates Audio Expressions|Show-Media,New-Media,Edit-Media|
 |AudioGain|Increases audio volume|Show-Media,Edit-Media|
 |BilateralSmooth|Bilateral Smooth|Show-Media,Edit-Media|
 |BlackDetect|Detect black periods in a video.|Get-Media|
@@ -16,8 +16,8 @@
 |ColorHold|ColorHold Extension|Show-Media,Edit-Media|
 |Colorize|Colorize a video stream|Show-Media,Edit-Media|
 |ColorScope|Colorscope extension|Show-Media,Edit-Media|
-|ColorSource|Generates a color|New-Media,Show-Media|
-|Crop|Crop Extension|Receive-Media,Send-Media,Edit-Media,Show-Media|
+|ColorSource|Generates a color|Show-Media,New-Media|
+|Crop|Crop Extension|Show-Media,Send-Media,Receive-Media,Edit-Media|
 |CropDetect|Auto-detect the crop size.|Get-Media|
 |DataScope|Datascope effect|Edit-Media|
 |DirectShow|DirectShow Extension|Send-Media,Receive-Media,Show-Media|
@@ -37,11 +37,11 @@
 |Histogram|Histogram Extension|Show-Media,Edit-Media|
 |Hue|Hue Extension|Show-Media,Edit-Media|
 |LagFun|Slowly update darker pixels.|Show-Media,Edit-Media|
-|Life|Generates life|New-Media,Show-Media|
+|Life|Generates life|Show-Media,New-Media|
 |LimitPixel|Limits Pixel values|Show-Media,Edit-Media|
 |ListFilters|Lists filters|Get-FFMpeg|
 |ListProtocols|Lists protocols|Get-FFMpeg|
-|Mandelbrot|Generates fractals|New-Media,Show-Media|
+|Mandelbrot|Generates fractals|Show-Media,New-Media|
 |MedianPixel|Picks median pixels|Show-Media,Edit-Media|
 |Mirror|Mirror Extension|Show-Media,Edit-Media|
 |Monochrome|Make video monochrome|Edit-Media|
@@ -51,14 +51,14 @@
 |Pulsator|Pulsator Effect|Show-Media,Edit-Media|
 |RandomizeFrame|RandomizeFrame extensions|Show-Media,Edit-Media|
 |Rate|Adjusts the rate of media.|Show-Media,Edit-Media|
-|Resize|Resizes a video|Convert-Media,Edit-Media,Show-Media|
+|Resize|Resizes a video|Show-Media,Convert-Media,Edit-Media|
 |ReverseAudio|Reverses audio|Edit-Media|
 |ReverseVideo|Reverses video|Edit-Media|
-|Rotate|Rotates a video|Convert-Media,Edit-Media,Show-Media|
+|Rotate|Rotates a video|Show-Media,Convert-Media,Edit-Media|
 |ScrollVideo|Scrolls video|Show-Media,Edit-Media|
 |Sepia|Applies a Sepia Filter|Edit-Media|
 |ShuffleFrames|Shuffles frames in video|Edit-Media|
-|Sierpinski|Generates a Sierpinski fractal|New-Media,Show-Media|
+|Sierpinski|Generates a Sierpinski fractal|Show-Media,New-Media|
 |SilenceDetect|Detects silence in an audio stream|Get-Media|
 |SilenceRemove|Detects silence in an audio stream|Edit-Media|
 |Sine|Generates a sine wave|New-Media|
@@ -66,7 +66,7 @@
 |SubFrequencyCut|Cut subwoofer frequencies|Show-Media,Edit-Media|
 |Subtitler|Creates subtitles.|New-Media|
 |SuperFrequencyCut|Cut super frequencies.|Show-Media,Edit-Media|
-|TestSource|Generates test sources|New-Media,Show-Media|
+|TestSource|Generates test sources|Show-Media,New-Media|
 |Tile|Tile Extension|Edit-Media|
 |TimeMix|Mix successive video frames.|Show-Media,Edit-Media|
 |Tremolo|Tremolo effect|Show-Media,Edit-Media|
