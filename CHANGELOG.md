@@ -1,14 +1,22 @@
 ﻿## 0.3.5:
 * New Extensions:
-  * AudioExpression (Fixes #22)
+  * AudioExpression!!! (Fixes #22)
+  * BilateralSmooth (Fixes #117)
+  * Colorize (Fixes #120)
   * FillBorder (Fixes #105)
-  * Pulsator (Fixes #104)
+  * FrameStep (Fixes #113)
+  * Pulsator (Fixes #104)  
+  * SubFrequencyCut (Fixes #123)
+  * SuperFrequencyCut (Fixes #124)  
+  * VideoExpression!!! (Fixes #116)
 * -Media commands now use Use-FFMpeg (Fixes #106)
 * Use-FFMpeg:  Improved error handling (Fixes #108)
 * Show-Media:
   * InputPath is now optional (Fixes #107)
   * Allowing multiple audio filters (Fixes #109)
+* Auto-generating docs (Fixes #122)
 ---
+
 
 ## 0.3.4:
 * Adding Flanger Extension (#100)
