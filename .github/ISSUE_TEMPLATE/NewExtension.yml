@@ -8,14 +8,7 @@ body:
   - type: markdown
     attributes:
       value: |
-        Please provide some more info about the extension
-  - type: input
-    id: Name
-    attributes:
-      label: Name
-      description: The Name of the Extension.
-    validations:
-      required: true
+        Please provide some more info about the extension  
   - type: dropdown
     id: Extends
     attributes:
