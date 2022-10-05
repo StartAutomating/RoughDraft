@@ -33,9 +33,11 @@ So what can we do with this?
 Well, if we start simple, we can flip a video's contents.
 
 ~~~PowerShell
+
 New-Media -TestSource testsrc2 -Duration '00:00:10' -Resolution 640x480 -OutputPath .\TestSource-640x480-10s.mp4 
 
 Edit-Media -InputPath .\TestSource-640x480-10s.mp4 -VideoExpression 'p(W-X,Y)' -OutputPath .\TestSource-640x480-10s-Flipped.mp4
+
 ~~~
 
 ---
@@ -43,13 +45,13 @@ Edit-Media -InputPath .\TestSource-640x480-10s.mp4 -VideoExpression 'p(W-X,Y)' -
 > Original Video
 
 <video style='width:90%;margin-left:auto;margin-right:auto' controls="controls">
-    <source src="TestSource-640x480-10s.mp4" type="video/mp4">
+    <source src="/Assets/TestSource-640x480-10s.mp4" type="video/mp4">
 </video>
 
 > Flipped Video
 
 <video style='width:90%;margin-left:auto;margin-right:auto' controls="controls">
-    <source src="TestSource-640x480-10s-Flipped.mp4" type="video/mp4">
+    <source src="/Assets/TestSource-640x480-10s-Flipped.mp4" type="video/mp4">
 </video>
 
 ---
@@ -85,7 +87,7 @@ This expression will run pixel by pixel.
 > Wavy Video
 
 <video style='width:90%;margin-left:auto;margin-right:auto' controls="controls">
-    <source src="TestSource-640x480-10s-Wavy.mp4" type="video/mp4">
+    <source src="/Assets/TestSource-640x480-10s-Wavy.mp4" type="video/mp4">
 </video>
 
 This is just the most brief taste of what you can do with VideoExpression.

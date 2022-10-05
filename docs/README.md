@@ -174,10 +174,10 @@ RoughDraft uses Extensions to make complex media scenarios easier work with.
 |[Colorize](Colorize-Extension.md)                  |Colorize a video stream             |Edit-Media,Show-Media                         |
 |[ColorScope](ColorScope-Extension.md)              |Colorscope extension                |Edit-Media,Show-Media                         |
 |[ColorSource](ColorSource-Extension.md)            |Generates a color                   |New-Media,Show-Media                          |
-|[Crop](Crop-Extension.md)                          |Crop Extension                      |Receive-Media,Show-Media,Edit-Media,Send-Media|
+|[Crop](Crop-Extension.md)                          |Crop Extension                      |Receive-Media,Edit-Media,Send-Media,Show-Media|
 |[CropDetect](CropDetect-Extension.md)              |Auto-detect the crop size.          |Get-Media                                     |
 |[DataScope](DataScope-Extension.md)                |Datascope effect                    |Edit-Media                                    |
-|[DirectShow](DirectShow-Extension.md)              |DirectShow Extension                |Receive-Media,Show-Media,Send-Media           |
+|[DirectShow](DirectShow-Extension.md)              |DirectShow Extension                |Receive-Media,Send-Media,Show-Media           |
 |[DrawSubtitle](DrawSubtitle-Extension.md)          |Draw subtitles on top of input video|Convert-Media,Edit-Media                      |
 |[DrawText](DrawText-Extension.md)                  |Draws Text on Video                 |Edit-Media,Show-Media                         |
 |[Echo](Echo-Extension.md)                          |Adds echoes to audio                |Edit-Media,Show-Media                         |
@@ -190,7 +190,7 @@ RoughDraft uses Extensions to make complex media scenarios easier work with.
 |[Flanger](Flanger-Extension.md)                    |Audio Flanger.                      |Edit-Media,Show-Media                         |
 |[FlipHorizontal](FlipHorizontal-Extension.md)      |Flips video horizontally            |Edit-Media,Show-Media                         |
 |[FlipVertical](FlipVertical-Extension.md)          |Flips video vertically              |Edit-Media,Show-Media                         |
-|[FrameBuffer](FrameBuffer-Extension.md)            |FrameBuffer Extension               |Receive-Media,Show-Media,Send-Media           |
+|[FrameBuffer](FrameBuffer-Extension.md)            |FrameBuffer Extension               |Receive-Media,Send-Media,Show-Media           |
 |[FrameStep](FrameStep-Extension.md)                |FrameStep Effect                    |Edit-Media,Show-Media                         |
 |[Histogram](Histogram-Extension.md)                |Histogram Extension                 |Edit-Media,Show-Media                         |
 |[Hue](Hue-Extension.md)                            |Hue Extension                       |Edit-Media,Show-Media                         |
@@ -230,7 +230,7 @@ RoughDraft uses Extensions to make complex media scenarios easier work with.
 |[Tremolo](Tremolo-Extension.md)                    |Tremolo effect                      |Edit-Media,Show-Media                         |
 |[Vibrato](Vibrato-Extension.md)                    |Vibrato effect                      |Edit-Media,Show-Media                         |
 |[VideoExpression](VideoExpression-Extension.md)    |Evaluates Video Expressions         |Edit-Media,Show-Media                         |
-|[VideoForLinux](VideoForLinux-Extension.md)        |VideoForLinux Extension             |Receive-Media,Show-Media,Send-Media           |
+|[VideoForLinux](VideoForLinux-Extension.md)        |VideoForLinux Extension             |Receive-Media,Send-Media,Show-Media           |
 |[Vignette](Vignette-Extension.md)                  |Applies a vignette filter           |Edit-Media,Show-Media                         |
 |[VolumeLevel](VolumeLevel-Extension.md)            |Gets VolumeLevels                   |Get-Media                                     |
 |[Watermark](Watermark-Extension.md)                |Watermarks a video                  |Edit-Media                                    |

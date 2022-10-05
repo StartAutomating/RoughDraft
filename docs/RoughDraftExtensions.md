@@ -16,11 +16,11 @@
 |ColorHold|ColorHold Extension|Show-Media,Edit-Media|
 |Colorize|Colorize a video stream|Show-Media,Edit-Media|
 |ColorScope|Colorscope extension|Show-Media,Edit-Media|
-|ColorSource|Generates a color|Show-Media,New-Media|
-|Crop|Crop Extension|Send-Media,Receive-Media,Show-Media,Edit-Media|
+|ColorSource|Generates a color|New-Media,Show-Media|
+|Crop|Crop Extension|Show-Media,Receive-Media,Edit-Media,Send-Media|
 |CropDetect|Auto-detect the crop size.|Get-Media|
 |DataScope|Datascope effect|Edit-Media|
-|DirectShow|DirectShow Extension|Send-Media,Receive-Media,Show-Media|
+|DirectShow|DirectShow Extension|Show-Media,Receive-Media,Send-Media|
 |DrawSubtitle|Draw subtitles on top of input video|Convert-Media,Edit-Media|
 |Echo|Adds echoes to audio|Show-Media,Edit-Media|
 |EdgeDetect|EdgeDetect Extension|Show-Media,Edit-Media|
@@ -32,7 +32,7 @@
 |Flanger|Audio Flanger.|Show-Media,Edit-Media|
 |FlipHorizontal|Flips video horizontally|Show-Media,Edit-Media|
 |FlipVertical|Flips video vertically|Show-Media,Edit-Media|
-|FrameBuffer|FrameBuffer Extension|Send-Media,Receive-Media,Show-Media|
+|FrameBuffer|FrameBuffer Extension|Show-Media,Receive-Media,Send-Media|
 |FrameStep|FrameStep Effect|Show-Media,Edit-Media|
 |Histogram|Histogram Extension|Show-Media,Edit-Media|
 |Hue|Hue Extension|Show-Media,Edit-Media|
@@ -58,7 +58,7 @@
 |ScrollVideo|Scrolls video|Show-Media,Edit-Media|
 |Sepia|Applies a Sepia Filter|Edit-Media|
 |ShuffleFrames|Shuffles frames in video|Edit-Media|
-|Sierpinski|Generates a Sierpinski fractal|Show-Media,New-Media|
+|Sierpinski|Generates a Sierpinski fractal|New-Media,Show-Media|
 |SilenceDetect|Detects silence in an audio stream|Get-Media|
 |SilenceRemove|Detects silence in an audio stream|Edit-Media|
 |Sine|Generates a sine wave|New-Media|
@@ -66,7 +66,7 @@
 |SubFrequencyCut|Cut subwoofer frequencies|Show-Media,Edit-Media|
 |Subtitler|Creates subtitles.|New-Media|
 |SuperFrequencyCut|Cut super frequencies.|Show-Media,Edit-Media|
-|TestSource|Generates test sources|Show-Media,New-Media|
+|TestSource|Generates test sources|New-Media,Show-Media|
 |Tile|Tile Extension|Edit-Media|
 |TimeMix|Mix successive video frames.|Show-Media,Edit-Media|
 |Tremolo|Tremolo effect|Show-Media,Edit-Media|
