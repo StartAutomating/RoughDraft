@@ -16,11 +16,12 @@ body:
       description: The Name of the Extension.
     validations:
       required: true
-  - type: checkboxes
+  - type: dropdown
     id: Extends
     attributes:
       label: Extends
       description: The Commands Extended
+      multiple: true
       options:
         - label: Convert-Media
         - label: Edit-Media
@@ -32,7 +33,7 @@ body:
         - label: Send-Media
         - label: Set-Media
         - label: Show-Media
-        - label: Split-Media
+        - label: Split-Media      
   - type: input
     id: Synopsis
     attributes:
