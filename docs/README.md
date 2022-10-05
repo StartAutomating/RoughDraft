@@ -159,7 +159,7 @@ RoughDraft uses Extensions to make complex media scenarios easier work with.
 |--------------------------------------------------------|------------------------------------|----------------------------------------------|
 |[AlbumArt](AlbumArt-Extension.md)                  |Sets album artwork                  |Set-Media                                     |
 |[AmplifyPixel](AmplifyPixel-Extension.md)          |AmplifyPixel extension              |Show-Media,Edit-Media                         |
-|[AudioExpression](AudioExpression-Extension.md)    |Evaluates Audio Expressions         |Edit-Media,New-Media,Show-Media               |
+|[AudioExpression](AudioExpression-Extension.md)    |Evaluates Audio Expressions         |Edit-Media,Show-Media,New-Media               |
 |[AudioGain](AudioGain-Extension.md)                |Increases audio volume              |Show-Media,Edit-Media                         |
 |[BilateralSmooth](BilateralSmooth-Extension.md)    |Bilateral Smooth                    |Show-Media,Edit-Media                         |
 |[BlackDetect](BlackDetect-Extension.md)            |Detect black periods in a video.    |Get-Media                                     |
@@ -174,11 +174,11 @@ RoughDraft uses Extensions to make complex media scenarios easier work with.
 |[Colorize](Colorize-Extension.md)                  |Colorize a video stream             |Show-Media,Edit-Media                         |
 |[ColorScope](ColorScope-Extension.md)              |Colorscope extension                |Show-Media,Edit-Media                         |
 |[ColorSource](ColorSource-Extension.md)            |Generates a color                   |Show-Media,New-Media                          |
-|[Crop](Crop-Extension.md)                          |Crop Extension                      |Edit-Media,Show-Media,Send-Media,Receive-Media|
+|[Crop](Crop-Extension.md)                          |Crop Extension                      |Edit-Media,Receive-Media,Show-Media,Send-Media|
 |[CropDetect](CropDetect-Extension.md)              |Auto-detect the crop size.          |Get-Media                                     |
 |[DataScope](DataScope-Extension.md)                |Datascope effect                    |Edit-Media                                    |
-|[DirectShow](DirectShow-Extension.md)              |DirectShow Extension                |Show-Media,Send-Media,Receive-Media           |
-|[DrawSubtitle](DrawSubtitle-Extension.md)          |Draw subtitles on top of input video|Convert-Media,Edit-Media                      |
+|[DirectShow](DirectShow-Extension.md)              |DirectShow Extension                |Receive-Media,Show-Media,Send-Media           |
+|[DrawSubtitle](DrawSubtitle-Extension.md)          |Draw subtitles on top of input video|Edit-Media,Convert-Media                      |
 |[DrawText](DrawText-Extension.md)                  |Draws Text on Video                 |Show-Media,Edit-Media                         |
 |[Echo](Echo-Extension.md)                          |Adds echoes to audio                |Show-Media,Edit-Media                         |
 |[EdgeDetect](EdgeDetect-Extension.md)              |EdgeDetect Extension                |Show-Media,Edit-Media                         |
@@ -190,7 +190,7 @@ RoughDraft uses Extensions to make complex media scenarios easier work with.
 |[Flanger](Flanger-Extension.md)                    |Audio Flanger.                      |Show-Media,Edit-Media                         |
 |[FlipHorizontal](FlipHorizontal-Extension.md)      |Flips video horizontally            |Show-Media,Edit-Media                         |
 |[FlipVertical](FlipVertical-Extension.md)          |Flips video vertically              |Show-Media,Edit-Media                         |
-|[FrameBuffer](FrameBuffer-Extension.md)            |FrameBuffer Extension               |Show-Media,Send-Media,Receive-Media           |
+|[FrameBuffer](FrameBuffer-Extension.md)            |FrameBuffer Extension               |Receive-Media,Show-Media,Send-Media           |
 |[FrameStep](FrameStep-Extension.md)                |FrameStep Effect                    |Show-Media,Edit-Media                         |
 |[Histogram](Histogram-Extension.md)                |Histogram Extension                 |Show-Media,Edit-Media                         |
 |[Hue](Hue-Extension.md)                            |Hue Extension                       |Show-Media,Edit-Media                         |
@@ -209,10 +209,10 @@ RoughDraft uses Extensions to make complex media scenarios easier work with.
 |[Pulsator](Pulsator-Extension.md)                  |Pulsator Effect                     |Show-Media,Edit-Media                         |
 |[RandomizeFrame](RandomizeFrame-Extension.md)      |RandomizeFrame extensions           |Show-Media,Edit-Media                         |
 |[Rate](Rate-Extension.md)                          |Adjusts the rate of media.          |Show-Media,Edit-Media                         |
-|[Resize](Resize-Extension.md)                      |Resizes a video                     |Edit-Media,Convert-Media,Show-Media           |
+|[Resize](Resize-Extension.md)                      |Resizes a video                     |Convert-Media,Edit-Media,Show-Media           |
 |[ReverseAudio](ReverseAudio-Extension.md)          |Reverses audio                      |Edit-Media                                    |
 |[ReverseVideo](ReverseVideo-Extension.md)          |Reverses video                      |Edit-Media                                    |
-|[Rotate](Rotate-Extension.md)                      |Rotates a video                     |Edit-Media,Convert-Media,Show-Media           |
+|[Rotate](Rotate-Extension.md)                      |Rotates a video                     |Convert-Media,Edit-Media,Show-Media           |
 |[ScrollVideo](ScrollVideo-Extension.md)            |Scrolls video                       |Show-Media,Edit-Media                         |
 |[Sepia](Sepia-Extension.md)                        |Applies a Sepia Filter              |Edit-Media                                    |
 |[ShuffleFrames](ShuffleFrames-Extension.md)        |Shuffles frames in video            |Edit-Media                                    |
@@ -230,7 +230,7 @@ RoughDraft uses Extensions to make complex media scenarios easier work with.
 |[Tremolo](Tremolo-Extension.md)                    |Tremolo effect                      |Show-Media,Edit-Media                         |
 |[Vibrato](Vibrato-Extension.md)                    |Vibrato effect                      |Show-Media,Edit-Media                         |
 |[VideoExpression](VideoExpression-Extension.md)    |Evaluates Video Expressions         |Show-Media,Edit-Media                         |
-|[VideoForLinux](VideoForLinux-Extension.md)        |VideoForLinux Extension             |Show-Media,Send-Media,Receive-Media           |
+|[VideoForLinux](VideoForLinux-Extension.md)        |VideoForLinux Extension             |Receive-Media,Show-Media,Send-Media           |
 |[Vignette](Vignette-Extension.md)                  |Applies a vignette filter           |Show-Media,Edit-Media                         |
 |[VolumeLevel](VolumeLevel-Extension.md)            |Gets VolumeLevels                   |Get-Media                                     |
 |[Watermark](Watermark-Extension.md)                |Watermarks a video                  |Edit-Media                                    |
@@ -291,8 +291,6 @@ The following commands can currently be extended:
 * Send-Media
 * Show-Media
 * Split-Media
-
-
 
 
 
