@@ -174,7 +174,7 @@ RoughDraft uses Extensions to make complex media scenarios easier work with.
 |[Colorize](docs/Colorize-Extension.md)                  |Colorize a video stream             |Show-Media,Edit-Media                         |
 |[ColorScope](docs/ColorScope-Extension.md)              |Colorscope extension                |Show-Media,Edit-Media                         |
 |[ColorSource](docs/ColorSource-Extension.md)            |Generates a color                   |Show-Media,New-Media                          |
-|[Crop](docs/Crop-Extension.md)                          |Crop Extension                      |Edit-Media,Show-Media,Send-Media,Receive-Media|
+|[Crop](docs/Crop-Extension.md)                          |Crop Extension                      |Edit-Media,Send-Media,Show-Media,Receive-Media|
 |[CropDetect](docs/CropDetect-Extension.md)              |Auto-detect the crop size.          |Get-Media                                     |
 |[DataScope](docs/DataScope-Extension.md)                |Datascope effect                    |Edit-Media                                    |
 |[DirectShow](docs/DirectShow-Extension.md)              |DirectShow Extension                |Show-Media,Send-Media,Receive-Media           |
