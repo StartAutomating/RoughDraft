@@ -2,7 +2,7 @@
 |:-|-|-:|
 |AlbumArt|Sets album artwork|Set-Media|
 |AmplifyPixel|AmplifyPixel extension|Show-Media,Edit-Media|
-|AudioExpression|Evaluates Audio Expressions|New-Media,Edit-Media,Show-Media|
+|AudioExpression|Evaluates Audio Expressions|Show-Media,Edit-Media,New-Media|
 |AudioGain|Increases audio volume|Show-Media,Edit-Media|
 |BilateralSmooth|Bilateral Smooth|Show-Media,Edit-Media|
 |BlackDetect|Detect black periods in a video.|Get-Media|
@@ -17,11 +17,11 @@
 |Colorize|Colorize a video stream|Show-Media,Edit-Media|
 |ColorScope|Colorscope extension|Show-Media,Edit-Media|
 |ColorSource|Generates a color|New-Media,Show-Media|
-|Crop|Crop Extension|Send-Media,Receive-Media,Edit-Media,Show-Media|
+|Crop|Crop Extension|Send-Media,Show-Media,Receive-Media,Edit-Media|
 |CropDetect|Auto-detect the crop size.|Get-Media|
 |DataScope|Datascope effect|Edit-Media|
-|DirectShow|DirectShow Extension|Send-Media,Receive-Media,Show-Media|
-|DrawSubtitle|Draw subtitles on top of input video|Edit-Media,Convert-Media|
+|DirectShow|DirectShow Extension|Send-Media,Show-Media,Receive-Media|
+|DrawSubtitle|Draw subtitles on top of input video|Convert-Media,Edit-Media|
 |Echo|Adds echoes to audio|Show-Media,Edit-Media|
 |EdgeDetect|EdgeDetect Extension|Show-Media,Edit-Media|
 |Emboss|Embosses video or images|Edit-Media|
@@ -32,7 +32,7 @@
 |Flanger|Audio Flanger.|Show-Media,Edit-Media|
 |FlipHorizontal|Flips video horizontally|Show-Media,Edit-Media|
 |FlipVertical|Flips video vertically|Show-Media,Edit-Media|
-|FrameBuffer|FrameBuffer Extension|Send-Media,Receive-Media,Show-Media|
+|FrameBuffer|FrameBuffer Extension|Send-Media,Show-Media,Receive-Media|
 |FrameStep|FrameStep Effect|Show-Media,Edit-Media|
 |Histogram|Histogram Extension|Show-Media,Edit-Media|
 |Hue|Hue Extension|Show-Media,Edit-Media|
@@ -51,10 +51,10 @@
 |Pulsator|Pulsator Effect|Show-Media,Edit-Media|
 |RandomizeFrame|RandomizeFrame extensions|Show-Media,Edit-Media|
 |Rate|Adjusts the rate of media.|Show-Media,Edit-Media|
-|Resize|Resizes a video|Convert-Media,Edit-Media,Show-Media|
+|Resize|Resizes a video|Convert-Media,Show-Media,Edit-Media|
 |ReverseAudio|Reverses audio|Edit-Media|
 |ReverseVideo|Reverses video|Edit-Media|
-|Rotate|Rotates a video|Convert-Media,Edit-Media,Show-Media|
+|Rotate|Rotates a video|Convert-Media,Show-Media,Edit-Media|
 |ScrollVideo|Scrolls video|Show-Media,Edit-Media|
 |Sepia|Applies a Sepia Filter|Edit-Media|
 |ShuffleFrames|Shuffles frames in video|Edit-Media|
@@ -72,7 +72,7 @@
 |Tremolo|Tremolo effect|Show-Media,Edit-Media|
 |Vibrato|Vibrato effect|Show-Media,Edit-Media|
 |VideoExpression|Evaluates Video Expressions|Show-Media,Edit-Media|
-|VideoForLinux|VideoForLinux Extension|Send-Media,Receive-Media,Show-Media|
+|VideoForLinux|VideoForLinux Extension|Send-Media,Show-Media,Receive-Media|
 |Vignette|Applies a vignette filter|Show-Media,Edit-Media|
 |VolumeLevel|Gets VolumeLevels|Get-Media|
 |Watermark|Watermarks a video|Edit-Media|
