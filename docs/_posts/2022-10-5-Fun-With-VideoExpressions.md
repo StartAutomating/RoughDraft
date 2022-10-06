@@ -44,13 +44,13 @@ Edit-Media -InputPath .\TestSource-640x480-10s.mp4 -VideoExpression 'p(W-X,Y)' -
 
 > Original Video
 
-<video style='width:90%;margin-left:auto;margin-right:auto' controls="controls">
+<video style='width:90%;margin-left:auto;margin-right:auto' controls="controls" autoplay loop>
     <source src="/Assets/TestSource-640x480-10s.mp4" type="video/mp4">
 </video>
 
 > Flipped Video
 
-<video style='width:90%;margin-left:auto;margin-right:auto' controls="controls">
+<video style='width:90%;margin-left:auto;margin-right:auto' controls="controls" autoplay loop>
     <source src="/Assets/TestSource-640x480-10s-Flipped.mp4" type="video/mp4">
 </video>
 
@@ -86,7 +86,7 @@ This expression will run pixel by pixel.
 
 > Wavy Video
 
-<video style='width:90%;margin-left:auto;margin-right:auto' controls="controls">
+<video style='width:90%;margin-left:auto;margin-right:auto' controls="controls" autoplay loop>
     <source src="/Assets/TestSource-640x480-10s-Wavy.mp4" type="video/mp4">
 </video>
 
