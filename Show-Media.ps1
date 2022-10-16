@@ -189,6 +189,11 @@
             
         )
         $theDuration = $null
+
+        $inputMovieFilter      = ''
+        $inputAudioMovieFilter = ''
+
+        $ffInputArgs = @()
         if ($InputPath) {
             $myParams = ([Ordered]@{} + $PSBoundParameters)
             $ri = if ([IO.File]::Exists($InputPath)) {
@@ -197,7 +202,12 @@
                 $ExecutionContext.SessionState.Path.GetResolvedPSPathFromPSPath($InputPath) |
                     Get-Item -LiteralPath {$_ } |
                     Select-Object -ExpandProperty Fullname
-            }            
+            }
+            
+            $inputMovieFilter      = "movie='$($ri.Replace('\', "'\\\\'").Replace("'","'\''").Replace(":", "'\\:'"))'"
+            $inputAudioMovieFilter = "amovie='$($ri.Replace('\', "'\\\\'").Replace("'","'\''").Replace(":", "'\\:'"))'"
+            
+
             if ($ri -match '\.m3u$') {
                 $myParams.Remove('InputPath')
                 Push-Location ($ri | Split-Path)
@@ -208,13 +218,14 @@
 
             $mi = $mediaInfo = Get-Media -InputPath $ri
             $theDuration = $mi.Duration
-            $ffArgs += '-i', $ri
+            
+            $ffInputArgs += '-i', $ri
             # If there were one or fewer frames detected (or the media has a miniscule duration )
             if ((-not $theDuration -or $theDuration -eq '0.040000') -and ($mi.streams.nb_frames -le 1)) {     
-                $ffArgs += '-loop', -1   # automatically loop.
+                $ffInputArgs += '-loop', -1   # automatically loop.
             }
             if ($mi.CodecTypes -and @($mi.CodecTypes)[0] -eq 'Audio' -and (-not ($ffArgs -eq '-showmode'))) {
-                $ffArgs += '-showmode', '1'
+                $ffInputArgs += '-showmode', '1'
             }
         }
 
@@ -239,10 +250,10 @@
         } while (0) 
 
         if ($Loop) {
-            $ffArgs += '-loop', -1
+            $ffInputArgs += '-loop', -1
         }
         if ($LoopCount) {
-            $ffArgs += '-loop', $LoopCount
+            $ffInputArgs += '-loop', $LoopCount
         }
 
         $progressId = Get-Random
@@ -289,6 +300,10 @@
             )
 
             $ffArgs = $filterParams = $newFilterParams
+        }
+
+        if (-not $($ffArgs -eq 'lavfi')) {
+            $ffArgs = $ffInputArgs + $ffArgs
         }
 
         $lastTime = $null
