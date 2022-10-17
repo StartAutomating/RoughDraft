@@ -1,3 +1,15 @@
+## 0.3.6:
+* Adding Visualization Extensions:
+  * ShowSpectrum
+  * ShowWaveform
+  * ShowScale
+  * ShowVectorShow
+  * ShowVolume
+* Adding SuperEqualizer Extension
+
+---
+
+
 ## 0.3.5:
 * New Extensions:
   * AudioExpression!!! (Fixes #22)
@@ -8,15 +20,15 @@
   * Pulsator (Fixes #104)  
   * SubFrequencyCut (Fixes #123)
   * SuperFrequencyCut (Fixes #124)  
-  * VideoExpression!!! (Fixes #116)
+  * VideoExpression!!! (Fixes #116)  
 * -Media commands now use Use-FFMpeg (Fixes #106)
 * Use-FFMpeg:  Improved error handling (Fixes #108)
 * Show-Media:
   * InputPath is now optional (Fixes #107)
   * Allowing multiple audio filters (Fixes #109)
 * Auto-generating docs (Fixes #122)
----
 
+---
 
 ## 0.3.4:
 * Adding Flanger Extension (#100)
@@ -28,22 +40,23 @@
 * Edit-Media:  Attempting to fix Progress Issues (#85)
 * Fixing Rate Extension (#98)
 * Get-Media:  Fixing #97 (allowing data streams that have no codec)
----
 
+---
+        
 ## 0.3.3:
 * New Extensions:
-  * DrawText Extension (#96) 
-  * Exposure Extension (#87)      
-  * FlipVertical Extension (#91)
-  * FlipHorizontal Extension (#90)
-  * LimitPixel Extension (#93)
-  * TimeMix Extension (#95)
+  * Adding Exposure Extension (#87)      
+  * Adding FlipVertical Extension (#91)
+  * Adding FlipHorizontal Extension (#90)
+  * Adding LimitPixel Extension (#93)
+  * Adding TimeMix Extension (#95)
 * Adding RoughDraft.HelpOut.ps1
 * Updating RoughDraft Action:
   * Fixing #88. 
   * Adding -FFMpegInstallArgument (#89)
 * Adding additional extension examples, fixing help
 * Making various extensions apply to Show-Media
+
 ---
 
 ## 0.3.2:
@@ -56,6 +69,7 @@
 * Edit-Media:  Support for -Tune and -Preset (#82)
 * Convert-Media:  Support for -Tune and -Preset (#82)
 * Get-RoughDraftExtension:  Updating Piecemeal Version [0.2.1]
+
 ---
 
 ## 0.3.1:
@@ -67,6 +81,7 @@
 * Edit-Media:  Adding -Force (fixing #77)
 * Convert/Edit-Media:  Support for -Duration (#74)
 * Adding DrawSubtitle Extension (#72)
+
 ---
 
 ## 0.3:
@@ -79,6 +94,7 @@
 * Adding Tremolo Extension (#64)
 * Adding Blur Extension (#63).  Adding Histogram Extension (#62)
 * Edit-Media:  Adding Logging to Avoid Reprocessing (#49)
+
 ---
 
 ## 0.2.9:
@@ -106,9 +122,10 @@
 * Updating Action Source
 * Updating DirectShow extension:  Extending Send-Media
 * Updating VideoForLinux extension:  Extending Send-Media
+
 ---
 
-## 0.2.8
+## 0.2.8:
 * New Extensions:
   * Adding ListProtocols Extension (#38)
   * Initial FrameBuffer Extension (#40)
@@ -120,6 +137,7 @@
 * Command Changes:
   * Receive-Media now supports -PixelFormat/-FrameRate/-FrameCount (#41)
   * Show-Media now supports -Loop/-LoopCount, and autoloops a single image (#43)
+
 ---
 
 ## 0.2.7:
@@ -131,14 +149,18 @@
   * Recieve-Media (#10)
 * Bugfixes:
   * Get-FFMpeg -ListCaptureDevice no longer enumerates vfwcap on Windows, because it is depracated (#36)
+
 ---
+
 ## 0.2.6
 * New Extensions:
   * Pixelate (#28)
   * AlbumArt (#31)
 * Set-Media is now extensible (#31)
 * Get-Media is more stable (#29)
+
 ---
+
 ## 0.2.5
 * New Extensions
   * ShuffleFrames (#23)
@@ -147,7 +169,9 @@
 * Convert-Media now supports -AudioQuality/-VideoQuality (fixing #24)
 * Edit-Media now allows for filters to be combined (#26)
 * Updating Action (simplifying push)
+
 ---
+
 ## 0.2.4
 * New Command: Split-Media
 * New Extension: NoAudio (for Split-Media)
@@ -156,7 +180,9 @@
 * New command: Show-Media (#8)
 * Bugfix: Playlist extension no longer adds -Encoding (#13)
 * New Extension:  Sierpinksi fractal (#14)
+
 ---
+
 ## 0.2.2:
 * Enhancing support for Progress Bars (Fixing #3)
 * Making Join-Media extensible (Fixing #4)
@@ -173,15 +199,17 @@
 |Vignette    |Edit-Media |
 
 ---
+
 ## 0.2.1:
 * Adding Mandelbrot Extension (for New-Media)
 * Making Get-FFMpeg extensible
 * Making -Codecs/-ListCaptureDevice extensions for Get-FFMpeg
 * Adding ListFilters and FilterInput extensions for Get-FFMpeg
 * Internal refactoring and minor bugfixes.
-## 0.2:
+
 ---
+
+## 0.2:
 Publishing code on GitHub
 Refactoring module with an emphasis on extensibility
 Added initial GitHub action
-
