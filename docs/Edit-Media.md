@@ -296,6 +296,23 @@ A series of complex filters.  The key is the name of the filter, and the value c
 
 
 ---
+#### **ThreadCount**
+
+The number of threads to use for decoding and filtering.
+
+
+
+> **Type**: ```[String]```
+
+> **Required**: false
+
+> **Position**: named
+
+> **PipelineInput**:true (ByPropertyName)
+
+
+
+---
 #### **FFMpegArgument**
 
 Any additional arguments to FFMpeg
@@ -352,7 +369,7 @@ If the command sets a ```[ConfirmImpact("Medium")]``` which is lower than ```$co
 ---
 ### Syntax
 ```PowerShell
-Edit-Media [-InputPath] <String[]> [[-OutputPath] <String>] [-OutputMap <IDictionary>] [-Codec <String>] [-FFMpegPath <String>] [-PixelFormat <String>] [-Preset <String>] [-Tune <String>] [-MetaData <IDictionary>] [[-Start] <TimeSpan>] [[-End] <TimeSpan>] [[-Duration] <TimeSpan>] [-VideoFilter <IDictionary>] [-AudioFilter <IDictionary>] [-ComplexFilter <IDictionary[]>] [-FFMpegArgument <String[]>] [-Force] [-WhatIf] [-Confirm] [<CommonParameters>]
+Edit-Media [-InputPath] <String[]> [[-OutputPath] <String>] [-OutputMap <IDictionary>] [-Codec <String>] [-FFMpegPath <String>] [-PixelFormat <String>] [-Preset <String>] [-Tune <String>] [-MetaData <IDictionary>] [[-Start] <TimeSpan>] [[-End] <TimeSpan>] [[-Duration] <TimeSpan>] [-VideoFilter <IDictionary>] [-AudioFilter <IDictionary>] [-ComplexFilter <IDictionary[]>] [-ThreadCount <String>] [-FFMpegArgument <String[]>] [-Force] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 ---
 ### Notes
