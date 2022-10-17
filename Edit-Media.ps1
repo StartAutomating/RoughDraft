@@ -106,6 +106,11 @@
     [Collections.IDictionary[]]
     $ComplexFilter,
 
+    # The number of threads to use for decoding and filtering.
+    [Parameter(ValueFromPipelineByPropertyName)]
+    [string]
+    $ThreadCount,
+
     # Any additional arguments to FFMpeg
     [Parameter(ValueFromRemainingArguments)]
     [string[]]
@@ -427,12 +432,18 @@
         # Write the arguments out to verbose
         
         $ffMpegFullArgs = @(
+            if ($ThreadCount) {
+                "-threads"
+                $ThreadCount
+                "-filter_threads"
+                $ThreadCount            
+            }
             $ffInFiles
             $TimeFrame
             $filterParams
             $ffmpegParams
             $FFMpegArgument
-            $OutParams            
+            $OutParams
         )
 
         Write-Verbose "FFMpeg Arguments: $ffMpegFullArgs"
