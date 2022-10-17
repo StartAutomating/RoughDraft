@@ -2,7 +2,7 @@
 |:-|-|-:|
 |AlbumArt|Sets album artwork|Set-Media|
 |AmplifyPixel|AmplifyPixel extension|Edit-Media,Show-Media|
-|AudioExpression|Evaluates Audio Expressions|Show-Media,Edit-Media,New-Media|
+|AudioExpression|Evaluates Audio Expressions|New-Media,Show-Media,Edit-Media|
 |AudioGain|Increases audio volume|Edit-Media,Show-Media|
 |BilateralSmooth|Bilateral Smooth|Edit-Media,Show-Media|
 |BlackDetect|Detect black periods in a video.|Get-Media|
@@ -17,10 +17,10 @@
 |Colorize|Colorize a video stream|Edit-Media,Show-Media|
 |ColorScope|Colorscope extension|Edit-Media,Show-Media|
 |ColorSource|Generates a color|Show-Media,New-Media|
-|Crop|Crop Extension|Show-Media,Edit-Media,Receive-Media,Send-Media|
+|Crop|Crop Extension|Show-Media,Receive-Media,Edit-Media,Send-Media|
 |CropDetect|Auto-detect the crop size.|Get-Media|
 |DataScope|Datascope effect|Edit-Media|
-|DirectShow|DirectShow Extension|Show-Media,Receive-Media,Send-Media|
+|DirectShow|DirectShow Extension|Receive-Media,Show-Media,Send-Media|
 |DrawSubtitle|Draw subtitles on top of input video|Edit-Media,Convert-Media|
 |Echo|Adds echoes to audio|Edit-Media,Show-Media|
 |EdgeDetect|EdgeDetect Extension|Edit-Media,Show-Media|
@@ -32,7 +32,7 @@
 |Flanger|Audio Flanger.|Edit-Media,Show-Media|
 |FlipHorizontal|Flips video horizontally|Edit-Media,Show-Media|
 |FlipVertical|Flips video vertically|Edit-Media,Show-Media|
-|FrameBuffer|FrameBuffer Extension|Show-Media,Receive-Media,Send-Media|
+|FrameBuffer|FrameBuffer Extension|Receive-Media,Show-Media,Send-Media|
 |FrameStep|FrameStep Effect|Edit-Media,Show-Media|
 |Histogram|Histogram Extension|Edit-Media,Show-Media|
 |Hue|Hue Extension|Edit-Media,Show-Media|
@@ -72,7 +72,7 @@
 |Tremolo|Tremolo effect|Edit-Media,Show-Media|
 |Vibrato|Vibrato effect|Edit-Media,Show-Media|
 |VideoExpression|Evaluates Video Expressions|Edit-Media,Show-Media|
-|VideoForLinux|VideoForLinux Extension|Show-Media,Receive-Media,Send-Media|
+|VideoForLinux|VideoForLinux Extension|Receive-Media,Show-Media,Send-Media|
 |Vignette|Applies a vignette filter|Edit-Media,Show-Media|
 |VolumeLevel|Gets VolumeLevels|Get-Media|
 |Watermark|Watermarks a video|Edit-Media|
