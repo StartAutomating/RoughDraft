@@ -354,6 +354,23 @@ If set, this will loop the input source any number of times.
 
 
 ---
+#### **ThreadCount**
+
+The number of threads to use for decoding and filtering.
+
+
+
+> **Type**: ```[String]```
+
+> **Required**: false
+
+> **Position**: named
+
+> **PipelineInput**:true (ByPropertyName)
+
+
+
+---
 #### **FFPlayPath**
 
 The path to FFPlay.  If not provided, this will be automatically detected.
@@ -383,7 +400,7 @@ The path to FFPlay.  If not provided, this will be automatically detected.
 ---
 ### Syntax
 ```PowerShell
-Show-Media [[-InputPath] <String>] [-AsJob] [-Resolution <String>] [-ShowMode <String>] [-Volume <Int32>] [-Fullscreen] [-KeepOpen] [-DoNotAutoRotate] [-Left <Int32>] [-Top <Int32>] [-Width <Int32>] [-Height <Int32>] [-NoDisplay] [-NoBorder] [-AlwaysOnTop] [-Loop] [-LoopCount <Int32>] [-FFPlayPath <String>] [<CommonParameters>]
+Show-Media [[-InputPath] <String>] [-AsJob] [-Resolution <String>] [-ShowMode <String>] [-Volume <Int32>] [-Fullscreen] [-KeepOpen] [-DoNotAutoRotate] [-Left <Int32>] [-Top <Int32>] [-Width <Int32>] [-Height <Int32>] [-NoDisplay] [-NoBorder] [-AlwaysOnTop] [-Loop] [-LoopCount <Int32>] [-ThreadCount <String>] [-FFPlayPath <String>] [<CommonParameters>]
 ```
 ---
 
