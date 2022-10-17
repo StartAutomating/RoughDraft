@@ -126,6 +126,11 @@
     [int]
     $LoopCount,
 
+    # The number of threads to use for decoding and filtering.
+    [Parameter(ValueFromPipelineByPropertyName)]
+    [string]
+    $ThreadCount,
+
     # The path to FFPlay.  If not provided, this will be automatically detected.    
     [string]
     $FFPlayPath
@@ -226,7 +231,7 @@
             }
             if ($mi.CodecTypes -and @($mi.CodecTypes)[0] -eq 'Audio' -and (-not ($ffArgs -eq '-showmode'))) {
                 $ffInputArgs += '-showmode', '1'
-            }
+            }            
         }
 
         :nextFile do {
@@ -304,6 +309,10 @@
 
         if (-not $($ffArgs -eq 'lavfi')) {
             $ffArgs = $ffInputArgs + $ffArgs
+        }
+
+        if ($ThreadCount) {
+            $ffArgs += "-filter_threads", $ThreadCount            
         }
 
         $lastTime = $null
