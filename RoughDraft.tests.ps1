@@ -64,22 +64,6 @@ describe Convert-Media {
     }
 }
 
-describe ConvertTo-Waveform {
-    it 'Can make waveforms' {
-        $tmpOutPath  = Join-Path ([IO.Path]::GetTempPath()) "sine$(Get-Random).mp3"
-        $tmpOutPath2 = Join-Path ([IO.Path]::GetTempPath()) "sine$(Get-Random).mp4"
-        $waveform    = New-Media -Sine -OutputPath $tmpOutPath -Duration "00:00:05" |
-            ConvertTo-WaveForm -Visualizer LineWaveform -OutputPath $tmpOutPath2
-        $waveform |
-            Get-Media |
-            Select-Object -ExpandProperty Duration |
-            Should -BeLike "00:00:05*"
-        Remove-Item $tmpOutPath
-        Remove-Item $tmpOutPath2
-    }
-}
-
-
 describe ConvertTo-GIF {
     it 'Can make gifs' {
         $tmpOutPath  = Join-Path ([IO.Path]::GetTempPath()) "sine$(Get-Random).mp3"
