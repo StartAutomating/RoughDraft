@@ -1,6 +1,6 @@
 @{
     CompanyName='Start-Automating'
-    ModuleVersion='0.3.6'
+    ModuleVersion='0.3.7'
     ModuleToProcess='RoughDraft.psm1'
     GUID='c192ebbf-57a3-493e-bc82-da7553038794'
     Description='A Fun PowerShell Module for Multimedia'
@@ -14,6 +14,24 @@
             LicenseURI = 'https://github.com/StartAutomating/RoughDraft/blob/main/LICENSE'
             IconURI    = 'https://github.com/StartAutomating/RoughDraft/blob/main/Assets/RoughDraft.png'
             ReleaseNotes = @'
+## 0.3.7:
+* New Extensions:
+  * AudioCrusher (Fixes #148)
+  * Chorus (Fixes #20)
+  * Convolve (Fixes #150)
+  * Deconvolve (Fixes #151)
+  * Hysteresis (Fixes #147)
+  * MixAudio (Fixes #16)
+  * Overlay (Fixes #145)
+  * ShowFrequency (Fixes #146)
+* Join-Media now has -ThreadCount, -Preset, -Tune, and -FFMpegArgument (re #75, #140, #82)
+* ffmpeg, ffprobe, and ffplay are now aliased (Fixes #80)
+* Extension Improvements:
+  * YouTubeDL Extension (Fixes #134)
+* Fixing Use-FFProbe (Fixes #144)
+
+---
+
 ## 0.3.6:
 * Adding Visualization Extensions:
   * ShowSpectrum

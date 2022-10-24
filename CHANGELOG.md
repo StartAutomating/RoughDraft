@@ -1,4 +1,22 @@
-﻿## 0.3.6:
+﻿## 0.3.7:
+* New Extensions:
+  * AudioCrusher (Fixes #148)
+  * Chorus (Fixes #20)
+  * Convolve (Fixes #150)
+  * Deconvolve (Fixes #151)
+  * Hysteresis (Fixes #147)
+  * MixAudio (Fixes #16)
+  * Overlay (Fixes #145)
+  * ShowFrequency (Fixes #146)
+* Join-Media now has -ThreadCount, -Preset, -Tune, and -FFMpegArgument (re #75, #140, #82)
+* ffmpeg, ffprobe, and ffplay are now aliased (Fixes #80)
+* Extension Improvements:
+  * YouTubeDL Extension (Fixes #134)
+* Fixing Use-FFProbe (Fixes #144)
+
+---
+
+## 0.3.6:
 * Adding Visualization Extensions:
   * ShowSpectrum
   * ShowWaveform
