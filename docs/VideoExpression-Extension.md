@@ -20,10 +20,29 @@ Evaluates Video Expressions, using the [geq filter](https://ffmpeg.org/ffmpeg-fi
 #### EXAMPLE 1
 ```PowerShell
 # Flips a video horizontally
-Edit-Media -InputPath .\a.mp4 -VideoExpression 'p(W-X\,Y)'
+Edit-Media -InputPath .\a.mp4 -VideoExpression 'p(W-X,Y)'
 ```
 
 #### EXAMPLE 2
+```PowerShell
+Edit-Media -InputPath .\a.mp4 -VideoExpression 'clip(sin(T*2), -.5,.5)*p(X,Y)'
+```
+
+#### EXAMPLE 3
+```PowerShell
+Edit-Media -InputPath .\a.mp4 -VideoExpression 'p(floor((sin(T) * W) -X),Y)'
+Edit-Media -InputPath .\a.mp4 -VideoExpression 'p(        
+        if(
+            gt(X,W/2),
+            X,
+            W-X
+        ),
+        Y
+    )
+'
+```
+
+#### EXAMPLE 4
 ```PowerShell
 # Changes color based off of the pixel position
 Edit-Media -InputPath .\a.mp4 -VideoExpression '' -VideoExpressionRed '(X*Y)/(W*H)*r(X,Y)' -VideoExpressionGreen '(1-X/W)*g(X,Y)' -VideoExpressionBlue '(H-Y)/H*b(X,Y)' -Verbose
@@ -177,7 +196,6 @@ The expressions can use the following variables and functions:
 |r(x, y),g(x, y),b(x, y)|Return the value of the pixel at location (x,y) of the red/green/blue component. Return 0 if there is no such component.
 |alpha(x, y)|Return the value of the pixel at location (x,y) of the alpha plane. Return 0 if there is no such plane.|
 |psum(x,y), lumsum(x, y), cbsum(x,y), crsum(x,y), rsum(x,y), gsum(x,y), bsum(x,y), alphasum(x,y)|Sum of sample values in the rectangle from (0,0) to (x,y), this allows obtaining sums of samples within a rectangle. See the functions without the sum postfix.|
-
 
 
 
