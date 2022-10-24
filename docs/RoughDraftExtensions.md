@@ -2,7 +2,7 @@
 |:-|-|-:|
 |AlbumArt|Sets album artwork|Set-Media|
 |AmplifyPixel|AmplifyPixel extension|Show-Media,Edit-Media|
-|AudioExpression|Evaluates Audio Expressions|Show-Media,Edit-Media,New-Media|
+|AudioExpression|Evaluates Audio Expressions|Show-Media,New-Media,Edit-Media|
 |AudioGain|Increases audio volume|Show-Media,Edit-Media|
 |BilateralSmooth|Bilateral Smooth|Show-Media,Edit-Media|
 |BlackDetect|Detect black periods in a video.|Get-Media|
@@ -17,7 +17,7 @@
 |Colorize|Colorize a video stream|Show-Media,Edit-Media|
 |ColorScope|Colorscope extension|Show-Media,Edit-Media|
 |ColorSource|Generates a color|Show-Media,New-Media|
-|Crop|Crop Extension|Show-Media,Edit-Media,Receive-Media,Send-Media|
+|Crop|Crop Extension|Show-Media,Receive-Media,Send-Media,Edit-Media|
 |CropDetect|Auto-detect the crop size.|Get-Media|
 |DataScope|Datascope effect|Edit-Media|
 |DirectShow|DirectShow Extension|Show-Media,Receive-Media,Send-Media|
@@ -51,17 +51,17 @@
 |Pulsator|Pulsator Effect|Show-Media,Edit-Media|
 |RandomizeFrame|RandomizeFrame extensions|Show-Media,Edit-Media|
 |Rate|Adjusts the rate of media.|Show-Media,Edit-Media|
-|Resize|Resizes a video|Show-Media,Edit-Media,Convert-Media|
+|Resize|Resizes a video|Show-Media,Convert-Media,Edit-Media|
 |ReverseAudio|Reverses audio|Edit-Media|
 |ReverseVideo|Reverses video|Edit-Media|
-|Rotate|Rotates a video|Show-Media,Edit-Media,Convert-Media|
+|Rotate|Rotates a video|Show-Media,Convert-Media,Edit-Media|
 |ScrollVideo|Scrolls video|Show-Media,Edit-Media|
 |Sepia|Applies a Sepia Filter|Edit-Media|
-|ShowScale|Show the tonal scale of the audio|Show-Media,Edit-Media,New-Media|
-|ShowSpectrum|Shows the audio spectrum|Show-Media,Edit-Media,New-Media|
-|ShowVectorScope|Shows a Vector Scope of the Audio|Show-Media,Edit-Media,New-Media|
-|ShowVolume|Shows the volume of an audio stream.|Show-Media,Edit-Media,New-Media|
-|ShowWaveform|Shows audio waveform.|Show-Media,Edit-Media,New-Media|
+|ShowScale|Show the tonal scale of the audio|Show-Media,New-Media,Edit-Media|
+|ShowSpectrum|Shows the audio spectrum|Show-Media,New-Media,Edit-Media|
+|ShowVectorScope|Shows a Vector Scope of the Audio|Show-Media,New-Media,Edit-Media|
+|ShowVolume|Shows the volume of an audio stream.|Show-Media,New-Media,Edit-Media|
+|ShowWaveform|Shows audio waveform.|Show-Media,New-Media,Edit-Media|
 |ShuffleFrames|Shuffles frames in video|Edit-Media|
 |Sierpinski|Generates a Sierpinski fractal|Show-Media,New-Media|
 |SilenceDetect|Detects silence in an audio stream|Get-Media|
