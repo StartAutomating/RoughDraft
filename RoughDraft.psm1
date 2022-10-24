@@ -14,7 +14,6 @@ param()
 
 
 . $psScriptRoot\ConvertTo-Gif.ps1
-. $psScriptRoot\ConvertTo-Waveform.ps1
 
 . $psScriptRoot\Get-FFMpeg.ps1
 . $psScriptRoot\Get-FFPlay.ps1
