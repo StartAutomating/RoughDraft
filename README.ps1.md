@@ -1,5 +1,9 @@
 ﻿<div align='center'>
 <img src='Assets/RoughDraft.svg' />
+<br/>
+<a href='https://www.powershellgallery.com/packages/RoughDraft/'>
+<img src='https://img.shields.io/powershellgallery/dt/RoughDraft' />
+</a>
 </div>
 
 A Fun PowerShell Module for Multimedia
