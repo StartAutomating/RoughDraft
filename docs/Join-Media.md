@@ -128,6 +128,76 @@ This will assume all inputs are images (skipping individual analysis)
 
 
 ---
+#### **ThreadCount**
+
+The number of threads to use for decoding and filtering.
+
+
+
+> **Type**: ```[String]```
+
+> **Required**: false
+
+> **Position**: named
+
+> **PipelineInput**:true (ByPropertyName)
+
+
+
+---
+#### **Preset**
+
+If provided, will use an ffmpeg preset to encode.
+This maps to the --preset parameter in ffmpeg.
+
+
+
+> **Type**: ```[String]```
+
+> **Required**: false
+
+> **Position**: named
+
+> **PipelineInput**:true (ByPropertyName)
+
+
+
+---
+#### **Tune**
+
+If provided, will use a set of encoder settings to "tune" the video encoder.
+Not supported by all codecs.  This maps to the --tune parameter in ffmpeg.
+
+
+
+> **Type**: ```[String]```
+
+> **Required**: false
+
+> **Position**: named
+
+> **PipelineInput**:true (ByPropertyName)
+
+
+
+---
+#### **FFMpegArgument**
+
+Any additional arguments to pass to FFMpeg.
+
+
+
+> **Type**: ```[String[]]```
+
+> **Required**: false
+
+> **Position**: named
+
+> **PipelineInput**:true (ByPropertyName)
+
+
+
+---
 #### **PixelFormat**
 
 The pixel format for video and image output.  This maps to the -pix_fmt parameter in ffmpeg. By default, yuv420p.
@@ -154,10 +224,10 @@ The pixel format for video and image output.  This maps to the -pix_fmt paramete
 ---
 ### Syntax
 ```PowerShell
-Join-Media [-InputPath] <String[]> [-OutputPath] <String> [-Transcode] [-Shortest] [-FrameRate <UInt32>] [-PixelFormat <String>] [<CommonParameters>]
+Join-Media [-InputPath] <String[]> [-OutputPath] <String> [-Transcode] [-Shortest] [-FrameRate <UInt32>] [-ThreadCount <String>] [-Preset <String>] [-Tune <String>] [-FFMpegArgument <String[]>] [-PixelFormat <String>] [<CommonParameters>]
 ```
 ```PowerShell
-Join-Media [-InputPath] <String[]> [-OutputPath] <String> [-Transcode] [-Shortest] [-FrameRate <UInt32>] -TimeLapse [-PixelFormat <String>] [<CommonParameters>]
+Join-Media [-InputPath] <String[]> [-OutputPath] <String> [-Transcode] [-Shortest] [-FrameRate <UInt32>] -TimeLapse [-ThreadCount <String>] [-Preset <String>] [-Tune <String>] [-FFMpegArgument <String[]>] [-PixelFormat <String>] [<CommonParameters>]
 ```
 ---
 ### Notes
