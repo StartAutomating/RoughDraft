@@ -69,6 +69,11 @@
     [string]
     $Tune,
 
+    # Any additional arguments to pass to FFMpeg.
+    [Parameter(ValueFromPipelineByPropertyName)]
+    [string[]]
+    $FFMpegArgument,
+
     # The pixel format for video and image output.  This maps to the -pix_fmt parameter in ffmpeg. By default, yuv420p.    
     [Alias('pix_fmt')]
     [string]
@@ -214,6 +219,7 @@
                 $inputKeys
                 $extensionParams
                 $perfArgs
+                $FFMpegArgument
             ) -FFMpegPath $ffmpegPath |
                 ForEach-Object $ffmpegConvertProcess -End $ffmpegConvertEnd
 
@@ -282,6 +288,7 @@
                 $uro
                 '-y'
                 $perfArgs
+                $FFMpegArgument
             ) -FFMpegPath $ffmpegPath |
                 ForEach-Object $ffmpegConvertProcess -End $ffmpegConvertEnd
 
@@ -356,6 +363,7 @@
             $ffMpegParams += $uro
             $ffMpegParams += '-y'
             $ffmpegParams += $perfArgs
+            $ffmpegParams += $FFMpegArgument
             Use-FFMpeg -FFMpegArgument $ffmpegParams -FFMpegPath $ffmpegPath |
                 ForEach-Object $ffmpegConvertProcess -End $ffmpegConvertEnd
 
@@ -392,6 +400,7 @@
                 '-y'
                 $uro
                 $perfArgs
+                $FFMpegArgument
             ) -FFMpegPath $ffmpegPath |
                 ForEach-Object $ffmpegConvertProcess -End $ffmpegConvertEnd
 
