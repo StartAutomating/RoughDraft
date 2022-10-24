@@ -70,7 +70,8 @@ describe ConvertTo-GIF {
         $tmpOutPath2 = Join-Path ([IO.Path]::GetTempPath()) "sine$(Get-Random).mp4"
         $tmpOutPath3 = Join-Path ([IO.Path]::GetTempPath()) "sine$(Get-Random).gif"
         $waveform    = New-Media -Sine -OutputPath $tmpOutPath -Duration "00:00:05" |
-            Edit-Media -ShowWaveform -ShowWaveformMode line              
+            Edit-Media -ShowWaveform -ShowWaveformMode line -OutputPath $tmpOutPath2
+
         $waveform |
             ConvertTo-Gif -OutputPath $tmpOutPath3 |
             Get-Media |
