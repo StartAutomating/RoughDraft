@@ -29,6 +29,7 @@
 * Extension Improvements:
   * YouTubeDL Extension (Fixes #134)
 * Fixing Use-FFProbe (Fixes #144)
+* Removed ConvertTo-Waveform (Fixes #50)
 
 ---
 
