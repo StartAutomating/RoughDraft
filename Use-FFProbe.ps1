@@ -30,7 +30,7 @@
 
     process {
         #region Find FFProbe
-        $ffprobe = & $findffprobe -ffprobePath $ffprobePath
+        $ffprobe = Get-FFProbe -ffprobePath $ffprobePath
         if (-not $ffprobe) {return}
         #endregion Find FFProbe
         #region Handle -AsJob
