@@ -18,28 +18,36 @@ param(
 [switch]
 $FillBorder,
 
+# The Border Width.  This value will be used for both left and right.
 [int]
 $FillBorderWidth,
 
+# The Border Height.  This value will be used for both top and bottom.
 [int]
 $FillBorderHeight,
 
+# The Border Left Coordinate.
 [int]
 $FillBorderLeft,
 
+# The Border Right Coordinate.
 [int]
 $FillBorderRight,
 
+# The Border Top Coordinate.
 [int]
 $FillBorderTop,
 
+# The Border Bottom Coordinate.
 [int]
 $FillBorderBottom,
 
+# The Border Fill mode Coordinate.
 [ValidateSet("smear", "mirror","fixed","reflect","wrap","fade","margins")]
 [string]
 $FillBorderMode,
 
+# The color used to fill the border.
 [string]
 $FillBorderColor
 )
