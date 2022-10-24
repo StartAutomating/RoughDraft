@@ -45,6 +45,10 @@ If set, will fill borders.
 ---
 #### **FillBorderWidth**
 
+The Border Width.  This value will be used for both left and right.
+
+
+
 > **Type**: ```[Int32]```
 
 > **Required**: false
@@ -57,6 +61,10 @@ If set, will fill borders.
 
 ---
 #### **FillBorderHeight**
+
+The Border Height.  This value will be used for both top and bottom.
+
+
 
 > **Type**: ```[Int32]```
 
@@ -71,6 +79,10 @@ If set, will fill borders.
 ---
 #### **FillBorderLeft**
 
+The Border Left Coordinate.
+
+
+
 > **Type**: ```[Int32]```
 
 > **Required**: false
@@ -83,6 +95,10 @@ If set, will fill borders.
 
 ---
 #### **FillBorderRight**
+
+The Border Right Coordinate.
+
+
 
 > **Type**: ```[Int32]```
 
@@ -97,6 +113,10 @@ If set, will fill borders.
 ---
 #### **FillBorderTop**
 
+The Border Top Coordinate.
+
+
+
 > **Type**: ```[Int32]```
 
 > **Required**: false
@@ -110,6 +130,10 @@ If set, will fill borders.
 ---
 #### **FillBorderBottom**
 
+The Border Bottom Coordinate.
+
+
+
 > **Type**: ```[Int32]```
 
 > **Required**: false
@@ -122,6 +146,10 @@ If set, will fill borders.
 
 ---
 #### **FillBorderMode**
+
+The Border Fill mode Coordinate.
+
+
 
 Valid Values:
 
@@ -148,6 +176,10 @@ Valid Values:
 ---
 #### **FillBorderColor**
 
+The color used to fill the border.
+
+
+
 > **Type**: ```[String]```
 
 > **Required**: false
@@ -164,7 +196,6 @@ Valid Values:
 Extension/FillBorder.RoughDraft.Extension.ps1 -FillBorder [[-FillBorderWidth] <Int32>] [[-FillBorderHeight] <Int32>] [[-FillBorderLeft] <Int32>] [[-FillBorderRight] <Int32>] [[-FillBorderTop] <Int32>] [[-FillBorderBottom] <Int32>] [[-FillBorderMode] <String>] [[-FillBorderColor] <String>] [<CommonParameters>]
 ```
 ---
-
 
 
 
