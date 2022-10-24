@@ -2,7 +2,7 @@
 |:-|-|-:|
 |AlbumArt|Sets album artwork|Set-Media|
 |AmplifyPixel|AmplifyPixel extension|Show-Media,Edit-Media|
-|AudioExpression|Evaluates Audio Expressions|New-Media,Edit-Media,Show-Media|
+|AudioExpression|Evaluates Audio Expressions|Edit-Media,New-Media,Show-Media|
 |AudioGain|Increases audio volume|Show-Media,Edit-Media|
 |BilateralSmooth|Bilateral Smooth|Show-Media,Edit-Media|
 |BlackDetect|Detect black periods in a video.|Get-Media|
@@ -17,7 +17,7 @@
 |Colorize|Colorize a video stream|Show-Media,Edit-Media|
 |ColorScope|Colorscope extension|Show-Media,Edit-Media|
 |ColorSource|Generates a color|Show-Media,New-Media|
-|Crop|Crop Extension|Receive-Media,Send-Media,Edit-Media,Show-Media|
+|Crop|Crop Extension|Send-Media,Receive-Media,Edit-Media,Show-Media|
 |CropDetect|Auto-detect the crop size.|Get-Media|
 |DataScope|Datascope effect|Edit-Media|
 |DirectShow|DirectShow Extension|Receive-Media,Send-Media,Show-Media|
@@ -57,11 +57,11 @@
 |Rotate|Rotates a video|Convert-Media,Edit-Media,Show-Media|
 |ScrollVideo|Scrolls video|Show-Media,Edit-Media|
 |Sepia|Applies a Sepia Filter|Edit-Media|
-|ShowScale|Show the tonal scale of the audio|New-Media,Edit-Media,Show-Media|
-|ShowSpectrum|Shows the audio spectrum|New-Media,Edit-Media,Show-Media|
-|ShowVectorScope|Shows a Vector Scope of the Audio|New-Media,Edit-Media,Show-Media|
-|ShowVolume|Shows the volume of an audio stream.|New-Media,Edit-Media,Show-Media|
-|ShowWaveform|Shows audio waveform.|New-Media,Edit-Media,Show-Media|
+|ShowScale|Show the tonal scale of the audio|Edit-Media,New-Media,Show-Media|
+|ShowSpectrum|Shows the audio spectrum|Edit-Media,New-Media,Show-Media|
+|ShowVectorScope|Shows a Vector Scope of the Audio|Edit-Media,New-Media,Show-Media|
+|ShowVolume|Shows the volume of an audio stream.|Edit-Media,New-Media,Show-Media|
+|ShowWaveform|Shows audio waveform.|Edit-Media,New-Media,Show-Media|
 |ShuffleFrames|Shuffles frames in video|Edit-Media|
 |Sierpinski|Generates a Sierpinski fractal|Show-Media,New-Media|
 |SilenceDetect|Detects silence in an audio stream|Get-Media|
