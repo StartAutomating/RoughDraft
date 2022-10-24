@@ -14,6 +14,7 @@
     #>
     [CmdletBinding(PositionalBinding=$false)]
     [OutputType([string])]
+    [Alias('ffplay')]
     param(
     # Arguments to FFPlay.
     [Parameter(ValueFromPipelineByPropertyName,ValueFromRemainingArguments)]

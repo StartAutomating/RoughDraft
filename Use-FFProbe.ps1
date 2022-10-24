@@ -12,6 +12,7 @@
     #>
     [CmdletBinding(PositionalBinding=$false)]
     [OutputType([string])]
+    [Alias('ffprobe')]
     param(
     # Arguments to ffprobe.
     [Parameter(ValueFromPipelineByPropertyName,ValueFromRemainingArguments)]
