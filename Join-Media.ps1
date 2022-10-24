@@ -52,6 +52,28 @@
     [Switch]
     $TimeLapse,
 
+    # The number of threads to use for decoding and filtering.
+    [Parameter(ValueFromPipelineByPropertyName)]
+    [string]
+    $ThreadCount,
+
+    # If provided, will use an ffmpeg preset to encode.
+    # This maps to the --preset parameter in ffmpeg.
+    [Parameter(ValueFromPipelineByPropertyName)]
+    [string]
+    $Preset,
+
+    # If provided, will use a set of encoder settings to "tune" the video encoder.
+    # Not supported by all codecs.  This maps to the --tune parameter in ffmpeg.
+    [Parameter(ValueFromPipelineByPropertyName)]
+    [string]
+    $Tune,
+
+    # Any additional arguments to pass to FFMpeg.
+    [Parameter(ValueFromPipelineByPropertyName)]
+    [string[]]
+    $FFMpegArgument,
+
     # The pixel format for video and image output.  This maps to the -pix_fmt parameter in ffmpeg. By default, yuv420p.    
     [Alias('pix_fmt')]
     [string]
@@ -66,11 +88,34 @@
     begin {
         $inputPaths = @()
         $inputList = @()
-        $inputMedia = [Ordered]@{}        
+        $inputMedia = [Ordered]@{}
+
+        $perfArgs = @(
+            if ($ThreadCount) {
+                "-threads"
+                $ThreadCount
+                "-filter_threads"
+                $ThreadCount            
+            }
+            if ($tune) { # If -Tune was provided
+                '-tune', $tune # add the -tune parameter.
+            }
+    
+            if ($Preset) { # If -Preset was provied
+                '-preset', $Preset # add the -preset parameter.
+            }
+        )
         $ffmpegConvertProcess = {
             $line = $_
             if ($_ -like "*time=*" -and $_ -like "*bitrate=*") {
                 Write-Verbose "$_"
+
+                if (-not $theDuration) {
+                    $theDuration = $inputMedia.Values | 
+                        Where-Object Duration |
+                        Sort-Object Duration -Descending:$Shortest |
+                        Select-Object -ExpandProperty Duration -First 1                    
+                }
                 
                 $progress = $line | & ${?<FFMpeg_Progress>} -Extract                        
                 if ($progress -and 
@@ -173,6 +218,8 @@
             Use-FFMpeg -FFMpegArgument @(
                 $inputKeys
                 $extensionParams
+                $perfArgs
+                $FFMpegArgument
             ) -FFMpegPath $ffmpegPath |
                 ForEach-Object $ffmpegConvertProcess -End $ffmpegConvertEnd
 
@@ -240,6 +287,8 @@
                 $ffmpegParams
                 $uro
                 '-y'
+                $perfArgs
+                $FFMpegArgument
             ) -FFMpegPath $ffmpegPath |
                 ForEach-Object $ffmpegConvertProcess -End $ffmpegConvertEnd
 
@@ -313,6 +362,8 @@
             $uro = $ExecutionContext.SessionState.Path.GetUnresolvedProviderPathFromPSPath($outputPath)
             $ffMpegParams += $uro
             $ffMpegParams += '-y'
+            $ffmpegParams += $perfArgs
+            $ffmpegParams += $FFMpegArgument
             Use-FFMpeg -FFMpegArgument $ffmpegParams -FFMpegPath $ffmpegPath |
                 ForEach-Object $ffmpegConvertProcess -End $ffmpegConvertEnd
 
@@ -348,6 +399,8 @@
                 $PixelFormat
                 '-y'
                 $uro
+                $perfArgs
+                $FFMpegArgument
             ) -FFMpegPath $ffmpegPath |
                 ForEach-Object $ffmpegConvertProcess -End $ffmpegConvertEnd
 

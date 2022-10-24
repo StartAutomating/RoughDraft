@@ -14,6 +14,7 @@
     #>
     [CmdletBinding(PositionalBinding=$false)]
     [OutputType([string])]
+    [Alias('ffmpeg')]
     param(
     # Arguments to FFMpeg.
     [Parameter(ValueFromPipelineByPropertyName,ValueFromRemainingArguments)]

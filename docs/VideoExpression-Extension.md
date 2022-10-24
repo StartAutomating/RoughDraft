@@ -20,10 +20,29 @@ Evaluates Video Expressions, using the [geq filter](https://ffmpeg.org/ffmpeg-fi
 #### EXAMPLE 1
 ```PowerShell
 # Flips a video horizontally
-Edit-Media -InputPath .\a.mp4 -VideoExpression 'p(W-X\,Y)'
+Edit-Media -InputPath .\a.mp4 -VideoExpression 'p(W-X,Y)'
 ```
 
 #### EXAMPLE 2
+```PowerShell
+Edit-Media -InputPath .\a.mp4 -VideoExpression 'clip(sin(T*2), -.5,.5)*p(X,Y)'
+```
+
+#### EXAMPLE 3
+```PowerShell
+Edit-Media -InputPath .\a.mp4 -VideoExpression 'p(floor((sin(T) * W) -X),Y)'
+Edit-Media -InputPath .\a.mp4 -VideoExpression 'p(        
+        if(
+            gt(X,W/2),
+            X,
+            W-X
+        ),
+        Y
+    )
+'
+```
+
+#### EXAMPLE 4
 ```PowerShell
 # Changes color based off of the pixel position
 Edit-Media -InputPath .\a.mp4 -VideoExpression '' -VideoExpressionRed '(X*Y)/(W*H)*r(X,Y)' -VideoExpressionGreen '(1-X/W)*g(X,Y)' -VideoExpressionBlue '(H-Y)/H*b(X,Y)' -Verbose

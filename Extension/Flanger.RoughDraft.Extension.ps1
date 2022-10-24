@@ -53,8 +53,11 @@ $FlangerShape,
 $FlangerInteroplation    
 )
 
+$myCmdMetadata = [Management.Automation.CommandMetaData]$MyInvocation.MyCommand
+
 $filterParams = @(
     foreach ($kv in $PSBoundParameters.GetEnumerator()) {
+        if (-not $myCmdMetadata.Parameters[$kv.Key]) { continue }
         $keyName = $kv.Key -replace '^Flanger'
         $keyValue = $kv.Value.ToString().ToLower()
         if (-not $keyName) { continue }
@@ -67,7 +70,7 @@ $filterParams = @(
             } else {
                 $keyName.ToLower()
             }
-
+        
         "$keyName=$keyValue"
     }
 ) -join ':'

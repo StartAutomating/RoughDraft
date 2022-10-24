@@ -74,12 +74,15 @@ $AllYouTubeDLArgs  = @(
         '-o'
         $YouTubeOutputFile
     }
+    '--ffmpeg-location' 
+    "$(Get-FFMpeg)"    
 )
 
 if ($YouTubeDownloadArgumentList -like '--json' -or $YouTubeDownloadInformation) {
     @(& $YouTubeDLPath $YouTubeURL @AllYouTubeDLArgs) -join [Environment]::NewLine | ConvertFrom-Json
 }
 elseif ($YouTubeDownloadArgumentList) {
+    $AllYouTubeDLArgs += $YouTubeDownloadArgumentList
     @(& $YouTubeDLPath $YouTubeURL @AllYouTubeDLArgs)
 }
 else {

@@ -12,6 +12,7 @@
     #>
     [CmdletBinding(PositionalBinding=$false)]
     [OutputType([string])]
+    [Alias('ffprobe')]
     param(
     # Arguments to ffprobe.
     [Parameter(ValueFromPipelineByPropertyName,ValueFromRemainingArguments)]
@@ -30,7 +31,7 @@
 
     process {
         #region Find FFProbe
-        $ffprobe = & $findffprobe -ffprobePath $ffprobePath
+        $ffprobe = Get-FFProbe -ffprobePath $ffprobePath
         if (-not $ffprobe) {return}
         #endregion Find FFProbe
         #region Handle -AsJob
