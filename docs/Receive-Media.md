@@ -1,4 +1,3 @@
-
 Receive-Media
 -------------
 ### Synopsis
@@ -210,6 +209,3 @@ Stopping a script that is receiving media with CTRL+C may prevent certain filety
 For best results, use a filetype designed for streaming, such as .wav for audio or .mpg for video.
 
 Alternatively, if you run Receive-Media -AsJob, stopping the job will normally allow FFMpeg to finalize.
-
-
-
