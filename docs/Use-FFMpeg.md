@@ -1,4 +1,3 @@
-
 Use-FFMpeg
 ----------
 ### Synopsis
@@ -91,5 +90,3 @@ If set, will run as a background job.
 Use-FFMpeg [-FFMpegArgument <String[]>] [-FFMpegPath <String>] [-AsJob] [<CommonParameters>]
 ```
 ---
-
-
