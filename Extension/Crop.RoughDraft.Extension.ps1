@@ -76,4 +76,4 @@ $filterArgs  =@(
 ) -join ':'
 
 "-vf"
-"crop=$filterArgs" -replace '=$'
+"crop='$filterArgs'" -replace '=$'
