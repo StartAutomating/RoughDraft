@@ -59,10 +59,10 @@
 |Pulsator|Pulsator Effect|Edit-Media,Show-Media|
 |RandomizeFrame|RandomizeFrame extensions|Edit-Media,Show-Media|
 |Rate|Adjusts the rate of media.|Edit-Media,Show-Media|
-|Resize|Resizes a video|Convert-Media,Show-Media,Edit-Media|
+|Resize|Resizes a video|Show-Media,Edit-Media,Convert-Media|
 |ReverseAudio|Reverses audio|Edit-Media|
 |ReverseVideo|Reverses video|Edit-Media|
-|Rotate|Rotates a video|Convert-Media,Show-Media,Edit-Media|
+|Rotate|Rotates a video|Show-Media,Edit-Media,Convert-Media|
 |ScrollVideo|Scrolls video|Edit-Media,Show-Media|
 |Sepia|Applies a Sepia Filter|Edit-Media|
 |ShowFrequency|Show Frequencies|Show-Media,Edit-Media,New-Media|
