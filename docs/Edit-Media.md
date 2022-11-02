@@ -1,4 +1,3 @@
-
 Edit-Media
 ----------
 ### Synopsis
@@ -376,6 +375,3 @@ Edit-Media [-InputPath] <String[]> [[-OutputPath] <String>] [-OutputMap <IDictio
 Edit-Media will return the output file, which can in turn be piped into the next Edit-Media.
 Each parameter set of Edit-Media will perform one and only one action.
 Using Edit-Media in a fluent pipeline will allow you to easily control the order in which actions are applied.
-
-
-
