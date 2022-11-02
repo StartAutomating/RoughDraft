@@ -1,4 +1,3 @@
-
 Use-FFPlay
 ----------
 ### Synopsis
@@ -91,5 +90,3 @@ If set, will run as a background job.
 Use-FFPlay [-FFPlayArgument <String[]>] [-FFPlayPath <String>] [-AsJob] [<CommonParameters>]
 ```
 ---
-
-
