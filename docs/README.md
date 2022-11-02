@@ -162,95 +162,95 @@ RoughDraft uses Extensions to make complex media scenarios easier work with.
 |DisplayName                                             |Synopsis                            |Extends                                       |
 |--------------------------------------------------------|------------------------------------|----------------------------------------------|
 |[AlbumArt](AlbumArt-Extension.md)                  |Sets album artwork                  |Set-Media                                     |
-|[AmplifyPixel](AmplifyPixel-Extension.md)          |AmplifyPixel extension              |Show-Media,Edit-Media                         |
-|[AudioCrusher](AudioCrusher-Extension.md)          |Audio Crusher                       |Show-Media,Edit-Media                         |
-|[AudioExpression](AudioExpression-Extension.md)    |Evaluates Audio Expressions         |Show-Media,Edit-Media,New-Media               |
-|[AudioGain](AudioGain-Extension.md)                |Increases audio volume              |Show-Media,Edit-Media                         |
-|[BilateralSmooth](BilateralSmooth-Extension.md)    |Bilateral Smooth                    |Show-Media,Edit-Media                         |
+|[AmplifyPixel](AmplifyPixel-Extension.md)          |AmplifyPixel extension              |Edit-Media,Show-Media                         |
+|[AudioCrusher](AudioCrusher-Extension.md)          |Audio Crusher                       |Edit-Media,Show-Media                         |
+|[AudioExpression](AudioExpression-Extension.md)    |Evaluates Audio Expressions         |Edit-Media,New-Media,Show-Media               |
+|[AudioGain](AudioGain-Extension.md)                |Increases audio volume              |Edit-Media,Show-Media                         |
+|[BilateralSmooth](BilateralSmooth-Extension.md)    |Bilateral Smooth                    |Edit-Media,Show-Media                         |
 |[BlackDetect](BlackDetect-Extension.md)            |Detect black periods in a video.    |Get-Media                                     |
 |[BlackFrame](BlackFrame-Extension.md)              |Detects black frames.               |Get-Media                                     |
-|[BlendFrame](BlendFrame-Extension.md)              |BlendFrame Extension                |Show-Media,Edit-Media                         |
+|[BlendFrame](BlendFrame-Extension.md)              |BlendFrame Extension                |Edit-Media,Show-Media                         |
 |[BlendVideo](BlendVideo-Extension.md)              |BlendVideo Extension                |Join-Media                                    |
-|[Blur](Blur-Extension.md)                          |Blurs Video                         |Show-Media,Edit-Media                         |
+|[Blur](Blur-Extension.md)                          |Blurs Video                         |Edit-Media,Show-Media                         |
 |[CaptureDevice](CaptureDevice-Extension.md)        |Gets capture devices                |Get-FFMpeg                                    |
-|[Chorus](Chorus-Extension.md)                      |chorus                              |Show-Media,Edit-Media                         |
+|[Chorus](Chorus-Extension.md)                      |chorus                              |Edit-Media,Show-Media                         |
 |[Codecs](Codecs-Extension.md)                      |Lists codecs                        |Get-FFMpeg                                    |
-|[ColorContrast](ColorContrast-Extension.md)        |ColorContrast Extension             |Show-Media,Edit-Media                         |
-|[ColorHold](ColorHold-Extension.md)                |ColorHold Extension                 |Show-Media,Edit-Media                         |
-|[Colorize](Colorize-Extension.md)                  |Colorize a video stream             |Show-Media,Edit-Media                         |
-|[ColorScope](ColorScope-Extension.md)              |Colorscope extension                |Show-Media,Edit-Media                         |
+|[ColorContrast](ColorContrast-Extension.md)        |ColorContrast Extension             |Edit-Media,Show-Media                         |
+|[ColorHold](ColorHold-Extension.md)                |ColorHold Extension                 |Edit-Media,Show-Media                         |
+|[Colorize](Colorize-Extension.md)                  |Colorize a video stream             |Edit-Media,Show-Media                         |
+|[ColorScope](ColorScope-Extension.md)              |Colorscope extension                |Edit-Media,Show-Media                         |
 |[ColorSource](ColorSource-Extension.md)            |Generates a color                   |New-Media,Show-Media                          |
 |[Convolve](Convolve-Extension.md)                  |convolve                            |Join-Media                                    |
-|[Crop](Crop-Extension.md)                          |Crop Extension                      |Show-Media,Edit-Media,Send-Media,Receive-Media|
+|[Crop](Crop-Extension.md)                          |Crop Extension                      |Receive-Media,Edit-Media,Show-Media,Send-Media|
 |[CropDetect](CropDetect-Extension.md)              |Auto-detect the crop size.          |Get-Media                                     |
 |[DataScope](DataScope-Extension.md)                |Datascope effect                    |Edit-Media                                    |
 |[Deconvolve](Deconvolve-Extension.md)              |deconvolve                          |Join-Media                                    |
-|[DirectShow](DirectShow-Extension.md)              |DirectShow Extension                |Show-Media,Send-Media,Receive-Media           |
-|[DrawSubtitle](DrawSubtitle-Extension.md)          |Draw subtitles on top of input video|Edit-Media,Convert-Media                      |
-|[DrawText](DrawText-Extension.md)                  |Draws Text on Video                 |Show-Media,Edit-Media                         |
-|[Echo](Echo-Extension.md)                          |Adds echoes to audio                |Show-Media,Edit-Media                         |
-|[EdgeDetect](EdgeDetect-Extension.md)              |EdgeDetect Extension                |Show-Media,Edit-Media                         |
+|[DirectShow](DirectShow-Extension.md)              |DirectShow Extension                |Receive-Media,Show-Media,Send-Media           |
+|[DrawSubtitle](DrawSubtitle-Extension.md)          |Draw subtitles on top of input video|Convert-Media,Edit-Media                      |
+|[DrawText](DrawText-Extension.md)                  |Draws Text on Video                 |Edit-Media,Show-Media                         |
+|[Echo](Echo-Extension.md)                          |Adds echoes to audio                |Edit-Media,Show-Media                         |
+|[EdgeDetect](EdgeDetect-Extension.md)              |EdgeDetect Extension                |Edit-Media,Show-Media                         |
 |[Emboss](Emboss-Extension.md)                      |Embosses video or images            |Edit-Media                                    |
-|[Exposure](Exposure-Extension.md)                  |Exposure Extension                  |Show-Media,Edit-Media                         |
+|[Exposure](Exposure-Extension.md)                  |Exposure Extension                  |Edit-Media,Show-Media                         |
 |[FadeIn](FadeIn-Extension.md)                      |Fades in video                      |Edit-Media                                    |
-|[FillBorder](FillBorder-Extension.md)              |Fill Borders.                       |Show-Media,Edit-Media                         |
+|[FillBorder](FillBorder-Extension.md)              |Fill Borders.                       |Edit-Media,Show-Media                         |
 |[FilterInput](FilterInput-Extension.md)            |Gets filter details                 |Get-FFMpeg                                    |
-|[Flanger](Flanger-Extension.md)                    |Audio Flanger.                      |Show-Media,Edit-Media                         |
-|[FlipHorizontal](FlipHorizontal-Extension.md)      |Flips video horizontally            |Show-Media,Edit-Media                         |
-|[FlipVertical](FlipVertical-Extension.md)          |Flips video vertically              |Show-Media,Edit-Media                         |
-|[FrameBuffer](FrameBuffer-Extension.md)            |FrameBuffer Extension               |Show-Media,Send-Media,Receive-Media           |
-|[FrameStep](FrameStep-Extension.md)                |FrameStep Effect                    |Show-Media,Edit-Media                         |
-|[Histogram](Histogram-Extension.md)                |Histogram Extension                 |Show-Media,Edit-Media                         |
-|[Hue](Hue-Extension.md)                            |Hue Extension                       |Show-Media,Edit-Media                         |
+|[Flanger](Flanger-Extension.md)                    |Audio Flanger.                      |Edit-Media,Show-Media                         |
+|[FlipHorizontal](FlipHorizontal-Extension.md)      |Flips video horizontally            |Edit-Media,Show-Media                         |
+|[FlipVertical](FlipVertical-Extension.md)          |Flips video vertically              |Edit-Media,Show-Media                         |
+|[FrameBuffer](FrameBuffer-Extension.md)            |FrameBuffer Extension               |Receive-Media,Show-Media,Send-Media           |
+|[FrameStep](FrameStep-Extension.md)                |FrameStep Effect                    |Edit-Media,Show-Media                         |
+|[Histogram](Histogram-Extension.md)                |Histogram Extension                 |Edit-Media,Show-Media                         |
+|[Hue](Hue-Extension.md)                            |Hue Extension                       |Edit-Media,Show-Media                         |
 |[Hysteresis](Hysteresis-Extension.md)              |Hysteresis                          |Join-Media                                    |
-|[LagFun](LagFun-Extension.md)                      |Slowly update darker pixels.        |Show-Media,Edit-Media                         |
+|[LagFun](LagFun-Extension.md)                      |Slowly update darker pixels.        |Edit-Media,Show-Media                         |
 |[Life](Life-Extension.md)                          |Generates life                      |New-Media,Show-Media                          |
-|[LimitPixel](LimitPixel-Extension.md)              |Limits Pixel values                 |Show-Media,Edit-Media                         |
+|[LimitPixel](LimitPixel-Extension.md)              |Limits Pixel values                 |Edit-Media,Show-Media                         |
 |[ListFilters](ListFilters-Extension.md)            |Lists filters                       |Get-FFMpeg                                    |
 |[ListProtocols](ListProtocols-Extension.md)        |Lists protocols                     |Get-FFMpeg                                    |
 |[Mandelbrot](Mandelbrot-Extension.md)              |Generates fractals                  |New-Media,Show-Media                          |
-|[MedianPixel](MedianPixel-Extension.md)            |Picks median pixels                 |Show-Media,Edit-Media                         |
-|[Mirror](Mirror-Extension.md)                      |Mirror Extension                    |Show-Media,Edit-Media                         |
+|[MedianPixel](MedianPixel-Extension.md)            |Picks median pixels                 |Edit-Media,Show-Media                         |
+|[Mirror](Mirror-Extension.md)                      |Mirror Extension                    |Edit-Media,Show-Media                         |
 |[MixAudio](MixAudio-Extension.md)                  |Mix Audio                           |Join-Media                                    |
 |[Monochrome](Monochrome-Extension.md)              |Make video monochrome               |Edit-Media                                    |
 |[NoAudio](NoAudio-Extension.md)                    |Removes Audio                       |Split-Media                                   |
 |[Overlay](Overlay-Extension.md)                    |overlay                             |Join-Media                                    |
-|[Phaser](Phaser-Extension.md)                      |Audio Phaser                        |Show-Media,Edit-Media                         |
+|[Phaser](Phaser-Extension.md)                      |Audio Phaser                        |Edit-Media,Show-Media                         |
 |[Pixelate](Pixelate-Extension.md)                  |Pixelate effect                     |Edit-Media                                    |
 |[Playlist](Playlist-Extension.md)                  |Creates a playlist                  |Join-Media                                    |
-|[Pulsator](Pulsator-Extension.md)                  |Pulsator Effect                     |Show-Media,Edit-Media                         |
-|[RandomizeFrame](RandomizeFrame-Extension.md)      |RandomizeFrame extensions           |Show-Media,Edit-Media                         |
-|[Rate](Rate-Extension.md)                          |Adjusts the rate of media.          |Show-Media,Edit-Media                         |
-|[Resize](Resize-Extension.md)                      |Resizes a video                     |Show-Media,Edit-Media,Convert-Media           |
+|[Pulsator](Pulsator-Extension.md)                  |Pulsator Effect                     |Edit-Media,Show-Media                         |
+|[RandomizeFrame](RandomizeFrame-Extension.md)      |RandomizeFrame extensions           |Edit-Media,Show-Media                         |
+|[Rate](Rate-Extension.md)                          |Adjusts the rate of media.          |Edit-Media,Show-Media                         |
+|[Resize](Resize-Extension.md)                      |Resizes a video                     |Edit-Media,Convert-Media,Show-Media           |
 |[ReverseAudio](ReverseAudio-Extension.md)          |Reverses audio                      |Edit-Media                                    |
 |[ReverseVideo](ReverseVideo-Extension.md)          |Reverses video                      |Edit-Media                                    |
-|[Rotate](Rotate-Extension.md)                      |Rotates a video                     |Show-Media,Edit-Media,Convert-Media           |
-|[ScrollVideo](ScrollVideo-Extension.md)            |Scrolls video                       |Show-Media,Edit-Media                         |
+|[Rotate](Rotate-Extension.md)                      |Rotates a video                     |Edit-Media,Convert-Media,Show-Media           |
+|[ScrollVideo](ScrollVideo-Extension.md)            |Scrolls video                       |Edit-Media,Show-Media                         |
 |[Sepia](Sepia-Extension.md)                        |Applies a Sepia Filter              |Edit-Media                                    |
-|[ShowFrequency](ShowFrequency-Extension.md)        |Show Frequencies                    |Show-Media,Edit-Media,New-Media               |
-|[ShowScale](ShowScale-Extension.md)                |Show the tonal scale of the audio   |Show-Media,Edit-Media,New-Media               |
-|[ShowSpectrum](ShowSpectrum-Extension.md)          |Shows the audio spectrum            |Show-Media,Edit-Media,New-Media               |
-|[ShowVectorScope](ShowVectorScope-Extension.md)    |Shows a Vector Scope of the Audio   |Show-Media,Edit-Media,New-Media               |
-|[ShowVolume](ShowVolume-Extension.md)              |Shows the volume of an audio stream.|Show-Media,Edit-Media,New-Media               |
-|[ShowWaveform](ShowWaveform-Extension.md)          |Shows audio waveform.               |Show-Media,Edit-Media,New-Media               |
+|[ShowFrequency](ShowFrequency-Extension.md)        |Show Frequencies                    |Edit-Media,New-Media,Show-Media               |
+|[ShowScale](ShowScale-Extension.md)                |Show the tonal scale of the audio   |Edit-Media,New-Media,Show-Media               |
+|[ShowSpectrum](ShowSpectrum-Extension.md)          |Shows the audio spectrum            |Edit-Media,New-Media,Show-Media               |
+|[ShowVectorScope](ShowVectorScope-Extension.md)    |Shows a Vector Scope of the Audio   |Edit-Media,New-Media,Show-Media               |
+|[ShowVolume](ShowVolume-Extension.md)              |Shows the volume of an audio stream.|Edit-Media,New-Media,Show-Media               |
+|[ShowWaveform](ShowWaveform-Extension.md)          |Shows audio waveform.               |Edit-Media,New-Media,Show-Media               |
 |[ShuffleFrames](ShuffleFrames-Extension.md)        |Shuffles frames in video            |Edit-Media                                    |
 |[Sierpinski](Sierpinski-Extension.md)              |Generates a Sierpinski fractal      |New-Media,Show-Media                          |
 |[SilenceDetect](SilenceDetect-Extension.md)        |Detects silence in an audio stream  |Get-Media                                     |
 |[SilenceRemove](SilenceRemove-Extension.md)        |Detects silence in an audio stream  |Edit-Media                                    |
 |[Sine](Sine-Extension.md)                          |Generates a sine wave               |New-Media                                     |
-|[Skew](Skew-Extension.md)                          |Skew Extension                      |Show-Media,Edit-Media                         |
-|[SubFrequencyCut](SubFrequencyCut-Extension.md)    |Cut subwoofer frequencies           |Show-Media,Edit-Media                         |
+|[Skew](Skew-Extension.md)                          |Skew Extension                      |Edit-Media,Show-Media                         |
+|[SubFrequencyCut](SubFrequencyCut-Extension.md)    |Cut subwoofer frequencies           |Edit-Media,Show-Media                         |
 |[Subtitler](Subtitler-Extension.md)                |Creates subtitles.                  |New-Media                                     |
-|[SuperEqualizer](SuperEqualizer-Extension.md)      |Audio 18 band Superequalizer        |Show-Media,Edit-Media                         |
-|[SuperFrequencyCut](SuperFrequencyCut-Extension.md)|Cut super frequencies.              |Show-Media,Edit-Media                         |
+|[SuperEqualizer](SuperEqualizer-Extension.md)      |Audio 18 band Superequalizer        |Edit-Media,Show-Media                         |
+|[SuperFrequencyCut](SuperFrequencyCut-Extension.md)|Cut super frequencies.              |Edit-Media,Show-Media                         |
 |[TestSource](TestSource-Extension.md)              |Generates test sources              |New-Media,Show-Media                          |
 |[Tile](Tile-Extension.md)                          |Tile Extension                      |Edit-Media                                    |
-|[TimeMix](TimeMix-Extension.md)                    |Mix successive video frames.        |Show-Media,Edit-Media                         |
-|[Tremolo](Tremolo-Extension.md)                    |Tremolo effect                      |Show-Media,Edit-Media                         |
-|[Vibrato](Vibrato-Extension.md)                    |Vibrato effect                      |Show-Media,Edit-Media                         |
-|[VideoExpression](VideoExpression-Extension.md)    |Evaluates Video Expressions         |Show-Media,Edit-Media                         |
-|[VideoForLinux](VideoForLinux-Extension.md)        |VideoForLinux Extension             |Show-Media,Send-Media,Receive-Media           |
-|[Vignette](Vignette-Extension.md)                  |Applies a vignette filter           |Show-Media,Edit-Media                         |
+|[TimeMix](TimeMix-Extension.md)                    |Mix successive video frames.        |Edit-Media,Show-Media                         |
+|[Tremolo](Tremolo-Extension.md)                    |Tremolo effect                      |Edit-Media,Show-Media                         |
+|[Vibrato](Vibrato-Extension.md)                    |Vibrato effect                      |Edit-Media,Show-Media                         |
+|[VideoExpression](VideoExpression-Extension.md)    |Evaluates Video Expressions         |Edit-Media,Show-Media                         |
+|[VideoForLinux](VideoForLinux-Extension.md)        |VideoForLinux Extension             |Receive-Media,Show-Media,Send-Media           |
+|[Vignette](Vignette-Extension.md)                  |Applies a vignette filter           |Edit-Media,Show-Media                         |
 |[VolumeLevel](VolumeLevel-Extension.md)            |Gets VolumeLevels                   |Get-Media                                     |
 |[Watermark](Watermark-Extension.md)                |Watermarks a video                  |Edit-Media                                    |
 |[YouTubeDL](YouTubeDL-Extension.md)                |Youtube Downloader                  |Get-Media                                     |
@@ -310,8 +310,6 @@ The following commands can currently be extended:
 * Send-Media
 * Show-Media
 * Split-Media
-
-
 
 
 
