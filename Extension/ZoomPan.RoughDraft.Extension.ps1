@@ -30,8 +30,7 @@
     |pduration  |number of output frames created for previous input frame|
     |a          |Rational number: input width / input height|
     |sar        |sample aspect ratio|
-    |dar        |display aspect ratio|
-    
+    |dar        |display aspect ratio|    
 .Link
     https://ffmpeg.org/ffmpeg-filters.html#zoompan
 #>
