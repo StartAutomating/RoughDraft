@@ -115,6 +115,6 @@ $filterArgs = @(
 '-af'
 
 
-"$filterName=`"$filterArgs`"" -replace "=$"
+"$filterName=$filterArgs" -replace "=$"
  
 
