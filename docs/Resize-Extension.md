@@ -2,12 +2,14 @@
 Extension/Resize.RoughDraft.Extension.ps1
 -----------------------------------------
 ### Synopsis
-Resizes a video
+Simple video resize.
 
 ---
 ### Description
 
-Applies the resize filter to a video.
+Simply resizes a video using the scale filter.
+
+To control scaling with more precision, use the Scale extension.
 
 ---
 ### Related Links
@@ -46,7 +48,6 @@ The width and height used to resize the video.
 Extension/Resize.RoughDraft.Extension.ps1 [-Resize] <String> [<CommonParameters>]
 ```
 ---
-
 
 
 
