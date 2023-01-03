@@ -9,7 +9,10 @@ Adjust Pitch by a factor
 
 Adjust audit pitch by a factor.
 
-This is done by reampling the audio, resetting the sample rate, and adjusting the tempo
+This is done by:
+* Resampling the audio
+* Resetting the sample rate
+* Adjusting the tempo.
 
 ---
 ### Related Links
@@ -80,7 +83,6 @@ When using Show-Media, this defaults to 44100
 Extension/PitchFactor.RoughDraft.Extension.ps1 [-PitchFactor] <Double> [[-PitchFactorSampleRate] <Int32>] [<CommonParameters>]
 ```
 ---
-
 
 
 
