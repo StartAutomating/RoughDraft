@@ -164,7 +164,7 @@ RoughDraft uses Extensions to make complex media scenarios easier work with.
 |[AlbumArt](AlbumArt-Extension.md)                                |Sets album artwork                    |Set-Media                                     |
 |[AmplifyPixel](AmplifyPixel-Extension.md)                        |AmplifyPixel extension                |Edit-Media,Show-Media                         |
 |[AudioCrusher](AudioCrusher-Extension.md)                        |Audio Crusher                         |Edit-Media,Show-Media                         |
-|[AudioExpression](AudioExpression-Extension.md)                  |Evaluates Audio Expressions           |New-Media,Edit-Media,Show-Media               |
+|[AudioExpression](AudioExpression-Extension.md)                  |Evaluates Audio Expressions           |New-Media,Show-Media,Edit-Media               |
 |[AudioFrequencyExpression](AudioFrequencyExpression-Extension.md)|Apply expressions to audio frequencies|Edit-Media,Show-Media                         |
 |[AudioGain](AudioGain-Extension.md)                              |Increases audio volume                |Edit-Media,Show-Media                         |
 |[BilateralSmooth](BilateralSmooth-Extension.md)                  |Bilateral Smooth                      |Edit-Media,Show-Media                         |
@@ -180,13 +180,13 @@ RoughDraft uses Extensions to make complex media scenarios easier work with.
 |[ColorHold](ColorHold-Extension.md)                              |ColorHold Extension                   |Edit-Media,Show-Media                         |
 |[Colorize](Colorize-Extension.md)                                |Colorize a video stream               |Edit-Media,Show-Media                         |
 |[ColorScope](ColorScope-Extension.md)                            |Colorscope extension                  |Edit-Media,Show-Media                         |
-|[ColorSource](ColorSource-Extension.md)                          |Generates a color                     |New-Media,Show-Media                          |
+|[ColorSource](ColorSource-Extension.md)                          |Generates a color                     |Show-Media,New-Media                          |
 |[Convolve](Convolve-Extension.md)                                |convolve                              |Join-Media                                    |
-|[Crop](Crop-Extension.md)                                        |Crop Extension                        |Edit-Media,Show-Media,Send-Media,Receive-Media|
+|[Crop](Crop-Extension.md)                                        |Crop Extension                        |Send-Media,Receive-Media,Edit-Media,Show-Media|
 |[CropDetect](CropDetect-Extension.md)                            |Auto-detect the crop size.            |Get-Media                                     |
 |[DataScope](DataScope-Extension.md)                              |Datascope effect                      |Edit-Media                                    |
 |[Deconvolve](Deconvolve-Extension.md)                            |deconvolve                            |Join-Media                                    |
-|[DirectShow](DirectShow-Extension.md)                            |DirectShow Extension                  |Send-Media,Show-Media,Receive-Media           |
+|[DirectShow](DirectShow-Extension.md)                            |DirectShow Extension                  |Send-Media,Receive-Media,Show-Media           |
 |[DrawSubtitle](DrawSubtitle-Extension.md)                        |Draw subtitles on top of input video  |Edit-Media,Convert-Media                      |
 |[DrawText](DrawText-Extension.md)                                |Draws Text on Video                   |Edit-Media,Show-Media                         |
 |[Echo](Echo-Extension.md)                                        |Adds echoes to audio                  |Edit-Media,Show-Media                         |
@@ -199,17 +199,17 @@ RoughDraft uses Extensions to make complex media scenarios easier work with.
 |[Flanger](Flanger-Extension.md)                                  |Audio Flanger.                        |Edit-Media,Show-Media                         |
 |[FlipHorizontal](FlipHorizontal-Extension.md)                    |Flips video horizontally              |Edit-Media,Show-Media                         |
 |[FlipVertical](FlipVertical-Extension.md)                        |Flips video vertically                |Edit-Media,Show-Media                         |
-|[FrameBuffer](FrameBuffer-Extension.md)                          |FrameBuffer Extension                 |Send-Media,Show-Media,Receive-Media           |
+|[FrameBuffer](FrameBuffer-Extension.md)                          |FrameBuffer Extension                 |Send-Media,Receive-Media,Show-Media           |
 |[FrameStep](FrameStep-Extension.md)                              |FrameStep Effect                      |Edit-Media,Show-Media                         |
 |[Histogram](Histogram-Extension.md)                              |Histogram Extension                   |Edit-Media,Show-Media                         |
 |[Hue](Hue-Extension.md)                                          |Hue Extension                         |Edit-Media,Show-Media                         |
 |[Hysteresis](Hysteresis-Extension.md)                            |Hysteresis                            |Join-Media                                    |
 |[LagFun](LagFun-Extension.md)                                    |Slowly update darker pixels.          |Edit-Media,Show-Media                         |
-|[Life](Life-Extension.md)                                        |Generates life                        |New-Media,Show-Media                          |
+|[Life](Life-Extension.md)                                        |Generates life                        |Show-Media,New-Media                          |
 |[LimitPixel](LimitPixel-Extension.md)                            |Limits Pixel values                   |Edit-Media,Show-Media                         |
 |[ListFilters](ListFilters-Extension.md)                          |Lists filters                         |Get-FFMpeg                                    |
 |[ListProtocols](ListProtocols-Extension.md)                      |Lists protocols                       |Get-FFMpeg                                    |
-|[Mandelbrot](Mandelbrot-Extension.md)                            |Generates fractals                    |New-Media,Show-Media                          |
+|[Mandelbrot](Mandelbrot-Extension.md)                            |Generates fractals                    |Show-Media,New-Media                          |
 |[MedianPixel](MedianPixel-Extension.md)                          |Picks median pixels                   |Edit-Media,Show-Media                         |
 |[Mirror](Mirror-Extension.md)                                    |Mirror Extension                      |Edit-Media,Show-Media                         |
 |[MixAudio](MixAudio-Extension.md)                                |Mix Audio                             |Join-Media                                    |
@@ -223,21 +223,21 @@ RoughDraft uses Extensions to make complex media scenarios easier work with.
 |[Pulsator](Pulsator-Extension.md)                                |Pulsator Effect                       |Edit-Media,Show-Media                         |
 |[RandomizeFrame](RandomizeFrame-Extension.md)                    |RandomizeFrame extensions             |Edit-Media,Show-Media                         |
 |[Rate](Rate-Extension.md)                                        |Adjusts the rate of media.            |Edit-Media,Show-Media                         |
-|[Resize](Resize-Extension.md)                                    |Resizes a video                       |Edit-Media,Show-Media,Convert-Media           |
+|[Resize](Resize-Extension.md)                                    |Resizes a video                       |Show-Media,Edit-Media,Convert-Media           |
 |[ReverseAudio](ReverseAudio-Extension.md)                        |Reverses audio                        |Edit-Media                                    |
 |[ReverseVideo](ReverseVideo-Extension.md)                        |Reverses video                        |Edit-Media                                    |
-|[Rotate](Rotate-Extension.md)                                    |Rotates a video                       |Edit-Media,Show-Media,Convert-Media           |
+|[Rotate](Rotate-Extension.md)                                    |Rotates a video                       |Show-Media,Edit-Media,Convert-Media           |
 |[Scale](Scale-Extension.md)                                      |Scales video.                         |Edit-Media,Show-Media                         |
 |[ScrollVideo](ScrollVideo-Extension.md)                          |Scrolls video                         |Edit-Media,Show-Media                         |
 |[Sepia](Sepia-Extension.md)                                      |Applies a Sepia Filter                |Edit-Media                                    |
-|[ShowFrequency](ShowFrequency-Extension.md)                      |Show Frequencies                      |New-Media,Edit-Media,Show-Media               |
-|[ShowScale](ShowScale-Extension.md)                              |Show the tonal scale of the audio     |New-Media,Edit-Media,Show-Media               |
-|[ShowSpectrum](ShowSpectrum-Extension.md)                        |Shows the audio spectrum              |New-Media,Edit-Media,Show-Media               |
-|[ShowVectorScope](ShowVectorScope-Extension.md)                  |Shows a Vector Scope of the Audio     |New-Media,Edit-Media,Show-Media               |
-|[ShowVolume](ShowVolume-Extension.md)                            |Shows the volume of an audio stream.  |New-Media,Edit-Media,Show-Media               |
-|[ShowWaveform](ShowWaveform-Extension.md)                        |Shows audio waveform.                 |New-Media,Edit-Media,Show-Media               |
+|[ShowFrequency](ShowFrequency-Extension.md)                      |Show Frequencies                      |New-Media,Show-Media,Edit-Media               |
+|[ShowScale](ShowScale-Extension.md)                              |Show the tonal scale of the audio     |New-Media,Show-Media,Edit-Media               |
+|[ShowSpectrum](ShowSpectrum-Extension.md)                        |Shows the audio spectrum              |New-Media,Show-Media,Edit-Media               |
+|[ShowVectorScope](ShowVectorScope-Extension.md)                  |Shows a Vector Scope of the Audio     |New-Media,Show-Media,Edit-Media               |
+|[ShowVolume](ShowVolume-Extension.md)                            |Shows the volume of an audio stream.  |New-Media,Show-Media,Edit-Media               |
+|[ShowWaveform](ShowWaveform-Extension.md)                        |Shows audio waveform.                 |New-Media,Show-Media,Edit-Media               |
 |[ShuffleFrames](ShuffleFrames-Extension.md)                      |Shuffles frames in video              |Edit-Media                                    |
-|[Sierpinski](Sierpinski-Extension.md)                            |Generates a Sierpinski fractal        |New-Media,Show-Media                          |
+|[Sierpinski](Sierpinski-Extension.md)                            |Generates a Sierpinski fractal        |Show-Media,New-Media                          |
 |[SilenceDetect](SilenceDetect-Extension.md)                      |Detects silence in an audio stream    |Get-Media                                     |
 |[SilenceRemove](SilenceRemove-Extension.md)                      |Detects silence in an audio stream    |Edit-Media                                    |
 |[Sine](Sine-Extension.md)                                        |Generates a sine wave                 |New-Media                                     |
@@ -247,13 +247,13 @@ RoughDraft uses Extensions to make complex media scenarios easier work with.
 |[SuperEqualizer](SuperEqualizer-Extension.md)                    |Audio 18 band Superequalizer          |Edit-Media,Show-Media                         |
 |[SuperFrequencyCut](SuperFrequencyCut-Extension.md)              |Cut super frequencies.                |Edit-Media,Show-Media                         |
 |[Tempo](Tempo-Extension.md)                                      |Adjust audio tempo.                   |Edit-Media,Show-Media                         |
-|[TestSource](TestSource-Extension.md)                            |Generates test sources                |New-Media,Show-Media                          |
+|[TestSource](TestSource-Extension.md)                            |Generates test sources                |Show-Media,New-Media                          |
 |[Tile](Tile-Extension.md)                                        |Tile Extension                        |Edit-Media                                    |
 |[TimeMix](TimeMix-Extension.md)                                  |Mix successive video frames.          |Edit-Media,Show-Media                         |
 |[Tremolo](Tremolo-Extension.md)                                  |Tremolo effect                        |Edit-Media,Show-Media                         |
 |[Vibrato](Vibrato-Extension.md)                                  |Vibrato effect                        |Edit-Media,Show-Media                         |
 |[VideoExpression](VideoExpression-Extension.md)                  |Evaluates Video Expressions           |Edit-Media,Show-Media                         |
-|[VideoForLinux](VideoForLinux-Extension.md)                      |VideoForLinux Extension               |Send-Media,Show-Media,Receive-Media           |
+|[VideoForLinux](VideoForLinux-Extension.md)                      |VideoForLinux Extension               |Send-Media,Receive-Media,Show-Media           |
 |[Vignette](Vignette-Extension.md)                                |Applies a vignette filter             |Edit-Media,Show-Media                         |
 |[VolumeLevel](VolumeLevel-Extension.md)                          |Gets VolumeLevels                     |Get-Media                                     |
 |[Watermark](Watermark-Extension.md)                              |Watermarks a video                    |Edit-Media                                    |
