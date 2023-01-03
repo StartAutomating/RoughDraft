@@ -23,7 +23,7 @@ $outputPath = Join-Path $outputPath RoughDraft.svg
 =<svg> @(
     =<svg.defs> @(
         =<svg.style> -Type 'text/css' @'
-@import url('https://fonts.googleapis.com/css?family=Space%20Grotesk')
+@import url('https://fonts.googleapis.com/css?family=Space Grotesk')
 '@
     )
     $psChevron
