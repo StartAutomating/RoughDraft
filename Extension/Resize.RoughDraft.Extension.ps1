@@ -1,8 +1,10 @@
 ﻿<#
 .Synopsis
-    Resizes a video
+    Simple video resize.
 .Description
-    Applies the resize filter to a video.
+    Simply resizes a video using the scale filter.
+
+    To control scaling with more precision, use the Scale extension.
 .EXAMPLE
     Convert-Media
 .LINK
