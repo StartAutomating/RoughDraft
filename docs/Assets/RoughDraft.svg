@@ -1,11 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <svg viewBox="0 0 300 100" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style type="text/css">@import url('https://fonts.googleapis.com/css?family=Space%20Grotesk')</style>
+  </defs>
   <symbol id="psChevron" viewBox="0 0 100 100" preserveAspectRatio="False">
     <polygon points="40,20 45,20 60,50 35,80 32.5,80 55,50" />
   </symbol>
-  <use href="#psChevron" x="10%" y="0%" height="100%" width="20%" stroke="#4488ff" fill="transparent" />
-  <text font-size="36" fill="#4488ff" x="50%" dominant-baseline="middle" text-anchor="middle" y="50%">
-    <tspan font-family="serif" rotate="1">Rough</tspan>
-    <tspan font-family="serif" dx="-0.3em" rotate="1" dy="0.1em">Draft</tspan>
+  <use href="#psChevron" x="5%" y="0%" height="100%" width="20%" fill="#4488ff" class="foreground-fill" />
+  <text font-size="36" fill="#4488ff" x="50%" dominant-baseline="middle" text-anchor="middle" y="50%" class="foreground-fill">
+    <tspan font-family="serif" rotate="1" style="font-family: 'Space Grotesk';">Rough</tspan>
+    <tspan font-family="serif" dx="-0.3em" rotate="2" dy="0.2em" style="font-family: 'Space Grotesk';">Draft</tspan>
   </text>
 </svg>
