@@ -1,11 +1,13 @@
-
 <#
 .SYNOPSIS
     Adjust Pitch by a factor
 .DESCRIPTION
     Adjust audit pitch by a factor.
 
-    This is done by resampling the audio, resetting the sample rate, and adjusting the tempo 
+    This is done by:
+    * Resampling the audio
+    * Resetting the sample rate
+    * Adjusting the tempo.
 .LINK
     https://ffmpeg.org/ffmpeg-filters.html#asetrate
 .LINK
