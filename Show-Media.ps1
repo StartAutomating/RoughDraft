@@ -245,7 +245,7 @@
             . { process {
                 $inObj = $_
                 if ($inObj.ExtensionOutput) {
-                    Write-Verbose "Adding Filter Parameters from Extension '$extensionCommand'"
+                    Write-Verbose "Adding Filter Parameters from Extension '$($inObj.ExtensionCommand)'"
                     Write-Verbose "$extensionOutput"
                     $ffArgs += $inObj.extensionOutput
                 }
