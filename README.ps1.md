@@ -1,5 +1,5 @@
 ﻿<div align='center'>
-<img src='Assets/RoughDraft.svg' />
+<img src='Assets/RoughDraft@400x400.png' />
 <br/>
 <a href='https://www.powershellgallery.com/packages/RoughDraft/'>
 <img src='https://img.shields.io/powershellgallery/dt/RoughDraft' />
