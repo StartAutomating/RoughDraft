@@ -209,8 +209,10 @@
                     Select-Object -ExpandProperty Fullname
             }
             
-            $inputMovieFilter      = "movie='$($ri.Replace('\', "'\\\\'").Replace("'","'\''").Replace(":", "'\\:'"))'"
-            $inputAudioMovieFilter = "amovie='$($ri.Replace('\', "'\\\\'").Replace("'","'\''").Replace(":", "'\\:'"))'"
+            $escaper = '[\:\(\)'']'
+            $replacement = "'\\`$0'"
+            $inputMovieFilter      = "movie='$($ri.Replace('\', "'\\\\'") -replace $escaper, $replacement)'"
+            $inputAudioMovieFilter = "amovie='$($ri.Replace('\', "'\\\\'") -replace $escaper, $replacement)'"
             
 
             if ($ri -match '\.m3u$') {
@@ -243,7 +245,7 @@
             . { process {
                 $inObj = $_
                 if ($inObj.ExtensionOutput) {
-                    Write-Verbose "Adding Filter Parameters from Extension '$extensionCommand'"
+                    Write-Verbose "Adding Filter Parameters from Extension '$($inObj.ExtensionCommand)'"
                     Write-Verbose "$extensionOutput"
                     $ffArgs += $inObj.extensionOutput
                 }

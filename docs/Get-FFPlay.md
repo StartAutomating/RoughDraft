@@ -1,4 +1,3 @@
-
 Get-FFPlay
 ----------
 ### Synopsis
@@ -53,5 +52,3 @@ The path to FFPlay
 Get-FFPlay [[-FFPlayPath] <Object>] [<CommonParameters>]
 ```
 ---
-
-

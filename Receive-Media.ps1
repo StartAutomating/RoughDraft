@@ -130,7 +130,7 @@
 
             $allArguments += $ArgumentList
             if ($OutputPath) {
-                $allArguments += '-y', $OutputPath
+                $allArguments += $OutputPath, '-y'
             }
 
             $ProgId = Get-Random

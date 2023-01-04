@@ -1,4 +1,3 @@
-
 Join-Media
 ----------
 ### Synopsis
@@ -236,6 +235,3 @@ Join-Media has a variety of uses:
 * Creating a Time Lapse or Stop Motion from a series of images
 * Mixing audio into an existing video file
 * Joining multiple videos or audio files into a single long file
-
-
-

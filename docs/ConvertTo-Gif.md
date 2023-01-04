@@ -1,4 +1,3 @@
-
 ConvertTo-Gif
 -------------
 ### Synopsis
@@ -205,6 +204,3 @@ ConvertTo-Gif [-InputPath] <String> [-OutputPath] <String> [-FFMpegPath <String>
 This really wouldn't have been possible without the great programmers who make ffmpeg.
 It was also greatly helped by a very diligent blogger who took the time to write down a detailed explanation of how FFMpeg works with animated GIFs.
 You can find that explanation here - http://blog.pkh.me/p/21-high-quality-gif-with-ffmpeg.html.
-
-
-

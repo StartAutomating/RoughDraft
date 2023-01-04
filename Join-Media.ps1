@@ -190,7 +190,7 @@
                     $ranExtension = $true
                     $inObj = $_
                     if ($inObj.ExtensionOutput) {
-                        Write-Verbose "Adding Filter Parameters from Extension '$extensionCommand'"
+                        Write-Verbose "Adding Filter Parameters from Extension '$($inObj.extensionCommand)'"
                         Write-Verbose "$($inObj.extensionOutput)"
                         $extensionParams += $inObj.ExtensionOutput
                     }

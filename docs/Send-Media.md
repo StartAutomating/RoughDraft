@@ -1,4 +1,3 @@
-
 Send-Media
 ----------
 ### Synopsis
@@ -206,5 +205,3 @@ Send-Media [-InputType <String>] [-InputDevice <String>] [-InitialArgumentList <
 Send-Media [-InputPath <String>] [-InitialArgumentList <String[]>] [-ArgumentList <String[]>] [-OutputUri <Uri>] [-OutputProtocol <String>] [-AsJob] [-FFMpegPath <String>] [-Loop] [-LoopCount <Int32>] [<CommonParameters>]
 ```
 ---
-
-

@@ -1,4 +1,3 @@
-
 Use-FFProbe
 -----------
 ### Synopsis
@@ -87,5 +86,3 @@ If set, will launch in a background job.
 Use-FFProbe [-FFProbeArgument <String[]>] [-FFProbePath <String>] [-AsJob] [<CommonParameters>]
 ```
 ---
-
-

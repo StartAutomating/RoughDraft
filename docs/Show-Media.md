@@ -1,4 +1,3 @@
-
 Show-Media
 ----------
 ### Synopsis
@@ -403,5 +402,3 @@ The path to FFPlay.  If not provided, this will be automatically detected.
 Show-Media [[-InputPath] <String>] [-AsJob] [-Resolution <String>] [-ShowMode <String>] [-Volume <Int32>] [-Fullscreen] [-KeepOpen] [-DoNotAutoRotate] [-Left <Int32>] [-Top <Int32>] [-Width <Int32>] [-Height <Int32>] [-NoDisplay] [-NoBorder] [-AlwaysOnTop] [-Loop] [-LoopCount <Int32>] [-ThreadCount <String>] [-FFPlayPath <String>] [<CommonParameters>]
 ```
 ---
-
-

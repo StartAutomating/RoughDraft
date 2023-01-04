@@ -1,4 +1,3 @@
-
 Convert-Media
 -------------
 ### Synopsis
@@ -512,5 +511,3 @@ If set, this will loop the input source any number of times.
 Convert-Media [-InputPath] <String> [-OutputPath] <String> [-Codec <String>] [-FFMpegPath <String>] [-FrameRate <String>] [-CopyAudio] [-AudioCodec <String>] [-AudioFilter <String[]>] [-VideoFilter <String[]>] [-AudioQuality <Int32>] [-AudioBitrate <String>] [-AudioStreamIndex <Int32>] [-AudioChannelCount <UInt32>] [-MetaData <IDictionary>] [[-Start] <TimeSpan>] [[-End] <TimeSpan>] [[-Duration] <TimeSpan>] [-Preset <String>] [-Tune <String>] [-VideoQuality <Int32>] [-VideoCodec <String>] [-VideoFrameCount <UInt32>] [-PixelFormat <String>] [-AsJob] [-FFMpegArgument <String[]>] [-Loop] [-LoopCount <Int32>] [<CommonParameters>]
 ```
 ---
-
-

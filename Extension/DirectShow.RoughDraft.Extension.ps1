@@ -3,7 +3,8 @@
     DirectShow Extension
 .Description
     The DirectShow extension lets you used DirectShow input devices
-
+.EXAMPLE
+    Show-Media -DirectShow -VideoDevice $myWebCam
 #>
 [Management.Automation.Cmdlet("Receive","Media")]
 [Management.Automation.Cmdlet("Send","Media")]
@@ -24,9 +25,12 @@ $VideoDevice,
 $AudioDevice
 )
 
-
-'-f','dshow'
-'-i', "$(@(
+$deviceString = @(
     if ($VideoDevice) {"video=$videoDevice"}
-    if ($AudioDevice) {"audio=$AudioDevice"}    
-) -join ':')"
+    if ($AudioDevice) {"audio=$audioDevice"}
+) -join ':'
+
+'-f'
+'dshow'
+'-i'
+$deviceString

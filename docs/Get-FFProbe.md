@@ -1,4 +1,3 @@
-
 Get-FFProbe
 -----------
 ### Synopsis
@@ -46,5 +45,3 @@ The path to FFProbe
 Get-FFProbe [[-FFProbePath] <Object>] [<CommonParameters>]
 ```
 ---
-
-

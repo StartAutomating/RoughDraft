@@ -1,4 +1,3 @@
-
 Get-RoughDraftExtension
 -----------------------
 ### Synopsis
@@ -409,5 +408,3 @@ If set, will output the help for the extensions
 Get-RoughDraftExtension [[-ExtensionPath] <String>] [-Force] [[-CommandName] <String[]>] [[-ExtensionName] <String[]>] [-Like] [-Match] [-DynamicParameter] [-CouldRun] [[-CouldPipe] <PSObject>] [-Run] [-Stream] [[-DynamicParameterSetName] <String>] [[-DynamicParameterPositionOffset] <Int32>] [-NoMandatoryDynamicParameter] [-RequireExtensionAttribute] [[-ValidateInput] <PSObject>] [-AllValid] [[-ParameterSetName] <String>] [[-Parameter] <IDictionary>] [-SteppablePipeline] [-Help] [<CommonParameters>]
 ```
 ---
-
-

@@ -1,4 +1,3 @@
-
 Set-Media
 ---------
 ### Synopsis
@@ -126,5 +125,3 @@ If the command sets a ```[ConfirmImpact("Medium")]``` which is lower than ```$co
 Set-Media [-InputPath] <String[]> [[-Property] <PSObject[]>] [[-ClearProperty] <String[]>] [[-FFMpegPath] <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 ---
-
-

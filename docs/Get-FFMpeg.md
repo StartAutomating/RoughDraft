@@ -1,4 +1,3 @@
-
 Get-FFMpeg
 ----------
 ### Synopsis
@@ -57,5 +56,3 @@ The path to FFMpeg
 Get-FFMpeg [[-FFMpegPath] <String>] [<CommonParameters>]
 ```
 ---
-
-

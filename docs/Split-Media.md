@@ -1,4 +1,3 @@
-
 Split-Media
 -----------
 ### Synopsis
@@ -133,5 +132,3 @@ The time span to end splitting the video
 Split-Media -InputPath <String> [[-OutputPath] <String[]>] [-FFMpegPath <String>] [-Start] <TimeSpan> [[-End] <TimeSpan>] [<CommonParameters>]
 ```
 ---
-
-

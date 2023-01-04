@@ -1,4 +1,3 @@
-
 New-Media
 ---------
 ### Synopsis
@@ -124,5 +123,3 @@ If set, will create the media in a background job.
 New-Media [-OutputPath] <String> [[-Duration] <TimeSpan>] [[-Resolution] <String>] [[-PixelFormat] <String>] [-AsJob] [<CommonParameters>]
 ```
 ---
-
-

@@ -54,6 +54,6 @@ if ($Rotate) { # If we're going to rotate the video
                 "fillcolor=$rotateFillColor"
             }
         ) -join ':'
-        "`"rotate=$filterArgs`""
+        "rotate='$filterArgs'"
     }
 }

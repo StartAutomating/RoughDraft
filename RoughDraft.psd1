@@ -1,6 +1,6 @@
 @{
     CompanyName='Start-Automating'
-    ModuleVersion='0.3.7'
+    ModuleVersion='0.3.8'
     ModuleToProcess='RoughDraft.psm1'
     GUID='c192ebbf-57a3-493e-bc82-da7553038794'
     Description='A Fun PowerShell Module for Multimedia'
@@ -14,6 +14,19 @@
             LicenseURI = 'https://github.com/StartAutomating/RoughDraft/blob/main/LICENSE'
             IconURI    = 'https://github.com/StartAutomating/RoughDraft/blob/main/Assets/RoughDraft.png'
             ReleaseNotes = @'
+## 0.3.8:
+
+* New Extensions:
+  * AudioFrequencyExpression (Fixes #158)
+  * Erosion (Fixes #165)
+  * FiniteEqualizer (Fixes #164)
+  * Scale (Fixes #162)
+  * Temp (Fixes #161)
+  * PitchFactor (Fixes #157)
+  * ZoomPan (Fixes #159)
+
+---
+  
 ## 0.3.7:
 * New Extensions:
   * AudioCrusher (Fixes #148)

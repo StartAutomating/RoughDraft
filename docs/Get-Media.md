@@ -1,4 +1,3 @@
-
 Get-Media
 ---------
 ### Synopsis
@@ -225,5 +224,3 @@ If set, will run this in a background job
 Get-Media [[-InputPath] <String[]>] [-FFProbePath <String>] [-FFMpegPath <String>] [-Stream <String[]>] [-Entry <String[]>] [-OutputPacket] [-OutputData] [-OutputFrame] [-ProbeTryCount <Int32>] [-AsJob] [<CommonParameters>]
 ```
 ---
-
-
