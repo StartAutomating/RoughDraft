@@ -1,4 +1,17 @@
-﻿## 0.3.7:
+﻿## 0.3.8:
+
+* New Extensions:
+  * AudioFrequencyExpression (Fixes #158)
+  * Erosion (Fixes #165)
+  * FiniteEqualizer (Fixes #164)
+  * Scale (Fixes #162)
+  * Temp (Fixes #161)
+  * PitchFactor (Fixes #157)
+  * ZoomPan (Fixes #159)
+
+---
+
+## 0.3.7:
 * New Extensions:
   * AudioCrusher (Fixes #148)
   * Chorus (Fixes #20)
