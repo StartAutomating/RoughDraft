@@ -21,12 +21,12 @@
 |ColorScope|Colorscope extension|Show-Media,Edit-Media|
 |ColorSource|Generates a color|Show-Media,New-Media|
 |Convolve|convolve|Join-Media|
-|Crop|Crop Extension|Edit-Media,Show-Media,Receive-Media,Send-Media|
+|Crop|Crop Extension|Show-Media,Edit-Media,Receive-Media,Send-Media|
 |CropDetect|Auto-detect the crop size.|Get-Media|
 |DataScope|Datascope effect|Edit-Media|
 |Deconvolve|deconvolve|Join-Media|
 |DirectShow|DirectShow Extension|Show-Media,Receive-Media,Send-Media|
-|DrawSubtitle|Draw subtitles on top of input video|Edit-Media,Convert-Media|
+|DrawSubtitle|Draw subtitles on top of input video|Convert-Media,Edit-Media|
 |Echo|Adds echoes to audio|Show-Media,Edit-Media|
 |EdgeDetect|EdgeDetect Extension|Show-Media,Edit-Media|
 |Emboss|Embosses video or images|Edit-Media|
@@ -63,10 +63,10 @@
 |Pulsator|Pulsator Effect|Show-Media,Edit-Media|
 |RandomizeFrame|RandomizeFrame extensions|Show-Media,Edit-Media|
 |Rate|Adjusts the rate of media.|Show-Media,Edit-Media|
-|Resize|Simple video resize.|Edit-Media,Convert-Media,Show-Media|
+|Resize|Simple video resize.|Edit-Media,Show-Media,Convert-Media|
 |ReverseAudio|Reverses audio|Edit-Media|
 |ReverseVideo|Reverses video|Edit-Media|
-|Rotate|Rotates a video|Edit-Media,Convert-Media,Show-Media|
+|Rotate|Rotates a video|Edit-Media,Show-Media,Convert-Media|
 |Scale|Scales video.|Show-Media,Edit-Media|
 |ScrollVideo|Scrolls video|Show-Media,Edit-Media|
 |Sepia|Applies a Sepia Filter|Edit-Media|
