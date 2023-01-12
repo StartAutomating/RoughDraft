@@ -172,6 +172,24 @@ If set, will run as a background job.
 
 
 ---
+#### **ThrottleLimit**
+
+If set, will limit the number of background jobs to a throttle limit.
+By default 5.
+Throttling is only available if running on PowerShell Core.
+
+
+
+
+
+
+|Type     |Required|Position|PipelineInput|
+|---------|--------|--------|-------------|
+|`[Int32]`|false   |named   |false        |
+
+
+
+---
 #### **FFMpegPath**
 
 The path to FFMpeg.exe.  By default, checks in the path.
@@ -190,7 +208,7 @@ The path to FFMpeg.exe.  By default, checks in the path.
 ---
 ### Syntax
 ```PowerShell
-Receive-Media [-InputType <String>] [-InputDevice <String>] [-PixelFormat <String>] [-FrameRate <String>] [-FrameCount <String>] [-Duration <TimeSpan>] [-FFMpegArgument <String[]>] [-OutputPath <String>] [-AsJob] [-FFMpegPath <String>] [<CommonParameters>]
+Receive-Media [-InputType <String>] [-InputDevice <String>] [-PixelFormat <String>] [-FrameRate <String>] [-FrameCount <String>] [-Duration <TimeSpan>] [-FFMpegArgument <String[]>] [-OutputPath <String>] [-AsJob] [-ThrottleLimit <Int32>] [-FFMpegPath <String>] [<CommonParameters>]
 ```
 ---
 ### Notes
