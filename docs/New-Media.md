@@ -87,6 +87,22 @@ If provided, will use a specific pixel format for video and image output.  This 
 
 
 ---
+#### **FFMpegArgument**
+
+A list of additional arguments to FFMpeg.
+
+
+
+
+
+
+|Type        |Required|Position|PipelineInput|
+|------------|--------|--------|-------------|
+|`[String[]]`|false   |5       |false        |
+
+
+
+---
 #### **AsJob**
 
 If set, will create the media in a background job.
@@ -115,6 +131,6 @@ If set, will create the media in a background job.
 ---
 ### Syntax
 ```PowerShell
-New-Media [-OutputPath] <String> [[-Duration] <TimeSpan>] [[-Resolution] <String>] [[-PixelFormat] <String>] [-AsJob] [<CommonParameters>]
+New-Media [-OutputPath] <String> [[-Duration] <TimeSpan>] [[-Resolution] <String>] [[-PixelFormat] <String>] [[-FFMpegArgument] <String[]>] [-AsJob] [<CommonParameters>]
 ```
 ---
