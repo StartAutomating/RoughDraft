@@ -48,13 +48,12 @@ The Pitch Factor.
 
 
 
-> **Type**: ```[Double]```
 
-> **Required**: true
 
-> **Position**: 1
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[Double]`|true    |1       |false        |
 
 
 
@@ -67,13 +66,12 @@ When using Show-Media, this defaults to 44100
 
 
 
-> **Type**: ```[Int32]```
 
-> **Required**: false
 
-> **Position**: 2
 
-> **PipelineInput**:false
+|Type     |Required|Position|PipelineInput|
+|---------|--------|--------|-------------|
+|`[Int32]`|false   |2       |false        |
 
 
 
@@ -83,7 +81,6 @@ When using Show-Media, this defaults to 44100
 Extension/PitchFactor.RoughDraft.Extension.ps1 [-PitchFactor] <Double> [[-PitchFactorSampleRate] <Int32>] [<CommonParameters>]
 ```
 ---
-
 
 
 
