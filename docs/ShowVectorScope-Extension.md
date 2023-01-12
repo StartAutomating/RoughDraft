@@ -35,13 +35,12 @@ If set, will show volume
 
 
 
-> **Type**: ```[Switch]```
 
-> **Required**: true
 
-> **Position**: named
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[Switch]`|true    |named   |false        |
 
 
 
@@ -52,13 +51,12 @@ Specify the video size for the output.  Default value is 400x400
 
 
 
-> **Type**: ```[String]```
 
-> **Required**: false
 
-> **Position**: 1
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[String]`|false   |1       |false        |
 
 
 
@@ -77,13 +75,12 @@ Valid Values:
 
 
 
-> **Type**: ```[String]```
 
-> **Required**: false
 
-> **Position**: 2
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[String]`|false   |2       |false        |
 
 
 
@@ -97,13 +94,12 @@ Values lower than 1 will auto adjust zoom factor to maximal possible value.
 
 
 
-> **Type**: ```[Double]```
 
-> **Required**: false
 
-> **Position**: 3
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[Double]`|false   |3       |false        |
 
 
 
@@ -121,13 +117,12 @@ Valid Values:
 
 
 
-> **Type**: ```[String]```
 
-> **Required**: false
 
-> **Position**: 4
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[String]`|false   |4       |false        |
 
 
 
@@ -147,13 +142,12 @@ Valid Values:
 
 
 
-> **Type**: ```[String]```
 
-> **Required**: false
 
-> **Position**: 5
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[String]`|false   |5       |false        |
 
 
 
@@ -164,13 +158,12 @@ Swap left channel axis with right channel axis.
 
 
 
-> **Type**: ```[Switch]```
 
-> **Required**: false
 
-> **Position**: named
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[Switch]`|false   |named   |false        |
 
 
 
@@ -190,13 +183,12 @@ Valid Values:
 
 
 
-> **Type**: ```[String]```
 
-> **Required**: false
 
-> **Position**: 6
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[String]`|false   |6       |false        |
 
 
 
@@ -207,13 +199,12 @@ Specify the red contrast. Default values is 40.
 
 
 
-> **Type**: ```[Int32]```
 
-> **Required**: false
 
-> **Position**: 7
 
-> **PipelineInput**:false
+|Type     |Required|Position|PipelineInput|
+|---------|--------|--------|-------------|
+|`[Int32]`|false   |7       |false        |
 
 
 
@@ -224,13 +215,12 @@ Specify the green contrast. Default value is 160.
 
 
 
-> **Type**: ```[Int32]```
 
-> **Required**: false
 
-> **Position**: 8
 
-> **PipelineInput**:false
+|Type     |Required|Position|PipelineInput|
+|---------|--------|--------|-------------|
+|`[Int32]`|false   |8       |false        |
 
 
 
@@ -241,13 +231,12 @@ Specify the blue contrast. Default value is 80.
 
 
 
-> **Type**: ```[Int32]```
 
-> **Required**: false
 
-> **Position**: 9
 
-> **PipelineInput**:false
+|Type     |Required|Position|PipelineInput|
+|---------|--------|--------|-------------|
+|`[Int32]`|false   |9       |false        |
 
 
 
@@ -258,13 +247,12 @@ Specify the alpha contrast. Default values is 255.
 
 
 
-> **Type**: ```[Int32]```
 
-> **Required**: false
 
-> **Position**: 10
 
-> **PipelineInput**:false
+|Type     |Required|Position|PipelineInput|
+|---------|--------|--------|-------------|
+|`[Int32]`|false   |10      |false        |
 
 
 
@@ -275,13 +263,12 @@ Specify the red, green, blue and alpha fade. Default values is 15.
 
 
 
-> **Type**: ```[Int32]```
 
-> **Required**: false
 
-> **Position**: 11
 
-> **PipelineInput**:false
+|Type     |Required|Position|PipelineInput|
+|---------|--------|--------|-------------|
+|`[Int32]`|false   |11      |false        |
 
 
 
@@ -292,13 +279,12 @@ Specify the green fade. Default values is 10.
 
 
 
-> **Type**: ```[Int32]```
 
-> **Required**: false
 
-> **Position**: 12
 
-> **PipelineInput**:false
+|Type     |Required|Position|PipelineInput|
+|---------|--------|--------|-------------|
+|`[Int32]`|false   |12      |false        |
 
 
 
@@ -309,13 +295,12 @@ Specify the blue fade. Default values is 5.
 
 
 
-> **Type**: ```[Int32]```
 
-> **Required**: false
 
-> **Position**: 13
 
-> **PipelineInput**:false
+|Type     |Required|Position|PipelineInput|
+|---------|--------|--------|-------------|
+|`[Int32]`|false   |13      |false        |
 
 
 
@@ -326,13 +311,12 @@ Specify the alpha fade. Default values is 5.
 
 
 
-> **Type**: ```[Int32]```
 
-> **Required**: false
 
-> **Position**: 14
 
-> **PipelineInput**:false
+|Type     |Required|Position|PipelineInput|
+|---------|--------|--------|-------------|
+|`[Int32]`|false   |14      |false        |
 
 
 
@@ -342,7 +326,6 @@ Specify the alpha fade. Default values is 5.
 Extension/ShowVectorScope.RoughDraft.Extension.ps1 -ShowVectorScope [[-ShowVectorScopeSize] <String>] [[-ShowVectorScopeMode] <String>] [[-ShowVectorScopeZoom] <Double>] [[-ShowVectorScopeDrawMode] <String>] [[-ShowVectorScopeScale] <String>] [-ShowVectorScopeSwap] [[-ShowVectorScopeMirror] <String>] [[-ShowVectorScopeRedContrast] <Int32>] [[-ShowVectorScopeGreenContrast] <Int32>] [[-ShowVectorScopeBlueContrast] <Int32>] [[-ShowVectorScopeAlphaContrast] <Int32>] [[-ShowVectorScopeRedFade] <Int32>] [[-ShowVectorScopeGreenFade] <Int32>] [[-ShowVectorScopeBlueFade] <Int32>] [[-ShowVectorScopeAlphaFade] <Int32>] [<CommonParameters>]
 ```
 ---
-
 
 
 
