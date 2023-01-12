@@ -111,7 +111,8 @@
     [string]
     $ThreadCount,
 
-    # Any additional arguments to FFMpeg
+    # A list of additional arguments to FFMpeg.
+    [Alias('Arguments','Argument','ArgumentList','FFArgs')]
     [Parameter(ValueFromRemainingArguments)]
     [string[]]
     $FFMpegArgument,
