@@ -17,13 +17,12 @@ The path to album art.
 
 
 
-> **Type**: ```[String]```
 
-> **Required**: true
 
-> **Position**: 1
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[String]`|true    |1       |false        |
 
 
 
@@ -34,13 +33,12 @@ The type of album art.  By default 'Cover (front)'
 
 
 
-> **Type**: ```[String]```
 
-> **Required**: false
 
-> **Position**: 2
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[String]`|false   |2       |false        |
 
 
 
@@ -50,7 +48,6 @@ The type of album art.  By default 'Cover (front)'
 Extension/AlbumArt.RoughDraft.Extension.ps1 [-AlbumArt] <String> [[-AlbumArtType] <String>] [<CommonParameters>]
 ```
 ---
-
 
 
 
