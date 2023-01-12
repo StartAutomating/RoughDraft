@@ -298,7 +298,7 @@ The number of threads to use for decoding and filtering.
 ---
 #### **FFMpegArgument**
 
-Any additional arguments to FFMpeg
+A list of additional arguments to FFMpeg.
 
 
 
