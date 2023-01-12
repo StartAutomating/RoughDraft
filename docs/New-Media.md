@@ -119,6 +119,24 @@ If set, will create the media in a background job.
 
 
 ---
+#### **ThrottleLimit**
+
+If set, will limit the number of background jobs to a throttle limit.
+By default 5.
+Throttling is only available if running on PowerShell Core.
+
+
+
+
+
+
+|Type     |Required|Position|PipelineInput|
+|---------|--------|--------|-------------|
+|`[Int32]`|false   |6       |false        |
+
+
+
+---
 ### Outputs
 * [IO.FileInfo](https://learn.microsoft.com/en-us/dotnet/api/System.IO.FileInfo)
 
@@ -131,6 +149,6 @@ If set, will create the media in a background job.
 ---
 ### Syntax
 ```PowerShell
-New-Media [-OutputPath] <String> [[-Duration] <TimeSpan>] [[-Resolution] <String>] [[-PixelFormat] <String>] [[-FFMpegArgument] <String[]>] [-AsJob] [<CommonParameters>]
+New-Media [-OutputPath] <String> [[-Duration] <TimeSpan>] [[-Resolution] <String>] [[-PixelFormat] <String>] [[-FFMpegArgument] <String[]>] [-AsJob] [[-ThrottleLimit] <Int32>] [<CommonParameters>]
 ```
 ---
