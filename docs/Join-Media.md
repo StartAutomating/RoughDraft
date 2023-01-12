@@ -173,16 +173,16 @@ Not supported by all codecs.  This maps to the --tune parameter in ffmpeg.
 ---
 #### **FFMpegArgument**
 
-Any additional arguments to pass to FFMpeg.
+A list of additional arguments to FFMpeg.
 
 
 
 
 
 
-|Type        |Required|Position|PipelineInput        |
-|------------|--------|--------|---------------------|
-|`[String[]]`|false   |named   |true (ByPropertyName)|
+|Type        |Required|Position|PipelineInput|
+|------------|--------|--------|-------------|
+|`[String[]]`|false   |named   |false        |
 
 
 
@@ -203,6 +203,40 @@ The pixel format for video and image output.  This maps to the -pix_fmt paramete
 
 
 ---
+#### **AsJob**
+
+If set, will run as a background job.
+
+
+
+
+
+
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[Switch]`|false   |named   |false        |
+
+
+
+---
+#### **ThrottleLimit**
+
+If set, will limit the number of background jobs to a throttle limit.
+By default 5.
+Throttling is only available if running on PowerShell Core.
+
+
+
+
+
+
+|Type     |Required|Position|PipelineInput|
+|---------|--------|--------|-------------|
+|`[Int32]`|false   |named   |false        |
+
+
+
+---
 ### Outputs
 * [IO.FileInfo](https://learn.microsoft.com/en-us/dotnet/api/System.IO.FileInfo)
 
@@ -212,10 +246,10 @@ The pixel format for video and image output.  This maps to the -pix_fmt paramete
 ---
 ### Syntax
 ```PowerShell
-Join-Media [-InputPath] <String[]> [-OutputPath] <String> [-Transcode] [-Shortest] [-FrameRate <UInt32>] [-ThreadCount <String>] [-Preset <String>] [-Tune <String>] [-FFMpegArgument <String[]>] [-PixelFormat <String>] [<CommonParameters>]
+Join-Media [-InputPath] <String[]> [-OutputPath] <String> [-Transcode] [-Shortest] [-FrameRate <UInt32>] [-ThreadCount <String>] [-Preset <String>] [-Tune <String>] [-FFMpegArgument <String[]>] [-PixelFormat <String>] [-AsJob] [-ThrottleLimit <Int32>] [<CommonParameters>]
 ```
 ```PowerShell
-Join-Media [-InputPath] <String[]> [-OutputPath] <String> [-Transcode] [-Shortest] [-FrameRate <UInt32>] -TimeLapse [-ThreadCount <String>] [-Preset <String>] [-Tune <String>] [-FFMpegArgument <String[]>] [-PixelFormat <String>] [<CommonParameters>]
+Join-Media [-InputPath] <String[]> [-OutputPath] <String> [-Transcode] [-Shortest] [-FrameRate <UInt32>] -TimeLapse [-ThreadCount <String>] [-Preset <String>] [-Tune <String>] [-FFMpegArgument <String[]>] [-PixelFormat <String>] [-AsJob] [-ThrottleLimit <Int32>] [<CommonParameters>]
 ```
 ---
 ### Notes
