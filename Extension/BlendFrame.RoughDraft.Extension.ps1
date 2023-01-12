@@ -2,11 +2,14 @@
 .SYNOPSIS
     BlendFrame Extension
 .DESCRIPTION
-    Blends Successive Frames
+    Blends Frames.
+    
+    If used with one file (Edit/Show-Media), blends successive frames.
+    If used with two files, blends frames from two video streams.    
 .LINK
     https://ffmpeg.org/ffmpeg-filters.html#blend
 #>
-[Management.Automation.Cmdlet("^Edit|Show","Media")]
+[Management.Automation.Cmdlet("^(?>Edit|Show|Join)","Media")]
 param(
 # If set, will blend frames
 [Parameter(Mandatory)]
@@ -153,5 +156,10 @@ $filterArgs = @(
     }
 ) -join ':'
 
-"-vf"
-"tblend=$filterArgs" -replace '=$'
+if ($commandName -eq 'Join-Media') {    
+    "-filter_complex"
+    "blend=$filterArgs" 
+} else {
+    "-vf"
+    "tblend=$filterArgs" -replace '=$'
+}
