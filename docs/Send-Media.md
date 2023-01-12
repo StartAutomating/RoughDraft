@@ -74,7 +74,7 @@ A list of initial arguments to FFMpeg.
 
 
 ---
-#### **ArgumentList**
+#### **FFMpegArgument**
 
 A list of additional arguments to FFMpeg.
 
@@ -188,9 +188,9 @@ If set, this will loop the input source any number of times.
 ---
 ### Syntax
 ```PowerShell
-Send-Media [-InputType <String>] [-InputDevice <String>] [-InitialArgumentList <String[]>] [-ArgumentList <String[]>] [-OutputUri <Uri>] [-OutputProtocol <String>] [-AsJob] [-FFMpegPath <String>] [-Loop] [-LoopCount <Int32>] [<CommonParameters>]
+Send-Media [-InputType <String>] [-InputDevice <String>] [-InitialArgumentList <String[]>] [-FFMpegArgument <String[]>] [-OutputUri <Uri>] [-OutputProtocol <String>] [-AsJob] [-FFMpegPath <String>] [-Loop] [-LoopCount <Int32>] [<CommonParameters>]
 ```
 ```PowerShell
-Send-Media [-InputPath <String>] [-InitialArgumentList <String[]>] [-ArgumentList <String[]>] [-OutputUri <Uri>] [-OutputProtocol <String>] [-AsJob] [-FFMpegPath <String>] [-Loop] [-LoopCount <Int32>] [<CommonParameters>]
+Send-Media [-InputPath <String>] [-InitialArgumentList <String[]>] [-FFMpegArgument <String[]>] [-OutputUri <Uri>] [-OutputProtocol <String>] [-AsJob] [-FFMpegPath <String>] [-Loop] [-LoopCount <Int32>] [<CommonParameters>]
 ```
 ---
