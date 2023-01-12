@@ -51,9 +51,10 @@
     $Duration,
 
     # A list of additional arguments to FFMpeg.
-    [Alias('Arguments','Argument')]
+    [Alias('Arguments','Argument','ArgumentList','FFArgs')]
+    [Parameter(ValueFromRemainingArguments)]
     [string[]]
-    $ArgumentList,
+    $FFMpegArgument,
 
     # If set, will save output to a file
     [Parameter(ValueFromPipelineByPropertyName)]
@@ -128,7 +129,7 @@
             }
             
 
-            $allArguments += $ArgumentList
+            $allArguments += $FFMpegArgument
             if ($OutputPath) {
                 $allArguments += $OutputPath, '-y'
             }
