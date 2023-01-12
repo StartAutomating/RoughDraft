@@ -35,13 +35,12 @@ If set, will remove silence.
 
 
 
-> **Type**: ```[Switch]```
 
-> **Required**: true
 
-> **Position**: named
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[Switch]`|true    |named   |false        |
 
 
 
@@ -52,13 +51,12 @@ The Silence Duration
 
 
 
-> **Type**: ```[TimeSpan]```
 
-> **Required**: false
 
-> **Position**: 1
 
-> **PipelineInput**:false
+|Type        |Required|Position|PipelineInput|
+|------------|--------|--------|-------------|
+|`[TimeSpan]`|false   |1       |false        |
 
 
 
@@ -71,13 +69,12 @@ Otherwise, it will be treated as a decibal value.
 
 
 
-> **Type**: ```[Double]```
 
-> **Required**: false
 
-> **Position**: 2
 
-> **PipelineInput**:true (ByPropertyName)
+|Type      |Required|Position|PipelineInput        |
+|----------|--------|--------|---------------------|
+|`[Double]`|false   |2       |true (ByPropertyName)|
 
 
 
@@ -88,13 +85,12 @@ If set, will find silence within any channel of audio
 
 
 
-> **Type**: ```[Switch]```
 
-> **Required**: false
 
-> **Position**: named
 
-> **PipelineInput**:true (ByPropertyName)
+|Type      |Required|Position|PipelineInput        |
+|----------|--------|--------|---------------------|
+|`[Switch]`|false   |named   |true (ByPropertyName)|
 
 
 
@@ -108,13 +104,12 @@ To trim more than one period of silence, pass a value greater than one.
 
 
 
-> **Type**: ```[Int32]```
 
-> **Required**: false
 
-> **Position**: 3
 
-> **PipelineInput**:true (ByPropertyName)
+|Type     |Required|Position|PipelineInput        |
+|---------|--------|--------|---------------------|
+|`[Int32]`|false   |3       |true (ByPropertyName)|
 
 
 
@@ -126,13 +121,12 @@ The default is 0 (trim after the last silence, but don't trim between the first 
 
 
 
-> **Type**: ```[Int32]```
 
-> **Required**: false
 
-> **Position**: 4
 
-> **PipelineInput**:true (ByPropertyName)
+|Type     |Required|Position|PipelineInput        |
+|---------|--------|--------|---------------------|
+|`[Int32]`|false   |4       |true (ByPropertyName)|
 
 
 
@@ -142,7 +136,6 @@ The default is 0 (trim after the last silence, but don't trim between the first 
 Extension/SilenceRemove.RoughDraft.Extension.ps1 -RemoveSilence [[-SilenceDuration] <TimeSpan>] [[-SilenceThreshold] <Double>] [-AnyChannel] [[-SilenceStartPeriod] <Int32>] [[-SilenceStopPeriod] <Int32>] [<CommonParameters>]
 ```
 ---
-
 
 
 
