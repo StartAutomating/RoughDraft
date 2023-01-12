@@ -44,17 +44,7 @@
     [Alias('Arguments','Argument','ArgumentList','FFArgs')]
     [Parameter(ValueFromRemainingArguments)]
     [string[]]
-    $FFMpegArgument,
-    
-    # If set, will run as a background job.
-    [switch]
-    $AsJob,
-
-    # If set, will limit the number of background jobs to a throttle limit.
-    # By default 5.
-    # Throttling is only available if running on PowerShell Core.
-    [int]
-    $ThrottleLimit
+    $FFMpegArgument
     )
 
     dynamicParam {

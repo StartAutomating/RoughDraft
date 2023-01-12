@@ -53,6 +53,9 @@
     }
 
     process {
+        if ($AsJob) { # If -AsJob was passed,
+            return & $StartRoughDraftJob # start a background job.
+        }
         #region Find FFMpeg
         $ffmpeg = Get-FFMpeg -FFMpegPath $ffMpegPath
         if (-not $ffmpeg) { return }
