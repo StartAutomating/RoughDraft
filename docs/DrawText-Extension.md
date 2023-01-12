@@ -27,13 +27,12 @@ New-Media -Color "Black" -Duration "00:00:05" -Resolution 1920x1080 -OutputPath 
 ### Parameters
 #### **DrawText**
 
-> **Type**: ```[Switch]```
 
-> **Required**: true
 
-> **Position**: named
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[Switch]`|true    |named   |false        |
 
 
 
@@ -44,13 +43,12 @@ set font file
 
 
 
-> **Type**: ```[String]```
 
-> **Required**: false
 
-> **Position**: 1
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[String]`|false   |1       |false        |
 
 
 
@@ -61,13 +59,12 @@ set text
 
 
 
-> **Type**: ```[String]```
 
-> **Required**: false
 
-> **Position**: 2
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[String]`|false   |2       |false        |
 
 
 
@@ -78,13 +75,12 @@ set text file
 
 
 
-> **Type**: ```[String]```
 
-> **Required**: false
 
-> **Position**: 3
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[String]`|false   |3       |false        |
 
 
 
@@ -95,13 +91,12 @@ set foreground color (default "black")
 
 
 
-> **Type**: ```[String]```
 
-> **Required**: false
 
-> **Position**: 4
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[String]`|false   |4       |false        |
 
 
 
@@ -112,13 +107,12 @@ set foreground color expression (default "")
 
 
 
-> **Type**: ```[String]```
 
-> **Required**: false
 
-> **Position**: 5
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[String]`|false   |5       |false        |
 
 
 
@@ -129,13 +123,12 @@ set box color (default "white")
 
 
 
-> **Type**: ```[String]```
 
-> **Required**: false
 
-> **Position**: 6
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[String]`|false   |6       |false        |
 
 
 
@@ -146,13 +139,12 @@ set border color (default "black")
 
 
 
-> **Type**: ```[String]```
 
-> **Required**: false
 
-> **Position**: 7
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[String]`|false   |7       |false        |
 
 
 
@@ -163,13 +155,12 @@ set shadow color (default "black")
 
 
 
-> **Type**: ```[String]```
 
-> **Required**: false
 
-> **Position**: 8
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[String]`|false   |8       |false        |
 
 
 
@@ -180,13 +171,12 @@ set box (default false)
 
 
 
-> **Type**: ```[Switch]```
 
-> **Required**: false
 
-> **Position**: named
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[Switch]`|false   |named   |false        |
 
 
 
@@ -197,13 +187,12 @@ set box border width (from INT_MIN to INT_MAX) (default 0)
 
 
 
-> **Type**: ```[Int32]```
 
-> **Required**: false
 
-> **Position**: 9
 
-> **PipelineInput**:false
+|Type     |Required|Position|PipelineInput|
+|---------|--------|--------|-------------|
+|`[Int32]`|false   |9       |false        |
 
 
 
@@ -214,13 +203,12 @@ set line spacing in pixels (from INT_MIN to INT_MAX) (default 0)
 
 
 
-> **Type**: ```[Int32]```
 
-> **Required**: false
 
-> **Position**: 10
 
-> **PipelineInput**:false
+|Type     |Required|Position|PipelineInput|
+|---------|--------|--------|-------------|
+|`[Int32]`|false   |10      |false        |
 
 
 
@@ -231,13 +219,12 @@ set font size
 
 
 
-> **Type**: ```[String]```
 
-> **Required**: false
 
-> **Position**: 11
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[String]`|false   |11      |false        |
 
 
 
@@ -248,13 +235,12 @@ set x expression (default "0")
 
 
 
-> **Type**: ```[String]```
 
-> **Required**: false
 
-> **Position**: 12
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[String]`|false   |12      |false        |
 
 
 
@@ -265,13 +251,12 @@ set y expression (default "0")
 
 
 
-> **Type**: ```[String]```
 
-> **Required**: false
 
-> **Position**: 13
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[String]`|false   |13      |false        |
 
 
 
@@ -282,13 +267,12 @@ set shadow x offset (from INT_MIN to INT_MAX) (default 0)
 
 
 
-> **Type**: ```[Int32]```
 
-> **Required**: false
 
-> **Position**: 14
 
-> **PipelineInput**:false
+|Type     |Required|Position|PipelineInput|
+|---------|--------|--------|-------------|
+|`[Int32]`|false   |14      |false        |
 
 
 
@@ -299,13 +283,12 @@ set shadow y offset (from INT_MIN to INT_MAX) (default 0)
 
 
 
-> **Type**: ```[Int32]```
 
-> **Required**: false
 
-> **Position**: 15
 
-> **PipelineInput**:false
+|Type     |Required|Position|PipelineInput|
+|---------|--------|--------|-------------|
+|`[Int32]`|false   |15      |false        |
 
 
 
@@ -316,13 +299,12 @@ set border width (from INT_MIN to INT_MAX) (default 0)
 
 
 
-> **Type**: ```[Int32]```
 
-> **Required**: false
 
-> **Position**: 16
 
-> **PipelineInput**:false
+|Type     |Required|Position|PipelineInput|
+|---------|--------|--------|-------------|
+|`[Int32]`|false   |16      |false        |
 
 
 
@@ -333,13 +315,12 @@ set tab size (from 0 to INT_MAX) (default 4)
 
 
 
-> **Type**: ```[Int32]```
 
-> **Required**: false
 
-> **Position**: 17
 
-> **PipelineInput**:false
+|Type     |Required|Position|PipelineInput|
+|---------|--------|--------|-------------|
+|`[Int32]`|false   |17      |false        |
 
 
 
@@ -350,13 +331,12 @@ set base time (from I64_MIN to I64_MAX) (default I64_MIN)
 
 
 
-> **Type**: ```[Int64]```
 
-> **Required**: false
 
-> **Position**: 18
 
-> **PipelineInput**:false
+|Type     |Required|Position|PipelineInput|
+|---------|--------|--------|-------------|
+|`[Int64]`|false   |18      |false        |
 
 
 
@@ -367,13 +347,12 @@ Font name (default "Sans")
 
 
 
-> **Type**: ```[String]```
 
-> **Required**: false
 
-> **Position**: 19
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[String]`|false   |19      |false        |
 
 
 
@@ -384,13 +363,12 @@ set the expansion mode (from 0 to 2) (default normal)
 
 
 
-> **Type**: ```[Int32]```
 
-> **Required**: false
 
-> **Position**: 20
 
-> **PipelineInput**:false
+|Type     |Required|Position|PipelineInput|
+|---------|--------|--------|-------------|
+|`[Int32]`|false   |20      |false        |
 
 
 
@@ -401,13 +379,12 @@ set initial timecode
 
 
 
-> **Type**: ```[String]```
 
-> **Required**: false
 
-> **Position**: 21
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[String]`|false   |21      |false        |
 
 
 
@@ -418,13 +395,12 @@ set 24 hours max (timecode only) (default false)
 
 
 
-> **Type**: ```[Boolean]```
 
-> **Required**: false
 
-> **Position**: 22
 
-> **PipelineInput**:false
+|Type       |Required|Position|PipelineInput|
+|-----------|--------|--------|-------------|
+|`[Boolean]`|false   |22      |false        |
 
 
 
@@ -435,13 +411,12 @@ set rate (timecode only) (from 0 to INT_MAX) (default 0/1)
 
 
 
-> **Type**: ```[Double]```
 
-> **Required**: false
 
-> **Position**: 23
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[Double]`|false   |23      |false        |
 
 
 
@@ -452,13 +427,12 @@ set rate (timecode only) (from 0 to INT_MAX) (default 0/1)
 
 
 
-> **Type**: ```[Double]```
 
-> **Required**: false
 
-> **Position**: 24
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[Double]`|false   |24      |false        |
 
 
 
@@ -469,13 +443,12 @@ reload text file for each frame (default false)
 
 
 
-> **Type**: ```[Switch]```
 
-> **Required**: false
 
-> **Position**: named
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[Switch]`|false   |named   |false        |
 
 
 
@@ -486,13 +459,12 @@ apply alpha while rendering (default "1")
 
 
 
-> **Type**: ```[String]```
 
-> **Required**: false
 
-> **Position**: 25
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[String]`|false   |25      |false        |
 
 
 
@@ -503,13 +475,12 @@ check and fix text coords to avoid clipping (default false)
 
 
 
-> **Type**: ```[Switch]```
 
-> **Required**: false
 
-> **Position**: named
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[Switch]`|false   |named   |false        |
 
 
 
@@ -520,13 +491,12 @@ start frame number for n/frame_num variable (from 0 to INT_MAX) (default 0)
 
 
 
-> **Type**: ```[Int32]```
 
-> **Required**: false
 
-> **Position**: 26
 
-> **PipelineInput**:false
+|Type     |Required|Position|PipelineInput|
+|---------|--------|--------|-------------|
+|`[Int32]`|false   |26      |false        |
 
 
 
@@ -537,13 +507,12 @@ the source of text
 
 
 
-> **Type**: ```[String]```
 
-> **Required**: false
 
-> **Position**: 27
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[String]`|false   |27      |false        |
 
 
 
@@ -554,13 +523,12 @@ attempt to shape text before drawing (default true)
 
 
 
-> **Type**: ```[Switch]```
 
-> **Required**: false
 
-> **Position**: named
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[Switch]`|false   |named   |false        |
 
 
 
@@ -571,13 +539,12 @@ set font loading flags for libfreetype (default 0)
 
 
 
-> **Type**: ```[Int32]```
 
-> **Required**: false
 
-> **Position**: 28
 
-> **PipelineInput**:false
+|Type     |Required|Position|PipelineInput|
+|---------|--------|--------|-------------|
+|`[Int32]`|false   |28      |false        |
 
 
 
@@ -589,13 +556,12 @@ This will provide -DrawTextX '(w-text_w)/2' and -DrawTextY '(h-text_h)/2'
 
 
 
-> **Type**: ```[Switch]```
 
-> **Required**: false
 
-> **Position**: named
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[Switch]`|false   |named   |false        |
 
 
 
@@ -605,7 +571,6 @@ This will provide -DrawTextX '(w-text_w)/2' and -DrawTextY '(h-text_h)/2'
 Extension/DrawText.RoughDraft.Extension.ps1 -DrawText [[-DrawTextFontFile] <String>] [[-DrawTextText] <String>] [[-DrawTextTextFile] <String>] [[-DrawTextFontColor] <String>] [[-DrawTextFontColorExpression] <String>] [[-DrawTextBoxColor] <String>] [[-DrawTextBorderColor] <String>] [[-DrawTextShadowColor] <String>] [-DrawTextBox] [[-DrawTextBoxBorderWidth] <Int32>] [[-DrawTextLineSpacing] <Int32>] [[-DrawTextFontSize] <String>] [[-DrawTextX] <String>] [[-DrawTextY] <String>] [[-DrawTextShadowX] <Int32>] [[-DrawTextShadowY] <Int32>] [[-DrawTextBorderWidth] <Int32>] [[-DrawTextTabSize] <Int32>] [[-DrawTextBasetime] <Int64>] [[-DrawTextFont] <String>] [[-DrawTextExpansion] <Int32>] [[-DrawTextTimeCode] <String>] [[-DrawTextTc24hmax] <Boolean>] [[-DrawTextTimecodeRate] <Double>] [[-DrawTextRate] <Double>] [-DrawTextReload] [[-DrawTextAlpha] <String>] [-DrawTextFixBounds] [[-DrawTextStartNumber] <Int32>] [[-DrawTextTextSource] <String>] [-DrawTextTextShaping] [[-DrawTextFontLoadFlags] <Int32>] [-DrawTextCenter] [<CommonParameters>]
 ```
 ---
-
 
 
 
