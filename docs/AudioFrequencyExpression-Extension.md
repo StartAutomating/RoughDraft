@@ -30,13 +30,12 @@ Apply arbitrary expressions to samples in frequency domain.
 
 
 
-> **Type**: ```[Switch]```
 
-> **Required**: true
 
-> **Position**: named
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[Switch]`|true    |named   |false        |
 
 
 
@@ -62,13 +61,12 @@ Each expression in real and imag can contain the following constants and functio
 
 
 
-> **Type**: ```[String[]]```
 
-> **Required**: false
 
-> **Position**: 1
 
-> **PipelineInput**:false
+|Type        |Required|Position|PipelineInput|
+|------------|--------|--------|-------------|
+|`[String[]]`|false   |1       |false        |
 
 
 
@@ -94,13 +92,12 @@ Each expression in real and imag can contain the following constants and functio
 
 
 
-> **Type**: ```[String[]]```
 
-> **Required**: false
 
-> **Position**: 2
 
-> **PipelineInput**:false
+|Type        |Required|Position|PipelineInput|
+|------------|--------|--------|-------------|
+|`[String[]]`|false   |2       |false        |
 
 
 
@@ -111,13 +108,12 @@ set window size
 
 
 
-> **Type**: ```[Int32]```
 
-> **Required**: false
 
-> **Position**: 3
 
-> **PipelineInput**:false
+|Type     |Required|Position|PipelineInput|
+|---------|--------|--------|-------------|
+|`[Int32]`|false   |3       |false        |
 
 
 
@@ -154,13 +150,12 @@ Valid Values:
 
 
 
-> **Type**: ```[Object]```
 
-> **Required**: false
 
-> **Position**: 4
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[Object]`|false   |4       |false        |
 
 
 
@@ -171,13 +166,12 @@ set window overlap
 
 
 
-> **Type**: ```[Single]```
 
-> **Required**: false
 
-> **Position**: 5
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[Single]`|false   |5       |false        |
 
 
 
@@ -187,7 +181,6 @@ set window overlap
 Extension/AudioFrequencyExpression.RoughDraft.Extension.ps1 -FrequencyExpression [[-FrequencyExpressionReal] <String[]>] [[-FrequencyExpressionImaginary] <String[]>] [[-FrequencyExpressionWindowSize] <Int32>] [[-FrequencyExpressionWindowFunction] <Object>] [[-FrequencyExpressionOverlap] <Single>] [<CommonParameters>]
 ```
 ---
-
 
 
 
