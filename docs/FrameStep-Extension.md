@@ -31,13 +31,12 @@ Allowed values are positive integers higher than 0.
 
 
 
-> **Type**: ```[Int32]```
 
-> **Required**: true
 
-> **Position**: 1
 
-> **PipelineInput**:false
+|Type     |Required|Position|PipelineInput|
+|---------|--------|--------|-------------|
+|`[Int32]`|true    |1       |false        |
 
 
 
@@ -47,7 +46,6 @@ Allowed values are positive integers higher than 0.
 Extension/FrameStep.RoughDraft.Extension.ps1 [-FrameStep] <Int32> [<CommonParameters>]
 ```
 ---
-
 
 
 
