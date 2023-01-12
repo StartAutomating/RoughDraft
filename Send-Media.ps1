@@ -28,9 +28,10 @@
     $InitialArgumentList,
 
     # A list of additional arguments to FFMpeg.
-    [Alias('Arguments','Argument')]
+    [Alias('Arguments','Argument','ArgumentList','FFArgs')]
+    [Parameter(ValueFromRemainingArguments)]
     [string[]]
-    $ArgumentList,
+    $FFMpegArgument,
 
     # The outputURI where the broadcast will be sent.
     [Parameter(ValueFromPipelineByPropertyName)]
@@ -125,7 +126,7 @@
                 $allArguments += $extensionArguments
             }
 
-            $allArguments += $ArgumentList
+            $allArguments += $FFMpegArgument
 
             if ($OutputProtocol) {
                 $allArguments += '-f',$OutputProtocol
