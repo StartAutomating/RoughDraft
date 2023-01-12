@@ -27,13 +27,12 @@ If set, will pick median pixels.
 
 
 
-> **Type**: ```[Switch]```
 
-> **Required**: true
 
-> **Position**: named
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[Switch]`|true    |named   |false        |
 
 
 
@@ -44,13 +43,12 @@ If set, will pick median pixels from successive frames.  This will ignore -Media
 
 
 
-> **Type**: ```[Switch]```
 
-> **Required**: true
 
-> **Position**: named
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[Switch]`|true    |named   |false        |
 
 
 
@@ -61,13 +59,12 @@ Set horizontal radius size. Default value is 1. Allowed range is integer from 1 
 
 
 
-> **Type**: ```[Int32]```
 
-> **Required**: false
 
-> **Position**: 1
 
-> **PipelineInput**:false
+|Type     |Required|Position|PipelineInput|
+|---------|--------|--------|-------------|
+|`[Int32]`|false   |1       |false        |
 
 
 
@@ -78,13 +75,12 @@ Set which planes to process. Default is 15, which is all available planes.
 
 
 
-> **Type**: ```[String]```
 
-> **Required**: false
 
-> **Position**: 2
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[String]`|false   |2       |false        |
 
 
 
@@ -97,13 +93,12 @@ If it is 0, value will be picked from horizontal radius option.
 
 
 
-> **Type**: ```[Int32]```
 
-> **Required**: false
 
-> **Position**: 3
 
-> **PipelineInput**:false
+|Type     |Required|Position|PipelineInput|
+|---------|--------|--------|-------------|
+|`[Int32]`|false   |3       |false        |
 
 
 
@@ -117,13 +112,12 @@ while 0 will pick minimum values and 1 maximum values.
 
 
 
-> **Type**: ```[Double]```
 
-> **Required**: false
 
-> **Position**: 4
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[Double]`|false   |4       |false        |
 
 
 
@@ -133,7 +127,6 @@ while 0 will pick minimum values and 1 maximum values.
 Extension/MedianPixel.RoughDraft.Extension.ps1 -MedianPixel -MedianPixelTimeBlend [[-MedianPixelRadius] <Int32>] [[-MedianPixelPlanes] <String>] [[-MedianPixelRadiusV] <Int32>] [[-MedianPixelPercentile] <Double>] [<CommonParameters>]
 ```
 ---
-
 
 
 
