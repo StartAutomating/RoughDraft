@@ -44,7 +44,13 @@
     [Parameter(Position=2, ValueFromPipelineByPropertyName,ParameterSetName='Segment')]
     [Alias('EndTime')]
     [Timespan]
-    $End
+    $End,
+
+    # A list of additional arguments to FFMpeg.
+    [Alias('Arguments','Argument','ArgumentList','FFArgs')]
+    [Parameter(ValueFromRemainingArguments)]
+    [string[]]
+    $FFMpegArgument
     )
 
     dynamicParam {
@@ -148,6 +154,10 @@
             if ($in.OutputPath.Count -eq 1) {
                 $uro = $ExecutionContext.SessionState.Path.GetUnresolvedProviderPathFromPSPath($OutputPath)
                 $ffArgs += "$uro", '-y'
+            }
+
+            if ($FFMpegArgument) {
+                $ffArgs += $FFMpegArgument
             }
 
             Use-FFMpeg -FFMpegArgument $ffArgs -FFMpegPath $FFMpegPath |
