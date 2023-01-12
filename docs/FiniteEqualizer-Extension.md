@@ -34,13 +34,12 @@ Finite Impulse Response Equalizer.
 
 
 
-> **Type**: ```[Switch]```
 
-> **Required**: true
 
-> **Position**: named
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[Switch]`|true    |named   |false        |
 
 
 
@@ -80,13 +79,12 @@ same as gain_interpolate, but smoother
 
 
 
-> **Type**: ```[String]```
 
-> **Required**: false
 
-> **Position**: 1
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[String]`|false   |1       |false        |
 
 
 
@@ -102,13 +100,12 @@ This option is also available as command.
 
 
 
-> **Type**: ```[String]```
 
-> **Required**: false
 
-> **Position**: 2
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[String]`|false   |2       |false        |
 
 
 
@@ -119,13 +116,12 @@ Set filter delay in seconds. Higher value means more accurate.
 
 
 
-> **Type**: ```[Double]```
 
-> **Required**: false
 
-> **Position**: 3
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[Double]`|false   |3       |false        |
 
 
 
@@ -136,13 +132,12 @@ Set filter accuracy in Hz. Lower value means more accurate.
 
 
 
-> **Type**: ```[Double]```
 
-> **Required**: false
 
-> **Position**: 4
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[Double]`|false   |4       |false        |
 
 
 
@@ -168,13 +163,12 @@ Valid Values:
 
 
 
-> **Type**: ```[String]```
 
-> **Required**: false
 
-> **Position**: 5
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[String]`|false   |5       |false        |
 
 
 
@@ -185,13 +179,12 @@ If enabled, use fixed number of audio samples. This improves speed when filterin
 
 
 
-> **Type**: ```[Switch]```
 
-> **Required**: false
 
-> **Position**: named
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[Switch]`|false   |named   |false        |
 
 
 
@@ -202,13 +195,12 @@ Enable multichannels evaluation on gain.
 
 
 
-> **Type**: ```[Switch]```
 
-> **Required**: false
 
-> **Position**: named
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[Switch]`|false   |named   |false        |
 
 
 
@@ -219,13 +211,12 @@ Enable zero phase mode by subtracting timestamp to compensate delay.
 
 
 
-> **Type**: ```[Switch]```
 
-> **Required**: false
 
-> **Position**: named
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[Switch]`|false   |named   |false        |
 
 
 
@@ -245,13 +236,12 @@ Valid Values:
 
 
 
-> **Type**: ```[String]```
 
-> **Required**: false
 
-> **Position**: 6
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[String]`|false   |6       |false        |
 
 
 
@@ -262,13 +252,12 @@ set dump file
 
 
 
-> **Type**: ```[String]```
 
-> **Required**: false
 
-> **Position**: 7
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[String]`|false   |7       |false        |
 
 
 
@@ -279,13 +268,12 @@ set dump scale
 
 
 
-> **Type**: ```[Switch]```
 
-> **Required**: false
 
-> **Position**: named
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[Switch]`|false   |named   |false        |
 
 
 
@@ -296,13 +284,12 @@ Enable 2-channel convolution using complex FFT.
 
 
 
-> **Type**: ```[Switch]```
 
-> **Required**: false
 
-> **Position**: named
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[Switch]`|false   |named   |false        |
 
 
 
@@ -313,13 +300,12 @@ Enable minimum phase impulse response.
 
 
 
-> **Type**: ```[Switch]```
 
-> **Required**: false
 
-> **Position**: named
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[Switch]`|false   |named   |false        |
 
 
 
@@ -329,7 +315,6 @@ Enable minimum phase impulse response.
 Extension/FiniteEqualizer.RoughDraft.Extension.ps1 -FiniteEqualizer [[-FiniteEqualizerGain] <String>] [[-FiniteEqualizerGainentry] <String>] [[-FiniteEqualizerDelay] <Double>] [[-FiniteEqualizerAccuracy] <Double>] [[-FiniteEqualizerWindowFunction] <String>] [-FiniteEqualizerFixed] [-FiniteEqualizerMultichannel] [-FiniteEqualizerZeroPhase] [[-FiniteEqualizerScale] <String>] [[-FiniteEqualizerDumpfile] <String>] [-FiniteEqualizerDumpscale] [-FiniteEqualizerFft2] [-FiniteEqualizerMinphase] [<CommonParameters>]
 ```
 ---
-
 
 
 
