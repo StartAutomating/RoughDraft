@@ -19,13 +19,12 @@ Make video monochrome, using the monochrome filter.
 ### Parameters
 #### **Monochrome**
 
-> **Type**: ```[Switch]```
 
-> **Required**: true
 
-> **Position**: named
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[Switch]`|true    |named   |false        |
 
 
 
@@ -36,13 +35,12 @@ Set the chroma blue spot. Allowed range is from -1 to 1. Default value is 0.
 
 
 
-> **Type**: ```[Double]```
 
-> **Required**: false
 
-> **Position**: 1
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[Double]`|false   |1       |false        |
 
 
 
@@ -53,13 +51,12 @@ Set the chroma red spot. Allowed range is from -1 to 1. Default value is 0.
 
 
 
-> **Type**: ```[Double]```
 
-> **Required**: false
 
-> **Position**: 2
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[Double]`|false   |2       |false        |
 
 
 
@@ -70,13 +67,12 @@ Set the color filter size. Allowed range is from .1 to 10. Default value is 1.
 
 
 
-> **Type**: ```[Double]```
 
-> **Required**: false
 
-> **Position**: 3
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[Double]`|false   |3       |false        |
 
 
 
@@ -87,13 +83,12 @@ Set the highlights strength. Allowed range is from 0 to 1. Default value is 0.
 
 
 
-> **Type**: ```[Double]```
 
-> **Required**: false
 
-> **Position**: 4
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[Double]`|false   |4       |false        |
 
 
 
@@ -103,7 +98,6 @@ Set the highlights strength. Allowed range is from 0 to 1. Default value is 0.
 Extension/Monochrome.RoughDraft.Extension.ps1 -Monochrome [[-MonochromeChromaBlueSpot] <Double>] [[-MonochromeChromaRedSpot] <Double>] [[-MonochromeColorFilterSize] <Double>] [[-MonochromeHighlightStrength] <Double>] [<CommonParameters>]
 ```
 ---
-
 
 
 
