@@ -23,13 +23,12 @@ If set, will display a video ColorScope
 
 
 
-> **Type**: ```[Switch]```
 
-> **Required**: true
 
-> **Position**: named
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[Switch]`|true    |named   |false        |
 
 
 
@@ -59,13 +58,12 @@ Valid Values:
 
 
 
-> **Type**: ```[String]```
 
-> **Required**: false
 
-> **Position**: 1
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[String]`|false   |1       |false        |
 
 
 
@@ -95,13 +93,12 @@ Valid Values:
 
 
 
-> **Type**: ```[String]```
 
-> **Required**: false
 
-> **Position**: 2
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[String]`|false   |2       |false        |
 
 
 
@@ -120,13 +117,12 @@ Valid Values:
 
 
 
-> **Type**: ```[String]```
 
-> **Required**: false
 
-> **Position**: 3
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[String]`|false   |3       |false        |
 
 
 
@@ -137,13 +133,12 @@ Set ciescope size, by default set to 512.
 
 
 
-> **Type**: ```[Int32]```
 
-> **Required**: false
 
-> **Position**: 4
 
-> **PipelineInput**:false
+|Type     |Required|Position|PipelineInput|
+|---------|--------|--------|-------------|
+|`[Int32]`|false   |4       |false        |
 
 
 
@@ -154,13 +149,12 @@ Set intensity used to map input pixel values to CIE diagram.
 
 
 
-> **Type**: ```[String]```
 
-> **Required**: false
 
-> **Position**: 5
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[String]`|false   |5       |false        |
 
 
 
@@ -171,13 +165,12 @@ Set contrast used to draw tongue colors that are out of active color system gamu
 
 
 
-> **Type**: ```[String]```
 
-> **Required**: false
 
-> **Position**: 6
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[String]`|false   |6       |false        |
 
 
 
@@ -188,13 +181,12 @@ Correct gamma displayed on scope, by default enabled.
 
 
 
-> **Type**: ```[Switch]```
 
-> **Required**: false
 
-> **Position**: named
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[Switch]`|false   |named   |false        |
 
 
 
@@ -205,13 +197,12 @@ Show white point on CIE diagram, by default disabled.
 
 
 
-> **Type**: ```[Switch]```
 
-> **Required**: false
 
-> **Position**: named
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[Switch]`|false   |named   |false        |
 
 
 
@@ -222,13 +213,12 @@ Set input gamma. Used only with XYZ input color space
 
 
 
-> **Type**: ```[String]```
 
-> **Required**: false
 
-> **Position**: 7
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[String]`|false   |7       |false        |
 
 
 
@@ -238,7 +228,6 @@ Set input gamma. Used only with XYZ input color space
 Extension/ColorScope.RoughDraft.Extension.ps1 -ColorScope [[-ColorScopeColorSystem] <String>] [[-ColorScopeColorGamut] <String>] [[-ColorScopeCIESystem] <String>] [[-ColorScopeSize] <Int32>] [[-ColorScopeIntensity] <String>] [[-ColorScopeContrast] <String>] [-ColorScopeNoGamutCorrection] [-ColorScopeShowWhitePoint] [[-ColorScopeInputGamma] <String>] [<CommonParameters>]
 ```
 ---
-
 
 
 
