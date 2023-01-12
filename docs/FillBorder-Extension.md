@@ -32,13 +32,12 @@ If set, will fill borders.
 
 
 
-> **Type**: ```[Switch]```
 
-> **Required**: true
 
-> **Position**: named
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[Switch]`|true    |named   |false        |
 
 
 
@@ -49,13 +48,12 @@ The Border Width.  This value will be used for both left and right.
 
 
 
-> **Type**: ```[Int32]```
 
-> **Required**: false
 
-> **Position**: 1
 
-> **PipelineInput**:false
+|Type     |Required|Position|PipelineInput|
+|---------|--------|--------|-------------|
+|`[Int32]`|false   |1       |false        |
 
 
 
@@ -66,13 +64,12 @@ The Border Height.  This value will be used for both top and bottom.
 
 
 
-> **Type**: ```[Int32]```
 
-> **Required**: false
 
-> **Position**: 2
 
-> **PipelineInput**:false
+|Type     |Required|Position|PipelineInput|
+|---------|--------|--------|-------------|
+|`[Int32]`|false   |2       |false        |
 
 
 
@@ -83,13 +80,12 @@ The Border Left Coordinate.
 
 
 
-> **Type**: ```[Int32]```
 
-> **Required**: false
 
-> **Position**: 3
 
-> **PipelineInput**:false
+|Type     |Required|Position|PipelineInput|
+|---------|--------|--------|-------------|
+|`[Int32]`|false   |3       |false        |
 
 
 
@@ -100,13 +96,12 @@ The Border Right Coordinate.
 
 
 
-> **Type**: ```[Int32]```
 
-> **Required**: false
 
-> **Position**: 4
 
-> **PipelineInput**:false
+|Type     |Required|Position|PipelineInput|
+|---------|--------|--------|-------------|
+|`[Int32]`|false   |4       |false        |
 
 
 
@@ -117,13 +112,12 @@ The Border Top Coordinate.
 
 
 
-> **Type**: ```[Int32]```
 
-> **Required**: false
 
-> **Position**: 5
 
-> **PipelineInput**:false
+|Type     |Required|Position|PipelineInput|
+|---------|--------|--------|-------------|
+|`[Int32]`|false   |5       |false        |
 
 
 
@@ -134,13 +128,12 @@ The Border Bottom Coordinate.
 
 
 
-> **Type**: ```[Int32]```
 
-> **Required**: false
 
-> **Position**: 6
 
-> **PipelineInput**:false
+|Type     |Required|Position|PipelineInput|
+|---------|--------|--------|-------------|
+|`[Int32]`|false   |6       |false        |
 
 
 
@@ -163,13 +156,12 @@ Valid Values:
 
 
 
-> **Type**: ```[String]```
 
-> **Required**: false
 
-> **Position**: 7
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[String]`|false   |7       |false        |
 
 
 
@@ -180,13 +172,12 @@ The color used to fill the border.
 
 
 
-> **Type**: ```[String]```
 
-> **Required**: false
 
-> **Position**: 8
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[String]`|false   |8       |false        |
 
 
 
@@ -196,7 +187,6 @@ The color used to fill the border.
 Extension/FillBorder.RoughDraft.Extension.ps1 -FillBorder [[-FillBorderWidth] <Int32>] [[-FillBorderHeight] <Int32>] [[-FillBorderLeft] <Int32>] [[-FillBorderRight] <Int32>] [[-FillBorderTop] <Int32>] [[-FillBorderBottom] <Int32>] [[-FillBorderMode] <String>] [[-FillBorderColor] <String>] [<CommonParameters>]
 ```
 ---
-
 
 
 
