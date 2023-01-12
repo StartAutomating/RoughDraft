@@ -23,13 +23,12 @@ If set, will emboss an image
 
 
 
-> **Type**: ```[Switch]```
 
-> **Required**: true
 
-> **Position**: named
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[Switch]`|true    |named   |false        |
 
 
 
@@ -39,7 +38,6 @@ If set, will emboss an image
 Extension/Emboss.RoughDraft.Extension.ps1 -Emboss [<CommonParameters>]
 ```
 ---
-
 
 
 
