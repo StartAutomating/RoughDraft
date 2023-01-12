@@ -23,13 +23,12 @@ Add a phasing effect to the audio.
 
 
 
-> **Type**: ```[Switch]```
 
-> **Required**: true
 
-> **Position**: named
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[Switch]`|true    |named   |false        |
 
 
 
@@ -40,13 +39,12 @@ set input gain
 
 
 
-> **Type**: ```[Double]```
 
-> **Required**: false
 
-> **Position**: 1
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[Double]`|false   |1       |false        |
 
 
 
@@ -57,13 +55,12 @@ set output gain
 
 
 
-> **Type**: ```[Double]```
 
-> **Required**: false
 
-> **Position**: 2
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[Double]`|false   |2       |false        |
 
 
 
@@ -74,13 +71,12 @@ set delay in milliseconds
 
 
 
-> **Type**: ```[Double]```
 
-> **Required**: false
 
-> **Position**: 3
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[Double]`|false   |3       |false        |
 
 
 
@@ -91,13 +87,12 @@ set decay
 
 
 
-> **Type**: ```[Double]```
 
-> **Required**: false
 
-> **Position**: 4
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[Double]`|false   |4       |false        |
 
 
 
@@ -108,13 +103,12 @@ set modulation speed
 
 
 
-> **Type**: ```[Double]```
 
-> **Required**: false
 
-> **Position**: 5
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[Double]`|false   |5       |false        |
 
 
 
@@ -132,13 +126,12 @@ Valid Values:
 
 
 
-> **Type**: ```[Object]```
 
-> **Required**: false
 
-> **Position**: 6
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[Object]`|false   |6       |false        |
 
 
 
@@ -148,7 +141,6 @@ Valid Values:
 Extension/Phaser.RoughDraft.Extension.ps1 -Phaser [[-PhaserInGain] <Double>] [[-PhaserOutGain] <Double>] [[-PhaserDelay] <Double>] [[-PhaserDecay] <Double>] [[-PhaserSpeed] <Double>] [[-PhaserType] <Object>] [<CommonParameters>]
 ```
 ---
-
 
 
 
