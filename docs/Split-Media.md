@@ -112,6 +112,22 @@ The time span to end splitting the video
 
 
 ---
+#### **FFMpegArgument**
+
+A list of additional arguments to FFMpeg.
+
+
+
+
+
+
+|Type        |Required|Position|PipelineInput|
+|------------|--------|--------|-------------|
+|`[String[]]`|false   |named   |false        |
+
+
+
+---
 ### Outputs
 * [IO.FileInfo](https://learn.microsoft.com/en-us/dotnet/api/System.IO.FileInfo)
 
@@ -124,6 +140,6 @@ The time span to end splitting the video
 ---
 ### Syntax
 ```PowerShell
-Split-Media -InputPath <String> [[-OutputPath] <String[]>] [-FFMpegPath <String>] [-Start] <TimeSpan> [[-End] <TimeSpan>] [<CommonParameters>]
+Split-Media -InputPath <String> [[-OutputPath] <String[]>] [-FFMpegPath <String>] [-Start] <TimeSpan> [[-End] <TimeSpan>] [-FFMpegArgument <String[]>] [<CommonParameters>]
 ```
 ---
