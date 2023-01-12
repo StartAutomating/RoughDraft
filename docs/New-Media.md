@@ -29,13 +29,12 @@ The output path
 
 
 
-> **Type**: ```[String]```
 
-> **Required**: true
 
-> **Position**: 1
 
-> **PipelineInput**:true (ByPropertyName)
+|Type      |Required|Position|PipelineInput        |
+|----------|--------|--------|---------------------|
+|`[String]`|true    |1       |true (ByPropertyName)|
 
 
 
@@ -46,13 +45,12 @@ The duration.  By default, one second.
 
 
 
-> **Type**: ```[TimeSpan]```
 
-> **Required**: false
 
-> **Position**: 2
 
-> **PipelineInput**:false
+|Type        |Required|Position|PipelineInput|
+|------------|--------|--------|-------------|
+|`[TimeSpan]`|false   |2       |false        |
 
 
 
@@ -63,13 +61,12 @@ The resolution.  This can be independently handled by an extension.
 
 
 
-> **Type**: ```[String]```
 
-> **Required**: false
 
-> **Position**: 3
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[String]`|false   |3       |false        |
 
 
 
@@ -80,13 +77,12 @@ If provided, will use a specific pixel format for video and image output.  This 
 
 
 
-> **Type**: ```[String]```
 
-> **Required**: false
 
-> **Position**: 4
 
-> **PipelineInput**:true (ByPropertyName)
+|Type      |Required|Position|PipelineInput        |
+|----------|--------|--------|---------------------|
+|`[String]`|false   |4       |true (ByPropertyName)|
 
 
 
@@ -97,13 +93,12 @@ If set, will create the media in a background job.
 
 
 
-> **Type**: ```[Switch]```
 
-> **Required**: false
 
-> **Position**: named
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[Switch]`|false   |named   |false        |
 
 
 
