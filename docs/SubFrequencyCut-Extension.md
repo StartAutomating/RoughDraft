@@ -32,13 +32,12 @@ If set, will Cut subwoofer frequencies.
 
 
 
-> **Type**: ```[Switch]```
 
-> **Required**: true
 
-> **Position**: named
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[Switch]`|true    |named   |false        |
 
 
 
@@ -49,13 +48,12 @@ Set cutoff frequency in Hertz. Allowed range is 2 to 200. Default value is 20.
 
 
 
-> **Type**: ```[Int32]```
 
-> **Required**: false
 
-> **Position**: 1
 
-> **PipelineInput**:false
+|Type     |Required|Position|PipelineInput|
+|---------|--------|--------|-------------|
+|`[Int32]`|false   |1       |false        |
 
 
 
@@ -66,13 +64,12 @@ Set filter order. Available values are from 3 to 20. Default value is 10.
 
 
 
-> **Type**: ```[Int32]```
 
-> **Required**: false
 
-> **Position**: 2
 
-> **PipelineInput**:false
+|Type     |Required|Position|PipelineInput|
+|---------|--------|--------|-------------|
+|`[Int32]`|false   |2       |false        |
 
 
 
@@ -83,13 +80,12 @@ Set input gain level. Allowed range is from 0 to 1. Default value is 1.
 
 
 
-> **Type**: ```[Double]```
 
-> **Required**: false
 
-> **Position**: 3
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[Double]`|false   |3       |false        |
 
 
 
@@ -99,7 +95,6 @@ Set input gain level. Allowed range is from 0 to 1. Default value is 1.
 Extension/SubFrequencyCut.RoughDraft.Extension.ps1 -SubFrequencyCut [[-SubFrequencyCutFrequency] <Int32>] [[-SubFrequencyCutOrder] <Int32>] [[-SubFrequencyCutLevel] <Double>] [<CommonParameters>]
 ```
 ---
-
 
 
 
