@@ -24,13 +24,12 @@ If set, will adjust exposure
 
 
 
-> **Type**: ```[Switch]```
 
-> **Required**: true
 
-> **Position**: named
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[Switch]`|true    |named   |false        |
 
 
 
@@ -41,13 +40,12 @@ Set the exposure correction in EV. Allowed range is from -3.0 to 3.0.
 
 
 
-> **Type**: ```[Double]```
 
-> **Required**: false
 
-> **Position**: 1
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[Double]`|false   |1       |false        |
 
 
 
@@ -58,13 +56,12 @@ Set the black level correction.   Allowed range is from -1.0 to 1.0.
 
 
 
-> **Type**: ```[Double]```
 
-> **Required**: false
 
-> **Position**: 2
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[Double]`|false   |2       |false        |
 
 
 
@@ -74,7 +71,6 @@ Set the black level correction.   Allowed range is from -1.0 to 1.0.
 Extension/Exposure.RoughDraft.Extension.ps1 -SetExposure [[-ExposureCorrection] <Double>] [[-ExposureBlackCorrection] <Double>] [<CommonParameters>]
 ```
 ---
-
 
 
 
