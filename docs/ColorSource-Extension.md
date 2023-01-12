@@ -19,13 +19,12 @@ Generates a color source
 ### Parameters
 #### **Color**
 
-> **Type**: ```[String]```
 
-> **Required**: true
 
-> **Position**: 1
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[String]`|true    |1       |false        |
 
 
 
@@ -35,7 +34,6 @@ Generates a color source
 Extension/ColorSource.RoughDraft.Extension.ps1 [-Color] <String> [<CommonParameters>]
 ```
 ---
-
 
 
 
