@@ -3,29 +3,30 @@
 |AlbumArt|Sets album artwork|Set-Media|
 |AmplifyPixel|AmplifyPixel extension|Show-Media,Edit-Media|
 |AudioCrusher|Audio Crusher|Show-Media,Edit-Media|
-|AudioExpression|Evaluates Audio Expressions|Edit-Media,New-Media,Show-Media|
+|AudioExpression|Evaluates Audio Expressions|Show-Media,New-Media,Edit-Media|
 |AudioFrequencyExpression|Apply expressions to audio frequencies|Show-Media,Edit-Media|
 |AudioGain|Increases audio volume|Show-Media,Edit-Media|
 |BilateralSmooth|Bilateral Smooth|Show-Media,Edit-Media|
 |BlackDetect|Detect black periods in a video.|Get-Media|
 |BlackFrame|Detects black frames.|Get-Media|
-|BlendFrame|BlendFrame Extension|Show-Media,Edit-Media|
+|BlendFrame|BlendFrame Extension|Show-Media,Join-Media,Edit-Media|
 |BlendVideo|BlendVideo Extension|Join-Media|
 |Blur|Blurs Video|Show-Media,Edit-Media|
 |CaptureDevice|Gets capture devices|Get-FFMpeg|
 |Chorus|chorus|Show-Media,Edit-Media|
 |Codecs|Lists codecs|Get-FFMpeg|
 |ColorContrast|ColorContrast Extension|Show-Media,Edit-Media|
+|ColorExpression|Color Expression|Show-Media,Join-Media,Edit-Media|
 |ColorHold|ColorHold Extension|Show-Media,Edit-Media|
 |Colorize|Colorize a video stream|Show-Media,Edit-Media|
 |ColorScope|Colorscope extension|Show-Media,Edit-Media|
-|ColorSource|Generates a color|Show-Media,New-Media|
+|ColorSource|Generates a color|New-Media,Show-Media|
 |Convolve|convolve|Join-Media|
-|Crop|Crop Extension|Edit-Media,Send-Media,Receive-Media,Show-Media|
+|Crop|Crop Extension|Show-Media,Receive-Media,Edit-Media,Send-Media|
 |CropDetect|Auto-detect the crop size.|Get-Media|
 |DataScope|Datascope effect|Edit-Media|
 |Deconvolve|deconvolve|Join-Media|
-|DirectShow|DirectShow Extension|Receive-Media,Send-Media,Show-Media|
+|DirectShow|DirectShow Extension|Show-Media,Send-Media,Receive-Media|
 |DrawSubtitle|Draw subtitles on top of input video|Edit-Media,Convert-Media|
 |Echo|Adds echoes to audio|Show-Media,Edit-Media|
 |EdgeDetect|EdgeDetect Extension|Show-Media,Edit-Media|
@@ -39,20 +40,21 @@
 |Flanger|Audio Flanger.|Show-Media,Edit-Media|
 |FlipHorizontal|Flips video horizontally|Show-Media,Edit-Media|
 |FlipVertical|Flips video vertically|Show-Media,Edit-Media|
-|FrameBuffer|FrameBuffer Extension|Receive-Media,Send-Media,Show-Media|
+|FrameBuffer|FrameBuffer Extension|Show-Media,Send-Media,Receive-Media|
 |FrameStep|FrameStep Effect|Show-Media,Edit-Media|
 |Histogram|Histogram Extension|Show-Media,Edit-Media|
 |Hue|Hue Extension|Show-Media,Edit-Media|
 |Hysteresis|Hysteresis|Join-Media|
 |LagFun|Slowly update darker pixels.|Show-Media,Edit-Media|
-|Life|Generates life|Show-Media,New-Media|
+|Life|Generates life|New-Media,Show-Media|
 |LimitPixel|Limits Pixel values|Show-Media,Edit-Media|
 |ListFilters|Lists filters|Get-FFMpeg|
 |ListProtocols|Lists protocols|Get-FFMpeg|
-|Mandelbrot|Generates fractals|Show-Media,New-Media|
+|Mandelbrot|Generates fractals|New-Media,Show-Media|
 |MedianPixel|Picks median pixels|Show-Media,Edit-Media|
 |Mirror|Mirror Extension|Show-Media,Edit-Media|
 |MixAudio|Mix Audio|Join-Media|
+|MixVideo|Mix Video|Join-Media|
 |Monochrome|Make video monochrome|Edit-Media|
 |NoAudio|Removes Audio|Split-Media|
 |Overlay|overlay|Join-Media|
@@ -63,21 +65,21 @@
 |Pulsator|Pulsator Effect|Show-Media,Edit-Media|
 |RandomizeFrame|RandomizeFrame extensions|Show-Media,Edit-Media|
 |Rate|Adjusts the rate of media.|Show-Media,Edit-Media|
-|Resize|Simple video resize.|Edit-Media,Convert-Media,Show-Media|
+|Resize|Simple video resize.|Convert-Media,Show-Media,Edit-Media|
 |ReverseAudio|Reverses audio|Edit-Media|
 |ReverseVideo|Reverses video|Edit-Media|
-|Rotate|Rotates a video|Edit-Media,Convert-Media,Show-Media|
+|Rotate|Rotates a video|Convert-Media,Show-Media,Edit-Media|
 |Scale|Scales video.|Show-Media,Edit-Media|
 |ScrollVideo|Scrolls video|Show-Media,Edit-Media|
 |Sepia|Applies a Sepia Filter|Edit-Media|
-|ShowFrequency|Show Frequencies|Edit-Media,New-Media,Show-Media|
-|ShowScale|Show the tonal scale of the audio|Edit-Media,New-Media,Show-Media|
-|ShowSpectrum|Shows the audio spectrum|Edit-Media,New-Media,Show-Media|
-|ShowVectorScope|Shows a Vector Scope of the Audio|Edit-Media,New-Media,Show-Media|
-|ShowVolume|Shows the volume of an audio stream.|Edit-Media,New-Media,Show-Media|
-|ShowWaveform|Shows audio waveform.|Edit-Media,New-Media,Show-Media|
+|ShowFrequency|Show Frequencies|Show-Media,New-Media,Edit-Media|
+|ShowScale|Show the tonal scale of the audio|Show-Media,New-Media,Edit-Media|
+|ShowSpectrum|Shows the audio spectrum|Show-Media,New-Media,Edit-Media|
+|ShowVectorScope|Shows a Vector Scope of the Audio|Show-Media,New-Media,Edit-Media|
+|ShowVolume|Shows the volume of an audio stream.|Show-Media,New-Media,Edit-Media|
+|ShowWaveform|Shows audio waveform.|Show-Media,New-Media,Edit-Media|
 |ShuffleFrames|Shuffles frames in video|Edit-Media|
-|Sierpinski|Generates a Sierpinski fractal|Show-Media,New-Media|
+|Sierpinski|Generates a Sierpinski fractal|New-Media,Show-Media|
 |SilenceDetect|Detects silence in an audio stream|Get-Media|
 |SilenceRemove|Detects silence in an audio stream|Edit-Media|
 |Sine|Generates a sine wave|New-Media|
@@ -87,13 +89,13 @@
 |SuperEqualizer|Audio 18 band Superequalizer|Show-Media,Edit-Media|
 |SuperFrequencyCut|Cut super frequencies.|Show-Media,Edit-Media|
 |Tempo|Adjust audio tempo.|Show-Media,Edit-Media|
-|TestSource|Generates test sources|Show-Media,New-Media|
+|TestSource|Generates test sources|New-Media,Show-Media|
 |Tile|Tile Extension|Edit-Media|
 |TimeMix|Mix successive video frames.|Show-Media,Edit-Media|
 |Tremolo|Tremolo effect|Show-Media,Edit-Media|
 |Vibrato|Vibrato effect|Show-Media,Edit-Media|
 |VideoExpression|Evaluates Video Expressions|Show-Media,Edit-Media|
-|VideoForLinux|VideoForLinux Extension|Receive-Media,Send-Media,Show-Media|
+|VideoForLinux|VideoForLinux Extension|Show-Media,Send-Media,Receive-Media|
 |Vignette|Applies a vignette filter|Show-Media,Edit-Media|
 |VolumeLevel|Gets VolumeLevels|Get-Media|
 |Watermark|Watermarks a video|Edit-Media|
