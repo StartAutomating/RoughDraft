@@ -23,13 +23,12 @@ If set, will scroll video.
 
 
 
-> **Type**: ```[Switch]```
 
-> **Required**: true
 
-> **Position**: named
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[Switch]`|true    |named   |false        |
 
 
 
@@ -42,13 +41,12 @@ Negative values changes scrolling direction.
 
 
 
-> **Type**: ```[Double]```
 
-> **Required**: false
 
-> **Position**: 1
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[Double]`|false   |1       |false        |
 
 
 
@@ -61,13 +59,12 @@ Allowed range is from 0 to 1.
 
 
 
-> **Type**: ```[Double]```
 
-> **Required**: false
 
-> **Position**: 2
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[Double]`|false   |2       |false        |
 
 
 
@@ -80,13 +77,12 @@ Negative values changes scrolling direction.
 
 
 
-> **Type**: ```[Double]```
 
-> **Required**: false
 
-> **Position**: 3
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[Double]`|false   |3       |false        |
 
 
 
@@ -99,13 +95,12 @@ Allowed range is from 0 to 1.
 
 
 
-> **Type**: ```[Double]```
 
-> **Required**: false
 
-> **Position**: 4
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[Double]`|false   |4       |false        |
 
 
 
@@ -115,7 +110,6 @@ Allowed range is from 0 to 1.
 Extension/ScrollVideo.RoughDraft.Extension.ps1 -Scroll [[-HorizontalScrollSpeed] <Double>] [[-HorizontalScrollStartPosition] <Double>] [[-VerticalScrollSpeed] <Double>] [[-VerticalScrollStartPosition] <Double>] [<CommonParameters>]
 ```
 ---
-
 
 
 
