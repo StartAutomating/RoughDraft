@@ -23,13 +23,12 @@ If set, will find cropping information within a video.
 
 
 
-> **Type**: ```[Switch]```
 
-> **Required**: true
 
-> **Position**: named
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[Switch]`|true    |named   |false        |
 
 
 
@@ -43,13 +42,12 @@ You can also specify a value between 0.0 and 1.0 which will be scaled depending 
 
 
 
-> **Type**: ```[String]```
 
-> **Required**: false
 
-> **Position**: 1
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[String]`|false   |1       |false        |
 
 
 
@@ -62,13 +60,12 @@ The offset is automatically adjusted to center the video. Use 2 to get only even
 
 
 
-> **Type**: ```[String]```
 
-> **Required**: false
 
-> **Position**: 2
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[String]`|false   |2       |false        |
 
 
 
@@ -79,13 +76,12 @@ Set the number of initial frames for which evaluation is skipped. Default is 2. 
 
 
 
-> **Type**: ```[Int32]```
 
-> **Required**: false
 
-> **Position**: 3
 
-> **PipelineInput**:false
+|Type     |Required|Position|PipelineInput|
+|---------|--------|--------|-------------|
+|`[Int32]`|false   |3       |false        |
 
 
 
@@ -97,13 +93,12 @@ start over to detect the current optimal crop area. Default value is 0.
 
 
 
-> **Type**: ```[Int32]```
 
-> **Required**: false
 
-> **Position**: 4
 
-> **PipelineInput**:false
+|Type     |Required|Position|PipelineInput|
+|---------|--------|--------|-------------|
+|`[Int32]`|false   |4       |false        |
 
 
 
@@ -113,7 +108,6 @@ start over to detect the current optimal crop area. Default value is 0.
 Extension/CropDetect.RoughDraft.ext.ps1 -CropDetect [[-CropDetectLimit] <String>] [[-CropDetectRound] <String>] [[-CropDetectSkip] <Int32>] [[-CropDetectReset] <Int32>] [<CommonParameters>]
 ```
 ---
-
 
 
 
