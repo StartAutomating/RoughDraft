@@ -312,6 +312,40 @@ A list of additional arguments to FFMpeg.
 
 
 ---
+#### **AsJob**
+
+If set, will run as a background job.
+
+
+
+
+
+
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[Switch]`|false   |named   |false        |
+
+
+
+---
+#### **ThrottleLimit**
+
+If set, will limit the number of background jobs to a throttle limit.
+By default 5.
+Throttling is only available if running on PowerShell Core.
+
+
+
+
+
+
+|Type     |Required|Position|PipelineInput|
+|---------|--------|--------|-------------|
+|`[Int32]`|false   |named   |false        |
+
+
+
+---
 #### **Force**
 
 If set, will ignore any previously generated content.
@@ -350,7 +384,7 @@ If the command sets a ```[ConfirmImpact("Medium")]``` which is lower than ```$co
 ---
 ### Syntax
 ```PowerShell
-Edit-Media [-InputPath] <String[]> [[-OutputPath] <String>] [-OutputMap <IDictionary>] [-Codec <String>] [-FFMpegPath <String>] [-PixelFormat <String>] [-Preset <String>] [-Tune <String>] [-MetaData <IDictionary>] [[-Start] <TimeSpan>] [[-End] <TimeSpan>] [[-Duration] <TimeSpan>] [-VideoFilter <IDictionary>] [-AudioFilter <IDictionary>] [-ComplexFilter <IDictionary[]>] [-ThreadCount <String>] [-FFMpegArgument <String[]>] [-Force] [-WhatIf] [-Confirm] [<CommonParameters>]
+Edit-Media [-InputPath] <String[]> [[-OutputPath] <String>] [-OutputMap <IDictionary>] [-Codec <String>] [-FFMpegPath <String>] [-PixelFormat <String>] [-Preset <String>] [-Tune <String>] [-MetaData <IDictionary>] [[-Start] <TimeSpan>] [[-End] <TimeSpan>] [[-Duration] <TimeSpan>] [-VideoFilter <IDictionary>] [-AudioFilter <IDictionary>] [-ComplexFilter <IDictionary[]>] [-ThreadCount <String>] [-FFMpegArgument <String[]>] [-AsJob] [-ThrottleLimit <Int32>] [-Force] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 ---
 ### Notes
