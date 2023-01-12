@@ -32,13 +32,12 @@ If set, will reverse audio
 
 
 
-> **Type**: ```[Switch]```
 
-> **Required**: true
 
-> **Position**: named
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[Switch]`|true    |named   |false        |
 
 
 
@@ -48,7 +47,6 @@ If set, will reverse audio
 Extension/ReverseVideo.RoughDraft.Extension.ps1 -ReverseVideo [<CommonParameters>]
 ```
 ---
-
 
 
 
