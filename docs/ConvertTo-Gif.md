@@ -38,13 +38,12 @@ The input path
 
 
 
-> **Type**: ```[String]```
 
-> **Required**: true
 
-> **Position**: 1
 
-> **PipelineInput**:true (ByValue, ByPropertyName)
+|Type      |Required|Position|PipelineInput                 |
+|----------|--------|--------|------------------------------|
+|`[String]`|true    |1       |true (ByValue, ByPropertyName)|
 
 
 
@@ -55,13 +54,12 @@ The output path
 
 
 
-> **Type**: ```[String]```
 
-> **Required**: true
 
-> **Position**: 2
 
-> **PipelineInput**:true (ByPropertyName)
+|Type      |Required|Position|PipelineInput        |
+|----------|--------|--------|---------------------|
+|`[String]`|true    |2       |true (ByPropertyName)|
 
 
 
@@ -72,13 +70,12 @@ The path to FFMpeg.exe.  Download it from http://ffmpeg.org/
 
 
 
-> **Type**: ```[String]```
 
-> **Required**: false
 
-> **Position**: named
 
-> **PipelineInput**:true (ByPropertyName)
+|Type      |Required|Position|PipelineInput        |
+|----------|--------|--------|---------------------|
+|`[String]`|false   |named   |true (ByPropertyName)|
 
 
 
@@ -89,13 +86,12 @@ The timespan to start splitting the video
 
 
 
-> **Type**: ```[TimeSpan]```
 
-> **Required**: false
 
-> **Position**: 3
 
-> **PipelineInput**:true (ByPropertyName)
+|Type        |Required|Position|PipelineInput        |
+|------------|--------|--------|---------------------|
+|`[TimeSpan]`|false   |3       |true (ByPropertyName)|
 
 
 
@@ -106,13 +102,12 @@ The time span to end splitting the video
 
 
 
-> **Type**: ```[TimeSpan]```
 
-> **Required**: false
 
-> **Position**: 4
 
-> **PipelineInput**:true (ByPropertyName)
+|Type        |Required|Position|PipelineInput        |
+|------------|--------|--------|---------------------|
+|`[TimeSpan]`|false   |4       |true (ByPropertyName)|
 
 
 
@@ -123,13 +118,12 @@ If set, will run this in a background job
 
 
 
-> **Type**: ```[Switch]```
 
-> **Required**: false
 
-> **Position**: named
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[Switch]`|false   |named   |false        |
 
 
 
@@ -140,13 +134,12 @@ The number of frames per second.  If not specified, this will match the existing
 
 
 
-> **Type**: ```[UInt32]```
 
-> **Required**: false
 
-> **Position**: named
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[UInt32]`|false   |named   |false        |
 
 
 
@@ -157,13 +150,12 @@ The new width of the .gif
 
 
 
-> **Type**: ```[UInt32]```
 
-> **Required**: false
 
-> **Position**: named
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[UInt32]`|false   |named   |false        |
 
 
 
@@ -174,13 +166,12 @@ If set, will use a difference-based palette.  These put more focus on the motion
 
 
 
-> **Type**: ```[Switch]```
 
-> **Required**: false
 
-> **Position**: named
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[Switch]`|false   |named   |false        |
 
 
 
