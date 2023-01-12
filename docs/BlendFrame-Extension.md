@@ -7,7 +7,10 @@ BlendFrame Extension
 ---
 ### Description
 
-Blends Successive Frames
+Blends Frames.
+
+If used with one file (Edit/Show-Media), blends successive frames.
+If used with two files, blends frames from two video streams.
 
 ---
 ### Related Links
@@ -225,7 +228,6 @@ One or more blend color opacities.
 Extension/BlendFrame.RoughDraft.Extension.ps1 -BlendFrame [[-BlendMode] <String>] [[-BlendColorMode] <String[]>] [[-BlendExpression] <String>] [[-BlendColorExpression] <String[]>] [[-BlendOpacity] <String>] [[-BlendColorOpacity] <String[]>] [<CommonParameters>]
 ```
 ---
-
 
 
 
