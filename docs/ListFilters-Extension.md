@@ -24,13 +24,12 @@ If set, will list filters
 
 
 
-> **Type**: ```[Switch]```
 
-> **Required**: true
 
-> **Position**: named
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[Switch]`|true    |named   |false        |
 
 
 
@@ -40,7 +39,6 @@ If set, will list filters
 Extension/ListFilters.rd.ext.ps1 -ListFilter [<CommonParameters>]
 ```
 ---
-
 
 
 
