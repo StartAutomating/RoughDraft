@@ -117,6 +117,16 @@
     [string[]]
     $FFMpegArgument,
 
+    # If set, will run as a background job.
+    [switch]
+    $AsJob,
+
+    # If set, will limit the number of background jobs to a throttle limit.
+    # By default 5.
+    # Throttling is only available if running on PowerShell Core.
+    [int]
+    $ThrottleLimit,
+
     # If set, will ignore any previously generated content.
     [switch]
     $Force
@@ -181,6 +191,9 @@
     }
 
     process {
+        if ($AsJob) { # If -AsJob was passed,
+            return & $StartRoughDraftJob # start a background job.
+        }
         #region Find FFMpeg
         $ffmpeg = Get-FFMpeg -FFMpegPath $ffMpegPath
         if (-not $ffmpeg) { return }

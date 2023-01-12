@@ -38,7 +38,13 @@
 
     # If set, will create the media in a background job.
     [switch]
-    $AsJob
+    $AsJob,
+    
+    # If set, will limit the number of background jobs to a throttle limit.
+    # By default 5.
+    # Throttling is only available if running on PowerShell Core.
+    [int]
+    $ThrottleLimit
     )
 
     dynamicParam {

@@ -48,6 +48,12 @@
     [switch]
     $AsJob,
 
+    # If set, will limit the number of background jobs to a throttle limit.
+    # By default 5.
+    # Throttling is only available if running on PowerShell Core.
+    [int]
+    $ThrottleLimit,
+
     # The path to FFMpeg.exe.  By default, checks in the path.
     [string]
     $FFMpegPath,
