@@ -23,13 +23,12 @@ Add a chorus effect to the audio.
 
 
 
-> **Type**: ```[Switch]```
 
-> **Required**: true
 
-> **Position**: named
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[Switch]`|true    |named   |false        |
 
 
 
@@ -40,13 +39,12 @@ set input gain
 
 
 
-> **Type**: ```[Single]```
 
-> **Required**: false
 
-> **Position**: 1
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[Single]`|false   |1       |false        |
 
 
 
@@ -57,13 +55,12 @@ set output gain
 
 
 
-> **Type**: ```[Single]```
 
-> **Required**: false
 
-> **Position**: 2
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[Single]`|false   |2       |false        |
 
 
 
@@ -74,13 +71,12 @@ set delays
 
 
 
-> **Type**: ```[String[]]```
 
-> **Required**: false
 
-> **Position**: 3
 
-> **PipelineInput**:false
+|Type        |Required|Position|PipelineInput|
+|------------|--------|--------|-------------|
+|`[String[]]`|false   |3       |false        |
 
 
 
@@ -91,13 +87,12 @@ set decays
 
 
 
-> **Type**: ```[String[]]```
 
-> **Required**: false
 
-> **Position**: 4
 
-> **PipelineInput**:false
+|Type        |Required|Position|PipelineInput|
+|------------|--------|--------|-------------|
+|`[String[]]`|false   |4       |false        |
 
 
 
@@ -108,13 +103,12 @@ set speeds
 
 
 
-> **Type**: ```[String[]]```
 
-> **Required**: false
 
-> **Position**: 5
 
-> **PipelineInput**:false
+|Type        |Required|Position|PipelineInput|
+|------------|--------|--------|-------------|
+|`[String[]]`|false   |5       |false        |
 
 
 
@@ -125,13 +119,12 @@ set depths
 
 
 
-> **Type**: ```[String[]]```
 
-> **Required**: false
 
-> **Position**: 6
 
-> **PipelineInput**:false
+|Type        |Required|Position|PipelineInput|
+|------------|--------|--------|-------------|
+|`[String[]]`|false   |6       |false        |
 
 
 
@@ -141,7 +134,6 @@ set depths
 Extension/Chorus.RoughDraft.Extension.ps1 -Chorus [[-ChorusInGain] <Single>] [[-ChorusOutGain] <Single>] [[-ChorusDelay] <String[]>] [[-ChorusDecay] <String[]>] [[-ChorusSpeed] <String[]>] [[-ChorusDepth] <String[]>] [<CommonParameters>]
 ```
 ---
-
 
 
 
