@@ -30,7 +30,8 @@
     [string]
     $PixelFormat =  'yuv420p',
 
-    # Any additional arguments to FFMpeg
+    # A list of additional arguments to FFMpeg.
+    [Alias('Arguments','Argument','ArgumentList')]
     [Parameter(ValueFromRemainingArguments)]
     [string[]]
     $FFMpegArgument,
