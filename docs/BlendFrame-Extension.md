@@ -23,13 +23,12 @@ If set, will blend frames
 
 
 
-> **Type**: ```[Switch]```
 
-> **Required**: true
 
-> **Position**: named
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[Switch]`|true    |named   |false        |
 
 
 
@@ -85,13 +84,12 @@ Valid Values:
 
 
 
-> **Type**: ```[String]```
 
-> **Required**: false
 
-> **Position**: 1
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[String]`|false   |1       |false        |
 
 
 
@@ -148,13 +146,12 @@ Valid Values:
 
 
 
-> **Type**: ```[String[]]```
 
-> **Required**: false
 
-> **Position**: 2
 
-> **PipelineInput**:false
+|Type        |Required|Position|PipelineInput|
+|------------|--------|--------|-------------|
+|`[String[]]`|false   |2       |false        |
 
 
 
@@ -165,13 +162,12 @@ The blend expression
 
 
 
-> **Type**: ```[String]```
 
-> **Required**: false
 
-> **Position**: 3
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[String]`|false   |3       |false        |
 
 
 
@@ -182,13 +178,12 @@ One or more blend color expressions
 
 
 
-> **Type**: ```[String[]]```
 
-> **Required**: false
 
-> **Position**: 4
 
-> **PipelineInput**:false
+|Type        |Required|Position|PipelineInput|
+|------------|--------|--------|-------------|
+|`[String[]]`|false   |4       |false        |
 
 
 
@@ -199,13 +194,12 @@ The blend opacity
 
 
 
-> **Type**: ```[String]```
 
-> **Required**: false
 
-> **Position**: 5
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[String]`|false   |5       |false        |
 
 
 
@@ -216,13 +210,12 @@ One or more blend color opacities.
 
 
 
-> **Type**: ```[String[]]```
 
-> **Required**: false
 
-> **Position**: 6
 
-> **PipelineInput**:false
+|Type        |Required|Position|PipelineInput|
+|------------|--------|--------|-------------|
+|`[String[]]`|false   |6       |false        |
 
 
 
@@ -232,7 +225,6 @@ One or more blend color opacities.
 Extension/BlendFrame.RoughDraft.Extension.ps1 -BlendFrame [[-BlendMode] <String>] [[-BlendColorMode] <String[]>] [[-BlendExpression] <String>] [[-BlendColorExpression] <String[]>] [[-BlendOpacity] <String>] [[-BlendColorOpacity] <String[]>] [<CommonParameters>]
 ```
 ---
-
 
 
 
