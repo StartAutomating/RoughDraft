@@ -17,13 +17,12 @@ The frame buffer index
 
 
 
-> **Type**: ```[Int32]```
 
-> **Required**: true
 
-> **Position**: 1
 
-> **PipelineInput**:false
+|Type     |Required|Position|PipelineInput|
+|---------|--------|--------|-------------|
+|`[Int32]`|true    |1       |false        |
 
 
 
@@ -33,7 +32,6 @@ The frame buffer index
 Extension/FrameBuffer.RoughDraft.Extension.ps1 [-FrameBuffer] <Int32> [<CommonParameters>]
 ```
 ---
-
 
 
 
