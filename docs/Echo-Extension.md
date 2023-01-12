@@ -31,13 +31,12 @@ If set, will remove a logo
 
 
 
-> **Type**: ```[Switch]```
 
-> **Required**: true
 
-> **Position**: named
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[Switch]`|true    |named   |false        |
 
 
 
@@ -48,13 +47,12 @@ Set input gain of reflected signal. Default is 0.6.
 
 
 
-> **Type**: ```[Double]```
 
-> **Required**: false
 
-> **Position**: 1
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[Double]`|false   |1       |false        |
 
 
 
@@ -65,13 +63,12 @@ Set output gain of reflected signal. Default is 0.3.
 
 
 
-> **Type**: ```[Double]```
 
-> **Required**: false
 
-> **Position**: 2
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[Double]`|false   |2       |false        |
 
 
 
@@ -82,13 +79,12 @@ Set list of time intervals in milliseconds between original signal and reflectio
 
 
 
-> **Type**: ```[Double[]]```
 
-> **Required**: false
 
-> **Position**: 3
 
-> **PipelineInput**:false
+|Type        |Required|Position|PipelineInput|
+|------------|--------|--------|-------------|
+|`[Double[]]`|false   |3       |false        |
 
 
 
@@ -100,13 +96,12 @@ Allowed range for each decay is (0 - 1.0)
 
 
 
-> **Type**: ```[Double[]]```
 
-> **Required**: false
 
-> **Position**: 4
 
-> **PipelineInput**:false
+|Type        |Required|Position|PipelineInput|
+|------------|--------|--------|-------------|
+|`[Double[]]`|false   |4       |false        |
 
 
 
@@ -116,7 +111,6 @@ Allowed range for each decay is (0 - 1.0)
 Extension/Echo.RoughDraft.Extension.ps1 -Echo [[-EchoInputGain] <Double>] [[-EchoOutputGain] <Double>] [[-EchoDelay] <Double[]>] [[-EchoDecay] <Double[]>] [<CommonParameters>]
 ```
 ---
-
 
 
 
