@@ -38,13 +38,12 @@ The Input Path
 
 
 
-> **Type**: ```[String[]]```
 
-> **Required**: true
 
-> **Position**: 1
 
-> **PipelineInput**:true (ByPropertyName)
+|Type        |Required|Position|PipelineInput        |
+|------------|--------|--------|---------------------|
+|`[String[]]`|true    |1       |true (ByPropertyName)|
 
 
 
@@ -55,13 +54,12 @@ A dictionary of properties to update
 
 
 
-> **Type**: ```[PSObject[]]```
 
-> **Required**: false
 
-> **Position**: 2
 
-> **PipelineInput**:true (ByValue)
+|Type          |Required|Position|PipelineInput |
+|--------------|--------|--------|--------------|
+|`[PSObject[]]`|false   |2       |true (ByValue)|
 
 
 
@@ -72,13 +70,12 @@ A collection of properties to clear
 
 
 
-> **Type**: ```[String[]]```
 
-> **Required**: false
 
-> **Position**: 3
 
-> **PipelineInput**:false
+|Type        |Required|Position|PipelineInput|
+|------------|--------|--------|-------------|
+|`[String[]]`|false   |3       |false        |
 
 
 
@@ -89,13 +86,12 @@ The path to FFMpeg.exe.  Download it from http://ffmpeg.org/
 
 
 
-> **Type**: ```[String]```
 
-> **Required**: false
 
-> **Position**: 4
 
-> **PipelineInput**:true (ByPropertyName)
+|Type      |Required|Position|PipelineInput        |
+|----------|--------|--------|---------------------|
+|`[String]`|false   |4       |true (ByPropertyName)|
 
 
 
