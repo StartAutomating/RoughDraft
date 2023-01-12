@@ -23,13 +23,12 @@ The audio gain, either in decibals (i.e. 12db) or as a ratio (i.e. 1.5)
 
 
 
-> **Type**: ```[String]```
 
-> **Required**: true
 
-> **Position**: 1
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[String]`|true    |1       |false        |
 
 
 
@@ -39,7 +38,6 @@ The audio gain, either in decibals (i.e. 12db) or as a ratio (i.e. 1.5)
 Extension/AudioGain.RoughDraft.Extension.ps1 [-AudioGain] <String> [<CommonParameters>]
 ```
 ---
-
 
 
 
