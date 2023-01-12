@@ -35,13 +35,12 @@ If set, will show volume
 
 
 
-> **Type**: ```[Switch]```
 
-> **Required**: true
 
-> **Position**: named
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[Switch]`|true    |named   |false        |
 
 
 
@@ -52,13 +51,12 @@ Specify the video size for the output.  Default value is 1920x1080
 
 
 
-> **Type**: ```[String]```
 
-> **Required**: false
 
-> **Position**: 1
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[String]`|false   |1       |false        |
 
 
 
@@ -69,13 +67,12 @@ Set the bargraph height. It must be even. Default value is -1 which computes the
 
 
 
-> **Type**: ```[Int32]```
 
-> **Required**: false
 
-> **Position**: 2
 
-> **PipelineInput**:false
+|Type     |Required|Position|PipelineInput|
+|---------|--------|--------|-------------|
+|`[Int32]`|false   |2       |false        |
 
 
 
@@ -86,13 +83,12 @@ Set the axis height. It must be even. Default value is -1 which computes the axi
 
 
 
-> **Type**: ```[Int32]```
 
-> **Required**: false
 
-> **Position**: 3
 
-> **PipelineInput**:false
+|Type     |Required|Position|PipelineInput|
+|---------|--------|--------|-------------|
+|`[Int32]`|false   |3       |false        |
 
 
 
@@ -103,13 +99,12 @@ Set the sonogram height. It must be even. Default value is -1 which computes the
 
 
 
-> **Type**: ```[Int32]```
 
-> **Required**: false
 
-> **Position**: 4
 
-> **PipelineInput**:false
+|Type     |Required|Position|PipelineInput|
+|---------|--------|--------|-------------|
+|`[Int32]`|false   |4       |false        |
 
 
 
@@ -136,13 +131,12 @@ and functions:
 
 
 
-> **Type**: ```[String]```
 
-> **Required**: false
 
-> **Position**: 5
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[String]`|false   |5       |false        |
 
 
 
@@ -169,13 +163,12 @@ and functions:
 
 
 
-> **Type**: ```[String]```
 
-> **Required**: false
 
-> **Position**: 6
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[String]`|false   |6       |false        |
 
 
 
@@ -186,13 +179,12 @@ Specify the sonogram gamma. Lower gamma makes the spectrum more contrast, higher
 
 
 
-> **Type**: ```[Double]```
 
-> **Required**: false
 
-> **Position**: 7
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[Double]`|false   |7       |false        |
 
 
 
@@ -203,13 +195,12 @@ Specify the bargraph gamma. Default value is 1.
 
 
 
-> **Type**: ```[Double]```
 
-> **Required**: false
 
-> **Position**: 8
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[Double]`|false   |8       |false        |
 
 
 
@@ -220,13 +211,12 @@ Specify the bargraph transparency level. Lower value makes the bargraph sharper.
 
 
 
-> **Type**: ```[Double]```
 
-> **Required**: false
 
-> **Position**: 9
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[Double]`|false   |9       |false        |
 
 
 
@@ -241,13 +231,12 @@ Acceptable range is [0.002, 1]. Default value is 0.17.
 
 
 
-> **Type**: ```[Double]```
 
-> **Required**: false
 
-> **Position**: 10
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[Double]`|false   |10      |false        |
 
 
 
@@ -261,13 +250,12 @@ useful when low latency is required. Accepted range is [0, 1].
 
 
 
-> **Type**: ```[Double]```
 
-> **Required**: false
 
-> **Position**: 11
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[Double]`|false   |11      |false        |
 
 
 
@@ -280,13 +268,12 @@ Acceptable range is [10, 100000].
 
 
 
-> **Type**: ```[Double]```
 
-> **Required**: false
 
-> **Position**: 12
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[Double]`|false   |12      |false        |
 
 
 
@@ -299,13 +286,12 @@ Acceptable range is [10, 100000].
 
 
 
-> **Type**: ```[Double]```
 
-> **Required**: false
 
-> **Position**: 13
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[Double]`|false   |13      |false        |
 
 
 
@@ -327,13 +313,12 @@ It can contain variables:
 
 
 
-> **Type**: ```[String]```
 
-> **Required**: false
 
-> **Position**: 14
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[String]`|false   |14      |false        |
 
 
 
@@ -344,13 +329,12 @@ Specify the transform count for every video frame. Default value is 6. Acceptabl
 
 
 
-> **Type**: ```[Int32]```
 
-> **Required**: false
 
-> **Position**: 15
 
-> **PipelineInput**:false
+|Type     |Required|Position|PipelineInput|
+|---------|--------|--------|-------------|
+|`[Int32]`|false   |15      |false        |
 
 
 
@@ -361,13 +345,12 @@ Specify the transform count for every single pixel. Default value is 0, which ma
 
 
 
-> **Type**: ```[Int32]```
 
-> **Required**: false
 
-> **Position**: 16
 
-> **PipelineInput**:false
+|Type     |Required|Position|PipelineInput|
+|---------|--------|--------|-------------|
+|`[Int32]`|false   |16      |false        |
 
 
 
@@ -390,13 +373,12 @@ Valid Values:
 
 
 
-> **Type**: ```[Int32]```
 
-> **Required**: false
 
-> **Position**: 17
 
-> **PipelineInput**:false
+|Type     |Required|Position|PipelineInput|
+|---------|--------|--------|-------------|
+|`[Int32]`|false   |17      |false        |
 
 
 
@@ -408,13 +390,12 @@ The : in the pattern may be replaced by | to avoid unnecessary escaping
 
 
 
-> **Type**: ```[String[]]```
 
-> **Required**: false
 
-> **Position**: 18
 
-> **PipelineInput**:false
+|Type        |Required|Position|PipelineInput|
+|------------|--------|--------|-------------|
+|`[String[]]`|false   |18      |false        |
 
 
 
@@ -427,13 +408,12 @@ Note that drawing with font file or embedded font is not implemented with custom
 
 
 
-> **Type**: ```[String]```
 
-> **Required**: false
 
-> **Position**: 19
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[String]`|false   |19      |false        |
 
 
 
@@ -444,13 +424,12 @@ Specify image file to draw the axis. This option override fontfile and fontcolor
 
 
 
-> **Type**: ```[String]```
 
-> **Required**: false
 
-> **Position**: 20
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[String]`|false   |20      |false        |
 
 
 
@@ -463,13 +442,12 @@ Default value is 1.
 
 
 
-> **Type**: ```[Switch]```
 
-> **Required**: false
 
-> **Position**: named
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[Switch]`|false   |named   |false        |
 
 
 
@@ -500,13 +478,12 @@ Default value is st(0, (midi(f)-59.5)/12); st(1, if(between(ld(0),0,1), 0.5-0.5*
 
 
 
-> **Type**: ```[String]```
 
-> **Required**: false
 
-> **Position**: 21
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[String]`|false   |21      |false        |
 
 
 
@@ -516,7 +493,6 @@ Default value is st(0, (midi(f)-59.5)/12); st(1, if(between(ld(0),0,1), 0.5-0.5*
 Extension/ShowScale.RoughDraft.Extension.ps1 -ShowScale [[-ShowScaleSize] <String>] [[-ShowScaleBarGraphHeight] <Int32>] [[-ShowScaleAxisHeight] <Int32>] [[-ShowScaleSonogramHeight] <Int32>] [[-ShowScaleSonogramVolume] <String>] [[-ShowScaleBarGraphVolume] <String>] [[-ShowScaleSonogramGamma] <Double>] [[-ShowScaleBarGraphGamma] <Double>] [[-ShowScaleBarGraphTransparency] <Double>] [[-ShowScaleTimeclamp] <Double>] [[-ShowScaleAttack] <Double>] [[-ShowScaleBaseFrequency] <Double>] [[-ShowScaleEndFrequency] <Double>] [[-ShowScaleTransformLength] <String>] [[-ShowScaleTransformCount] <Int32>] [[-ShowScaleTransformPixelCount] <Int32>] [[-ShowScaleColorspace] <Int32>] [[-ShowScaleFont] <String[]>] [[-ShowScaleFontFile] <String>] [[-ShowScaleAxisFile] <String>] [-ShowScaleHideAxis] [[-ShowScaleFontColorExpression] <String>] [<CommonParameters>]
 ```
 ---
-
 
 
 
