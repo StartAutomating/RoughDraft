@@ -30,13 +30,12 @@ If set, will limit pixels between a range of values.
 
 
 
-> **Type**: ```[Switch]```
 
-> **Required**: true
 
-> **Position**: named
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[Switch]`|true    |named   |false        |
 
 
 
@@ -47,13 +46,12 @@ Lower bound. Defaults to the lowest allowed value for the input.
 
 
 
-> **Type**: ```[String]```
 
-> **Required**: false
 
-> **Position**: 1
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[String]`|false   |1       |false        |
 
 
 
@@ -64,13 +62,12 @@ Upper bound. Defaults to the highest allowed value for the input.
 
 
 
-> **Type**: ```[String]```
 
-> **Required**: false
 
-> **Position**: 2
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[String]`|false   |2       |false        |
 
 
 
@@ -81,13 +78,12 @@ Specify which planes will be processed. Defaults to all available.
 
 
 
-> **Type**: ```[String]```
 
-> **Required**: false
 
-> **Position**: 3
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[String]`|false   |3       |false        |
 
 
 
@@ -97,7 +93,6 @@ Specify which planes will be processed. Defaults to all available.
 Extension/LimitPixel.RoughDraft.Extension.ps1 -LimitPixel [[-LimitPixelMin] <String>] [[-LimitPixelMax] <String>] [[-LimitPixelPlane] <String>] [<CommonParameters>]
 ```
 ---
-
 
 
 
