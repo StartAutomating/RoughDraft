@@ -23,13 +23,12 @@ If set, will randomize frames
 
 
 
-> **Type**: ```[Switch]```
 
-> **Required**: true
 
-> **Position**: named
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[Switch]`|true    |named   |false        |
 
 
 
@@ -40,13 +39,12 @@ The number of frames to be randomized.  Default is 30.
 
 
 
-> **Type**: ```[Int32]```
 
-> **Required**: false
 
-> **Position**: 1
 
-> **PipelineInput**:false
+|Type     |Required|Position|PipelineInput|
+|---------|--------|--------|-------------|
+|`[Int32]`|false   |1       |false        |
 
 
 
@@ -57,13 +55,12 @@ The seet for the random number generator.
 
 
 
-> **Type**: ```[Int32]```
 
-> **Required**: false
 
-> **Position**: 2
 
-> **PipelineInput**:false
+|Type     |Required|Position|PipelineInput|
+|---------|--------|--------|-------------|
+|`[Int32]`|false   |2       |false        |
 
 
 
@@ -73,7 +70,6 @@ The seet for the random number generator.
 Extension/RandomizeFrame.RoughDraft.Extension.ps1 -RandomizeFrame [[-RandomizedFrameCount] <Int32>] [[-RandomizedFrameSeed] <Int32>] [<CommonParameters>]
 ```
 ---
-
 
 
 
