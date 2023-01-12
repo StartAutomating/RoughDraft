@@ -30,13 +30,12 @@ The number of successive frames to mix.
 
 
 
-> **Type**: ```[Int32]```
 
-> **Required**: true
 
-> **Position**: 1
 
-> **PipelineInput**:false
+|Type     |Required|Position|PipelineInput|
+|---------|--------|--------|-------------|
+|`[Int32]`|true    |1       |false        |
 
 
 
@@ -48,13 +47,12 @@ If number of weights is smaller than number of frames last specified weight will
 
 
 
-> **Type**: ```[Int32[]]```
 
-> **Required**: false
 
-> **Position**: 2
 
-> **PipelineInput**:false
+|Type       |Required|Position|PipelineInput|
+|-----------|--------|--------|-------------|
+|`[Int32[]]`|false   |2       |false        |
 
 
 
@@ -66,13 +64,12 @@ By default scale is auto scaled to sum of weights.
 
 
 
-> **Type**: ```[Int32]```
 
-> **Required**: false
 
-> **Position**: 3
 
-> **PipelineInput**:false
+|Type     |Required|Position|PipelineInput|
+|---------|--------|--------|-------------|
+|`[Int32]`|false   |3       |false        |
 
 
 
@@ -83,13 +80,12 @@ Set which planes to filter. Default is all. Allowed range is from 0 to 15.
 
 
 
-> **Type**: ```[Int32]```
 
-> **Required**: false
 
-> **Position**: 4
 
-> **PipelineInput**:false
+|Type     |Required|Position|PipelineInput|
+|---------|--------|--------|-------------|
+|`[Int32]`|false   |4       |false        |
 
 
 
@@ -99,7 +95,6 @@ Set which planes to filter. Default is all. Allowed range is from 0 to 15.
 Extension/TimeMix.RoughDraft.Extension.ps1 [-TimeMix] <Int32> [[-TimeMixFrameWeight] <Int32[]>] [[-TimeMixScale] <Int32>] [[-TimeMixPlane] <Int32>] [<CommonParameters>]
 ```
 ---
-
 
 
 
