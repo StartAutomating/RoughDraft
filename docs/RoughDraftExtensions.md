@@ -3,7 +3,7 @@
 |AlbumArt|Sets album artwork|Set-Media|
 |AmplifyPixel|AmplifyPixel extension|Show-Media,Edit-Media|
 |AudioCrusher|Audio Crusher|Show-Media,Edit-Media|
-|AudioExpression|Evaluates Audio Expressions|Show-Media,Edit-Media,New-Media|
+|AudioExpression|Evaluates Audio Expressions|New-Media,Show-Media,Edit-Media|
 |AudioFrequencyExpression|Apply expressions to audio frequencies|Show-Media,Edit-Media|
 |AudioGain|Increases audio volume|Show-Media,Edit-Media|
 |BilateralSmooth|Bilateral Smooth|Show-Media,Edit-Media|
@@ -21,12 +21,12 @@
 |ColorScope|Colorscope extension|Show-Media,Edit-Media|
 |ColorSource|Generates a color|New-Media,Show-Media|
 |Convolve|convolve|Join-Media|
-|Crop|Crop Extension|Show-Media,Edit-Media,Receive-Media,Send-Media|
+|Crop|Crop Extension|Send-Media,Show-Media,Receive-Media,Edit-Media|
 |CropDetect|Auto-detect the crop size.|Get-Media|
 |DataScope|Datascope effect|Edit-Media|
 |Deconvolve|deconvolve|Join-Media|
-|DirectShow|DirectShow Extension|Show-Media,Receive-Media,Send-Media|
-|DrawSubtitle|Draw subtitles on top of input video|Edit-Media,Convert-Media|
+|DirectShow|DirectShow Extension|Send-Media,Show-Media,Receive-Media|
+|DrawSubtitle|Draw subtitles on top of input video|Convert-Media,Edit-Media|
 |Echo|Adds echoes to audio|Show-Media,Edit-Media|
 |EdgeDetect|EdgeDetect Extension|Show-Media,Edit-Media|
 |Emboss|Embosses video or images|Edit-Media|
@@ -39,7 +39,7 @@
 |Flanger|Audio Flanger.|Show-Media,Edit-Media|
 |FlipHorizontal|Flips video horizontally|Show-Media,Edit-Media|
 |FlipVertical|Flips video vertically|Show-Media,Edit-Media|
-|FrameBuffer|FrameBuffer Extension|Show-Media,Receive-Media,Send-Media|
+|FrameBuffer|FrameBuffer Extension|Send-Media,Show-Media,Receive-Media|
 |FrameStep|FrameStep Effect|Show-Media,Edit-Media|
 |Histogram|Histogram Extension|Show-Media,Edit-Media|
 |Hue|Hue Extension|Show-Media,Edit-Media|
@@ -63,19 +63,19 @@
 |Pulsator|Pulsator Effect|Show-Media,Edit-Media|
 |RandomizeFrame|RandomizeFrame extensions|Show-Media,Edit-Media|
 |Rate|Adjusts the rate of media.|Show-Media,Edit-Media|
-|Resize|Simple video resize.|Show-Media,Edit-Media,Convert-Media|
+|Resize|Simple video resize.|Show-Media,Convert-Media,Edit-Media|
 |ReverseAudio|Reverses audio|Edit-Media|
 |ReverseVideo|Reverses video|Edit-Media|
-|Rotate|Rotates a video|Show-Media,Edit-Media,Convert-Media|
+|Rotate|Rotates a video|Show-Media,Convert-Media,Edit-Media|
 |Scale|Scales video.|Show-Media,Edit-Media|
 |ScrollVideo|Scrolls video|Show-Media,Edit-Media|
 |Sepia|Applies a Sepia Filter|Edit-Media|
-|ShowFrequency|Show Frequencies|Show-Media,Edit-Media,New-Media|
-|ShowScale|Show the tonal scale of the audio|Show-Media,Edit-Media,New-Media|
-|ShowSpectrum|Shows the audio spectrum|Show-Media,Edit-Media,New-Media|
-|ShowVectorScope|Shows a Vector Scope of the Audio|Show-Media,Edit-Media,New-Media|
-|ShowVolume|Shows the volume of an audio stream.|Show-Media,Edit-Media,New-Media|
-|ShowWaveform|Shows audio waveform.|Show-Media,Edit-Media,New-Media|
+|ShowFrequency|Show Frequencies|New-Media,Show-Media,Edit-Media|
+|ShowScale|Show the tonal scale of the audio|New-Media,Show-Media,Edit-Media|
+|ShowSpectrum|Shows the audio spectrum|New-Media,Show-Media,Edit-Media|
+|ShowVectorScope|Shows a Vector Scope of the Audio|New-Media,Show-Media,Edit-Media|
+|ShowVolume|Shows the volume of an audio stream.|New-Media,Show-Media,Edit-Media|
+|ShowWaveform|Shows audio waveform.|New-Media,Show-Media,Edit-Media|
 |ShuffleFrames|Shuffles frames in video|Edit-Media|
 |Sierpinski|Generates a Sierpinski fractal|New-Media,Show-Media|
 |SilenceDetect|Detects silence in an audio stream|Get-Media|
@@ -93,7 +93,7 @@
 |Tremolo|Tremolo effect|Show-Media,Edit-Media|
 |Vibrato|Vibrato effect|Show-Media,Edit-Media|
 |VideoExpression|Evaluates Video Expressions|Show-Media,Edit-Media|
-|VideoForLinux|VideoForLinux Extension|Show-Media,Receive-Media,Send-Media|
+|VideoForLinux|VideoForLinux Extension|Send-Media,Show-Media,Receive-Media|
 |Vignette|Applies a vignette filter|Show-Media,Edit-Media|
 |VolumeLevel|Gets VolumeLevels|Get-Media|
 |Watermark|Watermarks a video|Edit-Media|
