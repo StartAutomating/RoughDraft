@@ -30,13 +30,12 @@ If set, will generate life
 
 
 
-> **Type**: ```[Switch]```
 
-> **Required**: true
 
-> **Position**: named
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[Switch]`|true    |named   |false        |
 
 
 
@@ -49,13 +48,12 @@ If this option is not specified, the initial grid is generated randomly.
 
 
 
-> **Type**: ```[String]```
 
-> **Required**: false
 
-> **Position**: 1
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[String]`|false   |1       |false        |
 
 
 
@@ -68,13 +66,12 @@ It is ignored when a file is specified.
 
 
 
-> **Type**: ```[Double]```
 
-> **Required**: false
 
-> **Position**: 2
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[Double]`|false   |2       |false        |
 
 
 
@@ -86,13 +83,12 @@ If not specified, or if explicitly set to -1, the filter will try to use a good 
 
 
 
-> **Type**: ```[Int32]```
 
-> **Required**: false
 
-> **Position**: 3
 
-> **PipelineInput**:false
+|Type     |Required|Position|PipelineInput|
+|---------|--------|--------|-------------|
+|`[Int32]`|false   |3       |false        |
 
 
 
@@ -105,13 +101,12 @@ and will born a new cell if there are three alive cells around a dead cell.
 
 
 
-> **Type**: ```[String]```
 
-> **Required**: false
 
-> **Position**: 4
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[String]`|false   |4       |false        |
 
 
 
@@ -122,13 +117,12 @@ If not set, will not stitch the left/right top/bottom grid edges together.
 
 
 
-> **Type**: ```[Switch]```
 
-> **Required**: false
 
-> **Position**: named
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[Switch]`|false   |named   |false        |
 
 
 
@@ -140,13 +134,12 @@ $ Set cell mold speed.
 
 
 
-> **Type**: ```[Byte]```
 
-> **Required**: false
 
-> **Position**: 5
 
-> **PipelineInput**:false
+|Type    |Required|Position|PipelineInput|
+|--------|--------|--------|-------------|
+|`[Byte]`|false   |5       |false        |
 
 
 
@@ -157,13 +150,12 @@ Set the color of living (or new born) cells.
 
 
 
-> **Type**: ```[String]```
 
-> **Required**: false
 
-> **Position**: 6
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[String]`|false   |6       |false        |
 
 
 
@@ -175,13 +167,12 @@ If mold is set, this is the first color used to represent a dead cell.
 
 
 
-> **Type**: ```[String]```
 
-> **Required**: false
 
-> **Position**: 7
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[String]`|false   |7       |false        |
 
 
 
@@ -192,13 +183,12 @@ Set mold color, for definitely dead and moldy cells.
 
 
 
-> **Type**: ```[String]```
 
-> **Required**: false
 
-> **Position**: 8
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[String]`|false   |8       |false        |
 
 
 
@@ -208,7 +198,6 @@ Set mold color, for definitely dead and moldy cells.
 Extension/Life.rd.ext.ps1 -Life [[-LifeStateFile] <String>] [[-LifeFillRatio] <Double>] [[-LifeSeed] <Int32>] [[-LifeRule] <String>] [-DoNotStitchLifeGrid] [[-LifeMoldSpeed] <Byte>] [[-LifeLivingColor] <String>] [[-LifeDeathColor] <String>] [[-LifeMoldColor] <String>] [<CommonParameters>]
 ```
 ---
-
 
 
 
