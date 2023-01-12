@@ -42,6 +42,8 @@
         }
         #endregion Handle -AsJob
 
+        $FFMpegArgument = $FFMpegArgument -notmatch '^\s{0,}$'
+
         #region Run FFMpeg
         Write-Verbose "Invoke FFMpeg with $($ffmpegArgument -join ' ')"        
         $outputLines = [Collections.ArrayList]::new()
