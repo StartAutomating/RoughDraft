@@ -23,13 +23,12 @@ If set, will find black within a video.
 
 
 
-> **Type**: ```[Switch]```
 
-> **Required**: true
 
-> **Position**: named
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[Switch]`|true    |named   |false        |
 
 
 
@@ -40,13 +39,12 @@ The duration of darkness this is considered black.  By default, a half second.
 
 
 
-> **Type**: ```[TimeSpan]```
 
-> **Required**: false
 
-> **Position**: 1
 
-> **PipelineInput**:false
+|Type        |Required|Position|PipelineInput|
+|------------|--------|--------|-------------|
+|`[TimeSpan]`|false   |1       |false        |
 
 
 
@@ -59,13 +57,12 @@ They are often very dark grey instead.
 
 
 
-> **Type**: ```[Double]```
 
-> **Required**: false
 
-> **Position**: 2
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[Double]`|false   |2       |false        |
 
 
 
@@ -75,7 +72,6 @@ They are often very dark grey instead.
 Extension/BlackDetect.RoughDraft.Extension.ps1 -BlackDetect [[-BlackDetectDuration] <TimeSpan>] [[-BlackDetectThreshold] <Double>] [<CommonParameters>]
 ```
 ---
-
 
 
 
