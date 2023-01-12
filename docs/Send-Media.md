@@ -138,6 +138,24 @@ If set, will run as a background job.
 
 
 ---
+#### **ThrottleLimit**
+
+If set, will limit the number of background jobs to a throttle limit.
+By default 5.
+Throttling is only available if running on PowerShell Core.
+
+
+
+
+
+
+|Type     |Required|Position|PipelineInput|
+|---------|--------|--------|-------------|
+|`[Int32]`|false   |named   |false        |
+
+
+
+---
 #### **FFMpegPath**
 
 The path to FFMpeg.exe.  By default, checks in the path.
@@ -188,9 +206,9 @@ If set, this will loop the input source any number of times.
 ---
 ### Syntax
 ```PowerShell
-Send-Media [-InputType <String>] [-InputDevice <String>] [-InitialArgumentList <String[]>] [-FFMpegArgument <String[]>] [-OutputUri <Uri>] [-OutputProtocol <String>] [-AsJob] [-FFMpegPath <String>] [-Loop] [-LoopCount <Int32>] [<CommonParameters>]
+Send-Media [-InputType <String>] [-InputDevice <String>] [-InitialArgumentList <String[]>] [-FFMpegArgument <String[]>] [-OutputUri <Uri>] [-OutputProtocol <String>] [-AsJob] [-ThrottleLimit <Int32>] [-FFMpegPath <String>] [-Loop] [-LoopCount <Int32>] [<CommonParameters>]
 ```
 ```PowerShell
-Send-Media [-InputPath <String>] [-InitialArgumentList <String[]>] [-FFMpegArgument <String[]>] [-OutputUri <Uri>] [-OutputProtocol <String>] [-AsJob] [-FFMpegPath <String>] [-Loop] [-LoopCount <Int32>] [<CommonParameters>]
+Send-Media [-InputPath <String>] [-InitialArgumentList <String[]>] [-FFMpegArgument <String[]>] [-OutputUri <Uri>] [-OutputProtocol <String>] [-AsJob] [-ThrottleLimit <Int32>] [-FFMpegPath <String>] [-Loop] [-LoopCount <Int32>] [<CommonParameters>]
 ```
 ---
