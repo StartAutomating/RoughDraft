@@ -128,6 +128,40 @@ A list of additional arguments to FFMpeg.
 
 
 ---
+#### **AsJob**
+
+If set, will run as a background job.
+
+
+
+
+
+
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[Switch]`|false   |named   |false        |
+
+
+
+---
+#### **ThrottleLimit**
+
+If set, will limit the number of background jobs to a throttle limit.
+By default 5.
+Throttling is only available if running on PowerShell Core.
+
+
+
+
+
+
+|Type     |Required|Position|PipelineInput|
+|---------|--------|--------|-------------|
+|`[Int32]`|false   |named   |false        |
+
+
+
+---
 ### Outputs
 * [IO.FileInfo](https://learn.microsoft.com/en-us/dotnet/api/System.IO.FileInfo)
 
@@ -140,6 +174,6 @@ A list of additional arguments to FFMpeg.
 ---
 ### Syntax
 ```PowerShell
-Split-Media -InputPath <String> [[-OutputPath] <String[]>] [-FFMpegPath <String>] [-Start] <TimeSpan> [[-End] <TimeSpan>] [-FFMpegArgument <String[]>] [<CommonParameters>]
+Split-Media -InputPath <String> [[-OutputPath] <String[]>] [-FFMpegPath <String>] [-Start] <TimeSpan> [[-End] <TimeSpan>] [-FFMpegArgument <String[]>] [-AsJob] [-ThrottleLimit <Int32>] [<CommonParameters>]
 ```
 ---
