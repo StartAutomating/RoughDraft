@@ -23,13 +23,12 @@ Audio mixing.
 
 
 
-> **Type**: ```[Switch]```
 
-> **Required**: true
 
-> **Position**: named
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[Switch]`|true    |named   |false        |
 
 
 
@@ -40,13 +39,12 @@ Number of inputs.
 
 
 
-> **Type**: ```[Int32]```
 
-> **Required**: false
 
-> **Position**: 1
 
-> **PipelineInput**:false
+|Type     |Required|Position|PipelineInput|
+|---------|--------|--------|-------------|
+|`[Int32]`|false   |1       |false        |
 
 
 
@@ -65,13 +63,12 @@ Valid Values:
 
 
 
-> **Type**: ```[String]```
 
-> **Required**: false
 
-> **Position**: 2
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[String]`|false   |2       |false        |
 
 
 
@@ -82,13 +79,12 @@ Transition time, in seconds, for volume renormalization when an input stream end
 
 
 
-> **Type**: ```[Single]```
 
-> **Required**: false
 
-> **Position**: 3
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[Single]`|false   |3       |false        |
 
 
 
@@ -99,13 +95,12 @@ Set weight for each input.
 
 
 
-> **Type**: ```[String[]]```
 
-> **Required**: false
 
-> **Position**: 4
 
-> **PipelineInput**:false
+|Type        |Required|Position|PipelineInput|
+|------------|--------|--------|-------------|
+|`[String[]]`|false   |4       |false        |
 
 
 
@@ -115,7 +110,6 @@ Set weight for each input.
 Extension/MixAudio.RoughDraft.Extension.ps1 -MixAudio [[-MixAudioInputs] <Int32>] [[-MixAudioDuration] <String>] [[-MixAudioDropoutTransition] <Single>] [[-MixAudioWeight] <String[]>] [<CommonParameters>]
 ```
 ---
-
 
 
 
