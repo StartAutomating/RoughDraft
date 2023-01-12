@@ -96,6 +96,22 @@ The path to FFMpeg.exe.  Download it from http://ffmpeg.org/
 
 
 ---
+#### **FFMpegArgument**
+
+A list of additional arguments to FFMpeg.
+
+
+
+
+
+
+|Type        |Required|Position|PipelineInput|
+|------------|--------|--------|-------------|
+|`[String[]]`|false   |5       |false        |
+
+
+
+---
 #### **WhatIf**
 -WhatIf is an automatic variable that is created when a command has ```[CmdletBinding(SupportsShouldProcess)]```.
 -WhatIf is used to see what would happen, or return operations without executing them
@@ -118,6 +134,6 @@ If the command sets a ```[ConfirmImpact("Medium")]``` which is lower than ```$co
 ---
 ### Syntax
 ```PowerShell
-Set-Media [-InputPath] <String[]> [[-Property] <PSObject[]>] [[-ClearProperty] <String[]>] [[-FFMpegPath] <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Set-Media [-InputPath] <String[]> [[-Property] <PSObject[]>] [[-ClearProperty] <String[]>] [[-FFMpegPath] <String>] [[-FFMpegArgument] <String[]>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 ---
