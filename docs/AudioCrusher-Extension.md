@@ -23,13 +23,12 @@ Reduce audio bit resolution.
 
 
 
-> **Type**: ```[Switch]```
 
-> **Required**: true
 
-> **Position**: named
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[Switch]`|true    |named   |false        |
 
 
 
@@ -40,13 +39,12 @@ set level in
 
 
 
-> **Type**: ```[Double]```
 
-> **Required**: false
 
-> **Position**: 1
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[Double]`|false   |1       |false        |
 
 
 
@@ -57,13 +55,12 @@ set level out
 
 
 
-> **Type**: ```[Double]```
 
-> **Required**: false
 
-> **Position**: 2
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[Double]`|false   |2       |false        |
 
 
 
@@ -74,13 +71,12 @@ set bit reduction
 
 
 
-> **Type**: ```[Double]```
 
-> **Required**: false
 
-> **Position**: 3
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[Double]`|false   |3       |false        |
 
 
 
@@ -91,13 +87,12 @@ set mix
 
 
 
-> **Type**: ```[Double]```
 
-> **Required**: false
 
-> **Position**: 4
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[Double]`|false   |4       |false        |
 
 
 
@@ -115,13 +110,12 @@ Valid Values:
 
 
 
-> **Type**: ```[String]```
 
-> **Required**: false
 
-> **Position**: 5
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[String]`|false   |5       |false        |
 
 
 
@@ -132,13 +126,12 @@ set DC
 
 
 
-> **Type**: ```[Double]```
 
-> **Required**: false
 
-> **Position**: 6
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[Double]`|false   |6       |false        |
 
 
 
@@ -149,13 +142,12 @@ set anti-aliasing
 
 
 
-> **Type**: ```[Double]```
 
-> **Required**: false
 
-> **Position**: 7
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[Double]`|false   |7       |false        |
 
 
 
@@ -166,13 +158,12 @@ set sample reduction
 
 
 
-> **Type**: ```[Double]```
 
-> **Required**: false
 
-> **Position**: 8
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[Double]`|false   |8       |false        |
 
 
 
@@ -183,13 +174,12 @@ enable LFO
 
 
 
-> **Type**: ```[Switch]```
 
-> **Required**: false
 
-> **Position**: named
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[Switch]`|false   |named   |false        |
 
 
 
@@ -200,13 +190,12 @@ set LFO depth
 
 
 
-> **Type**: ```[Double]```
 
-> **Required**: false
 
-> **Position**: 9
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[Double]`|false   |9       |false        |
 
 
 
@@ -217,13 +206,12 @@ set LFO rate
 
 
 
-> **Type**: ```[Double]```
 
-> **Required**: false
 
-> **Position**: 10
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[Double]`|false   |10      |false        |
 
 
 
@@ -233,7 +221,6 @@ set LFO rate
 Extension/AudioCrusher.RoughDraft.Extension.ps1 -AudioCrusher [[-AudioCrusherLevelIn] <Double>] [[-AudioCrusherLevelOut] <Double>] [[-AudioCrusherBits] <Double>] [[-AudioCrusherMix] <Double>] [[-AudioCrusherMode] <String>] [[-AudioCrusherDc] <Double>] [[-AudioCrusherAa] <Double>] [[-AudioCrusherSamples] <Double>] [-AudioCrusherLfo] [[-AudioCrusherLforange] <Double>] [[-AudioCrusherLforate] <Double>] [<CommonParameters>]
 ```
 ---
-
 
 
 
