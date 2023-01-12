@@ -30,13 +30,12 @@ The type of fractal source
 
 
 
-> **Type**: ```[Switch]```
 
-> **Required**: true
 
-> **Position**: named
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[Switch]`|true    |named   |false        |
 
 
 
@@ -47,13 +46,12 @@ Set the initial x position (from -100 to 100) (default -0.743644)
 
 
 
-> **Type**: ```[Int32]```
 
-> **Required**: false
 
-> **Position**: 1
 
-> **PipelineInput**:false
+|Type     |Required|Position|PipelineInput|
+|---------|--------|--------|-------------|
+|`[Int32]`|false   |1       |false        |
 
 
 
@@ -64,13 +62,12 @@ Set the initial y position (from -100 to 100) (default -0.131826)
 
 
 
-> **Type**: ```[Int32]```
 
-> **Required**: false
 
-> **Position**: 2
 
-> **PipelineInput**:false
+|Type     |Required|Position|PipelineInput|
+|---------|--------|--------|-------------|
+|`[Int32]`|false   |2       |false        |
 
 
 
@@ -81,13 +78,12 @@ set the initial scale value (from 0 to FLT_MAX) (default 3)
 
 
 
-> **Type**: ```[Double]```
 
-> **Required**: false
 
-> **Position**: 3
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[Double]`|false   |3       |false        |
 
 
 
@@ -98,13 +94,12 @@ set the terminal scale value (from 0 to FLT_MAX) (default 0.3)
 
 
 
-> **Type**: ```[Double]```
 
-> **Required**: false
 
-> **Position**: 4
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[Double]`|false   |4       |false        |
 
 
 
@@ -115,13 +110,12 @@ set the terminal pts value (from 0 to I64_MAX) (default 400)
 
 
 
-> **Type**: ```[Double]```
 
-> **Required**: false
 
-> **Position**: 5
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[Double]`|false   |5       |false        |
 
 
 
@@ -132,13 +126,12 @@ set the bailout value (from 0 to FLT_MAX) (default 10)
 
 
 
-> **Type**: ```[Object]```
 
-> **Required**: false
 
-> **Position**: 6
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[Object]`|false   |6       |false        |
 
 
 
@@ -149,13 +142,12 @@ set morph x frequency (from -FLT_MAX to FLT_MAX) (default 0.01)
 
 
 
-> **Type**: ```[Double]```
 
-> **Required**: false
 
-> **Position**: 7
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[Double]`|false   |7       |false        |
 
 
 
@@ -166,13 +158,12 @@ set morph y frequency (from -FLT_MAX to FLT_MAX) (default 0.0123)
 
 
 
-> **Type**: ```[Double]```
 
-> **Required**: false
 
-> **Position**: 8
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[Double]`|false   |8       |false        |
 
 
 
@@ -183,13 +174,12 @@ set morph amplitude (from -FLT_MAX to FLT_MAX) (default 0)
 
 
 
-> **Type**: ```[Double]```
 
-> **Required**: false
 
-> **Position**: 9
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[Double]`|false   |9       |false        |
 
 
 
@@ -200,13 +190,12 @@ set inner coloring mode (from 0 to INT_MAX) (default mincol)
 
 
 
-> **Type**: ```[Object]```
 
-> **Required**: false
 
-> **Position**: 10
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[Object]`|false   |10      |false        |
 
 
 
@@ -217,13 +206,12 @@ set outer coloring mode (from 0 to INT_MAX) (default normalized_iteration_count)
 
 
 
-> **Type**: ```[Object]```
 
-> **Required**: false
 
-> **Position**: 11
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[Object]`|false   |11      |false        |
 
 
 

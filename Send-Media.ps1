@@ -28,9 +28,10 @@
     $InitialArgumentList,
 
     # A list of additional arguments to FFMpeg.
-    [Alias('Arguments','Argument')]
+    [Alias('Arguments','Argument','ArgumentList','FFArgs')]
+    [Parameter(ValueFromRemainingArguments)]
     [string[]]
-    $ArgumentList,
+    $FFMpegArgument,
 
     # The outputURI where the broadcast will be sent.
     [Parameter(ValueFromPipelineByPropertyName)]
@@ -46,6 +47,12 @@
     # If set, will run as a background job.
     [switch]
     $AsJob,
+
+    # If set, will limit the number of background jobs to a throttle limit.
+    # By default 5.
+    # Throttling is only available if running on PowerShell Core.
+    [int]
+    $ThrottleLimit,
 
     # The path to FFMpeg.exe.  By default, checks in the path.
     [string]
@@ -125,7 +132,7 @@
                 $allArguments += $extensionArguments
             }
 
-            $allArguments += $ArgumentList
+            $allArguments += $FFMpegArgument
 
             if ($OutputProtocol) {
                 $allArguments += '-f',$OutputProtocol

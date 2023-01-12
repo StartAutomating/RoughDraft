@@ -1,6 +1,6 @@
 @{
     CompanyName='Start-Automating'
-    ModuleVersion='0.3.8'
+    ModuleVersion='0.3.9'
     ModuleToProcess='RoughDraft.psm1'
     GUID='c192ebbf-57a3-493e-bc82-da7553038794'
     Description='A Fun PowerShell Module for Multimedia'
@@ -14,6 +14,20 @@
             LicenseURI = 'https://github.com/StartAutomating/RoughDraft/blob/main/LICENSE'
             IconURI    = 'https://github.com/StartAutomating/RoughDraft/blob/main/Assets/RoughDraft.png'
             ReleaseNotes = @'
+## 0.3.9:
+
+* New Extensions:
+  * ColorExpression ( Fixes #172 )
+  * MixVideo ( Fixes #171 )
+* Extension Updates:
+  * BlendFrame now supports by Join-Media (Fixes #173)
+* All Valid -Media Commands now support -FFMpegArgument (Fixes #75)
+* Better Jobs Support
+  * Join-Media and New-Media now support -AsJob (Fixes #174)
+  * Job commands now support -ThrottleLimit (Fixes #175)
+
+---
+
 ## 0.3.8:
 
 * New Extensions:

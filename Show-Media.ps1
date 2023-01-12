@@ -133,7 +133,7 @@
 
     # The path to FFPlay.  If not provided, this will be automatically detected.    
     [string]
-    $FFPlayPath
+    $FFPlayPath    
     )
 
     dynamicParam {

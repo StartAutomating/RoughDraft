@@ -30,9 +30,21 @@
     [string]
     $PixelFormat =  'yuv420p',
 
+    # A list of additional arguments to FFMpeg.
+    [Alias('Arguments','Argument','ArgumentList')]
+    [Parameter(ValueFromRemainingArguments)]
+    [string[]]
+    $FFMpegArgument,
+
     # If set, will create the media in a background job.
     [switch]
-    $AsJob
+    $AsJob,
+    
+    # If set, will limit the number of background jobs to a throttle limit.
+    # By default 5.
+    # Throttling is only available if running on PowerShell Core.
+    [int]
+    $ThrottleLimit
     )
 
     dynamicParam {
@@ -41,6 +53,9 @@
     }
 
     process {
+        if ($AsJob) { # If -AsJob was passed,
+            return & $StartRoughDraftJob # start a background job.
+        }
         #region Find FFMpeg
         $ffmpeg = Get-FFMpeg -FFMpegPath $ffMpegPath
         if (-not $ffmpeg) { return }
@@ -50,7 +65,7 @@
         }
 
         $FilterParams = @()
-        $ffmpegArgs = @()
+        $ffmpegArgs = @($FFMpegArgument)
         $uro = $ExecutionContext.SessionState.Path.GetUnresolvedProviderPathFromPSPath($OutputPath)
         $ffEndArgs  = @('-pix_fmt', $PixelFormat, '-t', $Duration.TotalSeconds, '-y', "$uro")
 

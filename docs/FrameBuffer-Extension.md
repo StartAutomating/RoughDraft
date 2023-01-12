@@ -17,13 +17,12 @@ The frame buffer index
 
 
 
-> **Type**: ```[Int32]```
 
-> **Required**: true
 
-> **Position**: 1
 
-> **PipelineInput**:false
+|Type     |Required|Position|PipelineInput|
+|---------|--------|--------|-------------|
+|`[Int32]`|true    |1       |false        |
 
 
 

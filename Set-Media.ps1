@@ -36,9 +36,15 @@
     $ClearProperty,
 
     # The path to FFMpeg.exe.  Download it from http://ffmpeg.org/
-    [Parameter(ValueFromPipelineByPropertyName=$true)]
+    [Parameter(ValueFromPipelineByPropertyName)]
     [string]
-    $FFMpegPath
+    $FFMpegPath,
+
+    # A list of additional arguments to FFMpeg.
+    [Alias('Arguments','Argument','ArgumentList','FFArgs')]
+    [Parameter(ValueFromRemainingArguments)]
+    [string[]]
+    $FFMpegArgument
     )
 
     dynamicParam {
@@ -156,7 +162,16 @@
                     $metaDataArgs = @('-c', 'copy') + $metaDataArgs
                 }
                 if ($PSCmdlet.ShouldProcess("$inFile $metadataArgs")) {
-                    & $ffmpeg -i "`"$inFile`"" @metadataArgs $tempFileName '-y' 2>&1 |
+                    $allFFMpegArguments = @(
+                        "-i"
+                        "`"$inFile`""
+                        $metadataArgs
+                        $tempFileName
+                        '-y'
+                        $FFMpegArgument
+                    )
+
+                    Use-FFMpeg -FFMpegArgument $allFFMpegArguments |
                         & { process {
                             if ('silentlycontinue', 'ignore' -notcontains $VerbosePreference) {
                                 Write-Verbose "$_"

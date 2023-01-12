@@ -30,13 +30,12 @@ If set, apply Apply bilateral filter, spatial smoothing while preserving edges
 
 
 
-> **Type**: ```[Switch]```
 
-> **Required**: true
 
-> **Position**: named
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[Switch]`|true    |named   |false        |
 
 
 
@@ -47,13 +46,12 @@ Limit the maximum change for each plane, default is 65535. If 0, plane will rema
 
 
 
-> **Type**: ```[Int32[]]```
 
-> **Required**: false
 
-> **Position**: 1
 
-> **PipelineInput**:false
+|Type       |Required|Position|PipelineInput|
+|-----------|--------|--------|-------------|
+|`[Int32[]]`|false   |1       |false        |
 
 
 
@@ -64,13 +62,12 @@ Set sigma of gaussian function to calculate range weight. Allowed range is 0 to 
 
 
 
-> **Type**: ```[String]```
 
-> **Required**: false
 
-> **Position**: 2
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[String]`|false   |2       |false        |
 
 
 

@@ -53,13 +53,12 @@ The value will be interpreted as the change in decibals for that band.
 
 
 
-> **Type**: ```[IDictionary]```
 
-> **Required**: true
 
-> **Position**: 1
 
-> **PipelineInput**:false
+|Type           |Required|Position|PipelineInput|
+|---------------|--------|--------|-------------|
+|`[IDictionary]`|true    |1       |false        |
 
 
 

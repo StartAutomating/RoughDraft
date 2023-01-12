@@ -69,15 +69,26 @@
     [string]
     $Tune,
 
-    # Any additional arguments to pass to FFMpeg.
-    [Parameter(ValueFromPipelineByPropertyName)]
+    # A list of additional arguments to FFMpeg.
+    [Alias('Arguments','Argument','ArgumentList','FFArgs')]
+    [Parameter(ValueFromRemainingArguments)]
     [string[]]
     $FFMpegArgument,
 
     # The pixel format for video and image output.  This maps to the -pix_fmt parameter in ffmpeg. By default, yuv420p.    
     [Alias('pix_fmt')]
     [string]
-    $PixelFormat = 'yuv420p'
+    $PixelFormat = 'yuv420p',
+
+    # If set, will run as a background job.
+    [switch]
+    $AsJob,
+
+    # If set, will limit the number of background jobs to a throttle limit.
+    # By default 5.
+    # Throttling is only available if running on PowerShell Core.
+    [int]
+    $ThrottleLimit
     )
     
     dynamicParam {
@@ -145,6 +156,11 @@
     }
 
     end  {
+        $psBoundParameters["InputPath"] = $inputPaths
+        if ($AsJob) { # If -AsJob was passed,
+            return & $StartRoughDraftJob # start a background job.
+        }
+
         #region Find FFMpeg
         $ffMpeg = Get-FFMpeg -ffMpegPath $ffmpegPath
         if (-not $ffmpeg) { return }
@@ -209,7 +225,7 @@
             $inputKeys = @(
                 foreach ($in in $inputMedia.Keys) {
                     '-i'
-                    "`"$in`""
+                    "$in"
                 }
             )
             if ($extensionParams -ne '-map') {                
@@ -399,8 +415,12 @@
                 $PixelFormat
                 '-y'
                 $uro
-                $perfArgs
-                $FFMpegArgument
+                if ($perfArgs) {
+                    $perfArgs
+                }
+                if ($FFMpegArgument) {
+                    $FFMpegArgument
+                }
             ) -FFMpegPath $ffmpegPath |
                 ForEach-Object $ffmpegConvertProcess -End $ffmpegConvertEnd
 

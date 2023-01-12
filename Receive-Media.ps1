@@ -51,9 +51,10 @@
     $Duration,
 
     # A list of additional arguments to FFMpeg.
-    [Alias('Arguments','Argument')]
+    [Alias('Arguments','Argument','ArgumentList','FFArgs')]
+    [Parameter(ValueFromRemainingArguments)]
     [string[]]
-    $ArgumentList,
+    $FFMpegArgument,
 
     # If set, will save output to a file
     [Parameter(ValueFromPipelineByPropertyName)]
@@ -63,6 +64,12 @@
     # If set, will run as a background job.
     [switch]
     $AsJob,
+
+    # If set, will limit the number of background jobs to a throttle limit.
+    # By default 5.
+    # Throttling is only available if running on PowerShell Core.
+    [int]
+    $ThrottleLimit,
 
     # The path to FFMpeg.exe.  By default, checks in the path.
     [string]
@@ -128,7 +135,7 @@
             }
             
 
-            $allArguments += $ArgumentList
+            $allArguments += $FFMpegArgument
             if ($OutputPath) {
                 $allArguments += $OutputPath, '-y'
             }

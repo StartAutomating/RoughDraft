@@ -23,13 +23,12 @@ If set, will adjust color contrast
 
 
 
-> **Type**: ```[Switch]```
 
-> **Required**: true
 
-> **Position**: named
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[Switch]`|true    |named   |false        |
 
 
 
@@ -40,13 +39,12 @@ The constrast between Red and Cyan.  Valid between -1 and 1.
 
 
 
-> **Type**: ```[Single]```
 
-> **Required**: false
 
-> **Position**: 1
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[Single]`|false   |1       |false        |
 
 
 
@@ -57,13 +55,12 @@ The constrast between Green and Magenta.  Valid between -1 and 1.
 
 
 
-> **Type**: ```[Single]```
 
-> **Required**: false
 
-> **Position**: 2
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[Single]`|false   |2       |false        |
 
 
 
@@ -74,13 +71,12 @@ The constrast between Blue and Yellow.  Valid between -1 and 1.
 
 
 
-> **Type**: ```[Single]```
 
-> **Required**: false
 
-> **Position**: 3
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[Single]`|false   |3       |false        |
 
 
 
@@ -91,13 +87,12 @@ The weight of the constrast between Red and Cyan.  Valid between 0 and 1.
 
 
 
-> **Type**: ```[Single]```
 
-> **Required**: false
 
-> **Position**: 4
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[Single]`|false   |4       |false        |
 
 
 
@@ -108,13 +103,12 @@ The weight of the constrast between Green and Magenta.  Valid between 0 and 1.
 
 
 
-> **Type**: ```[Single]```
 
-> **Required**: false
 
-> **Position**: 5
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[Single]`|false   |5       |false        |
 
 
 
@@ -125,13 +119,12 @@ The weight of the constrast between Blue and Yellow.  Valid between 0 and 1.
 
 
 
-> **Type**: ```[Single]```
 
-> **Required**: false
 
-> **Position**: 6
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[Single]`|false   |6       |false        |
 
 
 
@@ -142,13 +135,12 @@ The amount of lightness that should be preserved.  Valid between 0 and 1.
 
 
 
-> **Type**: ```[Single]```
 
-> **Required**: false
 
-> **Position**: 7
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[Single]`|false   |7       |false        |
 
 
 

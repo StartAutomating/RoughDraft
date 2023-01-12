@@ -27,13 +27,12 @@ The new rate of the media.
 
 
 
-> **Type**: ```[Double]```
 
-> **Required**: true
 
-> **Position**: 1
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[Double]`|true    |1       |false        |
 
 
 

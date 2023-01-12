@@ -44,7 +44,23 @@
     [Parameter(Position=2, ValueFromPipelineByPropertyName,ParameterSetName='Segment')]
     [Alias('EndTime')]
     [Timespan]
-    $End
+    $End,
+
+    # A list of additional arguments to FFMpeg.
+    [Alias('Arguments','Argument','ArgumentList','FFArgs')]
+    [Parameter(ValueFromRemainingArguments)]
+    [string[]]
+    $FFMpegArgument,
+
+    # If set, will run as a background job.
+    [switch]
+    $AsJob,
+
+    # If set, will limit the number of background jobs to a throttle limit.
+    # By default 5.
+    # Throttling is only available if running on PowerShell Core.
+    [int]
+    $ThrottleLimit
     )
 
     dynamicParam {
@@ -148,6 +164,10 @@
             if ($in.OutputPath.Count -eq 1) {
                 $uro = $ExecutionContext.SessionState.Path.GetUnresolvedProviderPathFromPSPath($OutputPath)
                 $ffArgs += "$uro", '-y'
+            }
+
+            if ($FFMpegArgument) {
+                $ffArgs += $FFMpegArgument
             }
 
             Use-FFMpeg -FFMpegArgument $ffArgs -FFMpegPath $FFMpegPath |

@@ -35,13 +35,12 @@ If set, will add a pulsator effect to the audio
 
 
 
-> **Type**: ```[Switch]```
 
-> **Required**: true
 
-> **Position**: named
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[Switch]`|true    |named   |false        |
 
 
 
@@ -52,13 +51,12 @@ Set pulsator input gain. By default it is 1. Range is [0.015625 - 64].
 
 
 
-> **Type**: ```[Double]```
 
-> **Required**: false
 
-> **Position**: 1
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[Double]`|false   |1       |false        |
 
 
 
@@ -69,13 +67,12 @@ Set pulsator output gain. By default it is 1. Range is [0.015625 - 64].
 
 
 
-> **Type**: ```[Double]```
 
-> **Required**: false
 
-> **Position**: 2
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[Double]`|false   |2       |false        |
 
 
 
@@ -96,13 +93,12 @@ Valid Values:
 
 
 
-> **Type**: ```[String]```
 
-> **Required**: false
 
-> **Position**: 3
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[String]`|false   |3       |false        |
 
 
 
@@ -113,13 +109,12 @@ Set modulation. Define how much of original signal is affected by the LFO.
 
 
 
-> **Type**: ```[String]```
 
-> **Required**: false
 
-> **Position**: 4
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[String]`|false   |4       |false        |
 
 
 
@@ -130,13 +125,12 @@ Set pulsator left channel offset. Default is 0. Allowed range is [0 - 1].
 
 
 
-> **Type**: ```[Double]```
 
-> **Required**: false
 
-> **Position**: 5
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[Double]`|false   |5       |false        |
 
 
 
@@ -147,13 +141,12 @@ Set pulsator right channel offset. Default is 0.5. Allowed range is [0 - 1].
 
 
 
-> **Type**: ```[Double]```
 
-> **Required**: false
 
-> **Position**: 6
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[Double]`|false   |6       |false        |
 
 
 
@@ -164,13 +157,12 @@ Set pulse width. Default is 1. Allowed range is [0 - 2]
 
 
 
-> **Type**: ```[Double]```
 
-> **Required**: false
 
-> **Position**: 7
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[Double]`|false   |7       |false        |
 
 
 
@@ -189,13 +181,12 @@ Valid Values:
 
 
 
-> **Type**: ```[String]```
 
-> **Required**: false
 
-> **Position**: 8
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[String]`|false   |8       |false        |
 
 
 
@@ -206,13 +197,12 @@ Set pulsator bpm. Default is 120. Allowed range is [30 - 300]. Only used if timi
 
 
 
-> **Type**: ```[Double]```
 
-> **Required**: false
 
-> **Position**: 9
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[Double]`|false   |9       |false        |
 
 
 
@@ -223,13 +213,12 @@ Set pulsator ms. Default is 500. Allowed range is [10 - 2000]. Only used if timi
 
 
 
-> **Type**: ```[Double]```
 
-> **Required**: false
 
-> **Position**: 10
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[Double]`|false   |10      |false        |
 
 
 
@@ -240,13 +229,12 @@ Set frequency in Hz. Default is 2. Allowed range is [0.01 - 100]. Only used if t
 
 
 
-> **Type**: ```[Double]```
 
-> **Required**: false
 
-> **Position**: 11
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[Double]`|false   |11      |false        |
 
 
 

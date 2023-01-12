@@ -23,13 +23,12 @@ If set, apply Apply bilateral filter, spatial smoothing while preserving edges
 
 
 
-> **Type**: ```[Switch]```
 
-> **Required**: true
 
-> **Position**: named
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[Switch]`|true    |named   |false        |
 
 
 
@@ -40,13 +39,12 @@ Set sigma of gaussian function to calculate spatial weight. Allowed range is 0 t
 
 
 
-> **Type**: ```[Double]```
 
-> **Required**: false
 
-> **Position**: 1
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[Double]`|false   |1       |false        |
 
 
 
@@ -57,13 +55,12 @@ Set sigma of gaussian function to calculate range weight. Allowed range is 0 to 
 
 
 
-> **Type**: ```[Single]```
 
-> **Required**: false
 
-> **Position**: 2
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[Single]`|false   |2       |false        |
 
 
 

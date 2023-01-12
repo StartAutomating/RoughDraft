@@ -23,13 +23,12 @@ If provided, the video will be faded in
 
 
 
-> **Type**: ```[Switch]```
 
-> **Required**: true
 
-> **Position**: named
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[Switch]`|true    |named   |false        |
 
 
 
@@ -40,13 +39,12 @@ The frame the fade-in will start (by default, 0)
 
 
 
-> **Type**: ```[UInt32]```
 
-> **Required**: false
 
-> **Position**: 1
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[UInt32]`|false   |1       |false        |
 
 
 
@@ -57,13 +55,12 @@ The frame the fade-in will end (by default, 30)
 
 
 
-> **Type**: ```[UInt32]```
 
-> **Required**: false
 
-> **Position**: 2
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[UInt32]`|false   |2       |false        |
 
 
 
@@ -74,13 +71,12 @@ The fade color
 
 
 
-> **Type**: ```[String]```
 
-> **Required**: false
 
-> **Position**: 3
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[String]`|false   |3       |false        |
 
 
 

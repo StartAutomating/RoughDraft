@@ -23,13 +23,12 @@ The color which will not be replaced with neutral gray.
 
 
 
-> **Type**: ```[String]```
 
-> **Required**: true
 
-> **Position**: 1
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[String]`|true    |1       |false        |
 
 
 
@@ -40,13 +39,12 @@ Similarity percentage with the above color. 0.01 matches only the exact key colo
 
 
 
-> **Type**: ```[Single]```
 
-> **Required**: false
 
-> **Position**: 2
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[Single]`|false   |2       |false        |
 
 
 
@@ -57,13 +55,12 @@ Blend percentage. 0.0 makes pixels fully gray. Higher values result in more pres
 
 
 
-> **Type**: ```[Single]```
 
-> **Required**: false
 
-> **Position**: 3
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[Single]`|false   |3       |false        |
 
 
 

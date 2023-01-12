@@ -25,13 +25,12 @@ Each element represents a single subtitle
 
 
 
-> **Type**: ```[String[]]```
 
-> **Required**: true
 
-> **Position**: 1
 
-> **PipelineInput**:false
+|Type        |Required|Position|PipelineInput|
+|------------|--------|--------|-------------|
+|`[String[]]`|true    |1       |false        |
 
 
 
@@ -43,13 +42,12 @@ Each element represents the starting time of each subtitle.
 
 
 
-> **Type**: ```[TimeSpan[]]```
 
-> **Required**: true
 
-> **Position**: 2
 
-> **PipelineInput**:false
+|Type          |Required|Position|PipelineInput|
+|--------------|--------|--------|-------------|
+|`[TimeSpan[]]`|true    |2       |false        |
 
 
 
@@ -61,13 +59,12 @@ Each element represents the end time of each subtitle.
 
 
 
-> **Type**: ```[TimeSpan[]]```
 
-> **Required**: true
 
-> **Position**: 3
 
-> **PipelineInput**:false
+|Type          |Required|Position|PipelineInput|
+|--------------|--------|--------|-------------|
+|`[TimeSpan[]]`|true    |3       |false        |
 
 
 
@@ -79,13 +76,12 @@ If not provided, this will be automatically detected.
 
 
 
-> **Type**: ```[String]```
 
-> **Required**: false
 
-> **Position**: 4
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[String]`|false   |4       |false        |
 
 
 

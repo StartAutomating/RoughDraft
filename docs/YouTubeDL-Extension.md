@@ -19,13 +19,12 @@ Extends Get-Media to enable the downloading of videos from YouTube and other sou
 ### Parameters
 #### **YouTubeURL**
 
-> **Type**: ```[Uri]```
 
-> **Required**: true
 
-> **Position**: 1
 
-> **PipelineInput**:false
+|Type   |Required|Position|PipelineInput|
+|-------|--------|--------|-------------|
+|`[Uri]`|true    |1       |false        |
 
 
 
@@ -36,13 +35,12 @@ The YouTubeDL Output File.  See [documentation](https://github.com/ytdl-org/yout
 
 
 
-> **Type**: ```[String]```
 
-> **Required**: false
 
-> **Position**: 2
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[String]`|false   |2       |false        |
 
 
 
@@ -53,13 +51,12 @@ If set, will force a download of the latest YouTubeDL (even if one is already fo
 
 
 
-> **Type**: ```[Switch]```
 
-> **Required**: false
 
-> **Position**: named
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[Switch]`|false   |named   |false        |
 
 
 
@@ -70,13 +67,12 @@ If set, will download auto-generated subtitles.
 
 
 
-> **Type**: ```[Switch]```
 
-> **Required**: false
 
-> **Position**: named
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[Switch]`|false   |named   |false        |
 
 
 
@@ -87,26 +83,24 @@ If set, will download all subtitles.
 
 
 
-> **Type**: ```[Switch]```
 
-> **Required**: false
 
-> **Position**: named
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[Switch]`|false   |named   |false        |
 
 
 
 ---
 #### **YouTubeDownloadArgumentList**
 
-> **Type**: ```[String[]]```
 
-> **Required**: false
 
-> **Position**: 3
 
-> **PipelineInput**:false
+|Type        |Required|Position|PipelineInput|
+|------------|--------|--------|-------------|
+|`[String[]]`|false   |3       |false        |
 
 
 
@@ -117,13 +111,12 @@ If set, will return the information about the download, instead of downloading.
 
 
 
-> **Type**: ```[Switch]```
 
-> **Required**: false
 
-> **Position**: named
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[Switch]`|false   |named   |false        |
 
 
 
