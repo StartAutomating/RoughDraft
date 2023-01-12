@@ -17,13 +17,12 @@ If set, will remove audio from input media.
 
 
 
-> **Type**: ```[Switch]```
 
-> **Required**: true
 
-> **Position**: named
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[Switch]`|true    |named   |false        |
 
 
 
@@ -33,7 +32,6 @@ If set, will remove audio from input media.
 Extension/NoAudio.RoughDraft.Extension.ps1 -NoAudio [<CommonParameters>]
 ```
 ---
-
 
 
 
