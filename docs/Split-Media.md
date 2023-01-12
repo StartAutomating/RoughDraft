@@ -38,13 +38,12 @@ The input path
 
 
 
-> **Type**: ```[String]```
 
-> **Required**: true
 
-> **Position**: named
 
-> **PipelineInput**:true (ByPropertyName)
+|Type      |Required|Position|PipelineInput        |
+|----------|--------|--------|---------------------|
+|`[String]`|true    |named   |true (ByPropertyName)|
 
 
 
@@ -55,13 +54,12 @@ One or more output paths
 
 
 
-> **Type**: ```[String[]]```
 
-> **Required**: false
 
-> **Position**: 2
 
-> **PipelineInput**:true (ByPropertyName)
+|Type        |Required|Position|PipelineInput        |
+|------------|--------|--------|---------------------|
+|`[String[]]`|false   |2       |true (ByPropertyName)|
 
 
 
@@ -72,13 +70,12 @@ The path to FFMpeg.  Download it from http://ffmpeg.org/
 
 
 
-> **Type**: ```[String]```
 
-> **Required**: false
 
-> **Position**: named
 
-> **PipelineInput**:true (ByPropertyName)
+|Type      |Required|Position|PipelineInput        |
+|----------|--------|--------|---------------------|
+|`[String]`|false   |named   |true (ByPropertyName)|
 
 
 
@@ -89,13 +86,12 @@ The timespan to start splitting the video
 
 
 
-> **Type**: ```[TimeSpan]```
 
-> **Required**: true
 
-> **Position**: 2
 
-> **PipelineInput**:true (ByPropertyName)
+|Type        |Required|Position|PipelineInput        |
+|------------|--------|--------|---------------------|
+|`[TimeSpan]`|true    |2       |true (ByPropertyName)|
 
 
 
@@ -106,13 +102,12 @@ The time span to end splitting the video
 
 
 
-> **Type**: ```[TimeSpan]```
 
-> **Required**: false
 
-> **Position**: 3
 
-> **PipelineInput**:true (ByPropertyName)
+|Type        |Required|Position|PipelineInput        |
+|------------|--------|--------|---------------------|
+|`[TimeSpan]`|false   |3       |true (ByPropertyName)|
 
 
 
