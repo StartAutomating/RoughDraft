@@ -30,6 +30,11 @@
     [string]
     $PixelFormat =  'yuv420p',
 
+    # Any additional arguments to FFMpeg
+    [Parameter(ValueFromRemainingArguments)]
+    [string[]]
+    $FFMpegArgument,
+
     # If set, will create the media in a background job.
     [switch]
     $AsJob
@@ -50,7 +55,7 @@
         }
 
         $FilterParams = @()
-        $ffmpegArgs = @()
+        $ffmpegArgs = @($FFMpegArgument)
         $uro = $ExecutionContext.SessionState.Path.GetUnresolvedProviderPathFromPSPath($OutputPath)
         $ffEndArgs  = @('-pix_fmt', $PixelFormat, '-t', $Duration.TotalSeconds, '-y', "$uro")
 
