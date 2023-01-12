@@ -35,13 +35,12 @@ If set, will show a line waveform
 
 
 
-> **Type**: ```[Switch]```
 
-> **Required**: true
 
-> **Position**: named
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[Switch]`|true    |named   |false        |
 
 
 
@@ -59,13 +58,12 @@ Valid Values:
 
 
 
-> **Type**: ```[String]```
 
-> **Required**: false
 
-> **Position**: 1
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[String]`|false   |1       |false        |
 
 
 
@@ -94,13 +92,12 @@ Valid Values:
 
 
 
-> **Type**: ```[String]```
 
-> **Required**: false
 
-> **Position**: 2
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[String]`|false   |2       |false        |
 
 
 
@@ -111,13 +108,12 @@ Specify the video size for the output.  Default value is 600x200
 
 
 
-> **Type**: ```[String]```
 
-> **Required**: false
 
-> **Position**: 3
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[String]`|false   |3       |false        |
 
 
 
@@ -164,13 +160,12 @@ Valid Values:
 
 
 
-> **Type**: ```[String]```
 
-> **Required**: false
 
-> **Position**: 4
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[String]`|false   |4       |false        |
 
 
 
@@ -192,13 +187,12 @@ Valid Values:
 
 
 
-> **Type**: ```[String]```
 
-> **Required**: false
 
-> **Position**: 5
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[String]`|false   |5       |false        |
 
 
 
@@ -216,13 +210,12 @@ Valid Values:
 
 
 
-> **Type**: ```[String]```
 
-> **Required**: false
 
-> **Position**: 6
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[String]`|false   |6       |false        |
 
 
 
@@ -236,13 +229,12 @@ Saturation must be in [-10.0, 10.0] range. Default value is 1.
 
 
 
-> **Type**: ```[Double]```
 
-> **Required**: false
 
-> **Position**: 7
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[Double]`|false   |7       |false        |
 
 
 
@@ -279,13 +271,12 @@ Valid Values:
 
 
 
-> **Type**: ```[String]```
 
-> **Required**: false
 
-> **Position**: 8
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[String]`|false   |8       |false        |
 
 
 
@@ -303,13 +294,12 @@ Valid Values:
 
 
 
-> **Type**: ```[String]```
 
-> **Required**: false
 
-> **Position**: 9
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[String]`|false   |9       |false        |
 
 
 
@@ -320,13 +310,12 @@ Set ratio of overlap window. Default value is 0. When value is 1 overlap is set 
 
 
 
-> **Type**: ```[Double]```
 
-> **Required**: false
 
-> **Position**: 10
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[Double]`|false   |10      |false        |
 
 
 
@@ -337,13 +326,12 @@ Set scale gain for calculating intensity color values. Default value is 1.
 
 
 
-> **Type**: ```[Double]```
 
-> **Required**: false
 
-> **Position**: 11
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[Double]`|false   |11      |false        |
 
 
 
@@ -362,13 +350,12 @@ Valid Values:
 
 
 
-> **Type**: ```[String]```
 
-> **Required**: false
 
-> **Position**: 12
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[String]`|false   |12      |false        |
 
 
 
@@ -379,13 +366,12 @@ Set color rotation, must be in [-1.0, 1.0] range. Default value is 0
 
 
 
-> **Type**: ```[Double]```
 
-> **Required**: false
 
-> **Position**: 13
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[Double]`|false   |13      |false        |
 
 
 
@@ -396,13 +382,12 @@ Set start frequency from which to display spectrogram.
 
 
 
-> **Type**: ```[Int32]```
 
-> **Required**: false
 
-> **Position**: 14
 
-> **PipelineInput**:false
+|Type     |Required|Position|PipelineInput|
+|---------|--------|--------|-------------|
+|`[Int32]`|false   |14      |false        |
 
 
 
@@ -413,13 +398,12 @@ Set stop frequency to which to display spectrogram.
 
 
 
-> **Type**: ```[Int32]```
 
-> **Required**: false
 
-> **Position**: 15
 
-> **PipelineInput**:false
+|Type     |Required|Position|PipelineInput|
+|---------|--------|--------|-------------|
+|`[Int32]`|false   |15      |false        |
 
 
 
@@ -430,13 +414,12 @@ Set upper frame rate limit. Default is auto, unlimited.
 
 
 
-> **Type**: ```[String]```
 
-> **Required**: false
 
-> **Position**: 16
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[String]`|false   |16      |false        |
 
 
 
@@ -447,13 +430,12 @@ Draw time and frequency axes and legends.
 
 
 
-> **Type**: ```[Switch]```
 
-> **Required**: false
 
-> **Position**: named
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[Switch]`|false   |named   |false        |
 
 
 
@@ -464,13 +446,12 @@ Set dynamic range used to calculate intensity color values. Default is 120 dBFS.
 
 
 
-> **Type**: ```[Int32]```
 
-> **Required**: false
 
-> **Position**: 17
 
-> **PipelineInput**:false
+|Type     |Required|Position|PipelineInput|
+|---------|--------|--------|-------------|
+|`[Int32]`|false   |17      |false        |
 
 
 
@@ -481,13 +462,12 @@ Set upper limit of input audio samples volume in dBFS. Default is 0 dBFS. Allowe
 
 
 
-> **Type**: ```[Int32]```
 
-> **Required**: false
 
-> **Position**: 18
 
-> **PipelineInput**:false
+|Type     |Required|Position|PipelineInput|
+|---------|--------|--------|-------------|
+|`[Int32]`|false   |18      |false        |
 
 
 
@@ -498,13 +478,12 @@ Set opacity strength when using pixel format output with alpha component.
 
 
 
-> **Type**: ```[Double]```
 
-> **Required**: false
 
-> **Position**: 19
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[Double]`|false   |19      |false        |
 
 
 
@@ -514,7 +493,6 @@ Set opacity strength when using pixel format output with alpha component.
 Extension/ShowSpectrum.RoughDraft.Extension.ps1 -ShowSpectrum [[-ShowSpectrumMode] <String>] [[-ShowSpectrumSlide] <String>] [[-ShowSpectrumSize] <String>] [[-ShowSpectrumColorMode] <String>] [[-ShowSpectrumColorScale] <String>] [[-ShowSpectrumFrequencyScale] <String>] [[-ShowSpectrumSaturation] <Double>] [[-ShowSpectrumWindowFunction] <String>] [[-ShowSpectrumOrientation] <String>] [[-ShowSpectrumOverlap] <Double>] [[-ShowSpectrumGain] <Double>] [[-ShowSpectrumData] <String>] [[-ShowSpectrumColorRotation] <Double>] [[-ShowSpectrumStartFrequency] <Int32>] [[-ShowSpectrumStopFrequency] <Int32>] [[-ShowSpectrumFramesPerSecond] <String>] [-ShowSpectrumLegend] [[-ShowSpectrumDynamicRange] <Int32>] [[-ShowSpectrumLimit] <Int32>] [[-ShowSpectrumOpacity] <Double>] [<CommonParameters>]
 ```
 ---
-
 
 
 
