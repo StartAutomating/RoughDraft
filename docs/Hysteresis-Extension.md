@@ -23,13 +23,12 @@ Grow first stream into second stream by connecting components.
 
 
 
-> **Type**: ```[Switch]```
 
-> **Required**: true
 
-> **Position**: named
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[Switch]`|true    |named   |false        |
 
 
 
@@ -40,13 +39,12 @@ set planes
 
 
 
-> **Type**: ```[Int32]```
 
-> **Required**: false
 
-> **Position**: 1
 
-> **PipelineInput**:false
+|Type     |Required|Position|PipelineInput|
+|---------|--------|--------|-------------|
+|`[Int32]`|false   |1       |false        |
 
 
 
@@ -57,13 +55,12 @@ set threshold
 
 
 
-> **Type**: ```[Int32]```
 
-> **Required**: false
 
-> **Position**: 2
 
-> **PipelineInput**:false
+|Type     |Required|Position|PipelineInput|
+|---------|--------|--------|-------------|
+|`[Int32]`|false   |2       |false        |
 
 
 
@@ -73,7 +70,6 @@ set threshold
 Extension/Hysteresis.RoughDraft.Extension.ps1 -Hysteresis [[-HysteresisPlanes] <Int32>] [[-HysteresisThreshold] <Int32>] [<CommonParameters>]
 ```
 ---
-
 
 
 
