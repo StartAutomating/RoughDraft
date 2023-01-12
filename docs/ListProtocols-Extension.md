@@ -24,13 +24,12 @@ If set, will list protocolas
 
 
 
-> **Type**: ```[Switch]```
 
-> **Required**: true
 
-> **Position**: named
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[Switch]`|true    |named   |false        |
 
 
 
@@ -40,7 +39,6 @@ If set, will list protocolas
 Extension/ListProtocols.rd.ext.ps1 -Protocol [<CommonParameters>]
 ```
 ---
-
 
 
 
