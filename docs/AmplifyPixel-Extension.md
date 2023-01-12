@@ -23,13 +23,12 @@ If set, will amplify the differences between current pixel and pixels of adjacen
 
 
 
-> **Type**: ```[Switch]```
 
-> **Required**: true
 
-> **Position**: named
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[Switch]`|true    |named   |false        |
 
 
 
@@ -40,13 +39,12 @@ Set frame radius. Default is 2. Allowed range is from 1 to 63. For example radiu
 
 
 
-> **Type**: ```[Int32]```
 
-> **Required**: false
 
-> **Position**: 1
 
-> **PipelineInput**:false
+|Type     |Required|Position|PipelineInput|
+|---------|--------|--------|-------------|
+|`[Int32]`|false   |1       |false        |
 
 
 
@@ -57,13 +55,12 @@ Set factor to amplify difference. Default is 2
 
 
 
-> **Type**: ```[Int32]```
 
-> **Required**: false
 
-> **Position**: 2
 
-> **PipelineInput**:false
+|Type     |Required|Position|PipelineInput|
+|---------|--------|--------|-------------|
+|`[Int32]`|false   |2       |false        |
 
 
 
@@ -77,13 +74,12 @@ Allowed range is from 0 to 65535.
 
 
 
-> **Type**: ```[Int32]```
 
-> **Required**: false
 
-> **Position**: 3
 
-> **PipelineInput**:false
+|Type     |Required|Position|PipelineInput|
+|---------|--------|--------|-------------|
+|`[Int32]`|false   |3       |false        |
 
 
 
@@ -96,13 +92,12 @@ Default is 0. Allowed range is from 0 to 65535.
 
 
 
-> **Type**: ```[Int32]```
 
-> **Required**: false
 
-> **Position**: 4
 
-> **PipelineInput**:false
+|Type     |Required|Position|PipelineInput|
+|---------|--------|--------|-------------|
+|`[Int32]`|false   |4       |false        |
 
 
 
@@ -116,13 +111,12 @@ This option controls maximum possible value that will decrease source pixel valu
 
 
 
-> **Type**: ```[Int32]```
 
-> **Required**: false
 
-> **Position**: 5
 
-> **PipelineInput**:false
+|Type     |Required|Position|PipelineInput|
+|---------|--------|--------|-------------|
+|`[Int32]`|false   |5       |false        |
 
 
 
@@ -136,13 +130,12 @@ This option controls maximum possible value that will decrease source pixel valu
 
 
 
-> **Type**: ```[Int32]```
 
-> **Required**: false
 
-> **Position**: 6
 
-> **PipelineInput**:false
+|Type     |Required|Position|PipelineInput|
+|---------|--------|--------|-------------|
+|`[Int32]`|false   |6       |false        |
 
 
 
@@ -153,13 +146,12 @@ Set which planes to filter. Default is all. Allowed range is from 0 to 15.
 
 
 
-> **Type**: ```[String]```
 
-> **Required**: false
 
-> **Position**: 7
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[String]`|false   |7       |false        |
 
 
 
@@ -169,7 +161,6 @@ Set which planes to filter. Default is all. Allowed range is from 0 to 15.
 Extension/AmplifyPixel.RoughDraft.Extension.ps1 -AmplifyPixel [[-AmplifyPixelRadius] <Int32>] [[-AmplifyPixelFactor] <Int32>] [[-AmplifyPixelThreshold] <Int32>] [[-AmplifyPixelTolerance] <Int32>] [[-AmplifyPixelLow] <Int32>] [[-AmplifyPixelHigh] <Int32>] [[-AmplifyPixelPlanes] <String>] [<CommonParameters>]
 ```
 ---
-
 
 
 
