@@ -23,13 +23,12 @@ Set the grid size (i.e. the number of lines and columns)
 
 
 
-> **Type**: ```[String]```
 
-> **Required**: true
 
-> **Position**: 1
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[String]`|true    |1       |false        |
 
 
 
@@ -42,13 +41,12 @@ The default value is 0, meaning all the area will be used.
 
 
 
-> **Type**: ```[Int32]```
 
-> **Required**: false
 
-> **Position**: 2
 
-> **PipelineInput**:false
+|Type     |Required|Position|PipelineInput|
+|---------|--------|--------|-------------|
+|`[Int32]`|false   |2       |false        |
 
 
 
@@ -59,13 +57,12 @@ Set the outer border margin in pixels.
 
 
 
-> **Type**: ```[Int32]```
 
-> **Required**: false
 
-> **Position**: 3
 
-> **PipelineInput**:false
+|Type     |Required|Position|PipelineInput|
+|---------|--------|--------|-------------|
+|`[Int32]`|false   |3       |false        |
 
 
 
@@ -76,13 +73,12 @@ Set the tile padding in pixels.
 
 
 
-> **Type**: ```[Int32]```
 
-> **Required**: false
 
-> **Position**: 4
 
-> **PipelineInput**:false
+|Type     |Required|Position|PipelineInput|
+|---------|--------|--------|-------------|
+|`[Int32]`|false   |4       |false        |
 
 
 
@@ -93,13 +89,12 @@ Specify the color of the unused area. The default value of color is "black".
 
 
 
-> **Type**: ```[String]```
 
-> **Required**: false
 
-> **Position**: 5
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[String]`|false   |5       |false        |
 
 
 
@@ -110,13 +105,12 @@ Set the number of frames to overlap when tiling several successive frames togeth
 
 
 
-> **Type**: ```[Int32]```
 
-> **Required**: false
 
-> **Position**: 6
 
-> **PipelineInput**:false
+|Type     |Required|Position|PipelineInput|
+|---------|--------|--------|-------------|
+|`[Int32]`|false   |6       |false        |
 
 
 
@@ -128,13 +122,12 @@ This controls how soon will one get first output frame. The value must be betwee
 
 
 
-> **Type**: ```[Int32]```
 
-> **Required**: false
 
-> **Position**: 7
 
-> **PipelineInput**:false
+|Type     |Required|Position|PipelineInput|
+|---------|--------|--------|-------------|
+|`[Int32]`|false   |7       |false        |
 
 
 
@@ -145,13 +138,12 @@ If set, will not prescale a video before tiling it.  This will result in _very_ 
 
 
 
-> **Type**: ```[Switch]```
 
-> **Required**: false
 
-> **Position**: named
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[Switch]`|false   |named   |false        |
 
 
 
@@ -161,7 +153,6 @@ If set, will not prescale a video before tiling it.  This will result in _very_ 
 Extension/Tile.RoughDraft.Extension.ps1 [-Tile] <String> [[-TileFrameCount] <Int32>] [[-TileMargin] <Int32>] [[-TilePadding] <Int32>] [[-TileMarginColor] <String>] [[-TileOverlapFrame] <Int32>] [[-TileInitialPadding] <Int32>] [-TileNoPrescale] [<CommonParameters>]
 ```
 ---
-
 
 
 
