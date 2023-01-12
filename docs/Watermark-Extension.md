@@ -17,13 +17,12 @@ The path to the watermark file.
 
 
 
-> **Type**: ```[String]```
 
-> **Required**: true
 
-> **Position**: 1
 
-> **PipelineInput**:true (ByPropertyName)
+|Type      |Required|Position|PipelineInput        |
+|----------|--------|--------|---------------------|
+|`[String]`|true    |1       |true (ByPropertyName)|
 
 
 
@@ -36,13 +35,12 @@ If the coordinate is negative, it will be relative to the bottom.
 
 
 
-> **Type**: ```[Int32]```
 
-> **Required**: false
 
-> **Position**: 2
 
-> **PipelineInput**:false
+|Type     |Required|Position|PipelineInput|
+|---------|--------|--------|-------------|
+|`[Int32]`|false   |2       |false        |
 
 
 
@@ -55,13 +53,12 @@ If the coordinate is negative, it will be relative to the bottom.
 
 
 
-> **Type**: ```[Int32]```
 
-> **Required**: false
 
-> **Position**: 3
 
-> **PipelineInput**:false
+|Type     |Required|Position|PipelineInput|
+|---------|--------|--------|-------------|
+|`[Int32]`|false   |3       |false        |
 
 
 
@@ -72,13 +69,12 @@ If set, will put the watermark at the center of the video.  X and Y will be igno
 
 
 
-> **Type**: ```[Switch]```
 
-> **Required**: false
 
-> **Position**: named
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[Switch]`|false   |named   |false        |
 
 
 
@@ -88,7 +84,6 @@ If set, will put the watermark at the center of the video.  X and Y will be igno
 Extension/Watermark.RoughDraft.ext.ps1 [-WatermarkPath] <String> [[-WatermarkX] <Int32>] [[-WatermarkY] <Int32>] [-CenterWatermark] [<CommonParameters>]
 ```
 ---
-
 
 
 
