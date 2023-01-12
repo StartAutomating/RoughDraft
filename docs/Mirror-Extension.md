@@ -56,13 +56,12 @@ If set, will mirror video.  If no other parameters are provided, will mirror hor
 
 
 
-> **Type**: ```[Switch]```
 
-> **Required**: true
 
-> **Position**: named
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[Switch]`|true    |named   |false        |
 
 
 
@@ -73,13 +72,12 @@ If set, will create a QuadMirror, mirroring the upper left.
 
 
 
-> **Type**: ```[Switch]```
 
-> **Required**: false
 
-> **Position**: named
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[Switch]`|false   |named   |false        |
 
 
 
@@ -90,13 +88,12 @@ If set, will create a horizontal mirror instead of a vertical mirror.
 
 
 
-> **Type**: ```[Switch]```
 
-> **Required**: false
 
-> **Position**: named
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[Switch]`|false   |named   |false        |
 
 
 
@@ -106,7 +103,6 @@ If set, will create a horizontal mirror instead of a vertical mirror.
 Extension/Mirror.RoughDraft.Extension.ps1 -Mirror [-QuadMirror] [-HorizontalMirror] [<CommonParameters>]
 ```
 ---
-
 
 
 
