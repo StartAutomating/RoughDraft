@@ -124,7 +124,7 @@ The duration to record.  If not provided, will record indefinitely.
 
 
 ---
-#### **ArgumentList**
+#### **FFMpegArgument**
 
 A list of additional arguments to FFMpeg.
 
@@ -190,7 +190,7 @@ The path to FFMpeg.exe.  By default, checks in the path.
 ---
 ### Syntax
 ```PowerShell
-Receive-Media [-InputType <String>] [-InputDevice <String>] [-PixelFormat <String>] [-FrameRate <String>] [-FrameCount <String>] [-Duration <TimeSpan>] [-ArgumentList <String[]>] [-OutputPath <String>] [-AsJob] [-FFMpegPath <String>] [<CommonParameters>]
+Receive-Media [-InputType <String>] [-InputDevice <String>] [-PixelFormat <String>] [-FrameRate <String>] [-FrameCount <String>] [-Duration <TimeSpan>] [-FFMpegArgument <String[]>] [-OutputPath <String>] [-AsJob] [-FFMpegPath <String>] [<CommonParameters>]
 ```
 ---
 ### Notes
