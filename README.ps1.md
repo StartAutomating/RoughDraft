@@ -127,7 +127,6 @@ Set-Media .\Song.mp3 -AlbumArt .\Cover.jpg
 |Name                   |Description                        |
 |-----------------------|-----------------------------------|
 |ConvertTo-Gif          |Converts video to high-quality GIFs|
-|ConvertTo-Waveform     |Converts audio to visualizations   |
 |Get-FFMpeg             |Gets FFMpeg                        |
 |Get-FFPlay             |Gets FFPlay                        |
 |Get-FFProbe            |Gets FFProbe                       |
