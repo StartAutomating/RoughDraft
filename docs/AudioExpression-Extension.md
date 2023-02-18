@@ -7,7 +7,19 @@ Evaluates Audio Expressions
 ---
 ### Description
 
-Generate or Modify an audio signal using an expression
+Generate or Modify an audio signal using an expression.
+
+All Expressions can use the following variables:
+
+|Variable|Description|
+|-:|:-|
+|ch             |channel number of the current expression|
+|n              |number of the evaluated sample, starting from 0|
+|s              |sample rate|
+|t              |time of the evaluated sample expressed in seconds|
+|nb_in_channels||
+|nb_out_channels|input and output number of channels|
+|val(CH)        |the value of input channel with number CH|
 
 ---
 ### Related Links
@@ -112,7 +124,6 @@ Specify the sample rate, default to 44100.
 Extension/AudioExpression.RoughDraft.Extension.ps1 [-AudioExpression] <String[]> [[-AudioExpressionChannelLayout] <String[]>] [[-AudioExpressionSampleCount] <Int32>] [[-AudioExpressionSampleRate] <Int32>] [<CommonParameters>]
 ```
 ---
-
 
 
 
