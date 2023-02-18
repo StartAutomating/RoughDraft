@@ -2,7 +2,19 @@
 .SYNOPSIS
     Evaluates Audio Expressions
 .DESCRIPTION
-    Generate or Modify an audio signal using an expression
+    Generate or Modify an audio signal using an expression.
+
+    All Expressions can use the following variables:
+
+    |Variable|Description|
+    |-:|:-|
+    |ch             |channel number of the current expression|
+    |n              |number of the evaluated sample, starting from 0|
+    |s              |sample rate|
+    |t              |time of the evaluated sample expressed in seconds|
+    |nb_in_channels||
+    |nb_out_channels|input and output number of channels|
+    |val(CH)        |the value of input channel with number CH|
 .EXAMPLE
     Show-Media -AudioExpression "-2+random(0)" # Play white noise
 .EXAMPLE

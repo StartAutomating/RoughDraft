@@ -22,4 +22,4 @@ $Resize
 )
 
 "-vf" # Use the [scale videofilter](https://ffmpeg.org/ffmpeg-filters.html#scale-1)
-"`"scale=$($Resize.Replace("x", ":"))`""
+"scale=$($Resize.Replace("x", ":"))"

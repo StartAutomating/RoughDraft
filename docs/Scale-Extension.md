@@ -9,6 +9,29 @@ Scales video.
 
 Scale the input video size and/or convert the image format.
 
+The values of the Width and Height options are expressions containing the following constants:
+
+|Constant|Value|
+|-:|:-|
+|in_w||
+|in_h|The input width and height|
+|iw||
+|ih|These are the same as in_w and in_h.|
+|out_w||
+|out_h|The output (scaled) width and height|
+|ow||
+|oh|These are the same as out_w and out_h|
+|a|The same as iw / ih|
+|sar|input sample aspect ratio|
+|dar|The input display aspect ratio. Calculated from (iw / ih) * sar.|
+|hsub||
+|vsub|horizontal and vertical input chroma subsample values. For example for the pixel format "yuv422p" hsub is 2 and vsub is 1.|
+|ohsub||
+|ovsub|horizontal and vertical output chroma subsample values. For example for the pixel format "yuv422p" hsub is 2 and vsub is 1.|
+|n|The (sequential) number of the input frame, starting from 0. Only available with eval=frame.|
+|t|The presentation timestamp of the input frame, expressed as a number of seconds. Only available with eval=frame.|
+|pos|The byte offset of the frame in the input. Only available with eval=frame.|
+
 ---
 ### Related Links
 * [https://ffmpeg.org/ffmpeg-filters.html#scale-1](https://ffmpeg.org/ffmpeg-filters.html#scale-1)
