@@ -1,4 +1,13 @@
-﻿## 0.3.9:
+﻿## 0.3.10:
+
+* Fixing -Resize (Fixes #179)
+* Explaining Expressions
+  * AudioExpression Documentation Improved (Fixes #180)
+  * Scale Documentation Improved (Fixes #181)
+
+---
+
+## 0.3.9:
 
 * New Extensions:
   * ColorExpression ( Fixes #172 )
