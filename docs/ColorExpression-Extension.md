@@ -1,10 +1,17 @@
-
 Extension/ColorExpression.RoughDraft.Extension.ps1
 --------------------------------------------------
+
+
+
+
 ### Synopsis
 Color Expression
 
+
+
 ---
+
+
 ### Description
 
 Applies an expression to each color.
@@ -12,7 +19,11 @@ Applies an expression to each color.
 Color Expressions can be used to tweak color in a single video stream,
 and can also be used to join two streams together based on the values of each pixel.
 
+
+
 ---
+
+
 ### Parameters
 #### **ColorExpression**
 
@@ -54,7 +65,6 @@ Color Expressions that combine sources or blend frames can also use:
 
 
 
----
 #### **ColorExpressionColorSpace**
 
 The color expression color space.  Ignored when joining files.
@@ -77,7 +87,6 @@ Valid Values:
 
 
 
----
 #### **BlendFrameColor**
 
 If set, will blend sucessive frames together.  Ignored when joining files.
@@ -93,13 +102,12 @@ If set, will blend sucessive frames together.  Ignored when joining files.
 
 
 
+
+
 ---
+
+
 ### Syntax
 ```PowerShell
 Extension/ColorExpression.RoughDraft.Extension.ps1 [-ColorExpression] <String[]> [[-ColorExpressionColorSpace] <String>] [-BlendFrameColor] [<CommonParameters>]
 ```
----
-
-
-
-
