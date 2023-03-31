@@ -1,21 +1,36 @@
-
 Extension/Tile.RoughDraft.Extension.ps1
 ---------------------------------------
+
+
+
+
 ### Synopsis
 Tile Extension
 
+
+
 ---
+
+
 ### Description
 
 Uses the tile filter to tile video frames.
 
+
+
 ---
+
+
 ### Related Links
 * [https://ffmpeg.org/ffmpeg-filters.html#tile](https://ffmpeg.org/ffmpeg-filters.html#tile)
 
 
 
+
+
 ---
+
+
 ### Parameters
 #### **Tile**
 
@@ -32,7 +47,6 @@ Set the grid size (i.e. the number of lines and columns)
 
 
 
----
 #### **TileFrameCount**
 
 Set the maximum number of frames to render in the given area.
@@ -50,7 +64,6 @@ The default value is 0, meaning all the area will be used.
 
 
 
----
 #### **TileMargin**
 
 Set the outer border margin in pixels.
@@ -66,7 +79,6 @@ Set the outer border margin in pixels.
 
 
 
----
 #### **TilePadding**
 
 Set the tile padding in pixels.
@@ -82,7 +94,6 @@ Set the tile padding in pixels.
 
 
 
----
 #### **TileMarginColor**
 
 Specify the color of the unused area. The default value of color is "black".
@@ -98,7 +109,6 @@ Specify the color of the unused area. The default value of color is "black".
 
 
 
----
 #### **TileOverlapFrame**
 
 Set the number of frames to overlap when tiling several successive frames together. The value must be between 0 and nb_frames - 1.
@@ -108,13 +118,12 @@ Set the number of frames to overlap when tiling several successive frames togeth
 
 
 
-|Type     |Required|Position|PipelineInput|
-|---------|--------|--------|-------------|
-|`[Int32]`|false   |6       |false        |
+|Type     |Required|Position|PipelineInput|Aliases          |
+|---------|--------|--------|-------------|-----------------|
+|`[Int32]`|false   |6       |false        |TileOverlapFrames|
 
 
 
----
 #### **TileInitialPadding**
 
 Set the number of frames to initially be empty before displaying first output frame.
@@ -131,7 +140,6 @@ This controls how soon will one get first output frame. The value must be betwee
 
 
 
----
 #### **TileNoPrescale**
 
 If set, will not prescale a video before tiling it.  This will result in _very_ large frames.
@@ -147,13 +155,12 @@ If set, will not prescale a video before tiling it.  This will result in _very_ 
 
 
 
+
+
 ---
+
+
 ### Syntax
 ```PowerShell
 Extension/Tile.RoughDraft.Extension.ps1 [-Tile] <String> [[-TileFrameCount] <Int32>] [[-TileMargin] <Int32>] [[-TilePadding] <Int32>] [[-TileMarginColor] <String>] [[-TileOverlapFrame] <Int32>] [[-TileInitialPadding] <Int32>] [-TileNoPrescale] [<CommonParameters>]
 ```
----
-
-
-
-
