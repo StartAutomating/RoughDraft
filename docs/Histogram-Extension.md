@@ -1,21 +1,36 @@
-
 Extension/Histogram.RoughDraft.Extension.ps1
 --------------------------------------------
+
+
+
+
 ### Synopsis
 Histogram Extension
 
+
+
 ---
+
+
 ### Description
 
 Compute and draw a color distribution histogram for the input video.
 
+
+
 ---
+
+
 ### Related Links
 * [https://ffmpeg.org/ffmpeg-filters.html#histogram](https://ffmpeg.org/ffmpeg-filters.html#histogram)
 
 
 
+
+
 ---
+
+
 ### Parameters
 #### **Histogram**
 
@@ -32,7 +47,6 @@ If set, will display a video histogram
 
 
 
----
 #### **HistogramLevelHeight**
 
 Set height of level. Default value is 200. Allowed range is [50, 2048].
@@ -48,7 +62,6 @@ Set height of level. Default value is 200. Allowed range is [50, 2048].
 
 
 
----
 #### **HistogramScaleHeight**
 
 Set height of color scale. Default value is 12. Allowed range is [0, 40].
@@ -64,7 +77,6 @@ Set height of color scale. Default value is 12. Allowed range is [0, 40].
 
 
 
----
 #### **HistogramDisplayMode**
 
 Set display mode. It accepts the following values:
@@ -94,7 +106,6 @@ Valid Values:
 
 
 
----
 #### **HistogramLevelMode**
 
 Set mode. Can be either linear, or logarithmic. Default is linear.
@@ -111,13 +122,12 @@ Valid Values:
 
 
 
-|Type      |Required|Position|PipelineInput|
-|----------|--------|--------|-------------|
-|`[String]`|false   |4       |false        |
+|Type      |Required|Position|PipelineInput|Aliases            |
+|----------|--------|--------|-------------|-------------------|
+|`[String]`|false   |4       |false        |HistogramLevelsMode|
 
 
 
----
 #### **HistogramComponent**
 
 Set what color components to display. Default is 7.
@@ -127,13 +137,12 @@ Set what color components to display. Default is 7.
 
 
 
-|Type     |Required|Position|PipelineInput|
-|---------|--------|--------|-------------|
-|`[Int32]`|false   |5       |false        |
+|Type     |Required|Position|PipelineInput|Aliases            |
+|---------|--------|--------|-------------|-------------------|
+|`[Int32]`|false   |5       |false        |HistogramComponents|
 
 
 
----
 #### **HistogramForegroundOpacity**
 
 Set foreground opacity. Default is 0.7.
@@ -149,7 +158,6 @@ Set foreground opacity. Default is 0.7.
 
 
 
----
 #### **HistogramBackgroundOpacity**
 
 Set background opacity. Default is 0.5.
@@ -165,7 +173,6 @@ Set background opacity. Default is 0.5.
 
 
 
----
 #### **HistogramColorMode**
 
 The colormode of the histogram.
@@ -196,13 +203,12 @@ Valid Values:
 
 
 
+
+
 ---
+
+
 ### Syntax
 ```PowerShell
 Extension/Histogram.RoughDraft.Extension.ps1 -Histogram [[-HistogramLevelHeight] <Int32>] [[-HistogramScaleHeight] <Int32>] [[-HistogramDisplayMode] <String>] [[-HistogramLevelMode] <String>] [[-HistogramComponent] <Int32>] [[-HistogramForegroundOpacity] <Single>] [[-HistogramBackgroundOpacity] <Single>] [[-HistogramColorMode] <String>] [<CommonParameters>]
 ```
----
-
-
-
-
