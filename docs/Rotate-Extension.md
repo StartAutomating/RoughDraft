@@ -1,15 +1,26 @@
-
 Extension/Rotate.RoughDraft.Extension.ps1
 -----------------------------------------
+
+
+
+
 ### Synopsis
 Rotates a video
 
+
+
 ---
+
+
 ### Description
 
 Applies the rotate filter to rotate a video.
 
+
+
 ---
+
+
 ### Related Links
 * [https://ffmpeg.org/ffmpeg-filters.html#rotate](https://ffmpeg.org/ffmpeg-filters.html#rotate)
 
@@ -19,7 +30,11 @@ Applies the rotate filter to rotate a video.
 
 
 
+
+
 ---
+
+
 ### Parameters
 #### **Rotate**
 
@@ -36,7 +51,6 @@ If provided, the video file will be rotated
 
 
 
----
 #### **RotateFillColor**
 
 
@@ -48,7 +62,6 @@ If provided, the video file will be rotated
 
 
 
----
 #### **OutputWidth**
 
 The Output Width
@@ -64,7 +77,6 @@ The Output Width
 
 
 
----
 #### **OutputHeight**
 
 The Output Height
@@ -80,13 +92,12 @@ The Output Height
 
 
 
+
+
 ---
+
+
 ### Syntax
 ```PowerShell
 Extension/Rotate.RoughDraft.Extension.ps1 [-Rotate] <String> [[-RotateFillColor] <String>] [[-OutputWidth] <String>] [[-OutputHeight] <String>] [<CommonParameters>]
 ```
----
-
-
-
-
