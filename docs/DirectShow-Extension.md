@@ -1,22 +1,37 @@
-
 Extension/DirectShow.RoughDraft.Extension.ps1
 ---------------------------------------------
+
+
+
+
 ### Synopsis
 DirectShow Extension
 
+
+
 ---
+
+
 ### Description
 
 The DirectShow extension lets you used DirectShow input devices
 
+
+
 ---
+
+
 ### Examples
 #### EXAMPLE 1
 ```PowerShell
 Show-Media -DirectShow -VideoDevice $myWebCam
 ```
 
+
+
 ---
+
+
 ### Parameters
 #### **DirectShow**
 
@@ -27,13 +42,12 @@ If set, will use DirectShow as the input type
 
 
 
-|Type      |Required|Position|PipelineInput|
-|----------|--------|--------|-------------|
-|`[Switch]`|true    |named   |false        |
+|Type      |Required|Position|PipelineInput|Aliases|
+|----------|--------|--------|-------------|-------|
+|`[Switch]`|true    |named   |false        |dshow  |
 
 
 
----
 #### **VideoDevice**
 
 The name of a DirectShow video device
@@ -49,7 +63,6 @@ The name of a DirectShow video device
 
 
 
----
 #### **AudioDevice**
 
 The name of a DirectShow audio device
@@ -65,13 +78,12 @@ The name of a DirectShow audio device
 
 
 
+
+
 ---
+
+
 ### Syntax
 ```PowerShell
 Extension/DirectShow.RoughDraft.Extension.ps1 -DirectShow [[-VideoDevice] <String>] [[-AudioDevice] <String>] [<CommonParameters>]
 ```
----
-
-
-
-
