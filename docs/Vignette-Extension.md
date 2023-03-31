@@ -1,21 +1,36 @@
-
 Extension/Vignette.rd.ext.ps1
 -----------------------------
+
+
+
+
 ### Synopsis
 Applies a vignette filter
 
+
+
 ---
+
+
 ### Description
 
 Applies a vignette filter to a video source.
 
+
+
 ---
+
+
 ### Related Links
 * [https://ffmpeg.org/ffmpeg-filters.html#vignette](https://ffmpeg.org/ffmpeg-filters.html#vignette)
 
 
 
+
+
 ---
+
+
 ### Parameters
 #### **Vignette**
 
@@ -28,7 +43,6 @@ Applies a vignette filter to a video source.
 
 
 
----
 #### **VignetteAngle**
 
 Set vignette lens angle expression as a number of radians.
@@ -46,7 +60,6 @@ Default value: "PI/5"
 
 
 
----
 #### **VignetteCenterX**
 
 Set vignette center x coordinates expression. By default "w/2",
@@ -62,7 +75,6 @@ Set vignette center x coordinates expression. By default "w/2",
 
 
 
----
 #### **VignetteCenterY**
 
 Set vignette center Y coordinates expression. By default "w/2",
@@ -78,7 +90,6 @@ Set vignette center Y coordinates expression. By default "w/2",
 
 
 
----
 #### **VignetteDirection**
 
 Set forward/backward mode.
@@ -108,7 +119,6 @@ Valid Values:
 
 
 
----
 #### **VignetteEvaluatioMode**
 
 Set evaluation mode for the -VignetteAngle, -VignetteCenterX, -VignetteCenterY expressions
@@ -136,7 +146,6 @@ Valid Values:
 
 
 
----
 #### **DoNotDitherVignette**
 
 Set dithering to reduce the circular banding effects
@@ -152,7 +161,6 @@ Set dithering to reduce the circular banding effects
 
 
 
----
 #### **VignetteAspectRatio**
 
 Set vignette aspect. 
@@ -170,13 +178,12 @@ Setting this value to the SAR of the input will make a rectangular vignetting fo
 
 
 
+
+
 ---
+
+
 ### Syntax
 ```PowerShell
 Extension/Vignette.rd.ext.ps1 -Vignette [[-VignetteAngle] <String>] [[-VignetteCenterX] <String>] [[-VignetteCenterY] <String>] [[-VignetteDirection] <String>] [[-VignetteEvaluatioMode] <String>] [-DoNotDitherVignette] [[-VignetteAspectRatio] <String>] [<CommonParameters>]
 ```
----
-
-
-
-
