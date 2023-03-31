@@ -1,21 +1,36 @@
-
 Extension/AmplifyPixel.RoughDraft.Extension.ps1
 -----------------------------------------------
+
+
+
+
 ### Synopsis
 AmplifyPixel extension
 
+
+
 ---
+
+
 ### Description
 
 Amplify differences between current pixel and pixels of adjacent frames in same pixel location.
 
+
+
 ---
+
+
 ### Related Links
 * [https://ffmpeg.org/ffmpeg-filters.html#amplify](https://ffmpeg.org/ffmpeg-filters.html#amplify)
 
 
 
+
+
 ---
+
+
 ### Parameters
 #### **AmplifyPixel**
 
@@ -32,7 +47,6 @@ If set, will amplify the differences between current pixel and pixels of adjacen
 
 
 
----
 #### **AmplifyPixelRadius**
 
 Set frame radius. Default is 2. Allowed range is from 1 to 63. For example radius of 3 will instruct filter to calculate average of 7 frames.
@@ -48,7 +62,6 @@ Set frame radius. Default is 2. Allowed range is from 1 to 63. For example radiu
 
 
 
----
 #### **AmplifyPixelFactor**
 
 Set factor to amplify difference. Default is 2
@@ -64,7 +77,6 @@ Set factor to amplify difference. Default is 2
 
 
 
----
 #### **AmplifyPixelThreshold**
 
 Set threshold for difference amplification.
@@ -83,7 +95,6 @@ Allowed range is from 0 to 65535.
 
 
 
----
 #### **AmplifyPixelTolerance**
 
 Set tolerance for difference amplification.
@@ -101,7 +112,6 @@ Default is 0. Allowed range is from 0 to 65535.
 
 
 
----
 #### **AmplifyPixelLow**
 
 Set lower limit for changing source pixel.
@@ -120,7 +130,6 @@ This option controls maximum possible value that will decrease source pixel valu
 
 
 
----
 #### **AmplifyPixelHigh**
 
 Set high limit for changing source pixel.
@@ -139,7 +148,6 @@ This option controls maximum possible value that will decrease source pixel valu
 
 
 
----
 #### **AmplifyPixelPlanes**
 
 Set which planes to filter. Default is all. Allowed range is from 0 to 15.
@@ -155,13 +163,12 @@ Set which planes to filter. Default is all. Allowed range is from 0 to 15.
 
 
 
+
+
 ---
+
+
 ### Syntax
 ```PowerShell
 Extension/AmplifyPixel.RoughDraft.Extension.ps1 -AmplifyPixel [[-AmplifyPixelRadius] <Int32>] [[-AmplifyPixelFactor] <Int32>] [[-AmplifyPixelThreshold] <Int32>] [[-AmplifyPixelTolerance] <Int32>] [[-AmplifyPixelLow] <Int32>] [[-AmplifyPixelHigh] <Int32>] [[-AmplifyPixelPlanes] <String>] [<CommonParameters>]
 ```
----
-
-
-
-
