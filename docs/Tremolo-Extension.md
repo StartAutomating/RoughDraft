@@ -1,21 +1,36 @@
-
 Extension/Tremolo.RoughDraft.Extension.ps1
 ------------------------------------------
+
+
+
+
 ### Synopsis
 Tremolo effect
 
+
+
 ---
+
+
 ### Description
 
 Sinusoidal phase modulation.
 
+
+
 ---
+
+
 ### Related Links
 * [https://ffmpeg.org/ffmpeg-filters.html#tremolo](https://ffmpeg.org/ffmpeg-filters.html#tremolo)
 
 
 
+
+
 ---
+
+
 ### Parameters
 #### **Tremolo**
 
@@ -32,7 +47,6 @@ If set, will use the Tremolo effect
 
 
 
----
 #### **TremoloFrequency**
 
 Modulation frequency in Hertz. Range is 0.1 - 20000.0. Default value is 5.0 Hz.
@@ -48,7 +62,6 @@ Modulation frequency in Hertz. Range is 0.1 - 20000.0. Default value is 5.0 Hz.
 
 
 
----
 #### **TremoloDepth**
 
 Depth of modulation as a percentage. Range is 0.0 - 1.0. Default value is 0.5.
@@ -64,13 +77,12 @@ Depth of modulation as a percentage. Range is 0.0 - 1.0. Default value is 0.5.
 
 
 
+
+
 ---
+
+
 ### Syntax
 ```PowerShell
 Extension/Tremolo.RoughDraft.Extension.ps1 -Tremolo [[-TremoloFrequency] <Single>] [[-TremoloDepth] <Single>] [<CommonParameters>]
 ```
----
-
-
-
-
