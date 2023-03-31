@@ -1,14 +1,26 @@
 Use-FFMpeg
 ----------
+
+
+
+
 ### Synopsis
 Uses ffmpeg directly.
 
+
+
 ---
+
+
 ### Description
 
 Runs ffmpeg directly.
 
+
+
 ---
+
+
 ### Related Links
 * [Use-FFProbe](Use-FFProbe.md)
 
@@ -18,14 +30,22 @@ Runs ffmpeg directly.
 
 
 
+
+
 ---
+
+
 ### Examples
 #### EXAMPLE 1
 ```PowerShell
 Use-FFMpeg -FFMpegArgument '-i', "`"$home\Video\A.mp4`"", "`"$home\Music\A.mp3`""
 ```
 
+
+
 ---
+
+
 ### Parameters
 #### **FFMpegArgument**
 
@@ -42,7 +62,6 @@ Arguments to FFMpeg.
 
 
 
----
 #### **FFMpegPath**
 
 The path to FFMpeg.
@@ -58,7 +77,6 @@ The path to FFMpeg.
 
 
 
----
 #### **AsJob**
 
 If set, will run as a background job.
@@ -74,16 +92,23 @@ If set, will run as a background job.
 
 
 
+
+
 ---
+
+
 ### Outputs
 * [String](https://learn.microsoft.com/en-us/dotnet/api/System.String)
 
 
 
 
+
+
 ---
+
+
 ### Syntax
 ```PowerShell
 Use-FFMpeg [-FFMpegArgument <String[]>] [-FFMpegPath <String>] [-AsJob] [<CommonParameters>]
 ```
----
