@@ -1,10 +1,17 @@
-
 Extension/Scale.RoughDraft.Extension.ps1
 ----------------------------------------
+
+
+
+
 ### Synopsis
 Scales video.
 
+
+
 ---
+
+
 ### Description
 
 Scale the input video size and/or convert the image format.
@@ -32,13 +39,21 @@ The values of the Width and Height options are expressions containing the follow
 |t|The presentation timestamp of the input frame, expressed as a number of seconds. Only available with eval=frame.|
 |pos|The byte offset of the frame in the input. Only available with eval=frame.|
 
+
+
 ---
+
+
 ### Related Links
 * [https://ffmpeg.org/ffmpeg-filters.html#scale-1](https://ffmpeg.org/ffmpeg-filters.html#scale-1)
 
 
 
+
+
 ---
+
+
 ### Parameters
 #### **Scale**
 
@@ -55,7 +70,6 @@ Scale the input video size and/or convert the image format.
 
 
 
----
 #### **ScaleWidth**
 
 Output video width
@@ -65,13 +79,12 @@ Output video width
 
 
 
-|Type      |Required|Position|PipelineInput|
-|----------|--------|--------|-------------|
-|`[String]`|false   |1       |false        |
+|Type      |Required|Position|PipelineInput|Aliases                |
+|----------|--------|--------|-------------|-----------------------|
+|`[String]`|false   |1       |false        |scale_w<br/>scale_width|
 
 
 
----
 #### **ScaleHeight**
 
 Output video height
@@ -81,13 +94,12 @@ Output video height
 
 
 
-|Type      |Required|Position|PipelineInput|
-|----------|--------|--------|-------------|
-|`[String]`|false   |2       |false        |
+|Type      |Required|Position|PipelineInput|Aliases                 |
+|----------|--------|--------|-------------|------------------------|
+|`[String]`|false   |2       |false        |scale_h<br/>scale_height|
 
 
 
----
 #### **ScaleFlags**
 
 Flags to pass to libswscale.
@@ -119,13 +131,12 @@ Valid Values:
 
 
 
-|Type      |Required|Position|PipelineInput|
-|----------|--------|--------|-------------|
-|`[String]`|false   |3       |false        |
+|Type      |Required|Position|PipelineInput|Aliases    |
+|----------|--------|--------|-------------|-----------|
+|`[String]`|false   |3       |false        |scale_flags|
 
 
 
----
 #### **ScaleInterlacing**
 
 Set interlacing
@@ -138,13 +149,12 @@ Set interlacing
 
 
 
-|Type     |Required|Position|PipelineInput|
-|---------|--------|--------|-------------|
-|`[Int32]`|false   |4       |false        |
+|Type     |Required|Position|PipelineInput|Aliases     |
+|---------|--------|--------|-------------|------------|
+|`[Int32]`|false   |4       |false        |scale_interl|
 
 
 
----
 #### **ScaleInColorMatrix**
 
 set input YCbCr type
@@ -167,13 +177,12 @@ Valid Values:
 
 
 
-|Type      |Required|Position|PipelineInput|
-|----------|--------|--------|-------------|
-|`[String]`|false   |5       |false        |
+|Type      |Required|Position|PipelineInput|Aliases              |
+|----------|--------|--------|-------------|---------------------|
+|`[String]`|false   |5       |false        |scale_in_color_matrix|
 
 
 
----
 #### **ScaleOutColorMatrix**
 
 set output YCbCr type
@@ -196,13 +205,12 @@ Valid Values:
 
 
 
-|Type      |Required|Position|PipelineInput|
-|----------|--------|--------|-------------|
-|`[String]`|false   |6       |false        |
+|Type      |Required|Position|PipelineInput|Aliases               |
+|----------|--------|--------|-------------|----------------------|
+|`[String]`|false   |6       |false        |scale_out_color_matrix|
 
 
 
----
 #### **ScaleInRange**
 
 set input color range
@@ -225,13 +233,12 @@ Valid Values:
 
 
 
-|Type      |Required|Position|PipelineInput|
-|----------|--------|--------|-------------|
-|`[String]`|false   |7       |false        |
+|Type      |Required|Position|PipelineInput|Aliases       |
+|----------|--------|--------|-------------|--------------|
+|`[String]`|false   |7       |false        |scale_in_range|
 
 
 
----
 #### **ScaleOutRange**
 
 set output color range
@@ -254,13 +261,12 @@ Valid Values:
 
 
 
-|Type      |Required|Position|PipelineInput|
-|----------|--------|--------|-------------|
-|`[String]`|false   |8       |false        |
+|Type      |Required|Position|PipelineInput|Aliases        |
+|----------|--------|--------|-------------|---------------|
+|`[String]`|false   |8       |false        |scale_out_range|
 
 
 
----
 #### **ScaleInVerticalChromaPosition**
 
 input vertical chroma position in luma grid/256
@@ -270,13 +276,12 @@ input vertical chroma position in luma grid/256
 
 
 
-|Type     |Required|Position|PipelineInput|
-|---------|--------|--------|-------------|
-|`[Int32]`|false   |9       |false        |
+|Type     |Required|Position|PipelineInput|Aliases           |
+|---------|--------|--------|-------------|------------------|
+|`[Int32]`|false   |9       |false        |scale_in_v_chr_pos|
 
 
 
----
 #### **ScaleInHorizontalChromaPosition**
 
 input horizontal chroma position in luma grid/256
@@ -286,13 +291,12 @@ input horizontal chroma position in luma grid/256
 
 
 
-|Type     |Required|Position|PipelineInput|
-|---------|--------|--------|-------------|
-|`[Int32]`|false   |10      |false        |
+|Type     |Required|Position|PipelineInput|Aliases           |
+|---------|--------|--------|-------------|------------------|
+|`[Int32]`|false   |10      |false        |scale_in_h_chr_pos|
 
 
 
----
 #### **ScaleOutVerticalChromaPosition**
 
 output vertical chroma position in luma grid/256
@@ -302,13 +306,12 @@ output vertical chroma position in luma grid/256
 
 
 
-|Type     |Required|Position|PipelineInput|
-|---------|--------|--------|-------------|
-|`[Int32]`|false   |11      |false        |
+|Type     |Required|Position|PipelineInput|Aliases            |
+|---------|--------|--------|-------------|-------------------|
+|`[Int32]`|false   |11      |false        |scale_out_v_chr_pos|
 
 
 
----
 #### **ScaleOutHorizontalChromaPosition**
 
 output horizontal chroma position in luma grid/256
@@ -318,13 +321,12 @@ output horizontal chroma position in luma grid/256
 
 
 
-|Type     |Required|Position|PipelineInput|
-|---------|--------|--------|-------------|
-|`[Int32]`|false   |12      |false        |
+|Type     |Required|Position|PipelineInput|Aliases            |
+|---------|--------|--------|-------------|-------------------|
+|`[Int32]`|false   |12      |false        |scale_out_h_chr_pos|
 
 
 
----
 #### **ScaleForceOriginalAspectRatio**
 
 decrease or increase w/h if necessary to keep the original AR
@@ -342,13 +344,12 @@ Valid Values:
 
 
 
-|Type      |Required|Position|PipelineInput|
-|----------|--------|--------|-------------|
-|`[Object]`|false   |13      |false        |
+|Type      |Required|Position|PipelineInput|Aliases                          |
+|----------|--------|--------|-------------|---------------------------------|
+|`[Object]`|false   |13      |false        |scale_force_original_aspect_ratio|
 
 
 
----
 #### **ScaleParam0**
 
 Scaler param 0
@@ -358,13 +359,12 @@ Scaler param 0
 
 
 
-|Type      |Required|Position|PipelineInput|
-|----------|--------|--------|-------------|
-|`[Double]`|false   |14      |false        |
+|Type      |Required|Position|PipelineInput|Aliases     |
+|----------|--------|--------|-------------|------------|
+|`[Double]`|false   |14      |false        |scale_param0|
 
 
 
----
 #### **ScaleParam1**
 
 Scaler param 1
@@ -374,13 +374,12 @@ Scaler param 1
 
 
 
-|Type      |Required|Position|PipelineInput|
-|----------|--------|--------|-------------|
-|`[Double]`|false   |15      |false        |
+|Type      |Required|Position|PipelineInput|Aliases     |
+|----------|--------|--------|-------------|------------|
+|`[Double]`|false   |15      |false        |scale_param1|
 
 
 
----
 #### **ScaleSliceCount**
 
 set the number of slices
@@ -390,13 +389,12 @@ set the number of slices
 
 
 
-|Type     |Required|Position|PipelineInput|
-|---------|--------|--------|-------------|
-|`[Int32]`|false   |16      |false        |
+|Type     |Required|Position|PipelineInput|Aliases        |
+|---------|--------|--------|-------------|---------------|
+|`[Int32]`|false   |16      |false        |scale_nb_slices|
 
 
 
----
 #### **ScaleEval**
 
 Specify when to evaluate expressions.  Either initially or every frame.
@@ -413,19 +411,18 @@ Valid Values:
 
 
 
-|Type      |Required|Position|PipelineInput|
-|----------|--------|--------|-------------|
-|`[Object]`|false   |17      |false        |
+|Type      |Required|Position|PipelineInput|Aliases   |
+|----------|--------|--------|-------------|----------|
+|`[Object]`|false   |17      |false        |scale_eval|
+
+
 
 
 
 ---
+
+
 ### Syntax
 ```PowerShell
 Extension/Scale.RoughDraft.Extension.ps1 -Scale [[-ScaleWidth] <String>] [[-ScaleHeight] <String>] [[-ScaleFlags] <String>] [[-ScaleInterlacing] <Int32>] [[-ScaleInColorMatrix] <String>] [[-ScaleOutColorMatrix] <String>] [[-ScaleInRange] <String>] [[-ScaleOutRange] <String>] [[-ScaleInVerticalChromaPosition] <Int32>] [[-ScaleInHorizontalChromaPosition] <Int32>] [[-ScaleOutVerticalChromaPosition] <Int32>] [[-ScaleOutHorizontalChromaPosition] <Int32>] [[-ScaleForceOriginalAspectRatio] <Object>] [[-ScaleParam0] <Double>] [[-ScaleParam1] <Double>] [[-ScaleSliceCount] <Int32>] [[-ScaleEval] <Object>] [<CommonParameters>]
 ```
----
-
-
-
-
