@@ -1,4 +1,4 @@
-#region Piecemeal [ 0.3.4 ] : Easy Extensible Plugins for PowerShell
+#region Piecemeal [ 0.3.10 ] : Easy Extensible Plugins for PowerShell
 # Install-Module Piecemeal -Scope CurrentUser 
 # Import-Module Piecemeal -Force 
 # Install-Piecemeal -ExtensionModule 'RoughDraft' -ExtensionModuleAlias 'rd' -ExtensionTypeName 'RoughDraft.Extension' -OutputPath '.\Get-RoughDraftExtension.ps1'
@@ -14,6 +14,7 @@ function Get-RoughDraftExtension
 
         * Any module that includes -RoughDraftExtensionModuleName in it's tags.
         * The directory specified in -RoughDraftExtensionPath
+        * Commands that meet the naming criteria
     .Example
         Get-RoughDraftExtension
     #>
@@ -218,20 +219,38 @@ function Get-RoughDraftExtension
                 }
             }
         }
-        filter ConvertToExtension {
-            $in = $_
+        function ConvertToExtension($toExtension) {
+            
+            process {
+                
+            $in = if ($toExtension) {
+                $toExtension
+            } else { $_ }
+                 
             $extCmd =
                 if ($in -is [Management.Automation.CommandInfo]) {
                     $in
                 }
                 elseif ($in -is [IO.FileInfo]) {
-                    $ExecutionContext.SessionState.InvokeCommand.GetCommand($in.fullname, 'ExternalScript,Application')
+                    if ($in.LastWriteTime -gt $script:RoughDraftExtensionsFileTimes[$in.Fullname]) {
+                        $script:RoughDraftExtensionsFileTimes[$in.Fullname] = $in.LastWriteTime
+                        $script:RoughDraftExtensionsFromFiles[$in.Fullname] = 
+                            $ExecutionContext.SessionState.InvokeCommand.GetCommand($in.fullname, 'ExternalScript,Application')
+                        $script:RoughDraftExtensionsFromFiles[$in.Fullname]
+                    } elseif ($script:RoughDraftExtensionsFromFiles[$in.Fullname])  {
+                        return $script:RoughDraftExtensionsFromFiles[$in.Fullname]
+                    }                    
                 }
                 else {
-                    $ExecutionContext.SessionState.InvokeCommand.GetCommand($in, 'Function,ExternalScript,Application')
+                    $ExecutionContext.SessionState.InvokeCommand.GetCommand($in, 'Alias,Function,ExternalScript,Application')
                 }
 
-            $extCmd.PSObject.Methods.Add([psscriptmethod]::new('GetExtendedCommands', {
+            $extMethods    = $extCmd.PSObject.Methods
+            $extProperties = $extCmd.PSObject.Properties
+
+            #region .GetExtendedCommands
+            if (-not $extMethods['GetExtendedCommands']) {
+                $extMethods.Add([psscriptmethod]::new('GetExtendedCommands', {
                 param([Management.Automation.CommandInfo[]]$CommandList)
                 $extendedCommandNames = @(
                     foreach ($attr in $this.ScriptBlock.Attributes) {
@@ -242,8 +261,8 @@ function Get-RoughDraftExtension
                     }
                 )
                 if (-not $extendedCommandNames) {
-                    $this | Add-Member NoteProperty Extends @() -Force
-                    $this | Add-Member NoteProperty ExtensionCommands @() -Force
+                    $this.PSObject.Properties.Add([psnoteproperty]::new('.Extends', @()), $true)
+                    $this.PSObject.Properties.Add([psnoteproperty]::new('.ExtensionCommands', @()), $true)                    
                     return    
                 }
                 if (-not $CommandList) {
@@ -263,307 +282,424 @@ function Get-RoughDraftExtension
                 if (-not $extends.Count) {
                     $extends = $null
                 }
-
-                $this | Add-Member NoteProperty Extends $extends.Keys -Force
-                $this | Add-Member NoteProperty ExtensionCommands $extends.Values -Force
-            }))
-
-            if (-not $script:AllCommands) {
-                $script:AllCommands = $ExecutionContext.SessionState.InvokeCommand.GetCommands('*','Function,Alias,Cmdlet', $true)
+                $this.PSObject.Properties.Add([psnoteproperty]::new('.Extends', @($extends.Keys)), $true)
+                $this.PSObject.Properties.Add([psnoteproperty]::new('.ExtensionCommands', @($extends.Values)), $true)                
+                }), $true)
             }
-            
+            #endregion .GetExtendedCommands
 
-            $null = $extCmd.GetExtendedCommands($script:AllCommands)
+            #region .Extends
+            if (-not $extProperties['Extends']) {
+                $extProperties.Add([psscriptproperty]::new('Extends', {
+                    if (-not $this.'.Extends') {
+                        $this.GetExtendedCommands(
+                            $ExecutionContext.SessionState.InvokeCommand.GetCommands('*','Function,Alias,Cmdlet', $true)
+                        )
+                    }
+                    return $this.'.Extends'
+                }),$true)
+            }
+            #endregion .Extends
+
+            #region .ExtensionCommands
+            if (-not $extProperties['ExtensionCommands']) {
+                $extProperties.Add([psscriptproperty]::new('ExtensionCommands', {
+                    if (-not $this.'.ExtensionCommands') {
+                        $this.GetExtendedCommands(
+                            $ExecutionContext.SessionState.InvokeCommand.GetCommands('*','Function,Alias,Cmdlet', $true)
+                        )
+                    }
+                    return $this.'.ExtensionCommands'
+                }), $true)
+            }
+            #endregion .ExtensionCommands
 
             $inheritanceLevel = [ComponentModel.InheritanceLevel]::Inherited
 
-            $extCmd.PSObject.Properties.Add([psscriptproperty]::New('BlockComments', {
-                [Regex]::New("                   
-                \<\# # The opening tag
-                (?<Block> 
-                    (?:.|\s)+?(?=\z|\#>) # anything until the closing tag
-                )
-                \#\> # the closing tag
-                ", 'IgnoreCase,IgnorePatternWhitespace', '00:00:01').Matches($this.ScriptBlock)
-            }))
+            #region .BlockComments
+            if(-not $extProperties['BlockComments']) {
+                $extProperties.Add([psscriptproperty]::New('BlockComments', {
+                    [Regex]::New("                   
+                    \<\# # The opening tag
+                    (?<Block> 
+                        (?:.|\s)+?(?=\z|\#>) # anything until the closing tag
+                    )
+                    \#\> # the closing tag
+                    ", 'IgnoreCase,IgnorePatternWhitespace', '00:00:01').Matches($this.ScriptBlock)
+                }), $true)
+            }
+            #endregion .BlockComments
 
-            $extCmd.PSObject.Methods.Add([psscriptmethod]::New('GetHelpField', {
-                param([Parameter(Mandatory)]$Field)
-                $fieldNames = 'synopsis','description','link','example','inputs', 'outputs', 'parameter', 'notes'
-                foreach ($block in $this.BlockComments) {                
-                    foreach ($match in [Regex]::new("
-                        \.(?<Field>$Field)                   # Field Start
-                        [\s-[\r\n]]{0,}                      # Optional Whitespace
-                        [\r\n]+                              # newline
-                        (?<Content>(?:.|\s)+?(?=
-                        (
-                            [\r\n]{0,}\s{0,}\.(?>$($fieldNames -join '|'))|
-                            \#\>|
-                            \z
-                        ))) # Anything until the next .field or end of the comment block
-                        ", 'IgnoreCase,IgnorePatternWhitespace', [Timespan]::FromSeconds(1)).Matches(
-                            $block.Value
-                        )) {                        
-                        $match.Groups["Content"].Value -replace '[\s\r\n]+$'
-                    }                    
-                }
-            }))
-
-            $extCmd.PSObject.Properties.Add([PSNoteProperty]::new('InheritanceLevel', $inheritanceLevel))
-            $extCmd.PSObject.Properties.Add([PSScriptProperty]::new(
-                'DisplayName', [ScriptBlock]::Create("`$this.Name -replace '$extensionFullRegex'")
-            ))
-            $extCmd.PSObject.Properties.Add([PSScriptProperty]::new(
-                'Attributes', {$this.ScriptBlock.Attributes}
-            ))
-
-
-            $extCmd.PSObject.Properties.Add([PSScriptProperty]::new(
-                'Category', {
-                    foreach ($attr in $this.ScriptBlock.Attributes) {
-                        if ($attr -is [Reflection.AssemblyMetaDataAttribute] -and
-                            $attr.Key -eq 'Category') {
-                            $attr.Value
-                        }
-                        elseif ($attr -is [ComponentModel.CategoryAttribute]) {
-                            $attr.Category
-                        }
+            #region .GetHelpField
+            if (-not $extMethods['GetHelpField']) {
+                $extMethods.Add([psscriptmethod]::New('GetHelpField', {
+                    param([Parameter(Mandatory)]$Field)
+                    $fieldNames = 'synopsis','description','link','example','inputs', 'outputs', 'parameter', 'notes'
+                    foreach ($block in $this.BlockComments) {                
+                        foreach ($match in [Regex]::new("
+                            \.(?<Field>$Field)                   # Field Start
+                            [\s-[\r\n]]{0,}                      # Optional Whitespace
+                            [\r\n]+                              # newline
+                            (?<Content>(?:.|\s)+?(?=
+                            (
+                                [\r\n]{0,}\s{0,}\.(?>$($fieldNames -join '|'))|
+                                \#\>|
+                                \z
+                            ))) # Anything until the next .field or end of the comment block
+                            ", 'IgnoreCase,IgnorePatternWhitespace', [Timespan]::FromSeconds(1)).Matches(
+                                $block.Value
+                            )) {                        
+                            $match.Groups["Content"].Value -replace '[\s\r\n]+$'
+                        }                    
                     }
-                    
-                }
-            ))
+                }), $true)
+            }
+            #endregion .GetHelpField
 
-            $extCmd.PSObject.Properties.Add([PSScriptProperty]::new(
-                'Rank', {
-                    foreach ($attr in $this.ScriptBlock.Attributes) {
-                        if ($attr -is [Reflection.AssemblyMetaDataAttribute] -and
-                            $attr.Key -in 'Order', 'Rank') {
-                            return $attr.Value -as [int]
+            #region .InheritanceLevel
+            if (-not $extProperties['InheritanceLevel']) {
+                $extProperties.Add([PSNoteProperty]::new('InheritanceLevel', $inheritanceLevel), $true)
+            }
+            #endregion .InheritanceLevel
+
+            #region .DisplayName
+            if (-not $extProperties['DisplayName']) {
+                $extProperties.Add([PSScriptProperty]::new(
+                    'DisplayName', {
+                        if ($this.'.DisplayName') {
+                            return $this.'.DisplayName'
                         }
+                        if ($this.ScriptBlock.Attributes) {
+                            foreach ($attr in $this.ScriptBlock.Attributes) {
+                                if ($attr -is [ComponentModel.DisplayNameAttribute]) {
+                                    $this | Add-Member NoteProperty '.DisplayName' $attr.DisplayName -Force
+                                    return $attr.DisplayName
+                                }
+                            }
+                        }
+                        $this | Add-Member NoteProperty '.DisplayName' $this.Name
+                        return $this.Name
+                    }, {
+                        $this | Add-Member NoteProperty '.DisplayName' $args -Force
                     }
-                    return 0
-                }
-            ))
+                ), $true)
+
+                $extProperties.Add([PSNoteProperty]::new(
+                    '.DisplayName', "$($extCmd.Name -replace $extensionFullRegex)"
+                ), $true)
+            }            
+            #endregion .DisplayName
             
-            $extCmd.PSObject.Properties.Add([psscriptproperty]::new(
-                'Metadata', {
-                    $Metadata = [Ordered]@{}
+            #region .Attributes
+            if (-not $extProperties['Attributes']) {
+                $extProperties.Add([PSScriptProperty]::new(
+                    'Attributes', {$this.ScriptBlock.Attributes}
+                ), $true)
+            }
+            #endregion .Attributes
+
+            #region .Category
+            if (-not $extProperties['Category']) {
+                $extProperties.Add([PSScriptProperty]::new(
+                    'Category', {
+                        foreach ($attr in $this.ScriptBlock.Attributes) {
+                            if ($attr -is [Reflection.AssemblyMetaDataAttribute] -and
+                                $attr.Key -eq 'Category') {
+                                $attr.Value
+                            }
+                            elseif ($attr -is [ComponentModel.CategoryAttribute]) {
+                                $attr.Category
+                            }
+                        }
+                        
+                    }
+                ), $true)
+            }
+            #endregion .Category
+
+            #region .Rank
+            if (-not $extProperties['Rank']) {
+                $extProperties.Add([PSScriptProperty]::new(
+                    'Rank', {
+                        foreach ($attr in $this.ScriptBlock.Attributes) {
+                            if ($attr -is [Reflection.AssemblyMetaDataAttribute] -and
+                                $attr.Key -in 'Order', 'Rank') {
+                                return $attr.Value -as [int]
+                            }
+                        }
+                        return 0
+                    }
+                ), $true)
+            }
+            #endregion .Rank
+            
+            #region .Metadata
+            if (-not $extProperties['Metadata']) {
+                $extProperties.Add([psscriptproperty]::new(
+                    'Metadata', {
+                        $Metadata = [Ordered]@{}
+                        foreach ($attr in $this.ScriptBlock.Attributes) {
+                            if ($attr -is [Reflection.AssemblyMetaDataAttribute]) {
+                                if ($Metadata[$attr.Key]) {
+                                    $Metadata[$attr.Key] = @($Metadata[$attr.Key]) + $attr.Value
+                                } else {
+                                    $Metadata[$attr.Key] = $attr.Value
+                                }                            
+                            }
+                        }
+                        return $Metadata
+                    }
+                ), $true)
+            }
+            #endregion .Metadata
+
+            #region .Description
+            if (-not $extProperties['Description']) {
+                $extProperties.Add([PSScriptProperty]::new(
+                    'Description', { @($this.GetHelpField("Description"))[0] -replace '^\s+' }
+                ), $true)
+            }
+            #endregion .Description
+
+            #region .Synopsis
+            if (-not $extProperties['Synopsis']) {
+            $extProperties.Add([PSScriptProperty]::new(
+                'Synopsis', { @($this.GetHelpField("Synopsis"))[0] -replace '^\s+' }), $true)
+            }
+            #endregion .Synopsis
+
+            #region .Examples
+            if (-not $extProperties['Examples']) {
+                $extProperties.Add([PSScriptProperty]::new(
+                    'Examples', { $this.GetHelpField("Example") }), $true)
+            }            
+            #endregion .Examples
+
+            #region .Links
+            if (-not $extProperties['Links']) {
+                $extProperties.Add([PSScriptProperty]::new(
+                    'Links', { $this.GetHelpField("Link") }), $true
+                )
+            }
+            #endregion .Links
+
+            #region .Validate
+            if (-not $extProperties['Validate']) {
+                $extMethods.Add([psscriptmethod]::new('Validate', {
+                    param(
+                        # input being validated
+                        [PSObject]$ValidateInput,
+                        # If set, will require all [Validate] attributes to be valid.
+                        # If not set, any input will be valid.
+                        [switch]$AllValid
+                    )
+
                     foreach ($attr in $this.ScriptBlock.Attributes) {
-                        if ($attr -is [Reflection.AssemblyMetaDataAttribute]) {
-                            if ($Metadata[$attr.Key]) {
-                                $Metadata[$attr.Key] = @($Metadata[$attr.Key]) + $attr.Value
-                            } else {
-                                $Metadata[$attr.Key] = $attr.Value
-                            }                            
+                        if ($attr -is [Management.Automation.ValidateScriptAttribute]) {
+                            try {
+                                $_ = $this = $psItem = $ValidateInput
+                                $isValidInput = . $attr.ScriptBlock
+                                if ($isValidInput -and -not $AllValid) { return $true}
+                                if (-not $isValidInput -and $AllValid) {
+                                    if ($ErrorActionPreference -eq 'ignore') {
+                                        return $false
+                                    } elseif ($AllValid) {
+                                        throw "'$ValidateInput' is not a valid value."
+                                    }
+                                }
+                            } catch {
+                                if ($AllValid) {
+                                    if ($ErrorActionPreference -eq 'ignore') {
+                                        return $false
+                                    } else {
+                                        throw
+                                    }
+                                }
+                            }
+                        }
+                        elseif ($attr -is [Management.Automation.ValidateSetAttribute]) {
+                            if ($ValidateInput -notin $attr.ValidValues) {
+                                if ($AllValid) {
+                                    if ($ErrorActionPreference -eq 'ignore') {
+                                        return $false
+                                    } else {
+                                        throw "'$ValidateInput' is not a valid value.  Valid values are '$(@($attr.ValidValues) -join "','")'"
+                                    }
+                                }
+                            } elseif (-not $AllValid) {
+                                return $true
+                            }
+                        }
+                        elseif ($attr -is [Management.Automation.ValidatePatternAttribute]) {
+                            $matched = [Regex]::new($attr.RegexPattern, $attr.Options, [Timespan]::FromSeconds(1)).Match("$ValidateInput")
+                            if (-not $matched.Success) {
+                                if ($allValid) {
+                                    if ($ErrorActionPreference -eq 'ignore') {
+                                        return $false
+                                    } else {
+                                        throw "'$ValidateInput' is not a valid value.  Valid values must match the pattern '$($attr.RegexPattern)'"
+                                    }
+                                }
+                            } elseif (-not $AllValid) {
+                                return $true
+                            }
+                        }
+                        elseif ($attr -is [Management.Automation.ValidateRangeAttribute]) {
+                            if ($null -ne $attr.MinRange -and $validateInput -lt $attr.MinRange) {
+                                if ($AllValid) {
+                                    if ($ErrorActionPreference -eq 'ignore') {
+                                        return $false
+                                    } else {
+                                        throw "'$ValidateInput' is below the minimum range [ $($attr.MinRange)-$($attr.MaxRange) ]"
+                                    }
+                                }
+                            }
+                            elseif ($null -ne $attr.MaxRange -and $validateInput -gt $attr.MaxRange) {
+                                if ($AllValid) {
+                                    if ($ErrorActionPreference -eq 'ignore') {
+                                        return $false
+                                    } else {
+                                        throw "'$ValidateInput' is above the maximum range [ $($attr.MinRange)-$($attr.MaxRange) ]"
+                                    }
+                                }
+                            }
+                            elseif (-not $AllValid) {
+                                return $true
+                            }
                         }
                     }
-                    return $Metadata
-                }
-            ))
 
-            $extCmd.PSObject.Properties.Add([PSScriptProperty]::new(
-                'Description', { @($this.GetHelpField("Description"))[0] -replace '^\s+' }
-            ))
+                    if ($AllValid) {
+                        return $true
+                    } else {
+                        return $false
+                    }
+                }), $true)
+            }
+            #endregion .Validate
 
-            $extCmd.PSObject.Properties.Add([PSScriptProperty]::new(
-                'Synopsis', { @($this.GetHelpField("Synopsis"))[0] -replace '^\s+' }))
-
-            $extCmd.PSObject.Properties.Add([PSScriptProperty]::new(
-                'Examples', { $this.GetHelpField("Example") }))
-
-            $extCmd.PSObject.Properties.Add([PSScriptProperty]::new(
-                'Links', { $this.GetHelpField("Link") }))
-
-            $extCmd.PSObject.Methods.Add([psscriptmethod]::new('Validate', {
-                param(
-                    # input being validated
-                    [PSObject]$ValidateInput,
-                    # If set, will require all [Validate] attributes to be valid.
-                    # If not set, any input will be valid.
-                    [switch]$AllValid
-                )
-
-                foreach ($attr in $this.ScriptBlock.Attributes) {
-                    if ($attr -is [Management.Automation.ValidateScriptAttribute]) {
-                        try {
-                            $_ = $this = $psItem = $ValidateInput
-                            $isValidInput = . $attr.ScriptBlock
-                            if ($isValidInput -and -not $AllValid) { return $true}
-                            if (-not $isValidInput -and $AllValid) {
-                                if ($ErrorActionPreference -eq 'ignore') {
-                                    return $false
-                                } elseif ($AllValid) {
-                                    throw "'$ValidateInput' is not a valid value."
-                                }
-                            }
-                        } catch {
-                            if ($AllValid) {
-                                if ($ErrorActionPreference -eq 'ignore') {
-                                    return $false
-                                } else {
-                                    throw
-                                }
-                            }
+            #region .HasValidation
+            if (-not $extProperties['HasValidation']) {
+                $extProperties.Add([psscriptproperty]::new('HasValidation', {
+                    foreach ($attr in $this.ScriptBlock.Attributes) {
+                        if ($attr -is [Management.Automation.ValidateScriptAttribute] -or
+                            $attr -is [Management.Automation.ValidateSetAttribute] -or 
+                            $attr -is [Management.Automation.ValidatePatternAttribute] -or 
+                            $attr -is [Management.Automation.ValidateRangeAttribute]) {
+                            return $true                        
                         }
                     }
-                    elseif ($attr -is [Management.Automation.ValidateSetAttribute]) {
-                        if ($ValidateInput -notin $attr.ValidValues) {
-                            if ($AllValid) {
-                                if ($ErrorActionPreference -eq 'ignore') {
-                                    return $false
-                                } else {
-                                    throw "'$ValidateInput' is not a valid value.  Valid values are '$(@($attr.ValidValues) -join "','")'"
-                                }
-                            }
-                        } elseif (-not $AllValid) {
-                            return $true
-                        }
-                    }
-                    elseif ($attr -is [Management.Automation.ValidatePatternAttribute]) {
-                        $matched = [Regex]::new($attr.RegexPattern, $attr.Options, [Timespan]::FromSeconds(1)).Match($ValidateInput)
-                        if (-not $matched.Success) {
-                            if ($allValid) {
-                                if ($ErrorActionPreference -eq 'ignore') {
-                                    return $false
-                                } else {
-                                    throw "'$ValidateInput' is not a valid value.  Valid values must match the pattern '$($attr.RegexPattern)'"
-                                }
-                            }
-                        } elseif (-not $AllValid) {
-                            return $true
-                        }
-                    }
-                    elseif ($attr -is [Management.Automation.ValidateRangeAttribute]) {
-                        if ($null -ne $attr.MinRange -and $validateInput -lt $attr.MinRange) {
-                            if ($AllValid) {
-                                if ($ErrorActionPreference -eq 'ignore') {
-                                    return $false
-                                } else {
-                                    throw "'$ValidateInput' is below the minimum range [ $($attr.MinRange)-$($attr.MaxRange) ]"
-                                }
-                            }
-                        }
-                        elseif ($null -ne $attr.MaxRange -and $validateInput -gt $attr.MaxRange) {
-                            if ($AllValid) {
-                                if ($ErrorActionPreference -eq 'ignore') {
-                                    return $false
-                                } else {
-                                    throw "'$ValidateInput' is above the maximum range [ $($attr.MinRange)-$($attr.MaxRange) ]"
-                                }
-                            }
-                        }
-                        elseif (-not $AllValid) {
-                            return $true
-                        }
-                    }
-                }
 
-                if ($AllValid) {
-                    return $true
-                } else {
                     return $false
-                }
-            }))
+                }), $true)
+            }            
+            #endregion .HasValidation
 
-            $extCmd.PSObject.Methods.Add([PSScriptMethod]::new('GetDynamicParameters', {
-                param(
-                [string]
-                $ParameterSetName,
+            #region .GetDynamicParameters
+            if (-not $extMethods['GetDynamicParameters']) {
+                $extMethods.Add([PSScriptMethod]::new('GetDynamicParameters', {
+                    param(
+                    [string]
+                    $ParameterSetName,
 
-                [int]
-                $PositionOffset,
+                    [int]
+                    $PositionOffset,
 
-                [switch]
-                $NoMandatory,
+                    [switch]
+                    $NoMandatory,
 
-                [string[]]
-                $commandList
-                )
+                    [string[]]
+                    $commandList
+                    )
 
-                $ExtensionDynamicParameters = [Management.Automation.RuntimeDefinedParameterDictionary]::new()
-                $Extension = $this
+                    $ExtensionDynamicParameters = [Management.Automation.RuntimeDefinedParameterDictionary]::new()
+                    $Extension = $this
 
-                :nextDynamicParameter foreach ($in in @(([Management.Automation.CommandMetaData]$Extension).Parameters.Keys)) {
-                    $attrList = [Collections.Generic.List[Attribute]]::new()
-                    $validCommandNames = @()
-                    foreach ($attr in $extension.Parameters[$in].attributes) {
-                        if ($attr -isnot [Management.Automation.ParameterAttribute]) {
-                            # we can passthru any non-parameter attributes
-                            $attrList.Add($attr)
-                            if ($attr -is [Management.Automation.CmdletAttribute] -and $commandList) {
-                                $validCommandNames += (
-                                    ($attr.VerbName -replace '\s') + '-' + ($attr.NounName -replace '\s')
-                                ) -replace '^\-' -replace '\-$'
-                            }
-                        } else {
-                            # but parameter attributes need to copied.
-                            $attrCopy = [Management.Automation.ParameterAttribute]::new()
-                            # (Side note: without a .Clone, copying is tedious.)
-                            foreach ($prop in $attrCopy.GetType().GetProperties('Instance,Public')) {
-                                if (-not $prop.CanWrite) { continue }
-                                if ($null -ne $attr.($prop.Name)) {
-                                    $attrCopy.($prop.Name) = $attr.($prop.Name)
+                    :nextDynamicParameter foreach ($in in @(($Extension -as [Management.Automation.CommandMetaData]).Parameters.Keys)) {
+                        $attrList = [Collections.Generic.List[Attribute]]::new()
+                        $validCommandNames = @()
+                        foreach ($attr in $extension.Parameters[$in].attributes) {
+                            if ($attr -isnot [Management.Automation.ParameterAttribute]) {
+                                # we can passthru any non-parameter attributes
+                                $attrList.Add($attr)
+                                if ($attr -is [Management.Automation.CmdletAttribute] -and $commandList) {
+                                    $validCommandNames += (
+                                        ($attr.VerbName -replace '\s') + '-' + ($attr.NounName -replace '\s')
+                                    ) -replace '^\-' -replace '\-$'
                                 }
-                            }
-
-                            $attrCopy.ParameterSetName =
-                                if ($ParameterSetName) {
-                                    $ParameterSetName
+                            } else {
+                                # but parameter attributes need to copied.
+                                $attrCopy = [Management.Automation.ParameterAttribute]::new()
+                                # (Side note: without a .Clone, copying is tedious.)
+                                foreach ($prop in $attrCopy.GetType().GetProperties('Instance,Public')) {
+                                    if (-not $prop.CanWrite) { continue }
+                                    if ($null -ne $attr.($prop.Name)) {
+                                        $attrCopy.($prop.Name) = $attr.($prop.Name)
+                                    }
                                 }
-                                else {
-                                    $defaultParamSetName =
-                                        foreach ($extAttr in $Extension.ScriptBlock.Attributes) {
-                                            if ($extAttr.DefaultParameterSetName) {
-                                                $extAttr.DefaultParameterSetName
-                                                break
+
+                                $attrCopy.ParameterSetName =
+                                    if ($ParameterSetName) {
+                                        $ParameterSetName
+                                    }
+                                    else {
+                                        $defaultParamSetName =
+                                            foreach ($extAttr in $Extension.ScriptBlock.Attributes) {
+                                                if ($extAttr.DefaultParameterSetName) {
+                                                    $extAttr.DefaultParameterSetName
+                                                    break
+                                                }
                                             }
+                                        if ($attrCopy.ParameterSetName -ne '__AllParameterSets') {
+                                            $attrCopy.ParameterSetName
                                         }
-                                    if ($attrCopy.ParameterSetName -ne '__AllParameterSets') {
-                                        $attrCopy.ParameterSetName
+                                        elseif ($defaultParamSetName) {
+                                            $defaultParamSetName
+                                        }
+                                        elseif ($this -is [Management.Automation.FunctionInfo]) {
+                                            $this.Name
+                                        } elseif ($this -is [Management.Automation.ExternalScriptInfo]) {
+                                            $this.Source
+                                        }
                                     }
-                                    elseif ($defaultParamSetName) {
-                                        $defaultParamSetName
-                                    }
-                                    elseif ($this -is [Management.Automation.FunctionInfo]) {
-                                        $this.Name
-                                    } elseif ($this -is [Management.Automation.ExternalScriptInfo]) {
-                                        $this.Source
-                                    }
+
+                                if ($NoMandatory -and $attrCopy.Mandatory) {
+                                    $attrCopy.Mandatory = $false
                                 }
 
-                            if ($NoMandatory -and $attrCopy.Mandatory) {
-                                $attrCopy.Mandatory = $false
+                                if ($PositionOffset -and $attr.Position -ge 0) {
+                                    $attrCopy.Position += $PositionOffset
+                                }
+                                $attrList.Add($attrCopy)
                             }
-
-                            if ($PositionOffset -and $attr.Position -ge 0) {
-                                $attrCopy.Position += $PositionOffset
-                            }
-                            $attrList.Add($attrCopy)
                         }
+
+
+                        if ($commandList -and $validCommandNames) {
+                            :CheckCommandValidity do {
+                                foreach ($vc in $validCommandNames) {
+                                    if ($commandList -match $vc) { break CheckCommandValidity }
+                                }
+                                continue nextDynamicParameter
+                            } while ($false)
+                        }
+                        $ExtensionDynamicParameters.Add($in, [Management.Automation.RuntimeDefinedParameter]::new(
+                            $Extension.Parameters[$in].Name,
+                            $Extension.Parameters[$in].ParameterType,
+                            $attrList
+                        ))
                     }
 
+                    $ExtensionDynamicParameters
 
-                    if ($commandList -and $validCommandNames) {
-                        :CheckCommandValidity do {
-                            foreach ($vc in $validCommandNames) {
-                                if ($commandList -match $vc) { break CheckCommandValidity }
-                            }
-                            continue nextDynamicParameter
-                        } while ($false)
-                    }
-                    $ExtensionDynamicParameters.Add($in, [Management.Automation.RuntimeDefinedParameter]::new(
-                        $Extension.Parameters[$in].Name,
-                        $Extension.Parameters[$in].ParameterType,
-                        $attrList
-                    ))
-                }
-
-                $ExtensionDynamicParameters
-
-            }))
+                }), $true)
+            }
+            #endregion .GetDynamicParameters
 
 
-            $extCmd.PSObject.Methods.Add([PSScriptMethod]::new('IsParameterValid', {
+            #region .IsParameterValid
+            if (-not $extMethods['IsParameterValid']) {
+            $extMethods.Add([PSScriptMethod]::new('IsParameterValid', {
                 param([Parameter(Mandatory)]$ParameterName, [PSObject]$Value)
 
                 if ($this.Parameters.Count -ge 0 -and 
@@ -594,9 +730,13 @@ function Get-RoughDraftExtension
                     }
                 }
                 return $true
-            }))
-
-            $extCmd.PSObject.Methods.Add([PSScriptMethod]::new('CouldPipe', {
+            }), $true)
+            }
+            #endregion .IsParameterValid
+            
+            #region .CouldPipe
+            if (-not $extMethods['CouldPipe']) {
+            $extMethods.Add([PSScriptMethod]::new('CouldPipe', {
                 param([PSObject]$InputObject)
 
                 :nextParameterSet foreach ($paramSet in $this.ParameterSets) {
@@ -604,11 +744,20 @@ function Get-RoughDraftExtension
                     $params = @{}
                     $mappedParams = [Ordered]@{} # Create a collection of mapped parameters
                     # Walk thru each parameter of this command
-                    foreach ($myParam in $paramSet.Parameters) {
+                    :nextParameter foreach ($myParam in $paramSet.Parameters) {
                         # If the parameter is ValueFromPipeline
                         if ($myParam.ValueFromPipeline) {
+                            $potentialPSTypeNames = @($myParam.Attributes.PSTypeName) -ne ''
+                            if ($potentialPSTypeNames)  {                                
+                                foreach ($potentialTypeName in $potentialPSTypeNames) {
+                                    if ($potentialTypeName -and $InputObject.pstypenames -contains $potentialTypeName) {
+                                        $mappedParams[$myParam.Name] = $params[$myParam.Name] = $InputObject
+                                        continue nextParameter
+                                    }
+                                }                                    
+                            }
                             # and we have an input object
-                            if ($null -ne $inputObject -and
+                            elseif ($null -ne $inputObject -and
                                 (
                                     # of the exact type
                                     $myParam.ParameterType -eq $inputObject.GetType() -or
@@ -633,9 +782,40 @@ function Get-RoughDraftExtension
                         return $mappedParams
                     }
                 }
-            }))            
+            }), $true)
+            }
+            #endregion .CouldPipe
 
-            $extCmd.PSObject.Methods.Add([PSScriptMethod]::new('CouldRun', {
+            #region .CouldPipeType
+            if (-not $extMethods['CouldPipeType']) {
+            $extMethods.Add([PSScriptMethod]::new('CouldPipeType', {
+                param([Type]$Type)
+
+                foreach ($paramSet in $this.ParameterSets) {
+                    if ($ParameterSetName -and $paramSet.Name -ne $ParameterSetName) { continue }
+                    # Walk thru each parameter of this command
+                    foreach ($myParam in $paramSet.Parameters) {
+                        # If the parameter is ValueFromPipeline
+                        if ($myParam.ValueFromPipeline -and (
+                                $myParam.ParameterType -eq $Type -or
+                                # (or a subclass of that type)
+                                $Type.IsSubClassOf($myParam.ParameterType) -or
+                                # (or an inteface of that type)
+                                ($myParam.ParameterType.IsInterface -and $Type.GetInterface($myParam.ParameterType))
+                            )
+                        ) {
+                            return $true
+                        }                        
+                    }
+                    return $false
+                }
+            }), $true)
+            }
+            #endregion .CouldPipeType
+
+            #region .CouldRun
+            if (-not $extMethods['CouldRun']) {
+            $extMethods.Add([PSScriptMethod]::new('CouldRun', {
                 param([Collections.IDictionary]$params, [string]$ParameterSetName)
 
                 :nextParameterSet foreach ($paramSet in $this.ParameterSets) {
@@ -673,16 +853,21 @@ function Get-RoughDraftExtension
                     return $mappedParams
                 }
                 return $false
-            }))
+            }), $true)
+            }
+            #endregion .CouldRun
 
-            $extCmd.pstypenames.clear()
-            if ($ExtensionTypeName) {
-                $extCmd.pstypenames.add($ExtensionTypeName)
-            } else {
-                $extCmd.pstypenames.add('Extension')
+            
+            # Decorate our return (so that it can be uniquely extended)
+            if (-not $ExtensionTypeName) {
+                $ExtensionTypeName = 'Extension'
+            }
+            if ($extCmd.pstypenames -notcontains $ExtensionTypeName) {            
+                $extCmd.pstypenames.insert(0,$ExtensionTypeName)
             }
 
             $extCmd
+        }
         }
         function OutputExtension {
             begin {
@@ -717,7 +902,7 @@ function Get-RoughDraftExtension
                     # Then, walk over each extension parameter.
                     foreach ($kv in $extensionParams.GetEnumerator()) {
                         # If the $CommandExtended had a built-in parameter, we cannot override it, so skip it.
-                        if ($commandExtended -and ([Management.Automation.CommandMetaData]$commandExtended).Parameters.$($kv.Key)) {
+                        if ($commandExtended -and ($commandExtended -as [Management.Automation.CommandMetaData]).Parameters.$($kv.Key)) {
                             continue
                         }
 
@@ -861,8 +1046,10 @@ function Get-RoughDraftExtension
         }
         if (-not $script:RoughDraftExtensions)
         {
+            $script:RoughDraftExtensionsFromFiles = [Ordered]@{}
+            $script:RoughDraftExtensionsFileTimes = [Ordered]@{}
             $script:RoughDraftExtensions =
-                @(
+                @(@(
                 #region Find RoughDraftExtensions in Loaded Modules
                 foreach ($loadedModule in $loadedModules) { # Walk over all modules.
                     if ( # If the module has PrivateData keyed to this module
@@ -885,21 +1072,27 @@ function Get-RoughDraftExtension
                                         $loadedModule.ExportedCommands[$ed.Value]
                                     }
                                 if ($extensionCmd) { # If we've found a valid extension command
-                                    $extensionCmd | ConvertToExtension # return it as an extension.
+                                    ConvertToExtension $extensionCmd # return it as an extension.
                                 }
                             }
                         }
                     }
                     elseif ($loadedModule.PrivateData.PSData.Tags -contains $myModuleName -or $loadedModule.Name -eq $myModuleName) {
-                        $loadedModule |
-                            Split-Path |
-                            Get-ChildItem -Recurse |
-                            Where-Object { $_.Name -Match $extensionFullRegex } |
-                            ConvertToExtension
+                        $loadedModuleRoot = Split-Path $loadedModule.Path
+                        if ($loadedModuleRoot) {
+                            foreach ($fileInModule in Get-ChildItem -Path $loadedModuleRoot -Recurse -File -Filter *.ps1) {
+                                if ($fileInModule.Name -notmatch $extensionFullRegex) { continue }
+                                ConvertToExtension $fileInModule
+                            }
+                        }
                     }
                 }
                 #endregion Find RoughDraftExtensions in Loaded Modules
-                )
+
+                #region Find RoughDraftExtensions in Loaded Commands                
+                $ExecutionContext.SessionState.InvokeCommand.GetCommands('*', 'Function,Alias',$true) -match $extensionFullRegex
+                #endregion Find RoughDraftExtensions in Loaded Commands
+                ) | Select-Object -Unique | Sort-Object Rank, Name)
         }
         #endregion Find Extensions
     }
@@ -907,10 +1100,15 @@ function Get-RoughDraftExtension
     process {
 
         if ($ExtensionPath) {
-            Get-ChildItem -Recurse -Path $ExtensionPath |
-                Where-Object { $_.Name -Match $extensionFullRegex } |
-                ConvertToExtension |
-                . WhereExtends $CommandName |
+            @(foreach ($_ in Get-ChildItem -Recurse -Path $ExtensionPath -File) {
+                if ($_.Name -notmatch $extensionFullRegex) { continue }
+                if ($CommandName -or $ExtensionName) {
+                    ConvertToExtension $_ |
+                    . WhereExtends $CommandName
+                } else {
+                    ConvertToExtension $_
+                }
+            }) |
                 #region Install-Piecemeal -WhereObject
                 # This section can be updated by using Install-Piecemeal -WhereObject
                 #endregion Install-Piecemeal -WhereObject
@@ -919,13 +1117,15 @@ function Get-RoughDraftExtension
                 #region Install-Piecemeal -ForeachObject
                 # This section can be updated by using Install-Piecemeal -ForeachObject
                 #endregion Install-Piecemeal -ForeachObject
-        } else {
+        } elseif ($CommandName -or $ExtensionName) {
             $script:RoughDraftExtensions |
-                . WhereExtends $CommandName |
-                Sort-Object Rank, Name |
+                . WhereExtends $CommandName |                
+                OutputExtension
+        } else {
+            $script:RoughDraftExtensions | 
                 OutputExtension
         }
     }
 }
-#endregion Piecemeal [ 0.3.4 ] : Easy Extensible Plugins for PowerShell
+#endregion Piecemeal [ 0.3.10 ] : Easy Extensible Plugins for PowerShell
 
