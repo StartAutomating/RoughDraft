@@ -55,11 +55,12 @@ process {
     }
 
     #region Generate the palette
-    Write-Progress "Generating Palette" " " -Id $ProgId -ParentId $id
+    Write-Progress "Generating Palette" " " -Id $ProgId 
     & $ffmpeg -ss "$start" -t "$($duration.TotalSeconds)" -i $ri @paletteParams "$palettePath"  -y 2>&1 |
         ForEach-Object {
             Write-Verbose $_
         }
+    Write-Progress "Generating Palette" "Completed " -Id $ProgId -Completed
     #endregion Generate the palette
 
     '-i'
