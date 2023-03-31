@@ -1,21 +1,36 @@
-
 Extension/Monochrome.RoughDraft.Extension.ps1
 ---------------------------------------------
+
+
+
+
 ### Synopsis
 Make video monochrome
 
+
+
 ---
+
+
 ### Description
 
 Make video monochrome, using the monochrome filter.
 
+
+
 ---
+
+
 ### Related Links
 * [https://ffmpeg.org/ffmpeg-filters.html#monochrome](https://ffmpeg.org/ffmpeg-filters.html#monochrome)
 
 
 
+
+
 ---
+
+
 ### Parameters
 #### **Monochrome**
 
@@ -28,7 +43,6 @@ Make video monochrome, using the monochrome filter.
 
 
 
----
 #### **MonochromeChromaBlueSpot**
 
 Set the chroma blue spot. Allowed range is from -1 to 1. Default value is 0.
@@ -44,7 +58,6 @@ Set the chroma blue spot. Allowed range is from -1 to 1. Default value is 0.
 
 
 
----
 #### **MonochromeChromaRedSpot**
 
 Set the chroma red spot. Allowed range is from -1 to 1. Default value is 0.
@@ -60,7 +73,6 @@ Set the chroma red spot. Allowed range is from -1 to 1. Default value is 0.
 
 
 
----
 #### **MonochromeColorFilterSize**
 
 Set the color filter size. Allowed range is from .1 to 10. Default value is 1.
@@ -76,7 +88,6 @@ Set the color filter size. Allowed range is from .1 to 10. Default value is 1.
 
 
 
----
 #### **MonochromeHighlightStrength**
 
 Set the highlights strength. Allowed range is from 0 to 1. Default value is 0.
@@ -92,13 +103,12 @@ Set the highlights strength. Allowed range is from 0 to 1. Default value is 0.
 
 
 
+
+
 ---
+
+
 ### Syntax
 ```PowerShell
 Extension/Monochrome.RoughDraft.Extension.ps1 -Monochrome [[-MonochromeChromaBlueSpot] <Double>] [[-MonochromeChromaRedSpot] <Double>] [[-MonochromeColorFilterSize] <Double>] [[-MonochromeHighlightStrength] <Double>] [<CommonParameters>]
 ```
----
-
-
-
-
