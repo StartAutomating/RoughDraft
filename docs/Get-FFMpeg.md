@@ -1,14 +1,26 @@
 Get-FFMpeg
 ----------
+
+
+
+
 ### Synopsis
 Gets FFMpeg
 
+
+
 ---
+
+
 ### Description
 
 Gets FFMpeg, if installed
 
+
+
 ---
+
+
 ### Related Links
 * [Use-FFMpeg](Use-FFMpeg.md)
 
@@ -18,14 +30,22 @@ Gets FFMpeg, if installed
 
 
 
+
+
 ---
+
+
 ### Examples
 #### EXAMPLE 1
 ```PowerShell
 Get-FFMpeg
 ```
 
+
+
 ---
+
+
 ### Parameters
 #### **FFMpegPath**
 
@@ -42,16 +62,23 @@ The path to FFMpeg
 
 
 
+
+
 ---
+
+
 ### Outputs
 * [String](https://learn.microsoft.com/en-us/dotnet/api/System.String)
 
 
 
 
+
+
 ---
+
+
 ### Syntax
 ```PowerShell
 Get-FFMpeg [[-FFMpegPath] <String>] [<CommonParameters>]
 ```
----
