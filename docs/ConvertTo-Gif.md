@@ -1,11 +1,11 @@
-ConvertTo-Gif
+Convert-Media
 -------------
 
 
 
 
 ### Synopsis
-Converts an input video into an animated GIF
+Converts media from one format to another
 
 
 
@@ -14,7 +14,7 @@ Converts an input video into an animated GIF
 
 ### Description
 
-Converts an input video into a high-quality animated GIF
+Converts media from one format to another, using ffmpeg
 
 
 
@@ -26,11 +26,7 @@ Converts an input video into a high-quality animated GIF
 
 
 
-* [Join-Media](Join-Media.md)
-
-
-
-* [Convert-Media](Convert-Media.md)
+* [Get-RoughDraftExtension](Get-RoughDraftExtension.md)
 
 
 
@@ -42,8 +38,12 @@ Converts an input video into a high-quality animated GIF
 ### Examples
 #### EXAMPLE 1
 ```PowerShell
-dir "$env:UserProfile\Videos\Too Many Cooks.mp4" |
-    ConvertTo-Gif -Start "00:00:04.65" -End "00:00:06" -OutputPath "$env:UserProfile\Videos\Too Many Cooks.gif"
+Convert-Media "a.mov" "a.mp4"
+```
+
+#### EXAMPLE 2
+```PowerShell
+Convert-Media "a.jpg" ".mp4" -Duration "00:15:00" -Tune stillimage -Preset ultrafast
 ```
 
 
@@ -61,9 +61,9 @@ The input path
 
 
 
-|Type      |Required|Position|PipelineInput                 |Aliases |
-|----------|--------|--------|------------------------------|--------|
-|`[String]`|true    |1       |true (ByValue, ByPropertyName)|Fullname|
+|Type      |Required|Position|PipelineInput        |Aliases |
+|----------|--------|--------|---------------------|--------|
+|`[String]`|true    |1       |true (ByPropertyName)|Fullname|
 
 
 
@@ -82,9 +82,9 @@ The output path
 
 
 
-#### **FFMpegPath**
+#### **Codec**
 
-The path to FFMpeg.exe.  Download it from http://ffmpeg.org/
+The codec used for the conversion.  If the file is a video or image file, then this will be treated as a the video codec.
 
 
 
@@ -97,39 +97,9 @@ The path to FFMpeg.exe.  Download it from http://ffmpeg.org/
 
 
 
-#### **Start**
+#### **FFMpegPath**
 
-The timespan to start splitting the video
-
-
-
-
-
-
-|Type        |Required|Position|PipelineInput        |
-|------------|--------|--------|---------------------|
-|`[TimeSpan]`|false   |3       |true (ByPropertyName)|
-
-
-
-#### **End**
-
-The time span to end splitting the video
-
-
-
-
-
-
-|Type        |Required|Position|PipelineInput        |
-|------------|--------|--------|---------------------|
-|`[TimeSpan]`|false   |4       |true (ByPropertyName)|
-
-
-
-#### **AsJob**
-
-If set, will run this in a background job
+The path to FFMpeg.exe.  By default, checks in Program Files\FFMpeg\. Download FFMpeg from http://ffmpeg.org/.
 
 
 
@@ -138,13 +108,13 @@ If set, will run this in a background job
 
 |Type      |Required|Position|PipelineInput|
 |----------|--------|--------|-------------|
-|`[Switch]`|false   |named   |false        |
+|`[String]`|false   |named   |false        |
 
 
 
 #### **FrameRate**
 
-The number of frames per second.  If not specified, this will match the existing framerate.
+The frame rate of the outputted video
 
 
 
@@ -153,28 +123,13 @@ The number of frames per second.  If not specified, this will match the existing
 
 |Type      |Required|Position|PipelineInput|
 |----------|--------|--------|-------------|
-|`[UInt32]`|false   |named   |false        |
+|`[String]`|false   |named   |false        |
 
 
 
-#### **NewWidth**
+#### **CopyAudio**
 
-The new width of the .gif
-
-
-
-
-
-
-|Type      |Required|Position|PipelineInput|
-|----------|--------|--------|-------------|
-|`[UInt32]`|false   |named   |false        |
-
-
-
-#### **DifferenceBasedPalette**
-
-If set, will use a difference-based palette.  These put more focus on the motion than the background.
+If set, will copy the audio streams and will not re-encode them.
 
 
 
@@ -184,6 +139,326 @@ If set, will use a difference-based palette.  These put more focus on the motion
 |Type      |Required|Position|PipelineInput|
 |----------|--------|--------|-------------|
 |`[Switch]`|false   |named   |false        |
+
+
+
+#### **AudioCodec**
+
+If provided, will re-encode the audio using the given codec
+
+
+
+
+
+
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[String]`|false   |named   |false        |
+
+
+
+#### **AudioFilter**
+
+If provided, will apply audio filters to the file
+
+
+
+
+
+
+|Type        |Required|Position|PipelineInput|
+|------------|--------|--------|-------------|
+|`[String[]]`|false   |named   |false        |
+
+
+
+#### **VideoFilter**
+
+If provided, will apply video filters to the file
+
+
+
+
+
+
+|Type        |Required|Position|PipelineInput|
+|------------|--------|--------|-------------|
+|`[String[]]`|false   |named   |false        |
+
+
+
+#### **AudioQuality**
+
+If provided, will attempt to encode the audio at a variable quality level. Values differ per encoder.
+
+
+
+
+
+
+|Type     |Required|Position|PipelineInput        |
+|---------|--------|--------|---------------------|
+|`[Int32]`|false   |named   |true (ByPropertyName)|
+
+
+
+#### **AudioBitrate**
+
+If provided, will encode the audio at a given bitrate
+
+
+
+
+
+
+|Type      |Required|Position|PipelineInput        |
+|----------|--------|--------|---------------------|
+|`[String]`|false   |named   |true (ByPropertyName)|
+
+
+
+#### **AudioStreamIndex**
+
+Used to specify the audio stream.  If more than one audio stream is found and this parameter is not supplied, Convert-Media will attempt to find an audio stream that matches the current culture language.
+
+
+
+
+
+
+|Type     |Required|Position|PipelineInput|
+|---------|--------|--------|-------------|
+|`[Int32]`|false   |named   |false        |
+
+
+
+#### **AudioChannelCount**
+
+The audio channel count.  This can be used to force 5.1 channel audio (which is supported by only a few codecs) into stereo audio (which is supported by almost all codecs)
+
+
+
+
+
+
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[UInt32]`|false   |named   |false        |
+
+
+
+#### **MetaData**
+
+The metadata to put in the converted file
+
+
+
+
+
+
+|Type           |Required|Position|PipelineInput|
+|---------------|--------|--------|-------------|
+|`[IDictionary]`|false   |named   |false        |
+
+
+
+#### **Start**
+
+The start time within the media. 
+This maps to the ffmpeg parameter -ss.
+
+
+
+
+
+
+|Type        |Required|Position|PipelineInput        |Aliases  |
+|------------|--------|--------|---------------------|---------|
+|`[TimeSpan]`|false   |3       |true (ByPropertyName)|StartTime|
+
+
+
+#### **End**
+
+The end time within the media. 
+This maps to the ffmpeg parameter -to.
+
+
+
+
+
+
+|Type        |Required|Position|PipelineInput        |Aliases|
+|------------|--------|--------|---------------------|-------|
+|`[TimeSpan]`|false   |4       |true (ByPropertyName)|EndTime|
+
+
+
+#### **Duration**
+
+The duration of the media.
+This maps to the ffmpeg parameter -t.
+
+
+
+
+
+
+|Type        |Required|Position|PipelineInput        |
+|------------|--------|--------|---------------------|
+|`[TimeSpan]`|false   |5       |true (ByPropertyName)|
+
+
+
+#### **Preset**
+
+If provided, will use an ffmpeg preset to encode.
+This maps to the --preset parameter in ffmpeg.
+
+
+
+
+
+
+|Type      |Required|Position|PipelineInput        |
+|----------|--------|--------|---------------------|
+|`[String]`|false   |named   |true (ByPropertyName)|
+
+
+
+#### **Tune**
+
+If provided, will use a set of encoder settings to "tune" the video encoder.
+Not supported by all codecs.  This maps to the --tune parameter in ffmpeg.
+
+
+
+
+
+
+|Type      |Required|Position|PipelineInput        |
+|----------|--------|--------|---------------------|
+|`[String]`|false   |named   |true (ByPropertyName)|
+
+
+
+#### **VideoQuality**
+
+If provided, will attempt to encode the video at a variable quality level, between 1 (highest) and 31 (lowest).
+
+
+
+
+
+
+|Type     |Required|Position|PipelineInput        |
+|---------|--------|--------|---------------------|
+|`[Int32]`|false   |named   |true (ByPropertyName)|
+
+
+
+#### **VideoCodec**
+
+If provided, will re-encode the file with a given video codec.  This affects the input files, where -Codec affects the final output.
+
+
+
+
+
+
+|Type      |Required|Position|PipelineInput        |
+|----------|--------|--------|---------------------|
+|`[String]`|false   |named   |true (ByPropertyName)|
+
+
+
+#### **VideoFrameCount**
+
+If provided, will output a specified number of frames from the video file
+
+
+
+
+
+
+|Type      |Required|Position|PipelineInput        |
+|----------|--------|--------|---------------------|
+|`[UInt32]`|false   |named   |true (ByPropertyName)|
+
+
+
+#### **PixelFormat**
+
+If provided, will use a specific pixel format for video and image output.  This maps to the -pix_fmt parameter in ffmpeg.
+
+
+
+
+
+
+|Type      |Required|Position|PipelineInput        |Aliases|
+|----------|--------|--------|---------------------|-------|
+|`[String]`|false   |named   |true (ByPropertyName)|Pix_Fmt|
+
+
+
+#### **AsJob**
+
+If set, will run inside of a background job
+
+
+
+
+
+
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[Switch]`|false   |named   |false        |
+
+
+
+#### **FFMpegArgument**
+
+Any additional arguments to FFMpeg
+
+
+
+
+
+
+|Type        |Required|Position|PipelineInput|
+|------------|--------|--------|-------------|
+|`[String[]]`|false   |named   |false        |
+
+
+
+#### **Loop**
+
+If set, this will loop the input source.
+
+
+
+
+
+
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[Switch]`|false   |named   |false        |
+
+
+
+#### **LoopCount**
+
+If set, this will loop the input source any number of times.
+
+
+
+
+
+
+|Type     |Required|Position|PipelineInput|
+|---------|--------|--------|-------------|
+|`[Int32]`|false   |named   |false        |
 
 
 
@@ -206,17 +481,7 @@ If set, will use a difference-based palette.  These put more focus on the motion
 ---
 
 
-### Notes
-This really wouldn't have been possible without the great programmers who make ffmpeg.
-It was also greatly helped by a very diligent blogger who took the time to write down a detailed explanation of how FFMpeg works with animated GIFs.
-You can find that explanation here - http://blog.pkh.me/p/21-high-quality-gif-with-ffmpeg.html.
-
-
-
----
-
-
 ### Syntax
 ```PowerShell
-ConvertTo-Gif [-InputPath] <String> [-OutputPath] <String> [-FFMpegPath <String>] [[-Start] <TimeSpan>] [[-End] <TimeSpan>] [-AsJob] [-FrameRate <UInt32>] [-NewWidth <UInt32>] [-DifferenceBasedPalette] [<CommonParameters>]
+Convert-Media [-InputPath] <String> [-OutputPath] <String> [-Codec <String>] [-FFMpegPath <String>] [-FrameRate <String>] [-CopyAudio] [-AudioCodec <String>] [-AudioFilter <String[]>] [-VideoFilter <String[]>] [-AudioQuality <Int32>] [-AudioBitrate <String>] [-AudioStreamIndex <Int32>] [-AudioChannelCount <UInt32>] [-MetaData <IDictionary>] [[-Start] <TimeSpan>] [[-End] <TimeSpan>] [[-Duration] <TimeSpan>] [-Preset <String>] [-Tune <String>] [-VideoQuality <Int32>] [-VideoCodec <String>] [-VideoFrameCount <UInt32>] [-PixelFormat <String>] [-AsJob] [-FFMpegArgument <String[]>] [-Loop] [-LoopCount <Int32>] [<CommonParameters>]
 ```
