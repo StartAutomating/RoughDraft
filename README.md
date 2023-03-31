@@ -126,7 +126,6 @@ Set-Media .\Song.mp3 -AlbumArt .\Cover.jpg
 
 |Name                   |Description                        |
 |-----------------------|-----------------------------------|
-|ConvertTo-Gif          |Converts video to high-quality GIFs|
 |Get-FFMpeg             |Gets FFMpeg                        |
 |Get-FFPlay             |Gets FFPlay                        |
 |Get-FFProbe            |Gets FFProbe                       |
@@ -156,113 +155,114 @@ Get-FFMpeg -FilterName
 ## RoughDraft Extensions
 
 RoughDraft uses Extensions to make complex media scenarios easier work with.
+There are currently 103 extensions:
 
 
 |DisplayName                                                           |Synopsis                                      |Extends|
 |----------------------------------------------------------------------|----------------------------------------------|-------|
 |[AlbumArt](docs/AlbumArt-Extension.md)                                |Set-Media                                     |
-|[AmplifyPixel](docs/AmplifyPixel-Extension.md)                        |Edit-Media,Show-Media                         |
-|[AudioCrusher](docs/AudioCrusher-Extension.md)                        |Edit-Media,Show-Media                         |
-|[AudioExpression](docs/AudioExpression-Extension.md)                  |Show-Media,New-Media,Edit-Media               |
-|[AudioFrequencyExpression](docs/AudioFrequencyExpression-Extension.md)|Edit-Media,Show-Media                         |
-|[AudioGain](docs/AudioGain-Extension.md)                              |Edit-Media,Show-Media                         |
-|[BilateralSmooth](docs/BilateralSmooth-Extension.md)                  |Edit-Media,Show-Media                         |
+|[AmplifyPixel](docs/AmplifyPixel-Extension.md)                        |Show-Media,Edit-Media                         |
+|[AudioCrusher](docs/AudioCrusher-Extension.md)                        |Show-Media,Edit-Media                         |
+|[AudioExpression](docs/AudioExpression-Extension.md)                  |New-Media,Edit-Media,Show-Media               |
+|[AudioFrequencyExpression](docs/AudioFrequencyExpression-Extension.md)|Show-Media,Edit-Media                         |
+|[AudioGain](docs/AudioGain-Extension.md)                              |Show-Media,Edit-Media                         |
+|[BilateralSmooth](docs/BilateralSmooth-Extension.md)                  |Show-Media,Edit-Media                         |
 |[BlackDetect](docs/BlackDetect-Extension.md)                          |Get-Media                                     |
 |[BlackFrame](docs/BlackFrame-Extension.md)                            |Get-Media                                     |
-|[BlendFrame](docs/BlendFrame-Extension.md)                            |Show-Media,Join-Media,Edit-Media              |
+|[BlendFrame](docs/BlendFrame-Extension.md)                            |Edit-Media,Join-Media,Show-Media              |
 |[BlendVideo](docs/BlendVideo-Extension.md)                            |Join-Media                                    |
-|[Blur](docs/Blur-Extension.md)                                        |Edit-Media,Show-Media                         |
+|[Blur](docs/Blur-Extension.md)                                        |Show-Media,Edit-Media                         |
 |[CaptureDevice](docs/CaptureDevice-Extension.md)                      |Get-FFMpeg                                    |
-|[Chorus](docs/Chorus-Extension.md)                                    |Edit-Media,Show-Media                         |
+|[Chorus](docs/Chorus-Extension.md)                                    |Show-Media,Edit-Media                         |
 |[Codecs](docs/Codecs-Extension.md)                                    |Get-FFMpeg                                    |
-|[ColorContrast](docs/ColorContrast-Extension.md)                      |Edit-Media,Show-Media                         |
-|[ColorExpression](docs/ColorExpression-Extension.md)                  |Show-Media,Join-Media,Edit-Media              |
-|[ColorHold](docs/ColorHold-Extension.md)                              |Edit-Media,Show-Media                         |
-|[Colorize](docs/Colorize-Extension.md)                                |Edit-Media,Show-Media                         |
-|[ColorScope](docs/ColorScope-Extension.md)                            |Edit-Media,Show-Media                         |
-|[ColorSource](docs/ColorSource-Extension.md)                          |New-Media,Show-Media                          |
+|[ColorContrast](docs/ColorContrast-Extension.md)                      |Show-Media,Edit-Media                         |
+|[ColorExpression](docs/ColorExpression-Extension.md)                  |Edit-Media,Join-Media,Show-Media              |
+|[ColorHold](docs/ColorHold-Extension.md)                              |Show-Media,Edit-Media                         |
+|[Colorize](docs/Colorize-Extension.md)                                |Show-Media,Edit-Media                         |
+|[ColorScope](docs/ColorScope-Extension.md)                            |Show-Media,Edit-Media                         |
+|[ColorSource](docs/ColorSource-Extension.md)                          |Show-Media,New-Media                          |
 |[Convolve](docs/Convolve-Extension.md)                                |Join-Media                                    |
-|[Crop](docs/Crop-Extension.md)                                        |Show-Media,Send-Media,Receive-Media,Edit-Media|
+|[Crop](docs/Crop-Extension.md)                                        |Receive-Media,Edit-Media,Send-Media,Show-Media|
 |[CropDetect](docs/CropDetect-Extension.md)                            |Get-Media                                     |
 |[DataScope](docs/DataScope-Extension.md)                              |Edit-Media                                    |
 |[Deconvolve](docs/Deconvolve-Extension.md)                            |Join-Media                                    |
-|[DirectShow](docs/DirectShow-Extension.md)                            |Show-Media,Send-Media,Receive-Media           |
-|[DrawSubtitle](docs/DrawSubtitle-Extension.md)                        |Convert-Media,Edit-Media                      |
-|[DrawText](docs/DrawText-Extension.md)                                |Edit-Media,Show-Media                         |
-|[Echo](docs/Echo-Extension.md)                                        |Edit-Media,Show-Media                         |
-|[EdgeDetect](docs/EdgeDetect-Extension.md)                            |Edit-Media,Show-Media                         |
+|[DirectShow](docs/DirectShow-Extension.md)                            |Receive-Media,Send-Media,Show-Media           |
+|[DrawSubtitle](docs/DrawSubtitle-Extension.md)                        |Edit-Media,Convert-Media                      |
+|[DrawText](docs/DrawText-Extension.md)                                |Show-Media,Edit-Media                         |
+|[Echo](docs/Echo-Extension.md)                                        |Show-Media,Edit-Media                         |
+|[EdgeDetect](docs/EdgeDetect-Extension.md)                            |Show-Media,Edit-Media                         |
 |[Emboss](docs/Emboss-Extension.md)                                    |Edit-Media                                    |
-|[Erosion](docs/Erosion-Extension.md)                                  |Edit-Media,Show-Media                         |
-|[Exposure](docs/Exposure-Extension.md)                                |Edit-Media,Show-Media                         |
+|[Erosion](docs/Erosion-Extension.md)                                  |Show-Media,Edit-Media                         |
+|[Exposure](docs/Exposure-Extension.md)                                |Show-Media,Edit-Media                         |
 |[FadeIn](docs/FadeIn-Extension.md)                                    |Edit-Media                                    |
-|[FillBorder](docs/FillBorder-Extension.md)                            |Edit-Media,Show-Media                         |
+|[FillBorder](docs/FillBorder-Extension.md)                            |Show-Media,Edit-Media                         |
 |[FilterInput](docs/FilterInput-Extension.md)                          |Get-FFMpeg                                    |
-|[FiniteEqualizer](docs/FiniteEqualizer-Extension.md)                  |Edit-Media,Show-Media                         |
-|[Flanger](docs/Flanger-Extension.md)                                  |Edit-Media,Show-Media                         |
-|[FlipHorizontal](docs/FlipHorizontal-Extension.md)                    |Edit-Media,Show-Media                         |
-|[FlipVertical](docs/FlipVertical-Extension.md)                        |Edit-Media,Show-Media                         |
-|[FrameBuffer](docs/FrameBuffer-Extension.md)                          |Show-Media,Send-Media,Receive-Media           |
-|[FrameStep](docs/FrameStep-Extension.md)                              |Edit-Media,Show-Media                         |
+|[FiniteEqualizer](docs/FiniteEqualizer-Extension.md)                  |Show-Media,Edit-Media                         |
+|[Flanger](docs/Flanger-Extension.md)                                  |Show-Media,Edit-Media                         |
+|[FlipHorizontal](docs/FlipHorizontal-Extension.md)                    |Show-Media,Edit-Media                         |
+|[FlipVertical](docs/FlipVertical-Extension.md)                        |Show-Media,Edit-Media                         |
+|[FrameBuffer](docs/FrameBuffer-Extension.md)                          |Receive-Media,Send-Media,Show-Media           |
+|[FrameStep](docs/FrameStep-Extension.md)                              |Show-Media,Edit-Media                         |
 |[GifPalette](docs/GifPalette-Extension.md)                            |Convert-Media                                 |
-|[Histogram](docs/Histogram-Extension.md)                              |Edit-Media,Show-Media                         |
-|[Hue](docs/Hue-Extension.md)                                          |Edit-Media,Show-Media                         |
+|[Histogram](docs/Histogram-Extension.md)                              |Show-Media,Edit-Media                         |
+|[Hue](docs/Hue-Extension.md)                                          |Show-Media,Edit-Media                         |
 |[Hysteresis](docs/Hysteresis-Extension.md)                            |Join-Media                                    |
-|[LagFun](docs/LagFun-Extension.md)                                    |Edit-Media,Show-Media                         |
-|[Life](docs/Life-Extension.md)                                        |New-Media,Show-Media                          |
-|[LimitPixel](docs/LimitPixel-Extension.md)                            |Edit-Media,Show-Media                         |
+|[LagFun](docs/LagFun-Extension.md)                                    |Show-Media,Edit-Media                         |
+|[Life](docs/Life-Extension.md)                                        |Show-Media,New-Media                          |
+|[LimitPixel](docs/LimitPixel-Extension.md)                            |Show-Media,Edit-Media                         |
 |[ListFilters](docs/ListFilters-Extension.md)                          |Get-FFMpeg                                    |
 |[ListProtocols](docs/ListProtocols-Extension.md)                      |Get-FFMpeg                                    |
-|[Mandelbrot](docs/Mandelbrot-Extension.md)                            |New-Media,Show-Media                          |
-|[MedianPixel](docs/MedianPixel-Extension.md)                          |Edit-Media,Show-Media                         |
-|[Mirror](docs/Mirror-Extension.md)                                    |Edit-Media,Show-Media                         |
+|[Mandelbrot](docs/Mandelbrot-Extension.md)                            |Show-Media,New-Media                          |
+|[MedianPixel](docs/MedianPixel-Extension.md)                          |Show-Media,Edit-Media                         |
+|[Mirror](docs/Mirror-Extension.md)                                    |Show-Media,Edit-Media                         |
 |[MixAudio](docs/MixAudio-Extension.md)                                |Join-Media                                    |
 |[MixVideo](docs/MixVideo-Extension.md)                                |Join-Media                                    |
 |[Monochrome](docs/Monochrome-Extension.md)                            |Edit-Media                                    |
 |[NoAudio](docs/NoAudio-Extension.md)                                  |Split-Media                                   |
 |[Overlay](docs/Overlay-Extension.md)                                  |Join-Media                                    |
-|[Phaser](docs/Phaser-Extension.md)                                    |Edit-Media,Show-Media                         |
-|[PitchFactor](docs/PitchFactor-Extension.md)                          |Edit-Media,Show-Media                         |
+|[Phaser](docs/Phaser-Extension.md)                                    |Show-Media,Edit-Media                         |
+|[PitchFactor](docs/PitchFactor-Extension.md)                          |Show-Media,Edit-Media                         |
 |[Pixelate](docs/Pixelate-Extension.md)                                |Edit-Media                                    |
 |[Playlist](docs/Playlist-Extension.md)                                |Join-Media                                    |
-|[Pulsator](docs/Pulsator-Extension.md)                                |Edit-Media,Show-Media                         |
-|[RandomizeFrame](docs/RandomizeFrame-Extension.md)                    |Edit-Media,Show-Media                         |
-|[Rate](docs/Rate-Extension.md)                                        |Edit-Media,Show-Media                         |
-|[Resize](docs/Resize-Extension.md)                                    |Show-Media,Convert-Media,Edit-Media           |
+|[Pulsator](docs/Pulsator-Extension.md)                                |Show-Media,Edit-Media                         |
+|[RandomizeFrame](docs/RandomizeFrame-Extension.md)                    |Show-Media,Edit-Media                         |
+|[Rate](docs/Rate-Extension.md)                                        |Show-Media,Edit-Media                         |
+|[Resize](docs/Resize-Extension.md)                                    |Edit-Media,Show-Media,Convert-Media           |
 |[ReverseAudio](docs/ReverseAudio-Extension.md)                        |Edit-Media                                    |
 |[ReverseVideo](docs/ReverseVideo-Extension.md)                        |Edit-Media                                    |
-|[Rotate](docs/Rotate-Extension.md)                                    |Show-Media,Convert-Media,Edit-Media           |
-|[Scale](docs/Scale-Extension.md)                                      |Edit-Media,Show-Media                         |
-|[ScrollVideo](docs/ScrollVideo-Extension.md)                          |Edit-Media,Show-Media                         |
+|[Rotate](docs/Rotate-Extension.md)                                    |Edit-Media,Show-Media,Convert-Media           |
+|[Scale](docs/Scale-Extension.md)                                      |Show-Media,Edit-Media                         |
+|[ScrollVideo](docs/ScrollVideo-Extension.md)                          |Show-Media,Edit-Media                         |
 |[Sepia](docs/Sepia-Extension.md)                                      |Edit-Media                                    |
-|[ShowFrequency](docs/ShowFrequency-Extension.md)                      |Show-Media,New-Media,Edit-Media               |
-|[ShowScale](docs/ShowScale-Extension.md)                              |Show-Media,New-Media,Edit-Media               |
-|[ShowSpectrum](docs/ShowSpectrum-Extension.md)                        |Show-Media,New-Media,Edit-Media               |
-|[ShowVectorScope](docs/ShowVectorScope-Extension.md)                  |Show-Media,New-Media,Edit-Media               |
-|[ShowVolume](docs/ShowVolume-Extension.md)                            |Show-Media,New-Media,Edit-Media               |
-|[ShowWaveform](docs/ShowWaveform-Extension.md)                        |Show-Media,New-Media,Edit-Media               |
+|[ShowFrequency](docs/ShowFrequency-Extension.md)                      |New-Media,Edit-Media,Show-Media               |
+|[ShowScale](docs/ShowScale-Extension.md)                              |New-Media,Edit-Media,Show-Media               |
+|[ShowSpectrum](docs/ShowSpectrum-Extension.md)                        |New-Media,Edit-Media,Show-Media               |
+|[ShowVectorScope](docs/ShowVectorScope-Extension.md)                  |New-Media,Edit-Media,Show-Media               |
+|[ShowVolume](docs/ShowVolume-Extension.md)                            |New-Media,Edit-Media,Show-Media               |
+|[ShowWaveform](docs/ShowWaveform-Extension.md)                        |New-Media,Edit-Media,Show-Media               |
 |[ShuffleFrames](docs/ShuffleFrames-Extension.md)                      |Edit-Media                                    |
-|[Sierpinski](docs/Sierpinski-Extension.md)                            |New-Media,Show-Media                          |
+|[Sierpinski](docs/Sierpinski-Extension.md)                            |Show-Media,New-Media                          |
 |[SilenceDetect](docs/SilenceDetect-Extension.md)                      |Get-Media                                     |
 |[SilenceRemove](docs/SilenceRemove-Extension.md)                      |Edit-Media                                    |
 |[Sine](docs/Sine-Extension.md)                                        |New-Media                                     |
-|[Skew](docs/Skew-Extension.md)                                        |Edit-Media,Show-Media                         |
-|[SubFrequencyCut](docs/SubFrequencyCut-Extension.md)                  |Edit-Media,Show-Media                         |
+|[Skew](docs/Skew-Extension.md)                                        |Show-Media,Edit-Media                         |
+|[SubFrequencyCut](docs/SubFrequencyCut-Extension.md)                  |Show-Media,Edit-Media                         |
 |[Subtitler](docs/Subtitler-Extension.md)                              |New-Media                                     |
-|[SuperEqualizer](docs/SuperEqualizer-Extension.md)                    |Edit-Media,Show-Media                         |
-|[SuperFrequencyCut](docs/SuperFrequencyCut-Extension.md)              |Edit-Media,Show-Media                         |
-|[Tempo](docs/Tempo-Extension.md)                                      |Edit-Media,Show-Media                         |
-|[TestSource](docs/TestSource-Extension.md)                            |New-Media,Show-Media                          |
+|[SuperEqualizer](docs/SuperEqualizer-Extension.md)                    |Show-Media,Edit-Media                         |
+|[SuperFrequencyCut](docs/SuperFrequencyCut-Extension.md)              |Show-Media,Edit-Media                         |
+|[Tempo](docs/Tempo-Extension.md)                                      |Show-Media,Edit-Media                         |
+|[TestSource](docs/TestSource-Extension.md)                            |Show-Media,New-Media                          |
 |[Tile](docs/Tile-Extension.md)                                        |Edit-Media                                    |
-|[TimeMix](docs/TimeMix-Extension.md)                                  |Edit-Media,Show-Media                         |
-|[Tremolo](docs/Tremolo-Extension.md)                                  |Edit-Media,Show-Media                         |
-|[Vibrato](docs/Vibrato-Extension.md)                                  |Edit-Media,Show-Media                         |
-|[VideoExpression](docs/VideoExpression-Extension.md)                  |Edit-Media,Show-Media                         |
-|[VideoForLinux](docs/VideoForLinux-Extension.md)                      |Show-Media,Send-Media,Receive-Media           |
-|[Vignette](docs/Vignette-Extension.md)                                |Edit-Media,Show-Media                         |
+|[TimeMix](docs/TimeMix-Extension.md)                                  |Show-Media,Edit-Media                         |
+|[Tremolo](docs/Tremolo-Extension.md)                                  |Show-Media,Edit-Media                         |
+|[Vibrato](docs/Vibrato-Extension.md)                                  |Show-Media,Edit-Media                         |
+|[VideoExpression](docs/VideoExpression-Extension.md)                  |Show-Media,Edit-Media                         |
+|[VideoForLinux](docs/VideoForLinux-Extension.md)                      |Receive-Media,Send-Media,Show-Media           |
+|[Vignette](docs/Vignette-Extension.md)                                |Show-Media,Edit-Media                         |
 |[VolumeLevel](docs/VolumeLevel-Extension.md)                          |Get-Media                                     |
 |[Watermark](docs/Watermark-Extension.md)                              |Edit-Media                                    |
 |[YouTubeDL](docs/YouTubeDL-Extension.md)                              |Get-Media                                     |
-|[ZoomPan](docs/ZoomPan-Extension.md)                                  |Edit-Media,Show-Media                         |
+|[ZoomPan](docs/ZoomPan-Extension.md)                                  |Show-Media,Edit-Media                         |
 
 
 
