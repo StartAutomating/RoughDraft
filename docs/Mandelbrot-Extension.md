@@ -1,28 +1,47 @@
-
 Extension/Mandelbrot.rd.ext.ps1
 -------------------------------
+
+
+
+
 ### Synopsis
 Generates fractals
 
+
+
 ---
+
+
 ### Description
 
 Generates fractals using the mandelbrot filter.
 
+
+
 ---
+
+
 ### Related Links
 * [https://ffmpeg.org/ffmpeg-filters.html#mandelbrot](https://ffmpeg.org/ffmpeg-filters.html#mandelbrot)
 
 
 
+
+
 ---
+
+
 ### Examples
 #### EXAMPLE 1
 ```PowerShell
 New-Media -OutputPath "Mandelbrot.gif" -Duration "00:00:05" -Mandelbrot
 ```
 
+
+
 ---
+
+
 ### Parameters
 #### **Mandelbrot**
 
@@ -39,7 +58,6 @@ The type of fractal source
 
 
 
----
 #### **MandelbrotStartX**
 
 Set the initial x position (from -100 to 100) (default -0.743644)
@@ -55,7 +73,6 @@ Set the initial x position (from -100 to 100) (default -0.743644)
 
 
 
----
 #### **MandelbrotStartY**
 
 Set the initial y position (from -100 to 100) (default -0.131826)
@@ -71,7 +88,6 @@ Set the initial y position (from -100 to 100) (default -0.131826)
 
 
 
----
 #### **MandelbrotStartScale**
 
 set the initial scale value (from 0 to FLT_MAX) (default 3)
@@ -87,7 +103,6 @@ set the initial scale value (from 0 to FLT_MAX) (default 3)
 
 
 
----
 #### **MandelbrotEndScale**
 
 set the terminal scale value (from 0 to FLT_MAX) (default 0.3)
@@ -103,7 +118,6 @@ set the terminal scale value (from 0 to FLT_MAX) (default 0.3)
 
 
 
----
 #### **MandelbrotEndPTS**
 
 set the terminal pts value (from 0 to I64_MAX) (default 400)
@@ -119,7 +133,6 @@ set the terminal pts value (from 0 to I64_MAX) (default 400)
 
 
 
----
 #### **MandelbrotBailout**
 
 set the bailout value (from 0 to FLT_MAX) (default 10)
@@ -135,7 +148,6 @@ set the bailout value (from 0 to FLT_MAX) (default 10)
 
 
 
----
 #### **MandelbrotMorphXFrequency**
 
 set morph x frequency (from -FLT_MAX to FLT_MAX) (default 0.01)
@@ -151,7 +163,6 @@ set morph x frequency (from -FLT_MAX to FLT_MAX) (default 0.01)
 
 
 
----
 #### **MandelbrotMorphYFrequency**
 
 set morph y frequency (from -FLT_MAX to FLT_MAX) (default 0.0123)
@@ -167,7 +178,6 @@ set morph y frequency (from -FLT_MAX to FLT_MAX) (default 0.0123)
 
 
 
----
 #### **MandelbrotMorphAmplitude**
 
 set morph amplitude (from -FLT_MAX to FLT_MAX) (default 0)
@@ -183,7 +193,6 @@ set morph amplitude (from -FLT_MAX to FLT_MAX) (default 0)
 
 
 
----
 #### **MandelbrotInnerColoringMode**
 
 set inner coloring mode (from 0 to INT_MAX) (default mincol)
@@ -199,7 +208,6 @@ set inner coloring mode (from 0 to INT_MAX) (default mincol)
 
 
 
----
 #### **MandelbrotOuterColoringMode**
 
 set outer coloring mode (from 0 to INT_MAX) (default normalized_iteration_count)
@@ -215,13 +223,12 @@ set outer coloring mode (from 0 to INT_MAX) (default normalized_iteration_count)
 
 
 
+
+
 ---
+
+
 ### Syntax
 ```PowerShell
 Extension/Mandelbrot.rd.ext.ps1 -Mandelbrot [[-MandelbrotStartX] <Int32>] [[-MandelbrotStartY] <Int32>] [[-MandelbrotStartScale] <Double>] [[-MandelbrotEndScale] <Double>] [[-MandelbrotEndPTS] <Double>] [[-MandelbrotBailout] <Object>] [[-MandelbrotMorphXFrequency] <Double>] [[-MandelbrotMorphYFrequency] <Double>] [[-MandelbrotMorphAmplitude] <Double>] [[-MandelbrotInnerColoringMode] <Object>] [[-MandelbrotOuterColoringMode] <Object>] [<CommonParameters>]
 ```
----
-
-
-
-
