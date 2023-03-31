@@ -1,5 +1,2 @@
-RoughDraft.Extension.format.ps1 
-
-
-
+RoughDraft.Extension.format.ps1
 
