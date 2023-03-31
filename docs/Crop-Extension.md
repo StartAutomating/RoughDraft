@@ -1,21 +1,36 @@
-
 Extension/Crop.RoughDraft.Extension.ps1
 ---------------------------------------
+
+
+
+
 ### Synopsis
 Crop Extension
 
+
+
 ---
+
+
 ### Description
 
 Crops Video, using the ffmpeg crop filter
 
+
+
 ---
+
+
 ### Related Links
 * [https://ffmpeg.org/ffmpeg-filters.html#crop](https://ffmpeg.org/ffmpeg-filters.html#crop)
 
 
 
+
+
 ---
+
+
 ### Parameters
 #### **CropVideo**
 
@@ -32,7 +47,6 @@ If set, will crop video
 
 
 
----
 #### **CropWidth**
 
 The crop width
@@ -48,7 +62,6 @@ The crop width
 
 
 
----
 #### **CropHeight**
 
 The crop height
@@ -64,7 +77,6 @@ The crop height
 
 
 
----
 #### **CropTop**
 
 The crop top coordinate
@@ -74,13 +86,12 @@ The crop top coordinate
 
 
 
-|Type      |Required|Position|PipelineInput|
-|----------|--------|--------|-------------|
-|`[String]`|false   |3       |false        |
+|Type      |Required|Position|PipelineInput|Aliases|
+|----------|--------|--------|-------------|-------|
+|`[String]`|false   |3       |false        |CropY  |
 
 
 
----
 #### **CropLeft**
 
 The crop left coordinate
@@ -90,13 +101,12 @@ The crop left coordinate
 
 
 
-|Type      |Required|Position|PipelineInput|
-|----------|--------|--------|-------------|
-|`[String]`|false   |4       |false        |
+|Type      |Required|Position|PipelineInput|Aliases|
+|----------|--------|--------|-------------|-------|
+|`[String]`|false   |4       |false        |CropX  |
 
 
 
----
 #### **CropExpression**
 
 A crop expression, consisting of width/height/left/top.  This value is returned from CropDetect
@@ -112,7 +122,6 @@ A crop expression, consisting of width/height/left/top.  This value is returned 
 
 
 
----
 #### **ExactCrop**
 
 If set, subsampled videos will be cropped at exact width/height/x/y as specified and will not be rounded to nearest smaller value.
@@ -128,7 +137,6 @@ If set, subsampled videos will be cropped at exact width/height/x/y as specified
 
 
 
----
 #### **KeepAspectRatio**
 
 If set, will keep the aspect ratio.  Defaults to false.
@@ -144,13 +152,12 @@ If set, will keep the aspect ratio.  Defaults to false.
 
 
 
+
+
 ---
+
+
 ### Syntax
 ```PowerShell
 Extension/Crop.RoughDraft.Extension.ps1 -CropVideo [[-CropWidth] <String>] [[-CropHeight] <String>] [[-CropTop] <String>] [[-CropLeft] <String>] [[-CropExpression] <String>] [-ExactCrop] [-KeepAspectRatio] [<CommonParameters>]
 ```
----
-
-
-
-
