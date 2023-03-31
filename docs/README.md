@@ -163,32 +163,32 @@ There are currently 105 extensions:
 |[AlbumArt](AlbumArt-Extension.md)                                |Set-Media                                     |
 |[AmplifyPixel](AmplifyPixel-Extension.md)                        |Show-Media,Edit-Media                         |
 |[AudioCrusher](AudioCrusher-Extension.md)                        |Show-Media,Edit-Media                         |
-|[AudioExpression](AudioExpression-Extension.md)                  |New-Media,Show-Media,Edit-Media               |
+|[AudioExpression](AudioExpression-Extension.md)                  |Show-Media,New-Media,Edit-Media               |
 |[AudioFrequencyExpression](AudioFrequencyExpression-Extension.md)|Show-Media,Edit-Media                         |
 |[AudioGain](AudioGain-Extension.md)                              |Show-Media,Edit-Media                         |
 |[BilateralSmooth](BilateralSmooth-Extension.md)                  |Show-Media,Edit-Media                         |
 |[BlackDetect](BlackDetect-Extension.md)                          |Get-Media                                     |
 |[BlackFrame](BlackFrame-Extension.md)                            |Get-Media                                     |
-|[BlendFrame](BlendFrame-Extension.md)                            |Join-Media,Show-Media,Edit-Media              |
+|[BlendFrame](BlendFrame-Extension.md)                            |Show-Media,Join-Media,Edit-Media              |
 |[BlendVideo](BlendVideo-Extension.md)                            |Join-Media                                    |
 |[Blur](Blur-Extension.md)                                        |Show-Media,Edit-Media                         |
 |[CaptureDevice](CaptureDevice-Extension.md)                      |Get-FFMpeg                                    |
 |[Chorus](Chorus-Extension.md)                                    |Show-Media,Edit-Media                         |
 |[Codecs](Codecs-Extension.md)                                    |Get-FFMpeg                                    |
 |[ColorContrast](ColorContrast-Extension.md)                      |Show-Media,Edit-Media                         |
-|[ColorExpression](ColorExpression-Extension.md)                  |Join-Media,Show-Media,Edit-Media              |
+|[ColorExpression](ColorExpression-Extension.md)                  |Show-Media,Join-Media,Edit-Media              |
 |[ColorHold](ColorHold-Extension.md)                              |Show-Media,Edit-Media                         |
 |[Colorize](Colorize-Extension.md)                                |Show-Media,Edit-Media                         |
 |[ColorScope](ColorScope-Extension.md)                            |Show-Media,Edit-Media                         |
 |[ColorSource](ColorSource-Extension.md)                          |New-Media,Show-Media                          |
 |[Convolve](Convolve-Extension.md)                                |Join-Media                                    |
-|[Crop](Crop-Extension.md)                                        |Send-Media,Show-Media,Receive-Media,Edit-Media|
+|[Crop](Crop-Extension.md)                                        |Receive-Media,Send-Media,Show-Media,Edit-Media|
 |[CropDetect](CropDetect-Extension.md)                            |Get-Media                                     |
 |[CrossFade](CrossFade-Extension.md)                              |Join-Media                                    |
 |[DataScope](DataScope-Extension.md)                              |Edit-Media                                    |
 |[Deconvolve](Deconvolve-Extension.md)                            |Join-Media                                    |
 |[DirectShow](DirectShow-Extension.md)                            |Send-Media,Show-Media,Receive-Media           |
-|[DrawSubtitle](DrawSubtitle-Extension.md)                        |Edit-Media,Convert-Media                      |
+|[DrawSubtitle](DrawSubtitle-Extension.md)                        |Convert-Media,Edit-Media                      |
 |[DrawText](DrawText-Extension.md)                                |Show-Media,Edit-Media                         |
 |[Echo](Echo-Extension.md)                                        |Show-Media,Edit-Media                         |
 |[EdgeDetect](EdgeDetect-Extension.md)                            |Show-Media,Edit-Media                         |
@@ -236,12 +236,12 @@ There are currently 105 extensions:
 |[Scale](Scale-Extension.md)                                      |Show-Media,Edit-Media                         |
 |[ScrollVideo](ScrollVideo-Extension.md)                          |Show-Media,Edit-Media                         |
 |[Sepia](Sepia-Extension.md)                                      |Edit-Media                                    |
-|[ShowFrequency](ShowFrequency-Extension.md)                      |New-Media,Show-Media,Edit-Media               |
-|[ShowScale](ShowScale-Extension.md)                              |New-Media,Show-Media,Edit-Media               |
-|[ShowSpectrum](ShowSpectrum-Extension.md)                        |New-Media,Show-Media,Edit-Media               |
-|[ShowVectorScope](ShowVectorScope-Extension.md)                  |New-Media,Show-Media,Edit-Media               |
-|[ShowVolume](ShowVolume-Extension.md)                            |New-Media,Show-Media,Edit-Media               |
-|[ShowWaveform](ShowWaveform-Extension.md)                        |New-Media,Show-Media,Edit-Media               |
+|[ShowFrequency](ShowFrequency-Extension.md)                      |Show-Media,New-Media,Edit-Media               |
+|[ShowScale](ShowScale-Extension.md)                              |Show-Media,New-Media,Edit-Media               |
+|[ShowSpectrum](ShowSpectrum-Extension.md)                        |Show-Media,New-Media,Edit-Media               |
+|[ShowVectorScope](ShowVectorScope-Extension.md)                  |Show-Media,New-Media,Edit-Media               |
+|[ShowVolume](ShowVolume-Extension.md)                            |Show-Media,New-Media,Edit-Media               |
+|[ShowWaveform](ShowWaveform-Extension.md)                        |Show-Media,New-Media,Edit-Media               |
 |[ShuffleFrames](ShuffleFrames-Extension.md)                      |Edit-Media                                    |
 |[Sierpinski](Sierpinski-Extension.md)                            |New-Media,Show-Media                          |
 |[SilenceDetect](SilenceDetect-Extension.md)                      |Get-Media                                     |
