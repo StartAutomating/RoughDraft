@@ -1,21 +1,36 @@
-
 Extension/FadeIn.rd.ext.ps1
 ---------------------------
+
+
+
+
 ### Synopsis
 Fades in video
 
+
+
 ---
+
+
 ### Description
 
 Fades in video, using the fade filter
 
+
+
 ---
+
+
 ### Related Links
 * [https://ffmpeg.org/ffmpeg-filters.html#fade](https://ffmpeg.org/ffmpeg-filters.html#fade)
 
 
 
+
+
 ---
+
+
 ### Parameters
 #### **FadeIn**
 
@@ -32,7 +47,6 @@ If provided, the video will be faded in
 
 
 
----
 #### **StartFadeAt**
 
 The frame the fade-in will start (by default, 0)
@@ -48,7 +62,6 @@ The frame the fade-in will start (by default, 0)
 
 
 
----
 #### **EndFadeAt**
 
 The frame the fade-in will end (by default, 30)
@@ -64,7 +77,6 @@ The frame the fade-in will end (by default, 30)
 
 
 
----
 #### **FadeColor**
 
 The fade color
@@ -80,13 +92,12 @@ The fade color
 
 
 
+
+
 ---
+
+
 ### Syntax
 ```PowerShell
 Extension/FadeIn.rd.ext.ps1 -FadeIn [[-StartFadeAt] <UInt32>] [[-EndFadeAt] <UInt32>] [[-FadeColor] <String>] [<CommonParameters>]
 ```
----
-
-
-
-
