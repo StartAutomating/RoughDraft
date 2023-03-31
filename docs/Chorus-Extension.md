@@ -1,21 +1,36 @@
-
 Extension/Chorus.RoughDraft.Extension.ps1
 -----------------------------------------
+
+
+
+
 ### Synopsis
 chorus
 
+
+
 ---
+
+
 ### Description
 
 Add a chorus effect to the audio.
 
+
+
 ---
+
+
 ### Related Links
 * [https://ffmpeg.org/ffmpeg-filters.html#chorus](https://ffmpeg.org/ffmpeg-filters.html#chorus)
 
 
 
+
+
 ---
+
+
 ### Parameters
 #### **Chorus**
 
@@ -32,7 +47,6 @@ Add a chorus effect to the audio.
 
 
 
----
 #### **ChorusInGain**
 
 set input gain
@@ -42,13 +56,12 @@ set input gain
 
 
 
-|Type      |Required|Position|PipelineInput|
-|----------|--------|--------|-------------|
-|`[Single]`|false   |1       |false        |
+|Type      |Required|Position|PipelineInput|Aliases       |
+|----------|--------|--------|-------------|--------------|
+|`[Single]`|false   |1       |false        |chorus_in_gain|
 
 
 
----
 #### **ChorusOutGain**
 
 set output gain
@@ -58,13 +71,12 @@ set output gain
 
 
 
-|Type      |Required|Position|PipelineInput|
-|----------|--------|--------|-------------|
-|`[Single]`|false   |2       |false        |
+|Type      |Required|Position|PipelineInput|Aliases        |
+|----------|--------|--------|-------------|---------------|
+|`[Single]`|false   |2       |false        |chorus_out_gain|
 
 
 
----
 #### **ChorusDelay**
 
 set delays
@@ -74,13 +86,12 @@ set delays
 
 
 
-|Type        |Required|Position|PipelineInput|
-|------------|--------|--------|-------------|
-|`[String[]]`|false   |3       |false        |
+|Type        |Required|Position|PipelineInput|Aliases                       |
+|------------|--------|--------|-------------|------------------------------|
+|`[String[]]`|false   |3       |false        |chorus_delays<br/>ChorusDelays|
 
 
 
----
 #### **ChorusDecay**
 
 set decays
@@ -90,13 +101,12 @@ set decays
 
 
 
-|Type        |Required|Position|PipelineInput|
-|------------|--------|--------|-------------|
-|`[String[]]`|false   |4       |false        |
+|Type        |Required|Position|PipelineInput|Aliases                       |
+|------------|--------|--------|-------------|------------------------------|
+|`[String[]]`|false   |4       |false        |chorus_decays<br/>ChorusDecays|
 
 
 
----
 #### **ChorusSpeed**
 
 set speeds
@@ -106,13 +116,12 @@ set speeds
 
 
 
-|Type        |Required|Position|PipelineInput|
-|------------|--------|--------|-------------|
-|`[String[]]`|false   |5       |false        |
+|Type        |Required|Position|PipelineInput|Aliases                       |
+|------------|--------|--------|-------------|------------------------------|
+|`[String[]]`|false   |5       |false        |chorus_speeds<br/>ChorusSpeeds|
 
 
 
----
 #### **ChorusDepth**
 
 set depths
@@ -122,19 +131,18 @@ set depths
 
 
 
-|Type        |Required|Position|PipelineInput|
-|------------|--------|--------|-------------|
-|`[String[]]`|false   |6       |false        |
+|Type        |Required|Position|PipelineInput|Aliases                       |
+|------------|--------|--------|-------------|------------------------------|
+|`[String[]]`|false   |6       |false        |chorus_depths<br/>ChorusDepths|
+
+
 
 
 
 ---
+
+
 ### Syntax
 ```PowerShell
 Extension/Chorus.RoughDraft.Extension.ps1 -Chorus [[-ChorusInGain] <Single>] [[-ChorusOutGain] <Single>] [[-ChorusDelay] <String[]>] [[-ChorusDecay] <String[]>] [[-ChorusSpeed] <String[]>] [[-ChorusDepth] <String[]>] [<CommonParameters>]
 ```
----
-
-
-
-
