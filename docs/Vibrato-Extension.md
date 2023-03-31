@@ -1,21 +1,36 @@
-
 Extension/Vibrato.RoughDraft.Extension.ps1
 ------------------------------------------
+
+
+
+
 ### Synopsis
 Vibrato effect
 
+
+
 ---
+
+
 ### Description
 
 Sinusoidal phase modulation.
 
+
+
 ---
+
+
 ### Related Links
 * [https://ffmpeg.org/ffmpeg-filters.html#vibrato](https://ffmpeg.org/ffmpeg-filters.html#vibrato)
 
 
 
+
+
 ---
+
+
 ### Parameters
 #### **Vibrato**
 
@@ -32,7 +47,6 @@ If set, will use the vibrato effect
 
 
 
----
 #### **VibratoFrequency**
 
 Modulation frequency in Hertz. Range is 0.1 - 20000.0. Default value is 5.0 Hz.
@@ -48,7 +62,6 @@ Modulation frequency in Hertz. Range is 0.1 - 20000.0. Default value is 5.0 Hz.
 
 
 
----
 #### **VibratoDepth**
 
 Depth of modulation as a percentage. Range is 0.0 - 1.0. Default value is 0.5.
@@ -64,13 +77,12 @@ Depth of modulation as a percentage. Range is 0.0 - 1.0. Default value is 0.5.
 
 
 
+
+
 ---
+
+
 ### Syntax
 ```PowerShell
 Extension/Vibrato.RoughDraft.Extension.ps1 -Vibrato [[-VibratoFrequency] <Single>] [[-VibratoDepth] <Single>] [<CommonParameters>]
 ```
----
-
-
-
-
