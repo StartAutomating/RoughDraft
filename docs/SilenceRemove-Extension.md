@@ -1,15 +1,26 @@
-
 Extension/SilenceRemove.RoughDraft.Extension.ps1
 ------------------------------------------------
+
+
+
+
 ### Synopsis
 Detects silence in an audio stream
 
+
+
 ---
+
+
 ### Description
 
 Detects silence in an audio stream, using the silencedetect filter.
 
+
+
 ---
+
+
 ### Related Links
 * [https://ffmpeg.org/ffmpeg-filters.html#silenceremove
 
@@ -27,7 +38,11 @@ It's an extension.md)
 
 
 
+
+
 ---
+
+
 ### Parameters
 #### **RemoveSilence**
 
@@ -44,7 +59,6 @@ If set, will remove silence.
 
 
 
----
 #### **SilenceDuration**
 
 The Silence Duration
@@ -60,7 +74,6 @@ The Silence Duration
 
 
 
----
 #### **SilenceThreshold**
 
 The noise tolerance (by default 0.1%)  
@@ -78,7 +91,6 @@ Otherwise, it will be treated as a decibal value.
 
 
 
----
 #### **AnyChannel**
 
 If set, will find silence within any channel of audio
@@ -94,7 +106,6 @@ If set, will find silence within any channel of audio
 
 
 
----
 #### **SilenceStartPeriod**
 
 The number of periods of silence at the start of the sample that will be trimmed.  
@@ -107,13 +118,12 @@ To trim more than one period of silence, pass a value greater than one.
 
 
 
-|Type     |Required|Position|PipelineInput        |
-|---------|--------|--------|---------------------|
-|`[Int32]`|false   |3       |true (ByPropertyName)|
+|Type     |Required|Position|PipelineInput        |Aliases                               |
+|---------|--------|--------|---------------------|--------------------------------------|
+|`[Int32]`|false   |3       |true (ByPropertyName)|Start_Periods<br/>SP<br/>StartAtPeriod|
 
 
 
----
 #### **SilenceStopPeriod**
 
 The number of periods of silence at the end of the sample that will be trimmed.
@@ -124,19 +134,18 @@ The default is 0 (trim after the last silence, but don't trim between the first 
 
 
 
-|Type     |Required|Position|PipelineInput        |
-|---------|--------|--------|---------------------|
-|`[Int32]`|false   |4       |true (ByPropertyName)|
+|Type     |Required|Position|PipelineInput        |Aliases                            |
+|---------|--------|--------|---------------------|-----------------------------------|
+|`[Int32]`|false   |4       |true (ByPropertyName)|Stop_Periods<br/>EP<br/>EndAtPeriod|
+
+
 
 
 
 ---
+
+
 ### Syntax
 ```PowerShell
 Extension/SilenceRemove.RoughDraft.Extension.ps1 -RemoveSilence [[-SilenceDuration] <TimeSpan>] [[-SilenceThreshold] <Double>] [-AnyChannel] [[-SilenceStartPeriod] <Int32>] [[-SilenceStopPeriod] <Int32>] [<CommonParameters>]
 ```
----
-
-
-
-
