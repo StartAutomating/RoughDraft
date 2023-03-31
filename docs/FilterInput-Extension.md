@@ -1,15 +1,26 @@
-
 Extension/FilterInput.rd.ext.ps1
 --------------------------------
+
+
+
+
 ### Synopsis
 Gets filter details
 
+
+
 ---
+
+
 ### Description
 
 Gets details about a particular filter.
 
+
+
 ---
+
+
 ### Parameters
 #### **FilterName**
 
@@ -26,7 +37,6 @@ If set, will get filter inputs for a given filter name
 
 
 
----
 #### **FilterInput**
 
 If set, will get filter inputs for a given filter name
@@ -42,13 +52,12 @@ If set, will get filter inputs for a given filter name
 
 
 
+
+
 ---
+
+
 ### Syntax
 ```PowerShell
 Extension/FilterInput.rd.ext.ps1 [-FilterName] <String> -FilterInput [<CommonParameters>]
 ```
----
-
-
-
-
