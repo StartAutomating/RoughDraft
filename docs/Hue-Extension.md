@@ -1,28 +1,47 @@
-
 Extension/Hue.RoughDraft.Extension.ps1
 --------------------------------------
+
+
+
+
 ### Synopsis
 Hue Extension
 
+
+
 ---
+
+
 ### Description
 
 Adjusts the Hue of a video source
 
+
+
 ---
+
+
 ### Related Links
 * [https://ffmpeg.org/ffmpeg-filters.html#hue](https://ffmpeg.org/ffmpeg-filters.html#hue)
 
 
 
+
+
 ---
+
+
 ### Examples
 #### EXAMPLE 1
 ```PowerShell
 Edit-Media -InputPath "TestSource.mp4" -SetHue -HueDegree 60 # Adjust hue by 60 degrees
 ```
 
+
+
 ---
+
+
 ### Parameters
 #### **SetHue**
 
@@ -39,7 +58,6 @@ If set, will change hue levels.
 
 
 
----
 #### **HueDegree**
 
 The adjustment to the hue (in degrees).  Can include expressions.  Mutually exclusive with -HueRadian.
@@ -49,13 +67,12 @@ The adjustment to the hue (in degrees).  Can include expressions.  Mutually excl
 
 
 
-|Type      |Required|Position|PipelineInput|
-|----------|--------|--------|-------------|
-|`[String]`|false   |1       |false        |
+|Type      |Required|Position|PipelineInput|Aliases   |
+|----------|--------|--------|-------------|----------|
+|`[String]`|false   |1       |false        |HueDegrees|
 
 
 
----
 #### **HueRadian**
 
 The adjustment to the hue (in radians).  Can include expressions.  Mutually exclusive with -HueDegree.
@@ -65,13 +82,12 @@ The adjustment to the hue (in radians).  Can include expressions.  Mutually excl
 
 
 
-|Type      |Required|Position|PipelineInput|
-|----------|--------|--------|-------------|
-|`[String]`|false   |2       |false        |
+|Type      |Required|Position|PipelineInput|Aliases   |
+|----------|--------|--------|-------------|----------|
+|`[String]`|false   |2       |false        |HueRadians|
 
 
 
----
 #### **Saturation**
 
 The adjustment to the saturation.  Can include expressions.
@@ -87,7 +103,6 @@ The adjustment to the saturation.  Can include expressions.
 
 
 
----
 #### **Brightness**
 
 The adjustment to the brightness.  Can include expressions.
@@ -103,13 +118,12 @@ The adjustment to the brightness.  Can include expressions.
 
 
 
+
+
 ---
+
+
 ### Syntax
 ```PowerShell
 Extension/Hue.RoughDraft.Extension.ps1 -SetHue [[-HueDegree] <String>] [[-HueRadian] <String>] [[-Saturation] <String>] [[-Brightness] <String>] [<CommonParameters>]
 ```
----
-
-
-
-
