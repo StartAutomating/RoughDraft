@@ -1,28 +1,47 @@
-
 Extension/Life.rd.ext.ps1
 -------------------------
+
+
+
+
 ### Synopsis
 Generates life
 
+
+
 ---
+
+
 ### Description
 
 Uses the ffmpeg filter for life
 
+
+
 ---
+
+
 ### Related Links
 * [https://ffmpeg.org/ffmpeg-filters.html#life](https://ffmpeg.org/ffmpeg-filters.html#life)
 
 
 
+
+
 ---
+
+
 ### Examples
 #### EXAMPLE 1
 ```PowerShell
 New-Media -OutputPath "Life.gif" -Duration "00:00:05" -Life
 ```
 
+
+
 ---
+
+
 ### Parameters
 #### **Life**
 
@@ -39,7 +58,6 @@ If set, will generate life
 
 
 
----
 #### **LifeStateFile**
 
 Set the file from which to read the initial grid state. 
@@ -57,7 +75,6 @@ If this option is not specified, the initial grid is generated randomly.
 
 
 
----
 #### **LifeFillRatio**
 
 Set the random fill ratio for the initial random grid.
@@ -75,7 +92,6 @@ It is ignored when a file is specified.
 
 
 
----
 #### **LifeSeed**
 
 Set the seed for filling the initial random grid, must be an integer included between 0 and UINT32_MAX. 
@@ -92,7 +108,6 @@ If not specified, or if explicitly set to -1, the filter will try to use a good 
 
 
 
----
 #### **LifeRule**
 
 Default value is "S23/B3", which is the original Conway’s game of life rule, 
@@ -110,7 +125,6 @@ and will born a new cell if there are three alive cells around a dead cell.
 
 
 
----
 #### **DoNotStitchLifeGrid**
 
 If not set, will not stitch the left/right top/bottom grid edges together.
@@ -126,7 +140,6 @@ If not set, will not stitch the left/right top/bottom grid edges together.
 
 
 
----
 #### **LifeMoldSpeed**
 
 $ Set cell mold speed. 
@@ -143,7 +156,6 @@ $ Set cell mold speed.
 
 
 
----
 #### **LifeLivingColor**
 
 Set the color of living (or new born) cells.
@@ -159,7 +171,6 @@ Set the color of living (or new born) cells.
 
 
 
----
 #### **LifeDeathColor**
 
 Set the color of dead cells. 
@@ -176,7 +187,6 @@ If mold is set, this is the first color used to represent a dead cell.
 
 
 
----
 #### **LifeMoldColor**
 
 Set mold color, for definitely dead and moldy cells.
@@ -192,13 +202,12 @@ Set mold color, for definitely dead and moldy cells.
 
 
 
+
+
 ---
+
+
 ### Syntax
 ```PowerShell
 Extension/Life.rd.ext.ps1 -Life [[-LifeStateFile] <String>] [[-LifeFillRatio] <Double>] [[-LifeSeed] <Int32>] [[-LifeRule] <String>] [-DoNotStitchLifeGrid] [[-LifeMoldSpeed] <Byte>] [[-LifeLivingColor] <String>] [[-LifeDeathColor] <String>] [[-LifeMoldColor] <String>] [<CommonParameters>]
 ```
----
-
-
-
-
