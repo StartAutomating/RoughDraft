@@ -1,21 +1,36 @@
-
 Extension/VideoExpression.RoughDraft.Extension.ps1
 --------------------------------------------------
+
+
+
+
 ### Synopsis
 Evaluates Video Expressions
 
+
+
 ---
+
+
 ### Description
 
 Evaluates Video Expressions, using the [geq filter](https://ffmpeg.org/ffmpeg-filters.html#geq)
 
+
+
 ---
+
+
 ### Related Links
 * [https://ffmpeg.org/ffmpeg-filters.html#geq](https://ffmpeg.org/ffmpeg-filters.html#geq)
 
 
 
+
+
 ---
+
+
 ### Examples
 #### EXAMPLE 1
 ```PowerShell
@@ -48,7 +63,11 @@ Edit-Media -InputPath .\a.mp4 -VideoExpression 'p(
 Edit-Media -InputPath .\a.mp4 -VideoExpression '' -VideoExpressionRed '(X*Y)/(W*H)*r(X,Y)' -VideoExpressionGreen '(1-X/W)*g(X,Y)' -VideoExpressionBlue '(H-Y)/H*b(X,Y)' -Verbose
 ```
 
+
+
 ---
+
+
 ### Parameters
 #### **VideoExpression**
 
@@ -60,13 +79,12 @@ If you do not wish to provide a luminance expression, pass a blank string to thi
 
 
 
-|Type        |Required|Position|PipelineInput|
-|------------|--------|--------|-------------|
-|`[String[]]`|true    |1       |false        |
+|Type        |Required|Position|PipelineInput|Aliases     |
+|------------|--------|--------|-------------|------------|
+|`[String[]]`|true    |1       |false        |geq_lum_expr|
 
 
 
----
 #### **VideoExpressionChrominanceBlue**
 
 Set the chrominance blue expression.
@@ -76,13 +94,12 @@ Set the chrominance blue expression.
 
 
 
-|Type      |Required|Position|PipelineInput|
-|----------|--------|--------|-------------|
-|`[String]`|false   |2       |false        |
+|Type      |Required|Position|PipelineInput|Aliases    |
+|----------|--------|--------|-------------|-----------|
+|`[String]`|false   |2       |false        |geq_cb_expr|
 
 
 
----
 #### **VideoExpressionChrominanceRed**
 
 Set the chrominance red expression.
@@ -92,13 +109,12 @@ Set the chrominance red expression.
 
 
 
-|Type      |Required|Position|PipelineInput|
-|----------|--------|--------|-------------|
-|`[String]`|false   |3       |false        |
+|Type      |Required|Position|PipelineInput|Aliases    |
+|----------|--------|--------|-------------|-----------|
+|`[String]`|false   |3       |false        |geq_cr_expr|
 
 
 
----
 #### **VideoExpressionAlpha**
 
 Set the alpha expression.
@@ -108,13 +124,12 @@ Set the alpha expression.
 
 
 
-|Type      |Required|Position|PipelineInput|
-|----------|--------|--------|-------------|
-|`[String]`|false   |4       |false        |
+|Type      |Required|Position|PipelineInput|Aliases       |
+|----------|--------|--------|-------------|--------------|
+|`[String]`|false   |4       |false        |geq_alpha_expr|
 
 
 
----
 #### **VideoExpressionRed**
 
 Set the red expression.
@@ -124,13 +139,12 @@ Set the red expression.
 
 
 
-|Type      |Required|Position|PipelineInput|
-|----------|--------|--------|-------------|
-|`[String]`|false   |5       |false        |
+|Type      |Required|Position|PipelineInput|Aliases     |
+|----------|--------|--------|-------------|------------|
+|`[String]`|false   |5       |false        |geq_red_expr|
 
 
 
----
 #### **VideoExpressionBlue**
 
 Set the green expression.
@@ -140,13 +154,12 @@ Set the green expression.
 
 
 
-|Type      |Required|Position|PipelineInput|
-|----------|--------|--------|-------------|
-|`[String]`|false   |6       |false        |
+|Type      |Required|Position|PipelineInput|Aliases      |
+|----------|--------|--------|-------------|-------------|
+|`[String]`|false   |6       |false        |geq_blue_expr|
 
 
 
----
 #### **VideoExpressionGreen**
 
 Set the blue expression.
@@ -156,18 +169,17 @@ Set the blue expression.
 
 
 
-|Type      |Required|Position|PipelineInput|
-|----------|--------|--------|-------------|
-|`[String]`|false   |7       |false        |
+|Type      |Required|Position|PipelineInput|Aliases       |
+|----------|--------|--------|-------------|--------------|
+|`[String]`|false   |7       |false        |geq_green_expr|
+
+
 
 
 
 ---
-### Syntax
-```PowerShell
-Extension/VideoExpression.RoughDraft.Extension.ps1 [-VideoExpression] <String[]> [[-VideoExpressionChrominanceBlue] <String>] [[-VideoExpressionChrominanceRed] <String>] [[-VideoExpressionAlpha] <String>] [[-VideoExpressionRed] <String>] [[-VideoExpressionBlue] <String>] [[-VideoExpressionGreen] <String>] [<CommonParameters>]
-```
----
+
+
 ### Notes
 The colorspace is selected according to the specified options. If one of the lum_expr, cb_expr, or cr_expr options is specified, the filter will automatically select a YCbCr colorspace. If one of the red_expr, green_expr, or blue_expr options is specified, it will select an RGB colorspace.
 
@@ -192,4 +204,10 @@ The expressions can use the following variables and functions:
 
 
 
+---
 
+
+### Syntax
+```PowerShell
+Extension/VideoExpression.RoughDraft.Extension.ps1 [-VideoExpression] <String[]> [[-VideoExpressionChrominanceBlue] <String>] [[-VideoExpressionChrominanceRed] <String>] [[-VideoExpressionAlpha] <String>] [[-VideoExpressionRed] <String>] [[-VideoExpressionBlue] <String>] [[-VideoExpressionGreen] <String>] [<CommonParameters>]
+```
