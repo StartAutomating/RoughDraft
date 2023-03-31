@@ -1,15 +1,26 @@
-
 Extension/Blur.RoughDraft.Extension.ps1
 ---------------------------------------
+
+
+
+
 ### Synopsis
 Blurs Video
 
+
+
 ---
+
+
 ### Description
 
 Blurs Video, using a variety of FFMpeg filters.
 
+
+
 ---
+
+
 ### Related Links
 * [https://ffmpeg.org/ffmpeg-filters.html#avgblur](https://ffmpeg.org/ffmpeg-filters.html#avgblur)
 
@@ -35,7 +46,11 @@ Blurs Video, using a variety of FFMpeg filters.
 
 
 
+
+
 ---
+
+
 ### Parameters
 #### **Blur**
 
@@ -48,7 +63,6 @@ Blurs Video, using a variety of FFMpeg filters.
 
 
 
----
 #### **BlurType**
 
 Valid Values:
@@ -77,7 +91,6 @@ Valid Values:
 
 
 
----
 #### **BlurRadius**
 
 The radius of the blur.
@@ -87,13 +100,12 @@ The radius of the blur.
 
 
 
-|Type      |Required|Position|PipelineInput|
-|----------|--------|--------|-------------|
-|`[String]`|false   |2       |false        |
+|Type      |Required|Position|PipelineInput|Aliases                                   |
+|----------|--------|--------|-------------|------------------------------------------|
+|`[String]`|false   |2       |false        |BlurLumaRadius<br/>BlurSigma<br/>BlurSizeX|
 
 
 
----
 #### **BlurRadiusY**
 
 Set vertical radius size, if zero it will be same as sizeX. Default is 0.
@@ -105,13 +117,12 @@ With gblur, this will be the sigmaV parameter.
 
 
 
-|Type      |Required|Position|PipelineInput|
-|----------|--------|--------|-------------|
-|`[String]`|false   |3       |false        |
+|Type      |Required|Position|PipelineInput|Aliases                                      |
+|----------|--------|--------|-------------|---------------------------------------------|
+|`[String]`|false   |3       |false        |BlurChromaRadius<br/>BlurSigmaV<br/>BlurSizeY|
 
 
 
----
 #### **BlurAngle**
 
 The angle of the blur.  Used in dblur.
@@ -127,31 +138,28 @@ The angle of the blur.  Used in dblur.
 
 
 
----
 #### **BlurLumaStrength**
 
 
 
 
-|Type      |Required|Position|PipelineInput|
-|----------|--------|--------|-------------|
-|`[String]`|false   |5       |false        |
+|Type      |Required|Position|PipelineInput|Aliases      |
+|----------|--------|--------|-------------|-------------|
+|`[String]`|false   |5       |false        |BlurLumaPower|
 
 
 
----
 #### **BlurChromaStrength**
 
 
 
 
-|Type      |Required|Position|PipelineInput|
-|----------|--------|--------|-------------|
-|`[String]`|false   |6       |false        |
+|Type      |Required|Position|PipelineInput|Aliases        |
+|----------|--------|--------|-------------|---------------|
+|`[String]`|false   |6       |false        |BlurChromaPower|
 
 
 
----
 #### **BlurLumaThreshold**
 
 Set the luma threshold used as a coefficient to determine whether a pixel should be blurred or not.
@@ -170,7 +178,6 @@ Default value is 0.
 
 
 
----
 #### **BlurChromaThreshold**
 
 Set the chroma threshold used as a coefficient to determine whether a pixel should be blurred or not.
@@ -189,7 +196,6 @@ Default value is 0.
 
 
 
----
 #### **BlurPlanes**
 
 Set which planes to filter. By default all planes are filtered.
@@ -205,13 +211,12 @@ Set which planes to filter. By default all planes are filtered.
 
 
 
+
+
 ---
+
+
 ### Syntax
 ```PowerShell
 Extension/Blur.RoughDraft.Extension.ps1 -Blur [[-BlurType] <String>] [[-BlurRadius] <String>] [[-BlurRadiusY] <String>] [[-BlurAngle] <String>] [[-BlurLumaStrength] <String>] [[-BlurChromaStrength] <String>] [[-BlurLumaThreshold] <Int32>] [[-BlurChromaThreshold] <Int32>] [[-BlurPlanes] <String>] [<CommonParameters>]
 ```
----
-
-
-
-
