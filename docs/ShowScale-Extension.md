@@ -1,21 +1,36 @@
-
 Extension/ShowScale.RoughDraft.Extension.ps1
 --------------------------------------------
+
+
+
+
 ### Synopsis
 Show the tonal scale of the audio
 
+
+
 ---
+
+
 ### Description
 
 Show the tonal scale of the audio, using the showcqt filter
 
+
+
 ---
+
+
 ### Related Links
 * [https://ffmpeg.org/ffmpeg-filters.html#showqct](https://ffmpeg.org/ffmpeg-filters.html#showqct)
 
 
 
+
+
 ---
+
+
 ### Examples
 #### EXAMPLE 1
 ```PowerShell
@@ -27,7 +42,11 @@ Show-Media -InputPath .\a.mp3 -ShowScale
 Edit-Media -InputPath .\a.mp3 -ShowScale -OutputPath .\a.mp4
 ```
 
+
+
 ---
+
+
 ### Parameters
 #### **ShowScale**
 
@@ -44,7 +63,6 @@ If set, will show volume
 
 
 
----
 #### **ShowScaleSize**
 
 Specify the video size for the output.  Default value is 1920x1080
@@ -54,13 +72,12 @@ Specify the video size for the output.  Default value is 1920x1080
 
 
 
-|Type      |Required|Position|PipelineInput|
-|----------|--------|--------|-------------|
-|`[String]`|false   |1       |false        |
+|Type      |Required|Position|PipelineInput|Aliases     |
+|----------|--------|--------|-------------|------------|
+|`[String]`|false   |1       |false        |showcqt_size|
 
 
 
----
 #### **ShowScaleBarGraphHeight**
 
 Set the bargraph height. It must be even. Default value is -1 which computes the bargraph height automatically.
@@ -70,13 +87,12 @@ Set the bargraph height. It must be even. Default value is -1 which computes the
 
 
 
-|Type     |Required|Position|PipelineInput|
-|---------|--------|--------|-------------|
-|`[Int32]`|false   |2       |false        |
+|Type     |Required|Position|PipelineInput|Aliases      |
+|---------|--------|--------|-------------|-------------|
+|`[Int32]`|false   |2       |false        |showcqt_bar_h|
 
 
 
----
 #### **ShowScaleAxisHeight**
 
 Set the axis height. It must be even. Default value is -1 which computes the axis height automatically.
@@ -86,13 +102,12 @@ Set the axis height. It must be even. Default value is -1 which computes the axi
 
 
 
-|Type     |Required|Position|PipelineInput|
-|---------|--------|--------|-------------|
-|`[Int32]`|false   |3       |false        |
+|Type     |Required|Position|PipelineInput|Aliases       |
+|---------|--------|--------|-------------|--------------|
+|`[Int32]`|false   |3       |false        |showcqt_axis_h|
 
 
 
----
 #### **ShowScaleSonogramHeight**
 
 Set the sonogram height. It must be even. Default value is -1 which computes the sonogram height automatically.
@@ -102,13 +117,12 @@ Set the sonogram height. It must be even. Default value is -1 which computes the
 
 
 
-|Type     |Required|Position|PipelineInput|
-|---------|--------|--------|-------------|
-|`[Int32]`|false   |4       |false        |
+|Type     |Required|Position|PipelineInput|Aliases       |
+|---------|--------|--------|-------------|--------------|
+|`[Int32]`|false   |4       |false        |showcqt_sono_h|
 
 
 
----
 #### **ShowScaleSonogramVolume**
 
 Specify the sonogram volume expression
@@ -134,13 +148,12 @@ and functions:
 
 
 
-|Type      |Required|Position|PipelineInput|
-|----------|--------|--------|-------------|
-|`[String]`|false   |5       |false        |
+|Type      |Required|Position|PipelineInput|Aliases       |
+|----------|--------|--------|-------------|--------------|
+|`[String]`|false   |5       |false        |showcqt_sono_v|
 
 
 
----
 #### **ShowScaleBarGraphVolume**
 
 Specify the bargraph volume expression
@@ -166,13 +179,12 @@ and functions:
 
 
 
-|Type      |Required|Position|PipelineInput|
-|----------|--------|--------|-------------|
-|`[String]`|false   |6       |false        |
+|Type      |Required|Position|PipelineInput|Aliases      |
+|----------|--------|--------|-------------|-------------|
+|`[String]`|false   |6       |false        |showcqt_bar_v|
 
 
 
----
 #### **ShowScaleSonogramGamma**
 
 Specify the sonogram gamma. Lower gamma makes the spectrum more contrast, higher gamma makes the spectrum having more range. Default value is 3. Acceptable range is [1, 7].
@@ -182,13 +194,12 @@ Specify the sonogram gamma. Lower gamma makes the spectrum more contrast, higher
 
 
 
-|Type      |Required|Position|PipelineInput|
-|----------|--------|--------|-------------|
-|`[Double]`|false   |7       |false        |
+|Type      |Required|Position|PipelineInput|Aliases       |
+|----------|--------|--------|-------------|--------------|
+|`[Double]`|false   |7       |false        |showcqt_sono_g|
 
 
 
----
 #### **ShowScaleBarGraphGamma**
 
 Specify the bargraph gamma. Default value is 1.
@@ -198,13 +209,12 @@ Specify the bargraph gamma. Default value is 1.
 
 
 
-|Type      |Required|Position|PipelineInput|
-|----------|--------|--------|-------------|
-|`[Double]`|false   |8       |false        |
+|Type      |Required|Position|PipelineInput|Aliases      |
+|----------|--------|--------|-------------|-------------|
+|`[Double]`|false   |8       |false        |showcqt_bar_g|
 
 
 
----
 #### **ShowScaleBarGraphTransparency**
 
 Specify the bargraph transparency level. Lower value makes the bargraph sharper. Default value is 1
@@ -214,13 +224,12 @@ Specify the bargraph transparency level. Lower value makes the bargraph sharper.
 
 
 
-|Type      |Required|Position|PipelineInput|
-|----------|--------|--------|-------------|
-|`[Double]`|false   |9       |false        |
+|Type      |Required|Position|PipelineInput|Aliases      |
+|----------|--------|--------|-------------|-------------|
+|`[Double]`|false   |9       |false        |showcqt_bar_t|
 
 
 
----
 #### **ShowScaleTimeclamp**
 
 Specify the transform timeclamp.
@@ -234,13 +243,12 @@ Acceptable range is [0.002, 1]. Default value is 0.17.
 
 
 
-|Type      |Required|Position|PipelineInput|
-|----------|--------|--------|-------------|
-|`[Double]`|false   |10      |false        |
+|Type      |Required|Position|PipelineInput|Aliases          |
+|----------|--------|--------|-------------|-----------------|
+|`[Double]`|false   |10      |false        |showcqt_timeclamp|
 
 
 
----
 #### **ShowScaleAttack**
 
 Set attack time in seconds.
@@ -253,13 +261,12 @@ useful when low latency is required. Accepted range is [0, 1].
 
 
 
-|Type      |Required|Position|PipelineInput|
-|----------|--------|--------|-------------|
-|`[Double]`|false   |11      |false        |
+|Type      |Required|Position|PipelineInput|Aliases       |
+|----------|--------|--------|-------------|--------------|
+|`[Double]`|false   |11      |false        |showcqt_attack|
 
 
 
----
 #### **ShowScaleBaseFrequency**
 
 Specify the transform base frequency.
@@ -271,13 +278,12 @@ Acceptable range is [10, 100000].
 
 
 
-|Type      |Required|Position|PipelineInput|
-|----------|--------|--------|-------------|
-|`[Double]`|false   |12      |false        |
+|Type      |Required|Position|PipelineInput|Aliases         |
+|----------|--------|--------|-------------|----------------|
+|`[Double]`|false   |12      |false        |showcqt_basefreq|
 
 
 
----
 #### **ShowScaleEndFrequency**
 
 Specify the transform end frequency.
@@ -289,13 +295,12 @@ Acceptable range is [10, 100000].
 
 
 
-|Type      |Required|Position|PipelineInput|
-|----------|--------|--------|-------------|
-|`[Double]`|false   |13      |false        |
+|Type      |Required|Position|PipelineInput|Aliases        |
+|----------|--------|--------|-------------|---------------|
+|`[Double]`|false   |13      |false        |showcqt_endfreq|
 
 
 
----
 #### **ShowScaleTransformLength**
 
 Specify the transform length in time domain.
@@ -316,13 +321,12 @@ It can contain variables:
 
 
 
-|Type      |Required|Position|PipelineInput|
-|----------|--------|--------|-------------|
-|`[String]`|false   |14      |false        |
+|Type      |Required|Position|PipelineInput|Aliases        |
+|----------|--------|--------|-------------|---------------|
+|`[String]`|false   |14      |false        |showcqt_tlength|
 
 
 
----
 #### **ShowScaleTransformCount**
 
 Specify the transform count for every video frame. Default value is 6. Acceptable range is [1, 30].
@@ -332,13 +336,12 @@ Specify the transform count for every video frame. Default value is 6. Acceptabl
 
 
 
-|Type     |Required|Position|PipelineInput|
-|---------|--------|--------|-------------|
-|`[Int32]`|false   |15      |false        |
+|Type     |Required|Position|PipelineInput|Aliases      |
+|---------|--------|--------|-------------|-------------|
+|`[Int32]`|false   |15      |false        |showcqt_count|
 
 
 
----
 #### **ShowScaleTransformPixelCount**
 
 Specify the transform count for every single pixel. Default value is 0, which makes it computed automatically. Acceptable range is [0, 10].
@@ -348,13 +351,12 @@ Specify the transform count for every single pixel. Default value is 0, which ma
 
 
 
-|Type     |Required|Position|PipelineInput|
-|---------|--------|--------|-------------|
-|`[Int32]`|false   |16      |false        |
+|Type     |Required|Position|PipelineInput|Aliases       |
+|---------|--------|--------|-------------|--------------|
+|`[Int32]`|false   |16      |false        |showcqt_fcount|
 
 
 
----
 #### **ShowScaleColorspace**
 
 Set colorspace.
@@ -376,13 +378,12 @@ Valid Values:
 
 
 
-|Type     |Required|Position|PipelineInput|
-|---------|--------|--------|-------------|
-|`[Int32]`|false   |17      |false        |
+|Type     |Required|Position|PipelineInput|Aliases    |
+|---------|--------|--------|-------------|-----------|
+|`[Int32]`|false   |17      |false        |showcqt_csp|
 
 
 
----
 #### **ShowScaleFont**
 
 Specify fontconfig pattern. This has lower priority than fontfile.
@@ -393,13 +394,12 @@ The : in the pattern may be replaced by | to avoid unnecessary escaping
 
 
 
-|Type        |Required|Position|PipelineInput|
-|------------|--------|--------|-------------|
-|`[String[]]`|false   |18      |false        |
+|Type        |Required|Position|PipelineInput|Aliases     |
+|------------|--------|--------|-------------|------------|
+|`[String[]]`|false   |18      |false        |showcqt_font|
 
 
 
----
 #### **ShowScaleFontFile**
 
 Specify font file for use with freetype to draw the axis.
@@ -411,13 +411,12 @@ Note that drawing with font file or embedded font is not implemented with custom
 
 
 
-|Type      |Required|Position|PipelineInput|
-|----------|--------|--------|-------------|
-|`[String]`|false   |19      |false        |
+|Type      |Required|Position|PipelineInput|Aliases         |
+|----------|--------|--------|-------------|----------------|
+|`[String]`|false   |19      |false        |showcqt_fontfile|
 
 
 
----
 #### **ShowScaleAxisFile**
 
 Specify image file to draw the axis. This option override fontfile and fontcolor option.
@@ -427,13 +426,12 @@ Specify image file to draw the axis. This option override fontfile and fontcolor
 
 
 
-|Type      |Required|Position|PipelineInput|
-|----------|--------|--------|-------------|
-|`[String]`|false   |20      |false        |
+|Type      |Required|Position|PipelineInput|Aliases         |
+|----------|--------|--------|-------------|----------------|
+|`[String]`|false   |20      |false        |showcqt_axisfile|
 
 
 
----
 #### **ShowScaleHideAxis**
 
 Enable/disable drawing text to the axis.
@@ -445,13 +443,12 @@ Default value is 1.
 
 
 
-|Type      |Required|Position|PipelineInput|
-|----------|--------|--------|-------------|
-|`[Switch]`|false   |named   |false        |
+|Type      |Required|Position|PipelineInput|Aliases     |
+|----------|--------|--------|-------------|------------|
+|`[Switch]`|false   |named   |false        |showcqt_axis|
 
 
 
----
 #### **ShowScaleFontColorExpression**
 
 Specify font color expression.
@@ -481,19 +478,18 @@ Default value is st(0, (midi(f)-59.5)/12); st(1, if(between(ld(0),0,1), 0.5-0.5*
 
 
 
-|Type      |Required|Position|PipelineInput|
-|----------|--------|--------|-------------|
-|`[String]`|false   |21      |false        |
+|Type      |Required|Position|PipelineInput|Aliases          |
+|----------|--------|--------|-------------|-----------------|
+|`[String]`|false   |21      |false        |showcqt_fontcolor|
+
+
 
 
 
 ---
+
+
 ### Syntax
 ```PowerShell
 Extension/ShowScale.RoughDraft.Extension.ps1 -ShowScale [[-ShowScaleSize] <String>] [[-ShowScaleBarGraphHeight] <Int32>] [[-ShowScaleAxisHeight] <Int32>] [[-ShowScaleSonogramHeight] <Int32>] [[-ShowScaleSonogramVolume] <String>] [[-ShowScaleBarGraphVolume] <String>] [[-ShowScaleSonogramGamma] <Double>] [[-ShowScaleBarGraphGamma] <Double>] [[-ShowScaleBarGraphTransparency] <Double>] [[-ShowScaleTimeclamp] <Double>] [[-ShowScaleAttack] <Double>] [[-ShowScaleBaseFrequency] <Double>] [[-ShowScaleEndFrequency] <Double>] [[-ShowScaleTransformLength] <String>] [[-ShowScaleTransformCount] <Int32>] [[-ShowScaleTransformPixelCount] <Int32>] [[-ShowScaleColorspace] <Int32>] [[-ShowScaleFont] <String[]>] [[-ShowScaleFontFile] <String>] [[-ShowScaleAxisFile] <String>] [-ShowScaleHideAxis] [[-ShowScaleFontColorExpression] <String>] [<CommonParameters>]
 ```
----
-
-
-
-
