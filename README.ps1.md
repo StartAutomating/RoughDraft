@@ -126,7 +126,6 @@ Set-Media .\Song.mp3 -AlbumArt .\Cover.jpg
 
 |Name                   |Description                        |
 |-----------------------|-----------------------------------|
-|ConvertTo-Gif          |Converts video to high-quality GIFs|
 |Get-FFMpeg             |Gets FFMpeg                        |
 |Get-FFPlay             |Gets FFPlay                        |
 |Get-FFProbe            |Gets FFProbe                       |
@@ -156,6 +155,7 @@ Get-FFMpeg -FilterName
 ## RoughDraft Extensions
 
 RoughDraft uses Extensions to make complex media scenarios easier work with.
+There are currently `|{@(Get-RoughDraftExtension).Length}|` extensions:
 
 ~~~PipeScript {
     Import-Module ./RoughDraft.psd1 -Global
