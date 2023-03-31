@@ -1,15 +1,26 @@
-
 Extension/Rate.rd.ext.ps1
 -------------------------
+
+
+
+
 ### Synopsis
 Adjusts the rate of media.
 
+
+
 ---
+
+
 ### Description
 
 Adjusts the playback rate of media, making it slower or faster.
 
+
+
 ---
+
+
 ### Related Links
 * [https://ffmpeg.org/ffmpeg-filters.html#setpts](https://ffmpeg.org/ffmpeg-filters.html#setpts)
 
@@ -19,7 +30,11 @@ Adjusts the playback rate of media, making it slower or faster.
 
 
 
+
+
 ---
+
+
 ### Parameters
 #### **Rate**
 
@@ -36,12 +51,11 @@ The new rate of the media.
 
 
 
+
+
 ---
-### Syntax
-```PowerShell
-Extension/Rate.rd.ext.ps1 [-Rate] <Double> [<CommonParameters>]
-```
----
+
+
 ### Notes
 This uses a variety of filters:
 
@@ -51,4 +65,10 @@ This uses a variety of filters:
 
 
 
+---
 
+
+### Syntax
+```PowerShell
+Extension/Rate.rd.ext.ps1 [-Rate] <Double> [<CommonParameters>]
+```
