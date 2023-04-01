@@ -234,6 +234,8 @@
                 $Loop = $true # imply -Loop (#81)
             }
 
+            $ExtensionsHadOutput = $false
+
             #region Handle Extensions
             Get-RoughDraftExtension -CommandName $myCmd -CanRun -ExtensionParameter $in |
                 . Get-RoughDraftExtension -Run |
@@ -242,15 +244,20 @@
                     if ($inObj.ExtensionOutput) {
                         Write-Verbose "Adding Filter Parameters from Extension '$($inObj.ExtensionCommand)'"
                         Write-Verbose "$($inObj.extensionOutput)"
-                        $FilterParams += $inObj.extensionOutput
+                        $ExtensionsHadOutput = $true
+                        $FilterParams += foreach ($extensionOutput in $inObj.ExtensionOutput) {
+                            if ($extensionOutput -is [Management.Automation.PSVariable]) {
+                                $ExecutionContext.SessionState.PSVariable.Set($extensionOutput)
+                            } else {
+                                $extensionOutput
+                            }
+                        }                        
                     }
                     if ($inObj.Done) {
                         continue nextFile
                     }
                 } }
             #endregion Handle Extensions
-
-
 
             $myAudioStreamIndex = -1
             for ($i = 0; $i -lt $audioStreams.Count; $I++) {
@@ -271,7 +278,7 @@
                 $AudioStreamIndex -lt 0) {
                 Write-Warning "More than one audio stream was found, and a default could not be selected based off of the current culture.  Use -AudioStreamIndex"
                 return
-            } elseif ($AudioStreamIndex -ge 0) {
+            } elseif ($AudioStreamIndex -ge 0 -and -not $ExtensionsHadOutput) {
                 $filterParams += "-map", "0:0" # Use default video stream
                 $filterParams += "-map", "0:$AudioStreamIndex"
             }
