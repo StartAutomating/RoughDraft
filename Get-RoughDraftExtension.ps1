@@ -1,4 +1,4 @@
-#region Piecemeal [ 0.3.10 ] : Easy Extensible Plugins for PowerShell
+#region Piecemeal [ 0.4.1 ] : Easy Extensible Plugins for PowerShell
 # Install-Module Piecemeal -Scope CurrentUser 
 # Import-Module Piecemeal -Force 
 # Install-Piecemeal -ExtensionModule 'RoughDraft' -ExtensionModuleAlias 'rd' -ExtensionTypeName 'RoughDraft.Extension' -OutputPath '.\Get-RoughDraftExtension.ps1'
@@ -614,6 +614,8 @@ function Get-RoughDraftExtension
 
                     $ExtensionDynamicParameters = [Management.Automation.RuntimeDefinedParameterDictionary]::new()
                     $Extension = $this
+                    $ExtensionMetadata = $Extension -as [Management.Automation.CommandMetaData]
+                    if (-not $ExtensionMetadata) { return $ExtensionDynamicParameters }
 
                     :nextDynamicParameter foreach ($in in @(($Extension -as [Management.Automation.CommandMetaData]).Parameters.Keys)) {
                         $attrList = [Collections.Generic.List[Attribute]]::new()
@@ -1042,12 +1044,16 @@ function Get-RoughDraftExtension
 
         if ($Force) {
             $script:RoughDraftExtensions  = $null
+            $script:RoughDraftExtensionsByName    = $null
             $script:AllCommands = @()
         }
         if (-not $script:RoughDraftExtensions)
         {
-            $script:RoughDraftExtensionsFromFiles = [Ordered]@{}
-            $script:RoughDraftExtensionsFileTimes = [Ordered]@{}
+            $script:RoughDraftExtensionsFromFiles     = [Ordered]@{}
+            $script:RoughDraftExtensionsFileTimes     = [Ordered]@{}
+            $script:RoughDraftExtensionsByName        = [Ordered]@{}
+            $script:RoughDraftExtensionsByDisplayName = [Ordered]@{}
+            $script:RoughDraftExtensionsByPattern     = [Ordered]@{}
             $script:RoughDraftExtensions =
                 @(@(
                 #region Find RoughDraftExtensions in Loaded Modules
@@ -1093,6 +1099,46 @@ function Get-RoughDraftExtension
                 $ExecutionContext.SessionState.InvokeCommand.GetCommands('*', 'Function,Alias',$true) -match $extensionFullRegex
                 #endregion Find RoughDraftExtensions in Loaded Commands
                 ) | Select-Object -Unique | Sort-Object Rank, Name)
+
+            foreach ($extCmd in $script:RoughDraftExtensions) {
+                if (-not $script:RoughDraftExtensionsByName[$extCmd.Name]) {
+                    $script:RoughDraftExtensionsByName[$extCmd.Name] = $extCmd
+                }
+                else {
+                    $script:RoughDraftExtensionsByName[$extCmd.Name] = @($script:RoughDraftExtensionsByName[$extCmd.Name]) + $extCmd
+                }
+                if ($extCmd.DisplayName) {
+                    if (-not $script:RoughDraftExtensionsByDisplayName[$extCmd.DisplayName]) {
+                        $script:RoughDraftExtensionsByDisplayName[$extCmd.DisplayName] = $extCmd
+                    }
+                    else {
+                        $script:RoughDraftExtensionsByDisplayName[$extCmd.DisplayName] = @($script:RoughDraftExtensionsByDisplayName[$extCmd.DisplayName]) + $extCmd
+                    }   
+                }
+                $ExtensionCommandAliases = @($extCmd.Attributes.AliasNames)
+                $ExtensionCommandAliasRegexes  = @($ExtensionCommandAliases -match '^/' -match '/$')
+                $ExtensionCommandNormalAliases = @($ExtensionCommandAliases -notmatch '^/')
+                if ($ExtensionCommandAliasRegexes) {
+                    foreach ($extensionAliasRegex in $ExtensionCommandAliasRegexes) {
+                        $regex = [Regex]::New($extensionAliasRegex -replace '^/' -replace '/$', 'IgnoreCase,IgnorePatternWhitespace')
+                        if (-not $script:RoughDraftExtensionsByPattern[$regex]) {
+                            $script:RoughDraftExtensionsByPattern[$regex] = $extCmd
+                        } else {
+                            $script:RoughDraftExtensionsByPattern[$regex] = @($script:RoughDraftExtensionsByPattern[$regex]) + $extCmd
+                        }
+                    }
+                }
+                if ($ExtensionCommandNormalAliases) {
+                    foreach ($extensionAlias in $ExtensionCommandNormalAliases) {
+                        if (-not $script:RoughDraftExtensionsByName[$extensionAlias]) {
+                            $script:RoughDraftExtensionsByName[$extensionAlias] = $extCmd
+                        } else {
+                            $script:RoughDraftExtensionsByName[$extensionAlias] = @($script:RoughDraftExtensionsByName[$extensionAlias]) + $extCmd
+                        }
+                    }
+                }
+                
+            }
         }
         #endregion Find Extensions
     }
@@ -1100,7 +1146,7 @@ function Get-RoughDraftExtension
     process {
 
         if ($ExtensionPath) {
-            @(foreach ($_ in Get-ChildItem -Recurse -Path $ExtensionPath -File) {
+            @(foreach ($_ in Get-ChildItem -Recurse:$($ExtensionPath -notmatch '^\.[\\/]') -Path $ExtensionPath -File) {
                 if ($_.Name -notmatch $extensionFullRegex) { continue }
                 if ($CommandName -or $ExtensionName) {
                     ConvertToExtension $_ |
@@ -1118,14 +1164,34 @@ function Get-RoughDraftExtension
                 # This section can be updated by using Install-Piecemeal -ForeachObject
                 #endregion Install-Piecemeal -ForeachObject
         } elseif ($CommandName -or $ExtensionName) {
-            $script:RoughDraftExtensions |
-                . WhereExtends $CommandName |                
-                OutputExtension
+            if (-not $CommandName -and -not $like -and -not $Match) {
+                foreach ($exn in $ExtensionName) {
+                    if ($script:RoughDraftExtensionsByName[$exn]) {
+                        $script:RoughDraftExtensionsByName[$exn] | OutputExtension
+                    }
+                    if ($script:RoughDraftExtensionsByDisplayName[$exn]) {
+                        $script:RoughDraftExtensionsByDisplayName[$exn] | OutputExtension
+                    }
+                    if ($script:RoughDraftExtensionsByPattern.Count) {
+                        foreach ($patternAndValue in $script:RoughDraftExtensionsByPattern.GetEnumerator()) {
+                            if ($patternAndValue.Key.IsMatch($exn)) {
+                                $patternAndValue.Value | OutputExtension
+                            }
+                        }
+                        $script:RoughDraftExtensionsByDisplayName[$exn]
+                    }
+                }                
+            } else {
+                $script:RoughDraftExtensions |
+                    . WhereExtends $CommandName |
+                    OutputExtension
+            }
+            
         } else {
             $script:RoughDraftExtensions | 
                 OutputExtension
         }
     }
 }
-#endregion Piecemeal [ 0.3.10 ] : Easy Extensible Plugins for PowerShell
+#endregion Piecemeal [ 0.4.1 ] : Easy Extensible Plugins for PowerShell
 
