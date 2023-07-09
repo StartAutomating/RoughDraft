@@ -237,8 +237,7 @@
             $ExtensionsHadOutput = $false
 
             #region Handle Extensions
-            Get-RoughDraftExtension -CommandName $myCmd -CanRun -ExtensionParameter $in |
-                . Get-RoughDraftExtension -Run |
+            Get-RoughDraftExtension -CommandName $myCmd -Run -ExtensionParameter $in |                
                 . { process {
                     $inObj = $_
                     if ($inObj.ExtensionOutput) {
