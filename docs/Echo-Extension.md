@@ -1,10 +1,17 @@
-
 Extension/Echo.RoughDraft.Extension.ps1
 ---------------------------------------
+
+
+
+
 ### Synopsis
 Adds echoes to audio
 
+
+
 ---
+
+
 ### Description
 
 Apply echoing to the input audio.
@@ -17,13 +24,21 @@ and the loudness of the reflected signal is the decay.
 
 Multiple echoes can have different delays and decays.
 
+
+
 ---
+
+
 ### Related Links
 * [https://ffmpeg.org/ffmpeg-filters.html#aecho](https://ffmpeg.org/ffmpeg-filters.html#aecho)
 
 
 
+
+
 ---
+
+
 ### Parameters
 #### **Echo**
 
@@ -40,7 +55,6 @@ If set, will remove a logo
 
 
 
----
 #### **EchoInputGain**
 
 Set input gain of reflected signal. Default is 0.6.
@@ -56,7 +70,6 @@ Set input gain of reflected signal. Default is 0.6.
 
 
 
----
 #### **EchoOutputGain**
 
 Set output gain of reflected signal. Default is 0.3.
@@ -72,7 +85,6 @@ Set output gain of reflected signal. Default is 0.3.
 
 
 
----
 #### **EchoDelay**
 
 Set list of time intervals in milliseconds between original signal and reflections. Allowed range for each delay is (0 - 90000.0). Default is 1000
@@ -82,13 +94,12 @@ Set list of time intervals in milliseconds between original signal and reflectio
 
 
 
-|Type        |Required|Position|PipelineInput|
-|------------|--------|--------|-------------|
-|`[Double[]]`|false   |3       |false        |
+|Type        |Required|Position|PipelineInput|Aliases   |
+|------------|--------|--------|-------------|----------|
+|`[Double[]]`|false   |3       |false        |EchoDelays|
 
 
 
----
 #### **EchoDecay**
 
 Set list of loudness of reflected signal
@@ -99,19 +110,18 @@ Allowed range for each decay is (0 - 1.0)
 
 
 
-|Type        |Required|Position|PipelineInput|
-|------------|--------|--------|-------------|
-|`[Double[]]`|false   |4       |false        |
+|Type        |Required|Position|PipelineInput|Aliases   |
+|------------|--------|--------|-------------|----------|
+|`[Double[]]`|false   |4       |false        |EchoDecays|
+
+
 
 
 
 ---
+
+
 ### Syntax
 ```PowerShell
 Extension/Echo.RoughDraft.Extension.ps1 -Echo [[-EchoInputGain] <Double>] [[-EchoOutputGain] <Double>] [[-EchoDelay] <Double[]>] [[-EchoDecay] <Double[]>] [<CommonParameters>]
 ```
----
-
-
-
-

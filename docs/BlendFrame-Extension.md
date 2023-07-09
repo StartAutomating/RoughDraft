@@ -1,10 +1,17 @@
-
 Extension/BlendFrame.RoughDraft.Extension.ps1
 ---------------------------------------------
+
+
+
+
 ### Synopsis
 BlendFrame Extension
 
+
+
 ---
+
+
 ### Description
 
 Blends Frames.
@@ -12,13 +19,21 @@ Blends Frames.
 If used with one file (Edit/Show-Media), blends successive frames.
 If used with two files, blends frames from two video streams.
 
+
+
 ---
+
+
 ### Related Links
 * [https://ffmpeg.org/ffmpeg-filters.html#blend](https://ffmpeg.org/ffmpeg-filters.html#blend)
 
 
 
+
+
 ---
+
+
 ### Parameters
 #### **BlendFrame**
 
@@ -35,7 +50,6 @@ If set, will blend frames
 
 
 
----
 #### **BlendMode**
 
 The blend mode.
@@ -96,7 +110,6 @@ Valid Values:
 
 
 
----
 #### **BlendColorMode**
 
 The blend mode for a given color
@@ -158,7 +171,6 @@ Valid Values:
 
 
 
----
 #### **BlendExpression**
 
 The blend expression
@@ -174,7 +186,6 @@ The blend expression
 
 
 
----
 #### **BlendColorExpression**
 
 One or more blend color expressions
@@ -190,7 +201,6 @@ One or more blend color expressions
 
 
 
----
 #### **BlendOpacity**
 
 The blend opacity
@@ -206,7 +216,6 @@ The blend opacity
 
 
 
----
 #### **BlendColorOpacity**
 
 One or more blend color opacities.
@@ -222,13 +231,12 @@ One or more blend color opacities.
 
 
 
+
+
 ---
+
+
 ### Syntax
 ```PowerShell
 Extension/BlendFrame.RoughDraft.Extension.ps1 -BlendFrame [[-BlendMode] <String>] [[-BlendColorMode] <String[]>] [[-BlendExpression] <String>] [[-BlendColorExpression] <String[]>] [[-BlendOpacity] <String>] [[-BlendColorOpacity] <String[]>] [<CommonParameters>]
 ```
----
-
-
-
-

@@ -1,6 +1,6 @@
 @{
     CompanyName='Start-Automating'
-    ModuleVersion='0.3.10'
+    ModuleVersion='0.4'
     ModuleToProcess='RoughDraft.psm1'
     GUID='c192ebbf-57a3-493e-bc82-da7553038794'
     Description='A Fun PowerShell Module for Multimedia'
@@ -14,6 +14,19 @@
             LicenseURI = 'https://github.com/StartAutomating/RoughDraft/blob/main/LICENSE'
             IconURI    = 'https://github.com/StartAutomating/RoughDraft/blob/main/Assets/RoughDraft.png'
             ReleaseNotes = @'
+## 0.4:
+
+* Enabled Sponsorship (please show your support) (#185)
+* Audio Visualizations now force output of video (#176)
+* ConvertTo-Gif is now an alias to Convert-Media (#71)
+* Added GifPalette Extension (#71)
+* Made Subtitle Extraction Easier (#186)
+* New Extensions:
+  * Crossfade (#18)
+  * NoLogo (#17)
+
+---
+
 ## 0.3.10:
 
 * Fixing -Resize (Fixes #179)

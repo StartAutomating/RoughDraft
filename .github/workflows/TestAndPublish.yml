@@ -584,6 +584,8 @@ jobs:
         id: RoughDraft
         with: 
           CommitMessage: Running RoughDraft [skip ci]
+      - name: UsePiecemeal
+        uses: StartAutomating/Piecemeal@main
       - name: BuildPipeScript
         uses: StartAutomating/PipeScript@main
       - name: UseEZOut

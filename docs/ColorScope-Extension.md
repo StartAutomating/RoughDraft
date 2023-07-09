@@ -1,21 +1,36 @@
-
 Extension/ColorScope.RoughDraft.Extension.ps1
 ---------------------------------------------
+
+
+
+
 ### Synopsis
 Colorscope extension
 
+
+
 ---
+
+
 ### Description
 
 Display CIE color diagram with pixels overlaid onto it.
 
+
+
 ---
+
+
 ### Related Links
 * [https://ffmpeg.org/ffmpeg-filters.html#ciescope](https://ffmpeg.org/ffmpeg-filters.html#ciescope)
 
 
 
+
+
 ---
+
+
 ### Parameters
 #### **ColorScope**
 
@@ -26,13 +41,12 @@ If set, will display a video ColorScope
 
 
 
-|Type      |Required|Position|PipelineInput|
-|----------|--------|--------|-------------|
-|`[Switch]`|true    |named   |false        |
+|Type      |Required|Position|PipelineInput|Aliases |
+|----------|--------|--------|-------------|--------|
+|`[Switch]`|true    |named   |false        |ciescope|
 
 
 
----
 #### **ColorScopeColorSystem**
 
 Set color system for the ColorScope
@@ -67,7 +81,6 @@ Valid Values:
 
 
 
----
 #### **ColorScopeColorGamut**
 
 Sets the gamut for the ColorScope
@@ -102,7 +115,6 @@ Valid Values:
 
 
 
----
 #### **ColorScopeCIESystem**
 
 Set CIE system for the ColorScope
@@ -126,7 +138,6 @@ Valid Values:
 
 
 
----
 #### **ColorScopeSize**
 
 Set ciescope size, by default set to 512.
@@ -142,7 +153,6 @@ Set ciescope size, by default set to 512.
 
 
 
----
 #### **ColorScopeIntensity**
 
 Set intensity used to map input pixel values to CIE diagram.
@@ -158,7 +168,6 @@ Set intensity used to map input pixel values to CIE diagram.
 
 
 
----
 #### **ColorScopeContrast**
 
 Set contrast used to draw tongue colors that are out of active color system gamut.
@@ -174,7 +183,6 @@ Set contrast used to draw tongue colors that are out of active color system gamu
 
 
 
----
 #### **ColorScopeNoGamutCorrection**
 
 Correct gamma displayed on scope, by default enabled.
@@ -190,7 +198,6 @@ Correct gamma displayed on scope, by default enabled.
 
 
 
----
 #### **ColorScopeShowWhitePoint**
 
 Show white point on CIE diagram, by default disabled.
@@ -206,7 +213,6 @@ Show white point on CIE diagram, by default disabled.
 
 
 
----
 #### **ColorScopeInputGamma**
 
 Set input gamma. Used only with XYZ input color space
@@ -222,13 +228,12 @@ Set input gamma. Used only with XYZ input color space
 
 
 
+
+
 ---
+
+
 ### Syntax
 ```PowerShell
 Extension/ColorScope.RoughDraft.Extension.ps1 -ColorScope [[-ColorScopeColorSystem] <String>] [[-ColorScopeColorGamut] <String>] [[-ColorScopeCIESystem] <String>] [[-ColorScopeSize] <Int32>] [[-ColorScopeIntensity] <String>] [[-ColorScopeContrast] <String>] [-ColorScopeNoGamutCorrection] [-ColorScopeShowWhitePoint] [[-ColorScopeInputGamma] <String>] [<CommonParameters>]
 ```
----
-
-
-
-

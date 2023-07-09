@@ -213,7 +213,6 @@
                 @(foreach ($canRunExt in $CanRunExtensions) { $canRunExt.ExtensionCommand.DisplayName }) -join '_'
             $OutputPath = $inputItem.Fullname.Substring(0, $inputItem.FullName.Length - $inputItem.Extension.Length) + "_$paramSetShortName" + $inputItem.Extension
         }
-        $uro = $ExecutionContext.SessionState.Path.GetUnresolvedProviderPathFromPSPath($OutputPath)
 
 
         $mediaInfo = Get-Media -InputPath $ri
@@ -339,12 +338,33 @@
                 '-i'
                 $in.FullName                
             }
-        )
+        )    
 
-        
+        #region Handle Extensions
+        Get-RoughDraftExtension -CommandName $myCmd -CanRun -ExtensionParameter $myParams |
+            . Get-RoughDraftExtension -Run |
+            . { process {
+                $inObj = $_
+                if ($inObj.ExtensionOutput) {
+                    Write-Verbose "Adding Filter Parameters from Extension '$($inObj.extensionCommand)'"
+                    Write-Verbose "$($inObj.extensionOutput)"
+                    $FilterParams += foreach ($extensionOutput in $inObj.ExtensionOutput) {
+                        if ($extensionOutput -is [Management.Automation.PSVariable]) {
+                            $ExecutionContext.SessionState.PSVariable.Set($extensionOutput)
+                        } else {
+                            $extensionOutput
+                        }
+                    }                
+                }
+                if ($inObj.Done) {
+                    continue nextFile
+                }
+            } }
+        #endregion Handle Extensions
 
         $outParams = @(
-            if ($OutputPath -and $uro) {
+            if ($OutputPath) {
+                $uro = $ExecutionContext.SessionState.Path.GetUnresolvedProviderPathFromPSPath($OutputPath)
                 $uro
                 '-y'
             } elseif ($OutputMap.Count) {
@@ -359,23 +379,7 @@
                 }
                 '-y'
             }
-        )
-
-        #region Handle Extensions
-        Get-RoughDraftExtension -CommandName $myCmd -CanRun -ExtensionParameter $myParams |
-            . Get-RoughDraftExtension -Run |
-            . { process {
-                $inObj = $_
-                if ($inObj.ExtensionOutput) {
-                    Write-Verbose "Adding Filter Parameters from Extension '$($inObj.extensionCommand)'"
-                    Write-Verbose "$($inObj.extensionOutput)"
-                    $FilterParams += $inObj.extensionOutput
-                }
-                if ($inObj.Done) {
-                    continue nextFile
-                }
-            } }
-        #endregion Handle Extensions
+        )        
 
 
         $allVideoFilters = @()

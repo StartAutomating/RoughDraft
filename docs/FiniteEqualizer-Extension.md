@@ -1,21 +1,36 @@
-
 Extension/FiniteEqualizer.RoughDraft.Extension.ps1
 --------------------------------------------------
+
+
+
+
 ### Synopsis
 Finite Equalizer
 
+
+
 ---
+
+
 ### Description
 
 Finite Impulse Response Equalizer.
 
+
+
 ---
+
+
 ### Related Links
 * [https://ffmpeg.org/ffmpeg-filters.html#firequalizer](https://ffmpeg.org/ffmpeg-filters.html#firequalizer)
 
 
 
+
+
 ---
+
+
 ### Examples
 #### EXAMPLE 1
 ```PowerShell
@@ -26,7 +41,11 @@ entry(1000, 0); entry(1001,-INF); entry(1e6+1000,0)
 '@
 ```
 
+
+
 ---
+
+
 ### Parameters
 #### **FiniteEqualizer**
 
@@ -43,7 +62,6 @@ Finite Impulse Response Equalizer.
 
 
 
----
 #### **FiniteEqualizerGain**
 
 Set gain curve equation (in dB).
@@ -82,13 +100,12 @@ same as gain_interpolate, but smoother
 
 
 
-|Type      |Required|Position|PipelineInput|
-|----------|--------|--------|-------------|
-|`[String]`|false   |1       |false        |
+|Type      |Required|Position|PipelineInput|Aliases          |
+|----------|--------|--------|-------------|-----------------|
+|`[String]`|false   |1       |false        |firequalizer_gain|
 
 
 
----
 #### **FiniteEqualizerGainentry**
 
 Set gain entry for gain_interpolate function. The expression can contain functions:
@@ -103,13 +120,12 @@ This option is also available as command.
 
 
 
-|Type      |Required|Position|PipelineInput|
-|----------|--------|--------|-------------|
-|`[String]`|false   |2       |false        |
+|Type      |Required|Position|PipelineInput|Aliases                |
+|----------|--------|--------|-------------|-----------------------|
+|`[String]`|false   |2       |false        |firequalizer_gain_entry|
 
 
 
----
 #### **FiniteEqualizerDelay**
 
 Set filter delay in seconds. Higher value means more accurate.
@@ -119,13 +135,12 @@ Set filter delay in seconds. Higher value means more accurate.
 
 
 
-|Type      |Required|Position|PipelineInput|
-|----------|--------|--------|-------------|
-|`[Double]`|false   |3       |false        |
+|Type      |Required|Position|PipelineInput|Aliases           |
+|----------|--------|--------|-------------|------------------|
+|`[Double]`|false   |3       |false        |firequalizer_delay|
 
 
 
----
 #### **FiniteEqualizerAccuracy**
 
 Set filter accuracy in Hz. Lower value means more accurate.
@@ -135,13 +150,12 @@ Set filter accuracy in Hz. Lower value means more accurate.
 
 
 
-|Type      |Required|Position|PipelineInput|
-|----------|--------|--------|-------------|
-|`[Double]`|false   |4       |false        |
+|Type      |Required|Position|PipelineInput|Aliases              |
+|----------|--------|--------|-------------|---------------------|
+|`[Double]`|false   |4       |false        |firequalizer_accuracy|
 
 
 
----
 #### **FiniteEqualizerWindowFunction**
 
 set window function
@@ -166,13 +180,12 @@ Valid Values:
 
 
 
-|Type      |Required|Position|PipelineInput|
-|----------|--------|--------|-------------|
-|`[String]`|false   |5       |false        |
+|Type      |Required|Position|PipelineInput|Aliases           |
+|----------|--------|--------|-------------|------------------|
+|`[String]`|false   |5       |false        |firequalizer_wfunc|
 
 
 
----
 #### **FiniteEqualizerFixed**
 
 If enabled, use fixed number of audio samples. This improves speed when filtering with large delay. Default is disabled.
@@ -182,13 +195,12 @@ If enabled, use fixed number of audio samples. This improves speed when filterin
 
 
 
-|Type      |Required|Position|PipelineInput|
-|----------|--------|--------|-------------|
-|`[Switch]`|false   |named   |false        |
+|Type      |Required|Position|PipelineInput|Aliases           |
+|----------|--------|--------|-------------|------------------|
+|`[Switch]`|false   |named   |false        |firequalizer_fixed|
 
 
 
----
 #### **FiniteEqualizerMultichannel**
 
 Enable multichannels evaluation on gain.
@@ -198,13 +210,12 @@ Enable multichannels evaluation on gain.
 
 
 
-|Type      |Required|Position|PipelineInput|
-|----------|--------|--------|-------------|
-|`[Switch]`|false   |named   |false        |
+|Type      |Required|Position|PipelineInput|Aliases           |
+|----------|--------|--------|-------------|------------------|
+|`[Switch]`|false   |named   |false        |firequalizer_multi|
 
 
 
----
 #### **FiniteEqualizerZeroPhase**
 
 Enable zero phase mode by subtracting timestamp to compensate delay.
@@ -214,13 +225,12 @@ Enable zero phase mode by subtracting timestamp to compensate delay.
 
 
 
-|Type      |Required|Position|PipelineInput|
-|----------|--------|--------|-------------|
-|`[Switch]`|false   |named   |false        |
+|Type      |Required|Position|PipelineInput|Aliases                |
+|----------|--------|--------|-------------|-----------------------|
+|`[Switch]`|false   |named   |false        |firequalizer_zero_phase|
 
 
 
----
 #### **FiniteEqualizerScale**
 
 set gain scale
@@ -239,13 +249,12 @@ Valid Values:
 
 
 
-|Type      |Required|Position|PipelineInput|
-|----------|--------|--------|-------------|
-|`[String]`|false   |6       |false        |
+|Type      |Required|Position|PipelineInput|Aliases           |
+|----------|--------|--------|-------------|------------------|
+|`[String]`|false   |6       |false        |firequalizer_scale|
 
 
 
----
 #### **FiniteEqualizerDumpfile**
 
 set dump file
@@ -255,13 +264,12 @@ set dump file
 
 
 
-|Type      |Required|Position|PipelineInput|
-|----------|--------|--------|-------------|
-|`[String]`|false   |7       |false        |
+|Type      |Required|Position|PipelineInput|Aliases              |
+|----------|--------|--------|-------------|---------------------|
+|`[String]`|false   |7       |false        |firequalizer_dumpfile|
 
 
 
----
 #### **FiniteEqualizerDumpscale**
 
 set dump scale
@@ -271,13 +279,12 @@ set dump scale
 
 
 
-|Type      |Required|Position|PipelineInput|
-|----------|--------|--------|-------------|
-|`[Switch]`|false   |named   |false        |
+|Type      |Required|Position|PipelineInput|Aliases               |
+|----------|--------|--------|-------------|----------------------|
+|`[Switch]`|false   |named   |false        |firequalizer_dumpscale|
 
 
 
----
 #### **FiniteEqualizerFft2**
 
 Enable 2-channel convolution using complex FFT.
@@ -287,13 +294,12 @@ Enable 2-channel convolution using complex FFT.
 
 
 
-|Type      |Required|Position|PipelineInput|
-|----------|--------|--------|-------------|
-|`[Switch]`|false   |named   |false        |
+|Type      |Required|Position|PipelineInput|Aliases          |
+|----------|--------|--------|-------------|-----------------|
+|`[Switch]`|false   |named   |false        |firequalizer_fft2|
 
 
 
----
 #### **FiniteEqualizerMinphase**
 
 Enable minimum phase impulse response.
@@ -303,19 +309,18 @@ Enable minimum phase impulse response.
 
 
 
-|Type      |Required|Position|PipelineInput|
-|----------|--------|--------|-------------|
-|`[Switch]`|false   |named   |false        |
+|Type      |Required|Position|PipelineInput|Aliases               |
+|----------|--------|--------|-------------|----------------------|
+|`[Switch]`|false   |named   |false        |firequalizer_min_phase|
+
+
 
 
 
 ---
+
+
 ### Syntax
 ```PowerShell
 Extension/FiniteEqualizer.RoughDraft.Extension.ps1 -FiniteEqualizer [[-FiniteEqualizerGain] <String>] [[-FiniteEqualizerGainentry] <String>] [[-FiniteEqualizerDelay] <Double>] [[-FiniteEqualizerAccuracy] <Double>] [[-FiniteEqualizerWindowFunction] <String>] [-FiniteEqualizerFixed] [-FiniteEqualizerMultichannel] [-FiniteEqualizerZeroPhase] [[-FiniteEqualizerScale] <String>] [[-FiniteEqualizerDumpfile] <String>] [-FiniteEqualizerDumpscale] [-FiniteEqualizerFft2] [-FiniteEqualizerMinphase] [<CommonParameters>]
 ```
----
-
-
-
-

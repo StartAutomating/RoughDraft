@@ -1,14 +1,26 @@
 Send-Media
 ----------
+
+
+
+
 ### Synopsis
 Sends Media
 
+
+
 ---
+
+
 ### Description
 
 Sends media from inputs to a stream.
 
+
+
 ---
+
+
 ### Parameters
 #### **InputType**
 
@@ -25,7 +37,6 @@ The input device type.
 
 
 
----
 #### **InputDevice**
 
 The input device identifier.  This will be specific to a given input type.
@@ -41,7 +52,6 @@ The input device identifier.  This will be specific to a given input type.
 
 
 
----
 #### **InputPath**
 
 The input path.
@@ -57,7 +67,6 @@ The input path.
 
 
 
----
 #### **InitialArgumentList**
 
 A list of initial arguments to FFMpeg.
@@ -67,13 +76,12 @@ A list of initial arguments to FFMpeg.
 
 
 
-|Type        |Required|Position|PipelineInput|
-|------------|--------|--------|-------------|
-|`[String[]]`|false   |named   |false        |
+|Type        |Required|Position|PipelineInput|Aliases                                                      |
+|------------|--------|--------|-------------|-------------------------------------------------------------|
+|`[String[]]`|false   |named   |false        |InitArgs<br/>InitArg<br/>InitialArguments<br/>InitialArgument|
 
 
 
----
 #### **FFMpegArgument**
 
 A list of additional arguments to FFMpeg.
@@ -83,13 +91,12 @@ A list of additional arguments to FFMpeg.
 
 
 
-|Type        |Required|Position|PipelineInput|
-|------------|--------|--------|-------------|
-|`[String[]]`|false   |named   |false        |
+|Type        |Required|Position|PipelineInput|Aliases                                           |
+|------------|--------|--------|-------------|--------------------------------------------------|
+|`[String[]]`|false   |named   |false        |Arguments<br/>Argument<br/>ArgumentList<br/>FFArgs|
 
 
 
----
 #### **OutputUri**
 
 The outputURI where the broadcast will be sent.
@@ -99,13 +106,12 @@ The outputURI where the broadcast will be sent.
 
 
 
-|Type   |Required|Position|PipelineInput        |
-|-------|--------|--------|---------------------|
-|`[Uri]`|false   |named   |true (ByPropertyName)|
+|Type   |Required|Position|PipelineInput        |Aliases  |
+|-------|--------|--------|---------------------|---------|
+|`[Uri]`|false   |named   |true (ByPropertyName)|OutputUrl|
 
 
 
----
 #### **OutputProtocol**
 
 The protocol used to broadcast the output.
@@ -121,7 +127,6 @@ The protocol used to broadcast the output.
 
 
 
----
 #### **AsJob**
 
 If set, will run as a background job.
@@ -137,7 +142,6 @@ If set, will run as a background job.
 
 
 
----
 #### **ThrottleLimit**
 
 If set, will limit the number of background jobs to a throttle limit.
@@ -155,7 +159,6 @@ Throttling is only available if running on PowerShell Core.
 
 
 
----
 #### **FFMpegPath**
 
 The path to FFMpeg.exe.  By default, checks in the path.
@@ -171,7 +174,6 @@ The path to FFMpeg.exe.  By default, checks in the path.
 
 
 
----
 #### **Loop**
 
 If set, this will loop the input source.
@@ -187,7 +189,6 @@ If set, this will loop the input source.
 
 
 
----
 #### **LoopCount**
 
 If set, this will loop the input source any number of times.
@@ -203,7 +204,11 @@ If set, this will loop the input source any number of times.
 
 
 
+
+
 ---
+
+
 ### Syntax
 ```PowerShell
 Send-Media [-InputType <String>] [-InputDevice <String>] [-InitialArgumentList <String[]>] [-FFMpegArgument <String[]>] [-OutputUri <Uri>] [-OutputProtocol <String>] [-AsJob] [-ThrottleLimit <Int32>] [-FFMpegPath <String>] [-Loop] [-LoopCount <Int32>] [<CommonParameters>]
@@ -211,4 +216,3 @@ Send-Media [-InputType <String>] [-InputDevice <String>] [-InitialArgumentList <
 ```PowerShell
 Send-Media [-InputPath <String>] [-InitialArgumentList <String[]>] [-FFMpegArgument <String[]>] [-OutputUri <Uri>] [-OutputProtocol <String>] [-AsJob] [-ThrottleLimit <Int32>] [-FFMpegPath <String>] [-Loop] [-LoopCount <Int32>] [<CommonParameters>]
 ```
----

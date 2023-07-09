@@ -1,21 +1,36 @@
-
 Extension/BlackDetect.RoughDraft.Extension.ps1
 ----------------------------------------------
+
+
+
+
 ### Synopsis
 Detect black periods in a video.
 
+
+
 ---
+
+
 ### Description
 
 Detects black periods within a video, using the blackdetect filter.
 
+
+
 ---
+
+
 ### Related Links
 * [https://ffmpeg.org/ffmpeg-filters.html#blackdetect](https://ffmpeg.org/ffmpeg-filters.html#blackdetect)
 
 
 
+
+
 ---
+
+
 ### Parameters
 #### **BlackDetect**
 
@@ -32,7 +47,6 @@ If set, will find black within a video.
 
 
 
----
 #### **BlackDetectDuration**
 
 The duration of darkness this is considered black.  By default, a half second.
@@ -48,7 +62,6 @@ The duration of darkness this is considered black.  By default, a half second.
 
 
 
----
 #### **BlackDetectThreshold**
 
 The perctange of the screen blackness that constitutes a cut.  By default, 15%.
@@ -66,13 +79,12 @@ They are often very dark grey instead.
 
 
 
+
+
 ---
+
+
 ### Syntax
 ```PowerShell
 Extension/BlackDetect.RoughDraft.Extension.ps1 -BlackDetect [[-BlackDetectDuration] <TimeSpan>] [[-BlackDetectThreshold] <Double>] [<CommonParameters>]
 ```
----
-
-
-
-

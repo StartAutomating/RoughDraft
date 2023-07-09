@@ -1,15 +1,26 @@
-
 Extension/SilenceDetect.RoughDraft.Extension.ps1
 ------------------------------------------------
+
+
+
+
 ### Synopsis
 Detects silence in an audio stream
 
+
+
 ---
+
+
 ### Description
 
 Detects silence in an audio stream, using the silencedetect filter.
 
+
+
 ---
+
+
 ### Related Links
 * [https://ffmpeg.org/ffmpeg-filters.html#silencedetect
 
@@ -27,7 +38,11 @@ It's an extension.md)
 
 
 
+
+
 ---
+
+
 ### Parameters
 #### **SilenceDetect**
 
@@ -44,7 +59,6 @@ If set, will find silences within an audio.
 
 
 
----
 #### **SilenceDuration**
 
 The duration of quiet that is considered silence.  By default a half second.
@@ -60,7 +74,6 @@ The duration of quiet that is considered silence.  By default a half second.
 
 
 
----
 #### **NoiseThreshold**
 
 The noise tolerance (by default 0.1%)  
@@ -72,13 +85,12 @@ Otherwise, it will be treated as a decibal value.
 
 
 
-|Type      |Required|Position|PipelineInput        |
-|----------|--------|--------|---------------------|
-|`[Double]`|false   |2       |true (ByPropertyName)|
+|Type      |Required|Position|PipelineInput        |Aliases            |
+|----------|--------|--------|---------------------|-------------------|
+|`[Double]`|false   |2       |true (ByPropertyName)|Noise<br/>Tolerance|
 
 
 
----
 #### **AnyChannel**
 
 If set, will find silence within any channel of audio 
@@ -89,19 +101,18 @@ If set, will find silence within any channel of audio
 
 
 
-|Type      |Required|Position|PipelineInput        |
-|----------|--------|--------|---------------------|
-|`[Switch]`|false   |named   |true (ByPropertyName)|
+|Type      |Required|Position|PipelineInput        |Aliases   |
+|----------|--------|--------|---------------------|----------|
+|`[Switch]`|false   |named   |true (ByPropertyName)|Mono<br/>M|
+
+
 
 
 
 ---
+
+
 ### Syntax
 ```PowerShell
 Extension/SilenceDetect.RoughDraft.Extension.ps1 -SilenceDetect [[-SilenceDuration] <TimeSpan>] [[-NoiseThreshold] <Double>] [-AnyChannel] [<CommonParameters>]
 ```
----
-
-
-
-

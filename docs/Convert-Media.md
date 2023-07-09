@@ -1,14 +1,26 @@
 Convert-Media
 -------------
+
+
+
+
 ### Synopsis
 Converts media from one format to another
 
+
+
 ---
+
+
 ### Description
 
 Converts media from one format to another, using ffmpeg
 
+
+
 ---
+
+
 ### Related Links
 * [Get-Media](Get-Media.md)
 
@@ -18,7 +30,11 @@ Converts media from one format to another, using ffmpeg
 
 
 
+
+
 ---
+
+
 ### Examples
 #### EXAMPLE 1
 ```PowerShell
@@ -30,7 +46,11 @@ Convert-Media "a.mov" "a.mp4"
 Convert-Media "a.jpg" ".mp4" -Duration "00:15:00" -Tune stillimage -Preset ultrafast
 ```
 
+
+
 ---
+
+
 ### Parameters
 #### **InputPath**
 
@@ -41,13 +61,12 @@ The input path
 
 
 
-|Type      |Required|Position|PipelineInput        |
-|----------|--------|--------|---------------------|
-|`[String]`|true    |1       |true (ByPropertyName)|
+|Type      |Required|Position|PipelineInput        |Aliases |
+|----------|--------|--------|---------------------|--------|
+|`[String]`|true    |1       |true (ByPropertyName)|Fullname|
 
 
 
----
 #### **OutputPath**
 
 The output path
@@ -63,7 +82,6 @@ The output path
 
 
 
----
 #### **Codec**
 
 The codec used for the conversion.  If the file is a video or image file, then this will be treated as a the video codec.
@@ -79,7 +97,6 @@ The codec used for the conversion.  If the file is a video or image file, then t
 
 
 
----
 #### **FFMpegPath**
 
 The path to FFMpeg.exe.  By default, checks in Program Files\FFMpeg\. Download FFMpeg from http://ffmpeg.org/.
@@ -95,7 +112,6 @@ The path to FFMpeg.exe.  By default, checks in Program Files\FFMpeg\. Download F
 
 
 
----
 #### **FrameRate**
 
 The frame rate of the outputted video
@@ -111,7 +127,6 @@ The frame rate of the outputted video
 
 
 
----
 #### **CopyAudio**
 
 If set, will copy the audio streams and will not re-encode them.
@@ -127,7 +142,6 @@ If set, will copy the audio streams and will not re-encode them.
 
 
 
----
 #### **AudioCodec**
 
 If provided, will re-encode the audio using the given codec
@@ -143,7 +157,6 @@ If provided, will re-encode the audio using the given codec
 
 
 
----
 #### **AudioFilter**
 
 If provided, will apply audio filters to the file
@@ -159,7 +172,6 @@ If provided, will apply audio filters to the file
 
 
 
----
 #### **VideoFilter**
 
 If provided, will apply video filters to the file
@@ -175,7 +187,6 @@ If provided, will apply video filters to the file
 
 
 
----
 #### **AudioQuality**
 
 If provided, will attempt to encode the audio at a variable quality level. Values differ per encoder.
@@ -191,7 +202,6 @@ If provided, will attempt to encode the audio at a variable quality level. Value
 
 
 
----
 #### **AudioBitrate**
 
 If provided, will encode the audio at a given bitrate
@@ -207,7 +217,6 @@ If provided, will encode the audio at a given bitrate
 
 
 
----
 #### **AudioStreamIndex**
 
 Used to specify the audio stream.  If more than one audio stream is found and this parameter is not supplied, Convert-Media will attempt to find an audio stream that matches the current culture language.
@@ -223,7 +232,6 @@ Used to specify the audio stream.  If more than one audio stream is found and th
 
 
 
----
 #### **AudioChannelCount**
 
 The audio channel count.  This can be used to force 5.1 channel audio (which is supported by only a few codecs) into stereo audio (which is supported by almost all codecs)
@@ -239,7 +247,6 @@ The audio channel count.  This can be used to force 5.1 channel audio (which is 
 
 
 
----
 #### **MetaData**
 
 The metadata to put in the converted file
@@ -255,7 +262,6 @@ The metadata to put in the converted file
 
 
 
----
 #### **Start**
 
 The start time within the media. 
@@ -266,13 +272,12 @@ This maps to the ffmpeg parameter -ss.
 
 
 
-|Type        |Required|Position|PipelineInput        |
-|------------|--------|--------|---------------------|
-|`[TimeSpan]`|false   |3       |true (ByPropertyName)|
+|Type        |Required|Position|PipelineInput        |Aliases  |
+|------------|--------|--------|---------------------|---------|
+|`[TimeSpan]`|false   |3       |true (ByPropertyName)|StartTime|
 
 
 
----
 #### **End**
 
 The end time within the media. 
@@ -283,13 +288,12 @@ This maps to the ffmpeg parameter -to.
 
 
 
-|Type        |Required|Position|PipelineInput        |
-|------------|--------|--------|---------------------|
-|`[TimeSpan]`|false   |4       |true (ByPropertyName)|
+|Type        |Required|Position|PipelineInput        |Aliases|
+|------------|--------|--------|---------------------|-------|
+|`[TimeSpan]`|false   |4       |true (ByPropertyName)|EndTime|
 
 
 
----
 #### **Duration**
 
 The duration of the media.
@@ -306,7 +310,6 @@ This maps to the ffmpeg parameter -t.
 
 
 
----
 #### **Preset**
 
 If provided, will use an ffmpeg preset to encode.
@@ -323,7 +326,6 @@ This maps to the --preset parameter in ffmpeg.
 
 
 
----
 #### **Tune**
 
 If provided, will use a set of encoder settings to "tune" the video encoder.
@@ -340,7 +342,6 @@ Not supported by all codecs.  This maps to the --tune parameter in ffmpeg.
 
 
 
----
 #### **VideoQuality**
 
 If provided, will attempt to encode the video at a variable quality level, between 1 (highest) and 31 (lowest).
@@ -356,7 +357,6 @@ If provided, will attempt to encode the video at a variable quality level, betwe
 
 
 
----
 #### **VideoCodec**
 
 If provided, will re-encode the file with a given video codec.  This affects the input files, where -Codec affects the final output.
@@ -372,7 +372,6 @@ If provided, will re-encode the file with a given video codec.  This affects the
 
 
 
----
 #### **VideoFrameCount**
 
 If provided, will output a specified number of frames from the video file
@@ -388,7 +387,6 @@ If provided, will output a specified number of frames from the video file
 
 
 
----
 #### **PixelFormat**
 
 If provided, will use a specific pixel format for video and image output.  This maps to the -pix_fmt parameter in ffmpeg.
@@ -398,13 +396,12 @@ If provided, will use a specific pixel format for video and image output.  This 
 
 
 
-|Type      |Required|Position|PipelineInput        |
-|----------|--------|--------|---------------------|
-|`[String]`|false   |named   |true (ByPropertyName)|
+|Type      |Required|Position|PipelineInput        |Aliases|
+|----------|--------|--------|---------------------|-------|
+|`[String]`|false   |named   |true (ByPropertyName)|Pix_Fmt|
 
 
 
----
 #### **AsJob**
 
 If set, will run inside of a background job
@@ -420,7 +417,6 @@ If set, will run inside of a background job
 
 
 
----
 #### **FFMpegArgument**
 
 Any additional arguments to FFMpeg
@@ -436,7 +432,6 @@ Any additional arguments to FFMpeg
 
 
 
----
 #### **Loop**
 
 If set, this will loop the input source.
@@ -452,7 +447,6 @@ If set, this will loop the input source.
 
 
 
----
 #### **LoopCount**
 
 If set, this will loop the input source any number of times.
@@ -468,7 +462,11 @@ If set, this will loop the input source any number of times.
 
 
 
+
+
 ---
+
+
 ### Outputs
 * [IO.FileInfo](https://learn.microsoft.com/en-us/dotnet/api/System.IO.FileInfo)
 
@@ -478,9 +476,12 @@ If set, this will loop the input source any number of times.
 
 
 
+
+
 ---
+
+
 ### Syntax
 ```PowerShell
 Convert-Media [-InputPath] <String> [-OutputPath] <String> [-Codec <String>] [-FFMpegPath <String>] [-FrameRate <String>] [-CopyAudio] [-AudioCodec <String>] [-AudioFilter <String[]>] [-VideoFilter <String[]>] [-AudioQuality <Int32>] [-AudioBitrate <String>] [-AudioStreamIndex <Int32>] [-AudioChannelCount <UInt32>] [-MetaData <IDictionary>] [[-Start] <TimeSpan>] [[-End] <TimeSpan>] [[-Duration] <TimeSpan>] [-Preset <String>] [-Tune <String>] [-VideoQuality <Int32>] [-VideoCodec <String>] [-VideoFrameCount <UInt32>] [-PixelFormat <String>] [-AsJob] [-FFMpegArgument <String[]>] [-Loop] [-LoopCount <Int32>] [<CommonParameters>]
 ```
----

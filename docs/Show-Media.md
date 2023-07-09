@@ -1,20 +1,36 @@
 Show-Media
 ----------
+
+
+
+
 ### Synopsis
 Shows media
 
+
+
 ---
+
+
 ### Description
 
 Shows media, using FFPlay
 
+
+
 ---
+
+
 ### Related Links
 * [Get-RoughDraftExtension](Get-RoughDraftExtension.md)
 
 
 
+
+
 ---
+
+
 ### Examples
 #### EXAMPLE 1
 ```PowerShell
@@ -54,7 +70,11 @@ $showSplat.DrawTextText = $showText
 Show-Media @showSplat -Fullscreen -Verbose
 ```
 
+
+
 ---
+
+
 ### Parameters
 #### **InputPath**
 
@@ -65,13 +85,12 @@ The input path.
 
 
 
-|Type      |Required|Position|PipelineInput        |
-|----------|--------|--------|---------------------|
-|`[String]`|false   |1       |true (ByPropertyName)|
+|Type      |Required|Position|PipelineInput        |Aliases |
+|----------|--------|--------|---------------------|--------|
+|`[String]`|false   |1       |true (ByPropertyName)|Fullname|
 
 
 
----
 #### **AsJob**
 
 If set, will run as a background job.
@@ -87,7 +106,6 @@ If set, will run as a background job.
 
 
 
----
 #### **Resolution**
 
 The resolution of the media player.  This can be passed down to extensions that generate video.
@@ -103,7 +121,6 @@ The resolution of the media player.  This can be passed down to extensions that 
 
 
 
----
 #### **ShowMode**
 
 The display mode.  When input is audio, defaults to 'Waves'
@@ -127,7 +144,6 @@ Valid Values:
 
 
 
----
 #### **Volume**
 
 The volume.
@@ -143,7 +159,6 @@ The volume.
 
 
 
----
 #### **Fullscreen**
 
 If set, will run fullscreen
@@ -159,7 +174,6 @@ If set, will run fullscreen
 
 
 
----
 #### **KeepOpen**
 
 If set, will keep the player open after the media finishes.
@@ -175,7 +189,6 @@ If set, will keep the player open after the media finishes.
 
 
 
----
 #### **DoNotAutoRotate**
 
 If set, will not automatically rotate video.
@@ -185,13 +198,12 @@ If set, will not automatically rotate video.
 
 
 
-|Type      |Required|Position|PipelineInput        |
-|----------|--------|--------|---------------------|
-|`[Switch]`|false   |named   |true (ByPropertyName)|
+|Type      |Required|Position|PipelineInput        |Aliases     |
+|----------|--------|--------|---------------------|------------|
+|`[Switch]`|false   |named   |true (ByPropertyName)|NoAutoRotate|
 
 
 
----
 #### **Left**
 
 Set the x position for the left of the window
@@ -207,7 +219,6 @@ Set the x position for the left of the window
 
 
 
----
 #### **Top**
 
 Set the y position for the top of the window
@@ -223,7 +234,6 @@ Set the y position for the top of the window
 
 
 
----
 #### **Width**
 
 If set, will force the displayed width.
@@ -239,7 +249,6 @@ If set, will force the displayed width.
 
 
 
----
 #### **Height**
 
 If set, will force the displayed height.
@@ -255,7 +264,6 @@ If set, will force the displayed height.
 
 
 
----
 #### **NoDisplay**
 
 If set, will not display anything.
@@ -271,7 +279,6 @@ If set, will not display anything.
 
 
 
----
 #### **NoBorder**
 
 If set, will run in a borderless window.
@@ -287,7 +294,6 @@ If set, will run in a borderless window.
 
 
 
----
 #### **AlwaysOnTop**
 
 If set, will run in a window that is always on top.
@@ -303,7 +309,6 @@ If set, will run in a window that is always on top.
 
 
 
----
 #### **Loop**
 
 If set, this will loop the input source.
@@ -319,7 +324,6 @@ If set, this will loop the input source.
 
 
 
----
 #### **LoopCount**
 
 If set, this will loop the input source any number of times.
@@ -335,7 +339,6 @@ If set, this will loop the input source any number of times.
 
 
 
----
 #### **ThreadCount**
 
 The number of threads to use for decoding and filtering.
@@ -351,7 +354,6 @@ The number of threads to use for decoding and filtering.
 
 
 
----
 #### **FFPlayPath**
 
 The path to FFPlay.  If not provided, this will be automatically detected.
@@ -367,7 +369,11 @@ The path to FFPlay.  If not provided, this will be automatically detected.
 
 
 
+
+
 ---
+
+
 ### Outputs
 * [Nullable](https://learn.microsoft.com/en-us/dotnet/api/System.Nullable)
 
@@ -377,9 +383,12 @@ The path to FFPlay.  If not provided, this will be automatically detected.
 
 
 
+
+
 ---
+
+
 ### Syntax
 ```PowerShell
 Show-Media [[-InputPath] <String>] [-AsJob] [-Resolution <String>] [-ShowMode <String>] [-Volume <Int32>] [-Fullscreen] [-KeepOpen] [-DoNotAutoRotate] [-Left <Int32>] [-Top <Int32>] [-Width <Int32>] [-Height <Int32>] [-NoDisplay] [-NoBorder] [-AlwaysOnTop] [-Loop] [-LoopCount <Int32>] [-ThreadCount <String>] [-FFPlayPath <String>] [<CommonParameters>]
 ```
----

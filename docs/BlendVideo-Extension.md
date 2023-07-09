@@ -1,21 +1,36 @@
-
 Extension/BlendVideo.RoughDraft.Extension.ps1
 ---------------------------------------------
+
+
+
+
 ### Synopsis
 BlendVideo Extension
 
+
+
 ---
+
+
 ### Description
 
 Blends Multiple Videos
 
+
+
 ---
+
+
 ### Related Links
 * [https://ffmpeg.org/ffmpeg-filters.html#blend](https://ffmpeg.org/ffmpeg-filters.html#blend)
 
 
 
+
+
 ---
+
+
 ### Parameters
 #### **BlendVideo**
 
@@ -32,7 +47,6 @@ If set, will blend multiple videos
 
 
 
----
 #### **BlendMode**
 
 The blend mode.
@@ -93,7 +107,6 @@ Valid Values:
 
 
 
----
 #### **BlendColorMode**
 
 One or more blend modes for a given color.
@@ -155,7 +168,6 @@ Valid Values:
 
 
 
----
 #### **BlendExpression**
 
 The blend expression
@@ -171,7 +183,6 @@ The blend expression
 
 
 
----
 #### **BlendColorExpression**
 
 The blend expressions for a given color
@@ -187,7 +198,6 @@ The blend expressions for a given color
 
 
 
----
 #### **BlendOpacity**
 
 The blend opacity.
@@ -203,7 +213,6 @@ The blend opacity.
 
 
 
----
 #### **BlendColorOpacity**
 
 The blend opacity for a given color.
@@ -219,13 +228,12 @@ The blend opacity for a given color.
 
 
 
+
+
 ---
+
+
 ### Syntax
 ```PowerShell
 Extension/BlendVideo.RoughDraft.Extension.ps1 -BlendVideo [[-BlendMode] <String>] [[-BlendColorMode] <String[]>] [[-BlendExpression] <String>] [[-BlendColorExpression] <String[]>] [[-BlendOpacity] <String>] [[-BlendColorOpacity] <String[]>] [<CommonParameters>]
 ```
----
-
-
-
-

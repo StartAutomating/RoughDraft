@@ -12,9 +12,6 @@ param()
 . $psScriptRoot\Show-Media.ps1
 . $psScriptRoot\Split-Media.ps1
 
-
-. $psScriptRoot\ConvertTo-Gif.ps1
-
 . $psScriptRoot\Get-FFMpeg.ps1
 . $psScriptRoot\Get-FFPlay.ps1
 . $psScriptRoot\Get-FFProbe.ps1
@@ -23,10 +20,12 @@ param()
 . $psScriptRoot\Use-FFPlay.ps1
 . $psScriptRoot\Use-FFProbe.ps1
 #endregion RoughDraft FFMPEG wrappers
+
+Set-Alias ConvertTo-Gif Convert-Media
+
 . $psScriptRoot\Get-RoughDraftExtension.ps1
 
 . $psScriptRoot\RoughDraft.Irregular.ps1
-
 
 #region Import Parts
 

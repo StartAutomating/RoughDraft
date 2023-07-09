@@ -1,27 +1,47 @@
 New-Media
 ---------
+
+
+
+
 ### Synopsis
 Creates media files
 
+
+
 ---
+
+
 ### Description
 
 Creates audio and video files using ffmpeg
 
+
+
 ---
+
+
 ### Related Links
 * [Get-RoughDraftExtension](Get-RoughDraftExtension.md)
 
 
 
+
+
 ---
+
+
 ### Examples
 #### EXAMPLE 1
 ```PowerShell
 New-Media -OutputPath ".\RGBTestSource.mp4" -TestSource "RGBTestSrc"
 ```
 
+
+
 ---
+
+
 ### Parameters
 #### **OutputPath**
 
@@ -38,7 +58,6 @@ The output path
 
 
 
----
 #### **Duration**
 
 The duration.  By default, one second.
@@ -54,7 +73,6 @@ The duration.  By default, one second.
 
 
 
----
 #### **Resolution**
 
 The resolution.  This can be independently handled by an extension.
@@ -70,7 +88,6 @@ The resolution.  This can be independently handled by an extension.
 
 
 
----
 #### **PixelFormat**
 
 If provided, will use a specific pixel format for video and image output.  This maps to the -pix_fmt parameter in ffmpeg.
@@ -80,13 +97,12 @@ If provided, will use a specific pixel format for video and image output.  This 
 
 
 
-|Type      |Required|Position|PipelineInput        |
-|----------|--------|--------|---------------------|
-|`[String]`|false   |4       |true (ByPropertyName)|
+|Type      |Required|Position|PipelineInput        |Aliases|
+|----------|--------|--------|---------------------|-------|
+|`[String]`|false   |4       |true (ByPropertyName)|Pix_Fmt|
 
 
 
----
 #### **FFMpegArgument**
 
 A list of additional arguments to FFMpeg.
@@ -96,13 +112,12 @@ A list of additional arguments to FFMpeg.
 
 
 
-|Type        |Required|Position|PipelineInput|
-|------------|--------|--------|-------------|
-|`[String[]]`|false   |5       |false        |
+|Type        |Required|Position|PipelineInput|Aliases                                |
+|------------|--------|--------|-------------|---------------------------------------|
+|`[String[]]`|false   |5       |false        |Arguments<br/>Argument<br/>ArgumentList|
 
 
 
----
 #### **AsJob**
 
 If set, will create the media in a background job.
@@ -118,7 +133,6 @@ If set, will create the media in a background job.
 
 
 
----
 #### **ThrottleLimit**
 
 If set, will limit the number of background jobs to a throttle limit.
@@ -136,7 +150,11 @@ Throttling is only available if running on PowerShell Core.
 
 
 
+
+
 ---
+
+
 ### Outputs
 * [IO.FileInfo](https://learn.microsoft.com/en-us/dotnet/api/System.IO.FileInfo)
 
@@ -146,9 +164,12 @@ Throttling is only available if running on PowerShell Core.
 
 
 
+
+
 ---
+
+
 ### Syntax
 ```PowerShell
 New-Media [-OutputPath] <String> [[-Duration] <TimeSpan>] [[-Resolution] <String>] [[-PixelFormat] <String>] [[-FFMpegArgument] <String[]>] [-AsJob] [[-ThrottleLimit] <Int32>] [<CommonParameters>]
 ```
----

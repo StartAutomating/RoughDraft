@@ -1,21 +1,36 @@
-
 Extension/ShowSpectrum.RoughDraft.Extension.ps1
 -----------------------------------------------
+
+
+
+
 ### Synopsis
 Shows the audio spectrum
 
+
+
 ---
+
+
 ### Description
 
 Shows the audio spectrum, using the [showspectrum filter](https://ffmpeg.org/ffmpeg-filters.html#showspectrum)
 
+
+
 ---
+
+
 ### Related Links
 * [https://ffmpeg.org/ffmpeg-filters.html#showspectrum](https://ffmpeg.org/ffmpeg-filters.html#showspectrum)
 
 
 
+
+
 ---
+
+
 ### Examples
 #### EXAMPLE 1
 ```PowerShell
@@ -27,7 +42,11 @@ Show-Media -InputPath .\a.mp3 -ShowSpectrum
 Edit-Media -InputPath .\a.mp3 -ShowSpectrum -OutputPath .\a.mp4
 ```
 
+
+
 ---
+
+
 ### Parameters
 #### **ShowSpectrum**
 
@@ -44,7 +63,6 @@ If set, will show a line waveform
 
 
 
----
 #### **ShowSpectrumMode**
 
 Set display mode
@@ -61,13 +79,12 @@ Valid Values:
 
 
 
-|Type      |Required|Position|PipelineInput|
-|----------|--------|--------|-------------|
-|`[String]`|false   |1       |false        |
+|Type      |Required|Position|PipelineInput|Aliases          |
+|----------|--------|--------|-------------|-----------------|
+|`[String]`|false   |1       |false        |showspectrum_mode|
 
 
 
----
 #### **ShowSpectrumSlide**
 
 Specify how the spectrum should slide along the window.
@@ -95,13 +112,12 @@ Valid Values:
 
 
 
-|Type      |Required|Position|PipelineInput|
-|----------|--------|--------|-------------|
-|`[String]`|false   |2       |false        |
+|Type      |Required|Position|PipelineInput|Aliases           |
+|----------|--------|--------|-------------|------------------|
+|`[String]`|false   |2       |false        |showspectrum_slide|
 
 
 
----
 #### **ShowSpectrumSize**
 
 Specify the video size for the output.  Default value is 600x200
@@ -111,13 +127,12 @@ Specify the video size for the output.  Default value is 600x200
 
 
 
-|Type      |Required|Position|PipelineInput|
-|----------|--------|--------|-------------|
-|`[String]`|false   |3       |false        |
+|Type      |Required|Position|PipelineInput|Aliases          |
+|----------|--------|--------|-------------|-----------------|
+|`[String]`|false   |3       |false        |showspectrum_size|
 
 
 
----
 #### **ShowSpectrumColorMode**
 
 Show spectrum color mode
@@ -163,13 +178,12 @@ Valid Values:
 
 
 
-|Type      |Required|Position|PipelineInput|
-|----------|--------|--------|-------------|
-|`[String]`|false   |4       |false        |
+|Type      |Required|Position|PipelineInput|Aliases           |
+|----------|--------|--------|-------------|------------------|
+|`[String]`|false   |4       |false        |showspectrum_color|
 
 
 
----
 #### **ShowSpectrumColorScale**
 
 Specify scale used for calculating intensity color values.
@@ -190,13 +204,12 @@ Valid Values:
 
 
 
-|Type      |Required|Position|PipelineInput|
-|----------|--------|--------|-------------|
-|`[String]`|false   |5       |false        |
+|Type      |Required|Position|PipelineInput|Aliases           |
+|----------|--------|--------|-------------|------------------|
+|`[String]`|false   |5       |false        |showspectrum_scale|
 
 
 
----
 #### **ShowSpectrumFrequencyScale**
 
 Specify frequency scale.
@@ -213,13 +226,12 @@ Valid Values:
 
 
 
-|Type      |Required|Position|PipelineInput|
-|----------|--------|--------|-------------|
-|`[String]`|false   |6       |false        |
+|Type      |Required|Position|PipelineInput|Aliases            |
+|----------|--------|--------|-------------|-------------------|
+|`[String]`|false   |6       |false        |showspectrum_fscale|
 
 
 
----
 #### **ShowSpectrumSaturation**
 
 Set saturation modifier for displayed colors.
@@ -232,13 +244,12 @@ Saturation must be in [-10.0, 10.0] range. Default value is 1.
 
 
 
-|Type      |Required|Position|PipelineInput|
-|----------|--------|--------|-------------|
-|`[Double]`|false   |7       |false        |
+|Type      |Required|Position|PipelineInput|Aliases                |
+|----------|--------|--------|-------------|-----------------------|
+|`[Double]`|false   |7       |false        |showspectrum_saturation|
 
 
 
----
 #### **ShowSpectrumWindowFunction**
 
 Set window function.
@@ -274,13 +285,12 @@ Valid Values:
 
 
 
-|Type      |Required|Position|PipelineInput|
-|----------|--------|--------|-------------|
-|`[String]`|false   |8       |false        |
+|Type      |Required|Position|PipelineInput|Aliases              |
+|----------|--------|--------|-------------|---------------------|
+|`[String]`|false   |8       |false        |showspectrum_win_func|
 
 
 
----
 #### **ShowSpectrumOrientation**
 
 Set orientation of time vs frequency axis
@@ -297,13 +307,12 @@ Valid Values:
 
 
 
-|Type      |Required|Position|PipelineInput|
-|----------|--------|--------|-------------|
-|`[String]`|false   |9       |false        |
+|Type      |Required|Position|PipelineInput|Aliases                 |
+|----------|--------|--------|-------------|------------------------|
+|`[String]`|false   |9       |false        |showspectrum_orientation|
 
 
 
----
 #### **ShowSpectrumOverlap**
 
 Set ratio of overlap window. Default value is 0. When value is 1 overlap is set to recommended size for specific window function currently used.
@@ -313,13 +322,12 @@ Set ratio of overlap window. Default value is 0. When value is 1 overlap is set 
 
 
 
-|Type      |Required|Position|PipelineInput|
-|----------|--------|--------|-------------|
-|`[Double]`|false   |10      |false        |
+|Type      |Required|Position|PipelineInput|Aliases             |
+|----------|--------|--------|-------------|--------------------|
+|`[Double]`|false   |10      |false        |showspectrum_overlap|
 
 
 
----
 #### **ShowSpectrumGain**
 
 Set scale gain for calculating intensity color values. Default value is 1.
@@ -329,13 +337,12 @@ Set scale gain for calculating intensity color values. Default value is 1.
 
 
 
-|Type      |Required|Position|PipelineInput|
-|----------|--------|--------|-------------|
-|`[Double]`|false   |11      |false        |
+|Type      |Required|Position|PipelineInput|Aliases          |
+|----------|--------|--------|-------------|-----------------|
+|`[Double]`|false   |11      |false        |showspectrum_gain|
 
 
 
----
 #### **ShowSpectrumData**
 
 Set which data to display. Can be magnitude, default or phase, or unwrapped phase: uphase.
@@ -353,13 +360,12 @@ Valid Values:
 
 
 
-|Type      |Required|Position|PipelineInput|
-|----------|--------|--------|-------------|
-|`[String]`|false   |12      |false        |
+|Type      |Required|Position|PipelineInput|Aliases          |
+|----------|--------|--------|-------------|-----------------|
+|`[String]`|false   |12      |false        |showspectrum_data|
 
 
 
----
 #### **ShowSpectrumColorRotation**
 
 Set color rotation, must be in [-1.0, 1.0] range. Default value is 0
@@ -369,13 +375,12 @@ Set color rotation, must be in [-1.0, 1.0] range. Default value is 0
 
 
 
-|Type      |Required|Position|PipelineInput|
-|----------|--------|--------|-------------|
-|`[Double]`|false   |13      |false        |
+|Type      |Required|Position|PipelineInput|Aliases              |
+|----------|--------|--------|-------------|---------------------|
+|`[Double]`|false   |13      |false        |showspectrum_rotation|
 
 
 
----
 #### **ShowSpectrumStartFrequency**
 
 Set start frequency from which to display spectrogram.
@@ -385,13 +390,12 @@ Set start frequency from which to display spectrogram.
 
 
 
-|Type     |Required|Position|PipelineInput|
-|---------|--------|--------|-------------|
-|`[Int32]`|false   |14      |false        |
+|Type     |Required|Position|PipelineInput|Aliases                                          |
+|---------|--------|--------|-------------|-------------------------------------------------|
+|`[Int32]`|false   |14      |false        |showspectrum_start<br/>ShowSpectrumBeginFrequency|
 
 
 
----
 #### **ShowSpectrumStopFrequency**
 
 Set stop frequency to which to display spectrogram.
@@ -401,13 +405,12 @@ Set stop frequency to which to display spectrogram.
 
 
 
-|Type     |Required|Position|PipelineInput|
-|---------|--------|--------|-------------|
-|`[Int32]`|false   |15      |false        |
+|Type     |Required|Position|PipelineInput|Aliases                                       |
+|---------|--------|--------|-------------|----------------------------------------------|
+|`[Int32]`|false   |15      |false        |showspectrum_stop<br/>ShowSpectrumEndFrequency|
 
 
 
----
 #### **ShowSpectrumFramesPerSecond**
 
 Set upper frame rate limit. Default is auto, unlimited.
@@ -417,13 +420,12 @@ Set upper frame rate limit. Default is auto, unlimited.
 
 
 
-|Type      |Required|Position|PipelineInput|
-|----------|--------|--------|-------------|
-|`[String]`|false   |16      |false        |
+|Type      |Required|Position|PipelineInput|Aliases                             |
+|----------|--------|--------|-------------|------------------------------------|
+|`[String]`|false   |16      |false        |showspectrum_fps<br/>ShowSpectrumFPS|
 
 
 
----
 #### **ShowSpectrumLegend**
 
 Draw time and frequency axes and legends.
@@ -433,13 +435,12 @@ Draw time and frequency axes and legends.
 
 
 
-|Type      |Required|Position|PipelineInput|
-|----------|--------|--------|-------------|
-|`[Switch]`|false   |named   |false        |
+|Type      |Required|Position|PipelineInput|Aliases            |
+|----------|--------|--------|-------------|-------------------|
+|`[Switch]`|false   |named   |false        |showspectrum_legend|
 
 
 
----
 #### **ShowSpectrumDynamicRange**
 
 Set dynamic range used to calculate intensity color values. Default is 120 dBFS. Allowed range is from 10 to 200
@@ -449,13 +450,12 @@ Set dynamic range used to calculate intensity color values. Default is 120 dBFS.
 
 
 
-|Type     |Required|Position|PipelineInput|
-|---------|--------|--------|-------------|
-|`[Int32]`|false   |17      |false        |
+|Type     |Required|Position|PipelineInput|Aliases            |
+|---------|--------|--------|-------------|-------------------|
+|`[Int32]`|false   |17      |false        |showspectrum_drange|
 
 
 
----
 #### **ShowSpectrumLimit**
 
 Set upper limit of input audio samples volume in dBFS. Default is 0 dBFS. Allowed range is from -100 to 100.
@@ -465,13 +465,12 @@ Set upper limit of input audio samples volume in dBFS. Default is 0 dBFS. Allowe
 
 
 
-|Type     |Required|Position|PipelineInput|
-|---------|--------|--------|-------------|
-|`[Int32]`|false   |18      |false        |
+|Type     |Required|Position|PipelineInput|Aliases           |
+|---------|--------|--------|-------------|------------------|
+|`[Int32]`|false   |18      |false        |showspectrum_limit|
 
 
 
----
 #### **ShowSpectrumOpacity**
 
 Set opacity strength when using pixel format output with alpha component.
@@ -481,19 +480,18 @@ Set opacity strength when using pixel format output with alpha component.
 
 
 
-|Type      |Required|Position|PipelineInput|
-|----------|--------|--------|-------------|
-|`[Double]`|false   |19      |false        |
+|Type      |Required|Position|PipelineInput|Aliases             |
+|----------|--------|--------|-------------|--------------------|
+|`[Double]`|false   |19      |false        |showspectrum_opacity|
+
+
 
 
 
 ---
+
+
 ### Syntax
 ```PowerShell
 Extension/ShowSpectrum.RoughDraft.Extension.ps1 -ShowSpectrum [[-ShowSpectrumMode] <String>] [[-ShowSpectrumSlide] <String>] [[-ShowSpectrumSize] <String>] [[-ShowSpectrumColorMode] <String>] [[-ShowSpectrumColorScale] <String>] [[-ShowSpectrumFrequencyScale] <String>] [[-ShowSpectrumSaturation] <Double>] [[-ShowSpectrumWindowFunction] <String>] [[-ShowSpectrumOrientation] <String>] [[-ShowSpectrumOverlap] <Double>] [[-ShowSpectrumGain] <Double>] [[-ShowSpectrumData] <String>] [[-ShowSpectrumColorRotation] <Double>] [[-ShowSpectrumStartFrequency] <Int32>] [[-ShowSpectrumStopFrequency] <Int32>] [[-ShowSpectrumFramesPerSecond] <String>] [-ShowSpectrumLegend] [[-ShowSpectrumDynamicRange] <Int32>] [[-ShowSpectrumLimit] <Int32>] [[-ShowSpectrumOpacity] <Double>] [<CommonParameters>]
 ```
----
-
-
-
-

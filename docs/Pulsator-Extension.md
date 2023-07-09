@@ -1,21 +1,36 @@
-
 Extension/Pulsator.RoughDraft.Extension.ps1
 -------------------------------------------
+
+
+
+
 ### Synopsis
 Pulsator Effect
 
+
+
 ---
+
+
 ### Description
 
 Adds an Pulsator Effect to the audio
 
+
+
 ---
+
+
 ### Related Links
 * [https://ffmpeg.org/ffmpeg-filters.html#apulsator](https://ffmpeg.org/ffmpeg-filters.html#apulsator)
 
 
 
+
+
 ---
+
+
 ### Examples
 #### EXAMPLE 1
 ```PowerShell
@@ -27,7 +42,11 @@ Edit-Media -InputPath "a.mp3" -Pulsator
 Show-Media -InputPath "a.mp3" -Pulsator
 ```
 
+
+
 ---
+
+
 ### Parameters
 #### **Pulsator**
 
@@ -44,7 +63,6 @@ If set, will add a pulsator effect to the audio
 
 
 
----
 #### **PulsatorLevelIn**
 
 Set pulsator input gain. By default it is 1. Range is [0.015625 - 64].
@@ -60,7 +78,6 @@ Set pulsator input gain. By default it is 1. Range is [0.015625 - 64].
 
 
 
----
 #### **PulsatorLevelOut**
 
 Set pulsator output gain. By default it is 1. Range is [0.015625 - 64].
@@ -76,7 +93,6 @@ Set pulsator output gain. By default it is 1. Range is [0.015625 - 64].
 
 
 
----
 #### **PulsatorMode**
 
 Set waveform shape the LFO will use. Can be one of: sine, triangle, square, sawup or sawdown. Default is sine.
@@ -102,7 +118,6 @@ Valid Values:
 
 
 
----
 #### **PulsatorAmount**
 
 Set modulation. Define how much of original signal is affected by the LFO.
@@ -118,7 +133,6 @@ Set modulation. Define how much of original signal is affected by the LFO.
 
 
 
----
 #### **PulsatorOffsetLeft**
 
 Set pulsator left channel offset. Default is 0. Allowed range is [0 - 1].
@@ -134,7 +148,6 @@ Set pulsator left channel offset. Default is 0. Allowed range is [0 - 1].
 
 
 
----
 #### **PulsatorOffsetRight**
 
 Set pulsator right channel offset. Default is 0.5. Allowed range is [0 - 1].
@@ -150,7 +163,6 @@ Set pulsator right channel offset. Default is 0.5. Allowed range is [0 - 1].
 
 
 
----
 #### **PulsatorWidth**
 
 Set pulse width. Default is 1. Allowed range is [0 - 2]
@@ -166,7 +178,6 @@ Set pulse width. Default is 1. Allowed range is [0 - 2]
 
 
 
----
 #### **PulsatorTimingMode**
 
 Set possible timing mode. Can be one of: bpm, ms or hz. Default is hz.
@@ -190,7 +201,6 @@ Valid Values:
 
 
 
----
 #### **PulsatorBPM**
 
 Set pulsator bpm. Default is 120. Allowed range is [30 - 300]. Only used if timing is set to bpm.
@@ -200,13 +210,12 @@ Set pulsator bpm. Default is 120. Allowed range is [30 - 300]. Only used if timi
 
 
 
-|Type      |Required|Position|PipelineInput|
-|----------|--------|--------|-------------|
-|`[Double]`|false   |9       |false        |
+|Type      |Required|Position|PipelineInput|Aliases               |
+|----------|--------|--------|-------------|----------------------|
+|`[Double]`|false   |9       |false        |PulsatorBeatsPerMinute|
 
 
 
----
 #### **PulsatorMS**
 
 Set pulsator ms. Default is 500. Allowed range is [10 - 2000]. Only used if timing is set to ms.
@@ -216,13 +225,12 @@ Set pulsator ms. Default is 500. Allowed range is [10 - 2000]. Only used if timi
 
 
 
-|Type      |Required|Position|PipelineInput|
-|----------|--------|--------|-------------|
-|`[Double]`|false   |10      |false        |
+|Type      |Required|Position|PipelineInput|Aliases             |
+|----------|--------|--------|-------------|--------------------|
+|`[Double]`|false   |10      |false        |PulsatorMilliseconds|
 
 
 
----
 #### **PulsatorHZ**
 
 Set frequency in Hz. Default is 2. Allowed range is [0.01 - 100]. Only used if timing is set to hz.
@@ -232,19 +240,18 @@ Set frequency in Hz. Default is 2. Allowed range is [0.01 - 100]. Only used if t
 
 
 
-|Type      |Required|Position|PipelineInput|
-|----------|--------|--------|-------------|
-|`[Double]`|false   |11      |false        |
+|Type      |Required|Position|PipelineInput|Aliases          |
+|----------|--------|--------|-------------|-----------------|
+|`[Double]`|false   |11      |false        |PulsatorFrequency|
+
+
 
 
 
 ---
+
+
 ### Syntax
 ```PowerShell
 Extension/Pulsator.RoughDraft.Extension.ps1 -Pulsator [[-PulsatorLevelIn] <Double>] [[-PulsatorLevelOut] <Double>] [[-PulsatorMode] <String>] [[-PulsatorAmount] <String>] [[-PulsatorOffsetLeft] <Double>] [[-PulsatorOffsetRight] <Double>] [[-PulsatorWidth] <Double>] [[-PulsatorTimingMode] <String>] [[-PulsatorBPM] <Double>] [[-PulsatorMS] <Double>] [[-PulsatorHZ] <Double>] [<CommonParameters>]
 ```
----
-
-
-
-

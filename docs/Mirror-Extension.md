@@ -1,15 +1,26 @@
-
 Extension/Mirror.RoughDraft.Extension.ps1
 -----------------------------------------
+
+
+
+
 ### Synopsis
 Mirror Extension
 
+
+
 ---
+
+
 ### Description
 
 Mirrors video vertical, horizontally, or in quadrants.
 
+
+
 ---
+
+
 ### Related Links
 * [https://ffmpeg.org/ffmpeg-filters.html#crop](https://ffmpeg.org/ffmpeg-filters.html#crop)
 
@@ -31,7 +42,11 @@ Mirrors video vertical, horizontally, or in quadrants.
 
 
 
+
+
 ---
+
+
 ### Examples
 #### EXAMPLE 1
 ```PowerShell
@@ -48,7 +63,11 @@ Edit-Media -InputPath "a.mp4" -Mirror -HorizontalMirror # Mirror horitonztally
 Edit-Media -InputPath "a.mp4" -Mirror -QuadMirror       # Mirror four quadrants.
 ```
 
+
+
 ---
+
+
 ### Parameters
 #### **Mirror**
 
@@ -65,7 +84,6 @@ If set, will mirror video.  If no other parameters are provided, will mirror hor
 
 
 
----
 #### **QuadMirror**
 
 If set, will create a QuadMirror, mirroring the upper left.
@@ -81,7 +99,6 @@ If set, will create a QuadMirror, mirroring the upper left.
 
 
 
----
 #### **HorizontalMirror**
 
 If set, will create a horizontal mirror instead of a vertical mirror.
@@ -97,13 +114,12 @@ If set, will create a horizontal mirror instead of a vertical mirror.
 
 
 
+
+
 ---
+
+
 ### Syntax
 ```PowerShell
 Extension/Mirror.RoughDraft.Extension.ps1 -Mirror [-QuadMirror] [-HorizontalMirror] [<CommonParameters>]
 ```
----
-
-
-
-

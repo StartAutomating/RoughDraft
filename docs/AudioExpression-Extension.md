@@ -1,10 +1,17 @@
-
 Extension/AudioExpression.RoughDraft.Extension.ps1
 --------------------------------------------------
+
+
+
+
 ### Synopsis
 Evaluates Audio Expressions
 
+
+
 ---
+
+
 ### Description
 
 Generate or Modify an audio signal using an expression.
@@ -21,7 +28,11 @@ All Expressions can use the following variables:
 |nb_out_channels|input and output number of channels|
 |val(CH)        |the value of input channel with number CH|
 
+
+
 ---
+
+
 ### Related Links
 * [https://ffmpeg.org/ffmpeg-filters.html#aevalsrc](https://ffmpeg.org/ffmpeg-filters.html#aevalsrc)
 
@@ -31,7 +42,11 @@ All Expressions can use the following variables:
 
 
 
+
+
 ---
+
+
 ### Examples
 #### EXAMPLE 1
 ```PowerShell
@@ -53,7 +68,11 @@ New-Media -AudioExpression "0.5*sin(PI*(720-2.5/2)*t)","0.5*cos(2*PI*(360+2.5/2)
 Edit-Media -AudioExpression "val(0)","-val(1)" -InputPath .\Test.mp3
 ```
 
+
+
 ---
+
+
 ### Parameters
 #### **AudioExpression**
 
@@ -70,7 +89,6 @@ The audio expression.
 
 
 
----
 #### **AudioExpressionChannelLayout**
 
 Set the channel layout. The number of channels in the specified layout must be equal to the number of specified expressions.
@@ -86,7 +104,6 @@ Set the channel layout. The number of channels in the specified layout must be e
 
 
 
----
 #### **AudioExpressionSampleCount**
 
 Set the number of samples per channel per each output frame, default to 1024.
@@ -102,7 +119,6 @@ Set the number of samples per channel per each output frame, default to 1024.
 
 
 
----
 #### **AudioExpressionSampleRate**
 
 Specify the sample rate, default to 44100.
@@ -118,13 +134,12 @@ Specify the sample rate, default to 44100.
 
 
 
+
+
 ---
+
+
 ### Syntax
 ```PowerShell
 Extension/AudioExpression.RoughDraft.Extension.ps1 [-AudioExpression] <String[]> [[-AudioExpressionChannelLayout] <String[]>] [[-AudioExpressionSampleCount] <Int32>] [[-AudioExpressionSampleRate] <Int32>] [<CommonParameters>]
 ```
----
-
-
-
-

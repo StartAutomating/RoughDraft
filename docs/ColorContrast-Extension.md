@@ -1,21 +1,36 @@
-
 Extension/ColorContrast.RoughDraft.Extension.ps1
 ------------------------------------------------
+
+
+
+
 ### Synopsis
 ColorContrast Extension
 
+
+
 ---
+
+
 ### Description
 
 Adjusts color contrast
 
+
+
 ---
+
+
 ### Related Links
 * [https://ffmpeg.org/ffmpeg-filters.html#colorcontrast](https://ffmpeg.org/ffmpeg-filters.html#colorcontrast)
 
 
 
+
+
 ---
+
+
 ### Parameters
 #### **ColorContrast**
 
@@ -32,7 +47,6 @@ If set, will adjust color contrast
 
 
 
----
 #### **RedCyanColorContrast**
 
 The constrast between Red and Cyan.  Valid between -1 and 1.
@@ -48,7 +62,6 @@ The constrast between Red and Cyan.  Valid between -1 and 1.
 
 
 
----
 #### **GreenMagentaColorContrast**
 
 The constrast between Green and Magenta.  Valid between -1 and 1.
@@ -64,7 +77,6 @@ The constrast between Green and Magenta.  Valid between -1 and 1.
 
 
 
----
 #### **BlueYellowColorContrast**
 
 The constrast between Blue and Yellow.  Valid between -1 and 1.
@@ -80,7 +92,6 @@ The constrast between Blue and Yellow.  Valid between -1 and 1.
 
 
 
----
 #### **RedCyanConstrastWeight**
 
 The weight of the constrast between Red and Cyan.  Valid between 0 and 1.
@@ -96,7 +107,6 @@ The weight of the constrast between Red and Cyan.  Valid between 0 and 1.
 
 
 
----
 #### **GreenMagentaConstrastWeight**
 
 The weight of the constrast between Green and Magenta.  Valid between 0 and 1.
@@ -112,7 +122,6 @@ The weight of the constrast between Green and Magenta.  Valid between 0 and 1.
 
 
 
----
 #### **BlueYellowConstrastWeight**
 
 The weight of the constrast between Blue and Yellow.  Valid between 0 and 1.
@@ -128,7 +137,6 @@ The weight of the constrast between Blue and Yellow.  Valid between 0 and 1.
 
 
 
----
 #### **ColorContrastPreserveLightness**
 
 The amount of lightness that should be preserved.  Valid between 0 and 1.
@@ -144,13 +152,12 @@ The amount of lightness that should be preserved.  Valid between 0 and 1.
 
 
 
+
+
 ---
+
+
 ### Syntax
 ```PowerShell
 Extension/ColorContrast.RoughDraft.Extension.ps1 -ColorContrast [[-RedCyanColorContrast] <Single>] [[-GreenMagentaColorContrast] <Single>] [[-BlueYellowColorContrast] <Single>] [[-RedCyanConstrastWeight] <Single>] [[-GreenMagentaConstrastWeight] <Single>] [[-BlueYellowConstrastWeight] <Single>] [[-ColorContrastPreserveLightness] <Single>] [<CommonParameters>]
 ```
----
-
-
-
-

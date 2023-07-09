@@ -1,21 +1,36 @@
-
 Extension/EdgeDetect.RoughDraft.Extension.ps1
 ---------------------------------------------
+
+
+
+
 ### Synopsis
 EdgeDetect Extension
 
+
+
 ---
+
+
 ### Description
 
 Uses the edgedetect filter to outline edges found in a video.
 
+
+
 ---
+
+
 ### Related Links
 * [https://ffmpeg.org/ffmpeg-filters.html#edgedetect](https://ffmpeg.org/ffmpeg-filters.html#edgedetect)
 
 
 
+
+
 ---
+
+
 ### Parameters
 #### **EdgeDetect**
 
@@ -26,13 +41,12 @@ If set, will detect edges
 
 
 
-|Type      |Required|Position|PipelineInput|
-|----------|--------|--------|-------------|
-|`[Switch]`|true    |named   |false        |
+|Type      |Required|Position|PipelineInput|Aliases                   |
+|----------|--------|--------|-------------|--------------------------|
+|`[Switch]`|true    |named   |false        |DetectEdge<br/>DetectEdges|
 
 
 
----
 #### **EdgeLowThreshold**
 
 The low threshold.  By default, ~0.86
@@ -48,7 +62,6 @@ The low threshold.  By default, ~0.86
 
 
 
----
 #### **EdgeHighThreshold**
 
 The high threshold.  By default ~.196
@@ -64,7 +77,6 @@ The high threshold.  By default ~.196
 
 
 
----
 #### **EdgeDetectMode**
 
 The edge detection mode.  By default, wires.
@@ -88,13 +100,12 @@ Valid Values:
 
 
 
+
+
 ---
+
+
 ### Syntax
 ```PowerShell
 Extension/EdgeDetect.RoughDraft.Extension.ps1 -EdgeDetect [[-EdgeLowThreshold] <Single>] [[-EdgeHighThreshold] <Single>] [[-EdgeDetectMode] <String>] [<CommonParameters>]
 ```
----
-
-
-
-

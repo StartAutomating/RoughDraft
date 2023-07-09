@@ -1,21 +1,36 @@
-
 Extension/DataScope.RoughDraft.Extension.ps1
 --------------------------------------------
+
+
+
+
 ### Synopsis
 Datascope effect
 
+
+
 ---
+
+
 ### Description
 
 Applies the datascope filter
 
+
+
 ---
+
+
 ### Related Links
 * [https://ffmpeg.org/ffmpeg-filters.html#datascope](https://ffmpeg.org/ffmpeg-filters.html#datascope)
 
 
 
+
+
 ---
+
+
 ### Parameters
 #### **DataScope**
 
@@ -28,7 +43,6 @@ Applies the datascope filter
 
 
 
----
 #### **DataScopeMode**
 
 Set scope mode, can be one of the following:
@@ -59,7 +73,6 @@ Valid Values:
 
 
 
----
 #### **DataScopeBackgroundOpacity**
 
 Set background opacity.
@@ -75,7 +88,6 @@ Set background opacity.
 
 
 
----
 #### **DataScopeAxis**
 
 Draw rows and columns numbers on left and top of video.
@@ -91,7 +103,6 @@ Draw rows and columns numbers on left and top of video.
 
 
 
----
 #### **DataScopeFormat**
 
 Set display number format. Can be hex, or dec. Default is hex.
@@ -114,7 +125,6 @@ Valid Values:
 
 
 
----
 #### **DataScopeX**
 
 Set x offset from where to pick pixels.
@@ -130,7 +140,6 @@ Set x offset from where to pick pixels.
 
 
 
----
 #### **DataScopeY**
 
 Set y offset from where to pick pixels.
@@ -146,7 +155,6 @@ Set y offset from where to pick pixels.
 
 
 
----
 #### **DataScopeComponent**
 
 Set pixel components to display. By default all pixel components are displayed.
@@ -162,13 +170,12 @@ Set pixel components to display. By default all pixel components are displayed.
 
 
 
+
+
 ---
+
+
 ### Syntax
 ```PowerShell
 Extension/DataScope.RoughDraft.Extension.ps1 -DataScope [[-DataScopeMode] <String>] [[-DataScopeBackgroundOpacity] <Double>] [-DataScopeAxis] [[-DataScopeFormat] <String>] [[-DataScopeX] <Int32>] [[-DataScopeY] <Int32>] [[-DataScopeComponent] <String>] [<CommonParameters>]
 ```
----
-
-
-
-

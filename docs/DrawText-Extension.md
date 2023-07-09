@@ -1,21 +1,36 @@
-
 Extension/DrawText.RoughDraft.Extension.ps1
 -------------------------------------------
+
+
+
+
 ### Synopsis
 Draws Text on Video
 
+
+
 ---
+
+
 ### Description
 
 Draws Text on Video, using the [drawtext filter](http://ffmpeg.org/ffmpeg-filters.html#drawtext)
 
+
+
 ---
+
+
 ### Related Links
 * [http://ffmpeg.org/ffmpeg-filters.html#drawtext](http://ffmpeg.org/ffmpeg-filters.html#drawtext)
 
 
 
+
+
 ---
+
+
 ### Examples
 #### EXAMPLE 1
 ```PowerShell
@@ -23,7 +38,11 @@ New-Media -Color "Black" -Duration "00:00:05" -Resolution 1920x1080 -OutputPath 
     Edit-Media -DrawText -DrawTextText "Hello World" -DrawTextCenter -DrawTextFontSize 36
 ```
 
+
+
 ---
+
+
 ### Parameters
 #### **DrawText**
 
@@ -36,7 +55,6 @@ New-Media -Color "Black" -Duration "00:00:05" -Resolution 1920x1080 -OutputPath 
 
 
 
----
 #### **DrawTextFontFile**
 
 set font file
@@ -52,7 +70,6 @@ set font file
 
 
 
----
 #### **DrawTextText**
 
 set text
@@ -68,7 +85,6 @@ set text
 
 
 
----
 #### **DrawTextTextFile**
 
 set text file
@@ -84,7 +100,6 @@ set text file
 
 
 
----
 #### **DrawTextFontColor**
 
 set foreground color (default "black")
@@ -100,7 +115,6 @@ set foreground color (default "black")
 
 
 
----
 #### **DrawTextFontColorExpression**
 
 set foreground color expression (default "")
@@ -116,7 +130,6 @@ set foreground color expression (default "")
 
 
 
----
 #### **DrawTextBoxColor**
 
 set box color (default "white")
@@ -132,7 +145,6 @@ set box color (default "white")
 
 
 
----
 #### **DrawTextBorderColor**
 
 set border color (default "black")
@@ -148,7 +160,6 @@ set border color (default "black")
 
 
 
----
 #### **DrawTextShadowColor**
 
 set shadow color (default "black")
@@ -164,7 +175,6 @@ set shadow color (default "black")
 
 
 
----
 #### **DrawTextBox**
 
 set box (default false)
@@ -180,7 +190,6 @@ set box (default false)
 
 
 
----
 #### **DrawTextBoxBorderWidth**
 
 set box border width (from INT_MIN to INT_MAX) (default 0)
@@ -196,7 +205,6 @@ set box border width (from INT_MIN to INT_MAX) (default 0)
 
 
 
----
 #### **DrawTextLineSpacing**
 
 set line spacing in pixels (from INT_MIN to INT_MAX) (default 0)
@@ -212,7 +220,6 @@ set line spacing in pixels (from INT_MIN to INT_MAX) (default 0)
 
 
 
----
 #### **DrawTextFontSize**
 
 set font size
@@ -228,7 +235,6 @@ set font size
 
 
 
----
 #### **DrawTextX**
 
 set x expression (default "0")
@@ -244,7 +250,6 @@ set x expression (default "0")
 
 
 
----
 #### **DrawTextY**
 
 set y expression (default "0")
@@ -260,7 +265,6 @@ set y expression (default "0")
 
 
 
----
 #### **DrawTextShadowX**
 
 set shadow x offset (from INT_MIN to INT_MAX) (default 0)
@@ -276,7 +280,6 @@ set shadow x offset (from INT_MIN to INT_MAX) (default 0)
 
 
 
----
 #### **DrawTextShadowY**
 
 set shadow y offset (from INT_MIN to INT_MAX) (default 0)
@@ -292,7 +295,6 @@ set shadow y offset (from INT_MIN to INT_MAX) (default 0)
 
 
 
----
 #### **DrawTextBorderWidth**
 
 set border width (from INT_MIN to INT_MAX) (default 0)
@@ -308,7 +310,6 @@ set border width (from INT_MIN to INT_MAX) (default 0)
 
 
 
----
 #### **DrawTextTabSize**
 
 set tab size (from 0 to INT_MAX) (default 4)
@@ -324,7 +325,6 @@ set tab size (from 0 to INT_MAX) (default 4)
 
 
 
----
 #### **DrawTextBasetime**
 
 set base time (from I64_MIN to I64_MAX) (default I64_MIN)
@@ -340,7 +340,6 @@ set base time (from I64_MIN to I64_MAX) (default I64_MIN)
 
 
 
----
 #### **DrawTextFont**
 
 Font name (default "Sans")
@@ -356,7 +355,6 @@ Font name (default "Sans")
 
 
 
----
 #### **DrawTextExpansion**
 
 set the expansion mode (from 0 to 2) (default normal)
@@ -372,7 +370,6 @@ set the expansion mode (from 0 to 2) (default normal)
 
 
 
----
 #### **DrawTextTimeCode**
 
 set initial timecode
@@ -388,7 +385,6 @@ set initial timecode
 
 
 
----
 #### **DrawTextTc24hmax**
 
 set 24 hours max (timecode only) (default false)
@@ -404,7 +400,6 @@ set 24 hours max (timecode only) (default false)
 
 
 
----
 #### **DrawTextTimecodeRate**
 
 set rate (timecode only) (from 0 to INT_MAX) (default 0/1)
@@ -420,7 +415,6 @@ set rate (timecode only) (from 0 to INT_MAX) (default 0/1)
 
 
 
----
 #### **DrawTextRate**
 
 set rate (timecode only) (from 0 to INT_MAX) (default 0/1)
@@ -436,7 +430,6 @@ set rate (timecode only) (from 0 to INT_MAX) (default 0/1)
 
 
 
----
 #### **DrawTextReload**
 
 reload text file for each frame (default false)
@@ -452,7 +445,6 @@ reload text file for each frame (default false)
 
 
 
----
 #### **DrawTextAlpha**
 
 apply alpha while rendering (default "1")
@@ -468,7 +460,6 @@ apply alpha while rendering (default "1")
 
 
 
----
 #### **DrawTextFixBounds**
 
 check and fix text coords to avoid clipping (default false)
@@ -484,7 +475,6 @@ check and fix text coords to avoid clipping (default false)
 
 
 
----
 #### **DrawTextStartNumber**
 
 start frame number for n/frame_num variable (from 0 to INT_MAX) (default 0)
@@ -500,7 +490,6 @@ start frame number for n/frame_num variable (from 0 to INT_MAX) (default 0)
 
 
 
----
 #### **DrawTextTextSource**
 
 the source of text
@@ -516,7 +505,6 @@ the source of text
 
 
 
----
 #### **DrawTextTextShaping**
 
 attempt to shape text before drawing (default true)
@@ -532,7 +520,6 @@ attempt to shape text before drawing (default true)
 
 
 
----
 #### **DrawTextFontLoadFlags**
 
 set font loading flags for libfreetype (default 0)
@@ -548,7 +535,6 @@ set font loading flags for libfreetype (default 0)
 
 
 
----
 #### **DrawTextCenter**
 
 If set, will draw text in the center.  
@@ -565,13 +551,12 @@ This will provide -DrawTextX '(w-text_w)/2' and -DrawTextY '(h-text_h)/2'
 
 
 
+
+
 ---
+
+
 ### Syntax
 ```PowerShell
 Extension/DrawText.RoughDraft.Extension.ps1 -DrawText [[-DrawTextFontFile] <String>] [[-DrawTextText] <String>] [[-DrawTextTextFile] <String>] [[-DrawTextFontColor] <String>] [[-DrawTextFontColorExpression] <String>] [[-DrawTextBoxColor] <String>] [[-DrawTextBorderColor] <String>] [[-DrawTextShadowColor] <String>] [-DrawTextBox] [[-DrawTextBoxBorderWidth] <Int32>] [[-DrawTextLineSpacing] <Int32>] [[-DrawTextFontSize] <String>] [[-DrawTextX] <String>] [[-DrawTextY] <String>] [[-DrawTextShadowX] <Int32>] [[-DrawTextShadowY] <Int32>] [[-DrawTextBorderWidth] <Int32>] [[-DrawTextTabSize] <Int32>] [[-DrawTextBasetime] <Int64>] [[-DrawTextFont] <String>] [[-DrawTextExpansion] <Int32>] [[-DrawTextTimeCode] <String>] [[-DrawTextTc24hmax] <Boolean>] [[-DrawTextTimecodeRate] <Double>] [[-DrawTextRate] <Double>] [-DrawTextReload] [[-DrawTextAlpha] <String>] [-DrawTextFixBounds] [[-DrawTextStartNumber] <Int32>] [[-DrawTextTextSource] <String>] [-DrawTextTextShaping] [[-DrawTextFontLoadFlags] <Int32>] [-DrawTextCenter] [<CommonParameters>]
 ```
----
-
-
-
-

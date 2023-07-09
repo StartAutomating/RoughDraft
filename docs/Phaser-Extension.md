@@ -1,21 +1,36 @@
-
 Extension/Phaser.RoughDraft.Extension.ps1
 -----------------------------------------
+
+
+
+
 ### Synopsis
 Audio Phaser
 
+
+
 ---
+
+
 ### Description
 
 Add a phasing effect to the audio.
 
+
+
 ---
+
+
 ### Related Links
 * [https://ffmpeg.org/ffmpeg-filters.html#aphaser](https://ffmpeg.org/ffmpeg-filters.html#aphaser)
 
 
 
+
+
 ---
+
+
 ### Parameters
 #### **Phaser**
 
@@ -32,7 +47,6 @@ Add a phasing effect to the audio.
 
 
 
----
 #### **PhaserInGain**
 
 set input gain
@@ -42,13 +56,12 @@ set input gain
 
 
 
-|Type      |Required|Position|PipelineInput|
-|----------|--------|--------|-------------|
-|`[Double]`|false   |1       |false        |
+|Type      |Required|Position|PipelineInput|Aliases        |
+|----------|--------|--------|-------------|---------------|
+|`[Double]`|false   |1       |false        |aphaser_in_gain|
 
 
 
----
 #### **PhaserOutGain**
 
 set output gain
@@ -58,13 +71,12 @@ set output gain
 
 
 
-|Type      |Required|Position|PipelineInput|
-|----------|--------|--------|-------------|
-|`[Double]`|false   |2       |false        |
+|Type      |Required|Position|PipelineInput|Aliases         |
+|----------|--------|--------|-------------|----------------|
+|`[Double]`|false   |2       |false        |aphaser_out_gain|
 
 
 
----
 #### **PhaserDelay**
 
 set delay in milliseconds
@@ -74,13 +86,12 @@ set delay in milliseconds
 
 
 
-|Type      |Required|Position|PipelineInput|
-|----------|--------|--------|-------------|
-|`[Double]`|false   |3       |false        |
+|Type      |Required|Position|PipelineInput|Aliases      |
+|----------|--------|--------|-------------|-------------|
+|`[Double]`|false   |3       |false        |aphaser_delay|
 
 
 
----
 #### **PhaserDecay**
 
 set decay
@@ -90,13 +101,12 @@ set decay
 
 
 
-|Type      |Required|Position|PipelineInput|
-|----------|--------|--------|-------------|
-|`[Double]`|false   |4       |false        |
+|Type      |Required|Position|PipelineInput|Aliases      |
+|----------|--------|--------|-------------|-------------|
+|`[Double]`|false   |4       |false        |aphaser_decay|
 
 
 
----
 #### **PhaserSpeed**
 
 set modulation speed
@@ -106,13 +116,12 @@ set modulation speed
 
 
 
-|Type      |Required|Position|PipelineInput|
-|----------|--------|--------|-------------|
-|`[Double]`|false   |5       |false        |
+|Type      |Required|Position|PipelineInput|Aliases      |
+|----------|--------|--------|-------------|-------------|
+|`[Double]`|false   |5       |false        |aphaser_speed|
 
 
 
----
 #### **PhaserType**
 
 set modulation type
@@ -129,19 +138,18 @@ Valid Values:
 
 
 
-|Type      |Required|Position|PipelineInput|
-|----------|--------|--------|-------------|
-|`[Object]`|false   |6       |false        |
+|Type      |Required|Position|PipelineInput|Aliases     |
+|----------|--------|--------|-------------|------------|
+|`[Object]`|false   |6       |false        |aphaser_type|
+
+
 
 
 
 ---
+
+
 ### Syntax
 ```PowerShell
 Extension/Phaser.RoughDraft.Extension.ps1 -Phaser [[-PhaserInGain] <Double>] [[-PhaserOutGain] <Double>] [[-PhaserDelay] <Double>] [[-PhaserDecay] <Double>] [[-PhaserSpeed] <Double>] [[-PhaserType] <Object>] [<CommonParameters>]
 ```
----
-
-
-
-

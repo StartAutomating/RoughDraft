@@ -1,15 +1,26 @@
-
 Extension/MedianPixel.RoughDraft.Extension.ps1
 ----------------------------------------------
+
+
+
+
 ### Synopsis
 Picks median pixels
 
+
+
 ---
+
+
 ### Description
 
 Pick median pixel from certain rectangle defined by radius.
 
+
+
 ---
+
+
 ### Related Links
 * [https://ffmpeg.org/ffmpeg-filters.html#median](https://ffmpeg.org/ffmpeg-filters.html#median)
 
@@ -19,7 +30,11 @@ Pick median pixel from certain rectangle defined by radius.
 
 
 
+
+
 ---
+
+
 ### Parameters
 #### **MedianPixel**
 
@@ -36,7 +51,6 @@ If set, will pick median pixels.
 
 
 
----
 #### **MedianPixelTimeBlend**
 
 If set, will pick median pixels from successive frames.  This will ignore -MediaPixelRadiusV.
@@ -52,7 +66,6 @@ If set, will pick median pixels from successive frames.  This will ignore -Media
 
 
 
----
 #### **MedianPixelRadius**
 
 Set horizontal radius size. Default value is 1. Allowed range is integer from 1 to 127.
@@ -68,7 +81,6 @@ Set horizontal radius size. Default value is 1. Allowed range is integer from 1 
 
 
 
----
 #### **MedianPixelPlanes**
 
 Set which planes to process. Default is 15, which is all available planes.
@@ -84,7 +96,6 @@ Set which planes to process. Default is 15, which is all available planes.
 
 
 
----
 #### **MedianPixelRadiusV**
 
 Set vertical radius size. Default value is 0. 
@@ -102,7 +113,6 @@ If it is 0, value will be picked from horizontal radius option.
 
 
 
----
 #### **MedianPixelPercentile**
 
 Set median percentile. 
@@ -121,13 +131,12 @@ while 0 will pick minimum values and 1 maximum values.
 
 
 
+
+
 ---
+
+
 ### Syntax
 ```PowerShell
 Extension/MedianPixel.RoughDraft.Extension.ps1 -MedianPixel -MedianPixelTimeBlend [[-MedianPixelRadius] <Int32>] [[-MedianPixelPlanes] <String>] [[-MedianPixelRadiusV] <Int32>] [[-MedianPixelPercentile] <Double>] [<CommonParameters>]
 ```
----
-
-
-
-

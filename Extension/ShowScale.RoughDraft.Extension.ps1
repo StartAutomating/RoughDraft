@@ -245,8 +245,6 @@ foreach ($filePathParameter in 'ShowScaleFontFile', 'ShowScaleAxisFile') {
     }
 }
 
-
-
 $myCmd = $MyInvocation.MyCommand
 $filterArgs = @(
     foreach ($kv in $PSBoundParameters.GetEnumerator()) {
@@ -275,6 +273,18 @@ $filterArgs = @(
 
 
 if ($commandName -eq 'Edit-Media') {
+    $null = $outputPath -match '\.[^\.]+$'
+    $outputPathExtension = $matches.0
+    $null = $inputPath -match '\.[^\.]+$'
+    $inputPathExtension = $matches.0
+    
+    if ($inputPathExtension -and 
+        $inputPathExtension -eq $outputPathExtension) {
+        $inputCodecType = @((Get-Media -InputPath $inputPath).CodecTypes)[0]
+        if ($inputCodecType -eq 'Audio') {
+            [psvariable]::new('OutputPath', ($outputPath -replace '\.[^\.]+$','.mp4'))
+        }
+    }
     "-filter_complex"
     "[0:a]showcqt=${filterargs},format=$pixelFormat[v]",
     "-map",

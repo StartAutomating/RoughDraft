@@ -1,14 +1,26 @@
 Get-Media
 ---------
+
+
+
+
 ### Synopsis
 Gets media metadata
 
+
+
 ---
+
+
 ### Description
 
 Gets metadata about a media file, using FFProbe.
 
+
+
 ---
+
+
 ### Related Links
 * [Set-Media](Set-Media.md)
 
@@ -18,7 +30,11 @@ Gets metadata about a media file, using FFProbe.
 
 
 
+
+
 ---
+
+
 ### Examples
 #### EXAMPLE 1
 ```PowerShell
@@ -30,7 +46,11 @@ Get-Media -InputPath $home\Music\ASong.mp3
 Get-Media -InputPath $home\Video\AVideo.mp4
 ```
 
+
+
 ---
+
+
 ### Parameters
 #### **InputPath**
 
@@ -42,13 +62,12 @@ If none are provided, all files in the current directory will be passed to Get-M
 
 
 
-|Type        |Required|Position|PipelineInput        |
-|------------|--------|--------|---------------------|
-|`[String[]]`|false   |1       |true (ByPropertyName)|
+|Type        |Required|Position|PipelineInput        |Aliases |
+|------------|--------|--------|---------------------|--------|
+|`[String[]]`|false   |1       |true (ByPropertyName)|Fullname|
 
 
 
----
 #### **FFProbePath**
 
 The path to FFProbe.exe.  Download it from http://ffmpeg.org/
@@ -64,7 +83,6 @@ The path to FFProbe.exe.  Download it from http://ffmpeg.org/
 
 
 
----
 #### **FFMpegPath**
 
 The path to FFMpeg.exe.  Download it from http://ffmpeg.org/
@@ -80,7 +98,6 @@ The path to FFMpeg.exe.  Download it from http://ffmpeg.org/
 
 
 
----
 #### **Stream**
 
 A list of streams .
@@ -97,12 +114,11 @@ For example, to show only audio streams, use 'a'
 
 
 
----
 #### **Entry**
 
 A list of entries.
 By default, shows information about streams and formats.
-For more information about sections, visit [FFMpeg.org](https://ffmpeg.org/ffprobe.html#Main-options)
+For more information about sections, visit [FFMpeg.org](https://ffmpeg.org/ffprobe.html#main-options)
 
 
 
@@ -115,7 +131,6 @@ For more information about sections, visit [FFMpeg.org](https://ffmpeg.org/ffpro
 
 
 
----
 #### **OutputPacket**
 
 If set, will output packets
@@ -131,7 +146,6 @@ If set, will output packets
 
 
 
----
 #### **OutputData**
 
 If set, will output data
@@ -147,7 +161,6 @@ If set, will output data
 
 
 
----
 #### **OutputFrame**
 
 If set, will output frames
@@ -163,7 +176,6 @@ If set, will output frames
 
 
 
----
 #### **ProbeTryCount**
 
 The number of times to retry reading the file.
@@ -179,7 +191,6 @@ The number of times to retry reading the file.
 
 
 
----
 #### **AsJob**
 
 If set, will run this in a background job
@@ -195,7 +206,11 @@ If set, will run this in a background job
 
 
 
+
+
 ---
+
+
 ### Outputs
 * RoughDraft.Media
 
@@ -208,9 +223,12 @@ If set, will run this in a background job
 
 
 
+
+
 ---
+
+
 ### Syntax
 ```PowerShell
 Get-Media [[-InputPath] <String[]>] [-FFProbePath <String>] [-FFMpegPath <String>] [-Stream <String[]>] [-Entry <String[]>] [-OutputPacket] [-OutputData] [-OutputFrame] [-ProbeTryCount <Int32>] [-AsJob] [<CommonParameters>]
 ```
----

@@ -1,10 +1,17 @@
-
 Extension/ZoomPan.RoughDraft.Extension.ps1
 ------------------------------------------
+
+
+
+
 ### Synopsis
 Zoom and Pan
 
+
+
 ---
+
+
 ### Description
 
 Apply Zoom & Pan effect.
@@ -37,13 +44,21 @@ Each expression can contain the following constants:
 |sar        |sample aspect ratio|
 |dar        |display aspect ratio|
 
+
+
 ---
+
+
 ### Related Links
 * [https://ffmpeg.org/ffmpeg-filters.html#zoompan](https://ffmpeg.org/ffmpeg-filters.html#zoompan)
 
 
 
+
+
 ---
+
+
 ### Parameters
 #### **ZoomPan**
 
@@ -60,7 +75,6 @@ Apply Zoom & Pan effect.
 
 
 
----
 #### **ZoomPanZoom**
 
 Set the zoom expression. Range is 1-10. Default is 1.
@@ -70,13 +84,12 @@ Set the zoom expression. Range is 1-10. Default is 1.
 
 
 
-|Type      |Required|Position|PipelineInput|
-|----------|--------|--------|-------------|
-|`[String]`|false   |1       |false        |
+|Type      |Required|Position|PipelineInput|Aliases                  |
+|----------|--------|--------|-------------|-------------------------|
+|`[String]`|false   |1       |false        |zoompan_zoom<br/>ZoomPanZ|
 
 
 
----
 #### **ZoomPanX**
 
 Set the x expression
@@ -86,13 +99,12 @@ Set the x expression
 
 
 
-|Type      |Required|Position|PipelineInput|
-|----------|--------|--------|-------------|
-|`[String]`|false   |2       |false        |
+|Type      |Required|Position|PipelineInput|Aliases  |
+|----------|--------|--------|-------------|---------|
+|`[String]`|false   |2       |false        |zoompan_x|
 
 
 
----
 #### **ZoomPanY**
 
 set the y expression
@@ -102,13 +114,12 @@ set the y expression
 
 
 
-|Type      |Required|Position|PipelineInput|
-|----------|--------|--------|-------------|
-|`[String]`|false   |3       |false        |
+|Type      |Required|Position|PipelineInput|Aliases  |
+|----------|--------|--------|-------------|---------|
+|`[String]`|false   |3       |false        |zoompan_y|
 
 
 
----
 #### **ZoomPanD**
 
 set the duration expression
@@ -118,13 +129,12 @@ set the duration expression
 
 
 
-|Type      |Required|Position|PipelineInput|
-|----------|--------|--------|-------------|
-|`[String]`|false   |4       |false        |
+|Type      |Required|Position|PipelineInput|Aliases  |
+|----------|--------|--------|-------------|---------|
+|`[String]`|false   |4       |false        |zoompan_d|
 
 
 
----
 #### **ZoomPanS**
 
 set the output image size
@@ -134,13 +144,12 @@ set the output image size
 
 
 
-|Type      |Required|Position|PipelineInput|
-|----------|--------|--------|-------------|
-|`[String]`|false   |5       |false        |
+|Type      |Required|Position|PipelineInput|Aliases  |
+|----------|--------|--------|-------------|---------|
+|`[String]`|false   |5       |false        |zoompan_s|
 
 
 
----
 #### **ZoomPanFps**
 
 set the output framerate
@@ -150,19 +159,18 @@ set the output framerate
 
 
 
-|Type     |Required|Position|PipelineInput|
-|---------|--------|--------|-------------|
-|`[Int32]`|false   |6       |false        |
+|Type     |Required|Position|PipelineInput|Aliases    |
+|---------|--------|--------|-------------|-----------|
+|`[Int32]`|false   |6       |false        |zoompan_fps|
+
+
 
 
 
 ---
+
+
 ### Syntax
 ```PowerShell
 Extension/ZoomPan.RoughDraft.Extension.ps1 -ZoomPan [[-ZoomPanZoom] <String>] [[-ZoomPanX] <String>] [[-ZoomPanY] <String>] [[-ZoomPanD] <String>] [[-ZoomPanS] <String>] [[-ZoomPanFps] <Int32>] [<CommonParameters>]
 ```
----
-
-
-
-

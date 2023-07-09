@@ -1,14 +1,26 @@
 Use-FFPlay
 ----------
+
+
+
+
 ### Synopsis
 Uses FFPlay directly.
 
+
+
 ---
+
+
 ### Description
 
 Runs FFPlay.
 
+
+
 ---
+
+
 ### Related Links
 * [Use-FFMpeg](Use-FFMpeg.md)
 
@@ -18,14 +30,22 @@ Runs FFPlay.
 
 
 
+
+
 ---
+
+
 ### Examples
 #### EXAMPLE 1
 ```PowerShell
 Use-FFPlay -FFPlayArgument "$home\Music\ASong.mp3"
 ```
 
+
+
 ---
+
+
 ### Parameters
 #### **FFPlayArgument**
 
@@ -42,7 +62,6 @@ Arguments to FFPlay.
 
 
 
----
 #### **FFPlayPath**
 
 The path to FFPlay.
@@ -58,7 +77,6 @@ The path to FFPlay.
 
 
 
----
 #### **AsJob**
 
 If set, will run as a background job.
@@ -74,16 +92,23 @@ If set, will run as a background job.
 
 
 
+
+
 ---
+
+
 ### Outputs
 * [String](https://learn.microsoft.com/en-us/dotnet/api/System.String)
 
 
 
 
+
+
 ---
+
+
 ### Syntax
 ```PowerShell
 Use-FFPlay [-FFPlayArgument <String[]>] [-FFPlayPath <String>] [-AsJob] [<CommonParameters>]
 ```
----
