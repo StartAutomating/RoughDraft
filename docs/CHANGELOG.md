@@ -1,3 +1,16 @@
+## 0.4:
+
+* Enabled Sponsorship (please show your support) (#185)
+* Audio Visualizations now force output of video (#176)
+* ConvertTo-Gif is now an alias to Convert-Media (#71)
+* Added GifPalette Extension (#71)
+* Made Subtitle Extraction Easier (#186)
+* New Extensions:
+  * Crossfade (#18)
+  * NoLogo (#17)
+
+---
+
 ## 0.3.10:
 
 * Fixing -Resize (Fixes #179)
