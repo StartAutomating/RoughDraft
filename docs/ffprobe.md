@@ -32,11 +32,11 @@ Runs ffprobe.
 
 
 ### Examples
-#### EXAMPLE 1
+> EXAMPLE 1
+
 ```PowerShell
 Use-FFProbe -FFProbeArgument "$home\Music\ASong.mp3"
 ```
-
 
 
 ---
