@@ -32,11 +32,11 @@ Adjusts the Hue of a video source
 
 
 ### Examples
-#### EXAMPLE 1
+> EXAMPLE 1
+
 ```PowerShell
 Edit-Media -InputPath "TestSource.mp4" -SetHue -HueDegree 60 # Adjust hue by 60 degrees
 ```
-
 
 
 ---
