@@ -32,16 +32,16 @@ Apply a flanging effect to the audio
 
 
 ### Examples
-#### EXAMPLE 1
+> EXAMPLE 1
+
 ```PowerShell
 Edit-Media -InputPath "a.mp3" -Flanger -FlangerDelay 3 -FlangerDepth 4
 ```
+> EXAMPLE 2
 
-#### EXAMPLE 2
 ```PowerShell
 Show-Media -InputPath "a.mp3" -Flanger
 ```
-
 
 
 ---
