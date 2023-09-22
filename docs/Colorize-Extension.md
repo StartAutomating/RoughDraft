@@ -32,11 +32,11 @@ Overlay a solid color on the video stream
 
 
 ### Examples
-#### EXAMPLE 1
+> EXAMPLE 1
+
 ```PowerShell
 Edit-Media -InputPath .\a.mp4 -Colorize -ColorizeHue 200 -ColorizeSaturation 100 -ColorizeValue 1 -ColorizeMix .1
 ```
-
 
 
 ---
