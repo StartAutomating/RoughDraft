@@ -32,7 +32,8 @@ Finite Impulse Response Equalizer.
 
 
 ### Examples
-#### EXAMPLE 1
+> EXAMPLE 1
+
 ```PowerShell
 Edit-Media -InputPath .\a.mp3 -FiniteEqualizer -FiniteEqualizerGain @'
 if(eq(chid,1), gain_interpolate(f), if(eq(chid,2), gain_interpolate(1e6+f), 0))
@@ -40,7 +41,6 @@ if(eq(chid,1), gain_interpolate(f), if(eq(chid,2), gain_interpolate(1e6+f), 0))
 entry(1000, 0); entry(1001,-INF); entry(1e6+1000,0)
 '@
 ```
-
 
 
 ---
