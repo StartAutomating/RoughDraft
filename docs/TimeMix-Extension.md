@@ -32,11 +32,11 @@ Mix successive video frames, using the tmix filter.
 
 
 ### Examples
-#### EXAMPLE 1
+> EXAMPLE 1
+
 ```PowerShell
 Edit-Media -InputPath .\TestSource.gif -TimeMix 5
 ```
-
 
 
 ---
