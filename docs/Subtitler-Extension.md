@@ -22,11 +22,11 @@ Creates VTT and SRT subtitles.
 
 
 ### Examples
-#### EXAMPLE 1
+> EXAMPLE 1
+
 ```PowerShell
 New-Media -SubtitleContent "a", "b" -SubtitleStartTime "00:00:01","00:01:01" -SubtitleEndTime "00:01:00", "00:02:00" -OutputPath .\test.srt
 ```
-
 
 
 ---
