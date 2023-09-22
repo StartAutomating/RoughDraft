@@ -34,11 +34,11 @@ Borders can be filled with a -FillBorderMode and a -FillBorderColor.
 
 
 ### Examples
-#### EXAMPLE 1
+> EXAMPLE 1
+
 ```PowerShell
 Edit-Media -InputPath "a.mp4" -FillBorder -FillBorderLeft 50 -FillBorderRight 50 -FillBorderTop 40 -FillBorderBottom 40 -FillBorderMode Reflect
 ```
-
 
 
 ---
