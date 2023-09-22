@@ -34,11 +34,11 @@ Warning: This filter requires memory to buffer the entire clip.
 
 
 ### Examples
-#### EXAMPLE 1
+> EXAMPLE 1
+
 ```PowerShell
 Edit-Media -InputPath "TestSource.gif" -ReverseVideo
 ```
-
 
 
 ---
