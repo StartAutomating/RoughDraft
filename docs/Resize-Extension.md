@@ -34,11 +34,11 @@ To control scaling with more precision, use the Scale extension.
 
 
 ### Examples
-#### EXAMPLE 1
+> EXAMPLE 1
+
 ```PowerShell
 Convert-Media
 ```
-
 
 
 ---
