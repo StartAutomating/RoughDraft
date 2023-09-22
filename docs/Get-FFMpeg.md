@@ -36,11 +36,11 @@ Gets FFMpeg, if installed
 
 
 ### Examples
-#### EXAMPLE 1
+> EXAMPLE 1
+
 ```PowerShell
 Get-FFMpeg
 ```
-
 
 
 ---
