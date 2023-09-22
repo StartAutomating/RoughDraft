@@ -32,11 +32,11 @@ Flips video vertically, using the vflip filter.
 
 
 ### Examples
-#### EXAMPLE 1
+> EXAMPLE 1
+
 ```PowerShell
 Edit-Media -InputPath .\TestSource.gif -FlipVertical
 ```
-
 
 
 ---
