@@ -32,17 +32,18 @@ Shows media, using FFPlay
 
 
 ### Examples
-#### EXAMPLE 1
+> EXAMPLE 1
+
 ```PowerShell
 Show-Media -InputPath $home\Music\ASong.mp3
 ```
+> EXAMPLE 2
 
-#### EXAMPLE 2
 ```PowerShell
 Show-Media -InputPath $home\Videos\AMovie.mp4 -Fullscreen
 ```
+> EXAMPLE 3
 
-#### EXAMPLE 3
 ```PowerShell
 $cameraName = "NexiGo N60 FHD Webcam" # Replace with your own camera, use Get-FFMpeg -ListCaptureDevice
 $ShowSplat = [Ordered]@{
@@ -69,7 +70,6 @@ $showText = @(foreach ($kv in $showSplat.GetEnumerator()) {
 $showSplat.DrawTextText = $showText
 Show-Media @showSplat -Fullscreen -Verbose
 ```
-
 
 
 ---
