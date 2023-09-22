@@ -22,11 +22,11 @@ The DirectShow extension lets you used DirectShow input devices
 
 
 ### Examples
-#### EXAMPLE 1
+> EXAMPLE 1
+
 ```PowerShell
 Show-Media -DirectShow -VideoDevice $myWebCam
 ```
-
 
 
 ---
