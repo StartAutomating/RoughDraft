@@ -40,12 +40,11 @@ Splits media files
 
 
 ### Examples
-#### EXAMPLE 1
+Pick out the first five seconds of a song
+
 ```PowerShell
-# Pick out the first five seconds of a song
 Split-Media -InputPath $home\Music\ASong.mp3 -Start 00:00:00 -End 00:00:05
 ```
-
 
 
 ---
