@@ -32,21 +32,20 @@ Modify audio with an 18 band superequalizer, courtesy of the superequalizer filt
 
 
 ### Examples
-#### EXAMPLE 1
+Make everything much more quiet
+
 ```PowerShell
-# Make everything much more quiet
 Show-Media -InputPath .\test.mp3 -SuperEqualizer @{(1..18)=-50}
 ```
+Make everything much more quiet
 
-#### EXAMPLE 2
 ```PowerShell
-# Make everything much more quiet
 Show-Media -InputPath .\test.mp3 -SuperEqualizer @{
     (7..18) = 3 
 } # Turn up the volume
 ```
+> EXAMPLE 3
 
-#### EXAMPLE 3
 ```PowerShell
 Show-Media -InputPath .\test.mp3 -SuperEqualizer @{
     1=1
@@ -57,7 +56,6 @@ Show-Media -InputPath .\test.mp3 -SuperEqualizer @{
     6=6        
 } # Turn up the bass
 ```
-
 
 
 ---
