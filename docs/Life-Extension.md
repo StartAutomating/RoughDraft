@@ -32,11 +32,11 @@ Uses the ffmpeg filter for life
 
 
 ### Examples
-#### EXAMPLE 1
+> EXAMPLE 1
+
 ```PowerShell
 New-Media -OutputPath "Life.gif" -Duration "00:00:05" -Life
 ```
-
 
 
 ---
