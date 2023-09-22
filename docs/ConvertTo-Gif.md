@@ -36,16 +36,16 @@ Converts media from one format to another, using ffmpeg
 
 
 ### Examples
-#### EXAMPLE 1
+> EXAMPLE 1
+
 ```PowerShell
 Convert-Media "a.mov" "a.mp4"
 ```
+> EXAMPLE 2
 
-#### EXAMPLE 2
 ```PowerShell
 Convert-Media "a.jpg" ".mp4" -Duration "00:15:00" -Tune stillimage -Preset ultrafast
 ```
-
 
 
 ---
