@@ -32,7 +32,8 @@ Sets media metadata, using ffmpeg
 
 
 ### Examples
-#### EXAMPLE 1
+> EXAMPLE 1
+
 ```PowerShell
 Set-Media -InputPath $home\Music\ASong.mp3 -Property @{
     Title = "A Song"
@@ -40,12 +41,11 @@ Set-Media -InputPath $home\Music\ASong.mp3 -Property @{
     Lyrics = "Some lyrics"
 }
 ```
+> EXAMPLE 2
 
-#### EXAMPLE 2
 ```PowerShell
 Set-Media -InputPath $home\Music\ASong.mp3 -AlbumArt $home\Music\Cover.jpg
 ```
-
 
 
 ---
