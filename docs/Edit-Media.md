@@ -40,13 +40,13 @@ Modifies media files to apply advanced filters
 
 
 ### Examples
-#### EXAMPLE 1
+> EXAMPLE 1
+
 ```PowerShell
 Get-Item a.mp4 |
     Edit-Media -FadeIn |
     Edit-Media -Rotate 90
 ```
-
 
 
 ---
