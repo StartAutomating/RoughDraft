@@ -32,11 +32,11 @@ Limits the pixel components values to the specified range [min, max].
 
 
 ### Examples
-#### EXAMPLE 1
+> EXAMPLE 1
+
 ```PowerShell
 Edit-Media -InputPath .\TestSource.gif -LimitPixel -LimitPixelMin 50 -LimitPixelMax 200
 ```
-
 
 
 ---
