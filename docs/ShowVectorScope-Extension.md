@@ -32,16 +32,16 @@ Shows a Vector Scope of the Audio, using the [avectorscope filter](https://ffmpe
 
 
 ### Examples
-#### EXAMPLE 1
+> EXAMPLE 1
+
 ```PowerShell
 Show-Media -InputPath .\a.mp3 -ShowVectorScope
 ```
+> EXAMPLE 2
 
-#### EXAMPLE 2
 ```PowerShell
 Edit-Media -InputPath .\a.mp3 -ShowVectorScope -OutputPath .\a.mp4
 ```
-
 
 
 ---
