@@ -22,11 +22,11 @@ Uses the ffmpeg colorchannelmixer to apply a Sepia filter.
 
 
 ### Examples
-#### EXAMPLE 1
+> EXAMPLE 1
+
 ```PowerShell
 Edit-Media -InputPath "TestSource.mp4" -Sepia
 ```
-
 
 
 ---
