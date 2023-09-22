@@ -32,16 +32,16 @@ Show the tonal scale of the audio, using the showcqt filter
 
 
 ### Examples
-#### EXAMPLE 1
+> EXAMPLE 1
+
 ```PowerShell
 Show-Media -InputPath .\a.mp3 -ShowScale
 ```
+> EXAMPLE 2
 
-#### EXAMPLE 2
 ```PowerShell
 Edit-Media -InputPath .\a.mp3 -ShowScale -OutputPath .\a.mp4
 ```
-
 
 
 ---
