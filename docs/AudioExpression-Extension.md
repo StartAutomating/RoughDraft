@@ -48,26 +48,26 @@ All Expressions can use the following variables:
 
 
 ### Examples
-#### EXAMPLE 1
+> EXAMPLE 1
+
 ```PowerShell
 Show-Media -AudioExpression "-2+random(0)" # Play white noise
 ```
+> EXAMPLE 2
 
-#### EXAMPLE 2
 ```PowerShell
 Show-Media -AudioExpression "0.5*tan(PI*(360-2.5/2)*t)"
 ```
+> EXAMPLE 3
 
-#### EXAMPLE 3
 ```PowerShell
 New-Media -AudioExpression "0.5*sin(PI*(720-2.5/2)*t)","0.5*cos(2*PI*(360+2.5/2)*t)" -OutputPath .\Test.mp3 -Duration "00:00:15"
 ```
+> EXAMPLE 4
 
-#### EXAMPLE 4
 ```PowerShell
 Edit-Media -AudioExpression "val(0)","-val(1)" -InputPath .\Test.mp3
 ```
-
 
 
 ---
