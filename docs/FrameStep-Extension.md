@@ -32,11 +32,11 @@ Select one frame every N-th frame.
 
 
 ### Examples
-#### EXAMPLE 1
+> EXAMPLE 1
+
 ```PowerShell
 Edit-Media -InputPath .\a.mp4 -FrameStep 2
 ```
-
 
 
 ---
