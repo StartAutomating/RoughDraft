@@ -36,11 +36,11 @@ Runs FFPlay.
 
 
 ### Examples
-#### EXAMPLE 1
+> EXAMPLE 1
+
 ```PowerShell
 Use-FFPlay -FFPlayArgument "$home\Music\ASong.mp3"
 ```
-
 
 
 ---
