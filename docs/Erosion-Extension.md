@@ -32,11 +32,11 @@ Apply erosion effect to the video.
 
 
 ### Examples
-#### EXAMPLE 1
+> EXAMPLE 1
+
 ```PowerShell
 Edit-Media -InputPath .\a.mp4 -Erosion
 ```
-
 
 
 ---
