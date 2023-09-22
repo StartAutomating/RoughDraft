@@ -32,16 +32,16 @@ Shows the audio spectrum, using the [showspectrum filter](https://ffmpeg.org/ffm
 
 
 ### Examples
-#### EXAMPLE 1
+> EXAMPLE 1
+
 ```PowerShell
 Show-Media -InputPath .\a.mp3 -ShowSpectrum
 ```
+> EXAMPLE 2
 
-#### EXAMPLE 2
 ```PowerShell
 Edit-Media -InputPath .\a.mp3 -ShowSpectrum -OutputPath .\a.mp4
 ```
-
 
 
 ---
