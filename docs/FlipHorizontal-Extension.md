@@ -32,11 +32,11 @@ Flips video horizontally, using the hflip filter.
 
 
 ### Examples
-#### EXAMPLE 1
+> EXAMPLE 1
+
 ```PowerShell
 Edit-Media -InputPath .\TestSource.gif -FlipHorizontal
 ```
-
 
 
 ---
