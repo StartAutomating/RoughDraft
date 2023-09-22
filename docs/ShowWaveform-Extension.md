@@ -32,16 +32,16 @@ Shows a waveform of the audio, using the [showwaves filter](https://ffmpeg.org/f
 
 
 ### Examples
-#### EXAMPLE 1
+> EXAMPLE 1
+
 ```PowerShell
 Show-Media -InputPath .\a.mp3 -ShowWaveform
 ```
+> EXAMPLE 2
 
-#### EXAMPLE 2
 ```PowerShell
 Edit-Media -InputPath .\a.mp3 -ShowWaveform -OutputPath .\a.mp4
 ```
-
 
 
 ---
