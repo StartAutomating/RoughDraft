@@ -32,11 +32,11 @@ Generates fractals using the mandelbrot filter.
 
 
 ### Examples
-#### EXAMPLE 1
+> EXAMPLE 1
+
 ```PowerShell
 New-Media -OutputPath "Mandelbrot.gif" -Duration "00:00:05" -Mandelbrot
 ```
-
 
 
 ---
