@@ -32,11 +32,11 @@ Creates audio and video files using ffmpeg
 
 
 ### Examples
-#### EXAMPLE 1
+> EXAMPLE 1
+
 ```PowerShell
 New-Media -OutputPath ".\RGBTestSource.mp4" -TestSource "RGBTestSrc"
 ```
-
 
 
 ---
