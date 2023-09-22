@@ -32,16 +32,16 @@ Receives media from inputs.
 
 
 ### Examples
-#### EXAMPLE 1
+> EXAMPLE 1
+
 ```PowerShell
 Receive-Media -DirectShow -VideoDevice "OBS Virtual Camera" -OutputPath .\Desktop.mpg
 ```
+> EXAMPLE 2
 
-#### EXAMPLE 2
 ```PowerShell
 Receive-Media -DirectShow -VideoDevice "OBS Virtual Camera" -OutputPath .\Desktop.mkv -AsJob
 ```
-
 
 
 ---
