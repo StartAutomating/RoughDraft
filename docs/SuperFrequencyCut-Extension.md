@@ -32,11 +32,11 @@ Cut super frequencies (frequencies at an extremely high range).
 
 
 ### Examples
-#### EXAMPLE 1
+> EXAMPLE 1
+
 ```PowerShell
 Edit-Media -InputPath .\a.mp3 -SuperFrequencyCut
 ```
-
 
 
 ---
