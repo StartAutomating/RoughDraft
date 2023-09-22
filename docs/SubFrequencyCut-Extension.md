@@ -34,11 +34,11 @@ This filter allows to set custom, steeper roll off than highpass filter, and thu
 
 
 ### Examples
-#### EXAMPLE 1
+> EXAMPLE 1
+
 ```PowerShell
 Edit-Media -InputPath .\a.mp3 -SubFrequencyCut -SubFrequencyCut
 ```
-
 
 
 ---
