@@ -32,11 +32,11 @@ Apply arbitrary expressions to samples in frequency domain.
 
 
 ### Examples
-#### EXAMPLE 1
+> EXAMPLE 1
+
 ```PowerShell
 Edit-Media .\a.mp3 -FrequencyExpression -FrequencyExpressionReal "hypot(re,im)*sin(0)" -FrequencyExpressionImaginary "hypot(re,im)*cos(0)" -FrequencyExpressionWindowSize 512 -FrequencyExpressionOverlap 0.75
 ```
-
 
 
 ---
