@@ -22,11 +22,11 @@ Adjusts video Exposure, using the [exposure filter](https://ffmpeg.org/ffmpeg-fi
 
 
 ### Examples
-#### EXAMPLE 1
+> EXAMPLE 1
+
 ```PowerShell
 Edit-Media -InputPath a.mp4 -SetExposure
 ```
-
 
 
 ---
