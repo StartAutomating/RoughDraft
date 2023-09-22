@@ -386,7 +386,7 @@
             }
 
             if ($VideoCodec) { # If we provided an video codec try to find a match
-                $matchingCodec = $codecList | Where-Object {$_.Codec -like $AudioCodec -or $_.FullName -like $AudioCodec } | Select-Object -First 1
+                $matchingCodec = $codecList | Where-Object {$_.Codec -like $VideoCodec -or $_.FullName -like $VideoCodec } | Select-Object -First 1
                 if ($matchingCodec) { # If we did, pass the short name to -vcodec
                     $filterParams += "-c:v"
                     $filterParams += "$($matchingCodec.Codec)"
