@@ -36,16 +36,16 @@ Gets metadata about a media file, using FFProbe.
 
 
 ### Examples
-#### EXAMPLE 1
+> EXAMPLE 1
+
 ```PowerShell
 Get-Media -InputPath $home\Music\ASong.mp3
 ```
+> EXAMPLE 2
 
-#### EXAMPLE 2
 ```PowerShell
 Get-Media -InputPath $home\Video\AVideo.mp4
 ```
-
 
 
 ---
@@ -118,7 +118,7 @@ For example, to show only audio streams, use 'a'
 
 A list of entries.
 By default, shows information about streams and formats.
-For more information about sections, visit [FFMpeg.org](https://ffmpeg.org/ffprobe.html#main-options)
+For more information about sections, visit [FFMpeg.org](https://ffmpeg.org/ffprobe.html#Main-options)
 
 
 
