@@ -32,12 +32,12 @@ Draws Text on Video, using the [drawtext filter](http://ffmpeg.org/ffmpeg-filter
 
 
 ### Examples
-#### EXAMPLE 1
+> EXAMPLE 1
+
 ```PowerShell
 New-Media -Color "Black" -Duration "00:00:05" -Resolution 1920x1080 -OutputPath .\BlackBackground.mp4 |
     Edit-Media -DrawText -DrawTextText "Hello World" -DrawTextCenter -DrawTextFontSize 36
 ```
-
 
 
 ---
