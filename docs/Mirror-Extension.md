@@ -48,21 +48,21 @@ Mirrors video vertical, horizontally, or in quadrants.
 
 
 ### Examples
-#### EXAMPLE 1
+> EXAMPLE 1
+
 ```PowerShell
 Edit-Media -InputPath "a.mp4" -Mirror # Mirror vertically
 ```
+> EXAMPLE 2
 
-#### EXAMPLE 2
 ```PowerShell
 Edit-Media -InputPath "a.mp4" -Mirror -HorizontalMirror # Mirror horitonztally
 ```
+> EXAMPLE 3
 
-#### EXAMPLE 3
 ```PowerShell
 Edit-Media -InputPath "a.mp4" -Mirror -QuadMirror       # Mirror four quadrants.
 ```
-
 
 
 ---
