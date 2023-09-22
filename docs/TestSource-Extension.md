@@ -32,11 +32,11 @@ Generates test sources using lavfi
 
 
 ### Examples
-#### EXAMPLE 1
+> EXAMPLE 1
+
 ```PowerShell
 New-Media -TestSource testsrc2 -Duration "00:00:05" -OutputPath "TestSource.gif"
 ```
-
 
 
 ---
