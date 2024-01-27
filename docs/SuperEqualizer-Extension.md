@@ -1,35 +1,21 @@
 Extension/SuperEqualizer.RoughDraft.Extension.ps1
 -------------------------------------------------
 
-
-
-
 ### Synopsis
 Audio 18 band Superequalizer
 
-
-
 ---
-
 
 ### Description
 
 Modify audio with an 18 band superequalizer, courtesy of the superequalizer filter.
 
-
-
 ---
-
 
 ### Related Links
 * [https://ffmpeg.org/ffmpeg-filters.html#superequalizer](https://ffmpeg.org/ffmpeg-filters.html#superequalizer)
 
-
-
-
-
 ---
-
 
 ### Examples
 Make everything much more quiet
@@ -57,32 +43,19 @@ Show-Media -InputPath .\test.mp3 -SuperEqualizer @{
 } # Turn up the bass
 ```
 
-
 ---
-
 
 ### Parameters
 #### **SuperEqualizer**
-
 If set, apply 18 band equalizer.
 The key can either by a number of a digit range.
 The value will be interpreted as the change in decibals for that band.
-
-
-
-
-
 
 |Type           |Required|Position|PipelineInput|
 |---------------|--------|--------|-------------|
 |`[IDictionary]`|true    |1       |false        |
 
-
-
-
-
 ---
-
 
 ### Syntax
 ```PowerShell
