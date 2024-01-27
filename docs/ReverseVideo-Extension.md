@@ -1,16 +1,10 @@
 Extension/ReverseVideo.RoughDraft.Extension.ps1
 -----------------------------------------------
 
-
-
-
 ### Synopsis
 Reverses video
 
-
-
 ---
-
 
 ### Description
 
@@ -18,20 +12,12 @@ Reverses video, using the reverse filter.
 
 Warning: This filter requires memory to buffer the entire clip.
 
-
-
 ---
-
 
 ### Related Links
 * [https://ffmpeg.org/ffmpeg-filters.html#reverse](https://ffmpeg.org/ffmpeg-filters.html#reverse)
 
-
-
-
-
 ---
-
 
 ### Examples
 > EXAMPLE 1
@@ -40,30 +26,17 @@ Warning: This filter requires memory to buffer the entire clip.
 Edit-Media -InputPath "TestSource.gif" -ReverseVideo
 ```
 
-
 ---
-
 
 ### Parameters
 #### **ReverseVideo**
-
 If set, will reverse audio
-
-
-
-
-
 
 |Type      |Required|Position|PipelineInput|Aliases      |
 |----------|--------|--------|-------------|-------------|
 |`[Switch]`|true    |named   |false        |BackmaskVideo|
 
-
-
-
-
 ---
-
 
 ### Syntax
 ```PowerShell
