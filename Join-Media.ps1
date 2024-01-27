@@ -251,7 +251,13 @@
                 }
             }
         } elseif ($isAllVideo -or $isAllAudio) {
-            if (@($inputMedia.Values | Select-Object -ExpandProperty codecs -Unique).Count -gt 1) {
+            $uniqueCodecCount = @($inputMedia.Values | Group-Object { $_.codecs -join ' '}).Count
+            $uniqueCodecTypeCount = @(
+                    $inputMedia.Values | 
+                        Select-Object -ExpandProperty CodecTypes |
+                        Select-Object -Unique
+            ).Length
+            if ($uniqueCodecCount -gt $uniqueCodecTypeCount) {
                 $Transcode = $true
             }
             $tempFiles = foreach ($in in $inputList) {
