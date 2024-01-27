@@ -1,35 +1,21 @@
 Set-Media
 ---------
 
-
-
-
 ### Synopsis
 Sets media metadata
 
-
-
 ---
-
 
 ### Description
 
 Sets media metadata, using ffmpeg
 
-
-
 ---
-
 
 ### Related Links
 * [Get-Media](Get-Media.md)
 
-
-
-
-
 ---
-
 
 ### Examples
 > EXAMPLE 1
@@ -47,85 +33,43 @@ Set-Media -InputPath $home\Music\ASong.mp3 -Property @{
 Set-Media -InputPath $home\Music\ASong.mp3 -AlbumArt $home\Music\Cover.jpg
 ```
 
-
 ---
-
 
 ### Parameters
 #### **InputPath**
-
 The Input Path
-
-
-
-
-
 
 |Type        |Required|Position|PipelineInput        |Aliases |
 |------------|--------|--------|---------------------|--------|
 |`[String[]]`|true    |1       |true (ByPropertyName)|Fullname|
 
-
-
 #### **Property**
-
 A dictionary of properties to update
-
-
-
-
-
 
 |Type          |Required|Position|PipelineInput |Aliases    |
 |--------------|--------|--------|--------------|-----------|
 |`[PSObject[]]`|false   |2       |true (ByValue)|InputObject|
 
-
-
 #### **ClearProperty**
-
 A collection of properties to clear
-
-
-
-
-
 
 |Type        |Required|Position|PipelineInput|
 |------------|--------|--------|-------------|
 |`[String[]]`|false   |3       |false        |
 
-
-
 #### **FFMpegPath**
-
 The path to FFMpeg.exe.  Download it from http://ffmpeg.org/
-
-
-
-
-
 
 |Type      |Required|Position|PipelineInput        |
 |----------|--------|--------|---------------------|
 |`[String]`|false   |4       |true (ByPropertyName)|
 
-
-
 #### **FFMpegArgument**
-
 A list of additional arguments to FFMpeg.
-
-
-
-
-
 
 |Type        |Required|Position|PipelineInput|Aliases                                           |
 |------------|--------|--------|-------------|--------------------------------------------------|
 |`[String[]]`|false   |5       |false        |Arguments<br/>Argument<br/>ArgumentList<br/>FFArgs|
-
-
 
 #### **WhatIf**
 -WhatIf is an automatic variable that is created when a command has ```[CmdletBinding(SupportsShouldProcess)]```.
@@ -136,24 +80,14 @@ A list of additional arguments to FFMpeg.
 
 If you pass ```-Confirm:$false``` you will not be prompted.
 
-
 If the command sets a ```[ConfirmImpact("Medium")]``` which is lower than ```$confirmImpactPreference```, you will not be prompted unless -Confirm is passed.
 
-
-
 ---
-
 
 ### Outputs
 * [Nullable](https://learn.microsoft.com/en-us/dotnet/api/System.Nullable)
 
-
-
-
-
-
 ---
-
 
 ### Syntax
 ```PowerShell
