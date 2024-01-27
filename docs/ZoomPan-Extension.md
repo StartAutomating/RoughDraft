@@ -1,16 +1,10 @@
 Extension/ZoomPan.RoughDraft.Extension.ps1
 ------------------------------------------
 
-
-
-
 ### Synopsis
 Zoom and Pan
 
-
-
 ---
-
 
 ### Description
 
@@ -44,131 +38,64 @@ Each expression can contain the following constants:
 |sar        |sample aspect ratio|
 |dar        |display aspect ratio|
 
-
-
 ---
-
 
 ### Related Links
 * [https://ffmpeg.org/ffmpeg-filters.html#zoompan](https://ffmpeg.org/ffmpeg-filters.html#zoompan)
 
-
-
-
-
 ---
-
 
 ### Parameters
 #### **ZoomPan**
-
 Apply Zoom & Pan effect.
-
-
-
-
-
 
 |Type      |Required|Position|PipelineInput|
 |----------|--------|--------|-------------|
 |`[Switch]`|true    |named   |false        |
 
-
-
 #### **ZoomPanZoom**
-
 Set the zoom expression. Range is 1-10. Default is 1.
-
-
-
-
-
 
 |Type      |Required|Position|PipelineInput|Aliases                  |
 |----------|--------|--------|-------------|-------------------------|
 |`[String]`|false   |1       |false        |zoompan_zoom<br/>ZoomPanZ|
 
-
-
 #### **ZoomPanX**
-
 Set the x expression
-
-
-
-
-
 
 |Type      |Required|Position|PipelineInput|Aliases  |
 |----------|--------|--------|-------------|---------|
 |`[String]`|false   |2       |false        |zoompan_x|
 
-
-
 #### **ZoomPanY**
-
 set the y expression
-
-
-
-
-
 
 |Type      |Required|Position|PipelineInput|Aliases  |
 |----------|--------|--------|-------------|---------|
 |`[String]`|false   |3       |false        |zoompan_y|
 
-
-
 #### **ZoomPanD**
-
 set the duration expression
-
-
-
-
-
 
 |Type      |Required|Position|PipelineInput|Aliases  |
 |----------|--------|--------|-------------|---------|
 |`[String]`|false   |4       |false        |zoompan_d|
 
-
-
 #### **ZoomPanS**
-
 set the output image size
-
-
-
-
-
 
 |Type      |Required|Position|PipelineInput|Aliases  |
 |----------|--------|--------|-------------|---------|
 |`[String]`|false   |5       |false        |zoompan_s|
 
-
-
 #### **ZoomPanFps**
-
 set the output framerate
-
-
-
-
-
 
 |Type     |Required|Position|PipelineInput|Aliases    |
 |---------|--------|--------|-------------|-----------|
 |`[Int32]`|false   |6       |false        |zoompan_fps|
 
-
-
-
-
 ---
-
 
 ### Syntax
 ```PowerShell
