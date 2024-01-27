@@ -1,35 +1,21 @@
 Get-FFProbe
 -----------
 
-
-
-
 ### Synopsis
 Gets FFProbe
 
-
-
 ---
-
 
 ### Description
 
 Gets FFProbe, if installed
 
-
-
 ---
-
 
 ### Related Links
 * [Use-FFProbe](Use-FFProbe.md)
 
-
-
-
-
 ---
-
 
 ### Examples
 > EXAMPLE 1
@@ -38,30 +24,17 @@ Gets FFProbe, if installed
 Get-FFProbe
 ```
 
-
 ---
-
 
 ### Parameters
 #### **FFProbePath**
-
 The path to FFProbe
-
-
-
-
-
 
 |Type      |Required|Position|PipelineInput        |
 |----------|--------|--------|---------------------|
 |`[Object]`|false   |1       |true (ByPropertyName)|
 
-
-
-
-
 ---
-
 
 ### Syntax
 ```PowerShell
