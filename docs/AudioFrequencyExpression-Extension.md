@@ -1,35 +1,21 @@
 Extension/AudioFrequencyExpression.RoughDraft.Extension.ps1
 -----------------------------------------------------------
 
-
-
-
 ### Synopsis
 Apply expressions to audio frequencies
 
-
-
 ---
-
 
 ### Description
 
 Apply arbitrary expressions to samples in frequency domain.
 
-
-
 ---
-
 
 ### Related Links
 * [https://ffmpeg.org/ffmpeg-filters.html#afftfilt](https://ffmpeg.org/ffmpeg-filters.html#afftfilt)
 
-
-
-
-
 ---
-
 
 ### Examples
 > EXAMPLE 1
@@ -38,32 +24,19 @@ Apply arbitrary expressions to samples in frequency domain.
 Edit-Media .\a.mp3 -FrequencyExpression -FrequencyExpressionReal "hypot(re,im)*sin(0)" -FrequencyExpressionImaginary "hypot(re,im)*cos(0)" -FrequencyExpressionWindowSize 512 -FrequencyExpressionOverlap 0.75
 ```
 
-
 ---
-
 
 ### Parameters
 #### **FrequencyExpression**
-
 Apply arbitrary expressions to samples in frequency domain.
-
-
-
-
-
 
 |Type      |Required|Position|PipelineInput|
 |----------|--------|--------|-------------|
 |`[Switch]`|true    |named   |false        |
 
-
-
 #### **FrequencyExpressionReal**
-
 Set channels real expressions.
-
 Each expression in real and imag can contain the following constants and functions:
-
 |Value|Description|
 |-|-|
 |sr|sample rate|
@@ -76,24 +49,14 @@ Each expression in real and imag can contain the following constants and functio
 |im|current imaginary part of frequency bin of current channel|
 |real(b, ch)|Return the value of real part of frequency bin at location (bin,channel)|
 |imag(b, ch)|Return the value of imaginary part of frequency bin at location (bin,channel)|
-
-
-
-
-
 
 |Type        |Required|Position|PipelineInput|Aliases      |
 |------------|--------|--------|-------------|-------------|
 |`[String[]]`|false   |1       |false        |afftfilt_real|
 
-
-
 #### **FrequencyExpressionImaginary**
-
 Set channels imaginary expressions.
-
 Each expression in real and imag can contain the following constants and functions:
-
 |Value|Description|
 |-|-|
 |sr|sample rate|
@@ -107,38 +70,19 @@ Each expression in real and imag can contain the following constants and functio
 |real(b, ch)|Return the value of real part of frequency bin at location (bin,channel)|
 |imag(b, ch)|Return the value of imaginary part of frequency bin at location (bin,channel)|
 
-
-
-
-
-
 |Type        |Required|Position|PipelineInput|Aliases      |
 |------------|--------|--------|-------------|-------------|
 |`[String[]]`|false   |2       |false        |afftfilt_imag|
 
-
-
 #### **FrequencyExpressionWindowSize**
-
 set window size
-
-
-
-
-
 
 |Type     |Required|Position|PipelineInput|Aliases          |
 |---------|--------|--------|-------------|-----------------|
 |`[Int32]`|false   |3       |false        |afftfilt_win_size|
 
-
-
 #### **FrequencyExpressionWindowFunction**
-
 set window function
-
-
-
 Valid Values:
 
 * rect
@@ -163,36 +107,18 @@ Valid Values:
 * bohman
 * kaiser
 
-
-
-
-
-
 |Type      |Required|Position|PipelineInput|Aliases          |
 |----------|--------|--------|-------------|-----------------|
 |`[Object]`|false   |4       |false        |afftfilt_win_func|
 
-
-
 #### **FrequencyExpressionOverlap**
-
 set window overlap
-
-
-
-
-
 
 |Type      |Required|Position|PipelineInput|Aliases         |
 |----------|--------|--------|-------------|----------------|
 |`[Single]`|false   |5       |false        |afftfilt_overlap|
 
-
-
-
-
 ---
-
 
 ### Syntax
 ```PowerShell
