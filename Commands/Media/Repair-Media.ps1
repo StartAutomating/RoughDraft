@@ -8,6 +8,7 @@ function Repair-Media
     .EXAMPLE
         Get-ChildItem -Filter *.m3u | Repair-Media -FixPlayListPath
     #>
+    [CmdletBinding(SupportsShouldProcess)]
     param(
     # One or more input paths
     [Parameter(Mandatory,Position=0,ValueFromPipelineByPropertyName)]
