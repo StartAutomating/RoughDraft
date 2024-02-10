@@ -3,6 +3,10 @@
   <Type>
     <Name>RoughDraft.Media</Name>
     <Members>
+      <AliasProperty>
+        <Name>FilePath</Name>
+        <ReferencedMemberName>InputPath</ReferencedMemberName>
+      </AliasProperty>
       <ScriptProperty>
         <Name>AspectRatio</Name>
         <GetScriptBlock>
@@ -36,6 +40,18 @@ foreach ($streamInfo in $this.Streams) {
         return ($streamInfo.bit_rate -as [int])
     }
 }
+                    </GetScriptBlock>
+      </ScriptProperty>
+      <ScriptProperty>
+        <Name>FileName</Name>
+        <GetScriptBlock>
+                        &lt;#
+.SYNOPSIS
+    Gets a media file name
+.DESCRIPTION
+    Gets the name of a media file
+#&gt;
+$this.InputPath | Split-Path -Leaf
                     </GetScriptBlock>
       </ScriptProperty>
       <ScriptProperty>
