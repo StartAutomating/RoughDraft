@@ -1,6 +1,10 @@
 ﻿#requires -Module PSDevOps
-#requires -Module RoughDraft
-Import-BuildStep -ModuleName RoughDraft
+Import-BuildStep -SourcePath (
+    Join-Path $PSScriptRoot 'GitHub'
+) -BuildSystem GitHubAction
+
+$PSScriptRoot | Split-Path | Push-Location
+
 New-GitHubAction -Name "MakeRoughDraft" -Description 'A PowerShell Module for Multimedia.' -Action RoughDraftAction -Icon film  -ActionOutput ([Ordered]@{
     RoughDraftScriptRuntime = [Ordered]@{
         description = "The time it took the .RoughDraftScript parameter to run"
@@ -18,5 +22,6 @@ New-GitHubAction -Name "MakeRoughDraft" -Description 'A PowerShell Module for Mu
         description = "The number of .RoughDraft.ps1 files that were run"
         value = '${{steps.RoughDraftAction.outputs.RoughDraftPS1Count}}'
     }
-})|
-    Set-Content .\action.yml -Encoding UTF8 -PassThru
+}) -OutputPath .\action.yml
+
+Pop-Location
