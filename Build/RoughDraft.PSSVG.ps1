@@ -10,7 +10,7 @@ svg @(
 '@
     )
     $psChevron.svg.symbol.OuterXml
-    svg.use -href '#psChevron'  -X '5%' -Y '0%' -Height '100%' -Width '20%' -Fill '#4488ff' -Class foreground-fill
+    svg.use -href '#psChevron'  -X '2.5%' -Y '0%' -Height '100%' -Width '20%' -Fill '#4488ff' -Class foreground-fill
     svg.text @(
         svg.tspan "Rough" -FontFamily 'serif' -Rotate 1 -Style "font-family: 'Space Grotesk';" 
         svg.tspan "Draft" -FontFamily 'serif' -Dx '-0.3em' -Rotate 2 -Dy '0.2em' -Style "font-family: 'Space Grotesk';" 
