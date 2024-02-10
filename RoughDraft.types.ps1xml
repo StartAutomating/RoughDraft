@@ -4,6 +4,23 @@
     <Name>RoughDraft.Media</Name>
     <Members>
       <ScriptProperty>
+        <Name>AudioBitrate</Name>
+        <GetScriptBlock>
+                        &lt;#
+.SYNOPSIS
+    Gets Audio Bitrate
+.DESCRIPTION
+    Gets an Audio's Bitrate, if the information is available in any Audio stream.
+#&gt;
+foreach ($streamInfo in $this.Streams) {
+    if ($streamInfo.codec_type -ne 'audio') { continue }
+    if ($streamInfo.bit_rate) {
+        return ($streamInfo.bit_rate -as [int])
+    }
+}
+                    </GetScriptBlock>
+      </ScriptProperty>
+      <ScriptProperty>
         <Name>MediaType</Name>
         <GetScriptBlock>
                         &lt;#
@@ -35,6 +52,25 @@ if ($this.pstypenames -notcontains "RoughDraft.$thisMediaType") {
 }
 
 $thisMediaType
+                    </GetScriptBlock>
+      </ScriptProperty>
+      <ScriptProperty>
+        <Name>VideoBitrate</Name>
+        <GetScriptBlock>
+                        &lt;#
+.SYNOPSIS
+    Gets a Video's Bitrate
+.DESCRIPTION
+    Gets a Video's Bitrate, if the information is available in any Video stream.
+#&gt;
+foreach ($streamInfo in $this.Streams) {
+    if ($streamInfo.codec_type -ne 'video') { continue }
+    if ($streamInfo.bit_rate) {
+        return ($streamInfo.bit_rate -as [int])
+    }
+}
+
+
                     </GetScriptBlock>
       </ScriptProperty>
     </Members>
