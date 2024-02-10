@@ -220,16 +220,19 @@
                 }
             } while ((-not $jsonObject) -and ($tries -ge 0))
 
-            if ($jsonObject) {
+            if ($jsonObject) {                
                 foreach ($prop in $jsonObject.psobject.properties) {
-                    if ($prop.Value) {
+                    if ($null -ne $prop.Value) {
                         $outObject[$prop.Name] = $prop.Value
                         if ($prop.value.tags -and $prop.name -eq 'format') {
+                            if (-not $outObject.'.MetaData') {
+                                $outObject.'.MetaData' = [Ordered]@{}
+                            }
                             foreach ($tagProp in $prop.value.tags.psobject.properties) {
-                                if (-not $outObject[$tagProp.Name]) {
-                                    $outObject[$tagProp.Name] = $tagProp.Value
+                                if (-not $outObject.'.MetaData'[$tagProp.Name]) {
+                                    $outObject.'.MetaData'[$tagProp.Name] = $tagProp.Value
                                 } else {
-                                    $outObject[$tagProp.Name] = @() + $outObject[$tagProp.Name] + $tagProp.Value
+                                    $outObject.'.MetaData'[$tagProp.Name] = @($outObject.'.MetaData'[$tagProp.Name]) + $tagProp.Value
                                 }
                             }
                         }
