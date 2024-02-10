@@ -579,9 +579,16 @@ jobs:
       - name: Use PSSVG Action
         uses: StartAutomating/PSSVG@main
         id: PSSVG
-      - name: Use RoughDraft Action
+      - name: Run RoughDraft (from main)
+        if: ${{github.ref_name == 'main'}}
         uses: StartAutomating/RoughDraft@main
-        id: RoughDraft
+        id: RoughDraftMain
+        with: 
+          CommitMessage: Running RoughDraft [skip ci]
+      - name: Run RoughDraft (on branch)
+        if: ${{github.ref_name != 'main'}}
+        uses: ./
+        id: RoughDraftBranch
         with: 
           CommitMessage: Running RoughDraft [skip ci]
       - name: UsePiecemeal
