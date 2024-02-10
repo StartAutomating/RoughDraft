@@ -164,7 +164,7 @@
                 if ($PSCmdlet.ShouldProcess("$inFile $metadataArgs")) {
                     $allFFMpegArguments = @(
                         "-i"
-                        "`"$inFile`""
+                        "$inFile"
                         $metadataArgs
                         $tempFileName
                         '-y'
