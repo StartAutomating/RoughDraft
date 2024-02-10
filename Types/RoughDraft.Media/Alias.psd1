@@ -1,0 +1,3 @@
+@{
+    FilePath = 'InputPath'
+}
