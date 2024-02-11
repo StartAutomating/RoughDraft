@@ -103,6 +103,40 @@ foreach ($streamInfo in $this.Streams) {
                     </GetScriptBlock>
       </ScriptProperty>
       <ScriptProperty>
+        <Name>BPM</Name>
+        <GetScriptBlock>
+                        &lt;#
+.SYNOPSIS
+    Gets BPM Metadata
+.DESCRIPTION
+    Gets the BPM Metadata, if present.
+#&gt;
+param()
+if ($this.'.Metadata'.BPM) {
+    return ($this.'.Metadata'.BPM -as [double])
+} elseif ($this.'.Metadata'.TBPM) {
+    return ($this.'.Metadata'.TBPM -as [double])
+}
+
+                    </GetScriptBlock>
+        <SetScriptBlock>
+                        &lt;#
+.SYNOPSIS
+    Sets the BPM Metadata
+.DESCRIPTION
+    Changes the BPM metadata for a media file (persistently, if possible)
+#&gt;
+param()
+$propertyToSet = @{TBPM="$args"}
+if (-not $this.'.Metadata') {
+    $this.'.Metadata' = [Ordered]@{}
+}
+$this.'.Metadata'.BPM = $propertyToSet.TBPM
+Set-Media -Property $propertyToSet
+
+                    </SetScriptBlock>
+      </ScriptProperty>
+      <ScriptProperty>
         <Name>FileName</Name>
         <GetScriptBlock>
                         &lt;#
