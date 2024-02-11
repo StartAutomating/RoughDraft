@@ -597,6 +597,42 @@ Set-Media -Property $propertyToSet
                     </SetScriptBlock>
       </ScriptProperty>
       <ScriptProperty>
+        <Name>Network</Name>
+        <GetScriptBlock>
+                        &lt;#
+.SYNOPSIS
+    Gets Network Metadata
+.DESCRIPTION
+    Gets the Network Metadata, if present.
+#&gt;
+param()
+if ($this.'.Metadata'.Network) {
+    return ($this.'.Metadata'.Network)
+} elseif ($this.'.Metadata'.tvnn) {
+    return ($this.'.Metadata'.tvnn)
+}
+
+                    </GetScriptBlock>
+        <SetScriptBlock>
+                        &lt;#
+.SYNOPSIS
+    Sets the Network Metadata
+.DESCRIPTION
+    Changes the Network metadata for a media file (persistently, if possible)
+.NOTES
+    Network is stored within the ID3 tag `tvnn`.
+#&gt;
+param()
+$propertyToSet = @{tvnn="$args"}
+if (-not $this.'.Metadata') {
+    $this.'.Metadata' = [Ordered]@{}
+}
+$this.'.Metadata'.Network = $propertyToSet.tvnn
+Set-Media -Property $propertyToSet
+
+                    </SetScriptBlock>
+      </ScriptProperty>
+      <ScriptProperty>
         <Name>PixelFormat</Name>
         <GetScriptBlock>
                         &lt;#
@@ -615,6 +651,36 @@ foreach ($streamInfo in $this.Streams) {
 
 
                     </GetScriptBlock>
+      </ScriptProperty>
+      <ScriptProperty>
+        <Name>Producer</Name>
+        <GetScriptBlock>
+                        &lt;#
+.SYNOPSIS
+    Gets Producer Metadata
+.DESCRIPTION
+    Gets the Producer Metadata, if present.
+#&gt;
+param()
+return $this.'.Metadata'.Producer
+
+                    </GetScriptBlock>
+        <SetScriptBlock>
+                        &lt;#
+.SYNOPSIS
+    Sets the Producer Metadata
+.DESCRIPTION
+    Changes the Producer metadata for a media file (persistently, if possible)
+#&gt;
+param()
+$propertyToSet = @{producer=$args -join '/'}
+if (-not $this.'.Metadata') {
+    $this.'.Metadata' = [Ordered]@{}
+}
+$this.'.Metadata'.Producer = $propertyToSet.producer
+Set-Media -Property $propertyToSet
+
+                    </SetScriptBlock>
       </ScriptProperty>
       <ScriptProperty>
         <Name>Title</Name>
