@@ -903,6 +903,54 @@ foreach ($streamInfo in $this.Streams) {
 
                     </GetScriptBlock>
       </ScriptProperty>
+      <ScriptProperty>
+        <Name>Year</Name>
+        <GetScriptBlock>
+                        &lt;#
+.SYNOPSIS
+    Gets Year Metadata
+.DESCRIPTION
+    Gets the Year Metadata, if present.
+#&gt;
+param()
+$yearInfo = if ($this.'.Metadata'.Year) {
+    $this.'.Metadata'.Year
+} elseif ($this.'.Metadata'.date) {
+    $this.'.Metadata'.date
+}
+
+if ($yearInfo -match '^\d{4}$') {
+    return ([datetime]::ParseExact($yearInfo, "yyyy", $null))
+} else {
+    return $yearInfo
+}
+
+
+                    </GetScriptBlock>
+        <SetScriptBlock>
+                        &lt;#
+.SYNOPSIS
+    Sets the Year Metadata
+.DESCRIPTION
+    Changes the Year metadata for a media file (persistently, if possible)
+#&gt;
+param()
+
+$dateTimeArgs = [DateTime]$($args[0])
+if ($dateTimeArgs.Year -eq 1 -and $dateTimeArgs -and $dateTimeArgs.Ticks) {
+    $dateTimeArgs = [datetime]::ParseExact("$($dateTimeArgs.Ticks)", "yyyy", $null)
+}
+$datePortion = @($dateTimeArgs.ToString('s') -split '-', 2)[0]
+# $yearPortion = @($datePortion -split '-')[0]
+$propertyToSet = @{date="$datePortion"}
+if (-not $this.'.Metadata') {
+    $this.'.Metadata' = [Ordered]@{}
+}
+$this.'.Metadata'.Year = $propertyToSet.date
+Set-Media -Property $propertyToSet
+
+                    </SetScriptBlock>
+      </ScriptProperty>
     </Members>
   </Type>
 </Types>
