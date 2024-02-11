@@ -14,4 +14,5 @@ if (-not $this.'.Metadata') {
     $this.'.Metadata' = [Ordered]@{}
 }
 $this.'.Metadata'.Show = $propertyToSet.TIT3
-Set-Media -Property $propertyToSet
+Set-Media -InputPath $this.InputPath -Property $propertyToSet
+

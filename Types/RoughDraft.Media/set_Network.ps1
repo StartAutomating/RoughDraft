@@ -12,4 +12,5 @@ if (-not $this.'.Metadata') {
     $this.'.Metadata' = [Ordered]@{}
 }
 $this.'.Metadata'.Network = $propertyToSet.tvnn
-Set-Media -Property $propertyToSet
+Set-Media -InputPath $this.InputPath -Property $propertyToSet
+

@@ -12,4 +12,3 @@ return $(
         $this.'.Metadata'.album_artist
     }
 )
-

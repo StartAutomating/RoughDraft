@@ -10,4 +10,5 @@ if (-not $this.'.Metadata') {
     $this.'.Metadata' = [Ordered]@{}
 }
 $this.'.Metadata'.Track = $propertyToSet.track
-Set-Media -Property $propertyToSet
+Set-Media -InputPath $this.InputPath -Property $propertyToSet
+

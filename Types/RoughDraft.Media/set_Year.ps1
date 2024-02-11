@@ -17,4 +17,5 @@ if (-not $this.'.Metadata') {
     $this.'.Metadata' = [Ordered]@{}
 }
 $this.'.Metadata'.Year = $propertyToSet.date
-Set-Media -Property $propertyToSet
+Set-Media -InputPath $this.InputPath -Property $propertyToSet
+

@@ -10,4 +10,3 @@ return $(
         $this.'.Metadata'.Artist
     } else { $null }
 )
-

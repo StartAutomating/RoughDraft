@@ -10,4 +10,3 @@ if ($this.'.Metadata'.CreationTime) {
 } elseif ($this.'.Metadata'.creation_time) {
     return ($this.'.Metadata'.creation_time -as [DateTime])
 }
-
