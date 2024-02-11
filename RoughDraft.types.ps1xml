@@ -855,6 +855,36 @@ Set-Media -Property $propertyToSet
                     </SetScriptBlock>
       </ScriptProperty>
       <ScriptProperty>
+        <Name>Track</Name>
+        <GetScriptBlock>
+                        &lt;#
+.SYNOPSIS
+    Gets Track Metadata
+.DESCRIPTION
+    Gets the Track Metadata, if present.
+#&gt;
+param()
+return $this.'.Metadata'.Track
+
+                    </GetScriptBlock>
+        <SetScriptBlock>
+                        &lt;#
+.SYNOPSIS
+    Sets the Track Metadata
+.DESCRIPTION
+    Changes the Track metadata for a media file (persistently, if possible)
+#&gt;
+param()
+$propertyToSet = @{track="$args"}
+if (-not $this.'.Metadata') {
+    $this.'.Metadata' = [Ordered]@{}
+}
+$this.'.Metadata'.Track = $propertyToSet.track
+Set-Media -Property $propertyToSet
+
+                    </SetScriptBlock>
+      </ScriptProperty>
+      <ScriptProperty>
         <Name>VideoBitrate</Name>
         <GetScriptBlock>
                         &lt;#
