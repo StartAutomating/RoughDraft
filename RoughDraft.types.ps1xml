@@ -68,6 +68,41 @@ Set-Media -Property $propertyToSet
                     </SetScriptBlock>
       </ScriptProperty>
       <ScriptProperty>
+        <Name>Artist</Name>
+        <GetScriptBlock>
+                        &lt;#
+.SYNOPSIS
+    Gets Artist Metadata
+.DESCRIPTION
+    Gets the Artist Metadata, if present.
+#&gt;
+param()
+return $(
+    if ($this.'.Metadata'.Artist) {
+        $this.'.Metadata'.Artist
+    } else { $null }
+)
+
+
+                    </GetScriptBlock>
+        <SetScriptBlock>
+                        &lt;#
+.SYNOPSIS
+    Sets the Artist Metadata
+.DESCRIPTION
+    Changes the Artist metadata for a media file (persistently, if possible)
+#&gt;
+param()
+$propertyToSet = @{artist="$args"}
+if (-not $this.'.Metadata') {
+    $this.'.Metadata' = [Ordered]@{}
+}
+$this.'.Metadata'.AlbumArtist = $propertyToSet.artist
+Set-Media -Property $propertyToSet
+
+                    </SetScriptBlock>
+      </ScriptProperty>
+      <ScriptProperty>
         <Name>AspectRatio</Name>
         <GetScriptBlock>
                         &lt;#
