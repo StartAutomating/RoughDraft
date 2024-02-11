@@ -18,7 +18,6 @@
 #&gt;
 param()
 return $this.'.Metadata'.Album
-
                     </GetScriptBlock>
         <SetScriptBlock>
                         &lt;#
@@ -33,7 +32,8 @@ if (-not $this.'.Metadata') {
     $this.'.Metadata' = [Ordered]@{}
 }
 $this.'.Metadata'.Album = $propertyToSet.album
-Set-Media -Property $propertyToSet
+Set-Media -InputPath $this.InputPath -Property $propertyToSet
+
 
                     </SetScriptBlock>
       </ScriptProperty>
@@ -54,8 +54,6 @@ return $(
         $this.'.Metadata'.album_artist
     }
 )
-
-
                     </GetScriptBlock>
         <SetScriptBlock>
                         &lt;#
@@ -70,7 +68,8 @@ if (-not $this.'.Metadata') {
     $this.'.Metadata' = [Ordered]@{}
 }
 $this.'.Metadata'.AlbumArtist = $propertyToSet.album_artist
-Set-Media -Property $propertyToSet
+Set-Media -InputPath $this.InputPath -Property $propertyToSet
+
 
                     </SetScriptBlock>
       </ScriptProperty>
@@ -89,8 +88,6 @@ return $(
         $this.'.Metadata'.Artist
     } else { $null }
 )
-
-
                     </GetScriptBlock>
         <SetScriptBlock>
                         &lt;#
@@ -105,7 +102,8 @@ if (-not $this.'.Metadata') {
     $this.'.Metadata' = [Ordered]@{}
 }
 $this.'.Metadata'.AlbumArtist = $propertyToSet.artist
-Set-Media -Property $propertyToSet
+Set-Media -InputPath $this.InputPath -Property $propertyToSet
+
 
                     </SetScriptBlock>
       </ScriptProperty>
@@ -124,7 +122,6 @@ foreach ($streamInfo in $this.Streams) {
         return $streamInfo.display_aspect_ratio
     }
 }
-
                     </GetScriptBlock>
       </ScriptProperty>
       <ScriptProperty>
@@ -159,7 +156,6 @@ if ($this.'.Metadata'.BPM) {
 } elseif ($this.'.Metadata'.TBPM) {
     return ($this.'.Metadata'.TBPM -as [double])
 }
-
                     </GetScriptBlock>
         <SetScriptBlock>
                         &lt;#
@@ -176,7 +172,8 @@ if (-not $this.'.Metadata') {
     $this.'.Metadata' = [Ordered]@{}
 }
 $this.'.Metadata'.BPM = $propertyToSet.TBPM
-Set-Media -Property $propertyToSet
+Set-Media -InputPath $this.InputPath -Property $propertyToSet
+
 
                     </SetScriptBlock>
       </ScriptProperty>
@@ -191,7 +188,6 @@ Set-Media -Property $propertyToSet
 #&gt;
 param()
 return $this.'.Metadata'.Comment
-
                     </GetScriptBlock>
         <SetScriptBlock>
                         &lt;#
@@ -206,7 +202,8 @@ if (-not $this.'.Metadata') {
     $this.'.Metadata' = [Ordered]@{}
 }
 $this.'.Metadata'.Comment = $propertyToSet.comment
-Set-Media -Property $propertyToSet
+Set-Media -InputPath $this.InputPath -Property $propertyToSet
+
 
                     </SetScriptBlock>
       </ScriptProperty>
@@ -221,7 +218,6 @@ Set-Media -Property $propertyToSet
 #&gt;
 param()
 return $this.'.Metadata'.Composer -split '[\;\\/]'
-
                     </GetScriptBlock>
         <SetScriptBlock>
                         &lt;#
@@ -231,12 +227,13 @@ return $this.'.Metadata'.Composer -split '[\;\\/]'
     Changes the Composer metadata for a media file (persistently, if possible)
 #&gt;
 param()
-$propertyToSet = @{composer="$args"}
+$propertyToSet = @{composer=$args -join '/'}
 if (-not $this.'.Metadata') {
     $this.'.Metadata' = [Ordered]@{}
 }
 $this.'.Metadata'.Composer = $propertyToSet.Composer
-Set-Media -Property $propertyToSet
+Set-Media -InputPath $this.InputPath -Property $propertyToSet
+
 
                     </SetScriptBlock>
       </ScriptProperty>
@@ -251,7 +248,6 @@ Set-Media -Property $propertyToSet
 #&gt;
 param()
 return $this.'.Metadata'.Copyright
-
                     </GetScriptBlock>
         <SetScriptBlock>
                         &lt;#
@@ -266,7 +262,8 @@ if (-not $this.'.Metadata') {
     $this.'.Metadata' = [Ordered]@{}
 }
 $this.'.Metadata'.Copyright = $propertyToSet.copyright
-Set-Media -Property $propertyToSet
+Set-Media -InputPath $this.InputPath -Property $propertyToSet
+
 
                     </SetScriptBlock>
       </ScriptProperty>
@@ -285,8 +282,6 @@ if ($this.'.Metadata'.CreationTime) {
 } elseif ($this.'.Metadata'.creation_time) {
     return ($this.'.Metadata'.creation_time -as [DateTime])
 }
-
-
                     </GetScriptBlock>
         <SetScriptBlock>
                         &lt;#
@@ -304,7 +299,8 @@ if (-not $this.'.Metadata') {
     $this.'.Metadata' = [Ordered]@{}
 }
 $this.'.Metadata'.CreationTime = $propertyToSet.creation_time
-Set-Media -Property $propertyToSet
+Set-Media -InputPath $this.InputPath -Property $propertyToSet
+
 
                     </SetScriptBlock>
       </ScriptProperty>
@@ -323,7 +319,6 @@ if ($this.'.Metadata'.Description) {
 } elseif ($this.'.Metadata'.desc) {
     return $this.'.Metadata'.desc
 }
-
                     </GetScriptBlock>
         <SetScriptBlock>
                         &lt;#
@@ -338,7 +333,8 @@ if (-not $this.'.Metadata') {
     $this.'.Metadata' = [Ordered]@{}
 }
 $this.'.Metadata'.Description = $propertyToSet.desc
-Set-Media -Property $propertyToSet
+Set-Media -InputPath $this.InputPath -Property $propertyToSet
+
 
                     </SetScriptBlock>
       </ScriptProperty>
@@ -369,7 +365,8 @@ if (-not $this.'.Metadata') {
     $this.'.Metadata' = [Ordered]@{}
 }
 $this.'.Metadata'.Disc = $propertyToSet.disc
-Set-Media -Property $propertyToSet
+Set-Media -InputPath $this.InputPath -Property $propertyToSet
+
 
                     </SetScriptBlock>
       </ScriptProperty>
@@ -389,6 +386,7 @@ if ($this.'.Metadata'.EpisodeID) {
     return $this.'.Metadata'.TVEN
 }
 
+
                     </GetScriptBlock>
         <SetScriptBlock>
                         &lt;#
@@ -405,7 +403,8 @@ if (-not $this.'.Metadata') {
     $this.'.Metadata' = [Ordered]@{}
 }
 $this.'.Metadata'.EpisodeID = $propertyToSet.TVEN
-Set-Media -Property $propertyToSet
+Set-Media -InputPath $this.InputPath -Property $propertyToSet
+
 
                     </SetScriptBlock>
       </ScriptProperty>
@@ -432,7 +431,6 @@ $this.InputPath | Split-Path -Leaf
 #&gt;
 param()
 return $this.'.Metadata'.Genre
-
                     </GetScriptBlock>
         <SetScriptBlock>
                         &lt;#
@@ -447,7 +445,8 @@ if (-not $this.'.Metadata') {
     $this.'.Metadata' = [Ordered]@{}
 }
 $this.'.Metadata'.genre = $propertyToSet.genre
-Set-Media -Property $propertyToSet
+Set-Media -InputPath $this.InputPath -Property $propertyToSet
+
 
                     </SetScriptBlock>
       </ScriptProperty>
@@ -462,7 +461,6 @@ Set-Media -Property $propertyToSet
 #&gt;
 param()
 return $this.'.Metadata'.Grouping -split '[\;/]'
-
                     </GetScriptBlock>
         <SetScriptBlock>
                         &lt;#
@@ -478,7 +476,8 @@ if (-not $this.'.Metadata') {
     $this.'.Metadata' = [Ordered]@{}
 }
 $this.'.Metadata'.Grouping = $propertyToSet.grouping
-Set-Media -Property $propertyToSet
+Set-Media -InputPath $this.InputPath -Property $propertyToSet
+
 
                     </SetScriptBlock>
       </ScriptProperty>
@@ -498,6 +497,7 @@ if ($this.'.Metadata'.InitialKey) {
     return ($this.'.Metadata'.TKEY)
 }
 
+
                     </GetScriptBlock>
         <SetScriptBlock>
                         &lt;#
@@ -514,7 +514,8 @@ if (-not $this.'.Metadata') {
     $this.'.Metadata' = [Ordered]@{}
 }
 $this.'.Metadata'.InitialKey = $propertyToSet.TKEY
-Set-Media -Property $propertyToSet
+Set-Media -InputPath $this.InputPath -Property $propertyToSet
+
 
                     </SetScriptBlock>
       </ScriptProperty>
@@ -547,6 +548,7 @@ elseif ($this.'.Metadata'.'lyrics-eng')
     return $this.'.Metadata'.'lyrics-eng'
 }
 
+
                     </GetScriptBlock>
         <SetScriptBlock>
                         &lt;#
@@ -577,7 +579,8 @@ if (-not $this.'.Metadata') {
     $this.'.Metadata' = [Ordered]@{}
 }
 $this.'.Metadata'.Lyrics = $propertyToSet.TKEY
-Set-Media -Property $propertyToSet
+Set-Media -InputPath $this.InputPath -Property $propertyToSet
+
 
                     </SetScriptBlock>
       </ScriptProperty>
@@ -613,6 +616,7 @@ if ($this.pstypenames -notcontains "RoughDraft.$thisMediaType") {
 }
 
 $thisMediaType
+
                     </GetScriptBlock>
       </ScriptProperty>
       <ScriptProperty>
@@ -631,6 +635,7 @@ if ($this.'.Metadata'.Mood) {
     return ($this.'.Metadata'.'WM/MOOD')
 }
 
+
                     </GetScriptBlock>
         <SetScriptBlock>
                         &lt;#
@@ -647,7 +652,8 @@ if (-not $this.'.Metadata') {
     $this.'.Metadata' = [Ordered]@{}
 }
 $this.'.Metadata'.Mood = $propertyToSet."WM/MOOD"
-Set-Media -Property $propertyToSet
+Set-Media -InputPath $this.InputPath -Property $propertyToSet
+
 
                     </SetScriptBlock>
       </ScriptProperty>
@@ -667,6 +673,7 @@ if ($this.'.Metadata'.Network) {
     return ($this.'.Metadata'.tvnn)
 }
 
+
                     </GetScriptBlock>
         <SetScriptBlock>
                         &lt;#
@@ -683,7 +690,8 @@ if (-not $this.'.Metadata') {
     $this.'.Metadata' = [Ordered]@{}
 }
 $this.'.Metadata'.Network = $propertyToSet.tvnn
-Set-Media -Property $propertyToSet
+Set-Media -InputPath $this.InputPath -Property $propertyToSet
+
 
                     </SetScriptBlock>
       </ScriptProperty>
@@ -705,6 +713,7 @@ foreach ($streamInfo in $this.Streams) {
 
 
 
+
                     </GetScriptBlock>
       </ScriptProperty>
       <ScriptProperty>
@@ -718,6 +727,7 @@ foreach ($streamInfo in $this.Streams) {
 #&gt;
 param()
 return $this.'.Metadata'.Producer
+
 
                     </GetScriptBlock>
         <SetScriptBlock>
@@ -733,7 +743,8 @@ if (-not $this.'.Metadata') {
     $this.'.Metadata' = [Ordered]@{}
 }
 $this.'.Metadata'.Producer = $propertyToSet.producer
-Set-Media -Property $propertyToSet
+Set-Media -InputPath $this.InputPath -Property $propertyToSet
+
 
                     </SetScriptBlock>
       </ScriptProperty>
@@ -749,6 +760,7 @@ Set-Media -Property $propertyToSet
 param()
 return $this.'.Metadata'.Publisher
 
+
                     </GetScriptBlock>
         <SetScriptBlock>
                         &lt;#
@@ -763,7 +775,8 @@ if (-not $this.'.Metadata') {
     $this.'.Metadata' = [Ordered]@{}
 }
 $this.'.Metadata'.Publisher = $propertyToSet.publisher
-Set-Media -Property $propertyToSet
+Set-Media -InputPath $this.InputPath -Property $propertyToSet
+
 
                     </SetScriptBlock>
       </ScriptProperty>
@@ -783,6 +796,7 @@ if ($this.'.Metadata'.Show) {
     return ($this.'.Metadata'.TVSH)
 }
 
+
                     </GetScriptBlock>
         <SetScriptBlock>
                         &lt;#
@@ -799,7 +813,8 @@ if (-not $this.'.Metadata') {
     $this.'.Metadata' = [Ordered]@{}
 }
 $this.'.Metadata'.Show = $propertyToSet.TVSH
-Set-Media -Property $propertyToSet
+Set-Media -InputPath $this.InputPath -Property $propertyToSet
+
 
                     </SetScriptBlock>
       </ScriptProperty>
@@ -821,6 +836,7 @@ if ($this.'.Metadata'.Subtitle) {
     return ($this.'.Metadata'.TIT3)
 }
 
+
                     </GetScriptBlock>
         <SetScriptBlock>
                         &lt;#
@@ -839,7 +855,8 @@ if (-not $this.'.Metadata') {
     $this.'.Metadata' = [Ordered]@{}
 }
 $this.'.Metadata'.Show = $propertyToSet.TIT3
-Set-Media -Property $propertyToSet
+Set-Media -InputPath $this.InputPath -Property $propertyToSet
+
 
                     </SetScriptBlock>
       </ScriptProperty>
@@ -859,6 +876,7 @@ if ($this.'.Metadata'.Synopsis) {
     return ($this.'.Metadata'.ldes)
 }
 
+
                     </GetScriptBlock>
         <SetScriptBlock>
                         &lt;#
@@ -875,7 +893,8 @@ if (-not $this.'.Metadata') {
     $this.'.Metadata' = [Ordered]@{}
 }
 $this.'.Metadata'.Synopsis = $propertyToSet.ldes
-Set-Media -Property $propertyToSet
+Set-Media -InputPath $this.InputPath -Property $propertyToSet
+
 
                     </SetScriptBlock>
       </ScriptProperty>
@@ -891,6 +910,7 @@ Set-Media -Property $propertyToSet
 param()
 return $this.'.Metadata'.Title
 
+
                     </GetScriptBlock>
         <SetScriptBlock>
                         &lt;#
@@ -905,7 +925,8 @@ if (-not $this.'.Metadata') {
     $this.'.Metadata' = [Ordered]@{}
 }
 $this.'.Metadata'.title = $propertyToSet.title
-Set-Media -Property $propertyToSet
+Set-Media -InputPath $this.InputPath -Property $propertyToSet
+
 
                     </SetScriptBlock>
       </ScriptProperty>
@@ -921,6 +942,7 @@ Set-Media -Property $propertyToSet
 param()
 return $this.'.Metadata'.Track
 
+
                     </GetScriptBlock>
         <SetScriptBlock>
                         &lt;#
@@ -935,7 +957,8 @@ if (-not $this.'.Metadata') {
     $this.'.Metadata' = [Ordered]@{}
 }
 $this.'.Metadata'.Track = $propertyToSet.track
-Set-Media -Property $propertyToSet
+Set-Media -InputPath $this.InputPath -Property $propertyToSet
+
 
                     </SetScriptBlock>
       </ScriptProperty>
@@ -954,6 +977,7 @@ foreach ($streamInfo in $this.Streams) {
         return ($streamInfo.bit_rate -as [int])
     }
 }
+
 
 
                     </GetScriptBlock>
@@ -981,6 +1005,7 @@ if ($yearInfo -match '^\d{4}$') {
 }
 
 
+
                     </GetScriptBlock>
         <SetScriptBlock>
                         &lt;#
@@ -1002,7 +1027,8 @@ if (-not $this.'.Metadata') {
     $this.'.Metadata' = [Ordered]@{}
 }
 $this.'.Metadata'.Year = $propertyToSet.date
-Set-Media -Property $propertyToSet
+Set-Media -InputPath $this.InputPath -Property $propertyToSet
+
 
                     </SetScriptBlock>
       </ScriptProperty>
