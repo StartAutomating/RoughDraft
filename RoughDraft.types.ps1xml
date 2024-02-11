@@ -749,6 +749,82 @@ Set-Media -Property $propertyToSet
                     </SetScriptBlock>
       </ScriptProperty>
       <ScriptProperty>
+        <Name>Subtitle</Name>
+        <GetScriptBlock>
+                        &lt;#
+.SYNOPSIS
+    Gets Subtitle Metadata
+.DESCRIPTION
+    Gets the Subtitle Metadata, if present.
+.NOTES
+    This refers to the Subtitle of a file, not the Subtitles for a file.
+#&gt;
+param()
+if ($this.'.Metadata'.Subtitle) {
+    return ($this.'.Metadata'.Subtitle)
+} elseif ($this.'.Metadata'.TIT3) {
+    return ($this.'.Metadata'.TIT3)
+}
+
+                    </GetScriptBlock>
+        <SetScriptBlock>
+                        &lt;#
+.SYNOPSIS
+    Sets the Subtitle Metadata
+.DESCRIPTION
+    Changes the Subtitle metadata for a media file (persistently, if possible)
+.NOTES
+    Subtitle is stored within the ID3 tag `TIT3`.
+
+    This refers to the subtitle of a file, not the subtitles _for_ a file.
+#&gt;
+param()
+$propertyToSet = @{TIT3="$args"}
+if (-not $this.'.Metadata') {
+    $this.'.Metadata' = [Ordered]@{}
+}
+$this.'.Metadata'.Show = $propertyToSet.TIT3
+Set-Media -Property $propertyToSet
+
+                    </SetScriptBlock>
+      </ScriptProperty>
+      <ScriptProperty>
+        <Name>Synopsis</Name>
+        <GetScriptBlock>
+                        &lt;#
+.SYNOPSIS
+    Gets Synopsis Metadata
+.DESCRIPTION
+    Gets the Synopsis Metadata, if present.
+#&gt;
+param()
+if ($this.'.Metadata'.Synopsis) {
+    return ($this.'.Metadata'.Synopsis)
+} elseif ($this.'.Metadata'.ldes) {
+    return ($this.'.Metadata'.ldes)
+}
+
+                    </GetScriptBlock>
+        <SetScriptBlock>
+                        &lt;#
+.SYNOPSIS
+    Sets the Synopsis Metadata
+.DESCRIPTION
+    Changes the Synopsis metadata for a media file (persistently, if possible)
+.NOTES
+    Synopsis is stored within the ID3 tag `ldes`.
+#&gt;
+param()
+$propertyToSet = @{ldes="$args"}
+if (-not $this.'.Metadata') {
+    $this.'.Metadata' = [Ordered]@{}
+}
+$this.'.Metadata'.Synopsis = $propertyToSet.ldes
+Set-Media -Property $propertyToSet
+
+                    </SetScriptBlock>
+      </ScriptProperty>
+      <ScriptProperty>
         <Name>Title</Name>
         <GetScriptBlock>
                         &lt;#
