@@ -7,11 +7,14 @@
         <TypeName>RoughDraft.Media</TypeName>
       </ViewSelectedBy>
       <TableControl>
+        <AutoSize />
         <TableHeaders>
           <TableColumnHeader>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>FileSize</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
           </TableColumnHeader>
           <TableColumnHeader>
           </TableColumnHeader>
@@ -41,6 +44,9 @@
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>MediaType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>CodecTypes</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
