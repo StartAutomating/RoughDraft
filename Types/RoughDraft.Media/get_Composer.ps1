@@ -5,4 +5,4 @@
     Gets the Composer Metadata, if present.
 #>
 param()
-return $this.'.Metadata'.Composer
+return $this.'.Metadata'.Composer -split '[\;\\/]'
