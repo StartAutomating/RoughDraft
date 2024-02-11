@@ -42,12 +42,19 @@ Set-Media -Property $propertyToSet
         <GetScriptBlock>
                         &lt;#
 .SYNOPSIS
-    Gets Album Metadata
+    Gets Album Artist Metadata
 .DESCRIPTION
-    Gets the Album Metadata, if present.
+    Gets the Album Artist Metadata, if present.
 #&gt;
 param()
-return $this.'.Metadata'.AlbumArtist
+return $(
+    if ($this.'.Metadata'.AlbumArtist) {
+        $this.'.Metadata'.AlbumArtist
+    } elseif ($this.'.Metadata'.album_artist) {
+        $this.'.Metadata'.album_artist
+    }
+)
+
 
                     </GetScriptBlock>
         <SetScriptBlock>
@@ -213,7 +220,7 @@ Set-Media -Property $propertyToSet
     Gets the Composer Metadata, if present.
 #&gt;
 param()
-return $this.'.Metadata'.Composer
+return $this.'.Metadata'.Composer -split '[\;\\/]'
 
                     </GetScriptBlock>
         <SetScriptBlock>
