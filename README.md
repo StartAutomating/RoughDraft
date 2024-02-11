@@ -169,7 +169,7 @@ There are currently 111 extensions:
 |[BilateralSmooth](docs/BilateralSmooth-Extension.md)                  |Bilateral Smooth                      |Show-Media,Edit-Media                         |
 |[BlackDetect](docs/BlackDetect-Extension.md)                          |Detect black periods in a video.      |Get-Media                                     |
 |[BlackFrame](docs/BlackFrame-Extension.md)                            |Detects black frames.                 |Get-Media                                     |
-|[BlendFrame](docs/BlendFrame-Extension.md)                            |BlendFrame Extension                  |Show-Media,Join-Media,Edit-Media              |
+|[BlendFrame](docs/BlendFrame-Extension.md)                            |BlendFrame Extension                  |Join-Media,Show-Media,Edit-Media              |
 |[BlendVideo](docs/BlendVideo-Extension.md)                            |BlendVideo Extension                  |Join-Media                                    |
 |[Blur](docs/Blur-Extension.md)                                        |Blurs Video                           |Show-Media,Edit-Media                         |
 |[CaptureDevice](docs/CaptureDevice-Extension.md)                      |Gets capture devices                  |Get-FFMpeg                                    |
@@ -177,19 +177,19 @@ There are currently 111 extensions:
 |[ChromaHold](docs/ChromaHold-Extension.md)                            |chromahold                            |Edit-Media                                    |
 |[Codecs](docs/Codecs-Extension.md)                                    |Lists codecs                          |Get-FFMpeg                                    |
 |[ColorContrast](docs/ColorContrast-Extension.md)                      |ColorContrast Extension               |Show-Media,Edit-Media                         |
-|[ColorExpression](docs/ColorExpression-Extension.md)                  |Color Expression                      |Show-Media,Join-Media,Edit-Media              |
+|[ColorExpression](docs/ColorExpression-Extension.md)                  |Color Expression                      |Join-Media,Show-Media,Edit-Media              |
 |[ColorHold](docs/ColorHold-Extension.md)                              |ColorHold Extension                   |Show-Media,Edit-Media                         |
 |[Colorize](docs/Colorize-Extension.md)                                |Colorize a video stream               |Show-Media,Edit-Media                         |
 |[ColorScope](docs/ColorScope-Extension.md)                            |Colorscope extension                  |Show-Media,Edit-Media                         |
 |[ColorSource](docs/ColorSource-Extension.md)                          |Generates a color                     |New-Media,Show-Media                          |
 |[Convolve](docs/Convolve-Extension.md)                                |convolve                              |Join-Media                                    |
-|[Crop](docs/Crop-Extension.md)                                        |Crop Extension                        |Show-Media,Receive-Media,Send-Media,Edit-Media|
+|[Crop](docs/Crop-Extension.md)                                        |Crop Extension                        |Receive-Media,Send-Media,Show-Media,Edit-Media|
 |[CropDetect](docs/CropDetect-Extension.md)                            |Auto-detect the crop size.            |Get-Media                                     |
 |[CrossFade](docs/CrossFade-Extension.md)                              |acrossfade                            |Join-Media                                    |
 |[DataScope](docs/DataScope-Extension.md)                              |Datascope effect                      |Edit-Media                                    |
 |[Deconvolve](docs/Deconvolve-Extension.md)                            |deconvolve                            |Join-Media                                    |
-|[DirectShow](docs/DirectShow-Extension.md)                            |DirectShow Extension                  |Receive-Media,Show-Media,Send-Media           |
-|[DrawSubtitle](docs/DrawSubtitle-Extension.md)                        |Draw subtitles on top of input video  |Edit-Media,Convert-Media                      |
+|[DirectShow](docs/DirectShow-Extension.md)                            |DirectShow Extension                  |Receive-Media,Send-Media,Show-Media           |
+|[DrawSubtitle](docs/DrawSubtitle-Extension.md)                        |Draw subtitles on top of input video  |Convert-Media,Edit-Media                      |
 |[DrawText](docs/DrawText-Extension.md)                                |Draws Text on Video                   |Show-Media,Edit-Media                         |
 |[Echo](docs/Echo-Extension.md)                                        |Adds echoes to audio                  |Show-Media,Edit-Media                         |
 |[EdgeDetect](docs/EdgeDetect-Extension.md)                            |EdgeDetect Extension                  |Show-Media,Edit-Media                         |
@@ -205,7 +205,7 @@ There are currently 111 extensions:
 |[Flanger](docs/Flanger-Extension.md)                                  |Audio Flanger.                        |Show-Media,Edit-Media                         |
 |[FlipHorizontal](docs/FlipHorizontal-Extension.md)                    |Flips video horizontally              |Show-Media,Edit-Media                         |
 |[FlipVertical](docs/FlipVertical-Extension.md)                        |Flips video vertically                |Show-Media,Edit-Media                         |
-|[FrameBuffer](docs/FrameBuffer-Extension.md)                          |FrameBuffer Extension                 |Receive-Media,Show-Media,Send-Media           |
+|[FrameBuffer](docs/FrameBuffer-Extension.md)                          |FrameBuffer Extension                 |Receive-Media,Send-Media,Show-Media           |
 |[FrameStep](docs/FrameStep-Extension.md)                              |FrameStep Effect                      |Show-Media,Edit-Media                         |
 |[GifPalette](docs/GifPalette-Extension.md)                            |Gif Palette Extension                 |Convert-Media                                 |
 |[Histogram](docs/Histogram-Extension.md)                              |Histogram Extension                   |Show-Media,Edit-Media                         |
@@ -265,7 +265,7 @@ There are currently 111 extensions:
 |[Vibrance](docs/Vibrance-Extension.md)                                |vibrance                              |Edit-Media                                    |
 |[Vibrato](docs/Vibrato-Extension.md)                                  |Vibrato effect                        |Show-Media,Edit-Media                         |
 |[VideoExpression](docs/VideoExpression-Extension.md)                  |Evaluates Video Expressions           |Show-Media,Edit-Media                         |
-|[VideoForLinux](docs/VideoForLinux-Extension.md)                      |VideoForLinux Extension               |Receive-Media,Show-Media,Send-Media           |
+|[VideoForLinux](docs/VideoForLinux-Extension.md)                      |VideoForLinux Extension               |Receive-Media,Send-Media,Show-Media           |
 |[Vignette](docs/Vignette-Extension.md)                                |Applies a vignette filter             |Show-Media,Edit-Media                         |
 |[VolumeLevel](docs/VolumeLevel-Extension.md)                          |Gets VolumeLevels                     |Get-Media                                     |
 |[Watermark](docs/Watermark-Extension.md)                              |Watermarks a video                    |Edit-Media                                    |
