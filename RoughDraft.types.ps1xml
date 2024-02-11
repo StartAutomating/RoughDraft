@@ -8,6 +8,66 @@
         <ReferencedMemberName>InputPath</ReferencedMemberName>
       </AliasProperty>
       <ScriptProperty>
+        <Name>Album</Name>
+        <GetScriptBlock>
+                        &lt;#
+.SYNOPSIS
+    Gets Album Metadata
+.DESCRIPTION
+    Gets the Album Metadata, if present.
+#&gt;
+param()
+return $this.'.Metadata'.Album
+
+                    </GetScriptBlock>
+        <SetScriptBlock>
+                        &lt;#
+.SYNOPSIS
+    Sets the Album Metadata
+.DESCRIPTION
+    Changes the Album metadata for a media file (persistently, if possible)
+#&gt;
+param()
+$propertyToSet = @{Album="$args"}
+if (-not $this.'.Metadata') {
+    $this.'.Metadata' = [Ordered]@{}
+}
+$this.'.Metadata'.Album = $propertyToSet.album
+Set-Media -Property $propertyToSet
+
+                    </SetScriptBlock>
+      </ScriptProperty>
+      <ScriptProperty>
+        <Name>AlbumArtist</Name>
+        <GetScriptBlock>
+                        &lt;#
+.SYNOPSIS
+    Gets Album Metadata
+.DESCRIPTION
+    Gets the Album Metadata, if present.
+#&gt;
+param()
+return $this.'.Metadata'.AlbumArtist
+
+                    </GetScriptBlock>
+        <SetScriptBlock>
+                        &lt;#
+.SYNOPSIS
+    Sets the Album Artist Metadata
+.DESCRIPTION
+    Changes the Album Artist metadata for a media file (persistently, if possible)
+#&gt;
+param()
+$propertyToSet = @{album_artist="$args"}
+if (-not $this.'.Metadata') {
+    $this.'.Metadata' = [Ordered]@{}
+}
+$this.'.Metadata'.AlbumArtist = $propertyToSet.album_artist
+Set-Media -Property $propertyToSet
+
+                    </SetScriptBlock>
+      </ScriptProperty>
+      <ScriptProperty>
         <Name>AspectRatio</Name>
         <GetScriptBlock>
                         &lt;#
