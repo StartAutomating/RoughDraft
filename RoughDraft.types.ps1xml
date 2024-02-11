@@ -301,6 +301,37 @@ Set-Media -Property $propertyToSet
                     </SetScriptBlock>
       </ScriptProperty>
       <ScriptProperty>
+        <Name>Disc</Name>
+        <GetScriptBlock>
+                        &lt;#
+.SYNOPSIS
+    Gets Disc Metadata
+.DESCRIPTION
+    Gets the Disc Metadata, if present.
+#&gt;
+param()
+if ($this.'.Metadata'.disc) {
+    return $this.'.Metadata'.disc
+}
+                    </GetScriptBlock>
+        <SetScriptBlock>
+                        &lt;#
+.SYNOPSIS
+    Sets the Disc Metadata
+.DESCRIPTION
+    Changes the Disc metadata for a media file (persistently, if possible)
+#&gt;
+param()
+$propertyToSet = @{disc="$args"}
+if (-not $this.'.Metadata') {
+    $this.'.Metadata' = [Ordered]@{}
+}
+$this.'.Metadata'.Disc = $propertyToSet.disc
+Set-Media -Property $propertyToSet
+
+                    </SetScriptBlock>
+      </ScriptProperty>
+      <ScriptProperty>
         <Name>FileName</Name>
         <GetScriptBlock>
                         &lt;#
