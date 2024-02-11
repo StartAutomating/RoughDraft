@@ -125,6 +125,8 @@ if ($this.'.Metadata'.BPM) {
     Sets the BPM Metadata
 .DESCRIPTION
     Changes the BPM metadata for a media file (persistently, if possible)
+.NOTES
+    BPM is stored within the ID3 tag `TBPM`.
 #&gt;
 param()
 $propertyToSet = @{TBPM="$args"}
@@ -171,12 +173,12 @@ Set-Media -Property $propertyToSet
         <GetScriptBlock>
                         &lt;#
 .SYNOPSIS
-    Gets Title Metadata
+    Gets Composer Metadata
 .DESCRIPTION
-    Gets the Title Metadata, if present.
+    Gets the Composer Metadata, if present.
 #&gt;
 param()
-return $this.'.Metadata'.Title
+return $this.'.Metadata'.Composer
 
                     </GetScriptBlock>
         <SetScriptBlock>
@@ -192,6 +194,74 @@ if (-not $this.'.Metadata') {
     $this.'.Metadata' = [Ordered]@{}
 }
 $this.'.Metadata'.Composer = $propertyToSet.Composer
+Set-Media -Property $propertyToSet
+
+                    </SetScriptBlock>
+      </ScriptProperty>
+      <ScriptProperty>
+        <Name>Copyright</Name>
+        <GetScriptBlock>
+                        &lt;#
+.SYNOPSIS
+    Gets Copyright Metadata
+.DESCRIPTION
+    Gets the Copyright Metadata, if present.
+#&gt;
+param()
+return $this.'.Metadata'.Copyright
+
+                    </GetScriptBlock>
+        <SetScriptBlock>
+                        &lt;#
+.SYNOPSIS
+    Sets the Copyright Metadata
+.DESCRIPTION
+    Changes the Copyright metadata for a media file (persistently, if possible)
+#&gt;
+param()
+$propertyToSet = @{copyright="$args"}
+if (-not $this.'.Metadata') {
+    $this.'.Metadata' = [Ordered]@{}
+}
+$this.'.Metadata'.Copyright = $propertyToSet.copyright
+Set-Media -Property $propertyToSet
+
+                    </SetScriptBlock>
+      </ScriptProperty>
+      <ScriptProperty>
+        <Name>CreationTime</Name>
+        <GetScriptBlock>
+                        &lt;#
+.SYNOPSIS
+    Gets Creation Time Metadata
+.DESCRIPTION
+    Gets the Creation Time Metadata, if present.
+#&gt;
+param()
+if ($this.'.Metadata'.CreationTime) {
+    return ($this.'.Metadata'.CreationTime -as [DateTime])
+} elseif ($this.'.Metadata'.creation_time) {
+    return ($this.'.Metadata'.creation_time -as [DateTime])
+}
+
+
+                    </GetScriptBlock>
+        <SetScriptBlock>
+                        &lt;#
+.SYNOPSIS
+    Sets the Creation Time Metadata
+.DESCRIPTION
+    Changes the Creation Time metadata for a media file (persistently, if possible)
+#&gt;
+param()
+
+$dateTimeArgs = [DateTime]$($args[0])
+$datePortion = @($dateTimeArgs.ToString('s') -split '-', 2)[0]
+$propertyToSet = @{creation_time="$datePortion"}
+if (-not $this.'.Metadata') {
+    $this.'.Metadata' = [Ordered]@{}
+}
+$this.'.Metadata'.CreationTime = $propertyToSet.creation_time
 Set-Media -Property $propertyToSet
 
                     </SetScriptBlock>
