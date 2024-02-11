@@ -683,6 +683,72 @@ Set-Media -Property $propertyToSet
                     </SetScriptBlock>
       </ScriptProperty>
       <ScriptProperty>
+        <Name>Publisher</Name>
+        <GetScriptBlock>
+                        &lt;#
+.SYNOPSIS
+    Gets Publisher Metadata
+.DESCRIPTION
+    Gets the Publisher Metadata, if present.
+#&gt;
+param()
+return $this.'.Metadata'.Publisher
+
+                    </GetScriptBlock>
+        <SetScriptBlock>
+                        &lt;#
+.SYNOPSIS
+    Sets the Publisher Metadata
+.DESCRIPTION
+    Changes the Publisher metadata for a media file (persistently, if possible)
+#&gt;
+param()
+$propertyToSet = @{publisher="$args"}
+if (-not $this.'.Metadata') {
+    $this.'.Metadata' = [Ordered]@{}
+}
+$this.'.Metadata'.Publisher = $propertyToSet.publisher
+Set-Media -Property $propertyToSet
+
+                    </SetScriptBlock>
+      </ScriptProperty>
+      <ScriptProperty>
+        <Name>Show</Name>
+        <GetScriptBlock>
+                        &lt;#
+.SYNOPSIS
+    Gets Show Metadata
+.DESCRIPTION
+    Gets the Show Metadata, if present.
+#&gt;
+param()
+if ($this.'.Metadata'.Show) {
+    return ($this.'.Metadata'.Show)
+} elseif ($this.'.Metadata'.TVSH) {
+    return ($this.'.Metadata'.TVSH)
+}
+
+                    </GetScriptBlock>
+        <SetScriptBlock>
+                        &lt;#
+.SYNOPSIS
+    Sets the Show Metadata
+.DESCRIPTION
+    Changes the Show metadata for a media file (persistently, if possible)
+.NOTES
+    Show is stored within the ID3 tag `TVSH`.
+#&gt;
+param()
+$propertyToSet = @{TVSH="$args"}
+if (-not $this.'.Metadata') {
+    $this.'.Metadata' = [Ordered]@{}
+}
+$this.'.Metadata'.Show = $propertyToSet.TVSH
+Set-Media -Property $propertyToSet
+
+                    </SetScriptBlock>
+      </ScriptProperty>
+      <ScriptProperty>
         <Name>Title</Name>
         <GetScriptBlock>
                         &lt;#
