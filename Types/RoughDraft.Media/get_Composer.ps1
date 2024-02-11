@@ -1,8 +1,8 @@
 <#
 .SYNOPSIS
-    Gets Title Metadata
+    Gets Composer Metadata
 .DESCRIPTION
-    Gets the Title Metadata, if present.
+    Gets the Composer Metadata, if present.
 #>
 param()
-return $this.'.Metadata'.Title
+return $this.'.Metadata'.Composer
