@@ -137,6 +137,66 @@ Set-Media -Property $propertyToSet
                     </SetScriptBlock>
       </ScriptProperty>
       <ScriptProperty>
+        <Name>Comment</Name>
+        <GetScriptBlock>
+                        &lt;#
+.SYNOPSIS
+    Gets Comment Metadata
+.DESCRIPTION
+    Gets the Comment Metadata, if present.
+#&gt;
+param()
+return $this.'.Metadata'.Comment
+
+                    </GetScriptBlock>
+        <SetScriptBlock>
+                        &lt;#
+.SYNOPSIS
+    Sets the Comment Metadata
+.DESCRIPTION
+    Changes the Comment metadata for a media file (persistently, if possible)
+#&gt;
+param()
+$propertyToSet = @{comment="$args"}
+if (-not $this.'.Metadata') {
+    $this.'.Metadata' = [Ordered]@{}
+}
+$this.'.Metadata'.Comment = $propertyToSet.comment
+Set-Media -Property $propertyToSet
+
+                    </SetScriptBlock>
+      </ScriptProperty>
+      <ScriptProperty>
+        <Name>Composer</Name>
+        <GetScriptBlock>
+                        &lt;#
+.SYNOPSIS
+    Gets Title Metadata
+.DESCRIPTION
+    Gets the Title Metadata, if present.
+#&gt;
+param()
+return $this.'.Metadata'.Title
+
+                    </GetScriptBlock>
+        <SetScriptBlock>
+                        &lt;#
+.SYNOPSIS
+    Sets the Composer Metadata
+.DESCRIPTION
+    Changes the Composer metadata for a media file (persistently, if possible)
+#&gt;
+param()
+$propertyToSet = @{composer="$args"}
+if (-not $this.'.Metadata') {
+    $this.'.Metadata' = [Ordered]@{}
+}
+$this.'.Metadata'.Composer = $propertyToSet.Composer
+Set-Media -Property $propertyToSet
+
+                    </SetScriptBlock>
+      </ScriptProperty>
+      <ScriptProperty>
         <Name>FileName</Name>
         <GetScriptBlock>
                         &lt;#
