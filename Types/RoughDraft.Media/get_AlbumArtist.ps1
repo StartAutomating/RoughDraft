@@ -1,8 +1,15 @@
 <#
 .SYNOPSIS
-    Gets Album Metadata
+    Gets Album Artist Metadata
 .DESCRIPTION
-    Gets the Album Metadata, if present.
+    Gets the Album Artist Metadata, if present.
 #>
 param()
-return $this.'.Metadata'.AlbumArtist
+return $(
+    if ($this.'.Metadata'.AlbumArtist) {
+        $this.'.Metadata'.AlbumArtist
+    } elseif ($this.'.Metadata'.album_artist) {
+        $this.'.Metadata'.album_artist
+    }
+)
+
