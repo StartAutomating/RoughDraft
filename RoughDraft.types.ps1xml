@@ -477,6 +477,56 @@ Set-Media -Property $propertyToSet
                     </SetScriptBlock>
       </ScriptProperty>
       <ScriptProperty>
+        <Name>Lyric</Name>
+        <GetScriptBlock>
+                        &lt;#
+.SYNOPSIS
+    Gets InitialKey Metadata
+.DESCRIPTION
+    Gets the InitialKey Metadata, if present.
+#&gt;
+param()
+if ($this.'.Metadata'.Lyrics) {
+    return ($this.'.Metadata'.Lyrics)
+} elseif ($this.'.Metadata'."lyrics-$([cultureinfo]::ThreeLetterISOLanguageName)") {
+    return ($this.'.Metadata'."lyrics-$([cultureinfo]::ThreeLetterISOLanguageName)")
+}
+
+                    </GetScriptBlock>
+        <SetScriptBlock>
+                        &lt;#
+.SYNOPSIS
+    Sets the Lyric Metadata
+.DESCRIPTION
+    Changes the Lyric metadata for a media file (persistently, if possible)
+.NOTES
+    Lyric is stored within a localized ID3 tag `lyrics-locale` (for example `lyrics-eng`).
+#&gt;
+param()
+$lyricCulture = [cultureinfo]::CurrentUICulture
+$lyricLines = @(foreach ($arg in $args) {
+    if ($arg -is [cultureinfo]) {
+        $lyricCulture = $arg
+    } 
+    elseif ($arg -as [cultureinfo]) {
+        $lyricCulture = $arg -as [cultureinfo]
+    }
+    else {
+        "$arg"
+    }
+})
+
+$lyricProperty = "lyrics-$($lyricCulture.ThreeLetterISOLanguageName)"
+$propertyToSet = @{"lyrics-$($lyricCulture.ThreeLetterISOLanguageName)"=$lyricLines -join [Environment]::NewLine}
+if (-not $this.'.Metadata') {
+    $this.'.Metadata' = [Ordered]@{}
+}
+$this.'.Metadata'.Lyrics = $propertyToSet.TKEY
+Set-Media -Property $propertyToSet
+
+                    </SetScriptBlock>
+      </ScriptProperty>
+      <ScriptProperty>
         <Name>MediaType</Name>
         <GetScriptBlock>
                         &lt;#
@@ -509,6 +559,42 @@ if ($this.pstypenames -notcontains "RoughDraft.$thisMediaType") {
 
 $thisMediaType
                     </GetScriptBlock>
+      </ScriptProperty>
+      <ScriptProperty>
+        <Name>Mood</Name>
+        <GetScriptBlock>
+                        &lt;#
+.SYNOPSIS
+    Gets Mood Metadata
+.DESCRIPTION
+    Gets the Mood Metadata, if present.
+#&gt;
+param()
+if ($this.'.Metadata'.Mood) {
+    return ($this.'.Metadata'.Mood)
+} elseif ($this.'.Metadata'.'WM/MOOD') {
+    return ($this.'.Metadata'.'WM/MOOD')
+}
+
+                    </GetScriptBlock>
+        <SetScriptBlock>
+                        &lt;#
+.SYNOPSIS
+    Sets the Mood Metadata
+.DESCRIPTION
+    Changes the Mood metadata for a media file (persistently, if possible)
+.NOTES
+    Mood is stored within the ID3 tag `WM/MOOD`.
+#&gt;
+param()
+$propertyToSet = @{"WM/MOOD"="$args"}
+if (-not $this.'.Metadata') {
+    $this.'.Metadata' = [Ordered]@{}
+}
+$this.'.Metadata'.Mood = $propertyToSet."WM/MOOD"
+Set-Media -Property $propertyToSet
+
+                    </SetScriptBlock>
       </ScriptProperty>
       <ScriptProperty>
         <Name>PixelFormat</Name>
