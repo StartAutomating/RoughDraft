@@ -380,6 +380,103 @@ $this.InputPath | Split-Path -Leaf
                     </GetScriptBlock>
       </ScriptProperty>
       <ScriptProperty>
+        <Name>Genre</Name>
+        <GetScriptBlock>
+                        &lt;#
+.SYNOPSIS
+    Gets Genre Metadata
+.DESCRIPTION
+    Gets the Genre Metadata, if present.
+#&gt;
+param()
+return $this.'.Metadata'.Genre
+
+                    </GetScriptBlock>
+        <SetScriptBlock>
+                        &lt;#
+.SYNOPSIS
+    Sets the Genre Metadata
+.DESCRIPTION
+    Changes the Genre metadata for a media file (persistently, if possible)
+#&gt;
+param()
+$propertyToSet = @{genre="$args"}
+if (-not $this.'.Metadata') {
+    $this.'.Metadata' = [Ordered]@{}
+}
+$this.'.Metadata'.genre = $propertyToSet.genre
+Set-Media -Property $propertyToSet
+
+                    </SetScriptBlock>
+      </ScriptProperty>
+      <ScriptProperty>
+        <Name>Grouping</Name>
+        <GetScriptBlock>
+                        &lt;#
+.SYNOPSIS
+    Gets Grouping Metadata
+.DESCRIPTION
+    Gets the Grouping Metadata, if present.
+#&gt;
+param()
+return $this.'.Metadata'.Grouping -split '[\;/]'
+
+                    </GetScriptBlock>
+        <SetScriptBlock>
+                        &lt;#
+.SYNOPSIS
+    Sets the Grouping Metadata
+.DESCRIPTION
+    Changes the Grouping metadata for a media file (persistently, if possible)
+#&gt;
+param()
+
+$propertyToSet = @{grouping=$args -join '/'}
+if (-not $this.'.Metadata') {
+    $this.'.Metadata' = [Ordered]@{}
+}
+$this.'.Metadata'.Grouping = $propertyToSet.grouping
+Set-Media -Property $propertyToSet
+
+                    </SetScriptBlock>
+      </ScriptProperty>
+      <ScriptProperty>
+        <Name>InitialKey</Name>
+        <GetScriptBlock>
+                        &lt;#
+.SYNOPSIS
+    Gets InitialKey Metadata
+.DESCRIPTION
+    Gets the InitialKey Metadata, if present.
+#&gt;
+param()
+if ($this.'.Metadata'.InitialKey) {
+    return ($this.'.Metadata'.InitialKey)
+} elseif ($this.'.Metadata'.TKEY) {
+    return ($this.'.Metadata'.TKEY)
+}
+
+                    </GetScriptBlock>
+        <SetScriptBlock>
+                        &lt;#
+.SYNOPSIS
+    Sets the InitialKey Metadata
+.DESCRIPTION
+    Changes the InitialKey metadata for a media file (persistently, if possible)
+.NOTES
+    InitialKey is stored within the ID3 tag `TKEY`.
+#&gt;
+param()
+$propertyToSet = @{TKEY="$args"}
+if (-not $this.'.Metadata') {
+    $this.'.Metadata' = [Ordered]@{}
+}
+$this.'.Metadata'.InitialKey = $propertyToSet.TKEY
+Set-Media -Property $propertyToSet
+
+                    </SetScriptBlock>
+      </ScriptProperty>
+      <ScriptProperty>
         <Name>MediaType</Name>
         <GetScriptBlock>
                         &lt;#
