@@ -18,4 +18,4 @@ $Sepia
 )
 
 "-vf" # If we wanted the video in Sepia
-"`"colorchannelmixer=.393:.769:.189:0:.349:.686:.168:0:.272:.534:.131`"" # use the color channel mixer.
+"colorchannelmixer=.393:.769:.189:0:.349:.686:.168:0:.272:.534:.131" # use the color channel mixer.
