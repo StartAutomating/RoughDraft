@@ -16,6 +16,7 @@
     #>
     [OutputType([IO.FileInfo], [Management.Automation.Job])]
     [CmdletBinding(DefaultParameterSetName='Convert-Media')]
+    [Alias('ConvertTo-GIF')]
     param(
     # The input path
     [Parameter(Mandatory,Position=0,ValueFromPipelineByPropertyName)]
