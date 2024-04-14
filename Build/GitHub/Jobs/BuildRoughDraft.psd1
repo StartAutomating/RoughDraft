@@ -34,6 +34,15 @@
         'RunEZOut',       
         'RunHelpOut',
         @{
+            'name'='Log in to ghcr.io'
+            'uses'='docker/login-action@master'
+            'with'=@{
+                'registry'='${{ env.REGISTRY }}'
+                'username'='${{ github.actor }}'
+                'password'='${{ secrets.GITHUB_TOKEN }}'
+            }
+        },
+        @{
             name = 'Extract Docker Metadata (for branch)'
             if   = '${{github.ref_name != ''main'' && github.ref_name != ''master'' && github.ref_name != ''latest''}}'
             id   = 'meta'
