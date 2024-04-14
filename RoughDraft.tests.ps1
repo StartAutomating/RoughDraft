@@ -227,13 +227,16 @@ describe New-Media {
 
 describe Set-Media {
     it 'Can set media metadata' {
-        $tmpOutPath = Join-Path ([IO.Path]::GetTempPath()) "sine$(Get-Random).mp3"
+        $tmpOutPath = Join-Path ([IO.Path]::GetTempPath()) "sine$(Get-Random).wav"
+        $tmpMp3Path = $tmpOutPath -replace '\.wav$', '.mp3'
         New-Media -Sine -OutputPath $tmpOutPath -Duration "00:00:05" |
+            Convert-Media -OutputPath $tmpMp3Path |
             Set-Media -Property @{title='sine'}
 
-        Get-Item $tmpOutPath | Get-Media | Select-Object -ExpandProperty title | should -BeLike sine*
+        Get-Item $tmpMp3Path | Get-Media | Select-Object -ExpandProperty title | should -BeLike sine*
 
         Remove-Item $tmpOutPath
+        Remove-Item $tmpMp3Path
     }
 
     it 'Can set album artwork' {
