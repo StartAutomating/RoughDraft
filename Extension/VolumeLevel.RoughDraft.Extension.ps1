@@ -17,7 +17,7 @@ $VolumeLevel
 
 
 $ffArgs = @(
-    '-i', "`"$ri`"", "-af", "volumedetect", '-f', 'null', '-'
+    '-i', "$ri", "-af", "volumedetect", '-f', 'null','/dev/null'
 )
 
 Use-FFMpeg -FFMpegPath $ffMpegPath -FFMpegArgument $ffArgs  | 
@@ -30,6 +30,7 @@ Use-FFMpeg -FFMpegPath $ffMpegPath -FFMpegArgument $ffArgs  |
         }
         process {
             $line = $_    
+            Write-Verbose $line
             if ($line -like "*mean*volume*" -or $line -like "*max*volume*" -or $line -like "*histogram*" -or $line -like "*VolumeDetect*") {
                 $blackDetectLine = $line
                 $lineParts = $blackDetectLine -split "[:\]]"  -ne ''                    
