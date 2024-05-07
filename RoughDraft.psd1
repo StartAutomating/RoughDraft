@@ -4,9 +4,10 @@
     ModuleToProcess='RoughDraft.psm1'
     GUID='c192ebbf-57a3-493e-bc82-da7553038794'
     Description='A Fun PowerShell Module for Multimedia'
-    Copyright='2011-2021 Start-Automating'
+    Copyright='2011-2024 Start-Automating'
     Author='James Brundage'
-    FormatsToProcess  ='RoughDraft.format.ps1xml'   
+    FormatsToProcess  = 'RoughDraft.format.ps1xml'
+    TypesToProcess = 'RoughDraft.types.ps1xml'
     PrivateData = @{
         PSData = @{
             Tags = 'FFMpeg', 'Media', 'Multimedia','Audio', 'Video', 'mp3','mp4'
