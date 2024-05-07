@@ -231,10 +231,12 @@ describe Set-Media {
         $tmpMp3Path = $tmpOutPath -replace '\.wav$', '.mp3'
         $convertedToMp3 = New-Media -Sine -OutputPath $tmpOutPath -Duration "00:00:05" |
             Convert-Media -OutputPath $tmpMp3Path
+        Start-Sleep -Milliseconds 10
         $convertedToMp3 |
             Set-Media -Property @{title='sine'}
 
-        Get-Item $convertedToMp3 | Get-Media | Select-Object -ExpandProperty title | should -BeLike sine*
+        $mediaInfo = Get-Item $convertedToMp3 | Get-Media 
+        $mediaInfo.Title | Should -BeLike sine*
 
         Remove-Item $tmpOutPath
         Remove-Item $tmpMp3Path
