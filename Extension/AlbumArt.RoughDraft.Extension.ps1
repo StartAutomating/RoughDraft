@@ -30,7 +30,7 @@ $raa =
 # Then we copy the image stream in
 if (-not $raa) { continue }
 '-i'
-"`"$raa`""
+"$raa"
 '-c:a'
 'copy'
 '-c:v'
