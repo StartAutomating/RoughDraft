@@ -3,7 +3,7 @@
 |AlbumArt|Sets album artwork|Set-Media,Set-Media|
 |AmplifyPixel|AmplifyPixel extension|Edit-Media,Show-Media,Show-Media,Edit-Media|
 |AudioCrusher|Audio Crusher|Edit-Media,Show-Media,Show-Media,Edit-Media|
-|AudioExpression|Evaluates Audio Expressions|Edit-Media,New-Media,Show-Media,New-Media,Edit-Media,Show-Media|
+|AudioExpression|Evaluates Audio Expressions|Edit-Media,New-Media,Show-Media,Edit-Media,New-Media,Show-Media|
 |AudioFrequencyExpression|Apply expressions to audio frequencies|Edit-Media,Show-Media,Show-Media,Edit-Media|
 |AudioGain|Increases audio volume|Edit-Media,Show-Media,Show-Media,Edit-Media|
 |BilateralSmooth|Bilateral Smooth|Edit-Media,Show-Media,Show-Media,Edit-Media|
@@ -23,12 +23,12 @@
 |ColorScope|Colorscope extension|Edit-Media,Show-Media,Show-Media,Edit-Media|
 |ColorSource|Generates a color|New-Media,Show-Media,New-Media,Show-Media|
 |Convolve|convolve|Join-Media,Join-Media|
-|Crop|Crop Extension|Edit-Media,Receive-Media,Send-Media,Show-Media,Send-Media,Edit-Media,Show-Media,Receive-Media|
+|Crop|Crop Extension|Edit-Media,Receive-Media,Send-Media,Show-Media,Edit-Media,Show-Media,Send-Media,Receive-Media|
 |CropDetect|Auto-detect the crop size.|Get-Media,Get-Media|
 |CrossFade|acrossfade|Join-Media,Join-Media|
 |DataScope|Datascope effect|Edit-Media,Edit-Media|
 |Deconvolve|deconvolve|Join-Media,Join-Media|
-|DirectShow|DirectShow Extension|Receive-Media,Send-Media,Show-Media,Send-Media,Show-Media,Receive-Media|
+|DirectShow|DirectShow Extension|Receive-Media,Send-Media,Show-Media,Show-Media,Send-Media,Receive-Media|
 |DrawSubtitle|Draw subtitles on top of input video|Convert-Media,Edit-Media,Edit-Media,Convert-Media|
 |Echo|Adds echoes to audio|Edit-Media,Show-Media,Show-Media,Edit-Media|
 |EdgeDetect|EdgeDetect Extension|Edit-Media,Show-Media,Show-Media,Edit-Media|
@@ -44,7 +44,7 @@
 |Flanger|Audio Flanger.|Edit-Media,Show-Media,Show-Media,Edit-Media|
 |FlipHorizontal|Flips video horizontally|Edit-Media,Show-Media,Show-Media,Edit-Media|
 |FlipVertical|Flips video vertically|Edit-Media,Show-Media,Show-Media,Edit-Media|
-|FrameBuffer|FrameBuffer Extension|Receive-Media,Send-Media,Show-Media,Send-Media,Show-Media,Receive-Media|
+|FrameBuffer|FrameBuffer Extension|Receive-Media,Send-Media,Show-Media,Show-Media,Send-Media,Receive-Media|
 |FrameStep|FrameStep Effect|Edit-Media,Show-Media,Show-Media,Edit-Media|
 |GifPalette|Gif Palette Extension|Convert-Media,Convert-Media|
 |Histogram|Histogram Extension|Edit-Media,Show-Media,Show-Media,Edit-Media|
@@ -78,12 +78,12 @@
 |Scale|Scales video.|Edit-Media,Show-Media,Show-Media,Edit-Media|
 |ScrollVideo|Scrolls video|Edit-Media,Show-Media,Show-Media,Edit-Media|
 |Sepia|Applies a Sepia Filter|Edit-Media,Edit-Media|
-|ShowFrequency|Show Frequencies|Edit-Media,New-Media,Show-Media,New-Media,Edit-Media,Show-Media|
-|ShowScale|Show the tonal scale of the audio|Edit-Media,New-Media,Show-Media,New-Media,Edit-Media,Show-Media|
-|ShowSpectrum|Shows the audio spectrum|Edit-Media,New-Media,Show-Media,New-Media,Edit-Media,Show-Media|
-|ShowVectorScope|Shows a Vector Scope of the Audio|Edit-Media,New-Media,Show-Media,New-Media,Edit-Media,Show-Media|
-|ShowVolume|Shows the volume of an audio stream.|Edit-Media,New-Media,Show-Media,New-Media,Edit-Media,Show-Media|
-|ShowWaveform|Shows audio waveform.|Edit-Media,New-Media,Show-Media,New-Media,Edit-Media,Show-Media|
+|ShowFrequency|Show Frequencies|Edit-Media,New-Media,Show-Media,Edit-Media,New-Media,Show-Media|
+|ShowScale|Show the tonal scale of the audio|Edit-Media,New-Media,Show-Media,Edit-Media,New-Media,Show-Media|
+|ShowSpectrum|Shows the audio spectrum|Edit-Media,New-Media,Show-Media,Edit-Media,New-Media,Show-Media|
+|ShowVectorScope|Shows a Vector Scope of the Audio|Edit-Media,New-Media,Show-Media,Edit-Media,New-Media,Show-Media|
+|ShowVolume|Shows the volume of an audio stream.|Edit-Media,New-Media,Show-Media,Edit-Media,New-Media,Show-Media|
+|ShowWaveform|Shows audio waveform.|Edit-Media,New-Media,Show-Media,Edit-Media,New-Media,Show-Media|
 |ShuffleFrames|Shuffles frames in video|Edit-Media,Edit-Media|
 |Sierpinski|Generates a Sierpinski fractal|New-Media,Show-Media,New-Media,Show-Media|
 |SilenceDetect|Detects silence in an audio stream|Get-Media,Get-Media|
@@ -104,7 +104,7 @@
 |Vibrance|vibrance|Edit-Media,Edit-Media|
 |Vibrato|Vibrato effect|Edit-Media,Show-Media,Show-Media,Edit-Media|
 |VideoExpression|Evaluates Video Expressions|Edit-Media,Show-Media,Show-Media,Edit-Media|
-|VideoForLinux|VideoForLinux Extension|Receive-Media,Send-Media,Show-Media,Send-Media,Show-Media,Receive-Media|
+|VideoForLinux|VideoForLinux Extension|Receive-Media,Send-Media,Show-Media,Show-Media,Send-Media,Receive-Media|
 |Vignette|Applies a vignette filter|Edit-Media,Show-Media,Show-Media,Edit-Media|
 |VolumeLevel|Gets VolumeLevels|Get-Media,Get-Media|
 |Watermark|Watermarks a video|Edit-Media,Edit-Media|
