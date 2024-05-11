@@ -1,6 +1,6 @@
 FROM mcr.microsoft.com/powershell
 
-RUN apt-get update && apt-get install -y git curl ca-certificates libc6 libgcc1 ffmpeg
+RUN apt-get update && apt-get install -y git curl ca-certificates libc6 libgcc1 python3 ffmpeg
 
 ENV PSModulePath ./Modules
 COPY . ./Modules/RoughDraft

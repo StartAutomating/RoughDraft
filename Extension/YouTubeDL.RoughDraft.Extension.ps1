@@ -59,6 +59,10 @@ if ($DownloadLatestYouTubeDL -or -not (Test-Path $YouTubeDLPath)) {
     $latestRelease = Invoke-RestMethod -Uri https://api.github.com/repos/yt-dlp/yt-dlp/releases?per_page=1
     $assetUrl = $latestRelease.Assets | Where-Object Name -eq $YouTubeDLName | Select-Object -ExpandProperty Browser_Download_Url
     [Net.WebClient]::new().DownloadFile($assetUrl, "$YouTubeDLPath")
+
+    if ($PSVersionTable.Platform -notmatch 'Win') {
+        $null = chmod +x $YouTubeDLPath
+    }
 }
 
 $AllYouTubeDLArgs  = @(
