@@ -38,7 +38,18 @@ $YouTubeDownloadArgumentList,
 # If set, will return the information about the download, instead of downloading.
 [Alias('YouTubeDLInfo', 'YouTubeInfo')]
 [switch]
-$YouTubeDownloadInformation
+$YouTubeDownloadInformation,
+
+[switch]
+$YouTubeNoEmbedMetadata,
+
+[switch]
+$YouTubeNoEmbedSubTitle,
+
+# Any additional arguments to YouTubeDL or yt-dlp
+[Alias('YouTubeDLArgs')]
+[string[]]
+$YouTubeDLArgumentList
 )
 
 $roughDraftRoot = Join-Path $home ".RoughDraft"
@@ -73,14 +84,25 @@ $AllYouTubeDLArgs  = @(
         "--all-subs"        
     }
     if ($YouTubeDownloadInformation) {
-        '--json'
+        '--dump-json'
     }
+    if (-not $YouTubeNoEmbedMetadata) {
+        '--embed-metadata'
+    }    
+    if (-not $YouTubeNoEmbedSubTitle) {
+        '--embed-subs'
+    }
+
     if ($YouTubeOutputFile) {
         '-o'
         $YouTubeOutputFile
     }
     '--ffmpeg-location' 
-    "$(Get-FFMpeg)"    
+    "$(Get-FFMpeg)"
+    
+    if ($YouTubeDLArgumentList) {
+        $YouTubeDLArgumentList
+    }
 )
 
 if ($YouTubeDownloadArgumentList -like '--json' -or $YouTubeDownloadInformation) {
