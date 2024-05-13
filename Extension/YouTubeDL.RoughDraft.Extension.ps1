@@ -44,12 +44,7 @@ $YouTubeDownloadInformation,
 $YouTubeNoEmbedMetadata,
 
 [switch]
-$YouTubeNoEmbedSubTitle,
-
-# Any additional arguments to YouTubeDL or yt-dlp
-[Alias('YouTubeDLArgs')]
-[string[]]
-$YouTubeDLArgumentList
+$YouTubeNoEmbedSubTitle
 )
 
 $roughDraftRoot = Join-Path $home ".RoughDraft"
@@ -98,11 +93,7 @@ $AllYouTubeDLArgs  = @(
         $YouTubeOutputFile
     }
     '--ffmpeg-location' 
-    "$(Get-FFMpeg)"
-    
-    if ($YouTubeDLArgumentList) {
-        $YouTubeDLArgumentList
-    }
+    "$(Get-FFMpeg)"    
 )
 
 if ($YouTubeDownloadArgumentList -like '--json' -or $YouTubeDownloadInformation) {
