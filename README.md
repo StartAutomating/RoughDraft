@@ -169,7 +169,7 @@ There are currently 111 extensions:
 |[BilateralSmooth](docs/BilateralSmooth-Extension.md)                  |Bilateral Smooth                      |Edit-Media,Show-Media                         |
 |[BlackDetect](docs/BlackDetect-Extension.md)                          |Detect black periods in a video.      |Get-Media                                     |
 |[BlackFrame](docs/BlackFrame-Extension.md)                            |Detects black frames.                 |Get-Media                                     |
-|[BlendFrame](docs/BlendFrame-Extension.md)                            |BlendFrame Extension                  |Edit-Media,Show-Media,Join-Media              |
+|[BlendFrame](docs/BlendFrame-Extension.md)                            |BlendFrame Extension                  |Join-Media,Edit-Media,Show-Media              |
 |[BlendVideo](docs/BlendVideo-Extension.md)                            |BlendVideo Extension                  |Join-Media                                    |
 |[Blur](docs/Blur-Extension.md)                                        |Blurs Video                           |Edit-Media,Show-Media                         |
 |[CaptureDevice](docs/CaptureDevice-Extension.md)                      |Gets capture devices                  |Get-FFMpeg                                    |
@@ -177,11 +177,11 @@ There are currently 111 extensions:
 |[ChromaHold](docs/ChromaHold-Extension.md)                            |chromahold                            |Edit-Media                                    |
 |[Codecs](docs/Codecs-Extension.md)                                    |Lists codecs                          |Get-FFMpeg                                    |
 |[ColorContrast](docs/ColorContrast-Extension.md)                      |ColorContrast Extension               |Edit-Media,Show-Media                         |
-|[ColorExpression](docs/ColorExpression-Extension.md)                  |Color Expression                      |Edit-Media,Show-Media,Join-Media              |
+|[ColorExpression](docs/ColorExpression-Extension.md)                  |Color Expression                      |Join-Media,Edit-Media,Show-Media              |
 |[ColorHold](docs/ColorHold-Extension.md)                              |ColorHold Extension                   |Edit-Media,Show-Media                         |
 |[Colorize](docs/Colorize-Extension.md)                                |Colorize a video stream               |Edit-Media,Show-Media                         |
 |[ColorScope](docs/ColorScope-Extension.md)                            |Colorscope extension                  |Edit-Media,Show-Media                         |
-|[ColorSource](docs/ColorSource-Extension.md)                          |Generates a color                     |New-Media,Show-Media                          |
+|[ColorSource](docs/ColorSource-Extension.md)                          |Generates a color                     |Show-Media,New-Media                          |
 |[Convolve](docs/Convolve-Extension.md)                                |convolve                              |Join-Media                                    |
 |[Crop](docs/Crop-Extension.md)                                        |Crop Extension                        |Edit-Media,Send-Media,Receive-Media,Show-Media|
 |[CropDetect](docs/CropDetect-Extension.md)                            |Auto-detect the crop size.            |Get-Media                                     |
@@ -212,11 +212,11 @@ There are currently 111 extensions:
 |[Hue](docs/Hue-Extension.md)                                          |Hue Extension                         |Edit-Media,Show-Media                         |
 |[Hysteresis](docs/Hysteresis-Extension.md)                            |Hysteresis                            |Join-Media                                    |
 |[LagFun](docs/LagFun-Extension.md)                                    |Slowly update darker pixels.          |Edit-Media,Show-Media                         |
-|[Life](docs/Life-Extension.md)                                        |Generates life                        |New-Media,Show-Media                          |
+|[Life](docs/Life-Extension.md)                                        |Generates life                        |Show-Media,New-Media                          |
 |[LimitPixel](docs/LimitPixel-Extension.md)                            |Limits Pixel values                   |Edit-Media,Show-Media                         |
 |[ListFilters](docs/ListFilters-Extension.md)                          |Lists filters                         |Get-FFMpeg                                    |
 |[ListProtocols](docs/ListProtocols-Extension.md)                      |Lists protocols                       |Get-FFMpeg                                    |
-|[Mandelbrot](docs/Mandelbrot-Extension.md)                            |Generates fractals                    |New-Media,Show-Media                          |
+|[Mandelbrot](docs/Mandelbrot-Extension.md)                            |Generates fractals                    |Show-Media,New-Media                          |
 |[MedianPixel](docs/MedianPixel-Extension.md)                          |Picks median pixels                   |Edit-Media,Show-Media                         |
 |[Mirror](docs/Mirror-Extension.md)                                    |Mirror Extension                      |Edit-Media,Show-Media                         |
 |[MixAudio](docs/MixAudio-Extension.md)                                |Mix Audio                             |Join-Media                                    |
@@ -232,10 +232,10 @@ There are currently 111 extensions:
 |[Pulsator](docs/Pulsator-Extension.md)                                |Pulsator Effect                       |Edit-Media,Show-Media                         |
 |[RandomizeFrame](docs/RandomizeFrame-Extension.md)                    |RandomizeFrame extensions             |Edit-Media,Show-Media                         |
 |[Rate](docs/Rate-Extension.md)                                        |Adjusts the rate of media.            |Edit-Media,Show-Media                         |
-|[Resize](docs/Resize-Extension.md)                                    |Simple video resize.                  |Edit-Media,Show-Media,Convert-Media           |
+|[Resize](docs/Resize-Extension.md)                                    |Simple video resize.                  |Convert-Media,Edit-Media,Show-Media           |
 |[ReverseAudio](docs/ReverseAudio-Extension.md)                        |Reverses audio                        |Edit-Media                                    |
 |[ReverseVideo](docs/ReverseVideo-Extension.md)                        |Reverses video                        |Edit-Media                                    |
-|[Rotate](docs/Rotate-Extension.md)                                    |Rotates a video                       |Edit-Media,Show-Media,Convert-Media           |
+|[Rotate](docs/Rotate-Extension.md)                                    |Rotates a video                       |Convert-Media,Edit-Media,Show-Media           |
 |[Scale](docs/Scale-Extension.md)                                      |Scales video.                         |Edit-Media,Show-Media                         |
 |[ScrollVideo](docs/ScrollVideo-Extension.md)                          |Scrolls video                         |Edit-Media,Show-Media                         |
 |[Sepia](docs/Sepia-Extension.md)                                      |Applies a Sepia Filter                |Edit-Media                                    |
@@ -246,7 +246,7 @@ There are currently 111 extensions:
 |[ShowVolume](docs/ShowVolume-Extension.md)                            |Shows the volume of an audio stream.  |Edit-Media,New-Media,Show-Media               |
 |[ShowWaveform](docs/ShowWaveform-Extension.md)                        |Shows audio waveform.                 |Edit-Media,New-Media,Show-Media               |
 |[ShuffleFrames](docs/ShuffleFrames-Extension.md)                      |Shuffles frames in video              |Edit-Media                                    |
-|[Sierpinski](docs/Sierpinski-Extension.md)                            |Generates a Sierpinski fractal        |New-Media,Show-Media                          |
+|[Sierpinski](docs/Sierpinski-Extension.md)                            |Generates a Sierpinski fractal        |Show-Media,New-Media                          |
 |[SilenceDetect](docs/SilenceDetect-Extension.md)                      |Detects silence in an audio stream    |Get-Media                                     |
 |[SilenceRemove](docs/SilenceRemove-Extension.md)                      |Detects silence in an audio stream    |Edit-Media                                    |
 |[Sine](docs/Sine-Extension.md)                                        |Generates a sine wave                 |New-Media                                     |
@@ -258,7 +258,7 @@ There are currently 111 extensions:
 |[SuperFrequencyCut](docs/SuperFrequencyCut-Extension.md)              |Cut super frequencies.                |Edit-Media,Show-Media                         |
 |[SwapRect](docs/SwapRect-Extension.md)                                |swaprect                              |Edit-Media                                    |
 |[Tempo](docs/Tempo-Extension.md)                                      |Adjust audio tempo.                   |Edit-Media,Show-Media                         |
-|[TestSource](docs/TestSource-Extension.md)                            |Generates test sources                |New-Media,Show-Media                          |
+|[TestSource](docs/TestSource-Extension.md)                            |Generates test sources                |Show-Media,New-Media                          |
 |[Tile](docs/Tile-Extension.md)                                        |Tile Extension                        |Edit-Media                                    |
 |[TimeMix](docs/TimeMix-Extension.md)                                  |Mix successive video frames.          |Edit-Media,Show-Media                         |
 |[Tremolo](docs/Tremolo-Extension.md)                                  |Tremolo effect                        |Edit-Media,Show-Media                         |
