@@ -7,7 +7,7 @@
     Network is stored within the ID3 tag `tvnn`.
 #>
 param()
-$propertyToSet = @{tvnn="$args"}
+$propertyToSet = @{network="$args"}
 if (-not $this.'.Metadata') {
     $this.'.Metadata' = [Ordered]@{}
 }
