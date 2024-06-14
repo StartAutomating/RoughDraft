@@ -169,7 +169,7 @@ There are currently 111 extensions:
 |[BilateralSmooth](BilateralSmooth-Extension.md)                  |Bilateral Smooth                      |Edit-Media,Show-Media                         |
 |[BlackDetect](BlackDetect-Extension.md)                          |Detect black periods in a video.      |Get-Media                                     |
 |[BlackFrame](BlackFrame-Extension.md)                            |Detects black frames.                 |Get-Media                                     |
-|[BlendFrame](BlendFrame-Extension.md)                            |BlendFrame Extension                  |Edit-Media,Show-Media,Join-Media              |
+|[BlendFrame](BlendFrame-Extension.md)                            |BlendFrame Extension                  |Join-Media,Edit-Media,Show-Media              |
 |[BlendVideo](BlendVideo-Extension.md)                            |BlendVideo Extension                  |Join-Media                                    |
 |[Blur](Blur-Extension.md)                                        |Blurs Video                           |Edit-Media,Show-Media                         |
 |[CaptureDevice](CaptureDevice-Extension.md)                      |Gets capture devices                  |Get-FFMpeg                                    |
@@ -177,11 +177,11 @@ There are currently 111 extensions:
 |[ChromaHold](ChromaHold-Extension.md)                            |chromahold                            |Edit-Media                                    |
 |[Codecs](Codecs-Extension.md)                                    |Lists codecs                          |Get-FFMpeg                                    |
 |[ColorContrast](ColorContrast-Extension.md)                      |ColorContrast Extension               |Edit-Media,Show-Media                         |
-|[ColorExpression](ColorExpression-Extension.md)                  |Color Expression                      |Edit-Media,Show-Media,Join-Media              |
+|[ColorExpression](ColorExpression-Extension.md)                  |Color Expression                      |Join-Media,Edit-Media,Show-Media              |
 |[ColorHold](ColorHold-Extension.md)                              |ColorHold Extension                   |Edit-Media,Show-Media                         |
 |[Colorize](Colorize-Extension.md)                                |Colorize a video stream               |Edit-Media,Show-Media                         |
 |[ColorScope](ColorScope-Extension.md)                            |Colorscope extension                  |Edit-Media,Show-Media                         |
-|[ColorSource](ColorSource-Extension.md)                          |Generates a color                     |New-Media,Show-Media                          |
+|[ColorSource](ColorSource-Extension.md)                          |Generates a color                     |Show-Media,New-Media                          |
 |[Convolve](Convolve-Extension.md)                                |convolve                              |Join-Media                                    |
 |[Crop](Crop-Extension.md)                                        |Crop Extension                        |Edit-Media,Send-Media,Receive-Media,Show-Media|
 |[CropDetect](CropDetect-Extension.md)                            |Auto-detect the crop size.            |Get-Media                                     |
@@ -212,11 +212,11 @@ There are currently 111 extensions:
 |[Hue](Hue-Extension.md)                                          |Hue Extension                         |Edit-Media,Show-Media                         |
 |[Hysteresis](Hysteresis-Extension.md)                            |Hysteresis                            |Join-Media                                    |
 |[LagFun](LagFun-Extension.md)                                    |Slowly update darker pixels.          |Edit-Media,Show-Media                         |
-|[Life](Life-Extension.md)                                        |Generates life                        |New-Media,Show-Media                          |
+|[Life](Life-Extension.md)                                        |Generates life                        |Show-Media,New-Media                          |
 |[LimitPixel](LimitPixel-Extension.md)                            |Limits Pixel values                   |Edit-Media,Show-Media                         |
 |[ListFilters](ListFilters-Extension.md)                          |Lists filters                         |Get-FFMpeg                                    |
 |[ListProtocols](ListProtocols-Extension.md)                      |Lists protocols                       |Get-FFMpeg                                    |
-|[Mandelbrot](Mandelbrot-Extension.md)                            |Generates fractals                    |New-Media,Show-Media                          |
+|[Mandelbrot](Mandelbrot-Extension.md)                            |Generates fractals                    |Show-Media,New-Media                          |
 |[MedianPixel](MedianPixel-Extension.md)                          |Picks median pixels                   |Edit-Media,Show-Media                         |
 |[Mirror](Mirror-Extension.md)                                    |Mirror Extension                      |Edit-Media,Show-Media                         |
 |[MixAudio](MixAudio-Extension.md)                                |Mix Audio                             |Join-Media                                    |
@@ -232,10 +232,10 @@ There are currently 111 extensions:
 |[Pulsator](Pulsator-Extension.md)                                |Pulsator Effect                       |Edit-Media,Show-Media                         |
 |[RandomizeFrame](RandomizeFrame-Extension.md)                    |RandomizeFrame extensions             |Edit-Media,Show-Media                         |
 |[Rate](Rate-Extension.md)                                        |Adjusts the rate of media.            |Edit-Media,Show-Media                         |
-|[Resize](Resize-Extension.md)                                    |Simple video resize.                  |Edit-Media,Show-Media,Convert-Media           |
+|[Resize](Resize-Extension.md)                                    |Simple video resize.                  |Convert-Media,Edit-Media,Show-Media           |
 |[ReverseAudio](ReverseAudio-Extension.md)                        |Reverses audio                        |Edit-Media                                    |
 |[ReverseVideo](ReverseVideo-Extension.md)                        |Reverses video                        |Edit-Media                                    |
-|[Rotate](Rotate-Extension.md)                                    |Rotates a video                       |Edit-Media,Show-Media,Convert-Media           |
+|[Rotate](Rotate-Extension.md)                                    |Rotates a video                       |Convert-Media,Edit-Media,Show-Media           |
 |[Scale](Scale-Extension.md)                                      |Scales video.                         |Edit-Media,Show-Media                         |
 |[ScrollVideo](ScrollVideo-Extension.md)                          |Scrolls video                         |Edit-Media,Show-Media                         |
 |[Sepia](Sepia-Extension.md)                                      |Applies a Sepia Filter                |Edit-Media                                    |
@@ -246,7 +246,7 @@ There are currently 111 extensions:
 |[ShowVolume](ShowVolume-Extension.md)                            |Shows the volume of an audio stream.  |Edit-Media,New-Media,Show-Media               |
 |[ShowWaveform](ShowWaveform-Extension.md)                        |Shows audio waveform.                 |Edit-Media,New-Media,Show-Media               |
 |[ShuffleFrames](ShuffleFrames-Extension.md)                      |Shuffles frames in video              |Edit-Media                                    |
-|[Sierpinski](Sierpinski-Extension.md)                            |Generates a Sierpinski fractal        |New-Media,Show-Media                          |
+|[Sierpinski](Sierpinski-Extension.md)                            |Generates a Sierpinski fractal        |Show-Media,New-Media                          |
 |[SilenceDetect](SilenceDetect-Extension.md)                      |Detects silence in an audio stream    |Get-Media                                     |
 |[SilenceRemove](SilenceRemove-Extension.md)                      |Detects silence in an audio stream    |Edit-Media                                    |
 |[Sine](Sine-Extension.md)                                        |Generates a sine wave                 |New-Media                                     |
@@ -258,7 +258,7 @@ There are currently 111 extensions:
 |[SuperFrequencyCut](SuperFrequencyCut-Extension.md)              |Cut super frequencies.                |Edit-Media,Show-Media                         |
 |[SwapRect](SwapRect-Extension.md)                                |swaprect                              |Edit-Media                                    |
 |[Tempo](Tempo-Extension.md)                                      |Adjust audio tempo.                   |Edit-Media,Show-Media                         |
-|[TestSource](TestSource-Extension.md)                            |Generates test sources                |New-Media,Show-Media                          |
+|[TestSource](TestSource-Extension.md)                            |Generates test sources                |Show-Media,New-Media                          |
 |[Tile](Tile-Extension.md)                                        |Tile Extension                        |Edit-Media                                    |
 |[TimeMix](TimeMix-Extension.md)                                  |Mix successive video frames.          |Edit-Media,Show-Media                         |
 |[Tremolo](Tremolo-Extension.md)                                  |Tremolo effect                        |Edit-Media,Show-Media                         |
