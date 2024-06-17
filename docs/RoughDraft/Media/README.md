@@ -35,6 +35,8 @@
 * [set_Grouping](set_Grouping.md)
 * [get_InitialKey](get_InitialKey.md)
 * [set_InitialKey](set_InitialKey.md)
+* [get_Location](get_Location.md)
+* [set_Location](set_Location.md)
 * [get_Lyric](get_Lyric.md)
 * [set_Lyric](set_Lyric.md)
 * [get_MediaType](get_MediaType.md)
