@@ -39,7 +39,7 @@ if ($Rotate) { # If we're going to rotate the video
         -not ($intRotate % 90)) { # And the angle is an int and a factor of 90 degrees
         # Use the [transpose videofilter](https://ffmpeg.org/ffmpeg-filters.html#transpose-1)
         $intRotate = $intRotate % 360
-        "`"transpose=$(if ($intRotate  -eq 90) { 1 } elseif ($intRotate -eq 180) { 2 } elseif ($intRotate -eq 270)  { 3})`""
+        "transpose=$(if ($intRotate  -eq 90) { 1 } elseif ($intRotate -eq 180) { 2 } elseif ($intRotate -eq 270)  { 3})"
     }
     else {
         $filterArgs = @(
