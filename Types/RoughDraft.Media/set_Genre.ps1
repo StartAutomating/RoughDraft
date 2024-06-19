@@ -5,7 +5,8 @@
     Changes the Genre metadata for a media file (persistently, if possible)
 #>
 param()
-$propertyToSet = @{genre="$args"}
+$unrolledArgs = $args | . { process { $_ } }
+$propertyToSet = @{genre=$unrolledArgs -join ' ; '}
 if (-not $this.'.Metadata') {
     $this.'.Metadata' = [Ordered]@{}
 }

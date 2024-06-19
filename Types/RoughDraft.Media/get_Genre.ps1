@@ -5,4 +5,4 @@
     Gets the Genre Metadata, if present.
 #>
 param()
-return $this.'.Metadata'.Genre
+return @($this.'.Metadata'.Genre -split '\s{0,};\s{0,}')
