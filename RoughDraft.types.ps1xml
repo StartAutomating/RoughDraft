@@ -430,7 +430,7 @@ $this.InputPath | Split-Path -Leaf
     Gets the Genre Metadata, if present.
 #&gt;
 param()
-return $this.'.Metadata'.Genre
+return @($this.'.Metadata'.Genre -split '\s{0,};\s{0,}')
                     </GetScriptBlock>
         <SetScriptBlock>
                         &lt;#
@@ -440,7 +440,8 @@ return $this.'.Metadata'.Genre
     Changes the Genre metadata for a media file (persistently, if possible)
 #&gt;
 param()
-$propertyToSet = @{genre="$args"}
+$unrolledArgs = $args | . { process { $_ } }
+$propertyToSet = @{genre=$unrolledArgs -join ' ; '}
 if (-not $this.'.Metadata') {
     $this.'.Metadata' = [Ordered]@{}
 }
