@@ -469,19 +469,32 @@
                     process {
                         $line = $_
                         $lines += $line
-                        $progress = $line | & ${?<FFMpeg_Progress>} -Extract                        
-                        if ($progress -and 
-                            $progress.Time.Totalmilliseconds -and 
+
+                        $lineData = [Ordered]@{}
+                        if ($line -match '\w+=') {
+                            $chunks = @(
+                                $line -split '(?==)' -replace '=' -split '\s+' -ne ''
+                            )
+                            for ($chunkNumber =0 ; $chunkNumber -lt $chunks.Length; $chunkNumber+=2) {
+                                $lineData[$chunks[$chunkNumber]] = $chunks[$chunkNumber + 1]
+                            }
+                        }
+                        
+
+                        if (($lineData.time -as [TimeSpan]) -and                             
                             $theDuration.TotalMilliseconds
                         ) {
-                            $perc = $progress.Time.TotalMilliseconds * 100 / $theDuration.TotalMilliseconds
-                            $frame, $speed, $bitrate  = $progress.FrameNumber, $progress.Speed, $progress.Bitrate
-                            if ($perc -gt 100) { $perc = 100 }
-                            $progressMessage = 
-                                @("$($progress.Time)".Substring(0,8), "$theDuration".Substring(0,8) -join '/'
-                                    "Frame: $frame","Speed $speed","Bitrate $bitrate" -join ' - '
-                                ) -join ' '                        
-                            $timeLeft = $theDuration - $progress.Time                            
+                            $time = ($lineData.Time -as [Timespan])
+                            $perc = $time.TotalMilliseconds * 100 / $theDuration.TotalMilliseconds
+                            
+                            if ($perc -gt 100) { $perc = $perc % 100 }
+                            $progressMessage =
+                                @(
+                                    foreach ($kv in $lineData.GetEnumerator()) {
+                                        "$($kv.Key)=$($kv.Value)"
+                                    }
+                                ) -join ' '
+                            $timeLeft = $theDuration - $time
                             Write-Progress "$ri -> $uro" $progressMessage -PercentComplete $perc -Id $ProgId -SecondsRemaining $timeLeft.TotalSeconds
                         }
                         Write-Verbose "$line"
