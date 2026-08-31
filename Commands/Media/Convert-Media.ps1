@@ -51,12 +51,10 @@
     $AudioCodec,
 
     # If provided, will apply audio filters to the file
-    [CmdletBinding(DefaultParameterSetName='Convert-Media')]
     [string[]]
     $AudioFilter,
 
     # If provided, will apply video filters to the file
-    [CmdletBinding(DefaultParameterSetName='Convert-Media')]
     [string[]]
     $VideoFilter,
 
@@ -161,7 +159,7 @@
 
     dynamicParam {
         $myCmd = $MyInvocation.MyCommand
-        Get-RoughDraftExtension -CommandName $myCmd -DynamicParameter
+        Get-RoughDraftExtension -CommandName $myCmd -DynamicParameter -NoMandatoryDynamicParameter -DynamicParameterSetName "__AllParameterSets" 
     }
 
     begin {
