@@ -155,7 +155,7 @@ Get-FFMpeg -FilterName
 ## RoughDraft Extensions
 
 RoughDraft uses Extensions to make complex media scenarios easier work with.
-There are currently 125 extensions:
+There are currently 126 extensions:
 
 
 |DisplayName                                                           |Synopsis                              |Extends                                       |
@@ -215,6 +215,7 @@ There are currently 125 extensions:
 |[HistogramEqualizer](HistogramEqualizer-Extension.md)            |Histogram Equalizer Extension         |Edit-Media,Show-Media                         |
 |[Hue](Hue-Extension.md)                                          |Hue Extension                         |Edit-Media,Show-Media                         |
 |[Hysteresis](Hysteresis-Extension.md)                            |Hysteresis                            |Join-Media                                    |
+|[Interlace](Interlace-Extension.md)                              |Interlace Extension                   |Edit-Media,Show-Media                         |
 |[LagFun](LagFun-Extension.md)                                    |Slowly update darker pixels.          |Edit-Media,Show-Media                         |
 |[Life](Life-Extension.md)                                        |Generates life                        |New-Media,Show-Media                          |
 |[LimitPixel](LimitPixel-Extension.md)                            |Limits Pixel values                   |Edit-Media,Show-Media                         |
