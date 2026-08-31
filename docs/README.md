@@ -155,7 +155,7 @@ Get-FFMpeg -FilterName
 ## RoughDraft Extensions
 
 RoughDraft uses Extensions to make complex media scenarios easier work with.
-There are currently 123 extensions:
+There are currently 124 extensions:
 
 
 |DisplayName                                                           |Synopsis                              |Extends                                       |
@@ -273,6 +273,7 @@ There are currently 123 extensions:
 |[TimeMix](TimeMix-Extension.md)                                  |Mix successive video frames.          |Edit-Media,Show-Media                         |
 |[Tremolo](Tremolo-Extension.md)                                  |Tremolo effect                        |Edit-Media,Show-Media                         |
 |[Trim](Trim-Extension.md)                                        |Trim Video                            |Convert-Media,Edit-Media                      |
+|[TrimAudio](TrimAudio-Extension.md)                              |Trim Audio                            |Convert-Media,Edit-Media                      |
 |[Vibrance](Vibrance-Extension.md)                                |vibrance                              |Edit-Media                                    |
 |[Vibrato](Vibrato-Extension.md)                                  |Vibrato effect                        |Edit-Media,Show-Media                         |
 |[VideoExpression](VideoExpression-Extension.md)                  |Evaluates Video Expressions           |Edit-Media,Show-Media                         |
