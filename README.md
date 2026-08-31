@@ -155,7 +155,7 @@ Get-FFMpeg -FilterName
 ## RoughDraft Extensions
 
 RoughDraft uses Extensions to make complex media scenarios easier work with.
-There are currently 124 extensions:
+There are currently 125 extensions:
 
 
 |DisplayName                                                           |Synopsis                              |Extends                                       |
@@ -183,6 +183,7 @@ There are currently 124 extensions:
 |[Colorize](docs/Colorize-Extension.md)                                |Colorize a video stream               |Edit-Media,Show-Media                         |
 |[ColorScope](docs/ColorScope-Extension.md)                            |Colorscope extension                  |Edit-Media,Show-Media                         |
 |[ColorSource](docs/ColorSource-Extension.md)                          |Generates a color                     |New-Media,Show-Media                          |
+|[Compressor](docs/Compressor-Extension.md)                            |Audio Compressor                      |Edit-Media,Show-Media                         |
 |[Convolve](docs/Convolve-Extension.md)                                |convolve                              |Join-Media                                    |
 |[Crop](docs/Crop-Extension.md)                                        |Crop Extension                        |Edit-Media,Receive-Media,Send-Media,Show-Media|
 |[CropDetect](docs/CropDetect-Extension.md)                            |Auto-detect the crop size.            |Get-Media                                     |
