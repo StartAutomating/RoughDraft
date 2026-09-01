@@ -41,6 +41,6 @@ Additional Changes in [CHANGELOG](https://github.com/StartAutomating/RoughDraft/
             'Manipulate Audio and Video with PowerShell',
             'PowerShell and FFMpeg, together at last'
         )
-        
+        Recommends = 'obs-powershell'
     }
 }
