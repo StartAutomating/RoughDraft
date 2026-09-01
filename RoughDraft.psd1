@@ -1,6 +1,6 @@
 @{
     CompanyName='Start-Automating'
-    ModuleVersion='0.4.3'
+    ModuleVersion='0.4.4'
     ModuleToProcess='RoughDraft.psm1'
     GUID='c192ebbf-57a3-493e-bc82-da7553038794'
     Description='A Fun PowerShell Module for Multimedia'
@@ -15,12 +15,21 @@
             LicenseURI = 'https://github.com/StartAutomating/RoughDraft/blob/main/LICENSE'
             IconURI    = 'https://github.com/StartAutomating/RoughDraft/blob/main/Assets/RoughDraft.png'
             ReleaseNotes = @'
-## 0.4.3
+## RoughDraft 0.4.4
 
-* Fixing Rate Extension (#327)
-* Adding -TargetTime to Rate extension (#328)
-* Adding RGBAShift Extension (#329)
-
+* New Filters
+  * `Trim` (#334)
+  * `TrimAudio` (#335)
+  * `Compressor` (#339)
+  * `Interlace` (#340)
+  * `Deinterlace` (#341)
+  * `Biquad` (#342)
+* Improvements
+  * `Convert-Media` progress fix (#336)
+  * `Convert-Media` binding improvement (#337)
+  * `Edit-Media` caches to memory not disk (#343)
+    * No more littered history files
+  * Fixed documentation over-generation (#338)
 ---
 
 Additional Changes in [CHANGELOG](https://github.com/StartAutomating/RoughDraft/blob/main/CHANGELOG.md)
