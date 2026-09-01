@@ -155,7 +155,7 @@ Get-FFMpeg -FilterName
 ## RoughDraft Extensions
 
 RoughDraft uses Extensions to make complex media scenarios easier work with.
-There are currently 127 extensions:
+There are currently 128 extensions:
 
 
 |DisplayName                                                           |Synopsis                              |Extends                                       |
@@ -167,6 +167,7 @@ There are currently 127 extensions:
 |[AudioFrequencyExpression](AudioFrequencyExpression-Extension.md)|Apply expressions to audio frequencies|Edit-Media,Show-Media                         |
 |[AudioGain](AudioGain-Extension.md)                              |Increases audio volume                |Edit-Media,Show-Media                         |
 |[BilateralSmooth](BilateralSmooth-Extension.md)                  |Bilateral Smooth                      |Edit-Media,Show-Media                         |
+|[Biquad](Biquad-Extension.md)                                    |Biquad Filter                         |Edit-Media,Show-Media                         |
 |[BlackDetect](BlackDetect-Extension.md)                          |Detect black periods in a video.      |Get-Media                                     |
 |[BlackFrame](BlackFrame-Extension.md)                            |Detects black frames.                 |Get-Media                                     |
 |[BlendFrame](BlendFrame-Extension.md)                            |BlendFrame Extension                  |Edit-Media,Join-Media,Show-Media              |
