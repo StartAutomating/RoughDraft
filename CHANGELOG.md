@@ -1,7 +1,27 @@
-﻿> Like It? [Star It](https://github.com/StartAutomating/RoughDraft)
+﻿# RoughDraft CHANGELOG
+
+> Like It? [Star It](https://github.com/StartAutomating/RoughDraft)
 > Love It? [Support It](https://github.com/sponsors/StartAutomating)
 
-## 0.4.3
+## RoughDraft 0.4.4
+
+* New Filters
+  * `Trim` (#334)
+  * `TrimAudio` (#335)
+  * `Compressor` (#339)
+  * `Interlace` (#340)
+  * `Deinterlace` (#341)
+  * `Biquad` (#342)
+* Improvements
+  * `Convert-Media` progress fix (#336)
+  * `Convert-Media` binding improvement (#337)
+  * `Edit-Media` caches to memory not disk (#343)
+    * No more littered history files
+  * Fixed documentation over-generation (#338)  
+
+---
+
+## RoughDraft 0.4.3
 
 * Fixing Rate Extension (#327)
 * Adding -TargetTime to Rate extension (#328)
@@ -9,7 +29,7 @@
 
 ---
 
-## 0.4.2
+## RoughDraft 0.4.2
 
 * Improvements to Media Downloader (#318)
   * Now outputting the file
@@ -22,7 +42,7 @@
 
 ---
 
-## 0.4.1
+## RoughDraft 0.4.1
 
 * RoughDraft in Docker
   * Added Dockerfile ( #251 )
@@ -129,7 +149,7 @@
 
 ---
 
-## 0.4
+## RoughDraft 0.4
 
 * Enabled Sponsorship (please show your support) (#185)
 * Audio Visualizations now force output of video (#176)
@@ -142,7 +162,7 @@
 
 ---
 
-## 0.3.10
+## RoughDraft 0.3.10
 
 * Fixing -Resize (#179)
 * Explaining Expressions
@@ -151,7 +171,7 @@
 
 ---
 
-## 0.3.9
+## RoughDraft 0.3.9
 
 * New Extensions:
   * ColorExpression ( #172 )
@@ -165,7 +185,7 @@
 
 ---
 
-## 0.3.8
+## RoughDraft 0.3.8
 
 * New Extensions:
   * AudioFrequencyExpression (#158)
@@ -178,7 +198,7 @@
 
 ---
 
-## 0.3.7
+## RoughDraft 0.3.7
 * New Extensions:
   * AudioCrusher (#148)
   * Chorus (#20)
@@ -197,7 +217,7 @@
 
 ---
 
-## 0.3.6
+## RoughDraft 0.3.6
 
 * Adding Visualization Extensions:
   * ShowSpectrum
@@ -210,7 +230,7 @@
 ---
 
 
-## 0.3.5
+## RoughDraft 0.3.5
 
 * New Extensions:
   * AudioExpression!!! (#22)
@@ -231,7 +251,7 @@
 
 ---
 
-## 0.3.4
+## RoughDraft 0.3.4
 
 * Adding Flanger Extension (#100)
 * Show-Media:
@@ -245,7 +265,7 @@
 
 ---
         
-## 0.3.3
+## RoughDraft 0.3.3
 
 * New Extensions:
   * Adding Exposure Extension (#87)
@@ -262,7 +282,7 @@
 
 ---
 
-## 0.3.2
+## RoughDraft 0.3.2
 
 * Updating RoughDraft Tests (adding test for image->video, re #83)
 * Convert-Media:  Adding .EXAMPLE for Image Conversion (#83)
@@ -276,7 +296,7 @@
 
 ---
 
-## 0.3.1
+## RoughDraft 0.3.1
 
 * Adding Subtitler Extension (#73)
 * Show-Media:  Safeguarding progress output (Fixing #76)
@@ -289,7 +309,7 @@
 
 ---
 
-## 0.3
+## RoughDraft 0.3
 
 * Adding LagFun Extension (#69)
 * Get-Media:  Returning at the beginning of end if -AsJob was passed
@@ -303,7 +323,7 @@
 
 ---
 
-## 0.2.9
+## RoughDraft 0.2.9
 
 * Adding AmplifyPixel Extension (#61)
 * Adding MedianPixel Extension (#59)
@@ -332,7 +352,7 @@
 
 ---
 
-## 0.2.8
+## RoughDraft 0.2.8
 
 * New Extensions:
   * Adding ListProtocols Extension (#38)
@@ -348,7 +368,7 @@
 
 ---
 
-## 0.2.7
+## RoughDraft 0.2.7
 
 * New Extensions:
   * DirectShow (#33)
@@ -361,7 +381,7 @@
 
 ---
 
-## 0.2.6
+## RoughDraft 0.2.6
 * New Extensions:
   * Pixelate (#28)
   * AlbumArt (#31)
@@ -370,7 +390,7 @@
 
 ---
 
-## 0.2.5
+## RoughDraft 0.2.5
 * New Extensions
   * ShuffleFrames (#23)
   * Echo (#21)
@@ -381,20 +401,20 @@
 
 ---
 
-## 0.2.4
+## RoughDraft 0.2.4
 * New Command: Split-Media
 * New Extension: NoAudio (for Split-Media)
 
 ---
 
-## 0.2.3
+## RoughDraft 0.2.3
 * New command: Show-Media (#8)
 * Bugfix: Playlist extension no longer adds -Encoding (#13)
 * New Extension:  Sierpinksi fractal (#14)
 
 ---
 
-## 0.2.2
+## RoughDraft 0.2.2
 
 * Enhancing support for Progress Bars (Fixing #3)
 * Making Join-Media extensible (Fixing #4)
@@ -413,7 +433,7 @@
 
 ---
 
-## 0.2.1
+## RoughDraft 0.2.1
 
 * Adding Mandelbrot Extension (for New-Media)
 * Making Get-FFMpeg extensible
@@ -423,7 +443,7 @@
 
 ---
 
-## 0.2
+## RoughDraft 0.2
 
 Publishing code on GitHub
 Refactoring module with an emphasis on extensibility

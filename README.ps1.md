@@ -161,11 +161,11 @@ There are currently `|{@(Get-RoughDraftExtension).Length}|` extensions:
     Import-Module ./RoughDraft.psd1 -Global
     [PSCustomObject]@{
         Table = Get-RoughDraftExtension |
-            Sort-Object DisplayName |            
+            Sort-Object DisplayName |
             .DisplayName {
                 "[$($_.DisplayName)](docs/$($_.DisplayName + '-Extension.md'))"
             } .Synopsis .Extends {
-                $_.Extends -join ','
+                ($_.Extends | Sort-Object) -join ','
             }
     }
 }
