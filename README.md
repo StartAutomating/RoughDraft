@@ -155,7 +155,7 @@ Get-FFMpeg -FilterName
 ## RoughDraft Extensions
 
 RoughDraft uses Extensions to make complex media scenarios easier work with.
-There are currently 126 extensions:
+There are currently 127 extensions:
 
 
 |DisplayName                                                           |Synopsis                              |Extends                                       |
@@ -190,6 +190,7 @@ There are currently 126 extensions:
 |[CrossFade](docs/CrossFade-Extension.md)                              |acrossfade                            |Join-Media                                    |
 |[DataScope](docs/DataScope-Extension.md)                              |Datascope effect                      |Edit-Media                                    |
 |[Deconvolve](docs/Deconvolve-Extension.md)                            |deconvolve                            |Join-Media                                    |
+|[Deinterlace](docs/Deinterlace-Extension.md)                          |Deinterlace Extension                 |Edit-Media,Show-Media                         |
 |[DirectShow](docs/DirectShow-Extension.md)                            |DirectShow Extension                  |Receive-Media,Send-Media,Show-Media           |
 |[DrawSubtitle](docs/DrawSubtitle-Extension.md)                        |Draw subtitles on top of input video  |Convert-Media,Edit-Media                      |
 |[DrawText](docs/DrawText-Extension.md)                                |Draws Text on Video                   |Edit-Media,Show-Media                         |
