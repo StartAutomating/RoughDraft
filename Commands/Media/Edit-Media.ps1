@@ -495,30 +495,19 @@
             $OutParams
         )
 
-        Write-Verbose "FFMpeg Arguments: $ffMpegFullArgs"
+        Write-Verbose "FFMpeg Arguments: $ffMpegFullArgs"        
 
         if ($WhatIfPreference) { return $ffMpegFullArgs } # If -WhatIf was passed, return the FFMpeg Arguments.
-        if ($uro -and (Test-Path $uro)) {
-            # If we have only one output, and it already exists.
-            $ExistingOutput = Get-Item -LiteralPath $uro            
-            if ($ExistingOutput.Length -gt 0) {
-                $clixmlPath     = 
-                        Join-Path $ExistingOutput.Directory.FullName (
-                            '.' + 
-                            $ExistingOutput.Name.Substring(0,$ExistingOutput.Name.Length - $ExistingOutput.Extension.Length) + 
-                            ".$myCmd.RoughDraft.xml"
-                        )
-                if (Test-Path $clixmlPath) {
-                    $existingData = Import-Clixml -LiteralPath $clixmlPath
-                    if (-not $MyParams.Force -and 
-                        $existingData.FFArgs -eq ($ffMpegFullArgs -join ' ') -and
-                        $existingData.InputLastWriteTime -EQ $ffInFileInfos[0].LastWriteTime
-                    ) {
-                        Get-Item -ErrorAction SilentlyContinue -LiteralPath $uro
-                        return
-                    }
-                }
-            }
+
+        if (-not $script:EditCache) {
+            $script:EditCache = [Ordered]@{}
+        }
+        if ($uro -and 
+            (Test-Path $uro) -and 
+            (-not $Force) -and
+            $script:EditCache["$uro"] -eq ($ffMpegFullArgs -join ' ')
+        ) {            
+            return Get-Item -ErrorAction SilentlyContinue -LiteralPath $uro
         }        
         if (-not $PSCmdlet.ShouldProcess("$($ffMpegFullArgs -join ' ')")) { return } # Check ShouldProcess, and return if we shouldn't.
         $allOutput = @()
@@ -541,25 +530,7 @@
         if ($uro) { # If we had a single output
             $existingOutput = Get-Item -ErrorAction SilentlyContinue -LiteralPath $uro # get it.
             $existingOutput
-            $clixmlPath     = 
-                if ($ExistingOutput) {
-                    Join-Path $ExistingOutput.Directory.FullName (
-                            '.' + 
-                            $ExistingOutput.Name.Substring(0,$ExistingOutput.Name.Length - $ExistingOutput.Extension.Length) + 
-                            ".$myCmd.RoughDraft.xml"
-                    )
-                }
-
-            if ($clixmlPath) {
-                [PSCustomObject][Ordered]@{
-                    PSTypeName = 'RoughDraft.Log'
-                    FFArgs = $ffMpegFullArgs -join ' '
-                    FFOutput = $allOutput -join ' '
-                    InputLastWriteTime = $ffInFileInfos[0].LastWriteTime
-                    OutputPath = "$uro"
-                } | 
-                    Export-Clixml -Path $clixmlPath
-            }            
+            $script:EditCache["$uro"] = ($ffMpegFullArgs -join ' ')            
         } elseif ($OutputMap.Count) { # If we had an output map
             foreach ($kv in $OutputMap.GetEnumerator()) {
                 $rp = # Find each file in the map
