@@ -67,7 +67,7 @@ For example, to show only audio streams, use 'a'
 #### **Entry**
 A list of entries.
 By default, shows information about streams and formats.
-For more information about sections, visit [FFMpeg.org](https://ffmpeg.org/ffprobe.html#main-options)
+For more information about sections, visit [FFMpeg.org](https://ffmpeg.org/ffprobe.html#Main-options)
 
 |Type        |Required|Position|PipelineInput|
 |------------|--------|--------|-------------|
